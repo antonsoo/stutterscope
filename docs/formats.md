@@ -218,3 +218,14 @@ For every format above, either:
 
 Where neither was available (FrameView's exact schema per GPU/driver
 combination), that gap is stated rather than filled with a guess.
+
+## One encoding detail every parser shares
+
+Every real capture fixture pulled from the sources above (PresentMon's own
+gold-test CSVs included) starts with a UTF-8 byte-order mark. Left in
+place, it glues onto the header's first column name and breaks every
+`header.get("Application")`-style lookup, silently turning "every row
+skipped" into the failure mode instead of a clean parse error. `LineScanner`
+(`src/core/csv.ts`) strips it once, from the very first chunk, before any
+column name is ever read — this is shared by every parser in this file
+rather than reimplemented per format.

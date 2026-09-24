@@ -191,13 +191,13 @@ are computed and shown).
 ## Development
 
 ```bash
-npm run dev         # local dev server
-npm test            # vitest — parsers, metrics, and a numpy-oracle cross-check
-npm run typecheck    # tsc --noEmit, strict
-npm run lint         # eslint
-npm run build        # production build to dist/
-npm run samples      # regenerate examples/samples/ from scripts/generate-samples.ts
-npm run cli -- summary <file>   # run the CLI from source
+npm run dev        # local dev server
+npm test           # vitest — parsers, metrics, and a numpy-oracle cross-check
+npm run typecheck  # tsc --noEmit, strict
+npm run lint       # eslint
+npm run build      # production build to dist/
+npm run samples    # regenerate examples/samples/ from scripts/generate-samples.ts
+npm run cli -- summary <file>  # run the CLI from source
 ```
 
 Tests cross-check the metrics library against `numpy` on a committed
