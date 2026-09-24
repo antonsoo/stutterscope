@@ -384,17 +384,28 @@ export interface HistogramBucket {
   count: number;
 }
 
+/**
+ * A histogram's usefulness lives in the bulk of the distribution. Sizing
+ * bins to the true min/max lets one 500ms shader-compile hitch in 8,000
+ * frames stretch the axis so far that every other bar collapses into a
+ * single pixel. So the display range is capped at `1.5 * P99.9`, with
+ * anything beyond that folded into the last ("overflow") bucket — the rest
+ * of the tail is still exactly represented by the P99.9/1%-low tiles.
+ */
+function robustDisplayMax(sortedAscending: Float64Array, actualMax: number): number {
+  if (sortedAscending.length < 20) return actualMax; // too few points for a percentile to be meaningful
+  const p999 = percentileOfSorted(sortedAscending, 99.9);
+  const capped = p999 * 1.5;
+  return capped < actualMax ? Math.max(capped, sortedAscending[0]! + 1e-6) : actualMax;
+}
+
 export function frameTimeHistogram(frameTimeMs: Float64Array, bucketCount = 60): HistogramBucket[] {
   const n = frameTimeMs.length;
   if (n === 0) return [];
-  let min = Infinity;
-  let max = -Infinity;
-  for (let i = 0; i < n; i++) {
-    const v = frameTimeMs[i]!;
-    if (v < min) min = v;
-    if (v > max) max = v;
-  }
-  if (min === max) max = min + 1;
+  const sorted = sortedCopy(frameTimeMs);
+  const min = sorted[0]!;
+  const actualMax = sorted[n - 1]!;
+  const max = min === actualMax ? min + 1 : robustDisplayMax(sorted, actualMax);
   const width = (max - min) / bucketCount;
   const buckets: HistogramBucket[] = Array.from({ length: bucketCount }, (_, i) => ({
     rangeStartMs: min + i * width,
@@ -404,10 +415,54 @@ export function frameTimeHistogram(frameTimeMs: Float64Array, bucketCount = 60):
   for (let i = 0; i < n; i++) {
     const v = frameTimeMs[i]!;
     let idx = Math.floor((v - min) / width);
-    if (idx >= bucketCount) idx = bucketCount - 1;
+    if (idx >= bucketCount) idx = bucketCount - 1; // overflow: anything >= max folds into the last bin
     if (idx < 0) idx = 0;
     buckets[idx]!.count++;
   }
+  return buckets;
+}
+
+export interface HistogramBucketPair {
+  rangeStartMs: number;
+  rangeEndMs: number;
+  countA: number;
+  countB: number;
+}
+
+/** Same bin edges for two series, so their histograms can be overlaid meaningfully. */
+export function frameTimeHistogramPair(a: Float64Array, b: Float64Array, bucketCount = 60): HistogramBucketPair[] {
+  let min = Infinity;
+  let actualMax = -Infinity;
+  for (const arr of [a, b]) {
+    for (let i = 0; i < arr.length; i++) {
+      const v = arr[i]!;
+      if (v < min) min = v;
+      if (v > actualMax) actualMax = v;
+    }
+  }
+  if (!Number.isFinite(min)) return [];
+  const combined = new Float64Array(a.length + b.length);
+  combined.set(a, 0);
+  combined.set(b, a.length);
+  combined.sort();
+  const max = min === actualMax ? min + 1 : robustDisplayMax(combined, actualMax);
+  const width = (max - min) / bucketCount;
+  const buckets: HistogramBucketPair[] = Array.from({ length: bucketCount }, (_, i) => ({
+    rangeStartMs: min + i * width,
+    rangeEndMs: min + (i + 1) * width,
+    countA: 0,
+    countB: 0,
+  }));
+  const fill = (arr: Float64Array, key: "countA" | "countB") => {
+    for (let i = 0; i < arr.length; i++) {
+      let idx = Math.floor((arr[i]! - min) / width);
+      if (idx >= bucketCount) idx = bucketCount - 1;
+      if (idx < 0) idx = 0;
+      buckets[idx]![key]++;
+    }
+  };
+  fill(a, "countA");
+  fill(b, "countB");
   return buckets;
 }
 
