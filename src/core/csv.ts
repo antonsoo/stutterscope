@@ -6,6 +6,18 @@
  * nothing more exotic.
  */
 
+/**
+ * Strips a leading UTF-8 BOM, if present. Real PresentMon (and most
+ * Windows tool) CSV output starts with one; left in place it glues onto
+ * the first header column's name and breaks every lookup for it. Used
+ * everywhere a raw text sample's first line is read directly (sniffing,
+ * the generic-format column picker) in addition to `LineScanner`, which
+ * strips it from the byte stream itself.
+ */
+export function stripBom(text: string): string {
+  return text.charCodeAt(0) === 0xfeff ? text.slice(1) : text;
+}
+
 /** Splits one CSV record into fields, honoring double-quoted fields. */
 export function splitCsvLine(line: string): string[] {
   if (line.indexOf('"') === -1) {
@@ -52,14 +64,9 @@ export class LineScanner {
   private sawFirstChunk = false;
 
   *feed(chunk: string): Generator<string> {
-    // PresentMon (and most Windows tools) write a UTF-8 BOM at the very
-    // start of the file. Left in place, it silently glues itself onto the
-    // first character of the header's first column name, which then fails
-    // every `header.get("Application")`-style lookup — so it's stripped
-    // once, from the first chunk only, before any line-splitting happens.
     if (!this.sawFirstChunk) {
       this.sawFirstChunk = true;
-      if (chunk.charCodeAt(0) === 0xfeff) chunk = chunk.slice(1);
+      chunk = stripBom(chunk);
     }
     const combined = this.carry.length > 0 ? this.carry + chunk : chunk;
     let start = 0;

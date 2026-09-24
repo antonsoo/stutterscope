@@ -4,7 +4,7 @@
  * per-row value and what it means, and we derive frame times from that.
  */
 import { Float64Builder, Uint8Builder } from "../buffer.ts";
-import { indexHeader, parseFloatOrNull, splitCsvLine } from "../csv.ts";
+import { indexHeader, parseFloatOrNull, splitCsvLine, stripBom } from "../csv.ts";
 import type { FrameSeries, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync, parseFileStreaming } from "../stream.ts";
 import type { ProgressCallback } from "../types.ts";
@@ -27,7 +27,7 @@ export interface GenericMapping {
 
 /** Reads just the header row, for the column-picker UI. */
 export function readHeader(sampleText: string): string[] {
-  const firstLine = sampleText.split(/\r?\n/, 1)[0] ?? "";
+  const firstLine = stripBom(sampleText).split(/\r?\n/, 1)[0] ?? "";
   return splitCsvLine(firstLine).map((f) => f.trim());
 }
 

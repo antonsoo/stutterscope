@@ -133,6 +133,22 @@ describe("generic parser", () => {
     expect(series.frameCount).toBe(5);
     expect(Array.from(series.frameTimeMs)).toEqual(EXPECTED_FRAME_TIMES);
   });
+
+  it("readHeader() strips a leading BOM so the column-picker UI never shows a mangled first column", () => {
+    const header = generic.readHeader("﻿" + text);
+    expect(header[0]).toBe("frame");
+  });
+
+  it("a mapping built from readHeader()'s column names actually resolves during parse", () => {
+    // Regression: readHeader() and the parser used to disagree about
+    // whether the BOM was still attached, so selecting the *first* column
+    // from the UI's dropdown after a BOM-prefixed file silently produced
+    // zero frames.
+    const withBom = "﻿" + text;
+    const header = generic.readHeader(withBom);
+    const series = generic.parse(withBom, { valueColumn: header[0]!, valueKind: "timestamp_s_cumulative" }, "sample.csv");
+    expect(series.frameCount).toBeGreaterThan(0);
+  });
 });
 
 describe("format detector", () => {
