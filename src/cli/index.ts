@@ -19,8 +19,25 @@ const GREEN = "\x1b[38;2;124;255;178m";
 const AMBER = "\x1b[38;2;255;180;84m";
 const RED = "\x1b[38;2;255;75;92m";
 
+/**
+ * NO_COLOR (https://no-color.org/) always wins, even over FORCE_COLOR —
+ * it's an explicit "never" from the user's environment. Otherwise color is
+ * on for an interactive terminal, or when FORCE_COLOR asks for it
+ * explicitly (piping to `less -R`, capturing for a colored log, etc.).
+ * Checked once at startup so every `color()` call agrees, instead of the
+ * previous bug where only some ANSI codes went through the TTY check.
+ */
+function shouldUseColor(): boolean {
+  if (process.env.NO_COLOR !== undefined) return false;
+  const forceColor = process.env.FORCE_COLOR;
+  if (forceColor !== undefined && forceColor !== "0") return true;
+  return process.stdout.isTTY === true;
+}
+
+const useColor = shouldUseColor();
+
 function color(s: string, code: string): string {
-  return process.stdout.isTTY ? `${code}${s}${RESET}` : s;
+  return useColor ? `${code}${s}${RESET}` : s;
 }
 
 function fmt(n: number, digits = 1): string {
@@ -54,7 +71,7 @@ function parseArgs(argv: string[]): Args {
 }
 
 function printHelp(): void {
-  console.log(`${BOLD}stutterscope${RESET} — frame-time analysis from the terminal
+  console.log(`${color("stutterscope", BOLD)} — frame-time analysis from the terminal
 
 Usage:
   stutterscope summary <file.csv> [options]
@@ -117,8 +134,8 @@ function main(): void {
     return;
   }
 
-  console.log(`${BOLD}${basename(args.file)}${RESET}  ${DIM}${FORMAT_LABELS[format as keyof typeof FORMAT_LABELS]}${RESET}`);
-  console.log(`${DIM}${series.frameCount.toLocaleString()} frames, ${fmt(summary.durationSec, 1)}s${RESET}`);
+  console.log(`${color(basename(args.file), BOLD)}  ${color(FORMAT_LABELS[format as keyof typeof FORMAT_LABELS], DIM)}`);
+  console.log(color(`${series.frameCount.toLocaleString()} frames, ${fmt(summary.durationSec, 1)}s`, DIM));
   if (series.meta.warnings.length > 0) {
     console.log(color(`${series.meta.warnings.length} row(s) skipped while parsing`, AMBER));
   }
