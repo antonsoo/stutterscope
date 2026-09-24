@@ -1,4 +1,5 @@
 import uPlot from "uplot";
+import { percentileOfSorted, sortedCopy } from "../core/metrics.ts";
 import type { HistogramBucket, HistogramBucketPair } from "../core/metrics.ts";
 
 const TRACE_A = "#7cffb2";
@@ -76,12 +77,74 @@ export interface TraceChartHandle {
   destroy(): void;
 }
 
+export interface TraceChartControls extends TraceChartHandle {
+  /** Switches between the robust-ceiling y-range (default) and the true data max. */
+  setFullRange(full: boolean): void;
+  isFullRange(): boolean;
+}
+
+/**
+ * A handful of severe hitches can be 10-50x a capture's normal frame time,
+ * which would otherwise set the y-axis max and flatten every frame under
+ * ~5% of the plot height. Capping at `max(50ms, 1.5 * P99.9)` keeps the
+ * normal pacing and moderate stutter visible by default; anything above the
+ * cap is still drawn (see `drawOffScaleMarkers`), just clamped to the top
+ * of the plot with its real value labeled.
+ */
+function robustYMax(frameTimeMs: Float64Array): number {
+  if (frameTimeMs.length === 0) return 50;
+  const sorted = sortedCopy(frameTimeMs);
+  const p999 = percentileOfSorted(sorted, 99.9);
+  const trueMax = sorted[sorted.length - 1]!;
+  return Math.min(trueMax, Math.max(50, p999 * 1.5));
+}
+
+/**
+ * Draws a small clamped marker + value label for any point above `yMax`,
+ * at the top of the plot area directly over its x position. Runs as a
+ * uPlot `draw` hook so it composites on top of the normal series paths.
+ */
+function drawOffScaleMarkers(
+  u: uPlot,
+  timeSec: Float64Array,
+  frameTimeMs: Float64Array,
+  getYMax: () => number,
+): void {
+  const yMax = getYMax();
+  const scaleX = u.scales.x;
+  if (!scaleX || scaleX.min == null || scaleX.max == null) return;
+  const ctx = u.ctx;
+  const topY = u.valToPos(yMax, "y", true);
+  ctx.save();
+  ctx.fillStyle = STUTTER;
+  ctx.font = "600 10px JetBrains Mono, monospace";
+  ctx.textAlign = "center";
+  let lastPx = -Infinity;
+  for (let i = 0; i < frameTimeMs.length; i++) {
+    const v = frameTimeMs[i]!;
+    if (v <= yMax) continue;
+    const t = timeSec[i]!;
+    if (t < scaleX.min || t > scaleX.max) continue;
+    const x = u.valToPos(t, "x", true);
+    if (x - lastPx < 26) continue; // de-dupe overlapping labels when zoomed out
+    lastPx = x;
+    ctx.beginPath();
+    ctx.moveTo(x, topY + 3);
+    ctx.lineTo(x - 4, topY + 11);
+    ctx.lineTo(x + 4, topY + 11);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillText(`↑ ${v.toFixed(0)}ms`, x, topY - 3);
+  }
+  ctx.restore();
+}
+
 export function createTraceChart(
   el: HTMLElement,
   timeSec: Float64Array,
   frameTimeMs: Float64Array,
   isStutter: Uint8Array,
-): TraceChartHandle {
+): TraceChartControls {
   const stutterSeries = new Array<number | null>(frameTimeMs.length);
   for (let i = 0; i < frameTimeMs.length; i++) {
     stutterSeries[i] = isStutter[i] === 1 ? frameTimeMs[i]! : null;
@@ -89,6 +152,11 @@ export function createTraceChart(
 
   const fullMin = timeSec.length > 0 ? timeSec[0]! : 0;
   const fullMax = timeSec.length > 0 ? timeSec[timeSec.length - 1]! : 1;
+  let trueMax = 1;
+  for (let i = 0; i < frameTimeMs.length; i++) if (frameTimeMs[i]! > trueMax) trueMax = frameTimeMs[i]!;
+  const clampedMax = robustYMax(frameTimeMs);
+  let currentYMax = clampedMax;
+  let fullRange = false;
 
   const opts: uPlot.Options = {
     width: el.clientWidth || 600,
@@ -112,14 +180,24 @@ export function createTraceChart(
       { ...baseAxis, label: "frame time (ms)" },
     ],
     legend: { show: true },
+    hooks: {
+      draw: [(u) => drawOffScaleMarkers(u, timeSec, frameTimeMs, () => currentYMax)],
+    },
   };
 
   const uplot = new uPlot(opts, [timeSec, frameTimeMs, stutterSeries], el);
+  uplot.setScale("y", { min: 0, max: currentYMax });
   attachZoomPan(uplot, () => [fullMin, fullMax]);
 
   return {
     uplot,
     destroy: () => uplot.destroy(),
+    isFullRange: () => fullRange,
+    setFullRange: (full: boolean) => {
+      fullRange = full;
+      currentYMax = full ? Math.max(trueMax, 1) : clampedMax;
+      uplot.setScale("y", { min: 0, max: currentYMax });
+    },
   };
 }
 

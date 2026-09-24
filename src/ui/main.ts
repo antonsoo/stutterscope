@@ -6,14 +6,14 @@ import type { SourceFormat, ParseProgress } from "../core/types.ts";
 import { FORMAT_LABELS, SOURCE_FORMATS } from "../core/types.ts";
 import { DEFAULT_STUTTER_OPTIONS, frameTimeHistogramPair, type MetricsSummary, type StutterOptions } from "../core/metrics.ts";
 import { GENERIC_VALUE_KIND_LABELS, type GenericMapping, type GenericValueKind } from "../core/parsers/generic.ts";
-import { buildTiles, renderTiles } from "./statTiles.ts";
+import { buildTiles, renderTiles, renderSecondaryTable } from "./statTiles.ts";
 import { fmtBytes, fmtFps, fmtInt, fmtMs, fmtSignedPct, deltaClass } from "./format.ts";
-import { createFpsChart, createPercentileChart, createTraceChart, drawHistogram, drawHistogramPair, type TraceChartHandle } from "./charts.ts";
+import { createFpsChart, createPercentileChart, createTraceChart, drawHistogram, drawHistogramPair, type TraceChartHandle, type TraceChartControls } from "./charts.ts";
 import { exportJson, exportMarkdown, exportReportCard } from "./share.ts";
 
 interface RunState {
   response: ResultResponse;
-  traceHandle?: TraceChartHandle;
+  traceHandle?: TraceChartControls;
   fpsHandle?: TraceChartHandle;
   file: File;
 }
@@ -229,10 +229,17 @@ function renderWorkspace(): void {
       ${a.response.series.meta.warnings.length > 0 ? `<div class="notes warn-note">${a.response.series.meta.warnings.length} row(s) skipped while parsing (bad/missing values). See console for detail.</div>` : ""}
 
       <div class="tile-grid" id="tile-grid-a"></div>
+      <div class="bracket-panel secondary-panel" id="secondary-panel-a">
+        <span class="bracket-tl"></span><span class="bracket-tr"></span>
+        <p class="panel-label">More Metrics <span class="hint">hover a tile above for its full definition</span></p>
+        <div id="secondary-table-a"></div>
+      </div>
 
       <div class="bracket-panel chart-panel">
         <span class="bracket-tl"></span><span class="bracket-tr"></span>
-        <p class="panel-label">Frame Time Trace <span class="hint">drag to zoom &middot; shift+drag to pan &middot; wheel to zoom &middot; dblclick to reset</span></p>
+        <p class="panel-label">Frame Time Trace <span class="hint">drag to zoom &middot; shift+drag to pan &middot; wheel to zoom &middot; dblclick to reset</span>
+          <button class="btn small range-toggle" id="range-toggle-btn" type="button" aria-pressed="false">Full range</button>
+        </p>
         <div id="trace-chart" class="trace-sweep" role="img" aria-label="${escapeHtml(chartSummary(a.response.summary))}"></div>
       </div>
 
@@ -269,7 +276,9 @@ function renderWorkspace(): void {
     </div>
   `;
 
-  renderTiles(document.getElementById("tile-grid-a")!, buildTiles(a.response.summary));
+  const tileSet = buildTiles(a.response.summary);
+  renderTiles(document.getElementById("tile-grid-a")!, tileSet.headline);
+  renderSecondaryTable(document.getElementById("secondary-table-a")!, tileSet.secondary);
 
   destroyCharts(a);
   a.traceHandle = createTraceChart(document.getElementById("trace-chart")!, a.response.series.timeSec, a.response.series.frameTimeMs, a.response.chart.isStutter);
@@ -332,6 +341,16 @@ function renderComparisonTable(a: RunState, b: RunState): void {
 }
 
 function wireWorkspaceControls(): void {
+  const rangeToggleBtn = document.getElementById("range-toggle-btn") as HTMLButtonElement | null;
+  rangeToggleBtn?.addEventListener("click", () => {
+    const handle = runs.a?.traceHandle;
+    if (!handle) return;
+    const next = !handle.isFullRange();
+    handle.setFullRange(next);
+    rangeToggleBtn.textContent = next ? "Robust range" : "Full range";
+    rangeToggleBtn.setAttribute("aria-pressed", String(next));
+  });
+
   document.getElementById("new-session-btn")?.addEventListener("click", () => {
     destroyCharts(runs.a);
     destroyCharts(runs.b);

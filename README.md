@@ -5,7 +5,12 @@ Frame-time analysis for PC gamers and hardware reviewers. Drop in a capture, see
 [![License: MIT](https://img.shields.io/badge/license-MIT-7cffb2.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/demo-antonsoo.github.io%2Fstutterscope-7cffb2)](https://antonsoo.github.io/stutterscope/)
 
-![stutterscope: a frame-time trace and metrics readout for a synthetic capture](docs/assets/hero.png)
+![stutterscope: stat tiles, a frame-time trace with two hitches clamped and labeled at the top of a robust y-range, FPS over time, and a frame-time histogram, for a synthetic PresentMon 2.x capture](docs/assets/hero.png)
+
+Two-run comparison, with a metric-by-metric delta table (real output, from
+two different synthetic captures — not the same run twice):
+
+![stutterscope comparison view: overlaid percentile curves and a delta table showing run B at +43% average FPS, +101% 1% low, and -93% stutter events versus run A](docs/assets/comparison.png)
 
 ## Why this exists
 
@@ -61,9 +66,14 @@ npx github:antonsoo/stutterscope summary examples/samples/presentmon2-synthetic-
 - **Visuals**: a frame-time trace with stutter markers (drag to zoom,
   shift-drag to pan, wheel to zoom, double-click to reset), FPS over time,
   a frame-time histogram, and a percentile curve — plus a second-run
-  overlay with a metric-by-metric delta table. Dark only, deliberately: the
-  whole visual idea is an oscilloscope screen reading a live trace, and a
-  light variant would work against that rather than with it.
+  overlay with a metric-by-metric delta table. The trace defaults to a
+  robust y-range (`max(50ms, 1.5 × P99.9)`) so ordinary pacing and moderate
+  stutter stay visible instead of being flattened by a rare severe hitch;
+  hitches beyond that range are still drawn, clamped to the top with their
+  real value labeled, and a "Full range" toggle shows the true scale on
+  demand. Dark only, deliberately: the whole visual idea is an oscilloscope
+  screen reading a live trace, and a light variant would work against that
+  rather than with it.
 - **Sharing**: export a PNG report card, a Markdown table (paste into a
   forum post or PR description), or a full JSON summary. Nothing is
   uploaded at any point.

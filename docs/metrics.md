@@ -149,3 +149,11 @@ a single multi-hundred-millisecond hitch stretches the x-axis so far that
 every other bar collapses into a single-pixel spike — the tail is still
 exactly represented by the P99.9 and 1%-low tiles, just not by the
 histogram's shape.
+
+The frame-time trace chart applies the same idea to its y-axis: it defaults
+to `[0, max(50ms, 1.5 × P99.9)]` rather than the true data range, so normal
+pacing and moderate stutter aren't compressed into a few pixels by a rare
+severe hitch. Frames above that range are still drawn — clamped to the top
+of the plot, with an upward-arrow marker and their real value labeled — and
+a "Full range" toggle switches to the true `[0, max(frame_time_ms)]` range
+on demand.
