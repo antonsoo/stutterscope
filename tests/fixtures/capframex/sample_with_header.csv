@@ -1,0 +1,11 @@
+//GameName=demo.exe
+//ProcessName=Demo Game
+//CreationDate=2026-09-24
+//CreationTime=00:00:00
+//RecordTime=5
+Application,ProcessID,SwapChainAddress,Runtime,SyncInterval,PresentFlags,AllowsTearing,PresentMode,WasBatched,DwmNotified,Dropped,TimeInSeconds,MsBetweenPresents,MsBetweenDisplayChange,MsInPresentAPI,MsUntilRenderComplete,MsUntilDisplayed
+demo.exe,1000,0x1,DXGI,0,0,0,Composed: Flip,1,0,0,0.010000,10.000,10.000,0.100,5.000,10.000
+demo.exe,1000,0x1,DXGI,0,0,0,Composed: Flip,1,0,0,0.020000,10.000,10.000,0.100,5.000,10.000
+demo.exe,1000,0x1,DXGI,0,0,0,Composed: Flip,1,0,1,0.030000,10.000,10.000,0.100,5.000,0.000
+demo.exe,1000,0x1,DXGI,0,0,0,Composed: Flip,1,0,0,0.070000,40.000,40.000,0.100,5.000,40.000
+demo.exe,1000,0x1,DXGI,0,0,0,Composed: Flip,1,0,0,0.080000,10.000,10.000,0.100,5.000,10.000

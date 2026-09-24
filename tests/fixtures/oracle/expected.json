@@ -1,0 +1,21 @@
+{
+  "frameCount": 5000,
+  "durationSec": 84.51640720851923,
+  "averageFps": 59.160110624011494,
+  "percentilesMs": {
+    "p50": 16.67348135701102,
+    "p90": 17.20260822235092,
+    "p95": 17.366705068135392,
+    "p99": 17.868820690261437,
+    "p999": 29.22281634290836
+  },
+  "onePercentLow": {
+    "percentileMethodFps": 55.9634022487563,
+    "meanOfSlowestMethodFps": 24.886875941168046
+  },
+  "pointOnePercentLow": {
+    "percentileMethodFps": 34.21983659157735,
+    "meanOfSlowestMethodFps": 6.127228959421751
+  },
+  "masdMs": 0.9158164711420367
+}
