@@ -39,8 +39,8 @@ app.innerHTML = `
     Nothing you drop here is uploaded — parsing and every chart run locally in your browser.
     &middot; <a href="https://github.com/antonsoo/stutterscope">stutterscope</a> is MIT-licensed.
   </footer>
-  <dialog id="mapping-dialog">
-    <h2>Map columns</h2>
+  <dialog id="mapping-dialog" aria-labelledby="mapping-dialog-title">
+    <h2 id="mapping-dialog-title">Map columns</h2>
     <p>This doesn't look like a known capture format. Pick which column holds frame timing and what it means.</p>
     <label for="map-column">Value column</label>
     <select id="map-column"></select>
@@ -59,7 +59,7 @@ const mappingDialog = document.getElementById("mapping-dialog") as HTMLDialogEle
 
 function renderDropzone(): void {
   dropzoneSection.innerHTML = `
-    <div class="bracket-panel dropzone" id="dropzone" tabindex="0" role="button" aria-label="Drop a capture file or click to choose one">
+    <div class="bracket-panel dropzone" id="dropzone">
       <span class="bracket-tl"></span><span class="bracket-tr"></span>
       <h1>Drop in a capture. See the stutter.</h1>
       <p>PresentMon, FrameView, CapFrameX, MangoHud, and OCAT CSVs are auto-detected. Everything runs locally — nothing leaves your browser.</p>
@@ -84,15 +84,13 @@ function renderDropzone(): void {
   const dz = document.getElementById("dropzone")!;
   const fileInput = document.getElementById("file-input") as HTMLInputElement;
   document.getElementById("choose-file-btn")!.addEventListener("click", () => fileInput.click());
+  // Clicking anywhere in the panel is a mouse/touch convenience on top of
+  // the real, properly-labeled "Choose file…" button below — the panel
+  // itself isn't a focusable control (a large role="button" wrapping other
+  // real buttons is an ARIA anti-pattern: nested interactive controls).
   dz.addEventListener("click", (e) => {
     if ((e.target as HTMLElement).closest(".sample-link, #choose-file-btn")) return;
     fileInput.click();
-  });
-  dz.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      fileInput.click();
-    }
   });
   fileInput.addEventListener("change", () => {
     const file = fileInput.files?.[0];
