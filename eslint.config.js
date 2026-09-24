@@ -4,7 +4,9 @@ import globals from "globals";
 
 export default tseslint.config(
   {
-    ignores: ["dist/**", "node_modules/**", "coverage/**", "examples/**", "docs/assets/**"],
+    // bin/ is a two-line loader shim (see its own comment); everything with
+    // real logic lives in src/cli, which is linted normally.
+    ignores: ["dist/**", "node_modules/**", "coverage/**", "examples/**", "docs/assets/**", "bin/**"],
   },
   js.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
