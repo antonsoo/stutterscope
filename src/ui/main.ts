@@ -251,8 +251,8 @@ function renderWorkspace(): void {
         </div>
         <div class="bracket-panel chart-panel">
           <span class="bracket-tl"></span><span class="bracket-tr"></span>
-          <p class="panel-label">Frame Time Histogram${hasB ? ' <span class="hint">A = green, B = amber</span>' : ""}</p>
-          <canvas id="histogram-canvas" class="histogram-canvas" height="200" role="img" aria-label="Frame time distribution histogram"></canvas>
+          <p class="panel-label">Frame Time Histogram <span class="hint">${hasB ? "A = green, B = amber &middot; " : ""}P99 / P99.9 markers</span></p>
+          <canvas id="histogram-canvas" class="histogram-canvas" role="img" aria-label="Frame time distribution histogram"></canvas>
         </div>
       </div>
 
@@ -284,14 +284,15 @@ function renderWorkspace(): void {
   a.traceHandle = createTraceChart(document.getElementById("trace-chart")!, a.response.series.timeSec, a.response.series.frameTimeMs, a.response.chart.isStutter);
   a.fpsHandle = createFpsChart(document.getElementById("fps-chart")!, a.response.series.timeSec, a.response.series.frameTimeMs);
 
+  const markers = { p99: a.response.summary.percentilesMs.p99, p999: a.response.summary.percentilesMs.p999 };
   if (hasB && runs.b) {
     createPercentileChart(document.getElementById("percentile-chart")!, a.response.chart.percentileCurve, runs.b.response.chart.percentileCurve);
     const pair = frameTimeHistogramPair(a.response.series.frameTimeMs, runs.b.response.series.frameTimeMs, 60);
-    drawHistogramPair(document.getElementById("histogram-canvas") as HTMLCanvasElement, pair);
+    drawHistogramPair(document.getElementById("histogram-canvas") as HTMLCanvasElement, pair, markers);
     renderComparisonTable(a, runs.b);
   } else {
     createPercentileChart(document.getElementById("percentile-chart")!, a.response.chart.percentileCurve);
-    drawHistogram(document.getElementById("histogram-canvas") as HTMLCanvasElement, a.response.chart.histogram);
+    drawHistogram(document.getElementById("histogram-canvas") as HTMLCanvasElement, a.response.chart.histogram, markers);
   }
 
   wireWorkspaceControls();

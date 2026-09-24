@@ -7,6 +7,10 @@ const TRACE_B = "#ffb454";
 const STUTTER = "#ff4b5c";
 const GRID = "#1c2a26";
 const TEXT_DIM = "#7fa393";
+// Distinct from the run-A/run-B/stutter hues above so P99/P99.9 markers
+// never get mistaken for a second run's bars in comparison mode.
+const MARKER_P99 = "#8fb8ff";
+const MARKER_P999 = "#c792ea";
 
 const baseAxis: Partial<uPlot.Axis> = {
   stroke: TEXT_DIM,
@@ -255,44 +259,180 @@ export function createPercentileChart(
   return { uplot, destroy: () => uplot.destroy() };
 }
 
-export function drawHistogram(canvas: HTMLCanvasElement, buckets: HistogramBucket[]): void {
+export interface HistogramMarkers {
+  p99?: number;
+  p999?: number;
+}
+
+const HIST_MARGIN = { left: 58, right: 8, top: 10, bottom: 32 };
+const AXIS_FONT = "11px JetBrains Mono, monospace";
+
+/** Resets a canvas's backing size for the current DPR and returns its 2D context. */
+function prepareCanvas(canvas: HTMLCanvasElement): { ctx: CanvasRenderingContext2D; w: number; h: number } {
   const dpr = window.devicePixelRatio || 1;
-  const cssWidth = canvas.clientWidth || 600;
-  const cssHeight = canvas.clientHeight || 200;
-  canvas.width = cssWidth * dpr;
-  canvas.height = cssHeight * dpr;
+  const w = canvas.clientWidth || 600;
+  const h = canvas.clientHeight || 200;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
   const ctx = canvas.getContext("2d")!;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  ctx.clearRect(0, 0, cssWidth, cssHeight);
-  if (buckets.length === 0) return;
-  const maxCount = Math.max(...buckets.map((b) => b.count), 1);
-  const barGap = 1;
-  const barWidth = cssWidth / buckets.length;
-  ctx.fillStyle = TRACE_A;
-  buckets.forEach((b, i) => {
-    const h = (b.count / maxCount) * (cssHeight - 4);
-    ctx.fillRect(i * barWidth, cssHeight - h, Math.max(1, barWidth - barGap), h);
+  ctx.clearRect(0, 0, w, h);
+  return { ctx, w, h };
+}
+
+/** Draws the shared axis chrome (grid, ticks, labels, titles) and returns the plot-area rect. */
+function drawHistogramFrame(
+  ctx: CanvasRenderingContext2D,
+  cssWidth: number,
+  cssHeight: number,
+  minMs: number,
+  maxMs: number,
+  maxCount: number,
+): { x: number; y: number; w: number; h: number } {
+  const plot = {
+    x: HIST_MARGIN.left,
+    y: HIST_MARGIN.top,
+    w: cssWidth - HIST_MARGIN.left - HIST_MARGIN.right,
+    h: cssHeight - HIST_MARGIN.top - HIST_MARGIN.bottom,
+  };
+
+  ctx.font = AXIS_FONT;
+  ctx.strokeStyle = GRID;
+  ctx.fillStyle = TEXT_DIM;
+  ctx.lineWidth = 1;
+
+  // y-axis: 4 gridlines + count labels
+  const yTicks = 4;
+  ctx.textAlign = "right";
+  ctx.textBaseline = "middle";
+  for (let i = 0; i <= yTicks; i++) {
+    const frac = i / yTicks;
+    const y = plot.y + plot.h * (1 - frac);
+    ctx.beginPath();
+    ctx.moveTo(plot.x, y);
+    ctx.lineTo(plot.x + plot.w, y);
+    ctx.stroke();
+    ctx.fillText(Math.round(maxCount * frac).toLocaleString(), plot.x - 4, y);
+  }
+
+  // x-axis: ~6 ticks with frame-time labels
+  const xTicks = 6;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "top";
+  for (let i = 0; i <= xTicks; i++) {
+    const frac = i / xTicks;
+    const ms = minMs + (maxMs - minMs) * frac;
+    const x = plot.x + plot.w * frac;
+    ctx.beginPath();
+    ctx.moveTo(x, plot.y);
+    ctx.lineTo(x, plot.y + plot.h);
+    ctx.strokeStyle = "rgba(28, 42, 38, 0.5)";
+    ctx.stroke();
+    ctx.fillText(ms.toFixed(ms < 10 ? 1 : 0), x, plot.y + plot.h + 6);
+  }
+
+  // axis titles
+  ctx.textAlign = "center";
+  ctx.fillText("frame time (ms)", plot.x + plot.w / 2, plot.y + plot.h + 20);
+  ctx.save();
+  ctx.translate(9, plot.y + plot.h / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("frames", 0, 0);
+  ctx.restore();
+
+  return plot;
+}
+
+function drawPercentileMarkers(
+  ctx: CanvasRenderingContext2D,
+  plot: { x: number; y: number; w: number; h: number },
+  minMs: number,
+  maxMs: number,
+  markers: HistogramMarkers | undefined,
+): void {
+  if (!markers || maxMs <= minMs) return;
+  const toX = (ms: number) => plot.x + ((ms - minMs) / (maxMs - minMs)) * plot.w;
+
+  const points = (
+    [
+      markers.p99 !== undefined && markers.p99 >= minMs && markers.p99 <= maxMs
+        ? { ms: markers.p99, label: "P99", color: MARKER_P99 }
+        : null,
+      markers.p999 !== undefined && markers.p999 >= minMs && markers.p999 <= maxMs
+        ? { ms: markers.p999, label: "P99.9", color: MARKER_P999 }
+        : null,
+    ] as const
+  ).filter((p): p is { ms: number; label: string; color: string } => p !== null);
+
+  // P99 and P99.9 often sit only a few ms apart (a tight distribution) and
+  // land on nearly the same pixel column; stack their labels instead of
+  // overlapping them illegibly.
+  const closeTogether = points.length === 2 && Math.abs(toX(points[0]!.ms) - toX(points[1]!.ms)) < 40;
+
+  points.forEach((p, i) => {
+    const x = toX(p.ms);
+    ctx.save();
+    ctx.strokeStyle = p.color;
+    ctx.setLineDash([3, 3]);
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x, plot.y);
+    ctx.lineTo(x, plot.y + plot.h);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = p.color;
+    ctx.font = "600 10px JetBrains Mono, monospace";
+    const nearRightEdge = x > plot.x + plot.w - 34;
+    ctx.textAlign = nearRightEdge ? "right" : "left";
+    ctx.textBaseline = "alphabetic";
+    const labelY = plot.y + 10 + (closeTogether ? i * 12 : 0);
+    ctx.fillText(p.label, x + (nearRightEdge ? -4 : 4), labelY);
+    ctx.restore();
   });
 }
 
-export function drawHistogramPair(canvas: HTMLCanvasElement, buckets: HistogramBucketPair[]): void {
-  const dpr = window.devicePixelRatio || 1;
-  const cssWidth = canvas.clientWidth || 600;
-  const cssHeight = canvas.clientHeight || 200;
-  canvas.width = cssWidth * dpr;
-  canvas.height = cssHeight * dpr;
-  const ctx = canvas.getContext("2d")!;
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  ctx.clearRect(0, 0, cssWidth, cssHeight);
+export function drawHistogram(canvas: HTMLCanvasElement, buckets: HistogramBucket[], markers?: HistogramMarkers): void {
+  const { ctx, w: cssWidth, h: cssHeight } = prepareCanvas(canvas);
+  if (buckets.length === 0) return;
+  const maxCount = Math.max(...buckets.map((b) => b.count), 1);
+  const minMs = buckets[0]!.rangeStartMs;
+  const maxMs = buckets[buckets.length - 1]!.rangeEndMs;
+  const plot = drawHistogramFrame(ctx, cssWidth, cssHeight, minMs, maxMs, maxCount);
+
+  const barGap = 1;
+  const barWidth = plot.w / buckets.length;
+  ctx.fillStyle = TRACE_A;
+  buckets.forEach((b, i) => {
+    const h = (b.count / maxCount) * plot.h;
+    ctx.fillRect(plot.x + i * barWidth, plot.y + plot.h - h, Math.max(1, barWidth - barGap), h);
+  });
+
+  drawPercentileMarkers(ctx, plot, minMs, maxMs, markers);
+}
+
+export function drawHistogramPair(
+  canvas: HTMLCanvasElement,
+  buckets: HistogramBucketPair[],
+  markers?: HistogramMarkers,
+): void {
+  const { ctx, w: cssWidth, h: cssHeight } = prepareCanvas(canvas);
   if (buckets.length === 0) return;
   const maxCount = Math.max(...buckets.map((b) => Math.max(b.countA, b.countB)), 1);
-  const barWidth = cssWidth / buckets.length;
+  const minMs = buckets[0]!.rangeStartMs;
+  const maxMs = buckets[buckets.length - 1]!.rangeEndMs;
+  const plot = drawHistogramFrame(ctx, cssWidth, cssHeight, minMs, maxMs, maxCount);
+
+  const barWidth = plot.w / buckets.length;
   buckets.forEach((b, i) => {
-    const hA = (b.countA / maxCount) * (cssHeight - 4);
-    const hB = (b.countB / maxCount) * (cssHeight - 4);
+    const hA = (b.countA / maxCount) * plot.h;
+    const hB = (b.countB / maxCount) * plot.h;
     ctx.fillStyle = TRACE_A + "aa";
-    ctx.fillRect(i * barWidth, cssHeight - hA, Math.max(1, barWidth / 2 - 1), hA);
+    ctx.fillRect(plot.x + i * barWidth, plot.y + plot.h - hA, Math.max(1, barWidth / 2 - 1), hA);
     ctx.fillStyle = TRACE_B + "aa";
-    ctx.fillRect(i * barWidth + barWidth / 2, cssHeight - hB, Math.max(1, barWidth / 2 - 1), hB);
+    ctx.fillRect(plot.x + i * barWidth + barWidth / 2, plot.y + plot.h - hB, Math.max(1, barWidth / 2 - 1), hB);
   });
+
+  drawPercentileMarkers(ctx, plot, minMs, maxMs, markers);
 }
