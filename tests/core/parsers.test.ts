@@ -148,3 +148,45 @@ describe("format detector", () => {
     expect(detectFormat(readFixture("generic", "sample.csv")).best.format).toBe("generic");
   });
 });
+
+describe("robustness against bad input", () => {
+  it("strips a leading UTF-8 BOM before reading the header (real PresentMon output has one)", () => {
+    const withBom = "﻿" + readFixture("presentmon1", "sample.csv");
+    const series = presentmon1.parse(withBom, "sample.csv");
+    expect(series.frameCount).toBe(5);
+    expect(series.meta.application).toBe("demo.exe"); // only resolvable if "Application" was found in the header
+  });
+
+  it("does not throw on a completely empty file", () => {
+    for (const parse of [presentmon1.parse, presentmon2.parse, frameview.parse, ocat.parse, mangohud.parse]) {
+      const series = parse("", "empty.csv");
+      expect(series.frameCount).toBe(0);
+      expect(series.meta.warnings.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("does not throw on a header with no data rows", () => {
+    const header = readFixture("presentmon1", "sample.csv").split("\n")[0];
+    const series = presentmon1.parse(header!, "header-only.csv");
+    expect(series.frameCount).toBe(0);
+  });
+
+  it("skips malformed rows (wrong column count, non-numeric value) without crashing the rest of the file", () => {
+    const lines = readFixture("presentmon1", "sample.csv").split("\n");
+    const header = lines[0]!;
+    const goodRow = lines[1]!;
+    const truncatedRow = "demo.exe,1000"; // far fewer fields than the header
+    const nonNumericRow = goodRow.replace(/,10\.000,/, ",not-a-number,");
+    const text = [header, goodRow, truncatedRow, nonNumericRow, goodRow].join("\n");
+
+    const series = presentmon1.parse(text, "malformed.csv");
+    expect(series.frameCount).toBe(2); // the two good rows
+    expect(series.meta.warnings.length).toBeGreaterThanOrEqual(1); // at least the non-numeric row is flagged
+  });
+
+  it("handles a file with only a trailing newline and no rows", () => {
+    const series = mangohud.parse("\n\n\n", "blank.csv");
+    expect(series.frameCount).toBe(0);
+    expect(series.meta.warnings.length).toBeGreaterThan(0);
+  });
+});

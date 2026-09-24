@@ -49,8 +49,18 @@ export function splitCsvLine(line: string): string[] {
  */
 export class LineScanner {
   private carry = "";
+  private sawFirstChunk = false;
 
   *feed(chunk: string): Generator<string> {
+    // PresentMon (and most Windows tools) write a UTF-8 BOM at the very
+    // start of the file. Left in place, it silently glues itself onto the
+    // first character of the header's first column name, which then fails
+    // every `header.get("Application")`-style lookup — so it's stripped
+    // once, from the first chunk only, before any line-splitting happens.
+    if (!this.sawFirstChunk) {
+      this.sawFirstChunk = true;
+      if (chunk.charCodeAt(0) === 0xfeff) chunk = chunk.slice(1);
+    }
     const combined = this.carry.length > 0 ? this.carry + chunk : chunk;
     let start = 0;
     for (;;) {
