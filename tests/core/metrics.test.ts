@@ -8,9 +8,11 @@ import {
   pointOnePercentLow,
   sortedCopy,
   frameTimeHistogram,
+  frameTimeHistogramPair,
   computeMetricsSummary,
   boundShare,
   droppedFrames,
+  displayLatency,
 } from "../../src/core/metrics.ts";
 import type { FrameSeries } from "../../src/core/types.ts";
 
@@ -118,6 +120,39 @@ describe("frameTimeHistogram", () => {
     const total = buckets.reduce((sum, b) => sum + b.count, 0);
     expect(total).toBe(SPIKE.length);
   });
+
+  it("caps the display range so one extreme outlier doesn't flatten the rest", () => {
+    // 999 frames clustered around 10ms, one enormous 5000ms hitch (a rate
+    // realistic for a single shader-compile stall): without clipping, every
+    // bucket but the last would be empty.
+    const values = [...Array.from<number>({ length: 999 }).fill(10), 5000];
+    const buckets = frameTimeHistogram(Float64Array.from(values), 50);
+    const lastBucket = buckets[buckets.length - 1]!;
+    expect(lastBucket.rangeEndMs).toBeLessThan(5000); // range was clipped, not stretched to the true max
+    expect(lastBucket.count).toBeGreaterThan(0); // the outlier still lands in the overflow bin
+    const nonEmptyBuckets = buckets.filter((b) => b.count > 0);
+    expect(nonEmptyBuckets.length).toBeGreaterThan(1); // the 10ms cluster is still visible, not one pixel wide
+    const total = buckets.reduce((sum, b) => sum + b.count, 0);
+    expect(total).toBe(values.length); // no frame silently dropped
+  });
+});
+
+describe("frameTimeHistogramPair", () => {
+  it("uses the same bin edges for both series", () => {
+    const a = Float64Array.from([10, 10, 20]);
+    const b = Float64Array.from([15, 15, 25]);
+    const buckets = frameTimeHistogramPair(a, b, 10);
+    expect(buckets.reduce((s, x) => s + x.countA, 0)).toBe(a.length);
+    expect(buckets.reduce((s, x) => s + x.countB, 0)).toBe(b.length);
+    // Every bucket's edges must be identical for both series by construction.
+    for (const bucket of buckets) {
+      expect(bucket.rangeEndMs).toBeGreaterThan(bucket.rangeStartMs);
+    }
+  });
+
+  it("returns an empty array for two empty series rather than throwing", () => {
+    expect(frameTimeHistogramPair(Float64Array.of(), Float64Array.of())).toEqual([]);
+  });
 });
 
 describe("boundShare", () => {
@@ -146,6 +181,21 @@ describe("droppedFrames", () => {
 
   it("is null when the format doesn't report dropped frames", () => {
     expect(droppedFrames(seriesFromFrameTimes(SPIKE))).toBeNull();
+  });
+});
+
+describe("displayLatency", () => {
+  it("reports mean and percentiles when the channel is present", () => {
+    const series = seriesFromFrameTimes([10, 10, 10, 10], {
+      displayLatencyMs: Float64Array.from([20, 30, 40, 50]),
+    });
+    const result = displayLatency(series)!;
+    expect(result.meanMs).toBeCloseTo(35, 10);
+    expect(result.p50).toBeCloseTo(35, 10); // index (50/100)*3=1.5 -> 30 + (40-30)*0.5
+  });
+
+  it("is null when the format doesn't report display latency", () => {
+    expect(displayLatency(seriesFromFrameTimes(SPIKE))).toBeNull();
   });
 });
 
