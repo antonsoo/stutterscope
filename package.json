@@ -22,7 +22,7 @@
     "performance"
   ],
   "bin": {
-    "stutterscope": "./bin/stutterscope.mjs"
+    "stutterscope": "./dist-cli/cli/index.js"
   },
   "engines": {
     "node": ">=22.6.0"
@@ -30,6 +30,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "build:cli": "tsc -p tsconfig.cli.json",
+    "prepare": "npm run build:cli",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
