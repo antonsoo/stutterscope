@@ -2,7 +2,6 @@
 
 Frame-time analysis for PC gamers and hardware reviewers. Drop in a capture, see the stutter.
 
-[![CI](https://github.com/antonsoo/stutterscope/actions/workflows/ci.yml/badge.svg)](https://github.com/antonsoo/stutterscope/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-7cffb2.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/demo-antonsoo.github.io%2Fstutterscope-7cffb2)](https://antonsoo.github.io/stutterscope/)
 
