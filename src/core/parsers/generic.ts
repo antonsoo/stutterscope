@@ -3,11 +3,11 @@
  * user (or `--format generic:...` on the CLI) picks which column holds the
  * per-row value and what it means, and we derive frame times from that.
  */
-import { Float64Builder, Uint8Builder } from "../buffer.js";
-import { indexHeader, parseFloatOrNull, splitCsvLine } from "../csv.js";
-import type { FrameSeries, SniffResult, StreamingParser } from "../types.js";
-import { parseTextSync, parseFileStreaming } from "../stream.js";
-import type { ProgressCallback } from "../types.js";
+import { Float64Builder, Uint8Builder } from "../buffer.ts";
+import { indexHeader, parseFloatOrNull, splitCsvLine } from "../csv.ts";
+import type { FrameSeries, SniffResult, StreamingParser } from "../types.ts";
+import { parseTextSync, parseFileStreaming } from "../stream.ts";
+import type { ProgressCallback } from "../types.ts";
 
 export type GenericValueKind = "frametime_ms" | "frametime_us" | "frametime_s" | "fps" | "timestamp_s_cumulative";
 
@@ -62,8 +62,11 @@ class GenericParser implements StreamingParser {
   private hasDropped = false;
   private previousTimestampSec: number | null = null;
   private columns: string[] = [];
+  private readonly mapping: GenericMapping;
 
-  constructor(private readonly mapping: GenericMapping) {}
+  constructor(mapping: GenericMapping) {
+    this.mapping = mapping;
+  }
 
   pushLine(line: string, lineIndex: number): void {
     const fields = splitCsvLine(line);

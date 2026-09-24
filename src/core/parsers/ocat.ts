@@ -17,10 +17,10 @@
  * appends static hardware-info fields (motherboard, OS, GPU clocks, ...)
  * which only appear once and are ignored here.
  */
-import { Float64Builder, Uint8Builder } from "../buffer.js";
-import { indexHeader, parseFloatOrNull, splitCsvLine } from "../csv.js";
-import type { FrameSeries, SniffResult, StreamingParser } from "../types.js";
-import { parseTextSync } from "../stream.js";
+import { Float64Builder, Uint8Builder } from "../buffer.ts";
+import { indexHeader, parseFloatOrNull, splitCsvLine } from "../csv.ts";
+import type { FrameSeries, SniffResult, StreamingParser } from "../types.ts";
+import { parseTextSync } from "../stream.ts";
 
 export function sniff(sampleText: string): SniffResult {
   const firstLine = sampleText.split(/\r?\n/, 1)[0] ?? "";
@@ -40,8 +40,11 @@ export class PresentFamilyParser implements StreamingParser {
   protected readonly frameTimeMs = new Float64Builder(4096);
   protected readonly dropped = new Uint8Builder(4096);
   protected columns: string[] = [];
+  private readonly format: "ocat" | "capframex";
 
-  constructor(private readonly format: "ocat" | "capframex") {}
+  constructor(format: "ocat" | "capframex") {
+    this.format = format;
+  }
 
   pushLine(line: string, lineIndex: number): void {
     const fields = splitCsvLine(line);

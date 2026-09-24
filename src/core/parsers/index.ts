@@ -1,12 +1,12 @@
-import type { SniffResult, SourceFormat, StreamingParser } from "../types.js";
-import * as presentmon1 from "./presentmon1.js";
-import * as presentmon2 from "./presentmon2.js";
-import * as frameview from "./frameview.js";
-import * as capframex from "./capframex.js";
-import * as mangohud from "./mangohud.js";
-import * as ocat from "./ocat.js";
-import * as generic from "./generic.js";
-import type { GenericMapping } from "./generic.js";
+import type { SniffResult, SourceFormat, StreamingParser } from "../types.ts";
+import * as presentmon1 from "./presentmon1.ts";
+import * as presentmon2 from "./presentmon2.ts";
+import * as frameview from "./frameview.ts";
+import * as capframex from "./capframex.ts";
+import * as mangohud from "./mangohud.ts";
+import * as ocat from "./ocat.ts";
+import * as generic from "./generic.ts";
+import type { GenericMapping } from "./generic.ts";
 
 /**
  * Order matters only as a tie-breaker: formats are otherwise ranked purely
@@ -59,4 +59,4 @@ export function createParserFor(format: SourceFormat, genericMapping?: GenericMa
 }
 
 export { presentmon1, presentmon2, frameview, capframex, mangohud, ocat, generic };
-export type { GenericMapping, GenericValueKind } from "./generic.js";
+export type { GenericMapping, GenericValueKind } from "./generic.ts";

@@ -4,7 +4,7 @@
  * anything. Nothing in this file touches the DOM, a worker, or I/O, so it
  * can be imported directly by tests, the CLI, and the UI worker alike.
  */
-import type { FrameSeries } from "./types.js";
+import type { FrameSeries } from "./types.ts";
 
 // ---------------------------------------------------------------------------
 // Percentiles

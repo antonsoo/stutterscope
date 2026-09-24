@@ -11,8 +11,8 @@ import {
   computeMetricsSummary,
   boundShare,
   droppedFrames,
-} from "../../src/core/metrics.js";
-import type { FrameSeries } from "../../src/core/types.js";
+} from "../../src/core/metrics.ts";
+import type { FrameSeries } from "../../src/core/types.ts";
 
 function seriesFromFrameTimes(frameTimeMs: number[], extra?: Partial<FrameSeries["channels"]>): FrameSeries {
   const ft = Float64Array.from(frameTimeMs);

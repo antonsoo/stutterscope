@@ -21,10 +21,10 @@
  * the CPU/GPU-bound-share channels; MangoHud captures simply don't carry
  * that metric.
  */
-import { Float64Builder } from "../buffer.js";
-import { indexHeader, parseFloatOrNull, splitCsvLine } from "../csv.js";
-import type { FrameSeries, SniffResult, StreamingParser } from "../types.js";
-import { parseTextSync } from "../stream.js";
+import { Float64Builder } from "../buffer.ts";
+import { indexHeader, parseFloatOrNull, splitCsvLine } from "../csv.ts";
+import type { FrameSeries, SniffResult, StreamingParser } from "../types.ts";
+import { parseTextSync } from "../stream.ts";
 
 const FRAME_HEADER_MARKERS = ["fps", "frametime", "cpu_load"];
 

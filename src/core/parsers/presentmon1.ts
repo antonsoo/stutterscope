@@ -19,10 +19,10 @@
  * signal that distinguishes this format from OCAT/CapFrameX/FrameView, which
  * all capitalize the `Ms` prefix.
  */
-import { Float64Builder, Uint8Builder } from "../buffer.js";
-import { indexHeader, parseFloatOrNull, splitCsvLine } from "../csv.js";
-import type { FrameSeries, SniffResult, StreamingParser } from "../types.js";
-import { parseTextSync } from "../stream.js";
+import { Float64Builder, Uint8Builder } from "../buffer.ts";
+import { indexHeader, parseFloatOrNull, splitCsvLine } from "../csv.ts";
+import type { FrameSeries, SniffResult, StreamingParser } from "../types.ts";
+import { parseTextSync } from "../stream.ts";
 
 export function sniff(sampleText: string): SniffResult {
   const firstLine = sampleText.split(/\r?\n/, 1)[0] ?? "";

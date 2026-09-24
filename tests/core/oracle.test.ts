@@ -15,8 +15,8 @@ import {
   onePercentLow,
   pointOnePercentLow,
   sortedCopy,
-} from "../../src/core/metrics.js";
-import type { FrameSeries } from "../../src/core/types.js";
+} from "../../src/core/metrics.ts";
+import type { FrameSeries } from "../../src/core/types.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const oracleDir = join(here, "..", "fixtures", "oracle");

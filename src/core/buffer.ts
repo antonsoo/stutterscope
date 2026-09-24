@@ -8,11 +8,10 @@
 class TypedArrayBuilder<T extends Float64Array | Uint8Array> {
   private array: T;
   private len = 0;
+  private readonly ctor: new (length: number) => T;
 
-  constructor(
-    private readonly ctor: new (length: number) => T,
-    initialCapacity = 1024,
-  ) {
+  constructor(ctor: new (length: number) => T, initialCapacity = 1024) {
+    this.ctor = ctor;
     this.array = new ctor(Math.max(1, initialCapacity));
   }
 

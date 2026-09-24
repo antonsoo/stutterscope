@@ -24,9 +24,9 @@
  * OCAT CSV — there is no reliable way to tell them apart from content alone,
  * which we say plainly in `docs/formats.md` rather than guess.
  */
-import type { FrameSeries, SniffResult, StreamingParser } from "../types.js";
-import { parseTextSync } from "../stream.js";
-import { PresentFamilyParser } from "./ocat.js";
+import type { FrameSeries, SniffResult, StreamingParser } from "../types.ts";
+import { parseTextSync } from "../stream.ts";
+import { PresentFamilyParser } from "./ocat.ts";
 
 export function sniff(sampleText: string): SniffResult {
   const lines = sampleText.split(/\r?\n/);

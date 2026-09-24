@@ -1,5 +1,5 @@
-import { LineScanner } from "./csv.js";
-import type { ParseProgress, ProgressCallback, StreamingParser, FrameSeries } from "./types.js";
+import { LineScanner } from "./csv.ts";
+import type { ParseProgress, ProgressCallback, StreamingParser, FrameSeries } from "./types.ts";
 
 /**
  * Drives a `StreamingParser` from a `Blob`/`File` without ever materializing
