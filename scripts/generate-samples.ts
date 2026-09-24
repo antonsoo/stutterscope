@@ -24,7 +24,11 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const examplesDir = join(here, "..", "examples");
+// Written under examples/samples/ (rather than examples/ directly) because
+// Vite's `publicDir` is set to `examples/`: anything here is served as-is at
+// the site root, and the UI's "Load sample" buttons fetch
+// `${BASE_URL}samples/<file>` / `${BASE_URL}samples/manifest.json`.
+const examplesDir = join(here, "..", "examples", "samples");
 
 // --- deterministic PRNG (mulberry32) so regenerating gives byte-identical output ---
 function mulberry32(seed: number): () => number {
@@ -477,10 +481,10 @@ function main(): void {
 
   for (const file of files) {
     writeFileSync(join(examplesDir, file.name), file.contents, "utf-8");
-    console.log(`wrote examples/${file.name} (${file.contents.length.toLocaleString()} bytes)`);
+    console.log(`wrote examples/samples/${file.name} (${file.contents.length.toLocaleString()} bytes)`);
   }
   writeFileSync(join(examplesDir, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n", "utf-8");
-  console.log(`wrote examples/manifest.json (${files.length} entries, ${frames.length} frames each)`);
+  console.log(`wrote examples/samples/manifest.json (${files.length} entries, ${frames.length} frames each)`);
 }
 
 main();
