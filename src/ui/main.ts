@@ -4,7 +4,7 @@ import { ParseClient } from "./workerClient.ts";
 import type { ResultResponse, NeedsMappingResponse } from "../worker/protocol.ts";
 import type { SourceFormat, ParseProgress } from "../core/types.ts";
 import { FORMAT_LABELS, SOURCE_FORMATS } from "../core/types.ts";
-import { DEFAULT_STUTTER_OPTIONS, frameTimeHistogramPair, type StutterOptions } from "../core/metrics.ts";
+import { DEFAULT_STUTTER_OPTIONS, frameTimeHistogramPair, type MetricsSummary, type StutterOptions } from "../core/metrics.ts";
 import { GENERIC_VALUE_KIND_LABELS, type GenericMapping, type GenericValueKind } from "../core/parsers/generic.ts";
 import { buildTiles, renderTiles } from "./statTiles.ts";
 import { fmtBytes, fmtFps, fmtInt, fmtMs, fmtSignedPct, deltaClass } from "./format.ts";
@@ -235,26 +235,26 @@ function renderWorkspace(): void {
       <div class="bracket-panel chart-panel">
         <span class="bracket-tl"></span><span class="bracket-tr"></span>
         <p class="panel-label">Frame Time Trace <span class="hint">drag to zoom &middot; shift+drag to pan &middot; wheel to zoom &middot; dblclick to reset</span></p>
-        <div id="trace-chart" class="trace-sweep"></div>
+        <div id="trace-chart" class="trace-sweep" role="img" aria-label="${escapeHtml(chartSummary(a.response.summary))}"></div>
       </div>
 
       <div class="chart-grid">
         <div class="bracket-panel chart-panel">
           <span class="bracket-tl"></span><span class="bracket-tr"></span>
           <p class="panel-label">FPS Over Time</p>
-          <div id="fps-chart"></div>
+          <div id="fps-chart" role="img" aria-label="FPS over time for ${escapeHtml(a.file.name)}, ${fmtInt(a.response.series.frameCount)} frames"></div>
         </div>
         <div class="bracket-panel chart-panel">
           <span class="bracket-tl"></span><span class="bracket-tr"></span>
           <p class="panel-label">Frame Time Histogram${hasB ? ' <span class="hint">A = green, B = amber</span>' : ""}</p>
-          <canvas id="histogram-canvas" class="histogram-canvas" height="200"></canvas>
+          <canvas id="histogram-canvas" class="histogram-canvas" height="200" role="img" aria-label="Frame time distribution histogram"></canvas>
         </div>
       </div>
 
       <div class="bracket-panel chart-panel">
         <span class="bracket-tl"></span><span class="bracket-tr"></span>
         <p class="panel-label">Percentile Curve${hasB ? ' <span class="hint">A = green, B = amber</span>' : ""}</p>
-        <div id="percentile-chart"></div>
+        <div id="percentile-chart" role="img" aria-label="Frame time vs percentile curve"></div>
       </div>
 
       <div class="bracket-panel">
@@ -402,6 +402,16 @@ function wireWorkspaceControls(): void {
 
 function escapeHtml(s: string): string {
   return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+}
+
+/** A short text summary of the trace chart, for the aria-label a screen reader announces instead of the canvas. */
+function chartSummary(summary: MetricsSummary): string {
+  return (
+    `Frame time trace over ${fmtMs(summary.durationSec, 0)} seconds, ` +
+    `average ${fmtFps(summary.averageFps)} fps, ` +
+    `${fmtInt(summary.stutter.stutterEventCount)} stutter events, ` +
+    `P99 frame time ${fmtMs(summary.percentilesMs.p99)} ms`
+  );
 }
 
 renderDropzone();
