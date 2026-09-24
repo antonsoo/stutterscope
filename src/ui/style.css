@@ -27,7 +27,7 @@
 
   --text: #e8f5ee;
   --text-dim: #7fa393;
-  --text-faint: #4d6a5f;
+  --text-faint: #628a7c; /* >= 4.5:1 against --bg, checked by hand (see docs) */
 
   --font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   --font-sans: "Inter", -apple-system, "Segoe UI", sans-serif;

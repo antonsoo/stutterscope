@@ -62,7 +62,9 @@ npx github:antonsoo/stutterscope summary examples/samples/presentmon2-synthetic-
 - **Visuals**: a frame-time trace with stutter markers (drag to zoom,
   shift-drag to pan, wheel to zoom, double-click to reset), FPS over time,
   a frame-time histogram, and a percentile curve — plus a second-run
-  overlay with a metric-by-metric delta table.
+  overlay with a metric-by-metric delta table. Dark only, deliberately: the
+  whole visual idea is an oscilloscope screen reading a live trace, and a
+  light variant would work against that rather than with it.
 - **Sharing**: export a PNG report card, a Markdown table (paste into a
   forum post or PR description), or a full JSON summary. Nothing is
   uploaded at any point.
