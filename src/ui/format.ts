@@ -39,7 +39,17 @@ export function deltaClass(delta: number, higherIsBetter: boolean): "better" | "
 export function fmtSignedPct(fraction: number, digits = 1): string {
   if (!Number.isFinite(fraction)) return "—";
   const rounded = Number((fraction * 100).toFixed(digits));
-  if (rounded === 0) return "0.0%"; // avoid "-0.0%" noise from sub-precision float differences
+  if (rounded === 0) return `${(0).toFixed(digits)}%`; // avoid "-0.0%" noise from sub-precision float differences
   const sign = rounded > 0 ? "+" : "";
   return sign + rounded.toFixed(digits) + "%";
+}
+
+/**
+ * B relative to A, as a fraction. When A is zero there is no percentage: the
+ * result is ±Infinity if B isn't (so `deltaClass` still colors it) and 0 if
+ * both are.
+ */
+export function relativeDelta(a: number, b: number): number {
+  if (a === 0) return b === 0 ? 0 : b > 0 ? Infinity : -Infinity;
+  return (b - a) / Math.abs(a);
 }

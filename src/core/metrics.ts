@@ -167,6 +167,8 @@ export interface StutterResult {
   totalStutterTimeMs: number;
   /** stutter time as a fraction of total capture time, 0..1. */
   stutterTimeFraction: number;
+  /** The threshold `hitchCount` was counted against, so labels can't drift from the settings. */
+  hitchThresholdMs: number;
   hitchCount: number;
   totalHitchTimeMs: number;
   hitchTimeFraction: number;
@@ -267,6 +269,7 @@ export function detectStutter(
     stutterEventCount,
     totalStutterTimeMs,
     stutterTimeFraction: totalTimeMs > 0 ? totalStutterTimeMs / totalTimeMs : 0,
+    hitchThresholdMs: options.hitchThresholdMs,
     hitchCount,
     totalHitchTimeMs,
     hitchTimeFraction: totalTimeMs > 0 ? totalHitchTimeMs / totalTimeMs : 0,
@@ -333,11 +336,18 @@ export function boundShare(series: FrameSeries): BoundShareResult | null {
   if (!cpu || !gpu || cpu.length === 0 || gpu.length === 0) return null;
   let cpuBound = 0;
   let gpuBound = 0;
-  const n = Math.min(cpu.length, gpu.length);
-  for (let i = 0; i < n; i++) {
-    if (cpu[i]! >= gpu[i]!) cpuBound++;
+  const len = Math.min(cpu.length, gpu.length);
+  for (let i = 0; i < len; i++) {
+    const c = cpu[i]!;
+    const g = gpu[i]!;
+    // A frame missing either value (NA in the capture) can't be classified;
+    // counting it on either side would bias the split.
+    if (Number.isNaN(c) || Number.isNaN(g)) continue;
+    if (c >= g) cpuBound++;
     else gpuBound++;
   }
+  const n = cpuBound + gpuBound;
+  if (n === 0) return null;
   return {
     cpuBoundFrames: cpuBound,
     gpuBoundFrames: gpuBound,
@@ -504,4 +514,21 @@ export function computeMetricsSummary(
     boundShare: boundShare(series),
     latency: displayLatency(series),
   };
+}
+
+/** `MetricsSummary` for JSON output: the per-frame stutter flags become the list of flagged frame indices. */
+export type JsonMetricsSummary = Omit<MetricsSummary, "stutter"> & {
+  stutter: Omit<StutterResult, "isStutter"> & { stutterFrameIndices: number[] };
+};
+
+/**
+ * `JSON.stringify` writes a typed array as an object with one key per
+ * element, so the raw summary would carry a `{"0": 0, "1": 0, ...}` entry
+ * for every frame of the capture. This keeps only the frames that stuttered.
+ */
+export function summaryForJson(summary: MetricsSummary): JsonMetricsSummary {
+  const { isStutter, ...stutter } = summary.stutter;
+  const stutterFrameIndices: number[] = [];
+  for (let i = 0; i < isStutter.length; i++) if (isStutter[i] === 1) stutterFrameIndices.push(i);
+  return { ...summary, stutter: { ...stutter, stutterFrameIndices } };
 }

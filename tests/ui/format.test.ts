@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { deltaClass, fmtBytes, fmtFps, fmtInt, fmtMs, fmtPct, fmtSignedPct } from "../../src/ui/format.ts";
+import { deltaClass, fmtBytes, fmtFps, fmtInt, fmtMs, fmtPct, fmtSignedPct, relativeDelta } from "../../src/ui/format.ts";
 
 describe("fmtMs / fmtFps", () => {
   it("formats finite numbers with fixed digits", () => {
@@ -58,5 +58,26 @@ describe("deltaClass", () => {
 
   it("treats sub-precision differences as neutral", () => {
     expect(deltaClass(0.00001, true)).toBe("");
+  });
+});
+
+describe("relativeDelta", () => {
+  it("is the change relative to A", () => {
+    expect(relativeDelta(50, 75)).toBeCloseTo(0.5, 12);
+    expect(relativeDelta(-2, -1)).toBeCloseTo(0.5, 12);
+  });
+
+  it("has no percentage when A is zero, but keeps the direction for coloring", () => {
+    expect(relativeDelta(0, 0)).toBe(0);
+    expect(relativeDelta(0, 5)).toBe(Infinity);
+    expect(deltaClass(relativeDelta(0, 5), false)).toBe("worse");
+    expect(deltaClass(relativeDelta(0, 5), true)).toBe("better");
+  });
+});
+
+describe("fmtSignedPct zero", () => {
+  it("honours the digits argument for a zero delta", () => {
+    expect(fmtSignedPct(0.0001, 0)).toBe("0%");
+    expect(fmtSignedPct(-0.0001, 1)).toBe("0.0%");
   });
 });

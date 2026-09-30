@@ -124,6 +124,9 @@ Only available when both `CPUBusy` and `GPUBusy` channels are present
 frame is CPU-bound if CPUBusy[i] >= GPUBusy[i], else GPU-bound
 ```
 
+A frame where either value is `NA` is left out of both counts, and the two
+shares are fractions of the frames that could be classified.
+
 This is the standard reviewer heuristic, and a simplification: real frames
 can be limited by sync waits or the display pipeline rather than either
 engine being the bottleneck. It requires no instrumentation beyond what

@@ -69,8 +69,8 @@ export function buildTiles(summary: MetricsSummary): TileSet {
       tone: summary.stutter.stutterEventCount > 0 ? "warn" : undefined,
     },
     {
-      label: "HITCHES >50ms",
-      title: "Frames whose frame time exceeded the fixed 50ms hitch threshold",
+      label: `HITCHES >${summary.stutter.hitchThresholdMs}ms`,
+      title: `Frames whose frame time exceeded the fixed ${summary.stutter.hitchThresholdMs}ms hitch threshold`,
       value: fmtInt(summary.stutter.hitchCount),
       sub: `${fmtPct(summary.stutter.hitchTimeFraction)} of time`,
       tone: summary.stutter.hitchCount > 0 ? "bad" : undefined,

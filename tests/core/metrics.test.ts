@@ -10,6 +10,7 @@ import {
   frameTimeHistogram,
   frameTimeHistogramPair,
   computeMetricsSummary,
+  summaryForJson,
   boundShare,
   droppedFrames,
   displayLatency,
@@ -169,6 +170,19 @@ describe("boundShare", () => {
   it("is null when CPU/GPU busy channels are unavailable", () => {
     expect(boundShare(seriesFromFrameTimes(SPIKE))).toBeNull();
   });
+
+  it("leaves frames with a missing (NA) busy value out of both counts", () => {
+    const series = seriesFromFrameTimes([10, 10, 10, 10], {
+      cpuBusyMs: Float64Array.from([6, NaN, 6, 3]),
+      gpuBusyMs: Float64Array.from([4, 8, NaN, 8]),
+    });
+    const result = boundShare(series)!;
+    expect(result.cpuBoundFrames).toBe(1);
+    expect(result.gpuBoundFrames).toBe(1);
+    expect(result.cpuBoundFraction).toBe(0.5);
+    const allMissing = seriesFromFrameTimes([10], { cpuBusyMs: Float64Array.of(NaN), gpuBusyMs: Float64Array.of(4) });
+    expect(boundShare(allMissing)).toBeNull();
+  });
 });
 
 describe("droppedFrames", () => {
@@ -207,5 +221,15 @@ describe("computeMetricsSummary", () => {
     expect(summary.dropped).toBeNull();
     expect(summary.boundShare).toBeNull();
     expect(summary.latency).toBeNull();
+  });
+});
+
+describe("summaryForJson", () => {
+  it("replaces the per-frame stutter flags with the flagged indices", () => {
+    const series = seriesFromFrameTimes([10, 10, 10, 10, 10, 40, 10, 10, 10, 10, 10]);
+    const json = summaryForJson(computeMetricsSummary(series));
+    expect(json.stutter.stutterFrameIndices).toEqual([5]);
+    expect("isStutter" in json.stutter).toBe(false);
+    expect(JSON.stringify(json)).not.toContain('"0":');
   });
 });
