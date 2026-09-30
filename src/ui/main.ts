@@ -7,7 +7,8 @@ import { FORMAT_LABELS, SOURCE_FORMATS } from "../core/types.ts";
 import { DEFAULT_STUTTER_OPTIONS, frameTimeHistogramPair, type MetricsSummary, type StutterOptions } from "../core/metrics.ts";
 import { GENERIC_VALUE_KIND_LABELS, type GenericMapping, type GenericValueKind } from "../core/parsers/generic.ts";
 import { buildTiles, renderTiles, renderSecondaryTable } from "./statTiles.ts";
-import { fmtBytes, fmtFps, fmtInt, fmtMs, fmtSignedPct, deltaClass } from "./format.ts";
+import { fmtBytes, fmtFps, fmtInt, fmtMs, fmtSignedPct, deltaClass, relativeDelta } from "./format.ts";
+import { describeStream } from "../core/streams.ts";
 import { createFpsChart, createPercentileChart, createTraceChart, drawHistogram, drawHistogramPair, type TraceChartHandle, type TraceChartControls } from "./charts.ts";
 import { exportJson, exportMarkdown, exportReportCard } from "./share.ts";
 
@@ -132,7 +133,13 @@ function setStatus(html: string): void {
   if (area) area.innerHTML = html;
 }
 
-async function loadFile(slot: "a" | "b", file: File, formatOverride?: SourceFormat, genericMapping?: GenericMapping): Promise<void> {
+async function loadFile(
+  slot: "a" | "b",
+  file: File,
+  formatOverride?: SourceFormat,
+  genericMapping?: GenericMapping,
+  stream?: string,
+): Promise<void> {
   setStatus(`
     <div class="status-line">
       <span>parsing ${escapeHtml(file.name)}&hellip;</span>
@@ -144,6 +151,7 @@ async function loadFile(slot: "a" | "b", file: File, formatOverride?: SourceForm
     const outcome = await client.parse(slot, file, {
       formatOverride,
       genericMapping,
+      stream,
       stutterOptions,
       onProgress: (p: ParseProgress) => {
         const fill = document.getElementById("progress-fill");
@@ -226,7 +234,9 @@ function renderWorkspace(): void {
         </div>
       </div>
 
-      ${a.response.series.meta.warnings.length > 0 ? `<div class="notes warn-note">${a.response.series.meta.warnings.length} row(s) skipped while parsing (bad/missing values). See console for detail.</div>` : ""}
+      ${warningsNote(a)}
+      ${streamNote("a", a)}
+      ${hasB && runs.b ? streamNote("b", runs.b) : ""}
 
       <div class="tile-grid" id="tile-grid-a"></div>
       <div class="bracket-panel secondary-panel" id="secondary-panel-a">
@@ -298,6 +308,37 @@ function renderWorkspace(): void {
   wireWorkspaceControls();
 }
 
+const MAX_LISTED_WARNINGS = 20;
+
+/** Skipped rows, listed (the first few) rather than just counted, so a bad column is diagnosable. */
+function warningsNote(run: RunState): string {
+  const warnings = run.response.series.meta.warnings;
+  if (warnings.length === 0) return "";
+  const listed = warnings.slice(0, MAX_LISTED_WARNINGS).map(escapeHtml).join("\n");
+  const more = warnings.length > MAX_LISTED_WARNINGS ? `\n… and ${fmtInt(warnings.length - MAX_LISTED_WARNINGS)} more` : "";
+  return `<details class="notes warn-note"><summary>${fmtInt(warnings.length)} parse warning(s): rows with bad or missing values were skipped</summary><pre>${listed}${more}</pre></details>`;
+}
+
+/**
+ * A present-hook capture taken without a process filter holds every process
+ * that presented. Only one stream is analysed; say which, and offer the others.
+ */
+function streamNote(slot: "a" | "b", run: RunState): string {
+  const { streams, selectedStream } = run.response.series.meta;
+  if (!streams || streams.length < 2) return "";
+  const total = streams.reduce((n, st) => n + st.frameCount, 0);
+  const options = streams
+    .map((st) => `<option value="${escapeHtml(st.id)}"${st.id === selectedStream ? " selected" : ""}>${escapeHtml(describeStream(st))}</option>`)
+    .join("");
+  const who = slot === "b" ? `Run B (${escapeHtml(run.file.name)})` : "This capture";
+  return `
+    <div class="notes stream-note">
+      <label for="stream-select-${slot}">${who} holds ${streams.length} present streams, ${fmtInt(total)} frames in all. Analysing</label>
+      <select id="stream-select-${slot}" class="stream-select" data-slot="${slot}">${options}</select>
+      <span class="stream-why">Frames from other processes are left out: mixed in, they would double-count time.</span>
+    </div>`;
+}
+
 function renderComparisonTable(a: RunState, b: RunState): void {
   const sa = a.response.summary;
   const sb = b.response.summary;
@@ -307,7 +348,7 @@ function renderComparisonTable(a: RunState, b: RunState): void {
     { label: "0.1% Low (percentile)", av: sa.pointOnePercentLow.percentileMethodFps, bv: sb.pointOnePercentLow.percentileMethodFps, fmt: (n) => fmtFps(n), higherBetter: true },
     { label: "P99 frame time", av: sa.percentilesMs.p99, bv: sb.percentilesMs.p99, fmt: (n) => `${fmtMs(n)} ms`, higherBetter: false },
     { label: "Stutter events", av: sa.stutter.stutterEventCount, bv: sb.stutter.stutterEventCount, fmt: (n) => fmtInt(n), higherBetter: false },
-    { label: "Hitches (>50ms)", av: sa.stutter.hitchCount, bv: sb.stutter.hitchCount, fmt: (n) => fmtInt(n), higherBetter: false },
+    { label: `Hitches (>${sa.stutter.hitchThresholdMs}ms)`, av: sa.stutter.hitchCount, bv: sb.stutter.hitchCount, fmt: (n) => fmtInt(n), higherBetter: false },
     { label: "Pacing (MASD)", av: sa.masdMs, bv: sb.masdMs, fmt: (n) => `${fmtMs(n)} ms`, higherBetter: false },
   ];
 
@@ -324,13 +365,13 @@ function renderComparisonTable(a: RunState, b: RunState): void {
       <tbody>
         ${rows
           .map((r) => {
-            const delta = r.av !== 0 ? (r.bv - r.av) / Math.abs(r.av) : 0;
+            const delta = relativeDelta(r.av, r.bv);
             const cls = deltaClass(delta, r.higherBetter);
             return `<tr>
               <td>${escapeHtml(r.label)}</td>
               <td class="num">${r.fmt(r.av)}</td>
               <td class="num">${r.fmt(r.bv)}</td>
-              <td class="num ${cls}">${fmtSignedPct(delta)}</td>
+              <td class="num ${cls}">${Number.isFinite(delta) ? fmtSignedPct(delta) : "from 0"}</td>
             </tr>`;
           })
           .join("")}
@@ -379,6 +420,14 @@ function wireWorkspaceControls(): void {
     runs.b = undefined;
     renderWorkspace();
   });
+
+  for (const select of document.querySelectorAll<HTMLSelectElement>(".stream-select")) {
+    select.addEventListener("change", () => {
+      const slot = select.dataset.slot === "b" ? "b" : "a";
+      const run = runs[slot];
+      if (run) void loadFile(slot, run.file, run.response.series.meta.format, undefined, select.value);
+    });
+  }
 
   document.getElementById("export-png-btn")?.addEventListener("click", () => {
     if (runs.a) exportReportCard(runs.a.response.series, runs.a.response.summary);

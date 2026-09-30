@@ -43,6 +43,20 @@ export interface OptionalChannels {
   displayLatencyMs?: Float64Array;
 }
 
+/**
+ * One process's presents to one swap chain. Present-hook captures (PresentMon,
+ * OCAT, CapFrameX, FrameView) record every process that presents unless told
+ * otherwise; see `streams.ts`.
+ */
+export interface PresentStream {
+  /** `processId:swapChain`, or the application name when the format has neither column. */
+  id: string;
+  application: string;
+  processId: string;
+  swapChain: string;
+  frameCount: number;
+}
+
 export interface FrameSeriesMeta {
   format: SourceFormat;
   sourceFileName: string;
@@ -52,6 +66,10 @@ export interface FrameSeriesMeta {
   warnings: string[];
   /** Column names actually present in the source file, for diagnostics. */
   columns: string[];
+  /** Every present stream in the capture, busiest first (present-hook formats only). */
+  streams?: PresentStream[];
+  /** The id of the stream the series holds, when `streams` is set. */
+  selectedStream?: string;
 }
 
 export interface FrameSeries {
@@ -60,6 +78,12 @@ export interface FrameSeries {
   frameTimeMs: Float64Array;
   timeSec: Float64Array;
   channels: OptionalChannels;
+}
+
+/** Options for a present-hook parser. */
+export interface ParserOptions {
+  /** Which present stream to analyse (see `matchStream`); by default the busiest non-compositor one. */
+  stream?: string;
 }
 
 /** A parser's guess at whether a text blob matches its format. */

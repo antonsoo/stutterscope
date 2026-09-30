@@ -5,7 +5,7 @@
  * millions of small boxed-number allocations and keeps memory close to the
  * final `Float64Array`/`Uint8Array` size.
  */
-class TypedArrayBuilder<T extends Float64Array | Uint8Array> {
+class TypedArrayBuilder<T extends Float64Array | Uint8Array | Uint32Array> {
   private array: T;
   private len = 0;
   private readonly ctor: new (length: number) => T;
@@ -44,5 +44,11 @@ export class Float64Builder extends TypedArrayBuilder<Float64Array> {
 export class Uint8Builder extends TypedArrayBuilder<Uint8Array> {
   constructor(initialCapacity = 1024) {
     super(Uint8Array, initialCapacity);
+  }
+}
+
+export class Uint32Builder extends TypedArrayBuilder<Uint32Array> {
+  constructor(initialCapacity = 1024) {
+    super(Uint32Array, initialCapacity);
   }
 }

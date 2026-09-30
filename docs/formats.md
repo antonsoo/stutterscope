@@ -207,6 +207,32 @@ optionally, a boolean dropped-frame column. This is the fallback the UI
 opens a small dialog for when auto-detection can't confidently match one of
 the formats above.
 
+## Captures with more than one process
+
+PresentMon (1.x and 2.x), OCAT, CapFrameX and FrameView all write one row
+per present, keyed by `Application`, `ProcessID` and `SwapChainAddress`.
+PresentMon started without `--process_name`/`--process_id` records every
+process that presents, so a capture of a game usually also holds the
+desktop compositor (`dwm.exe`) and whatever else was on screen, interleaved
+in time order. Each row's frame time is measured per swap chain, so
+concatenating the streams double-counts wall time and alternates between
+unrelated frame rates; every metric comes out wrong.
+
+So those four parsers group rows into streams by process id and swap chain
+(`src/core/streams.ts`) and analyse one:
+
+- by default, the stream with the most frames that isn't `dwm.exe` (the
+  compositor loses the default pick even when it presented more often, as
+  it does behind a windowed game);
+- in the web app, a picker above the tiles lists every stream with its frame
+  count and re-parses the file for the one you choose;
+- in the CLI, `--stream` takes an application name, a process id, or
+  `pid:swapchain`, and the summary lists the other streams with the flag
+  that selects each.
+
+A capture with one stream parses exactly as before. Rows skipped for a bad
+frame time aren't counted toward any stream.
+
 ## What "verified" means here
 
 For every format above, either:

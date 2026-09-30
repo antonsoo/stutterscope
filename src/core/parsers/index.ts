@@ -1,4 +1,4 @@
-import type { SniffResult, SourceFormat, StreamingParser } from "../types.ts";
+import type { ParserOptions, SniffResult, SourceFormat, StreamingParser } from "../types.ts";
 import * as presentmon1 from "./presentmon1.ts";
 import * as presentmon2 from "./presentmon2.ts";
 import * as frameview from "./frameview.ts";
@@ -36,18 +36,22 @@ export function detectFormat(sampleText: string): DetectionResult {
   return { best, all };
 }
 
-export function createParserFor(format: SourceFormat, genericMapping?: GenericMapping): StreamingParser {
+export function createParserFor(
+  format: SourceFormat,
+  genericMapping?: GenericMapping,
+  options: ParserOptions = {},
+): StreamingParser {
   switch (format) {
     case "presentmon1":
-      return presentmon1.createParser();
+      return presentmon1.createParser(options);
     case "presentmon2":
-      return presentmon2.createParser();
+      return presentmon2.createParser(options);
     case "frameview":
-      return frameview.createParser();
+      return frameview.createParser(options);
     case "capframex":
-      return capframex.createParser();
+      return capframex.createParser(options);
     case "ocat":
-      return ocat.createParser();
+      return ocat.createParser(options);
     case "mangohud":
       return mangohud.createParser();
     case "generic":

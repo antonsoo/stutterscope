@@ -8,9 +8,10 @@ import { readFileSync } from "node:fs";
 import { basename } from "node:path";
 import { detectFormat, createParserFor } from "../core/parsers/index.ts";
 import { parseTextSync } from "../core/stream.ts";
-import { computeMetricsSummary, DEFAULT_STUTTER_OPTIONS, type StutterOptions } from "../core/metrics.ts";
-import { FORMAT_LABELS } from "../core/types.ts";
-import type { GenericMapping, GenericValueKind } from "../core/parsers/generic.ts";
+import { computeMetricsSummary, DEFAULT_STUTTER_OPTIONS, summaryForJson, type StutterOptions } from "../core/metrics.ts";
+import { FORMAT_LABELS, ParseError, SOURCE_FORMATS, type SourceFormat } from "../core/types.ts";
+import { describeStream } from "../core/streams.ts";
+import { GENERIC_VALUE_KIND_LABELS, type GenericMapping, type GenericValueKind } from "../core/parsers/generic.ts";
 
 const RESET = "\x1b[0m";
 const BOLD = "\x1b[1m";
@@ -47,25 +48,61 @@ function fmt(n: number, digits = 1): string {
 interface Args {
   file?: string;
   json: boolean;
-  format?: string;
+  format?: SourceFormat;
   genericColumn?: string;
   genericKind?: GenericValueKind;
+  stream?: string;
   stutterOptions: StutterOptions;
+}
+
+/** A bad flag or value, reported instead of silently computing with NaN or crashing later. */
+class UsageError extends Error {}
+
+function isFormat(v: string): v is SourceFormat {
+  return (SOURCE_FORMATS as readonly string[]).includes(v);
+}
+
+function isGenericKind(v: string): v is GenericValueKind {
+  return Object.hasOwn(GENERIC_VALUE_KIND_LABELS, v);
 }
 
 function parseArgs(argv: string[]): Args {
   const args: Args = { json: false, stutterOptions: { ...DEFAULT_STUTTER_OPTIONS } };
+  const value = (i: number, flag: string): string => {
+    const v = argv[i];
+    if (v === undefined || v.startsWith("--")) throw new UsageError(`${flag} needs a value`);
+    return v;
+  };
+  const number = (i: number, flag: string, min: number, integer = false): number => {
+    const raw = value(i, flag);
+    const n = Number(raw);
+    if (!Number.isFinite(n) || n < min || (integer && !Number.isInteger(n))) {
+      throw new UsageError(`${flag} must be ${integer ? "an integer" : "a number"} >= ${min}, got "${raw}"`);
+    }
+    return n;
+  };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === undefined) continue;
     if (a === "--json") args.json = true;
-    else if (a === "--format") args.format = argv[++i];
-    else if (a === "--generic-column") args.genericColumn = argv[++i];
-    else if (a === "--generic-kind") args.genericKind = argv[++i] as GenericValueKind;
-    else if (a === "--k") args.stutterOptions.kMultiplier = Number(argv[++i]);
-    else if (a === "--window-radius") args.stutterOptions.windowRadius = Number(argv[++i]);
-    else if (a === "--hitch-ms") args.stutterOptions.hitchThresholdMs = Number(argv[++i]);
-    else if (!a.startsWith("-")) args.file = a;
+    else if (a === "--format") {
+      const f = value(++i, a);
+      if (!isFormat(f)) throw new UsageError(`unknown format "${f}"; one of: ${SOURCE_FORMATS.join(", ")}`);
+      args.format = f;
+    } else if (a === "--generic-column") args.genericColumn = value(++i, a);
+    else if (a === "--generic-kind") {
+      const k = value(++i, a);
+      if (!isGenericKind(k)) {
+        throw new UsageError(`unknown kind "${k}"; one of: ${Object.keys(GENERIC_VALUE_KIND_LABELS).join(", ")}`);
+      }
+      args.genericKind = k;
+    } else if (a === "--stream") args.stream = value(++i, a);
+    else if (a === "--k") args.stutterOptions.kMultiplier = number(++i, a, 1);
+    else if (a === "--window-radius") args.stutterOptions.windowRadius = number(++i, a, 1, true);
+    else if (a === "--hitch-ms") args.stutterOptions.hitchThresholdMs = number(++i, a, 0);
+    else if (a.startsWith("-")) throw new UsageError(`unknown option ${a}`);
+    else if (args.file !== undefined) throw new UsageError(`one file at a time (got ${args.file} and ${a})`);
+    else args.file = a;
   }
   return args;
 }
@@ -83,6 +120,9 @@ Options:
   --k <n>                  stutter multiplier (default ${DEFAULT_STUTTER_OPTIONS.kMultiplier})
   --window-radius <n>      rolling-median window radius, frames (default ${DEFAULT_STUTTER_OPTIONS.windowRadius})
   --hitch-ms <n>           hitch threshold, ms (default ${DEFAULT_STUTTER_OPTIONS.hitchThresholdMs})
+  --stream <sel>           which present stream to analyse when a capture holds several processes:
+                           an application name, a process id, or pid:swapchain (default: the busiest
+                           stream that isn't dwm.exe)
   --json                   print the full metrics summary as JSON instead
 `);
 }
@@ -94,7 +134,15 @@ function main(): void {
     process.exit(command === "summary" && rest.length > 0 ? 0 : 1);
   }
 
-  const args = parseArgs(rest);
+  let args: Args;
+  try {
+    args = parseArgs(rest);
+  } catch (err) {
+    if (!(err instanceof UsageError)) throw err;
+    console.error(color(`stutterscope: ${err.message}`, RED));
+    process.exit(1);
+    return;
+  }
   if (!args.file) {
     printHelp();
     process.exit(1);
@@ -125,17 +173,33 @@ function main(): void {
     mapping = { valueColumn: args.genericColumn, valueKind: args.genericKind };
   }
 
-  const parser = createParserFor(format as Parameters<typeof createParserFor>[0], mapping);
-  const series = parseTextSync(text, parser, basename(args.file));
+  let series;
+  try {
+    series = parseTextSync(text, createParserFor(format, mapping, { stream: args.stream }), basename(args.file));
+  } catch (err) {
+    if (!(err instanceof ParseError)) throw err;
+    console.error(color(`Could not parse ${args.file}: ${err.message}`, RED));
+    process.exit(1);
+    return;
+  }
   const summary = computeMetricsSummary(series, args.stutterOptions);
+  const { streams, selectedStream } = series.meta;
 
   if (args.json) {
-    console.log(JSON.stringify({ file: args.file, format, summary }, null, 2));
+    const streamInfo = streams && streams.length > 1 ? { streams, selectedStream } : {};
+    console.log(JSON.stringify({ file: args.file, format, ...streamInfo, summary: summaryForJson(summary) }, null, 2));
     return;
   }
 
-  console.log(`${color(basename(args.file), BOLD)}  ${color(FORMAT_LABELS[format as keyof typeof FORMAT_LABELS], DIM)}`);
-  console.log(color(`${series.frameCount.toLocaleString()} frames, ${fmt(summary.durationSec, 1)}s`, DIM));
+  console.log(`${color(basename(args.file), BOLD)}  ${color(FORMAT_LABELS[format], DIM)}`);
+  console.log(color(`${series.frameCount.toLocaleString("en-US")} frames, ${fmt(summary.durationSec, 1)}s`, DIM));
+  if (streams && streams.length > 1) {
+    const selected = streams.find((st) => st.id === selectedStream);
+    console.log(color(`${streams.length} present streams in this capture; analysing ${selected ? describeStream(selected) : selectedStream}`, AMBER));
+    for (const st of streams) {
+      if (st.id !== selectedStream) console.log(color(`  also: ${describeStream(st)}   (--stream ${st.id})`, DIM));
+    }
+  }
   if (series.meta.warnings.length > 0) {
     console.log(color(`${series.meta.warnings.length} row(s) skipped while parsing`, AMBER));
   }
@@ -150,7 +214,7 @@ function main(): void {
     `  Stutter events         ${summary.stutter.stutterEventCount > 0 ? color(String(summary.stutter.stutterEventCount), AMBER) : "0"}  (${fmt(summary.stutter.stutterTimeFraction * 100, 2)}% of capture time)`,
   );
   console.log(
-    `  Hitches (>${args.stutterOptions.hitchThresholdMs}ms)         ${summary.stutter.hitchCount > 0 ? color(String(summary.stutter.hitchCount), RED) : "0"}`,
+    `  ${`Hitches (>${args.stutterOptions.hitchThresholdMs}ms)`.padEnd(22)} ${summary.stutter.hitchCount > 0 ? color(String(summary.stutter.hitchCount), RED) : "0"}`,
   );
   console.log(`  Pacing (MASD)          ${fmt(summary.masdMs, 2)} ms`);
   if (summary.dropped) {

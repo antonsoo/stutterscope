@@ -53,6 +53,7 @@ export class ParseClient {
     opts: {
       formatOverride?: SourceFormat;
       genericMapping?: GenericMapping;
+      stream?: string;
       stutterOptions?: StutterOptions;
       onProgress?: (p: ParseProgress) => void;
     } = {},
@@ -66,6 +67,7 @@ export class ParseClient {
         file,
         formatOverride: opts.formatOverride,
         genericMapping: opts.genericMapping,
+        stream: opts.stream,
         stutterOptions: opts.stutterOptions,
       },
       opts.onProgress,

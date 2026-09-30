@@ -9,6 +9,8 @@ export interface ParseRequest {
   file: File;
   formatOverride?: SourceFormat;
   genericMapping?: GenericMapping;
+  /** Which present stream to analyse; see `matchStream` in core/streams.ts. */
+  stream?: string;
   stutterOptions?: StutterOptions;
 }
 

@@ -21,8 +21,9 @@
  */
 import { Float64Builder, Uint8Builder } from "../buffer.ts";
 import { indexHeader, parseFloatOrNull, splitCsvLine } from "../csv.ts";
-import type { FrameSeries, SniffResult, StreamingParser } from "../types.ts";
+import type { FrameSeries, ParserOptions, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
+import { cumulativeSeconds, StreamTracker } from "../streams.ts";
 
 export function sniff(sampleText: string): SniffResult {
   const firstLine = sampleText.split(/\r?\n/, 1)[0] ?? "";
@@ -44,6 +45,12 @@ class PresentMon1Parser implements StreamingParser {
   private readonly gpuBusyMs = new Float64Builder(4096);
   private hasGpuColumn = false;
   private columns: string[] = [];
+  private readonly streams = new StreamTracker();
+  private readonly options: ParserOptions;
+
+  constructor(options: ParserOptions = {}) {
+    this.options = options;
+  }
 
   pushLine(line: string, lineIndex: number): void {
     const fields = splitCsvLine(line);
@@ -51,6 +58,7 @@ class PresentMon1Parser implements StreamingParser {
       this.header = indexHeader(fields);
       this.columns = fields.map((f) => f.trim());
       this.hasGpuColumn = this.header.has("msGPUActive");
+      this.streams.setHeader(this.header);
       return;
     }
     const h = this.header;
@@ -68,19 +76,23 @@ class PresentMon1Parser implements StreamingParser {
     if (this.hasGpuColumn) {
       this.gpuBusyMs.push(parseFloatOrNull(get("msGPUActive")) ?? NaN);
     }
+    this.streams.track(fields);
     if (this.application === undefined) {
       this.application = get("Application");
     }
   }
 
   finish(sourceFileName: string): FrameSeries {
-    const frameTimeMs = this.frameTimeMs.toArray();
-    const timeSec = new Float64Array(frameTimeMs.length);
-    let acc = 0;
-    for (let i = 0; i < frameTimeMs.length; i++) {
-      acc += frameTimeMs[i]! / 1000;
-      timeSec[i] = acc;
-    }
+    const { frameTimeMs, channels, streams, selected } = this.streams.select(
+      {
+        frameTimeMs: this.frameTimeMs.toArray(),
+        channels: {
+          dropped: this.dropped.toArray(),
+          gpuBusyMs: this.hasGpuColumn ? this.gpuBusyMs.toArray() : undefined,
+        },
+      },
+      this.options.stream,
+    );
     if (frameTimeMs.length === 0) {
       this.warnings.push("no data rows parsed");
     }
@@ -88,25 +100,24 @@ class PresentMon1Parser implements StreamingParser {
       meta: {
         format: "presentmon1",
         sourceFileName,
-        application: this.application,
+        application: selected?.application ?? this.application,
         warnings: this.warnings,
         columns: this.columns,
+        streams,
+        selectedStream: selected?.id,
       },
       frameCount: frameTimeMs.length,
       frameTimeMs,
-      timeSec,
-      channels: {
-        dropped: this.dropped.toArray(),
-        gpuBusyMs: this.hasGpuColumn ? this.gpuBusyMs.toArray() : undefined,
-      },
+      timeSec: cumulativeSeconds(frameTimeMs),
+      channels,
     };
   }
 }
 
-export function createParser(): StreamingParser {
-  return new PresentMon1Parser();
+export function createParser(options: ParserOptions = {}): StreamingParser {
+  return new PresentMon1Parser(options);
 }
 
-export function parse(text: string, fileName = "capture.csv"): FrameSeries {
-  return parseTextSync(text, createParser(), fileName);
+export function parse(text: string, fileName = "capture.csv", options: ParserOptions = {}): FrameSeries {
+  return parseTextSync(text, createParser(options), fileName);
 }

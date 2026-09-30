@@ -60,7 +60,9 @@ npx github:antonsoo/stutterscope summary examples/samples/presentmon2-synthetic-
   MangoHud, and OCAT CSVs, auto-detected from the file's header — plus a
   generic CSV column-mapping dialog for anything else. Every format is
   verified against upstream source/docs or a real captured sample; see
-  [`docs/formats.md`](docs/formats.md).
+  [`docs/formats.md`](docs/formats.md). A capture that recorded several
+  processes (the game plus `dwm.exe`, an overlay, a browser) is split into
+  per-process streams, and one is analysed, with a picker for the others.
 - **Metrics**, each with a documented formula in
   [`docs/metrics.md`](docs/metrics.md): average FPS computed correctly
   (frames ÷ total time, not a mean of per-frame FPS), frame-time
@@ -112,7 +114,7 @@ presentmon2-synthetic-demo.csv  PresentMon 2.x
   P99 frame time         33.81 ms
   P99.9 frame time       34.22 ms
   Stutter events         28  (1.55% of capture time)
-  Hitches (>50ms)         2
+  Hitches (>50ms)        2
   Pacing (MASD)          5.29 ms
   Dropped frames         4 (0.05%)
   CPU- / GPU-bound       25% / 75%
@@ -195,6 +197,13 @@ above — so nothing has to be pre-built or committed.
   log redistributed by a third-party viewer, and FrameView's own
   telemetry-column set is known to vary by GPU/driver — see
   `docs/formats.md` for exactly what's read vs. ignored.
+- **One stream at a time.** A PresentMon/OCAT/CapFrameX/FrameView capture
+  taken without a process filter holds every process that presented (the
+  game, `dwm.exe`, a browser on the other monitor), interleaved. stutterscope
+  analyses one stream (process + swap chain): the busiest one that isn't the
+  compositor, unless you pick another in the web app or pass `--stream` to
+  the CLI. Mixing them would double-count time. See
+  [`docs/formats.md`](docs/formats.md#captures-with-more-than-one-process).
 - **CapFrameX and OCAT CSVs can be indistinguishable.** When CapFrameX
   exports without its metadata comment block, its CSV is byte-identical in
   schema to OCAT's. Detection picks CapFrameX only when that block is

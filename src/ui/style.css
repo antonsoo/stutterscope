@@ -683,6 +683,42 @@ dialog .dialog-actions {
 .notes.warn-note {
   color: var(--hitch);
 }
+.notes.warn-note summary {
+  cursor: pointer;
+}
+.notes.warn-note pre {
+  margin: 6px 0 0;
+  max-height: 12em;
+  overflow: auto;
+  color: var(--text-dim);
+  white-space: pre-wrap;
+}
+.stream-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--trace-b);
+  border-radius: var(--radius);
+  background: var(--bg-panel);
+  color: var(--text-dim);
+}
+.stream-select {
+  max-width: 100%;
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--border-bright);
+  color: var(--text);
+  padding: 4px 8px;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.stream-why {
+  flex-basis: 100%;
+  color: var(--text-faint);
+}
 
 .visually-hidden {
   position: absolute;

@@ -19,8 +19,9 @@
  */
 import { Float64Builder, Uint8Builder } from "../buffer.ts";
 import { indexHeader, parseFloatOrNull, splitCsvLine } from "../csv.ts";
-import type { FrameSeries, SniffResult, StreamingParser } from "../types.ts";
+import type { FrameSeries, ParserOptions, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
+import { cumulativeSeconds, StreamTracker } from "../streams.ts";
 
 export function sniff(sampleText: string): SniffResult {
   const firstLine = sampleText.split(/\r?\n/, 1)[0] ?? "";
@@ -41,9 +42,12 @@ export class PresentFamilyParser implements StreamingParser {
   protected readonly dropped = new Uint8Builder(4096);
   protected columns: string[] = [];
   private readonly format: "ocat" | "capframex";
+  private readonly streams = new StreamTracker();
+  private readonly options: ParserOptions;
 
-  constructor(format: "ocat" | "capframex") {
+  constructor(format: "ocat" | "capframex", options: ParserOptions = {}) {
     this.format = format;
+    this.options = options;
   }
 
   pushLine(line: string, lineIndex: number): void {
@@ -51,6 +55,7 @@ export class PresentFamilyParser implements StreamingParser {
     if (this.header === null) {
       this.header = indexHeader(fields);
       this.columns = fields.map((f) => f.trim());
+      this.streams.setHeader(this.header);
       return;
     }
     const h = this.header;
@@ -65,38 +70,38 @@ export class PresentFamilyParser implements StreamingParser {
     }
     this.frameTimeMs.push(ft);
     this.dropped.push(parseFloatOrNull(get("Dropped")) === 1 ? 1 : 0);
+    this.streams.track(fields);
     if (this.application === undefined) this.application = get("Application");
   }
 
   finish(sourceFileName: string): FrameSeries {
-    const frameTimeMs = this.frameTimeMs.toArray();
-    const timeSec = new Float64Array(frameTimeMs.length);
-    let acc = 0;
-    for (let i = 0; i < frameTimeMs.length; i++) {
-      acc += frameTimeMs[i]! / 1000;
-      timeSec[i] = acc;
-    }
+    const { frameTimeMs, channels, streams, selected } = this.streams.select(
+      { frameTimeMs: this.frameTimeMs.toArray(), channels: { dropped: this.dropped.toArray() } },
+      this.options.stream,
+    );
     if (frameTimeMs.length === 0) this.warnings.push("no data rows parsed");
     return {
       meta: {
         format: this.format,
         sourceFileName,
-        application: this.application,
+        application: selected?.application ?? this.application,
         warnings: this.warnings,
         columns: this.columns,
+        streams,
+        selectedStream: selected?.id,
       },
       frameCount: frameTimeMs.length,
       frameTimeMs,
-      timeSec,
-      channels: { dropped: this.dropped.toArray() },
+      timeSec: cumulativeSeconds(frameTimeMs),
+      channels,
     };
   }
 }
 
-export function createParser(): StreamingParser {
-  return new PresentFamilyParser("ocat");
+export function createParser(options: ParserOptions = {}): StreamingParser {
+  return new PresentFamilyParser("ocat", options);
 }
 
-export function parse(text: string, fileName = "capture.csv"): FrameSeries {
-  return parseTextSync(text, createParser(), fileName);
+export function parse(text: string, fileName = "capture.csv", options: ParserOptions = {}): FrameSeries {
+  return parseTextSync(text, createParser(options), fileName);
 }

@@ -24,7 +24,7 @@
  * OCAT CSV — there is no reliable way to tell them apart from content alone,
  * which we say plainly in `docs/formats.md` rather than guess.
  */
-import type { FrameSeries, SniffResult, StreamingParser } from "../types.ts";
+import type { FrameSeries, ParserOptions, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
 import { PresentFamilyParser } from "./ocat.ts";
 
@@ -38,9 +38,13 @@ export function sniff(sampleText: string): SniffResult {
 }
 
 class CapFrameXParser implements StreamingParser {
-  private readonly inner = new PresentFamilyParser("capframex");
+  private readonly inner: PresentFamilyParser;
   private readonly meta = new Map<string, string>();
   private sawDataHeader = false;
+
+  constructor(options: ParserOptions = {}) {
+    this.inner = new PresentFamilyParser("capframex", options);
+  }
 
   pushLine(line: string, lineIndex: number): void {
     if (!this.sawDataHeader && line.startsWith("//")) {
@@ -66,10 +70,10 @@ class CapFrameXParser implements StreamingParser {
   }
 }
 
-export function createParser(): StreamingParser {
-  return new CapFrameXParser();
+export function createParser(options: ParserOptions = {}): StreamingParser {
+  return new CapFrameXParser(options);
 }
 
-export function parse(text: string, fileName = "capture.csv"): FrameSeries {
-  return parseTextSync(text, createParser(), fileName);
+export function parse(text: string, fileName = "capture.csv", options: ParserOptions = {}): FrameSeries {
+  return parseTextSync(text, createParser(options), fileName);
 }

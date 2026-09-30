@@ -1,5 +1,5 @@
 import type { FrameSeries } from "../core/types.ts";
-import type { MetricsSummary } from "../core/metrics.ts";
+import { summaryForJson, type MetricsSummary } from "../core/metrics.ts";
 import { fmtFps, fmtInt, fmtMs, fmtPct } from "./format.ts";
 
 function downloadBlob(blob: Blob, filename: string): void {
@@ -21,10 +21,13 @@ export function exportJson(series: FrameSeries, summary: MetricsSummary): void {
       fileName: series.meta.sourceFileName,
       format: series.meta.format,
       application: series.meta.application ?? null,
+      ...(series.meta.streams && series.meta.streams.length > 1
+        ? { stream: series.meta.selectedStream, streams: series.meta.streams }
+        : {}),
       frameCount: series.frameCount,
       durationSec: summary.durationSec,
     },
-    metrics: summary,
+    metrics: summaryForJson(summary),
   };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
   downloadBlob(blob, `stutterscope-${safeName(series.meta.sourceFileName)}.json`);
@@ -40,7 +43,7 @@ export function buildMarkdownTable(series: FrameSeries, summary: MetricsSummary)
     ["P99 frame time (ms)", fmtMs(summary.percentilesMs.p99)],
     ["P99.9 frame time (ms)", fmtMs(summary.percentilesMs.p999)],
     ["Stutter events", fmtInt(summary.stutter.stutterEventCount)],
-    ["Hitches (>50ms)", fmtInt(summary.stutter.hitchCount)],
+    [`Hitches (>${summary.stutter.hitchThresholdMs}ms)`, fmtInt(summary.stutter.hitchCount)],
     ["Pacing (MASD, ms)", fmtMs(summary.masdMs)],
   ];
   if (summary.dropped) rows.push(["Dropped frames", `${fmtInt(summary.dropped.droppedCount)} (${fmtPct(summary.dropped.droppedFraction)})`]);

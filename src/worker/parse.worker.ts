@@ -41,7 +41,7 @@ function chartTransferables(chart: ChartData): Transferable[] {
 }
 
 async function handleParse(req: Extract<WorkerRequest, { type: "parse" }>): Promise<void> {
-  const { requestId, slot, file, formatOverride, genericMapping, stutterOptions } = req;
+  const { requestId, slot, file, formatOverride, genericMapping, stream, stutterOptions } = req;
   try {
     let format: SourceFormat;
     if (formatOverride) {
@@ -59,7 +59,7 @@ async function handleParse(req: Extract<WorkerRequest, { type: "parse" }>): Prom
       }
     }
 
-    const parser = createParserFor(format, genericMapping);
+    const parser = createParserFor(format, genericMapping, { stream });
     const series = await parseFileStreaming(file, parser, file.name, (progress) => {
       const response: WorkerResponse = { type: "progress", requestId, slot, progress };
       ctx.postMessage(response);

@@ -1,0 +1,17 @@
+Application,ProcessID,SwapChainAddress,PresentRuntime,SyncInterval,PresentFlags,AllowsTearing,PresentMode,FrameType,CPUStartQPC,FrameTime,CPUBusy,CPUWait,GPULatency,GPUTime,GPUBusy,GPUWait,VideoBusy,DisplayLatency,DisplayedTime,AnimationError,AnimationTime,MsFlipDelay,AllInputToPhotonLatency,ClickToPhotonLatency,InstrumentedLatency
+dwm.exe,88,0x9,DXGI,0,0,0,Composed: Flip,Application,500,6.944,1.000,0.000,0.500,2.000,0.500,0.000,0.000,10.000,6.944,NA,NA,NA,NA,NA,NA
+demo.exe,1000,0x1,DXGI,1,0,0,Hardware: Legacy Flip,Application,1000,10.000,6.000,4.000,1.000,9.000,4.000,5.000,0.000,20.000,10.000,NA,NA,NA,NA,NA,NA
+dwm.exe,88,0x9,DXGI,0,0,0,Composed: Flip,Application,1100,6.944,1.000,0.000,0.500,2.000,0.500,0.000,0.000,10.000,6.944,NA,NA,NA,NA,NA,NA
+overlay.exe,2000,0x2,DXGI,0,0,0,Composed: Flip,Application,1500,33.333,2.000,0.000,0.500,2.000,1.000,0.000,0.000,10.000,33.333,NA,NA,NA,NA,NA,NA
+dwm.exe,88,0x9,DXGI,0,0,0,Composed: Flip,Application,1700,6.944,1.000,0.000,0.500,2.000,0.500,0.000,0.000,10.000,6.944,NA,NA,NA,NA,NA,NA
+demo.exe,1000,0x1,DXGI,1,0,0,Hardware: Legacy Flip,Application,2000,10.000,3.000,7.000,1.000,9.000,8.000,1.000,0.000,20.000,10.000,NA,NA,NA,NA,NA,NA
+dwm.exe,88,0x9,DXGI,0,0,0,Composed: Flip,Application,2300,6.944,1.000,0.000,0.500,2.000,0.500,0.000,0.000,10.000,6.944,NA,NA,NA,NA,NA,NA
+dwm.exe,88,0x9,DXGI,0,0,0,Composed: Flip,Application,2900,NA,1.000,0.000,0.500,2.000,0.500,0.000,0.000,10.000,6.944,NA,NA,NA,NA,NA,NA
+demo.exe,1000,0x1,DXGI,1,0,0,Hardware: Legacy Flip,Application,3000,10.000,6.000,4.000,1.000,9.000,4.000,5.000,0.000,20.000,NA,NA,NA,NA,NA,NA,NA
+dwm.exe,88,0x9,DXGI,0,0,0,Composed: Flip,Application,3500,6.944,1.000,0.000,0.500,2.000,0.500,0.000,0.000,10.000,6.944,NA,NA,NA,NA,NA,NA
+demo.exe,1000,0x1,DXGI,1,0,0,Hardware: Legacy Flip,Application,4000,40.000,6.000,34.000,1.000,9.000,4.000,5.000,0.000,50.000,40.000,NA,NA,NA,NA,NA,NA
+dwm.exe,88,0x9,DXGI,0,0,0,Composed: Flip,Application,4100,6.944,1.000,0.000,0.500,2.000,0.500,0.000,0.000,10.000,6.944,NA,NA,NA,NA,NA,NA
+overlay.exe,2000,0x2,DXGI,0,0,0,Composed: Flip,Application,4500,33.333,2.000,0.000,0.500,2.000,1.000,0.000,0.000,10.000,33.333,NA,NA,NA,NA,NA,NA
+dwm.exe,88,0x9,DXGI,0,0,0,Composed: Flip,Application,4700,6.944,1.000,0.000,0.500,2.000,0.500,0.000,0.000,10.000,6.944,NA,NA,NA,NA,NA,NA
+demo.exe,1000,0x1,DXGI,1,0,0,Hardware: Legacy Flip,Application,5000,10.000,3.000,7.000,1.000,9.000,8.000,1.000,0.000,20.000,10.000,NA,NA,NA,NA,NA,NA
+dwm.exe,88,0x9,DXGI,0,0,0,Composed: Flip,Application,5300,6.944,1.000,0.000,0.500,2.000,0.500,0.000,0.000,10.000,6.944,NA,NA,NA,NA,NA,NA
