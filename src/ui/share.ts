@@ -10,7 +10,8 @@ function downloadBlob(blob: Blob, filename: string): void {
   document.body.appendChild(a);
   a.click();
   a.remove();
-  URL.revokeObjectURL(url);
+  // Revoking in the same task can cancel the download in some browsers.
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 export function exportJson(series: FrameSeries, summary: MetricsSummary): void {
