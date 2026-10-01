@@ -11,6 +11,7 @@ import { parseTextSync } from "../core/stream.ts";
 import { computeMetricsSummary, DEFAULT_STUTTER_OPTIONS, summaryForJson, type StutterOptions } from "../core/metrics.ts";
 import { FORMAT_LABELS, ParseError, SOURCE_FORMATS, type SourceFormat } from "../core/types.ts";
 import { describeStream } from "../core/streams.ts";
+import { VERSION } from "./version.ts";
 import { GENERIC_VALUE_KIND_LABELS, type GenericMapping, type GenericValueKind } from "../core/parsers/generic.ts";
 
 const RESET = "\x1b[0m";
@@ -112,6 +113,7 @@ function printHelp(): void {
 
 Usage:
   stutterscope summary <file.csv> [options]
+  stutterscope --version
 
 Options:
   --format <name>          force a format (${Object.keys(FORMAT_LABELS).join(", ")})
@@ -129,6 +131,10 @@ Options:
 
 function main(): void {
   const [command, ...rest] = process.argv.slice(2);
+  if (command === "--version" || command === "-V") {
+    console.log(`stutterscope ${VERSION}`);
+    return;
+  }
   if (command !== "summary" || rest.length === 0 || rest.includes("-h") || rest.includes("--help")) {
     printHelp();
     process.exit(command === "summary" && rest.length > 0 ? 0 : 1);

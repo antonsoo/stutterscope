@@ -1,11 +1,10 @@
 {
-  "name": "stutterscope",
-  "version": "0.2.0",
+  "name": "@antonsoloviev/stutterscope",
+  "version": "0.2.1",
   "description": "Frame-time analysis for PC gamers and hardware reviewers. Drop in a capture, see the stutter.",
   "author": "Anton Soloviev",
   "license": "MIT",
   "type": "module",
-  "private": true,
   "homepage": "https://antonsoo.github.io/stutterscope/",
   "repository": {
     "type": "git",
@@ -23,6 +22,12 @@
   ],
   "bin": {
     "stutterscope": "./dist-cli/cli/index.js"
+  },
+  "files": [
+    "dist-cli"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "engines": {
     "node": ">=22.6.0"

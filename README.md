@@ -43,16 +43,13 @@ links, and you're looking at a real (synthetic, clearly labelled) capture.
 Or skip the clone and use the [live demo](https://antonsoo.github.io/stutterscope/) —
 same app, same guarantee that nothing you drop on it leaves your browser.
 
-Prefer the terminal? `npx` builds and runs the CLI for you (no manual build
-step, no separate install):
+Prefer the terminal? `npx` runs the published CLI
+([`@antonsoloviev/stutterscope`](https://www.npmjs.com/package/@antonsoloviev/stutterscope)
+on npm; the command it installs is `stutterscope`), with no separate install:
 
 ```bash
-npx github:antonsoo/stutterscope summary examples/samples/presentmon2-synthetic-demo.csv
+npx @antonsoloviev/stutterscope summary your-capture.csv
 ```
-
-> **npm 12+** disables git-hosted packages by default (`allow-git=none`), so
-> the command above fails with `EALLOWGIT` unless you opt in:
-> `npx --allow-git=root github:antonsoo/stutterscope summary <file>`.
 
 ## Features
 
@@ -92,7 +89,7 @@ npx github:antonsoo/stutterscope summary examples/samples/presentmon2-synthetic-
   same core library as the browser app. Its source runs directly under Node
   from a git clone, but an installed copy (`npx`/`npm i -g`) lives under
   `node_modules`, where Node's native TypeScript support refuses to run —
-  so a `prepare` script compiles it to plain JS automatically on install;
+  so the published package ships plain JS, compiled by a `prepare` script;
   see [How it works](#how-it-works).
 
 ## Usage
@@ -102,7 +99,7 @@ sample" links to try it with no file of your own) and you get a tile grid
 plus four charts. Load a second run to compare:
 
 ```
-$ npx github:antonsoo/stutterscope summary examples/samples/presentmon2-synthetic-demo.csv
+$ npx @antonsoloviev/stutterscope summary examples/samples/presentmon2-synthetic-demo.csv
 
 presentmon2-synthetic-demo.csv  PresentMon 2.x
 7,969 frames, 119.9s
@@ -179,9 +176,9 @@ packed tarball and running the symlinked bin against a real capture).
 `tsconfig.cli.json` compiles `src/core` and `src/cli` to plain JS in
 `dist-cli/` (TypeScript 5.7+'s `rewriteRelativeImportExtensions` rewrites
 the `.ts` import specifiers the source needs for the first path into `.js`
-as it emits); a `prepare` script runs that build automatically whenever npm
-installs the package from git — which is exactly the `npx github:...` path
-above — so nothing has to be pre-built or committed.
+as it emits); a `prepare` script runs that build when the package is
+published (and whenever npm installs it from git), so nothing has to be
+pre-built or committed.
 
 ## Accuracy and limitations
 
