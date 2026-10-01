@@ -8,9 +8,9 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- The CLI is published to npm as `@antonsoloviev/stutterscope`:
-  `npx @antonsoloviev/stutterscope summary your-capture.csv`. The package
-  carries only the compiled CLI.
+- The package is named `@antonsoloviev/stutterscope`, ready for npm, and
+  carries only the compiled CLI. It isn't published yet; until it is, install
+  from GitHub as before.
 - `stutterscope --version`.
 - A fuzz test: the fixture captures, mutated line by line, either parse into a
   summary or are refused with a parse error.

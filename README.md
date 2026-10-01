@@ -43,12 +43,12 @@ links, and you're looking at a real (synthetic, clearly labelled) capture.
 Or skip the clone and use the [live demo](https://antonsoo.github.io/stutterscope/) —
 same app, same guarantee that nothing you drop on it leaves your browser.
 
-Prefer the terminal? `npx` runs the published CLI
-([`@antonsoloviev/stutterscope`](https://www.npmjs.com/package/@antonsoloviev/stutterscope)
-on npm; the command it installs is `stutterscope`), with no separate install:
+Prefer the terminal? `npx` builds and runs the CLI straight from GitHub, with no
+separate install (the npm package, `@antonsoloviev/stutterscope`, isn't published
+yet; npm 12 needs `--allow-git=root` for a git-hosted package):
 
 ```bash
-npx @antonsoloviev/stutterscope summary your-capture.csv
+npx --allow-git=root github:antonsoo/stutterscope summary your-capture.csv
 ```
 
 ## Features
@@ -99,7 +99,7 @@ sample" links to try it with no file of your own) and you get a tile grid
 plus four charts. Load a second run to compare:
 
 ```
-$ npx @antonsoloviev/stutterscope summary examples/samples/presentmon2-synthetic-demo.csv
+$ npx --allow-git=root github:antonsoo/stutterscope summary examples/samples/presentmon2-synthetic-demo.csv
 
 presentmon2-synthetic-demo.csv  PresentMon 2.x
 7,969 frames, 119.9s
