@@ -12,6 +12,12 @@ this project adheres to [Semantic Versioning](https://semver.org/).
   `npx @antonsoloviev/stutterscope summary your-capture.csv`. The package
   carries only the compiled CLI.
 - `stutterscope --version`.
+- A fuzz test: the fixture captures, mutated line by line, either parse into a
+  summary or are refused with a parse error.
+
+### Fixed
+
+- A one-frame capture read "1 frames".
 
 ## [0.2.0] - 2026-09-30
 

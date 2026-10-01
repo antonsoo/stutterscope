@@ -221,7 +221,7 @@ function renderWorkspace(): void {
         <div class="run-meta">
           <span><strong>${escapeHtml(a.file.name)}</strong></span>
           <span>${FORMAT_LABELS[a.response.series.meta.format]}</span>
-          <span>${fmtInt(a.response.series.frameCount)} frames</span>
+          <span>${fmtInt(a.response.series.frameCount)} ${a.response.series.frameCount === 1 ? "frame" : "frames"}</span>
           <span>${fmtMs(a.response.summary.durationSec, 1)} s</span>
           <span>${fmtBytes(a.file.size)}</span>
         </div>

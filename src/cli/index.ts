@@ -198,7 +198,7 @@ function main(): void {
   }
 
   console.log(`${color(basename(args.file), BOLD)}  ${color(FORMAT_LABELS[format], DIM)}`);
-  console.log(color(`${series.frameCount.toLocaleString("en-US")} frames, ${fmt(summary.durationSec, 1)}s`, DIM));
+  console.log(color(`${series.frameCount.toLocaleString("en-US")} ${series.frameCount === 1 ? "frame" : "frames"}, ${fmt(summary.durationSec, 1)}s`, DIM));
   if (streams && streams.length > 1) {
     const selected = streams.find((st) => st.id === selectedStream);
     console.log(color(`${streams.length} present streams in this capture; analysing ${selected ? describeStream(selected) : selectedStream}`, AMBER));
