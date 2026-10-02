@@ -8,6 +8,10 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- The CLI is published to npm as `@antonsoloviev/stutterscope`:
+  `npx @antonsoloviev/stutterscope summary your-capture.csv`. The README uses
+  the registry package instead of the GitHub install, which npm 12 blocks by
+  default.
 - A CSV from a tool stutterscope has no parser for is read by the column its
   header points to. `stutterscope summary` on the bundled generic sample
   (`frame_index,timestamp_seconds,frame_time_ms,fps`) used to stop with
@@ -88,9 +92,8 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- The package is named `@antonsoloviev/stutterscope`, ready for npm, and
-  carries only the compiled CLI. It isn't published yet; until it is, install
-  from GitHub as before.
+- The package is named `@antonsoloviev/stutterscope`, ready for npm (published
+  there from 0.2.3), and carries only the compiled CLI.
 - `stutterscope --version`.
 - A fuzz test: the fixture captures, mutated line by line, either parse into a
   summary or are refused with a parse error.

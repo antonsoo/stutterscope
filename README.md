@@ -2,6 +2,7 @@
 
 Frame-time analysis for PC gamers and hardware reviewers. Drop in a capture, see the stutter.
 
+[![npm](https://img.shields.io/npm/v/@antonsoloviev/stutterscope)](https://www.npmjs.com/package/@antonsoloviev/stutterscope)
 [![License: MIT](https://img.shields.io/badge/license-MIT-7cffb2.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/demo-antonsoo.github.io%2Fstutterscope-7cffb2)](https://antonsoo.github.io/stutterscope/)
 
@@ -43,12 +44,12 @@ links, and you're looking at a real (synthetic, clearly labelled) capture.
 Or skip the clone and use the [live demo](https://antonsoo.github.io/stutterscope/) —
 same app, same guarantee that nothing you drop on it leaves your browser.
 
-Prefer the terminal? `npx` builds and runs the CLI straight from GitHub, with no
-separate install (the npm package, `@antonsoloviev/stutterscope`, isn't published
-yet; npm 12 needs `--allow-git=root` for a git-hosted package):
+Prefer the terminal? `npx` runs the published CLI
+([`@antonsoloviev/stutterscope`](https://www.npmjs.com/package/@antonsoloviev/stutterscope)
+on npm; the command it installs is `stutterscope`), with no separate install:
 
 ```bash
-npx --allow-git=root github:antonsoo/stutterscope summary your-capture.csv
+npx @antonsoloviev/stutterscope summary your-capture.csv
 ```
 
 ## Features
@@ -108,7 +109,7 @@ sample" links to try it with no file of your own) and you get a tile grid
 plus four charts. Load a second run to compare:
 
 ```
-$ npx --allow-git=root github:antonsoo/stutterscope summary examples/samples/presentmon2-synthetic-demo.csv
+$ npx @antonsoloviev/stutterscope summary examples/samples/presentmon2-synthetic-demo.csv
 
 presentmon2-synthetic-demo.csv  PresentMon 2.x
 7,969 frames, 119.9s
