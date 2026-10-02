@@ -28,6 +28,13 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 - `--json` output names the column and kind read from a generic CSV
   (`generic: { column, kind, guessed }`).
 
+### Fixed
+
+- Frame counts in the page followed the browser's locale (`7.969 frames` in a
+  German one) while every other number is written with a decimal point
+  (`119.9 s`); they are `7,969` everywhere, as in the CLI. CI now runs the
+  tests a second time in a comma-decimal locale.
+
 ## [0.2.2] - 2026-10-01
 
 ### Fixed

@@ -15,7 +15,7 @@ export function fmtPct(fraction: number, digits = 1): string {
 
 export function fmtInt(v: number): string {
   if (!Number.isFinite(v)) return "—";
-  return Math.round(v).toLocaleString();
+  return Math.round(v).toLocaleString("en-US");
 }
 
 export function fmtBytes(bytes: number): string {

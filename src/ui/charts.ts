@@ -312,7 +312,7 @@ function drawHistogramFrame(
     ctx.moveTo(plot.x, y);
     ctx.lineTo(plot.x + plot.w, y);
     ctx.stroke();
-    ctx.fillText(Math.round(maxCount * frac).toLocaleString(), plot.x - 4, y);
+    ctx.fillText(Math.round(maxCount * frac).toLocaleString("en-US"), plot.x - 4, y);
   }
 
   // x-axis: ~6 ticks with frame-time labels
