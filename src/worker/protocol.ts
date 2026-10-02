@@ -1,5 +1,5 @@
 import type { FrameSeries, ParseProgress, SourceFormat } from "../core/types.ts";
-import type { GenericMapping } from "../core/parsers/generic.ts";
+import type { GenericMapping, MappingGuess } from "../core/parsers/generic.ts";
 import type { MetricsSummary, StutterOptions, HistogramBucket } from "../core/metrics.ts";
 
 export interface ParseRequest {
@@ -29,6 +29,8 @@ export interface NeedsMappingResponse {
   slot: "a" | "b";
   header: string[];
   sniffedFormat: SourceFormat;
+  /** The column and meaning to offer first, when the header makes them clear. */
+  suggested?: MappingGuess;
 }
 
 export interface ProgressResponse {

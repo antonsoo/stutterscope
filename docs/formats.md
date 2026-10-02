@@ -200,12 +200,46 @@ has no dropped-frame column.
 
 ## Generic CSV
 
-Any other CSV: pick a column and tell stutterscope what it means (frame
-time in ms/µs/s, instantaneous FPS, or a cumulative timestamp in seconds —
-frame time is then derived as the diff between consecutive rows) and,
-optionally, a boolean dropped-frame column. This is the fallback the UI
-opens a small dialog for when auto-detection can't confidently match one of
-the formats above.
+Any other CSV: one column holds the frame timing, as a frame time (in ms,
+µs or s), an instantaneous FPS, or a running clock (in s or ms; the frame
+time is then the difference between consecutive rows). A boolean
+dropped-frame column is optional.
+
+The header usually says which column that is, so stutterscope reads it
+(`guessMapping` in `src/core/parsers/generic.ts`):
+
+- a column named as a frame time (`frametime`, `frame_time_ms`,
+  `FrameTime`, `Delta (ms)`, `deltaTime`, `dt`, `ms_per_frame`) is taken
+  first;
+- then a clock (`Time (ms)`, `time_s`, `timestamp`, `elapsed`), if its
+  values only ever go up;
+- then a frame rate (`fps`, `framerate`), which is last because a logged
+  frame rate is often an average.
+
+The unit comes from the name when the name has one (`ms`, `us`, `s`, as a
+word or a camel-case tail). Otherwise it comes from the values: a typical
+frame time below 0.5 is in seconds, below 1,000 in milliseconds, above that
+in microseconds. A column counts only if at least 80% of the first 200 rows
+have a number in it. When two columns fit equally well
+(`frametime_cpu_ms`, `frametime_gpu_ms`) or none does, nothing is guessed.
+
+The web app opens its column dialog with the guess filled in and the reason
+under it; the CLI reads the column, prints which one and why on the line
+under the frame count, and takes `--generic-column` / `--generic-kind` to
+override (given only the column, it works out the unit). With no guess the
+dialog opens on the first column and waits for a choice, and the CLI lists
+the file's columns.
+
+Two layouts this was checked against, both `Frame, Time (ms)` with a
+running clock in milliseconds:
+
+- FRAPS-style `frametimes.csv`, as written by AMD GPU PerfStudio's
+  `FrameStatsLogger.cpp` (`"%d, %f"` rows of frame number and total
+  milliseconds since the first frame);
+- the benchmark table of Crystal Dynamics' games
+  (`Frame, Time (ms), Delta (ms) , Memory (mb)`), where `Delta (ms)` is the
+  frame time and is the column read. Its first row is `0.000` (no frame
+  came before it) and is kept as a zero-length frame.
 
 ## Captures with more than one process
 

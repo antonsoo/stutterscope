@@ -13,7 +13,14 @@ import { computeMetricsSummary, DEFAULT_STUTTER_OPTIONS, summaryForJson, type St
 import { FORMAT_LABELS, ParseError, SOURCE_FORMATS, type SourceFormat } from "../core/types.ts";
 import { describeStream } from "../core/streams.ts";
 import { VERSION } from "./version.ts";
-import { GENERIC_VALUE_KIND_LABELS, type GenericMapping, type GenericValueKind } from "../core/parsers/generic.ts";
+import {
+  GENERIC_VALUE_KIND_LABELS,
+  guessKind,
+  guessMapping,
+  readHeader,
+  type GenericMapping,
+  type GenericValueKind,
+} from "../core/parsers/generic.ts";
 
 const RESET = "\x1b[0m";
 const BOLD = "\x1b[1m";
@@ -109,6 +116,47 @@ function parseArgs(argv: string[]): Args {
   return args;
 }
 
+/** The file's column names for an error message: the first dozen, each cut to a readable length. */
+function describeColumns(header: string[]): string {
+  // A file that isn't a table at all (minified JSON) is one "header" of thousands of "columns".
+  const shown = header.slice(0, 12).map((name) => {
+    const printable = name.replace(/\p{Cc}/gu, " ");
+    return printable.length > 40 ? `${printable.slice(0, 39)}\u2026` : printable;
+  });
+  const rest = header.length - shown.length;
+  return shown.join(", ") + (rest > 0 ? `, and ${rest.toLocaleString("en-US")} more` : "");
+}
+
+/**
+ * The column to read from a CSV that isn't a known capture format, and what it holds: as
+ * given, or worked out from the header and the first rows. Returns the message to print
+ * when it can't be worked out; a wrong guess would be a report about the wrong numbers.
+ */
+function genericMapping(sample: string, args: Args): { mapping: GenericMapping; guessed?: string } | string {
+  const header = readHeader(sample);
+  const columns = `Columns: ${describeColumns(header)}.`;
+  const kinds = Object.keys(GENERIC_VALUE_KIND_LABELS).join(" | ");
+  if (args.genericColumn !== undefined && !header.includes(args.genericColumn)) {
+    return `No column named "${args.genericColumn}". ${columns}`;
+  }
+  if (args.genericColumn !== undefined && args.genericKind !== undefined) {
+    return { mapping: { valueColumn: args.genericColumn, valueKind: args.genericKind } };
+  }
+  if (args.genericColumn !== undefined) {
+    const guess = guessKind(sample, args.genericColumn);
+    if (guess) return { mapping: guess.mapping, guessed: guess.reason };
+    return `Can't tell what "${args.genericColumn}" holds from its name. Say with --generic-kind <${kinds}>.`;
+  }
+  const guess = guessMapping(sample);
+  if (guess && (args.genericKind === undefined || args.genericKind === guess.mapping.valueKind)) {
+    return { mapping: guess.mapping, guessed: guess.reason };
+  }
+  return (
+    `This isn't a capture format stutterscope knows, and no single column says it holds frame times. ` +
+    `${columns} Pick one with --generic-column <name> --generic-kind <${kinds}>.`
+  );
+}
+
 function printHelp(): void {
   console.log(`${color("stutterscope", BOLD)} — frame-time analysis from the terminal
 
@@ -118,8 +166,10 @@ Usage:
 
 Options:
   --format <name>          force a format (${Object.keys(FORMAT_LABELS).join(", ")})
-  --generic-column <name>  (generic format) column holding the value
-  --generic-kind <kind>    (generic format) frametime_ms | frametime_us | frametime_s | fps | timestamp_s_cumulative
+  --generic-column <name>  for a CSV from another tool: the column that holds the frame timing
+  --generic-kind <kind>    and what it holds: ${Object.keys(GENERIC_VALUE_KIND_LABELS).join(" | ")}
+                           (both are guessed from the column names when they are clear:
+                           frame_time_ms, FrameTime, a FRAPS "Time (ms)", fps)
   --k <n>                  stutter multiplier (default ${DEFAULT_STUTTER_OPTIONS.kMultiplier})
   --window-radius <n>      rolling-median window radius, frames (default ${DEFAULT_STUTTER_OPTIONS.windowRadius})
   --hitch-ms <n>           hitch threshold, ms (default ${DEFAULT_STUTTER_OPTIONS.hitchThresholdMs})
@@ -166,23 +216,21 @@ function main(): void {
 
   let format: SourceFormat;
   let series;
+  let mapping: GenericMapping | undefined;
+  let guessed: string | undefined;
   try {
     const sample = text.slice(0, 65536);
     requireText(sample);
     format = args.format ?? detectFormat(sample).best.format;
-    let mapping: GenericMapping | undefined;
     if (format === "generic") {
-      if (!args.genericColumn || !args.genericKind) {
-        console.error(
-          color(
-            "Could not auto-detect a known format. Pass --format generic --generic-column <name> --generic-kind <kind>.",
-            RED,
-          ),
-        );
+      const resolved = genericMapping(sample, args);
+      if (typeof resolved === "string") {
+        console.error(color(resolved, RED));
         process.exit(1);
         return;
       }
-      mapping = { valueColumn: args.genericColumn, valueKind: args.genericKind };
+      mapping = resolved.mapping;
+      guessed = resolved.guessed;
     }
     series = requireFrames(
       parseTextSync(text, createParserFor(format, mapping, { stream: args.stream }), basename(args.file)),
@@ -198,12 +246,21 @@ function main(): void {
 
   if (args.json) {
     const streamInfo = streams && streams.length > 1 ? { streams, selectedStream } : {};
-    console.log(JSON.stringify({ file: args.file, format, ...streamInfo, summary: summaryForJson(summary) }, null, 2));
+    const genericInfo = mapping ? { generic: { column: mapping.valueColumn, kind: mapping.valueKind, guessed: guessed !== undefined } } : {};
+    console.log(JSON.stringify({ file: args.file, format, ...genericInfo, ...streamInfo, summary: summaryForJson(summary) }, null, 2));
     return;
   }
 
   console.log(`${color(basename(args.file), BOLD)}  ${color(FORMAT_LABELS[format], DIM)}`);
   console.log(color(`${series.frameCount.toLocaleString("en-US")} ${series.frameCount === 1 ? "frame" : "frames"}, ${fmt(summary.durationSec, 1)}s`, DIM));
+  if (mapping) {
+    const read = `column "${mapping.valueColumn}" read as: ${GENERIC_VALUE_KIND_LABELS[mapping.valueKind]}`;
+    console.log(
+      guessed === undefined
+        ? color(read, DIM)
+        : color(`${read}. A guess (${guessed}); --generic-column and --generic-kind set it.`, AMBER),
+    );
+  }
   if (streams && streams.length > 1) {
     const selected = streams.find((st) => st.id === selectedStream);
     console.log(color(`${streams.length} present streams in this capture; analysing ${selected ? describeStream(selected) : selectedStream}`, AMBER));

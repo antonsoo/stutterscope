@@ -69,7 +69,7 @@ describe("stutterscope summary on unusual files", () => {
       sample.split("\n").map((line, i) => (i === 0 ? line : line.replace(/^(([^,]*,){10})[^,]*/, "$1NA"))).join("\n"),
       /^Could not parse .*all-na\.csv: none of its 5 data rows has a usable frame time \(line 2: missing\/invalid FrameTime, row skipped\)\n$/,
     ],
-    ["minified.json", `{"frames":[${"16.6,".repeat(300_000)}16.6]}`, /^Could not auto-detect a known format\./],
+    ["minified.json", `{"frames":[${"16.6,".repeat(300_000)}16.6]}`, /^This isn't a capture format stutterscope knows, and no single column says it holds frame times\. Columns: \{frames:\[16\.6, 16\.6, .*, and [\d,]+ more\. Pick one with --generic-column /],
   ];
   for (const [name, content, message] of refused) {
     it(`refuses ${name} in one line, with exit code 1`, () => {

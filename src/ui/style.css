@@ -667,6 +667,13 @@ dialog select {
   padding: 8px 10px;
   border-radius: var(--radius);
 }
+dialog .dialog-hint {
+  margin: 12px 0 0;
+  padding-left: 10px;
+  border-left: 2px solid var(--trace-a-dim);
+  color: var(--text);
+  font-size: 12.5px;
+}
 dialog .dialog-actions {
   margin-top: 20px;
   display: flex;

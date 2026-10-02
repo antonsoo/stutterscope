@@ -5,7 +5,12 @@ import type { ResultResponse, NeedsMappingResponse } from "../worker/protocol.ts
 import type { SourceFormat, ParseProgress } from "../core/types.ts";
 import { FORMAT_LABELS, SOURCE_FORMATS } from "../core/types.ts";
 import { DEFAULT_STUTTER_OPTIONS, frameTimeHistogramPair, type MetricsSummary, type StutterOptions } from "../core/metrics.ts";
-import { GENERIC_VALUE_KIND_LABELS, type GenericMapping, type GenericValueKind } from "../core/parsers/generic.ts";
+import {
+  GENERIC_VALUE_KIND_LABELS,
+  type GenericMapping,
+  type GenericValueKind,
+  type MappingGuess,
+} from "../core/parsers/generic.ts";
 import { buildTiles, renderTiles, renderSecondaryTable } from "./statTiles.ts";
 import { fmtBytes, fmtFps, fmtInt, fmtMs, fmtSignedPct, deltaClass, relativeDelta } from "./format.ts";
 import { describeStream } from "../core/streams.ts";
@@ -47,6 +52,7 @@ app.innerHTML = `
     <select id="map-column"></select>
     <label for="map-kind">Column meaning</label>
     <select id="map-kind"></select>
+    <p id="map-hint" class="dialog-hint" hidden></p>
     <div class="dialog-actions">
       <button class="btn" id="map-cancel" type="button">Cancel</button>
       <button class="btn primary" id="map-confirm" type="button">Parse</button>
@@ -165,7 +171,7 @@ async function loadFile(
     if (outcome.kind === "needsMapping") {
       const resp: NeedsMappingResponse = outcome.response;
       pendingMapping = { slot, file, header: resp.header, sniffed: resp.sniffedFormat };
-      openMappingDialog(resp.header);
+      openMappingDialog(resp.header, resp.suggested);
       setStatus("");
       return;
     }
@@ -178,13 +184,21 @@ async function loadFile(
   }
 }
 
-function openMappingDialog(header: string[]): void {
+function openMappingDialog(header: string[], suggested?: MappingGuess): void {
   const columnSelect = document.getElementById("map-column") as HTMLSelectElement;
   const kindSelect = document.getElementById("map-kind") as HTMLSelectElement;
+  const hint = document.getElementById("map-hint") as HTMLParagraphElement;
   columnSelect.innerHTML = header.map((h) => `<option value="${escapeHtml(h)}">${escapeHtml(h)}</option>`).join("");
   kindSelect.innerHTML = Object.entries(GENERIC_VALUE_KIND_LABELS)
     .map(([k, label]) => `<option value="${k}">${escapeHtml(label)}</option>`)
     .join("");
+  if (suggested) {
+    // The header said which column it is: offer that one, and say why, so it can be checked.
+    columnSelect.value = suggested.mapping.valueColumn;
+    kindSelect.value = suggested.mapping.valueKind;
+    hint.textContent = `Filled in from the file: ${suggested.reason}. Change it if that's wrong.`;
+  }
+  hint.hidden = !suggested;
   mappingDialog.showModal();
 }
 

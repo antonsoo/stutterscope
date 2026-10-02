@@ -54,8 +54,11 @@ npx --allow-git=root github:antonsoo/stutterscope summary your-capture.csv
 ## Features
 
 - **Parsers** for PresentMon 1.x and 2.x, NVIDIA FrameView, CapFrameX,
-  MangoHud, and OCAT CSVs, auto-detected from the file's header — plus a
-  generic CSV column-mapping dialog for anything else. Every format is
+  MangoHud, and OCAT CSVs, auto-detected from the file's header. Any other
+  CSV (an engine's frame log, a FRAPS-style `frametimes.csv`, a
+  spreadsheet) is read by the column its header points to (`frame_time_ms`,
+  `FrameTime`, `Time (ms)`, `fps`), with the guess shown and changeable.
+  Every format is
   verified against upstream source/docs or a real captured sample; see
   [`docs/formats.md`](docs/formats.md). A capture that recorded several
   processes (the game plus `dwm.exe`, an overlay, a browser) is split into

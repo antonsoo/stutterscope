@@ -6,7 +6,7 @@
  * structured-cloned.
  */
 import { detectFormat, createParserFor } from "../core/parsers/index.ts";
-import { readHeader as readGenericHeader } from "../core/parsers/generic.ts";
+import { guessMapping, readHeader as readGenericHeader } from "../core/parsers/generic.ts";
 import { decodeText, requireText } from "../core/encoding.ts";
 import { parseFileStreaming, requireFrames } from "../core/stream.ts";
 import { computeMetricsSummary, detectStutter, frameTimeHistogram, percentileCurve, sortedCopy } from "../core/metrics.ts";
@@ -54,7 +54,8 @@ async function handleParse(req: Extract<WorkerRequest, { type: "parse" }>): Prom
       format = detection.best.format;
       if (format === "generic" && !genericMapping) {
         const header = readGenericHeader(sampleText);
-        const response: WorkerResponse = { type: "needsMapping", requestId, slot, header, sniffedFormat: format };
+        const suggested = guessMapping(sampleText) ?? undefined;
+        const response: WorkerResponse = { type: "needsMapping", requestId, slot, header, sniffedFormat: format, suggested };
         ctx.postMessage(response);
         return;
       }

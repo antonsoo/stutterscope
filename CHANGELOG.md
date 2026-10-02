@@ -4,6 +4,30 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.2.3] - 2026-10-02
+
+### Added
+
+- A CSV from a tool stutterscope has no parser for is read by the column its
+  header points to. `stutterscope summary` on the bundled generic sample
+  (`frame_index,timestamp_seconds,frame_time_ms,fps`) used to stop with
+  "Could not auto-detect a known format. Pass --format generic
+  --generic-column <name> --generic-kind <kind>", without saying which
+  columns the file has; the web app opened its column dialog on the first
+  column (`frame_index`) as a frame time in milliseconds. Now a column named
+  as a frame time is taken first, then a clock that only counts up, then a
+  frame rate; the unit comes from the name, or from the size of the values
+  when the name has none. The CLI prints which column it read and why, the
+  dialog opens with the guess filled in and the reason under it, and when
+  two columns fit equally or none does, nothing is guessed and the CLI lists
+  the columns. See [`docs/formats.md`](docs/formats.md#generic-csv).
+- A running clock in milliseconds (`timestamp_ms_cumulative`), the layout of
+  FRAPS-style `frametimes.csv` files (`Frame, Time (ms)`).
+- `--generic-column` on its own: the unit is worked out from the column.
+  A column that isn't in the file is reported with the columns that are.
+- `--json` output names the column and kind read from a generic CSV
+  (`generic: { column, kind, guessed }`).
+
 ## [0.2.2] - 2026-10-01
 
 ### Fixed
