@@ -27,3 +27,26 @@ jobs:
       - run: npm test
 
       - run: npm run build
+
+  minimum-node:
+    name: the built CLI on the oldest supported Node
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      # `npm ci` builds the CLI (the package's `prepare` script).
+      - run: npm ci
+      # `engines.node` in package.json says >=22.6.0. The tests run on the Node that builds;
+      # this runs what was built on the oldest Node that range allows.
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22.6.0"
+      - name: Run the CLI on Node 22.6.0
+        run: |
+          node --version
+          node dist-cli/cli/index.js --version
+          node dist-cli/cli/index.js summary examples/samples/presentmon2-synthetic-demo.csv
+          node dist-cli/cli/index.js summary examples/samples/generic-synthetic-demo.csv
