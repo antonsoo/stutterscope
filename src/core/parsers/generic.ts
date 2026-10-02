@@ -4,7 +4,7 @@
  * per-row value and what it means, and we derive frame times from that.
  */
 import { Float64Builder, Uint8Builder } from "../buffer.ts";
-import { indexHeader, parseFloatOrNull, splitCsvLine, stripBom } from "../csv.ts";
+import { indexHeader, LINE_BREAK, parseFloatOrNull, parseWarnings, SkippedRows, splitCsvLine, stripBom } from "../csv.ts";
 import type { FrameSeries, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync, parseFileStreaming } from "../stream.ts";
 import type { ProgressCallback } from "../types.ts";
@@ -27,7 +27,7 @@ export interface GenericMapping {
 
 /** Reads just the header row, for the column-picker UI. */
 export function readHeader(sampleText: string): string[] {
-  const firstLine = stripBom(sampleText).split(/\r?\n/, 1)[0] ?? "";
+  const firstLine = stripBom(sampleText).split(LINE_BREAK, 1)[0] ?? "";
   return splitCsvLine(firstLine).map((f) => f.trim());
 }
 
@@ -56,7 +56,7 @@ function valueToFrameTimeMs(kind: GenericValueKind, value: number, previousTimes
 
 class GenericParser implements StreamingParser {
   private header: Map<string, number> | null = null;
-  private readonly warnings: string[] = [];
+  private readonly skipped = new SkippedRows();
   private readonly frameTimeMs = new Float64Builder(4096);
   private readonly dropped = new Uint8Builder(4096);
   private hasDropped = false;
@@ -81,21 +81,31 @@ class GenericParser implements StreamingParser {
     const raw = valueIdx === undefined ? undefined : fields[valueIdx];
     const value = parseFloatOrNull(raw);
     if (value === null) {
-      this.warnings.push(`line ${lineIndex + 1}: missing/invalid ${this.mapping.valueColumn}, row skipped`);
+      this.skipped.add(lineIndex, `missing/invalid ${this.mapping.valueColumn}`);
       return;
     }
     if (this.mapping.valueKind === "timestamp_s_cumulative") {
       const ft = valueToFrameTimeMs(this.mapping.valueKind, value, this.previousTimestampSec);
       this.previousTimestampSec = value;
       if (ft === null) return; // first row: nothing to diff against yet
+      if (ft < 0) {
+        // Two logs joined into one file, or a counter that wrapped. The row restarts the clock
+        // (it is the next row's previous timestamp) and carries no frame time of its own.
+        this.skipped.add(lineIndex, `${this.mapping.valueColumn} goes backwards`);
+        return;
+      }
       this.frameTimeMs.push(ft);
     } else {
       const ft = valueToFrameTimeMs(this.mapping.valueKind, value, null);
       if (ft === null) {
-        this.warnings.push(`line ${lineIndex + 1}: non-positive FPS value, row skipped`);
+        this.skipped.add(lineIndex, "non-positive FPS value");
         return;
       }
-      this.frameTimeMs.push(ft);
+      if (ft < 0) {
+        this.skipped.add(lineIndex, `negative ${this.mapping.valueColumn}`);
+        return;
+      }
+      this.frameTimeMs.push(ft === 0 ? 0 : ft);
     }
     if (this.hasDropped) {
       const dIdx = h.get(this.mapping.droppedColumn!);
@@ -112,12 +122,12 @@ class GenericParser implements StreamingParser {
       acc += frameTimeMs[i]! / 1000;
       timeSec[i] = acc;
     }
-    if (frameTimeMs.length === 0) this.warnings.push("no data rows parsed");
     return {
       meta: {
         format: "generic",
         sourceFileName,
-        warnings: this.warnings,
+        warnings: parseWarnings(this.skipped, frameTimeMs.length),
+        skippedRows: this.skipped.count,
         columns: this.columns,
       },
       frameCount: frameTimeMs.length,

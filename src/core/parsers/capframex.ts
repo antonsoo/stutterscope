@@ -24,13 +24,13 @@
  * OCAT CSV — there is no reliable way to tell them apart from content alone,
  * which we say plainly in `docs/formats.md` rather than guess.
  */
+import { LINE_BREAK } from "../csv.ts";
 import type { FrameSeries, ParserOptions, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
 import { PresentFamilyParser } from "./ocat.ts";
 
 export function sniff(sampleText: string): SniffResult {
-  const lines = sampleText.split(/\r?\n/);
-  const firstLine = lines[0] ?? "";
+  const firstLine = sampleText.split(LINE_BREAK, 1)[0] ?? "";
   if (firstLine.startsWith("//")) {
     return { format: "capframex", confidence: 0.95, reason: "leading //key=value metadata block" };
   }

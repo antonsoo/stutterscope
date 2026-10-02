@@ -17,13 +17,13 @@
  * channel); the telemetry columns are ignored.
  */
 import { Float64Builder, Uint8Builder } from "../buffer.ts";
-import { indexHeader, parseFloatOrNull, splitCsvLine } from "../csv.ts";
+import { indexHeader, LINE_BREAK, parseFloatOrNull, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
 import type { FrameSeries, ParserOptions, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
 import { cumulativeSeconds, StreamTracker } from "../streams.ts";
 
 export function sniff(sampleText: string): SniffResult {
-  const firstLine = sampleText.split(/\r?\n/, 1)[0] ?? "";
+  const firstLine = sampleText.split(LINE_BREAK, 1)[0] ?? "";
   const hasFrameViewMarkers =
     firstLine.includes("MsBetweenPresents") &&
     (firstLine.includes("GPU0Util(%)") || firstLine.includes("GPU0Clk(MHz)") || firstLine.includes("CPUUtil(%)"));
@@ -36,7 +36,7 @@ export function sniff(sampleText: string): SniffResult {
 class FrameViewParser implements StreamingParser {
   private header: Map<string, number> | null = null;
   private application: string | undefined;
-  private readonly warnings: string[] = [];
+  private readonly skipped = new SkippedRows();
   private readonly frameTimeMs = new Float64Builder(4096);
   private readonly dropped = new Uint8Builder(4096);
   private readonly displayLatencyMs = new Float64Builder(4096);
@@ -63,9 +63,9 @@ class FrameViewParser implements StreamingParser {
       const idx = h.get(name);
       return idx === undefined ? undefined : fields[idx];
     };
-    const ft = parseFloatOrNull(get("MsBetweenPresents"));
+    const ft = parseFrameTimeOrNull(get("MsBetweenPresents"));
     if (ft === null) {
-      this.warnings.push(`line ${lineIndex + 1}: missing/invalid MsBetweenPresents, row skipped`);
+      this.skipped.add(lineIndex, "missing/invalid MsBetweenPresents");
       return;
     }
     this.frameTimeMs.push(ft);
@@ -86,13 +86,13 @@ class FrameViewParser implements StreamingParser {
       },
       this.options.stream,
     );
-    if (frameTimeMs.length === 0) this.warnings.push("no data rows parsed");
     return {
       meta: {
         format: "frameview",
         sourceFileName,
         application: selected?.application ?? this.application,
-        warnings: this.warnings,
+        warnings: parseWarnings(this.skipped, frameTimeMs.length),
+        skippedRows: this.skipped.count,
         columns: this.columns,
         streams,
         selectedStream: selected?.id,

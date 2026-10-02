@@ -49,7 +49,7 @@ function seriesFrom(frameTimeMs: Float64Array): FrameSeries {
     timeSec[i] = acc;
   }
   return {
-    meta: { format: "generic", sourceFileName: "oracle.csv", warnings: [], columns: [] },
+    meta: { format: "generic", sourceFileName: "oracle.csv", warnings: [], skippedRows: 0, columns: [] },
     frameCount: frameTimeMs.length,
     frameTimeMs,
     timeSec,

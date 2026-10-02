@@ -245,13 +245,41 @@ For every format above, either:
 Where neither was available (FrameView's exact schema per GPU/driver
 combination), that gap is stated rather than filled with a guess.
 
-## One encoding detail every parser shares
+## What every parser shares
 
-Every real capture fixture pulled from the sources above (PresentMon's own
-gold-test CSVs included) starts with a UTF-8 byte-order mark. Left in
-place, it glues onto the header's first column name and breaks every
-`header.get("Application")`-style lookup, silently turning "every row
-skipped" into the failure mode instead of a clean parse error. `LineScanner`
-(`src/core/csv.ts`) strips it once, from the very first chunk, before any
-column name is ever read — this is shared by every parser in this file
-rather than reimplemented per format.
+All of this lives in `src/core/csv.ts`, `src/core/encoding.ts` and
+`src/core/stream.ts`, once, not per format.
+
+**Byte-order mark.** Every real capture fixture pulled from the sources
+above (PresentMon's own gold-test CSVs included) starts with a UTF-8
+byte-order mark. Left in place, it glues onto the header's first column
+name and breaks every `header.get("Application")`-style lookup, silently
+turning "every row skipped" into the failure mode instead of a clean parse
+error. It is stripped before any column name is read.
+
+**UTF-16.** The tools write UTF-8, but `PresentMon ... > run.csv` in
+Windows PowerShell saves UTF-16LE, and so does a spreadsheet's "Unicode
+text". A file that starts with a UTF-16 byte-order mark (either byte order)
+is decoded as UTF-16. Without the mark it is read as UTF-8, where its NUL
+characters get it refused as "not a text file".
+
+**Line endings.** A line ends at LF, CRLF or a CR on its own. A line longer
+than 1,048,576 characters is refused: no capture has one, and a megabyte
+without a line break is a minified JSON file or a binary one.
+
+**Rows that are skipped.** A row is left out, and counted, when its frame
+time is missing, is not a number, or is negative (counted, a negative frame
+time would subtract from the capture's duration and raise its average FPS).
+In a generic CSV of cumulative timestamps, a timestamp lower than the one
+before it is skipped the same way and restarts the clock, which is what two
+logs joined into one file look like. A frame time of zero is kept: a clock
+coarser than the frame rate produces it honestly, and those frames count
+toward the average. The web app and the CLI report how many rows were
+skipped. The parser keeps a message with the line number for the first 50
+(`meta.warnings`), and the web app lists the first 20 of those.
+
+**Files that are refused.** With the reason, in the web app's error box and
+on the CLI's stderr with exit code 1: an empty file, a binary one, a header
+with no data rows, and a capture none of whose rows has a usable frame
+time (the message quotes the first skipped row, which is usually enough to
+see that the wrong column or format was picked).

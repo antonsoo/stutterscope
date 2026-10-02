@@ -7,6 +7,7 @@ import { join } from "node:path";
 import { detectFormat, createParserFor } from "../../src/core/parsers/index.ts";
 import { parseTextSync } from "../../src/core/stream.ts";
 import { computeMetricsSummary, summaryForJson } from "../../src/core/metrics.ts";
+import { MAX_KEPT_WARNINGS } from "../../src/core/csv.ts";
 import { ParseError, SOURCE_FORMATS } from "../../src/core/types.ts";
 
 function rng(seed: number): () => number {
@@ -36,7 +37,8 @@ function mutate(text: string, r: () => number): string {
     } else if (op < 0.9) lines[i] = (lines[i] ?? "") + ",extra,,";
     else lines = lines.map((l) => (r() < 0.3 ? l.replace(/,/g, ";") : l));
   }
-  return lines.join(r() < 0.5 ? "\n" : "\r\n");
+  const ending = r();
+  return lines.join(ending < 0.4 ? "\n" : ending < 0.8 ? "\r\n" : "\r");
 }
 
 it("fuzz: mutated captures only ever raise ParseError", { timeout: 300_000 }, () => {
@@ -54,10 +56,20 @@ it("fuzz: mutated captures only ever raise ParseError", { timeout: 300_000 }, ()
     try {
       const detected = detectFormat(text.slice(0, 65536)).best.format;
       const format = r() < 0.15 ? SOURCE_FORMATS[Math.floor(r() * SOURCE_FORMATS.length)]! : detected;
-      const mapping = format === "generic" ? { valueColumn: (text.split(/\r?\n/)[0] ?? "").split(",")[Math.floor(r() * 3)] ?? "x", valueKind: "frametime_ms" as const } : undefined;
+      const mapping = format === "generic" ? { valueColumn: (text.split(/\r\n|\n|\r/)[0] ?? "").split(",")[Math.floor(r() * 3)] ?? "x", valueKind: "frametime_ms" as const } : undefined;
       const series = parseTextSync(text, createParserFor(format, mapping, r() < 0.2 ? { stream: "dwm.exe" } : {}), "f.csv");
       const summary = computeMetricsSummary(series);
       JSON.stringify(summaryForJson(summary));
+      // Whatever the cells said, time only runs forwards and the skipped rows stay a short list.
+      let previous = 0;
+      for (let i = 0; i < series.frameCount; i++) {
+        if (!(series.frameTimeMs[i]! >= 0) || !(series.timeSec[i]! >= previous)) throw new Error(`frame ${i}: ${series.frameTimeMs[i]} ms at ${series.timeSec[i]} s`);
+        previous = series.timeSec[i]!;
+      }
+      if (series.meta.warnings.length > MAX_KEPT_WARNINGS + 1) throw new Error(`${series.meta.warnings.length} warnings kept`);
+      if (series.meta.skippedRows < series.meta.warnings.length - 1) throw new Error("fewer skipped rows than messages about them");
+      const { stutterTimeFraction, hitchTimeFraction } = summary.stutter;
+      if (!(stutterTimeFraction >= 0 && stutterTimeFraction <= 1 && hitchTimeFraction >= 0 && hitchTimeFraction <= 1)) throw new Error(`stutter ${stutterTimeFraction}, hitch ${hitchTimeFraction}`);
       parsed++;
     } catch (err) {
       if (err instanceof ParseError) rejected++;

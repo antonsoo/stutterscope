@@ -4,6 +4,37 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.2.2] - 2026-10-01
+
+### Fixed
+
+- A capture with CR-only line endings parsed as a header and no rows:
+  "0 frames", every metric a dash, exit code 0. Lines now end at LF, CRLF or
+  a lone CR, in the parsers and in format detection.
+- A UTF-16 capture (what `>` writes in Windows PowerShell) was read as
+  UTF-8: the CLI could not detect its format, and the web app showed
+  0 frames. A file that starts with a UTF-16 byte-order mark is now decoded
+  as UTF-16.
+- A capture with no usable frames got a full report of dashes: a header
+  with no rows, or every frame time missing because the wrong format or
+  column was chosen. The CLI exited 0. Both now refuse it with the reason,
+  and the CLI exits 1. An empty file and a binary one are refused before
+  format detection; the web app used to open its column picker on them.
+- A row with a negative frame time was counted: it subtracted from the
+  capture's duration and raised the average FPS (four 16.6 ms frames and
+  one of -5 ms read 81.4 fps, not 60.2). Such a row is now skipped like any
+  other unusable row, and in a generic CSV of cumulative timestamps a
+  timestamp that goes backwards is skipped and restarts the clock. A frame
+  time of zero is still kept.
+- Every skipped row was kept as a message. A 600,000-row capture read with
+  the wrong column held 600,000 of them, and two million took 204 MB. The
+  first 50 are kept and the rest counted (14 MB for the same two million).
+- "N row(s) skipped while parsing" in the CLI counted the "no data rows"
+  note as a row. It counts rows, and says "1 row".
+- A file with no line breaks was buffered whole while looking for one. A
+  line longer than 1,048,576 characters is now refused, and a long
+  unterminated line is no longer re-joined on every chunk read.
+
 ## [0.2.1] - 2026-10-01
 
 ### Added

@@ -26,7 +26,7 @@ function seriesFromFrameTimes(frameTimeMs: number[], extra?: Partial<FrameSeries
     timeSec[i] = acc;
   }
   return {
-    meta: { format: "generic", sourceFileName: "hand.csv", warnings: [], columns: [] },
+    meta: { format: "generic", sourceFileName: "hand.csv", warnings: [], skippedRows: 0, columns: [] },
     frameCount: ft.length,
     frameTimeMs: ft,
     timeSec,

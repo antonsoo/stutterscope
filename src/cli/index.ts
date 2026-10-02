@@ -7,7 +7,8 @@
 import { readFileSync } from "node:fs";
 import { basename } from "node:path";
 import { detectFormat, createParserFor } from "../core/parsers/index.ts";
-import { parseTextSync } from "../core/stream.ts";
+import { decodeText, requireText } from "../core/encoding.ts";
+import { parseTextSync, requireFrames } from "../core/stream.ts";
 import { computeMetricsSummary, DEFAULT_STUTTER_OPTIONS, summaryForJson, type StutterOptions } from "../core/metrics.ts";
 import { FORMAT_LABELS, ParseError, SOURCE_FORMATS, type SourceFormat } from "../core/types.ts";
 import { describeStream } from "../core/streams.ts";
@@ -156,32 +157,36 @@ function main(): void {
 
   let text: string;
   try {
-    text = readFileSync(args.file, "utf-8");
+    text = decodeText(readFileSync(args.file));
   } catch (err) {
     console.error(color(`Could not read ${args.file}: ${err instanceof Error ? err.message : String(err)}`, RED));
     process.exit(1);
     return;
   }
 
-  const format = args.format ?? detectFormat(text.slice(0, 65536)).best.format;
-  let mapping: GenericMapping | undefined;
-  if (format === "generic") {
-    if (!args.genericColumn || !args.genericKind) {
-      console.error(
-        color(
-          "Could not auto-detect a known format. Pass --format generic --generic-column <name> --generic-kind <kind>.",
-          RED,
-        ),
-      );
-      process.exit(1);
-      return;
-    }
-    mapping = { valueColumn: args.genericColumn, valueKind: args.genericKind };
-  }
-
+  let format: SourceFormat;
   let series;
   try {
-    series = parseTextSync(text, createParserFor(format, mapping, { stream: args.stream }), basename(args.file));
+    const sample = text.slice(0, 65536);
+    requireText(sample);
+    format = args.format ?? detectFormat(sample).best.format;
+    let mapping: GenericMapping | undefined;
+    if (format === "generic") {
+      if (!args.genericColumn || !args.genericKind) {
+        console.error(
+          color(
+            "Could not auto-detect a known format. Pass --format generic --generic-column <name> --generic-kind <kind>.",
+            RED,
+          ),
+        );
+        process.exit(1);
+        return;
+      }
+      mapping = { valueColumn: args.genericColumn, valueKind: args.genericKind };
+    }
+    series = requireFrames(
+      parseTextSync(text, createParserFor(format, mapping, { stream: args.stream }), basename(args.file)),
+    );
   } catch (err) {
     if (!(err instanceof ParseError)) throw err;
     console.error(color(`Could not parse ${args.file}: ${err.message}`, RED));
@@ -206,8 +211,9 @@ function main(): void {
       if (st.id !== selectedStream) console.log(color(`  also: ${describeStream(st)}   (--stream ${st.id})`, DIM));
     }
   }
-  if (series.meta.warnings.length > 0) {
-    console.log(color(`${series.meta.warnings.length} row(s) skipped while parsing`, AMBER));
+  const { skippedRows } = series.meta;
+  if (skippedRows > 0) {
+    console.log(color(`${skippedRows.toLocaleString("en-US")} ${skippedRows === 1 ? "row" : "rows"} skipped while parsing`, AMBER));
   }
   console.log();
   console.log(`  Average FPS            ${color(fmt(summary.averageFps), GREEN)}`);

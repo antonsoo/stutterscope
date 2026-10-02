@@ -18,13 +18,13 @@
  * which only appear once and are ignored here.
  */
 import { Float64Builder, Uint8Builder } from "../buffer.ts";
-import { indexHeader, parseFloatOrNull, splitCsvLine } from "../csv.ts";
+import { indexHeader, LINE_BREAK, parseFloatOrNull, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
 import type { FrameSeries, ParserOptions, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
 import { cumulativeSeconds, StreamTracker } from "../streams.ts";
 
 export function sniff(sampleText: string): SniffResult {
-  const firstLine = sampleText.split(/\r?\n/, 1)[0] ?? "";
+  const firstLine = sampleText.split(LINE_BREAK, 1)[0] ?? "";
   const isPresentFamily = firstLine.includes("MsBetweenPresents") && firstLine.includes("Application");
   const looksLikeFrameView = firstLine.includes("GPU0Util") || firstLine.includes("CPUUtil(%)");
   if (isPresentFamily && !looksLikeFrameView) {
@@ -37,7 +37,7 @@ export function sniff(sampleText: string): SniffResult {
 export class PresentFamilyParser implements StreamingParser {
   protected header: Map<string, number> | null = null;
   protected application: string | undefined;
-  protected readonly warnings: string[] = [];
+  protected readonly skipped = new SkippedRows();
   protected readonly frameTimeMs = new Float64Builder(4096);
   protected readonly dropped = new Uint8Builder(4096);
   protected columns: string[] = [];
@@ -63,9 +63,9 @@ export class PresentFamilyParser implements StreamingParser {
       const idx = h.get(name);
       return idx === undefined ? undefined : fields[idx];
     };
-    const ft = parseFloatOrNull(get("MsBetweenPresents"));
+    const ft = parseFrameTimeOrNull(get("MsBetweenPresents"));
     if (ft === null) {
-      this.warnings.push(`line ${lineIndex + 1}: missing/invalid MsBetweenPresents, row skipped`);
+      this.skipped.add(lineIndex, "missing/invalid MsBetweenPresents");
       return;
     }
     this.frameTimeMs.push(ft);
@@ -79,13 +79,13 @@ export class PresentFamilyParser implements StreamingParser {
       { frameTimeMs: this.frameTimeMs.toArray(), channels: { dropped: this.dropped.toArray() } },
       this.options.stream,
     );
-    if (frameTimeMs.length === 0) this.warnings.push("no data rows parsed");
     return {
       meta: {
         format: this.format,
         sourceFileName,
         application: selected?.application ?? this.application,
-        warnings: this.warnings,
+        warnings: parseWarnings(this.skipped, frameTimeMs.length),
+        skippedRows: this.skipped.count,
         columns: this.columns,
         streams,
         selectedStream: selected?.id,

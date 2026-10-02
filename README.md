@@ -60,6 +60,11 @@ npx --allow-git=root github:antonsoo/stutterscope summary your-capture.csv
   [`docs/formats.md`](docs/formats.md). A capture that recorded several
   processes (the game plus `dwm.exe`, an overlay, a browser) is split into
   per-process streams, and one is analysed, with a picker for the others.
+  A capture that was re-saved on the way still reads: UTF-16 with a
+  byte-order mark (what `>` writes in Windows PowerShell) and LF, CRLF or
+  CR-only line endings. A file with no frames in it (empty, a header with
+  no rows, a workbook, every frame time missing) is refused with the
+  reason, not answered with a report of dashes.
 - **Metrics**, each with a documented formula in
   [`docs/metrics.md`](docs/metrics.md): average FPS computed correctly
   (frames ÷ total time, not a mean of per-frame FPS), frame-time
@@ -142,8 +147,8 @@ numeric channel accumulates into a growable typed-array builder
 (`src/core/buffer.ts`) that doubles capacity like a `Vec`, so a 430k-row
 capture ends up as a handful of `Float64Array`s, not 430k small objects.
 Measured on this machine (14 vCPU WSL2 Linux, 48 GB RAM): a synthetic
-430,000-row / 66.7 MB PresentMon 2.x CSV parses in **856 ms** and computes
-its full metrics summary in another **132 ms** (`tests/core/performance.test.ts`).
+430,000-row / 66.7 MB PresentMon 2.x CSV parses in **574 ms** and computes
+its full metrics summary in another **108 ms** (`tests/core/performance.test.ts`).
 
 **Off the main thread.** `src/worker/parse.worker.ts` owns parsing and
 metrics; the UI (`src/ui/`) only ever talks to it through a small
@@ -157,7 +162,7 @@ charts use [uPlot](https://github.com/leeoniya/uPlot), which renders
 directly from typed arrays on a single canvas — the reason this stays
 smooth at hundreds of thousands of points without any bundled charting
 framework. The histogram is a ~30-line canvas draw. Total JS bundle:
-**76 KB (30.6 KB gzipped)** for the app plus a 17 KB worker chunk — see
+**83 kB (33 kB gzipped)** for the app plus a 22 kB worker chunk — see
 `npm run build`'s output.
 
 **Metrics.** Every formula is written out in

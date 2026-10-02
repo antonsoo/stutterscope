@@ -312,11 +312,13 @@ const MAX_LISTED_WARNINGS = 20;
 
 /** Skipped rows, listed (the first few) rather than just counted, so a bad column is diagnosable. */
 function warningsNote(run: RunState): string {
-  const warnings = run.response.series.meta.warnings;
-  if (warnings.length === 0) return "";
-  const listed = warnings.slice(0, MAX_LISTED_WARNINGS).map(escapeHtml).join("\n");
-  const more = warnings.length > MAX_LISTED_WARNINGS ? `\n… and ${fmtInt(warnings.length - MAX_LISTED_WARNINGS)} more` : "";
-  return `<details class="notes warn-note"><summary>${fmtInt(warnings.length)} parse warning(s): rows with bad or missing values were skipped</summary><pre>${listed}${more}</pre></details>`;
+  const { warnings, skippedRows } = run.response.series.meta;
+  if (skippedRows === 0) return "";
+  // The parser describes the first skipped rows and counts the rest.
+  const listed = warnings.slice(0, MAX_LISTED_WARNINGS);
+  const more = skippedRows > listed.length ? `\n… and ${fmtInt(skippedRows - listed.length)} more` : "";
+  const rows = skippedRows === 1 ? "1 row was skipped" : `${fmtInt(skippedRows)} rows were skipped`;
+  return `<details class="notes warn-note"><summary>${rows}: bad or missing frame time</summary><pre>${listed.map(escapeHtml).join("\n")}${more}</pre></details>`;
 }
 
 /**

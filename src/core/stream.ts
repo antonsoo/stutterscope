@@ -1,5 +1,6 @@
 import { LineScanner } from "./csv.ts";
-import type { ParseProgress, ProgressCallback, StreamingParser, FrameSeries } from "./types.ts";
+import { detectEncoding } from "./encoding.ts";
+import { ParseError, type ParseProgress, type ProgressCallback, type StreamingParser, type FrameSeries } from "./types.ts";
 
 /**
  * Drives a `StreamingParser` from a `Blob`/`File` without ever materializing
@@ -19,7 +20,8 @@ export async function parseFileStreaming(
 ): Promise<FrameSeries> {
   const totalBytes = file.size;
   const reader = file.stream().getReader();
-  const decoder = new TextDecoder("utf-8");
+  // The encoding shows in the file's first two bytes, which may not be the first chunk's.
+  const decoder = new TextDecoder(detectEncoding(new Uint8Array(await file.slice(0, 2).arrayBuffer())));
   const scanner = new LineScanner();
 
   let bytesRead = 0;
@@ -69,6 +71,24 @@ export async function parseFileStreaming(
   report(true);
 
   return parser.finish(fileName);
+}
+
+/**
+ * Refuses a capture that parsed to no frames at all, saying why. Every
+ * metric of an empty series is undefined, so the CLI and the web app would
+ * otherwise answer a header-only file, or one read with the wrong column,
+ * with a full report of dashes.
+ */
+export function requireFrames(series: FrameSeries): FrameSeries {
+  if (series.frameCount > 0) return series;
+  const { columns, skippedRows, warnings } = series.meta;
+  if (columns.length === 0) throw new ParseError("no header row found");
+  if (skippedRows === 0) throw new ParseError("the file has a header and no data rows");
+  const rows =
+    skippedRows === 1
+      ? "its one data row has no usable frame time"
+      : `none of its ${skippedRows.toLocaleString("en-US")} data rows has a usable frame time`;
+  throw new ParseError(`${rows} (${warnings[0]})`);
 }
 
 /** Synchronous variant over an in-memory string, used by tests and the CLI. */

@@ -22,7 +22,7 @@
  * that metric.
  */
 import { Float64Builder } from "../buffer.ts";
-import { indexHeader, parseFloatOrNull, splitCsvLine } from "../csv.ts";
+import { indexHeader, LINE_BREAK, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
 import type { FrameSeries, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
 
@@ -33,7 +33,7 @@ function looksLikeFrameHeader(fields: string[]): boolean {
 }
 
 export function sniff(sampleText: string): SniffResult {
-  const lines = sampleText.split(/\r?\n/).slice(0, 10);
+  const lines = sampleText.split(LINE_BREAK, 10);
   for (const line of lines) {
     if (looksLikeFrameHeader(splitCsvLine(line))) {
       return { format: "mangohud", confidence: 0.95, reason: "found fps,frametime,cpu_load,... header" };
@@ -44,7 +44,7 @@ export function sniff(sampleText: string): SniffResult {
 
 class MangoHudParser implements StreamingParser {
   private header: Map<string, number> | null = null;
-  private readonly warnings: string[] = [];
+  private readonly skipped = new SkippedRows();
   private readonly frameTimeMs = new Float64Builder(4096);
   private columns: string[] = [];
 
@@ -57,9 +57,9 @@ class MangoHudParser implements StreamingParser {
       return;
     }
     const idx = this.header.get("frametime");
-    const ft = idx === undefined ? null : parseFloatOrNull(fields[idx]);
+    const ft = idx === undefined ? null : parseFrameTimeOrNull(fields[idx]);
     if (ft === null) {
-      this.warnings.push(`line ${lineIndex + 1}: missing/invalid frametime, row skipped`);
+      this.skipped.add(lineIndex, "missing/invalid frametime");
       return;
     }
     this.frameTimeMs.push(ft);
@@ -73,12 +73,12 @@ class MangoHudParser implements StreamingParser {
       acc += frameTimeMs[i]! / 1000;
       timeSec[i] = acc;
     }
-    if (frameTimeMs.length === 0) this.warnings.push("no data rows parsed");
     return {
       meta: {
         format: "mangohud",
         sourceFileName,
-        warnings: this.warnings,
+        warnings: parseWarnings(this.skipped, frameTimeMs.length),
+        skippedRows: this.skipped.count,
         columns: this.columns,
       },
       frameCount: frameTimeMs.length,

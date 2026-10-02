@@ -62,8 +62,14 @@ export interface FrameSeriesMeta {
   sourceFileName: string;
   /** Process/application name, if the capture recorded one. */
   application?: string;
-  /** Non-fatal issues encountered while parsing (bad rows skipped, etc.). */
+  /**
+   * Non-fatal issues encountered while parsing: one message for each of the
+   * first skipped rows (`MAX_KEPT_WARNINGS` of them), and a note when no row
+   * was usable at all.
+   */
   warnings: string[];
+  /** How many data rows were left out because their frame time was missing or unusable. */
+  skippedRows: number;
   /** Column names actually present in the source file, for diagnostics. */
   columns: string[];
   /** Every present stream in the capture, busiest first (present-hook formats only). */

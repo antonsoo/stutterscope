@@ -7,7 +7,8 @@
  */
 import { detectFormat, createParserFor } from "../core/parsers/index.ts";
 import { readHeader as readGenericHeader } from "../core/parsers/generic.ts";
-import { parseFileStreaming } from "../core/stream.ts";
+import { decodeText, requireText } from "../core/encoding.ts";
+import { parseFileStreaming, requireFrames } from "../core/stream.ts";
 import { computeMetricsSummary, detectStutter, frameTimeHistogram, percentileCurve, sortedCopy } from "../core/metrics.ts";
 import { DEFAULT_STUTTER_OPTIONS } from "../core/metrics.ts";
 import type { FrameSeries, SourceFormat } from "../core/types.ts";
@@ -43,12 +44,12 @@ function chartTransferables(chart: ChartData): Transferable[] {
 async function handleParse(req: Extract<WorkerRequest, { type: "parse" }>): Promise<void> {
   const { requestId, slot, file, formatOverride, genericMapping, stream, stutterOptions } = req;
   try {
+    const sampleText = decodeText(new Uint8Array(await file.slice(0, 65536).arrayBuffer()));
+    requireText(sampleText);
     let format: SourceFormat;
     if (formatOverride) {
       format = formatOverride;
     } else {
-      const sampleBlob = file.slice(0, 65536);
-      const sampleText = await sampleBlob.text();
       const detection = detectFormat(sampleText);
       format = detection.best.format;
       if (format === "generic" && !genericMapping) {
@@ -60,10 +61,12 @@ async function handleParse(req: Extract<WorkerRequest, { type: "parse" }>): Prom
     }
 
     const parser = createParserFor(format, genericMapping, { stream });
-    const series = await parseFileStreaming(file, parser, file.name, (progress) => {
-      const response: WorkerResponse = { type: "progress", requestId, slot, progress };
-      ctx.postMessage(response);
-    });
+    const series = requireFrames(
+      await parseFileStreaming(file, parser, file.name, (progress) => {
+        const response: WorkerResponse = { type: "progress", requestId, slot, progress };
+        ctx.postMessage(response);
+      }),
+    );
 
     seriesCache.set(slot, series);
     const summary = computeMetricsSummary(series, stutterOptions);
