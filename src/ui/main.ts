@@ -1,3 +1,4 @@
+import "./fonts/fonts.css";
 import "uplot/dist/uPlot.min.css";
 import "./style.css";
 import { ParseClient } from "./workerClient.ts";

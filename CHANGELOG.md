@@ -35,6 +35,15 @@ this project adheres to [Semantic Versioning](https://semver.org/).
   (`119.9 s`); they are `7,969` everywhere, as in the CLI. CI now runs the
   tests a second time in a comma-decimal locale.
 
+### Changed
+
+- The page's fonts are served by the page itself. They came from Google Fonts,
+  the one request the page made to another origin; the same font files (every
+  subset, as Google serves them to a current browser) are now in
+  `src/ui/fonts/`, with their SIL Open Font License texts. Nothing looks
+  different: screenshots before and after match. The page now loads with
+  every other host blocked.
+
 ## [0.2.2] - 2026-10-01
 
 ### Fixed
