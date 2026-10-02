@@ -88,7 +88,8 @@ npx --allow-git=root github:antonsoo/stutterscope summary your-capture.csv
   rather than with it.
 - **Sharing**: export a PNG report card, a Markdown table (paste into a
   forum post or PR description), or a full JSON summary. Nothing is
-  uploaded at any point.
+  uploaded at any point, and the page's Content-Security-Policy
+  (`connect-src 'self'`) has the browser enforce that.
 - **Fast on real-sized captures**: parsing streams off the file in a Web
   Worker with a hand-rolled incremental line scanner (no `split()` on a
   430k-line file, no per-row object allocation) — see
