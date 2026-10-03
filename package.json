@@ -1,6 +1,6 @@
 {
   "name": "@antonsoloviev/stutterscope",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Frame-time analysis for PC gamers and hardware reviewers. Drop in a capture, see the stutter.",
   "author": "Anton Soloviev",
   "license": "MIT",
@@ -45,9 +45,6 @@
     "samples": "node scripts/generate-samples.ts",
     "cli": "node src/cli/index.ts"
   },
-  "dependencies": {
-    "uplot": "^1.6.32"
-  },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/node": "^26.6.2",
@@ -55,6 +52,7 @@
     "globals": "^17.12.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.70.1",
+    "uplot": "^1.6.32",
     "vite": "^8.3.0",
     "vitest": "^5.0.1"
   }

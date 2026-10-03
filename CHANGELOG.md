@@ -4,6 +4,15 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.2.4] - 2026-10-03
+
+### Changed
+
+- The npm package has no dependencies. It listed uPlot, the chart library the
+  web page bundles, so `npx @antonsoloviev/stutterscope` downloaded 560 KB
+  the CLI never loads. uPlot is a development dependency now; the page is
+  built the same way.
+
 ## [0.2.3] - 2026-10-02
 
 ### Added
