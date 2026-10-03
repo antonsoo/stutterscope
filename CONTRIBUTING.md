@@ -11,7 +11,14 @@ npm test          # vitest
 npm run typecheck # tsc --noEmit
 npm run lint      # eslint
 npm run build     # production build to dist/
+npm run test:browser # production build + Chromium/Firefox workflows
 ```
+
+For browser checks, install the engines once with
+`npx playwright install chromium firefox` (CI also uses `--with-deps`).
+`tests/browser/` covers cancellation, settings, error recovery, exports,
+chart cleanup and resizing, and accessibility. Run these checks when changing
+the UI or worker protocol. Run CI's checks locally when Actions is unavailable.
 
 ## Adding a parser
 

@@ -6,7 +6,7 @@ export default tseslint.config(
   {
     // bin/ is a two-line loader shim (see its own comment); everything with
     // real logic lives in src/cli, which is linted normally.
-    ignores: ["dist/**", "node_modules/**", "coverage/**", "examples/**", "docs/assets/**", "bin/**"],
+    ignores: ["dist/**", "dist-cli/**", "node_modules/**", "coverage/**", "examples/**", "docs/assets/**", "bin/**", "test-results/**", "playwright-report/**"],
   },
   js.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,

@@ -40,13 +40,16 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:browser": "npm run build && playwright test",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint .",
     "samples": "node scripts/generate-samples.ts",
     "cli": "node src/cli/index.ts"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.2",
     "eslint": "^10.11.0",
     "globals": "^17.12.0",

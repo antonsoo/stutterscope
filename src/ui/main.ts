@@ -1,8 +1,8 @@
 import "./fonts/fonts.css";
 import "uplot/dist/uPlot.min.css";
 import "./style.css";
-import { ParseClient } from "./workerClient.ts";
-import type { ResultResponse, NeedsMappingResponse } from "../worker/protocol.ts";
+import { ParseClient, type ParseSource, type Slot } from "./workerClient.ts";
+import type { ResultResponse } from "../worker/protocol.ts";
 import type { SourceFormat, ParseProgress } from "../core/types.ts";
 import { FORMAT_LABELS, SOURCE_FORMATS } from "../core/types.ts";
 import { DEFAULT_STUTTER_OPTIONS, frameTimeHistogramPair, type MetricsSummary, type StutterOptions } from "../core/metrics.ts";
@@ -17,18 +17,28 @@ import { fmtBytes, fmtFps, fmtInt, fmtMs, fmtSignedPct, deltaClass, relativeDelt
 import { describeStream } from "../core/streams.ts";
 import { createFpsChart, createPercentileChart, createTraceChart, drawHistogram, drawHistogramPair, type TraceChartHandle, type TraceChartControls } from "./charts.ts";
 import { exportJson, exportMarkdown, exportReportCard } from "./share.ts";
+import { readStutterOptions } from "./settings.ts";
 
 interface RunState {
   response: ResultResponse;
-  traceHandle?: TraceChartControls;
-  fpsHandle?: TraceChartHandle;
   file: File;
+  source: ParseSource;
+  stutterOptions: StutterOptions;
 }
+
+interface ImportRequest { slot: Slot; version: number; controller: AbortController }
 
 const client = new ParseClient();
 const runs: { a?: RunState; b?: RunState } = {};
 let stutterOptions: StutterOptions = { ...DEFAULT_STUTTER_OPTIONS };
-let pendingMapping: { slot: "a" | "b"; file: File; header: string[]; sniffed: SourceFormat } | null = null;
+let pendingMapping: { request: ImportRequest; file: File } | null = null;
+const versions: Record<Slot, number> = { a: 0, b: 0 };
+const imports = new Map<Slot, ImportRequest>();
+const retryActions: Partial<Record<Slot, () => void>> = {};
+let settingsGeneration = 0;
+let applyingSettings = false;
+let settingsDraft = { k: String(stutterOptions.kMultiplier), radius: String(stutterOptions.windowRadius), hitch: String(stutterOptions.hitchThresholdMs) };
+const charts: { trace?: TraceChartControls; fps?: TraceChartHandle; percentile?: TraceChartHandle; histogram?: ResizeObserver } = {};
 
 const app = document.getElementById("app")!;
 app.innerHTML = `
@@ -97,11 +107,12 @@ function renderDropzone(): void {
   // itself isn't a focusable control (a large role="button" wrapping other
   // real buttons is an ARIA anti-pattern: nested interactive controls).
   dz.addEventListener("click", (e) => {
-    if ((e.target as HTMLElement).closest(".sample-link, #choose-file-btn")) return;
+    if ((e.target as HTMLElement).closest(".sample-link, #choose-file-btn, #file-input")) return;
     fileInput.click();
   });
   fileInput.addEventListener("change", () => {
     const file = fileInput.files?.[0];
+    fileInput.value = "";
     if (file) void loadFile("a", file);
   });
   dz.addEventListener("dragover", (e) => {
@@ -122,22 +133,94 @@ function renderDropzone(): void {
       void loadSample(btn.dataset["format"] as SourceFormat);
     });
   });
+  document.getElementById("status-area")!.addEventListener("click", (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>("button[data-slot]");
+    if (!button) return;
+    const slot = button.dataset.slot as Slot;
+    if (button.dataset.action === "cancel") cancelImport(slot);
+    else retryActions[slot]?.();
+  });
 }
 
 async function loadSample(format: SourceFormat): Promise<void> {
-  const manifestUrl = `${import.meta.env.BASE_URL}samples/manifest.json`;
-  const manifest = (await (await fetch(manifestUrl)).json()) as Array<{ file: string; format: string }>;
-  const entry = manifest.find((m) => m.format === format);
-  if (!entry) return;
-  const res = await fetch(`${import.meta.env.BASE_URL}samples/${entry.file}`);
-  const blob = await res.blob();
-  const file = new File([blob], entry.file, { type: "text/csv" });
-  await loadFile("a", file);
+  const request = beginImport("a");
+  setStatus(`<div class="status-line" role="status">Loading the ${FORMAT_LABELS[format]} sample… ${cancelButton("a")}</div>`);
+  try {
+    const manifestUrl = `${import.meta.env.BASE_URL}samples/manifest.json`;
+    const manifestResponse = await fetch(manifestUrl, { signal: request.controller.signal });
+    if (!manifestResponse.ok) throw new Error(`Sample list returned HTTP ${manifestResponse.status}.`);
+    const manifest: unknown = await manifestResponse.json();
+    if (!Array.isArray(manifest)) throw new Error("The sample list could not be read.");
+    const entry = (manifest as Array<{ file?: unknown; format?: unknown }>).find((m) => m?.format === format);
+    if (typeof entry?.file !== "string" || !/^[a-z0-9-]+\.csv$/i.test(entry.file)) throw new Error("This sample is missing from the sample list.");
+    const response = await fetch(`${import.meta.env.BASE_URL}samples/${entry.file}`, { signal: request.controller.signal });
+    if (!response.ok) throw new Error(`Sample download returned HTTP ${response.status}.`);
+    const blob = await response.blob();
+    if (!isCurrent(request)) return;
+    await loadFile("a", new File([blob], entry.file, { type: "text/csv" }), undefined, undefined, undefined, request);
+  } catch (error) {
+    if (isCurrent(request)) showImportError("a", `Could not load the sample: ${errorMessage(error)}`, () => void loadSample(format));
+  } finally { finishImport(request); }
 }
 
-function setStatus(html: string): void {
+function setStatus(html: string, slot: Slot = "a"): void {
   const area = document.getElementById("status-area");
-  if (area) area.innerHTML = html;
+  if (!area) return;
+  let status = area.querySelector<HTMLElement>(`[data-status-slot="${slot}"]`);
+  if (!status) {
+    status = document.createElement("div");
+    status.dataset.statusSlot = slot;
+    area.append(status);
+  }
+  status.innerHTML = html;
+}
+
+function errorMessage(error: unknown): string { return error instanceof Error ? error.message : String(error); }
+function cancelButton(slot: Slot): string { return `<button class="btn small" data-slot="${slot}" data-action="cancel">Cancel import</button>`; }
+function isCurrent(request: ImportRequest): boolean { return versions[request.slot] === request.version; }
+
+function updateBusyControls(): void {
+  const busy = imports.size > 0 || applyingSettings;
+  document.querySelectorAll<HTMLInputElement | HTMLButtonElement>("#settings-form input, #apply-settings-btn").forEach((control) => { control.disabled = busy; });
+}
+
+function beginImport(slot: Slot): ImportRequest {
+  imports.get(slot)?.controller.abort();
+  client.cancel(slot);
+  delete retryActions[slot];
+  if (pendingMapping?.request.slot === slot) {
+    pendingMapping = null;
+    mappingDialog.close();
+  }
+  settingsGeneration++;
+  applyingSettings = false;
+  const request = { slot, version: ++versions[slot], controller: new AbortController() };
+  imports.set(slot, request);
+  updateBusyControls();
+  return request;
+}
+
+function finishImport(request: ImportRequest): void {
+  if (imports.get(request.slot) === request) imports.delete(request.slot);
+  updateBusyControls();
+}
+
+function cancelImport(slot: Slot): void {
+  imports.get(slot)?.controller.abort();
+  imports.delete(slot);
+  versions[slot]++;
+  client.cancel(slot);
+  if (pendingMapping?.request.slot === slot) {
+    pendingMapping = null;
+    mappingDialog.close();
+  }
+  setStatus(`<div class="status-line" role="status">Run ${slot.toUpperCase()} import cancelled.</div>`, slot);
+  updateBusyControls();
+}
+
+function showImportError(slot: Slot, message: string, retry: () => void): void {
+  retryActions[slot] = retry;
+  setStatus(`<div class="error-box" role="alert">${escapeHtml(message)} <button class="btn small" data-slot="${slot}" data-action="retry">Retry import</button></div>`, slot);
 }
 
 async function loadFile(
@@ -146,43 +229,51 @@ async function loadFile(
   formatOverride?: SourceFormat,
   genericMapping?: GenericMapping,
   stream?: string,
+  request = beginImport(slot),
 ): Promise<void> {
+  if (!isCurrent(request)) return;
+  const options = { ...stutterOptions };
   setStatus(`
-    <div class="status-line">
+    <div class="status-line" role="status">
       <span>parsing ${escapeHtml(file.name)}&hellip;</span>
-      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
-      <span id="progress-text"></span>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill-${slot}"></div></div>
+      <span id="progress-text-${slot}"></span>
+      ${cancelButton(slot)}
     </div>
-  `);
+  `, slot);
   try {
     const outcome = await client.parse(slot, file, {
       formatOverride,
       genericMapping,
       stream,
-      stutterOptions,
+      stutterOptions: options,
       onProgress: (p: ParseProgress) => {
-        const fill = document.getElementById("progress-fill");
-        const text = document.getElementById("progress-text");
+        if (!isCurrent(request)) return;
+        const fill = document.getElementById(`progress-fill-${slot}`);
+        const text = document.getElementById(`progress-text-${slot}`);
         const pct = p.totalBytes > 0 ? Math.min(100, (p.bytesRead / p.totalBytes) * 100) : 0;
         if (fill) fill.style.width = `${pct.toFixed(0)}%`;
         if (text) text.textContent = `${fmtInt(p.rowsParsed)} rows`;
       },
     });
+    if (!isCurrent(request)) return;
 
     if (outcome.kind === "needsMapping") {
-      const resp: NeedsMappingResponse = outcome.response;
-      pendingMapping = { slot, file, header: resp.header, sniffed: resp.sniffedFormat };
-      openMappingDialog(resp.header, resp.suggested);
-      setStatus("");
+      pendingMapping = { request, file };
+      openMappingDialog(outcome.response.header, outcome.response.suggested);
+      setStatus("", slot);
       return;
     }
 
-    setStatus("");
-    runs[slot] = { response: outcome.response, file };
+    setStatus("", slot);
+    runs[slot] = {
+      response: outcome.response, file, stutterOptions: options,
+      source: { file, formatOverride: outcome.response.series.meta.format, genericMapping, stream: outcome.response.series.meta.selectedStream ?? stream },
+    };
     renderWorkspace();
   } catch (err) {
-    setStatus(`<div class="error-box" role="alert">Could not parse ${escapeHtml(file.name)}: ${escapeHtml(err instanceof Error ? err.message : String(err))}</div>`);
-  }
+    if (isCurrent(request)) showImportError(slot, `Could not parse ${file.name}: ${errorMessage(err)}`, () => void loadFile(slot, file, formatOverride, genericMapping, stream));
+  } finally { finishImport(request); }
 }
 
 function openMappingDialog(header: string[], suggested?: MappingGuess): void {
@@ -204,37 +295,45 @@ function openMappingDialog(header: string[], suggested?: MappingGuess): void {
 }
 
 document.getElementById("map-cancel")!.addEventListener("click", () => {
-  mappingDialog.close();
-  pendingMapping = null;
+  if (pendingMapping) cancelImport(pendingMapping.request.slot);
+});
+mappingDialog.addEventListener("cancel", (event) => {
+  event.preventDefault();
+  if (pendingMapping) cancelImport(pendingMapping.request.slot);
 });
 document.getElementById("map-confirm")!.addEventListener("click", () => {
   if (!pendingMapping) return;
   const columnSelect = document.getElementById("map-column") as HTMLSelectElement;
   const kindSelect = document.getElementById("map-kind") as HTMLSelectElement;
   const mapping = { valueColumn: columnSelect.value, valueKind: kindSelect.value as GenericValueKind };
-  const { slot, file } = pendingMapping;
+  const { request, file } = pendingMapping;
   mappingDialog.close();
   pendingMapping = null;
-  void loadFile(slot, file, "generic", mapping);
+  if (isCurrent(request)) void loadFile(request.slot, file, "generic", mapping);
 });
 
-function destroyCharts(run?: RunState): void {
-  run?.traceHandle?.destroy();
-  run?.fpsHandle?.destroy();
+function destroyCharts(): void {
+  charts.trace?.destroy();
+  charts.fps?.destroy();
+  charts.percentile?.destroy();
+  charts.histogram?.disconnect();
+  for (const key of Object.keys(charts) as Array<keyof typeof charts>) delete charts[key];
 }
 
 function renderWorkspace(): void {
   const a = runs.a;
   if (!a) return;
+  const focusedId = (document.activeElement as HTMLElement | null)?.id;
+  destroyCharts();
   workspaceSection.hidden = false;
-  dropzoneSection.querySelector(".dropzone")?.classList.add("visually-hidden");
+  dropzoneSection.querySelector(".dropzone")?.setAttribute("hidden", "");
 
   const hasB = !!runs.b;
   workspaceSection.innerHTML = `
     <div class="workspace">
       <div class="run-header">
         <div class="run-meta">
-          <span><strong>${escapeHtml(a.file.name)}</strong></span>
+          <h1 class="run-title"><strong>${escapeHtml(a.file.name)}</strong></h1>
           <span>${FORMAT_LABELS[a.response.series.meta.format]}</span>
           <span>${fmtInt(a.response.series.frameCount)} ${a.response.series.frameCount === 1 ? "frame" : "frames"}</span>
           <span>${fmtMs(a.response.summary.durationSec, 1)} s</span>
@@ -252,6 +351,7 @@ function renderWorkspace(): void {
       ${warningsNote(a)}
       ${streamNote("a", a)}
       ${hasB && runs.b ? streamNote("b", runs.b) : ""}
+      ${hasB && runs.b ? warningsNote(runs.b, "Run B") : ""}
 
       <div class="tile-grid" id="tile-grid-a"></div>
       <div class="bracket-panel secondary-panel" id="secondary-panel-a">
@@ -290,14 +390,19 @@ function renderWorkspace(): void {
       <div class="bracket-panel">
         <span class="bracket-tl"></span><span class="bracket-tr"></span>
         <p class="panel-label">Stutter Detection <span class="hint">frame time &gt; k &times; local median (window radius r); hitch = absolute threshold</span></p>
-        <div class="config-row">
-          <label>k multiplier <input type="number" id="k-input" min="1.1" max="5" step="0.1" value="${stutterOptions.kMultiplier}" /></label>
-          <label>window radius <input type="number" id="radius-input" min="2" max="60" step="1" value="${stutterOptions.windowRadius}" /></label>
-          <label>hitch threshold (ms) <input type="number" id="hitch-input" min="5" max="500" step="1" value="${stutterOptions.hitchThresholdMs}" /></label>
-        </div>
+        <form id="settings-form" novalidate>
+          <div class="config-row">
+            <label>k multiplier <input type="number" id="k-input" required min="1.1" max="5" step="any" value="${escapeHtml(settingsDraft.k)}" /></label>
+            <label>window radius <input type="number" id="radius-input" required min="2" max="60" step="1" value="${escapeHtml(settingsDraft.radius)}" /></label>
+            <label>hitch threshold (ms) <input type="number" id="hitch-input" required min="5" max="500" step="any" value="${escapeHtml(settingsDraft.hitch)}" /></label>
+            <button class="btn small" id="apply-settings-btn" type="submit">Apply settings</button>
+          </div>
+          <p class="hint" id="settings-status" role="status">Applied settings: k = ${stutterOptions.kMultiplier}, radius = ${stutterOptions.windowRadius}, hitch &gt; ${stutterOptions.hitchThresholdMs} ms.</p>
+          <p class="error-box" id="settings-error" role="alert" hidden></p>
+        </form>
       </div>
 
-      ${hasB ? `<div class="bracket-panel" id="comparison-panel"><span class="bracket-tl"></span><span class="bracket-tr"></span><p class="panel-label">Comparison</p><div id="comparison-table"></div></div>` : ""}
+      ${hasB ? `<div class="bracket-panel" id="comparison-panel"><span class="bracket-tl"></span><span class="bracket-tr"></span><p class="panel-label">Comparison</p><div id="comparison-table" tabindex="0" role="region" aria-label="Run comparison metrics"></div></div>` : ""}
     </div>
   `;
 
@@ -305,35 +410,42 @@ function renderWorkspace(): void {
   renderTiles(document.getElementById("tile-grid-a")!, tileSet.headline);
   renderSecondaryTable(document.getElementById("secondary-table-a")!, tileSet.secondary);
 
-  destroyCharts(a);
-  a.traceHandle = createTraceChart(document.getElementById("trace-chart")!, a.response.series.timeSec, a.response.series.frameTimeMs, a.response.chart.isStutter);
-  a.fpsHandle = createFpsChart(document.getElementById("fps-chart")!, a.response.series.timeSec, a.response.series.frameTimeMs);
+  charts.trace = createTraceChart(document.getElementById("trace-chart")!, a.response.series.timeSec, a.response.series.frameTimeMs, a.response.chart.isStutter);
+  charts.fps = createFpsChart(document.getElementById("fps-chart")!, a.response.series.timeSec, a.response.series.frameTimeMs);
 
   const markers = { p99: a.response.summary.percentilesMs.p99, p999: a.response.summary.percentilesMs.p999 };
-  if (hasB && runs.b) {
-    createPercentileChart(document.getElementById("percentile-chart")!, a.response.chart.percentileCurve, runs.b.response.chart.percentileCurve);
-    const pair = frameTimeHistogramPair(a.response.series.frameTimeMs, runs.b.response.series.frameTimeMs, 60);
-    drawHistogramPair(document.getElementById("histogram-canvas") as HTMLCanvasElement, pair, markers);
-    renderComparisonTable(a, runs.b);
+  const b = runs.b;
+  const canvas = document.getElementById("histogram-canvas") as HTMLCanvasElement;
+  let draw: () => void;
+  if (b) {
+    charts.percentile = createPercentileChart(document.getElementById("percentile-chart")!, a.response.chart.percentileCurve, b.response.chart.percentileCurve);
+    const pair = frameTimeHistogramPair(a.response.series.frameTimeMs, b.response.series.frameTimeMs, 60);
+    draw = () => drawHistogramPair(canvas, pair, markers);
+    renderComparisonTable(a, b);
   } else {
-    createPercentileChart(document.getElementById("percentile-chart")!, a.response.chart.percentileCurve);
-    drawHistogram(document.getElementById("histogram-canvas") as HTMLCanvasElement, a.response.chart.histogram, markers);
+    charts.percentile = createPercentileChart(document.getElementById("percentile-chart")!, a.response.chart.percentileCurve);
+    draw = () => drawHistogram(canvas, a.response.chart.histogram, markers);
   }
+  draw();
+  charts.histogram = new ResizeObserver(() => { if (canvas.isConnected) draw(); });
+  charts.histogram.observe(canvas);
 
   wireWorkspaceControls();
+  updateBusyControls();
+  if (focusedId) document.getElementById(focusedId)?.focus({ preventScroll: true });
 }
 
 const MAX_LISTED_WARNINGS = 20;
 
 /** Skipped rows, listed (the first few) rather than just counted, so a bad column is diagnosable. */
-function warningsNote(run: RunState): string {
+function warningsNote(run: RunState, label = "Run A"): string {
   const { warnings, skippedRows } = run.response.series.meta;
   if (skippedRows === 0) return "";
   // The parser describes the first skipped rows and counts the rest.
   const listed = warnings.slice(0, MAX_LISTED_WARNINGS);
   const more = skippedRows > listed.length ? `\n… and ${fmtInt(skippedRows - listed.length)} more` : "";
   const rows = skippedRows === 1 ? "1 row was skipped" : `${fmtInt(skippedRows)} rows were skipped`;
-  return `<details class="notes warn-note"><summary>${rows}: bad or missing frame time</summary><pre>${listed.map(escapeHtml).join("\n")}${more}</pre></details>`;
+  return `<details class="notes warn-note"><summary>${label}: ${rows}: bad or missing frame time</summary><pre>${listed.map(escapeHtml).join("\n")}${more}</pre></details>`;
 }
 
 /**
@@ -402,7 +514,7 @@ function renderComparisonTable(a: RunState, b: RunState): void {
 function wireWorkspaceControls(): void {
   const rangeToggleBtn = document.getElementById("range-toggle-btn") as HTMLButtonElement | null;
   rangeToggleBtn?.addEventListener("click", () => {
-    const handle = runs.a?.traceHandle;
+    const handle = charts.trace;
     if (!handle) return;
     const next = !handle.isFullRange();
     handle.setFullRange(next);
@@ -411,13 +523,19 @@ function wireWorkspaceControls(): void {
   });
 
   document.getElementById("new-session-btn")?.addEventListener("click", () => {
-    destroyCharts(runs.a);
-    destroyCharts(runs.b);
+    cancelImport("a");
+    cancelImport("b");
+    settingsGeneration++;
+    applyingSettings = false;
+    stutterOptions = { ...DEFAULT_STUTTER_OPTIONS };
+    settingsDraft = { k: String(stutterOptions.kMultiplier), radius: String(stutterOptions.windowRadius), hitch: String(stutterOptions.hitchThresholdMs) };
+    delete retryActions.a;
+    delete retryActions.b;
+    destroyCharts();
     runs.a = undefined;
     runs.b = undefined;
     workspaceSection.hidden = true;
     workspaceSection.innerHTML = "";
-    dropzoneSection.querySelector(".dropzone")?.classList.remove("visually-hidden");
     renderDropzone();
   });
 
@@ -433,7 +551,10 @@ function wireWorkspaceControls(): void {
   });
 
   document.getElementById("remove-compare-btn")?.addEventListener("click", () => {
-    destroyCharts(runs.b);
+    cancelImport("b");
+    setStatus("", "b");
+    settingsGeneration++;
+    applyingSettings = false;
     runs.b = undefined;
     renderWorkspace();
   });
@@ -442,45 +563,70 @@ function wireWorkspaceControls(): void {
     select.addEventListener("change", () => {
       const slot = select.dataset.slot === "b" ? "b" : "a";
       const run = runs[slot];
-      if (run) void loadFile(slot, run.file, run.response.series.meta.format, undefined, select.value);
+      if (run) void loadFile(slot, run.file, run.source.formatOverride, run.source.genericMapping, select.value);
     });
   }
 
   document.getElementById("export-png-btn")?.addEventListener("click", () => {
-    if (runs.a) exportReportCard(runs.a.response.series, runs.a.response.summary);
+    if (runs.a) exportReportCard(runs.a.response.series, runs.a.response.summary, runs.a.stutterOptions);
   });
   document.getElementById("export-md-btn")?.addEventListener("click", () => {
-    if (runs.a) exportMarkdown(runs.a.response.series, runs.a.response.summary);
+    if (runs.a) exportMarkdown(runs.a.response.series, runs.a.response.summary, runs.a.stutterOptions, runs.a.source.genericMapping);
   });
   document.getElementById("export-json-btn")?.addEventListener("click", () => {
-    if (runs.a) exportJson(runs.a.response.series, runs.a.response.summary);
+    if (runs.a) exportJson(runs.a.response.series, runs.a.response.summary, runs.a.stutterOptions, runs.a.source.genericMapping);
   });
 
   const kInput = document.getElementById("k-input") as HTMLInputElement | null;
   const radiusInput = document.getElementById("radius-input") as HTMLInputElement | null;
   const hitchInput = document.getElementById("hitch-input") as HTMLInputElement | null;
-  let debounceTimer: ReturnType<typeof setTimeout> | undefined;
   const onConfigChange = () => {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => void applyStutterOptions(), 200);
+    settingsDraft = { k: kInput!.value, radius: radiusInput!.value, hitch: hitchInput!.value };
+    document.getElementById("settings-status")!.textContent = "Changes are not applied yet. Apply settings to update both reports.";
   };
   kInput?.addEventListener("input", onConfigChange);
   radiusInput?.addEventListener("input", onConfigChange);
   hitchInput?.addEventListener("input", onConfigChange);
+  document.getElementById("settings-form")!.addEventListener("submit", (event) => {
+    event.preventDefault();
+    void applyStutterOptions();
+  });
 
   async function applyStutterOptions(): Promise<void> {
-    stutterOptions = {
-      kMultiplier: Number(kInput?.value) || DEFAULT_STUTTER_OPTIONS.kMultiplier,
-      windowRadius: Number(radiusInput?.value) || DEFAULT_STUTTER_OPTIONS.windowRadius,
-      hitchThresholdMs: Number(hitchInput?.value) || DEFAULT_STUTTER_OPTIONS.hitchThresholdMs,
-    };
-    for (const slot of ["a", "b"] as const) {
-      const run = runs[slot];
-      if (!run) continue;
-      const outcome = await client.recompute(slot, stutterOptions);
-      if (outcome.kind === "result") run.response = outcome.response;
+    if (applyingSettings || imports.size) return;
+    const generation = ++settingsGeneration;
+    const focusedId = (document.activeElement as HTMLElement | null)?.id;
+    const errorBox = document.getElementById("settings-error")!;
+    errorBox.hidden = true;
+    try {
+      const options = readStutterOptions(kInput!.value, radiusInput!.value, hitchInput!.value);
+      applyingSettings = true;
+      updateBusyControls();
+      document.getElementById("settings-status")!.textContent = "Updating detection for the loaded runs…";
+      const loaded = (["a", "b"] as const).flatMap((slot) => runs[slot] ? [{ slot, run: runs[slot] }] : []);
+      const updated = await Promise.all(loaded.map(async ({ slot, run }) => {
+        const outcome = await client.recompute(slot, options, run.source);
+        if (outcome.kind !== "result") throw new Error("Please choose the capture's columns again.");
+        return { slot, run, response: outcome.response };
+      }));
+      if (generation !== settingsGeneration || updated.some(({ slot, run }) => runs[slot] !== run)) return;
+      for (const { run, response } of updated) {
+        run.response = response;
+        run.stutterOptions = options;
+      }
+      stutterOptions = options;
+      applyingSettings = false;
+      renderWorkspace();
+      if (focusedId) document.getElementById(focusedId)?.focus({ preventScroll: true });
+    } catch (error) {
+      if (generation !== settingsGeneration) return;
+      errorBox.textContent = `Settings were not applied: ${errorMessage(error)}`;
+      errorBox.hidden = false;
+      document.getElementById("settings-status")!.textContent = "The previous results and exports are unchanged. Correct the values or retry Apply settings.";
+    } finally {
+      if (generation === settingsGeneration) applyingSettings = false;
+      updateBusyControls();
     }
-    renderWorkspace();
   }
 }
 

@@ -8,10 +8,11 @@ Frame-time analysis for PC gamers and hardware reviewers. Drop in a capture, see
 
 ![stutterscope: stat tiles, a frame-time trace with two hitches clamped and labeled at the top of a robust y-range, FPS over time, and a frame-time histogram, for a synthetic PresentMon 2.x capture](docs/assets/hero.png)
 
-Two-run comparison, with a metric-by-metric delta table (real output, from
-two different synthetic captures — not the same run twice):
+Two-run comparison, with a metric-by-metric delta table. Run A is the bundled
+PresentMon sample; run B is a synthetic 8–12 ms trace with two 36 ms spikes.
+These illustrate the comparison controls, not measured hardware gains:
 
-![stutterscope comparison view: overlaid percentile curves and a delta table showing run B at +43% average FPS, +101% 1% low, and -93% stutter events versus run A](docs/assets/comparison.png)
+![stutterscope comparison view: applied detection settings, overlaid percentile curves, and a delta table for two synthetic captures](docs/assets/comparison.png)
 
 ## Why this exists
 
@@ -28,8 +29,8 @@ tool computed it and nobody tells you which, and there's no fast way to
 drop two runs side by side and see what actually changed. stutterscope is a
 single-page, in-browser analyzer that reads six real capture formats plus
 any CSV, computes stutter/1%-low/pacing metrics with documented formulas,
-and never uploads the file anywhere — parsing, metrics, and every chart run
-in a Web Worker in your own browser.
+and never uploads the file anywhere. Parsing and metrics run in a Web Worker;
+charts render locally in your browser.
 
 ## Quickstart
 
@@ -88,7 +89,11 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
   screen reading a live trace, and a light variant would work against that
   rather than with it.
 - **Sharing**: export a PNG report card, a Markdown table (paste into a
-  forum post or PR description), or a full JSON summary. Nothing is
+  forum post or PR description), or a full JSON summary of run A. Web reports
+  retain the applied detection settings and skipped-row counts. JSON and
+  Markdown include warning details, the selected process, and generic-column
+  interpretation; JSON schema version 2 also records source columns and the
+  count of warning details omitted by the parser's retention limit. Nothing is
   uploaded at any point, and the page's Content-Security-Policy
   (`connect-src 'self'`) has the browser enforce that.
 - **Fast on real-sized captures**: parsing streams off the file in a Web
@@ -103,6 +108,16 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
   see [How it works](#how-it-works).
 
 ## Usage
+
+Imports show progress and can be cancelled. Choosing another file or starting
+a new session stops the previous import; errors offer a retry. Run A and run B
+keep independent captures and process selections.
+
+Edit the detection controls, then choose **Apply settings** (or press Enter).
+Both loaded reports update together after successful calculation. Invalid
+values or a worker failure leave the last applied results and exports intact.
+Changing the viewport resizes the charts; on phones, the comparison table
+scrolls horizontally within its own keyboard-accessible region.
 
 Drop a file on the page (or click one of the seven "load a synthetic
 sample" links to try it with no file of your own) and you get a tile grid
@@ -159,15 +174,17 @@ its full metrics summary in another **108 ms** (`tests/core/performance.test.ts`
 metrics; the UI (`src/ui/`) only ever talks to it through a small
 promise-based client (`src/ui/workerClient.ts`) and renders whatever comes
 back. Large results come back as structured-cloned typed arrays; only the
-worker's own cached copy of a run is kept around so moving the
-stutter-threshold sliders can recompute without re-parsing.
+worker's own cached copy of a run is kept around so applying detection
+settings can recompute without re-parsing. Each slot has its own worker;
+replacing a capture terminates that worker. If it fails, a retry reloads the
+same file, column mapping, and process selection before recomputing.
 
 **Charts.** The frame-time trace, FPS-over-time, and percentile-curve
 charts use [uPlot](https://github.com/leeoniya/uPlot), which renders
 directly from typed arrays on a single canvas — the reason this stays
 smooth at hundreds of thousands of points without any bundled charting
 framework. The histogram is a ~30-line canvas draw. Total JS bundle:
-**83 kB (33 kB gzipped)** for the app plus a 22 kB worker chunk — see
+**91 kB (36 kB gzipped)** for the app plus a 25 kB worker chunk — see
 `npm run build`'s output.
 
 **Metrics.** Every formula is written out in
@@ -244,6 +261,7 @@ npm test           # vitest — parsers, metrics, and a numpy-oracle cross-check
 npm run typecheck  # tsc --noEmit, strict
 npm run lint       # eslint
 npm run build      # production build to dist/
+npm run test:browser # production build + Chromium/Firefox workflows
 npm run samples    # regenerate examples/samples/ from scripts/generate-samples.ts
 npm run cli -- summary <file>  # run the CLI from source
 npm run build:cli  # compile the CLI to dist-cli/ (also runs automatically on `npm install`)
@@ -255,6 +273,19 @@ synthetic frame-time trace (`scripts/oracle.py` is the oracle;
 against a small, hand-computable fixture built from that format's *real*
 column headers. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for how to add a
 format or a metric.
+
+Browser tests exercise interrupted imports, worker and network failures,
+atomic settings updates, exported evidence, keyboard controls, resource
+cleanup, and viewport resizing. Both Chromium and Firefox check WCAG 2.1
+A/AA and axe best-practice rules at desktop and phone widths. Install the
+test engines with `npx playwright install chromium firefox` before the first
+browser run; CI also installs their system dependencies.
+
+To refresh the actual UI screenshots, serve `npm run build` with
+`npm run preview -- --port 4194`, then run
+`node scripts/capture-screenshots.js`. The script creates its comparison
+trace deterministically and also captures the [phone layout](docs/assets/mobile.png)
+and the [PNG report card](docs/assets/report-card.png).
 
 ## Contributing
 

@@ -8,6 +8,37 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 In the web page; the npm package (the CLI) is unchanged.
 
+### Fixed
+
+- New imports, cancellation, removing a comparison, and New session now stop
+  the superseded worker. An older import can no longer replace the chosen
+  capture, revive a cleared session, or overwrite the worker's cached data.
+- Worker startup and message failures settle pending operations and show a
+  retry. Sample downloads check HTTP status and report failures. A failed
+  cached worker reloads its original capture and mapping when settings are
+  applied again.
+- Detection settings reject blank, non-finite, out-of-range, and fractional
+  window-radius values. Apply settings updates all loaded runs together;
+  failure retains the previous results and exports. Draft values survive
+  redraws and keyboard focus returns after an update.
+- Redrawing or resetting destroys every chart and removes its global pan
+  handlers and resize observers. Plots resize with the page; a wide comparison
+  table scrolls within its keyboard-accessible region on phones.
+- Comparison run B now shows skipped-row warnings, as run A already did.
+- The loaded workspace hides the import panel from keyboard navigation and
+  names the current capture with a page heading.
+
+### Changed
+
+- Web JSON exports use schema version 2 and retain source columns, skipped
+  rows, retained warnings and the count of omitted warning details, selected
+  stream, generic-column mapping, and the applied detection settings. Markdown
+  carries the same interpretation and warning context and escapes source text.
+  PNG cards include settings, skipped-row counts, and the selected stream.
+- Production browser regression tests cover Chromium and Firefox, including
+  file/worker races, failure recovery, downloads, keyboard controls, chart
+  lifecycle, resizing, and desktop/phone accessibility checks.
+
 ### Accessibility
 
 - "Could not parse <file>: ..." appeared under the drop zone without a screen reader being

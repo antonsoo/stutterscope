@@ -362,6 +362,8 @@ input[type="file"] {
   font-size: 12.5px;
   color: var(--text-dim);
   display: flex;
+  flex-wrap: wrap;
+  overflow-wrap: anywhere;
   align-items: center;
   gap: 10px;
 }
@@ -523,7 +525,7 @@ input[type="file"] {
 
 .chart-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--gutter);
 }
 .chart-grid.full {
@@ -538,6 +540,19 @@ input[type="file"] {
 .chart-panel .u-legend {
   font-family: var(--font-mono) !important;
   font-size: 11.5px !important;
+}
+
+.chart-panel {
+  min-width: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: wait;
 }
 
 .trace-sweep {
@@ -588,6 +603,16 @@ input[type="file"] {
 }
 
 /* comparison */
+
+#comparison-table {
+  overflow-x: auto;
+}
+
+.run-title {
+  margin: 0;
+  font-size: inherit;
+  overflow-wrap: anywhere;
+}
 
 .delta-table {
   width: 100%;

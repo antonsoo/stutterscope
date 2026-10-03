@@ -20,7 +20,7 @@ const baseAxis: Partial<uPlot.Axis> = {
 };
 
 /** Attaches wheel-to-zoom, drag-to-pan, and double-click-to-reset to a uPlot x-axis. */
-function attachZoomPan(u: uPlot, fullXRange: () => [number, number]): void {
+function attachZoomPan(u: uPlot, fullXRange: () => [number, number]): () => void {
   const el = u.over;
   let isPanning = false;
   let panStartX = 0;
@@ -60,20 +60,42 @@ function attachZoomPan(u: uPlot, fullXRange: () => [number, number]): void {
     panStartMax = u.scales.x?.max ?? 1;
     e.preventDefault();
   });
-  window.addEventListener("mousemove", (e: MouseEvent) => {
+  const onMouseMove = (e: MouseEvent) => {
     if (!isPanning) return;
     const rect = el.getBoundingClientRect();
     const range = panStartMax - panStartMin;
     const deltaFrac = (e.clientX - panStartX) / rect.width;
     const delta = -deltaFrac * range;
     u.setScale("x", { min: panStartMin + delta, max: panStartMax + delta });
-  });
-  window.addEventListener("mouseup", () => {
+  };
+  const onMouseUp = () => {
     isPanning = false;
-  });
+  };
+  window.addEventListener("mousemove", onMouseMove);
+  window.addEventListener("mouseup", onMouseUp);
 
   // uPlot's own drag-select zooms by default (cursor.drag.x = true) and
   // clears the selection via the setSelect hook wired in chart options.
+  return () => {
+    window.removeEventListener("mousemove", onMouseMove);
+    window.removeEventListener("mouseup", onMouseUp);
+  };
+}
+
+function manageChart(el: HTMLElement, uplot: uPlot, detach = () => {}): TraceChartHandle {
+  let destroyed = false;
+  const observer = new ResizeObserver(() => {
+    const width = el.clientWidth;
+    if (!destroyed && el.isConnected && width > 0 && width !== uplot.width) uplot.setSize({ width, height: uplot.height });
+  });
+  observer.observe(el);
+  return { uplot, destroy() {
+    if (destroyed) return;
+    destroyed = true;
+    observer.disconnect();
+    detach();
+    uplot.destroy();
+  } };
 }
 
 export interface TraceChartHandle {
@@ -191,11 +213,10 @@ export function createTraceChart(
 
   const uplot = new uPlot(opts, [timeSec, frameTimeMs, stutterSeries], el);
   uplot.setScale("y", { min: 0, max: currentYMax });
-  attachZoomPan(uplot, () => [fullMin, fullMax]);
+  const handle = manageChart(el, uplot, attachZoomPan(uplot, () => [fullMin, fullMax]));
 
   return {
-    uplot,
-    destroy: () => uplot.destroy(),
+    ...handle,
     isFullRange: () => fullRange,
     setFullRange: (full: boolean) => {
       fullRange = full;
@@ -225,8 +246,7 @@ export function createFpsChart(el: HTMLElement, timeSec: Float64Array, frameTime
     legend: { show: true },
   };
   const uplot = new uPlot(opts, [timeSec, fps], el);
-  attachZoomPan(uplot, () => [fullMin, fullMax]);
-  return { uplot, destroy: () => uplot.destroy() };
+  return manageChart(el, uplot, attachZoomPan(uplot, () => [fullMin, fullMax]));
 }
 
 export function createPercentileChart(
@@ -256,7 +276,7 @@ export function createPercentileChart(
     legend: { show: true },
   };
   const uplot = new uPlot(opts, data as uPlot.AlignedData, el);
-  return { uplot, destroy: () => uplot.destroy() };
+  return manageChart(el, uplot);
 }
 
 export interface HistogramMarkers {
