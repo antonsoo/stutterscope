@@ -122,3 +122,19 @@ describe("stutterscope summary on a generic CSV", () => {
     expect(result.stderr).toContain("Pick one with --generic-column");
   });
 });
+
+describe("text from the capture", () => {
+  it("is shown as visible escapes, never sent to the terminal as control characters", () => {
+    // A column name holding a terminal escape sequence (this one retitles the window) went to
+    // the terminal as it was, in the "column ... read as" line.
+    const osc = `${String.fromCharCode(0x1b)}]0;pwned${String.fromCharCode(7)}`;
+    const path = join(dir, "escape.csv");
+    const rows = [`frame_index,frame_time_ms${osc}`, ...Array.from({ length: 300 }, (_, i) => `${i},${(16.6 + (i % 5) * 0.2).toFixed(2)}`)];
+    writeFileSync(path, rows.join("\n") + "\n");
+    const { status, stdout } = run(path);
+    expect(status).toBe(0);
+    expect(stdout).not.toContain(String.fromCharCode(7));
+    expect(stdout).not.toContain(`${String.fromCharCode(0x1b)}]`);
+    expect(stdout).toContain('column "frame_time_ms\\x1b]0;pwned\\x07" read as');
+  });
+});

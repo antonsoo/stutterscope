@@ -1,6 +1,6 @@
 {
   "name": "@antonsoloviev/stutterscope",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Frame-time analysis for PC gamers and hardware reviewers. Drop in a capture, see the stutter.",
   "author": "Anton Soloviev",
   "license": "MIT",

@@ -46,8 +46,19 @@ function shouldUseColor(): boolean {
 
 const useColor = shouldUseColor();
 
+/**
+ * `text` with each control character (bar tab and line breaks) written as a visible escape, `\x1b`.
+ * File and column names, stream names and parse errors come from the capture, and a terminal obeys
+ * an escape sequence in what it is given: clears the screen, retitles the window, hides text.
+ */
+function visible(text: string): string {
+  return text.replace(/[^\P{Cc}\t\n\r]/gu, (ch) => `\\x${ch.charCodeAt(0).toString(16).padStart(2, "0")}`);
+}
+
+/** Every message goes through here, so text from the capture is always shown, never sent. */
 function color(s: string, code: string): string {
-  return useColor ? `${code}${s}${RESET}` : s;
+  const shown = visible(s);
+  return useColor ? `${code}${shown}${RESET}` : shown;
 }
 
 function fmt(n: number, digits = 1): string {

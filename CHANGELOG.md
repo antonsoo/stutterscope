@@ -4,6 +4,16 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.2.5] - 2026-10-03
+
+### Security
+
+- Text from the capture reached the terminal as it came. A column name holding a terminal escape
+  sequence went straight into the "column ... read as" line, and the same held for the file
+  name, stream descriptions and parse errors, so a crafted CSV could clear the screen, retitle
+  the window or hide part of the summary. Each control character in such text is now written as
+  a visible escape (`frame_time_ms\x1b]0;title\x07`). `--json` already escaped them.
+
 ## [0.2.4] - 2026-10-03
 
 ### Changed
