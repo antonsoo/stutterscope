@@ -33,3 +33,14 @@ oracle-checked case (see `scripts/oracle.py`) to `tests/core/metrics.test.ts`.
 - TypeScript strict mode, no `any` outside of narrow, commented escape hatches.
 - Keep `src/core` free of DOM/worker/UI imports so it stays usable as a library.
 - Run `npm run lint && npm run typecheck && npm test` before opening a PR.
+
+## Community and private reports
+
+Please follow the [Code of Conduct](CODE_OF_CONDUCT.md). Anton Soloviev
+maintains this project and handles conduct reports at
+[anton@praviel.com](mailto:anton@praviel.com).
+
+Use the bug or improvement forms for public issues. For a suspected security
+vulnerability or a conduct concern, email the maintainer privately with the
+repository name and relevant details. Do not post credentials, personal data,
+private logs, or confidential documents in a public issue.
