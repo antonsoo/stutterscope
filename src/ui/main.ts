@@ -181,7 +181,7 @@ async function loadFile(
     runs[slot] = { response: outcome.response, file };
     renderWorkspace();
   } catch (err) {
-    setStatus(`<div class="error-box">Could not parse ${escapeHtml(file.name)}: ${escapeHtml(err instanceof Error ? err.message : String(err))}</div>`);
+    setStatus(`<div class="error-box" role="alert">Could not parse ${escapeHtml(file.name)}: ${escapeHtml(err instanceof Error ? err.message : String(err))}</div>`);
   }
 }
 

@@ -4,6 +4,15 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+In the web page; the npm package (the CLI) is unchanged.
+
+### Accessibility
+
+- "Could not parse <file>: ..." appeared under the drop zone without a screen reader being
+  told. The message is an alert now.
+
 ## [0.2.5] - 2026-10-03
 
 ### Security
