@@ -26,7 +26,8 @@ async function compare(page, file = fixture) {
 async function jsonReport(page) {
   const download = page.waitForEvent("download");
   await page.getByRole("button", { name: "Export JSON", exact: true }).click();
-  return JSON.parse(await readFile(await (await download).path(), "utf8"));
+  const report = JSON.parse(await readFile(await (await download).path(), "utf8"));
+  return report.kind === "comparison" ? report.runs.a : report;
 }
 
 test.beforeEach(async ({ page }) => {
@@ -350,7 +351,7 @@ for (const width of [1280, 375]) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     await page.screenshot({ path: testInfo.outputPath(`comparison-${width}.png`), fullPage: true });
     const download = page.waitForEvent("download");
-    await page.getByRole("button", { name: "Export PNG", exact: true }).click();
+    await page.getByRole("button", { name: "Export A PNG", exact: true }).click();
     const png = await download;
     await png.saveAs(testInfo.outputPath("report-card.png"));
     expect((await readFile(await png.path())).subarray(1, 4).toString()).toBe("PNG");

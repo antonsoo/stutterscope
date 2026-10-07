@@ -1,5 +1,8 @@
 import type { FrameSeries } from "../core/types.ts";
-import { summaryForJson, type MetricsSummary, type StutterOptions } from "../core/metrics.ts";
+import { type MetricsSummary, type StutterOptions } from "../core/metrics.ts";
+import { buildJsonReport, buildComparisonReport, type CaptureReport } from "../core/report.ts";
+export { buildJsonReport } from "../core/report.ts";
+import { selectFrames, type FrameSelection } from "../core/analysis.ts";
 import type { GenericMapping } from "../core/parsers/generic.ts";
 import { fmtFps, fmtInt, fmtMs, fmtPct } from "./format.ts";
 
@@ -15,38 +18,14 @@ function downloadBlob(blob: Blob, filename: string): void {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-export function buildJsonReport(series: FrameSeries, summary: MetricsSummary, options: StutterOptions, mapping?: GenericMapping) {
-  return {
-    tool: "stutterscope",
-    schemaVersion: 2,
-    generatedAt: new Date().toISOString(),
-    source: {
-      fileName: series.meta.sourceFileName,
-      format: series.meta.format,
-      application: series.meta.application ?? null,
-      ...(series.meta.streams
-        ? { stream: series.meta.selectedStream, streams: series.meta.streams }
-        : {}),
-      frameCount: series.frameCount,
-      durationSec: summary.durationSec,
-      columns: [...series.meta.columns],
-      skippedRows: series.meta.skippedRows,
-      warnings: [...series.meta.warnings],
-      omittedWarningDetails: Math.max(0, series.meta.skippedRows - series.meta.warnings.length),
-      genericMapping: mapping ? { ...mapping } : null,
-    },
-    analysis: { stutterOptions: { ...options } },
-    metrics: summaryForJson(summary),
-  };
-}
 
-export function exportJson(series: FrameSeries, summary: MetricsSummary, options: StutterOptions, mapping?: GenericMapping): void {
-  const payload = buildJsonReport(series, summary, options, mapping);
+export function exportJson(series: FrameSeries, summary: MetricsSummary, options: StutterOptions, mapping?: GenericMapping, selection: FrameSelection = selectFrames(series).selection): void {
+  const payload = buildJsonReport(series, summary, options, mapping, selection);
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
   downloadBlob(blob, `stutterscope-${safeName(series.meta.sourceFileName)}.json`);
 }
 
-export function buildMarkdownTable(series: FrameSeries, summary: MetricsSummary, options: StutterOptions, mapping?: GenericMapping): string {
+export function buildMarkdownTable(series: FrameSeries, summary: MetricsSummary, options: StutterOptions, mapping?: GenericMapping, selection: FrameSelection = selectFrames(series).selection): string {
   const rows: Array<[string, string]> = [
     ["Average FPS", fmtFps(summary.averageFps)],
     ["1% Low (percentile)", fmtFps(summary.onePercentLow.percentileMethodFps)],
@@ -68,7 +47,8 @@ export function buildMarkdownTable(series: FrameSeries, summary: MetricsSummary,
   const header = `| Metric | ${escapeMd(series.meta.sourceFileName)} |\n| --- | --- |`;
   const body = rows.map(([k, v]) => `| ${escapeMd(k)} | ${escapeMd(v)} |`).join("\n");
   const context = [
-    `Source format: ${series.meta.format}. Analyzed frames: ${fmtInt(series.frameCount)}.`,
+    `Source format: ${series.meta.format}. Analyzed frames: ${fmtInt(series.frameCount)} of ${fmtInt(selection.sourceFrameCount)}.`,
+    selectionText(selection),
     `Detection: k = ${options.kMultiplier}, window radius = ${options.windowRadius}, hitch threshold > ${options.hitchThresholdMs} ms.`,
     ...(series.meta.selectedStream ? [`Selected stream: ${escapeMd(series.meta.selectedStream)} (${escapeMd(series.meta.application ?? "application not recorded")}). Other streams are excluded.`] : []),
     ...(mapping ? [`Column: ${escapeMd(mapping.valueColumn)}. Interpretation: ${mapping.valueKind}.`] : []),
@@ -79,8 +59,8 @@ export function buildMarkdownTable(series: FrameSeries, summary: MetricsSummary,
   return `${header}\n${body}\n\n${context.join("\n\n")}\n`;
 }
 
-export function exportMarkdown(series: FrameSeries, summary: MetricsSummary, options: StutterOptions, mapping?: GenericMapping): void {
-  const md = buildMarkdownTable(series, summary, options, mapping);
+export function exportMarkdown(series: FrameSeries, summary: MetricsSummary, options: StutterOptions, mapping?: GenericMapping, selection: FrameSelection = selectFrames(series).selection): void {
+  const md = buildMarkdownTable(series, summary, options, mapping, selection);
   const blob = new Blob([md], { type: "text/markdown" });
   downloadBlob(blob, `stutterscope-${safeName(series.meta.sourceFileName)}.md`);
 }
@@ -98,9 +78,9 @@ function safeName(name: string): string {
 }
 
 const CARD_W = 1200;
-const CARD_H = 600;
+const CARD_H = 640;
 
-export function renderReportCardCanvas(series: FrameSeries, summary: MetricsSummary, options: StutterOptions): HTMLCanvasElement {
+export function renderReportCardCanvas(series: FrameSeries, summary: MetricsSummary, options: StutterOptions, selection: FrameSelection = selectFrames(series).selection): HTMLCanvasElement {
   const canvas = document.createElement("canvas");
   canvas.width = CARD_W;
   canvas.height = CARD_H;
@@ -179,6 +159,8 @@ export function renderReportCardCanvas(series: FrameSeries, summary: MetricsSumm
   ctx.fillText(`${fmtInt(series.frameCount)} frames analyzed; ${fmtInt(series.meta.skippedRows)} rows skipped. Warning details in JSON / Markdown.`, 60, 516);
   if (series.meta.selectedStream) ctx.fillText(truncate(`Selected stream: ${series.meta.selectedStream} (${series.meta.application ?? "application not recorded"})`, 105), 60, 540);
 
+  ctx.fillText(truncate(selectionText(selection), 115), 60, 564);
+
   ctx.fillStyle = "#7fa393";
   ctx.font = "400 12px 'JetBrains Mono', monospace";
   ctx.fillText(
@@ -208,9 +190,23 @@ function truncate(s: string, n: number): string {
   return s.length > n ? s.slice(0, n - 1) + "…" : s;
 }
 
-export function exportReportCard(series: FrameSeries, summary: MetricsSummary, options: StutterOptions): void {
-  const canvas = renderReportCardCanvas(series, summary, options);
+export function exportReportCard(series: FrameSeries, summary: MetricsSummary, options: StutterOptions, selection: FrameSelection = selectFrames(series).selection): void {
+  const canvas = renderReportCardCanvas(series, summary, options, selection);
   canvas.toBlob((blob) => {
     if (blob) downloadBlob(blob, `stutterscope-${safeName(series.meta.sourceFileName)}.png`);
   }, "image/png");
+}
+
+export function selectionText(selection: FrameSelection): string {
+  const requested = selection.requested;
+  const label = requested ? `Requested ${requested.startSec} to ${requested.endSec ?? "end"} s` : "Entire capture";
+  return `${label}; frames ${selection.firstFrameIndex + 1}-${selection.lastFrameIndex + 1}; ${selection.durationSec.toFixed(6)} s of frame time. Detection uses full-stream neighbors.`;
+}
+
+export function exportComparisonJson(a: CaptureReport, b: CaptureReport): void {
+  downloadBlob(new Blob([JSON.stringify(buildComparisonReport(a, b), null, 2)], { type: "application/json" }), "stutterscope-comparison.json");
+}
+
+export function exportComparisonMarkdown(a: string, b: string): void {
+  downloadBlob(new Blob([`# Stutterscope comparison\n\nIndependently selected intervals; differences are descriptive, not a controlled hardware-performance claim.\n\n## Run A\n\n${a}\n## Run B\n\n${b}`], { type: "text/markdown" }), "stutterscope-comparison.md");
 }

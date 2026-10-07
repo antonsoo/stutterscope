@@ -16,11 +16,14 @@ import { buildTiles, renderTiles, renderSecondaryTable } from "./statTiles.ts";
 import { fmtBytes, fmtFps, fmtInt, fmtMs, fmtSignedPct, deltaClass, relativeDelta } from "./format.ts";
 import { describeStream } from "../core/streams.ts";
 import { createFpsChart, createPercentileChart, createTraceChart, drawHistogram, drawHistogramPair, type TraceChartHandle, type TraceChartControls } from "./charts.ts";
-import { exportJson, exportMarkdown, exportReportCard } from "./share.ts";
+import { buildJsonReport, buildMarkdownTable, exportComparisonJson, exportComparisonMarkdown, exportJson, exportMarkdown, exportReportCard } from "./share.ts";
+import { intervalControls, mountEpisodes } from "./investigation.ts";
+import { readAnalysisRange, type AnalysisRange } from "../core/analysis.ts";
 import { readStutterOptions } from "./settings.ts";
 
 interface RunState {
   response: ResultResponse;
+  rangeDraft: { start: string; end: string };
   file: File;
   source: ParseSource;
   stutterOptions: StutterOptions;
@@ -31,6 +34,7 @@ interface ImportRequest { slot: Slot; version: number; controller: AbortControll
 const client = new ParseClient();
 const runs: { a?: RunState; b?: RunState } = {};
 let stutterOptions: StutterOptions = { ...DEFAULT_STUTTER_OPTIONS };
+let traceSlot: Slot = "a";
 let pendingMapping: { request: ImportRequest; file: File } | null = null;
 const versions: Record<Slot, number> = { a: 0, b: 0 };
 const imports = new Map<Slot, ImportRequest>();
@@ -95,6 +99,11 @@ function renderDropzone(): void {
         or load a synthetic sample:
         ${SOURCE_FORMATS.map((f) => `<button class="sample-link" data-format="${f}" type="button">${FORMAT_LABELS[f]}</button>`).join(" ")}
       </div>
+      <div class="captured-example"><strong>Recorded browser experiment</strong>
+        <p>Two measured animation runs with known blocking work. Inspect the scene separately from startup and follow a hitch to its CSV line.</p>
+        <button class="btn small" id="captured-example-btn" type="button">Open recorded comparison</button>
+        <span>Controlled local capture, not a game or GPU benchmark.</span>
+      </div>
     </div>
     <div id="status-area"></div>
   `;
@@ -107,7 +116,7 @@ function renderDropzone(): void {
   // itself isn't a focusable control (a large role="button" wrapping other
   // real buttons is an ARIA anti-pattern: nested interactive controls).
   dz.addEventListener("click", (e) => {
-    if ((e.target as HTMLElement).closest(".sample-link, #choose-file-btn, #file-input")) return;
+    if ((e.target as HTMLElement).closest(".sample-link, #choose-file-btn, #file-input, .captured-example")) return;
     fileInput.click();
   });
   fileInput.addEventListener("change", () => {
@@ -132,6 +141,10 @@ function renderDropzone(): void {
       e.stopPropagation();
       void loadSample(btn.dataset["format"] as SourceFormat);
     });
+  });
+  document.getElementById("captured-example-btn")!.addEventListener("click", () => {
+    void loadCapturedExample("a");
+    void loadCapturedExample("b");
   });
   document.getElementById("status-area")!.addEventListener("click", (event) => {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>("button[data-slot]");
@@ -163,6 +176,21 @@ async function loadSample(format: SourceFormat): Promise<void> {
   } finally { finishImport(request); }
 }
 
+async function loadCapturedExample(slot: Slot): Promise<void> {
+  const request = beginImport(slot);
+  setStatus(`<div class="status-line" role="status">Loading recorded Run ${slot.toUpperCase()}… ${cancelButton(slot)}</div>`, slot);
+  try {
+    const response = await fetch(`${import.meta.env.BASE_URL}controlled-browser/controlled-${slot}.csv`, { signal: request.controller.signal });
+    if (!response.ok) throw new Error(`Capture download returned HTTP ${response.status}.`);
+    const blob = await response.blob();
+    if (!isCurrent(request)) return;
+    await loadFile(slot, new File([blob], `controlled-${slot}.csv`, { type: "text/csv" }), "generic",
+      { valueColumn: "frame_time_ms", valueKind: "frametime_ms" }, undefined, request, { startSec: 1.5, endSec: 8.5 });
+  } catch (error) {
+    if (isCurrent(request)) showImportError(slot, `Could not load recorded Run ${slot.toUpperCase()}: ${errorMessage(error)}`, () => void loadCapturedExample(slot));
+  } finally { finishImport(request); }
+}
+
 function setStatus(html: string, slot: Slot = "a"): void {
   const area = document.getElementById("status-area");
   if (!area) return;
@@ -181,7 +209,9 @@ function isCurrent(request: ImportRequest): boolean { return versions[request.sl
 
 function updateBusyControls(): void {
   const busy = imports.size > 0 || applyingSettings;
-  document.querySelectorAll<HTMLInputElement | HTMLButtonElement>("#settings-form input, #apply-settings-btn").forEach((control) => { control.disabled = busy; });
+  document.querySelectorAll<HTMLInputElement | HTMLButtonElement>("#settings-form input, #apply-settings-btn, .interval-form input, .interval-form button, #use-trace-interval").forEach((control) => { control.disabled = busy; });
+  const cancel = document.getElementById("cancel-analysis");
+  if (cancel) cancel.hidden = !applyingSettings;
 }
 
 function beginImport(slot: Slot): ImportRequest {
@@ -230,6 +260,7 @@ async function loadFile(
   genericMapping?: GenericMapping,
   stream?: string,
   request = beginImport(slot),
+  range: AnalysisRange | null = null,
 ): Promise<void> {
   if (!isCurrent(request)) return;
   const options = { ...stutterOptions };
@@ -246,7 +277,7 @@ async function loadFile(
       formatOverride,
       genericMapping,
       stream,
-      stutterOptions: options,
+      stutterOptions: options, range,
       onProgress: (p: ParseProgress) => {
         if (!isCurrent(request)) return;
         const fill = document.getElementById(`progress-fill-${slot}`);
@@ -267,12 +298,12 @@ async function loadFile(
 
     setStatus("", slot);
     runs[slot] = {
-      response: outcome.response, file, stutterOptions: options,
+      response: outcome.response, file, stutterOptions: options, rangeDraft: { start: String(range?.startSec ?? 0), end: range?.endSec == null ? "" : String(range.endSec) },
       source: { file, formatOverride: outcome.response.series.meta.format, genericMapping, stream: outcome.response.series.meta.selectedStream ?? stream },
     };
     renderWorkspace();
   } catch (err) {
-    if (isCurrent(request)) showImportError(slot, `Could not parse ${file.name}: ${errorMessage(err)}`, () => void loadFile(slot, file, formatOverride, genericMapping, stream));
+    if (isCurrent(request)) showImportError(slot, `Could not parse ${file.name}: ${errorMessage(err)}`, () => void loadFile(slot, file, formatOverride, genericMapping, stream, undefined, range));
   } finally { finishImport(request); }
 }
 
@@ -341,7 +372,7 @@ function renderWorkspace(): void {
         </div>
         <div class="run-actions">
           ${!hasB ? `<button class="btn small" id="add-compare-btn" type="button">+ Compare another run</button>` : `<button class="btn small" id="remove-compare-btn" type="button">Remove comparison</button>`}
-          <button class="btn small" id="export-png-btn" type="button">Export PNG</button>
+          <button class="btn small" id="export-png-btn" type="button">Export ${hasB ? "A " : ""}PNG</button>
           <button class="btn small" id="export-md-btn" type="button">Export Markdown</button>
           <button class="btn small" id="export-json-btn" type="button">Export JSON</button>
           <button class="btn small" id="new-session-btn" type="button">New session</button>
@@ -353,6 +384,14 @@ function renderWorkspace(): void {
       ${hasB && runs.b ? streamNote("b", runs.b) : ""}
       ${hasB && runs.b ? warningsNote(runs.b, "Run B") : ""}
 
+      <section class="bracket-panel interval-panel" aria-labelledby="interval-title">
+        <h2 id="interval-title">Analyzed intervals</h2>
+        <p class="hint">Choose the part of each capture to measure. Times sum usable frame durations; they are not wall-clock timestamps. Start excludes frames ending at that point; end includes them. Whole frames are kept.</p>
+        <div class="interval-runs">${intervalControls("a", a.file.name, a.response.selection, a.rangeDraft)}${runs.b ? intervalControls("b", runs.b.file.name, runs.b.response.selection, runs.b.rangeDraft) : ""}</div>
+        <p class="hint">Stutter detection keeps the full stream's neighboring frames. Zooming a chart changes the view; apply an interval to change metrics and exports.${hasB ? " JSON and Markdown exports include both runs. PNG shows Run A." : ""}</p>
+        <button class="btn small" id="cancel-analysis" type="button" hidden>Cancel analysis</button>
+      </section>
+      <p class="panel-label">Run A metrics <span class="hint">${a.response.selection.requested ? "applied interval" : "entire capture"}</span></p>
       <div class="tile-grid" id="tile-grid-a"></div>
       <div class="bracket-panel secondary-panel" id="secondary-panel-a">
         <span class="bracket-tl"></span><span class="bracket-tr"></span>
@@ -360,13 +399,20 @@ function renderWorkspace(): void {
         <div id="secondary-table-a"></div>
       </div>
 
+      ${hasB ? `<div class="bracket-panel" id="comparison-panel"><span class="bracket-tl"></span><span class="bracket-tr"></span><p class="panel-label">Comparison</p><div id="comparison-table" tabindex="0" role="region" aria-label="Run comparison metrics"></div></div>` : ""}
+
       <div class="bracket-panel chart-panel">
         <span class="bracket-tl"></span><span class="bracket-tr"></span>
+        <div class="trace-run-controls"><label for="trace-run">Inspect <select id="trace-run"><option value="a">Run A: ${escapeHtml(a.file.name)}</option>${runs.b ? `<option value="b">Run B: ${escapeHtml(runs.b.file.name)}</option>` : ""}</select></label>
+          <button class="btn small" type="button" id="use-trace-interval">Analyze visible trace</button>
+        </div>
         <p class="panel-label">Frame Time Trace <span class="hint">drag to zoom &middot; shift+drag to pan &middot; wheel to zoom &middot; dblclick to reset</span>
           <button class="btn small range-toggle" id="range-toggle-btn" type="button" aria-pressed="false">Full range</button>
         </p>
         <div id="trace-chart" class="trace-sweep" role="img" aria-label="${escapeHtml(chartSummary(a.response.summary))}"></div>
       </div>
+
+      <section class="bracket-panel" id="episode-inspector" aria-label="Slow-frame investigation"></section>
 
       <div class="chart-grid">
         <div class="bracket-panel chart-panel">
@@ -376,7 +422,7 @@ function renderWorkspace(): void {
         </div>
         <div class="bracket-panel chart-panel">
           <span class="bracket-tl"></span><span class="bracket-tr"></span>
-          <p class="panel-label">Frame Time Histogram <span class="hint">${hasB ? "A = green, B = amber &middot; " : ""}P99 / P99.9 markers</span></p>
+          <p class="panel-label">Frame Time Histogram <span class="hint">${hasB ? "A = green, B = amber &middot; share of each run &middot; " : ""}P99 / P99.9 markers${hasB ? " for A" : ""}</span></p>
           <canvas id="histogram-canvas" class="histogram-canvas" role="img" aria-label="Frame time distribution histogram"></canvas>
         </div>
       </div>
@@ -402,7 +448,7 @@ function renderWorkspace(): void {
         </form>
       </div>
 
-      ${hasB ? `<div class="bracket-panel" id="comparison-panel"><span class="bracket-tl"></span><span class="bracket-tr"></span><p class="panel-label">Comparison</p><div id="comparison-table" tabindex="0" role="region" aria-label="Run comparison metrics"></div></div>` : ""}
+
     </div>
   `;
 
@@ -410,8 +456,21 @@ function renderWorkspace(): void {
   renderTiles(document.getElementById("tile-grid-a")!, tileSet.headline);
   renderSecondaryTable(document.getElementById("secondary-table-a")!, tileSet.secondary);
 
-  charts.trace = createTraceChart(document.getElementById("trace-chart")!, a.response.series.timeSec, a.response.series.frameTimeMs, a.response.chart.isStutter);
-  charts.fps = createFpsChart(document.getElementById("fps-chart")!, a.response.series.timeSec, a.response.series.frameTimeMs);
+  if (!runs[traceSlot]) traceSlot = "a";
+  const inspected = runs[traceSlot]!;
+  const traceSelect = document.getElementById("trace-run") as HTMLSelectElement;
+  traceSelect.value = traceSlot;
+  traceSelect.addEventListener("change", () => { traceSlot = traceSelect.value as Slot; renderWorkspace(); });
+  const traceElement = document.getElementById("trace-chart")!;
+  traceElement.setAttribute("aria-label", `Run ${traceSlot.toUpperCase()}: ${chartSummary(inspected.response.summary)}`);
+  charts.trace = createTraceChart(traceElement, inspected.response.series.timeSec, inspected.response.series.frameTimeMs, inspected.response.chart.isStutter, traceSlot);
+  charts.fps = createFpsChart(document.getElementById("fps-chart")!, inspected.response.series.timeSec, inspected.response.series.frameTimeMs);
+  document.getElementById("fps-chart")!.setAttribute("aria-label", `FPS over time for Run ${traceSlot.toUpperCase()}: ${inspected.file.name}`);
+  mountEpisodes(document.getElementById("episode-inspector")!, inspected.response, (start, end) => {
+    charts.trace?.uplot.setScale("x", { min: start, max: end });
+    document.getElementById("use-trace-interval")?.focus({ preventScroll: true });
+    traceElement.scrollIntoView({ block: "center", behavior: "instant" });
+  });
 
   const markers = { p99: a.response.summary.percentilesMs.p99, p999: a.response.summary.percentilesMs.p999 };
   const b = runs.b;
@@ -476,12 +535,15 @@ function renderComparisonTable(a: RunState, b: RunState): void {
     { label: "1% Low (percentile)", av: sa.onePercentLow.percentileMethodFps, bv: sb.onePercentLow.percentileMethodFps, fmt: (n) => fmtFps(n), higherBetter: true },
     { label: "0.1% Low (percentile)", av: sa.pointOnePercentLow.percentileMethodFps, bv: sb.pointOnePercentLow.percentileMethodFps, fmt: (n) => fmtFps(n), higherBetter: true },
     { label: "P99 frame time", av: sa.percentilesMs.p99, bv: sb.percentilesMs.p99, fmt: (n) => `${fmtMs(n)} ms`, higherBetter: false },
+    { label: "Stutter time share", av: sa.stutter.stutterTimeFraction * 100, bv: sb.stutter.stutterTimeFraction * 100, fmt: (n) => `${fmtMs(n, 2)}%`, higherBetter: false },
+    { label: "Hitches per 1,000 frames", av: sa.stutter.hitchCount / sa.frameCount * 1000, bv: sb.stutter.hitchCount / sb.frameCount * 1000, fmt: (n) => fmtMs(n, 2), higherBetter: false },
     { label: "Stutter events", av: sa.stutter.stutterEventCount, bv: sb.stutter.stutterEventCount, fmt: (n) => fmtInt(n), higherBetter: false },
     { label: `Hitches (>${sa.stutter.hitchThresholdMs}ms)`, av: sa.stutter.hitchCount, bv: sb.stutter.hitchCount, fmt: (n) => fmtInt(n), higherBetter: false },
     { label: "Pacing (MASD)", av: sa.masdMs, bv: sb.masdMs, fmt: (n) => `${fmtMs(n)} ms`, higherBetter: false },
   ];
 
   const html = `
+    <p class="hint">Run A: ${fmtInt(sa.frameCount)} frames, ${fmtMs(sa.durationSec, 4)} s. Run B: ${fmtInt(sb.frameCount)} frames, ${fmtMs(sb.durationSec, 4)} s. Counts depend on interval length; differences do not establish a hardware gain.</p>
     <table class="delta-table">
       <thead>
         <tr>
@@ -500,7 +562,7 @@ function renderComparisonTable(a: RunState, b: RunState): void {
               <td>${escapeHtml(r.label)}</td>
               <td class="num">${r.fmt(r.av)}</td>
               <td class="num">${r.fmt(r.bv)}</td>
-              <td class="num ${cls}">${Number.isFinite(delta) ? fmtSignedPct(delta) : "from 0"}</td>
+              <td class="num ${cls}">${Number.isFinite(delta) ? fmtSignedPct(delta) : Number.isNaN(delta) ? "Unavailable" : "from 0"}</td>
             </tr>`;
           })
           .join("")}
@@ -512,6 +574,37 @@ function renderComparisonTable(a: RunState, b: RunState): void {
 }
 
 function wireWorkspaceControls(): void {
+  document.getElementById("cancel-analysis")!.addEventListener("click", () => {
+    settingsGeneration++;
+    client.terminate();
+    applyingSettings = false;
+    renderWorkspace();
+    document.getElementById(`interval-status-${traceSlot}`)!.textContent = "Analysis cancelled. Previous results and exports are retained.";
+    document.getElementById(`apply-interval-${traceSlot}`)?.focus({ preventScroll: true });
+  });
+  for (const slot of ["a", "b"] as const) {
+    const run = runs[slot];
+    if (!run) continue;
+    const start = document.getElementById(`interval-start-${slot}`) as HTMLInputElement;
+    const end = document.getElementById(`interval-end-${slot}`) as HTMLInputElement;
+    const changed = () => {
+      run.rangeDraft = { start: start.value, end: end.value };
+      document.getElementById(`interval-status-${slot}`)!.textContent = "Draft interval. Apply it to update metrics and exports.";
+    };
+    start.addEventListener("input", changed);
+    end.addEventListener("input", changed);
+    document.getElementById(`interval-${slot}`)!.addEventListener("submit", (event) => {
+      event.preventDefault();
+      void applyInterval(slot, () => readAnalysisRange(start.value, end.value));
+    });
+    document.getElementById(`entire-capture-${slot}`)!.addEventListener("click", () => void applyInterval(slot, () => null));
+  }
+  document.getElementById("use-trace-interval")!.addEventListener("click", () => {
+    const scale = charts.trace?.uplot.scales.x;
+    if (scale?.min == null || scale.max == null) return;
+    const requested = { startSec: Math.max(0, scale.min), endSec: scale.max };
+    void applyInterval(traceSlot, () => requested);
+  });
   const rangeToggleBtn = document.getElementById("range-toggle-btn") as HTMLButtonElement | null;
   rangeToggleBtn?.addEventListener("click", () => {
     const handle = charts.trace;
@@ -568,13 +661,25 @@ function wireWorkspaceControls(): void {
   }
 
   document.getElementById("export-png-btn")?.addEventListener("click", () => {
-    if (runs.a) exportReportCard(runs.a.response.series, runs.a.response.summary, runs.a.stutterOptions);
+    if (runs.a) exportReportCard(runs.a.response.series, runs.a.response.summary, runs.a.stutterOptions, runs.a.response.selection);
   });
   document.getElementById("export-md-btn")?.addEventListener("click", () => {
-    if (runs.a) exportMarkdown(runs.a.response.series, runs.a.response.summary, runs.a.stutterOptions, runs.a.source.genericMapping);
+    const a = runs.a;
+    if (!a) return;
+    const b = runs.b;
+    if (b) exportComparisonMarkdown(
+      buildMarkdownTable(a.response.series, a.response.summary, a.stutterOptions, a.source.genericMapping, a.response.selection),
+      buildMarkdownTable(b.response.series, b.response.summary, b.stutterOptions, b.source.genericMapping, b.response.selection));
+    else exportMarkdown(a.response.series, a.response.summary, a.stutterOptions, a.source.genericMapping, a.response.selection);
   });
   document.getElementById("export-json-btn")?.addEventListener("click", () => {
-    if (runs.a) exportJson(runs.a.response.series, runs.a.response.summary, runs.a.stutterOptions, runs.a.source.genericMapping);
+    const a = runs.a;
+    if (!a) return;
+    const b = runs.b;
+    if (b) exportComparisonJson(
+      buildJsonReport(a.response.series, a.response.summary, a.stutterOptions, a.source.genericMapping, a.response.selection),
+      buildJsonReport(b.response.series, b.response.summary, b.stutterOptions, b.source.genericMapping, b.response.selection));
+    else exportJson(a.response.series, a.response.summary, a.stutterOptions, a.source.genericMapping, a.response.selection);
   });
 
   const kInput = document.getElementById("k-input") as HTMLInputElement | null;
@@ -605,7 +710,7 @@ function wireWorkspaceControls(): void {
       document.getElementById("settings-status")!.textContent = "Updating detection for the loaded runs…";
       const loaded = (["a", "b"] as const).flatMap((slot) => runs[slot] ? [{ slot, run: runs[slot] }] : []);
       const updated = await Promise.all(loaded.map(async ({ slot, run }) => {
-        const outcome = await client.recompute(slot, options, run.source);
+        const outcome = await client.recompute(slot, options, run.source, run.response.selection.requested);
         if (outcome.kind !== "result") throw new Error("Please choose the capture's columns again.");
         return { slot, run, response: outcome.response };
       }));
@@ -627,6 +732,39 @@ function wireWorkspaceControls(): void {
       if (generation === settingsGeneration) applyingSettings = false;
       updateBusyControls();
     }
+  }
+}
+
+async function applyInterval(slot: Slot, read: () => AnalysisRange | null): Promise<void> {
+  if (applyingSettings || imports.size) return;
+  const run = runs[slot];
+  if (!run) return;
+  const generation = ++settingsGeneration;
+  const focused = (document.activeElement as HTMLElement | null)?.id;
+  const errorBox = document.getElementById(`interval-error-${slot}`)!;
+  const status = document.getElementById(`interval-status-${slot}`)!;
+  errorBox.hidden = true;
+  try {
+    const range = read();
+    applyingSettings = true;
+    updateBusyControls();
+    status.textContent = "Analyzing interval… Previous results remain available until this finishes.";
+    const outcome = await client.recompute(slot, run.stutterOptions, run.source, range);
+    if (generation !== settingsGeneration || runs[slot] !== run) return;
+    if (outcome.kind !== "result") throw new Error("Choose the capture's columns again.");
+    run.response = outcome.response;
+    run.rangeDraft = { start: String(range?.startSec ?? 0), end: range?.endSec == null ? "" : String(range.endSec) };
+    applyingSettings = false;
+    renderWorkspace();
+    if (focused) document.getElementById(focused)?.focus({ preventScroll: true });
+  } catch (error) {
+    if (generation !== settingsGeneration) return;
+    errorBox.textContent = `Interval was not applied: ${errorMessage(error)}`;
+    errorBox.hidden = false;
+    status.textContent = "Previous results and exports are retained. Adjust the interval or retry.";
+  } finally {
+    if (generation === settingsGeneration) applyingSettings = false;
+    updateBusyControls();
   }
 }
 

@@ -170,13 +170,14 @@ export function createTraceChart(
   timeSec: Float64Array,
   frameTimeMs: Float64Array,
   isStutter: Uint8Array,
+  slot: "a" | "b" = "a",
 ): TraceChartControls {
   const stutterSeries = new Array<number | null>(frameTimeMs.length);
   for (let i = 0; i < frameTimeMs.length; i++) {
     stutterSeries[i] = isStutter[i] === 1 ? frameTimeMs[i]! : null;
   }
 
-  const fullMin = timeSec.length > 0 ? timeSec[0]! : 0;
+  const fullMin = timeSec.length > 0 ? Math.max(0, timeSec[0]! - frameTimeMs[0]! / 1000) : 0;
   const fullMax = timeSec.length > 0 ? timeSec[timeSec.length - 1]! : 1;
   let trueMax = 1;
   for (let i = 0; i < frameTimeMs.length; i++) if (frameTimeMs[i]! > trueMax) trueMax = frameTimeMs[i]!;
@@ -192,7 +193,7 @@ export function createTraceChart(
     scales: { x: { time: false } },
     series: [
       { label: "time" },
-      { label: "frame time", stroke: TRACE_A, width: 1.3, points: { show: false } },
+      { label: `Run ${slot.toUpperCase()} frame time`, stroke: slot === "a" ? TRACE_A : TRACE_B, width: 1.3, points: { show: false } },
       {
         label: "stutter",
         stroke: STUTTER,
@@ -212,6 +213,7 @@ export function createTraceChart(
   };
 
   const uplot = new uPlot(opts, [timeSec, frameTimeMs, stutterSeries], el);
+  if (fullMax > fullMin) uplot.setScale("x", { min: fullMin, max: fullMax });
   uplot.setScale("y", { min: 0, max: currentYMax });
   const handle = manageChart(el, uplot, attachZoomPan(uplot, () => [fullMin, fullMax]));
 
@@ -308,6 +310,7 @@ function drawHistogramFrame(
   minMs: number,
   maxMs: number,
   maxCount: number,
+  yLabel = "frames",
 ): { x: number; y: number; w: number; h: number } {
   const plot = {
     x: HIST_MARGIN.left,
@@ -332,7 +335,7 @@ function drawHistogramFrame(
     ctx.moveTo(plot.x, y);
     ctx.lineTo(plot.x + plot.w, y);
     ctx.stroke();
-    ctx.fillText(Math.round(maxCount * frac).toLocaleString("en-US"), plot.x - 4, y);
+    ctx.fillText(yLabel === "frames" ? Math.round(maxCount * frac).toLocaleString("en-US") : (maxCount * frac).toFixed(1), plot.x - 4, y);
   }
 
   // x-axis: ~6 ticks with frame-time labels
@@ -359,7 +362,7 @@ function drawHistogramFrame(
   ctx.rotate(-Math.PI / 2);
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillText("frames", 0, 0);
+  ctx.fillText(yLabel, 0, 0);
   ctx.restore();
 
   return plot;
@@ -439,15 +442,21 @@ export function drawHistogramPair(
 ): void {
   const { ctx, w: cssWidth, h: cssHeight } = prepareCanvas(canvas);
   if (buckets.length === 0) return;
-  const maxCount = Math.max(...buckets.map((b) => Math.max(b.countA, b.countB)), 1);
+  // Independent intervals can have different frame counts. Compare shape as
+  // each run's percentage, so duration alone cannot make one histogram taller.
+  const totalA = buckets.reduce((sum, bucket) => sum + bucket.countA, 0);
+  const totalB = buckets.reduce((sum, bucket) => sum + bucket.countB, 0);
+  const shareA = (count: number) => totalA > 0 ? count / totalA * 100 : 0;
+  const shareB = (count: number) => totalB > 0 ? count / totalB * 100 : 0;
+  const maxCount = Math.max(...buckets.map((b) => Math.max(shareA(b.countA), shareB(b.countB))), 1);
   const minMs = buckets[0]!.rangeStartMs;
   const maxMs = buckets[buckets.length - 1]!.rangeEndMs;
-  const plot = drawHistogramFrame(ctx, cssWidth, cssHeight, minMs, maxMs, maxCount);
+  const plot = drawHistogramFrame(ctx, cssWidth, cssHeight, minMs, maxMs, maxCount, "share of run (%)");
 
   const barWidth = plot.w / buckets.length;
   buckets.forEach((b, i) => {
-    const hA = (b.countA / maxCount) * plot.h;
-    const hB = (b.countB / maxCount) * plot.h;
+    const hA = (shareA(b.countA) / maxCount) * plot.h;
+    const hB = (shareB(b.countB) / maxCount) * plot.h;
     ctx.fillStyle = TRACE_A + "aa";
     ctx.fillRect(plot.x + i * barWidth, plot.y + plot.h - hA, Math.max(1, barWidth / 2 - 1), hA);
     ctx.fillStyle = TRACE_B + "aa";

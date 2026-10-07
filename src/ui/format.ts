@@ -31,6 +31,7 @@ export function fmtBytes(bytes: number): string {
 }
 
 export function deltaClass(delta: number, higherIsBetter: boolean): "better" | "worse" | "" {
+  if (Number.isNaN(delta)) return "";
   if (Math.abs(delta) < 5e-4) return ""; // below display rounding (0.05%) -> not a meaningful difference
   const isBetter = higherIsBetter ? delta > 0 : delta < 0;
   return isBetter ? "better" : "worse";

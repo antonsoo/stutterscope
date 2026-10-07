@@ -9,7 +9,8 @@ import { detectFormat, createParserFor } from "../core/parsers/index.ts";
 import { guessMapping, readHeader as readGenericHeader } from "../core/parsers/generic.ts";
 import { decodeText, requireText } from "../core/encoding.ts";
 import { parseFileStreaming, requireFrames } from "../core/stream.ts";
-import { computeMetricsSummary, detectStutter, frameTimeHistogram, percentileCurve, sortedCopy } from "../core/metrics.ts";
+import { frameTimeHistogram, percentileCurve, sortedCopy, type MetricsSummary } from "../core/metrics.ts";
+import { analyzeCapture } from "../core/analysis.ts";
 import { DEFAULT_STUTTER_OPTIONS } from "../core/metrics.ts";
 import type { FrameSeries, SourceFormat } from "../core/types.ts";
 import type { WorkerRequest, WorkerResponse, ChartData } from "./protocol.ts";
@@ -19,14 +20,13 @@ const ctx = self as unknown as DedicatedWorkerGlobalScope;
 /** Cached parsed series per comparison slot, so threshold changes don't require re-parsing. */
 const seriesCache = new Map<"a" | "b", FrameSeries>();
 
-function buildChartData(series: FrameSeries, stutterOptions = DEFAULT_STUTTER_OPTIONS): ChartData {
+function buildChartData(series: FrameSeries, summary: MetricsSummary): ChartData {
   const sortedFrameTimeMs = sortedCopy(series.frameTimeMs);
-  const stutter = detectStutter(series.frameTimeMs, stutterOptions);
   return {
     sortedFrameTimeMs,
     percentileCurve: percentileCurve(sortedFrameTimeMs, 300),
     histogram: frameTimeHistogram(series.frameTimeMs, 70),
-    isStutter: stutter.isStutter,
+    isStutter: summary.stutter.isStutter,
   };
 }
 
@@ -70,9 +70,9 @@ async function handleParse(req: Extract<WorkerRequest, { type: "parse" }>): Prom
     );
 
     seriesCache.set(slot, series);
-    const summary = computeMetricsSummary(series, stutterOptions);
-    const chart = buildChartData(series, stutterOptions);
-    const response: WorkerResponse = { type: "result", requestId, slot, series, summary, chart };
+    const analysis = analyzeCapture(series, stutterOptions ?? DEFAULT_STUTTER_OPTIONS, req.range);
+    const chart = buildChartData(analysis.series, analysis.summary);
+    const response: WorkerResponse = { type: "result", requestId, slot, ...analysis, chart };
     ctx.postMessage(response, chartTransferables(chart));
   } catch (err) {
     const response: WorkerResponse = {
@@ -93,10 +93,15 @@ function handleRecompute(req: Extract<WorkerRequest, { type: "recompute" }>): vo
     ctx.postMessage(response);
     return;
   }
-  const summary = computeMetricsSummary(series, stutterOptions);
-  const chart = buildChartData(series, stutterOptions);
-  const response: WorkerResponse = { type: "result", requestId, slot, series, summary, chart };
-  ctx.postMessage(response, chartTransferables(chart));
+  try {
+    const analysis = analyzeCapture(series, stutterOptions, req.range);
+    const chart = buildChartData(analysis.series, analysis.summary);
+    const response: WorkerResponse = { type: "result", requestId, slot, ...analysis, chart };
+    ctx.postMessage(response, chartTransferables(chart));
+  } catch (error) {
+    const response: WorkerResponse = { type: "error", requestId, slot, message: error instanceof Error ? error.message : String(error) };
+    ctx.postMessage(response);
+  }
 }
 
 ctx.addEventListener("message", (event: MessageEvent<WorkerRequest>) => {

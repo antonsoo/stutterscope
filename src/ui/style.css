@@ -761,6 +761,118 @@ dialog .dialog-actions {
   white-space: nowrap;
 }
 
+/* The interval ruler keeps the measured part of a capture visible beside its controls. */
+.interval-panel h2,
+.episode-heading h2 {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  margin: 0;
+}
+.interval-panel > .hint,
+#episode-inspector > .hint {
+  color: var(--text-dim);
+  font-size: 13px;
+  max-width: 95ch;
+}
+.interval-runs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+  gap: 20px;
+}
+.interval-form {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--border-bright);
+  background: var(--bg);
+}
+.interval-heading,
+.episode-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 8px 16px;
+  flex-wrap: wrap;
+  overflow-wrap: anywhere;
+}
+.interval-heading { font-family: var(--font-mono); font-size: 12px; }
+.interval-heading strong { color: var(--trace-a); }
+#interval-b .interval-heading strong { color: var(--trace-b); }
+.interval-applied { margin-left: auto; color: var(--text-dim); }
+.interval-ruler {
+  position: relative;
+  height: 16px;
+  border-left: 1px solid var(--text-dim);
+  border-right: 1px solid var(--text-dim);
+  margin: 15px 0;
+  background: repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 10%), linear-gradient(var(--border), var(--border)) center / 100% 1px no-repeat;
+}
+.interval-ruler span {
+  position: absolute;
+  top: 4px;
+  height: 8px;
+  min-width: 2px;
+  background: var(--trace-a);
+}
+#interval-b .interval-ruler span { background: var(--trace-b); }
+.interval-form .config-row { gap: 10px; align-items: end; }
+.interval-form .config-row label { display: grid; gap: 4px; }
+.interval-form input[type="number"] { width: 112px; }
+.interval-form .hint { font-size: 12px; color: var(--text-dim); margin-bottom: 0; overflow-wrap: anywhere; }
+.interval-evidence { font-family: var(--font-mono); font-size: 12px; margin: 14px 0 6px; }
+.interval-evidence strong { color: var(--trace-a); font-weight: 500; }
+#interval-b .interval-evidence strong { color: var(--trace-b); }
+.trace-run-controls,
+.episode-controls,
+.episode-paging { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 12px 0; }
+.trace-run-controls label,
+.episode-controls label { display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 12px; }
+.trace-run-controls select,
+.episode-controls select {
+  min-width: 0;
+  max-width: 100%;
+  border: 1px solid var(--border-bright);
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  padding: 7px 9px;
+}
+.trace-run-controls { margin: 0 0 16px; }
+.trace-run-controls label { flex: 1 1 300px; }
+.trace-run-controls select { max-width: 520px; }
+.episode-heading span,
+.episode-paging { color: var(--text-dim); font-family: var(--font-mono); font-size: 12px; }
+.episode-table-scroll { overflow: auto; max-width: 100%; }
+.episode-table th,
+.episode-table td,
+.frame-evidence th,
+.frame-evidence td { white-space: nowrap; }
+.episode-table .selected-episode,
+.frame-evidence .selected-episode { background: var(--bg-panel-raised); outline: 1px solid var(--trace-a-dim); outline-offset: -1px; }
+.episode-detail { border-top: 1px solid var(--border-bright); margin-top: 20px; padding-top: 8px; }
+.episode-detail h3 { font-family: var(--font-mono); font-size: 14px; }
+.episode-detail p { font-size: 13px; }
+.episode-detail .hint { color: var(--text-dim); }
+.episode-detail .episode-table-scroll { margin-top: 16px; }
+.episode-empty { padding: 24px 0; color: var(--text-dim); }
+@media (max-width: 600px) {
+  .interval-form { padding: 12px; }
+  .interval-form .config-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .interval-form input[type="number"] { width: 100%; min-width: 0; }
+  .interval-form .config-row button { padding: 6px; font-size: 11px; }
+  .interval-applied { margin-left: 0; }
+  .episode-paging { justify-content: space-between; }
+  .episode-paging .btn { padding: 6px; font-size: 11px; }
+  .episode-table th:nth-child(2), .episode-table td:nth-child(2),
+  .episode-table th:nth-child(4), .episode-table td:nth-child(4),
+  .episode-table th:nth-child(5), .episode-table td:nth-child(5) { display: none; }
+  .episode-table th, .episode-table td { padding: 8px 5px; font-size: 11px; }
+  .episode-table td:first-child span { display: block; }
+  .episode-table .btn.small { padding: 6px 8px; font-size: 11px; }
+}
+.captured-example { border-top: 1px solid var(--border-bright); margin: 26px auto 0; padding-top: 18px; max-width: 630px; }
+.captured-example strong { font-family: var(--font-mono); font-size: 13px; }
+.captured-example p { font-size: 13px; margin: 8px 0 12px; }
+.captured-example > span { display: block; color: var(--text-dim); font-size: 11px; margin-top: 8px; }
+
 @media (max-width: 480px) {
   .dropzone {
     padding: 36px 14px;

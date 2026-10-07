@@ -1,6 +1,7 @@
 import type { SourceFormat, ParseProgress } from "../core/types.ts";
 import type { GenericMapping } from "../core/parsers/generic.ts";
 import type { StutterOptions } from "../core/metrics.ts";
+import type { AnalysisRange } from "../core/analysis.ts";
 import type { WorkerRequest, WorkerResponse, ResultResponse, NeedsMappingResponse } from "../worker/protocol.ts";
 
 export type Slot = "a" | "b";
@@ -90,23 +91,23 @@ export class ParseClient {
   async parse(
     slot: Slot,
     file: File,
-    opts: Omit<ParseSource, "file"> & { stutterOptions?: StutterOptions; onProgress?: Pending["onProgress"] } = {},
+    opts: Omit<ParseSource, "file"> & { stutterOptions?: StutterOptions; range?: AnalysisRange | null; onProgress?: Pending["onProgress"] } = {},
   ): Promise<LoadOutcome> {
     this.cancel(slot);
     const session = this.createSession(slot);
     return this.send(slot, session, {
       type: "parse", requestId: this.nextRequestId++, slot, file,
       formatOverride: opts.formatOverride, genericMapping: opts.genericMapping,
-      stream: opts.stream, stutterOptions: opts.stutterOptions,
+      stream: opts.stream, stutterOptions: opts.stutterOptions, range: opts.range,
     }, opts.onProgress);
   }
 
-  async recompute(slot: Slot, stutterOptions: StutterOptions, source: ParseSource): Promise<LoadOutcome> {
+  async recompute(slot: Slot, stutterOptions: StutterOptions, source: ParseSource, range: AnalysisRange | null = null): Promise<LoadOutcome> {
     const session = this.sessions.get(slot);
     // A worker failure loses its cache. Reload the exact source and mapping
     // represented by the visible report, rather than silently using another file.
-    if (!session?.ready) return this.parse(slot, source.file, { ...source, stutterOptions });
-    return this.send(slot, session, { type: "recompute", requestId: this.nextRequestId++, slot, stutterOptions });
+    if (!session?.ready) return this.parse(slot, source.file, { ...source, stutterOptions, range });
+    return this.send(slot, session, { type: "recompute", requestId: this.nextRequestId++, slot, stutterOptions, range });
   }
 
   terminate(): void {

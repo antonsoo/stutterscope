@@ -14,7 +14,7 @@ describe("inspectable web exports", () => {
   it("preserves skipped-row evidence, generic interpretation and applied settings", () => {
     const series = capture();
     const report = buildJsonReport(series, computeMetricsSummary(series, options), options, mapping);
-    expect(report.schemaVersion).toBe(2);
+    expect(report.schemaVersion).toBe(3);
     expect(report.source.frameCount).toBe(2);
     expect(report.source.skippedRows).toBe(2);
     expect(report.source.warnings).toHaveLength(2);

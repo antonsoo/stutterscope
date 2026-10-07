@@ -1,6 +1,7 @@
 import type { FrameSeries, ParseProgress, SourceFormat } from "../core/types.ts";
 import type { GenericMapping, MappingGuess } from "../core/parsers/generic.ts";
 import type { MetricsSummary, StutterOptions, HistogramBucket } from "../core/metrics.ts";
+import type { AnalysisRange, FrameSelection } from "../core/analysis.ts";
 
 export interface ParseRequest {
   type: "parse";
@@ -12,6 +13,7 @@ export interface ParseRequest {
   /** Which present stream to analyse; see `matchStream` in core/streams.ts. */
   stream?: string;
   stutterOptions?: StutterOptions;
+  range?: AnalysisRange | null;
 }
 
 export interface RecomputeRequest {
@@ -19,6 +21,7 @@ export interface RecomputeRequest {
   requestId: number;
   slot: "a" | "b";
   stutterOptions: StutterOptions;
+  range?: AnalysisRange | null;
 }
 
 export type WorkerRequest = ParseRequest | RecomputeRequest;
@@ -53,6 +56,7 @@ export interface ResultResponse {
   slot: "a" | "b";
   series: FrameSeries;
   summary: MetricsSummary;
+  selection: FrameSelection;
   chart: ChartData;
 }
 
