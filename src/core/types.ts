@@ -79,6 +79,15 @@ export interface FrameSeriesMeta {
   streams?: PresentStream[];
   /** The id of the stream the series holds, when `streams` is set. */
   selectedStream?: string;
+  /** A clock cross-check is evidence, not proof that every frame was recorded. */
+  timingEvidence?: {
+    kind: "mangohud-elapsed";
+    status: "compatible" | "unverified";
+    comparedIntervals: number;
+    observedSpanSec: number | null;
+    recordedFrameSpanSec: number | null;
+    note: string;
+  };
 }
 
 export interface FrameSeries {

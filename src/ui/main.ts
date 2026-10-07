@@ -380,6 +380,8 @@ function renderWorkspace(): void {
       </div>
 
       ${warningsNote(a)}
+      ${timingNote(a, "Run A")}
+      ${runs.b ? timingNote(runs.b, "Run B") : ""}
       ${streamNote("a", a)}
       ${hasB && runs.b ? streamNote("b", runs.b) : ""}
       ${hasB && runs.b ? warningsNote(runs.b, "Run B") : ""}
@@ -507,10 +509,16 @@ function warningsNote(run: RunState, label = "Run A"): string {
   return `<details class="notes warn-note"><summary>${label}: ${rows}: bad or missing frame time</summary><pre>${listed.map(escapeHtml).join("\n")}${more}</pre></details>`;
 }
 
-/**
- * A present-hook capture taken without a process filter holds every process
- * that presented. Only one stream is analysed; say which, and offer the others.
- */
+function timingNote(run: RunState, label: string): string {
+  const evidence = run.response.series.meta.timingEvidence;
+  if (!evidence) return "";
+  return `<details class="notes timing-note"><summary>${label}: MangoHud metrics assume per-frame logging</summary>
+    <p>${escapeHtml(evidence.note)}</p><p>Compared intervals: ${fmtInt(evidence.comparedIntervals)}.
+    Elapsed span: ${evidence.observedSpanSec === null ? "unavailable" : fmtMs(evidence.observedSpanSec, 6) + " s"}.
+    Recorded frame span: ${evidence.recordedFrameSpanSec === null ? "unavailable" : fmtMs(evidence.recordedFrameSpanSec, 6) + " s"}.</p></details>`;
+}
+
+/** A present-hook capture may hold multiple streams; say which is analyzed. */
 function streamNote(slot: "a" | "b", run: RunState): string {
   const { streams, selectedStream } = run.response.series.meta;
   if (!streams || streams.length < 2) return "";

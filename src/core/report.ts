@@ -23,6 +23,7 @@ export function buildJsonReport(series: FrameSeries, summary: MetricsSummary, op
       warnings: [...series.meta.warnings],
       omittedWarningDetails: Math.max(0, series.meta.skippedRows - series.meta.warnings.length),
       genericMapping: mapping ? { ...mapping } : null,
+      timingEvidence: series.meta.timingEvidence ? { ...series.meta.timingEvidence } : null,
     },
     analysis: { stutterOptions: { ...options }, selection: { ...selection, requested: selection.requested ? { ...selection.requested } : null }, stutterIndexBasis: "selected-series-zero-based" },
     episodes: slowEpisodes({ series, summary, selection }),

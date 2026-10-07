@@ -8,7 +8,9 @@ import { cumulativeSeconds } from "../streams.ts";
  *    (`v1`, the MangoHud version string, a `---SYSTEM INFO---`-style rule),
  *    then a one-row `os,cpu,gpu,ram,kernel,driver,cpuscheduler` table, then
  *    another rule line, then the frame-metrics header and rows.
- *  - Without it, the file is just the frame-metrics header and rows.
+ *  - Without it, the system-info table remains; version and rule lines are omitted.
+ *  - Only log_interval=0 logs every frame. Periodic snapshots cannot reconstruct
+ *    missing frames, and the CSV does not record the configured interval.
  *
  * Frame-metrics header (both cases):
  *   fps,frametime,cpu_load,cpu_power,gpu_load,cpu_temp,gpu_temp,
@@ -23,8 +25,8 @@ import { cumulativeSeconds } from "../streams.ts";
  * that metric.
  */
 import { Float64Builder } from "../buffer.ts";
-import { indexHeader, LINE_BREAK, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
-import type { FrameSeries, SniffResult, StreamingParser } from "../types.ts";
+import { indexHeader, LINE_BREAK, parseFloatOrNull, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
+import { ParseError, type FrameSeries, type SniffResult, type StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
 
 const FRAME_HEADER_MARKERS = ["fps", "frametime", "cpu_load"];
@@ -49,6 +51,12 @@ class MangoHudParser implements StreamingParser {
   private readonly frameTimeMs = new Float64Builder(4096);
   private readonly sourceLine = new Float64Builder(4096);
   private columns: string[] = [];
+  private previousElapsed: number | null = null;
+  private observedSpanSec = 0;
+  private recordedFrameSpanSec = 0;
+  private comparedIntervals = 0;
+  private missingElapsed = 0;
+  private reversedElapsed = false;
 
   pushLine(line: string, lineIndex: number): void {
     const fields = splitCsvLine(line);
@@ -62,7 +70,25 @@ class MangoHudParser implements StreamingParser {
     const ft = idx === undefined ? null : parseFrameTimeOrNull(fields[idx]);
     if (ft === null) {
       this.skipped.add(lineIndex, "missing/invalid frametime");
+      this.previousElapsed = null;
       return;
+    }
+    const elapsedIndex = this.header.get("elapsed");
+    const elapsed = elapsedIndex === undefined ? null : parseFloatOrNull(fields[elapsedIndex]);
+    if (elapsed === null || elapsed < 0) {
+      this.missingElapsed++;
+      this.previousElapsed = null;
+    } else {
+      if (this.previousElapsed !== null) {
+        const interval = (elapsed - this.previousElapsed) / 1e9;
+        if (interval < 0) this.reversedElapsed = true;
+        else {
+          this.observedSpanSec += interval;
+          this.recordedFrameSpanSec += ft / 1000;
+          this.comparedIntervals++;
+        }
+      }
+      this.previousElapsed = elapsed;
     }
     this.frameTimeMs.push(ft);
     this.sourceLine.push(lineIndex + 1);
@@ -71,6 +97,7 @@ class MangoHudParser implements StreamingParser {
   finish(sourceFileName: string): FrameSeries {
     const frameTimeMs = this.frameTimeMs.toArray();
     const timeSec = cumulativeSeconds(frameTimeMs);
+    const evidence = this.clockEvidence();
     return {
       meta: {
         format: "mangohud",
@@ -78,12 +105,35 @@ class MangoHudParser implements StreamingParser {
         warnings: parseWarnings(this.skipped, frameTimeMs.length),
         skippedRows: this.skipped.count,
         columns: this.columns,
+        timingEvidence: evidence,
       },
       frameCount: frameTimeMs.length,
       frameTimeMs,
       sourceLine: this.sourceLine.toArray(),
       timeSec,
       channels: {},
+    };
+  }
+
+  private clockEvidence(): NonNullable<FrameSeries["meta"]["timingEvidence"]> {
+    const assumption = "MangoHud frame metrics require log_interval=0. The CSV does not record this setting; matching clock spans do not prove every frame was logged.";
+    if (this.reversedElapsed) throw new ParseError("MangoHud elapsed time goes backwards. Split concatenated logging sessions before analyzing their frames.");
+    const observed = this.observedSpanSec;
+    const recorded = this.recordedFrameSpanSec;
+    // Independent clocks and logging overhead can differ over short excerpts.
+    // Only reject a large contradiction; compatibility is deliberately not a
+    // certification of per-frame capture or a way to infer missing frames.
+    const enough = this.comparedIntervals >= 3;
+    if (enough && Math.abs(observed - recorded) > 0.01 && (observed > recorded * 2 || recorded > observed * 2)) {
+      throw new ParseError(`MangoHud logging intervals do not match frame durations: ${observed.toFixed(6)} s of elapsed intervals versus ${recorded.toFixed(6)} s of frame durations across ${this.comparedIntervals} adjacent records. This may be periodic logging or missing frames. Recapture with log_interval=0; snapshots cannot reconstruct a per-frame stutter report.`);
+    }
+    const compatible = enough && observed > 0 && recorded > 0 && this.missingElapsed === 0 && this.skipped.count === 0;
+    return {
+      kind: "mangohud-elapsed", status: compatible ? "compatible" : "unverified",
+      comparedIntervals: this.comparedIntervals,
+      observedSpanSec: this.comparedIntervals > 0 ? observed : null,
+      recordedFrameSpanSec: this.comparedIntervals > 0 ? recorded : null,
+      note: `${compatible ? "No large elapsed/frame-duration contradiction found. " : "Clock coverage is missing, too short, or interrupted; per-frame coverage is unverified. "}${assumption}`,
     };
   }
 }

@@ -280,6 +280,7 @@ function compareFiles(argv: string[]): void {
       const requested = selection.requested;
       console.log(color(`${label}: ${requested ? `requested ${requested.startSec}-${requested.endSec ?? "end"} s` : "entire capture"}; frames ${selection.firstFrameIndex + 1}-${selection.lastFrameIndex + 1} of ${selection.sourceFrameCount}; ${fmt(summary.durationSec, 6)} s analyzed; ${series.meta.skippedRows} source rows skipped.`, DIM));
       if (series.meta.selectedStream) console.log(color(`   Stream: ${series.meta.selectedStream} (${series.meta.application ?? "unnamed"})`, DIM));
+      if (series.meta.timingEvidence) console.log(color(`   ${series.meta.timingEvidence.note}`, AMBER));
       if (run.mapping) console.log(color(`   Column: ${run.mapping.valueColumn} (${run.mapping.valueKind})${run.guessed ? "; inferred from column name/values" : ""}.`, DIM));
     }
     console.log(color(`Detection: k = ${args.stutterOptions.kMultiplier}, radius = ${args.stutterOptions.windowRadius}, hitch > ${args.stutterOptions.hitchThresholdMs} ms; full-stream neighbors.`, DIM));
@@ -374,6 +375,7 @@ function main(): void {
       if (st.id !== selectedStream) console.log(color(`  also: ${describeStream(st)}   (--stream ${st.id})`, DIM));
     }
   }
+  if (series.meta.timingEvidence) console.log(color(series.meta.timingEvidence.note, AMBER));
   const { skippedRows } = series.meta;
   if (skippedRows > 0) {
     console.log(color(`${skippedRows.toLocaleString("en-US")} ${skippedRows === 1 ? "row" : "rows"} skipped while parsing`, AMBER));

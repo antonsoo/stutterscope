@@ -163,10 +163,18 @@ handled without special-casing.
 
 ## MangoHud
 
-**Source:** the actual logging implementation,
-[`src/logging.cpp`](https://github.com/flightlessmango/MangoHud/blob/master/src/logging.cpp)
-and [`src/overlay.cpp`](https://github.com/flightlessmango/MangoHud/blob/master/src/overlay.cpp)
-in [`flightlessmango/MangoHud`](https://github.com/flightlessmango/MangoHud).
+**Source:** MangoHud commit
+[`f88ef00a`](https://github.com/flightlessmango/MangoHud/tree/f88ef00a0cb8a3dfeab761bd96614ed08ba823b1),
+inspected on 2026-10-07: the
+[CSV writer and periodic logger](https://github.com/flightlessmango/MangoHud/blob/f88ef00a0cb8a3dfeab761bd96614ed08ba823b1/src/logging.cpp#L176-L308),
+[per-frame hook](https://github.com/flightlessmango/MangoHud/blob/f88ef00a0cb8a3dfeab761bd96614ed08ba823b1/src/overlay.cpp#L217-L286),
+and [default logging interval](https://github.com/flightlessmango/MangoHud/blob/f88ef00a0cb8a3dfeab761bd96614ed08ba823b1/src/overlay_params.cpp#L871).
+
+**Per-frame logging is required.** `log_interval=0` logs on each frame; a
+nonzero interval samples the latest frame duration periodically. Those snapshots
+cannot reconstruct frames between samples. Zero is the default in the cited
+source, but the CSV does not include the configured interval. Stutterscope
+therefore cannot certify capture completeness from the CSV alone.
 
 With `log_versioning` enabled, a log file starts with a version marker and a
 one-row system-info table before the per-frame data:
@@ -184,11 +192,10 @@ swap_used,process_rss,cpu_mhz,elapsed
 <data rows>
 ```
 
-Without `log_versioning`, the file is just the `fps,frametime,cpu_load,...`
-header and data rows — `src/logging.cpp` gates the version block and the
-`FRAME METRICS` rule behind that flag, so we don't assume either is present:
-the parser scans forward until it finds a line matching the frame-metrics
-header, skipping anything before it.
+Without `log_versioning`, the system-info header and row are still written;
+the version marker and separator rules are omitted. The parser scans forward
+until it finds the frame-metrics header, accepting either form and stripped
+files that begin at that header.
 
 `frametime` is confirmed to be **milliseconds** by the overlay code itself
 (`frametime = frametime_ms`, `fps = 1000 / frametime_ms`), and `elapsed` is
@@ -197,6 +204,22 @@ nanoseconds since logging started. `cpu_load`/`gpu_load` are utilization
 `CPUBusy`/`GPUBusy`, so we don't map them onto the CPU/GPU-bound-share
 metric; MangoHud captures simply don't carry that metric here. MangoHud also
 has no dropped-frame column.
+
+**Clock cross-check (source checkout).** For adjacent usable records, compare
+changes in `elapsed` with the current record's frame duration. The first frame
+precedes the first elapsed timestamp and is excluded from this comparison.
+With at least three adjacent intervals, a disagreement greater than both 10 ms
+and a factor of two refuses the report and asks for a `log_interval=0` capture.
+An elapsed clock that moves backwards also refuses analysis. Invalid frame or
+elapsed values break adjacency rather than making up a duration across the gap.
+
+Accepted captures carry `source.timingEvidence` in JSON and a visible assumption
+in the browser, Markdown, PNG, and terminal. `compatible` means no large
+contradiction was found; it is not proof that every frame was logged. Missing,
+short, or interrupted clock coverage is `unverified`. The loose threshold allows
+logging overhead and short excerpts; modest sampling gaps can escape it. The
+check never estimates missing frame durations, and metrics still use the
+recorded per-frame durations, conditional on the logging assumption.
 
 ## Generic CSV
 
@@ -317,3 +340,10 @@ on the CLI's stderr with exit code 1: an empty file, a binary one, a header
 with no data rows, and a capture none of whose rows has a usable frame
 time (the message quotes the first skipped row, which is usually enough to
 see that the wrong column or format was picked).
+
+**Source lines (source checkout).** Every parser now retains each kept frame's
+one-based physical CSV line. These references survive process filtering and
+interval selection, including blank lines, format preambles and skipped rows.
+For a cumulative-timestamp mapping, the reference names the ending sample whose
+value is differenced from the preceding usable timestamp. Derived frame times
+that overflow milliseconds are skipped with a warning.

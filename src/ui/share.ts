@@ -49,6 +49,7 @@ export function buildMarkdownTable(series: FrameSeries, summary: MetricsSummary,
   const context = [
     `Source format: ${series.meta.format}. Analyzed frames: ${fmtInt(series.frameCount)} of ${fmtInt(selection.sourceFrameCount)}.`,
     selectionText(selection),
+    ...(series.meta.timingEvidence ? [escapeMd(series.meta.timingEvidence.note)] : []),
     `Detection: k = ${options.kMultiplier}, window radius = ${options.windowRadius}, hitch threshold > ${options.hitchThresholdMs} ms.`,
     ...(series.meta.selectedStream ? [`Selected stream: ${escapeMd(series.meta.selectedStream)} (${escapeMd(series.meta.application ?? "application not recorded")}). Other streams are excluded.`] : []),
     ...(mapping ? [`Column: ${escapeMd(mapping.valueColumn)}. Interpretation: ${mapping.valueKind}.`] : []),
@@ -160,6 +161,10 @@ export function renderReportCardCanvas(series: FrameSeries, summary: MetricsSumm
   if (series.meta.selectedStream) ctx.fillText(truncate(`Selected stream: ${series.meta.selectedStream} (${series.meta.application ?? "application not recorded"})`, 105), 60, 540);
 
   ctx.fillText(truncate(selectionText(selection), 115), 60, 564);
+  if (series.meta.timingEvidence) {
+    ctx.font = "400 12px 'JetBrains Mono', monospace";
+    ctx.fillText(`MangoHud assumes log_interval=0; clock coverage: ${series.meta.timingEvidence.status}.`, 60, 585);
+  }
 
   ctx.fillStyle = "#7fa393";
   ctx.font = "400 12px 'JetBrains Mono', monospace";

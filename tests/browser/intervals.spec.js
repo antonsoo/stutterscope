@@ -181,3 +181,18 @@ for (const width of [1440, 375, 320]) {
     await expect(page.locator("#interval-end-a")).toBeFocused();
   });
 }
+
+test("periodic MangoHud logging cannot replace the current report with misleading frame metrics", async ({ page }) => {
+  await example(page);
+  const before = await report(page);
+  const csv = "fps,frametime,cpu_load,elapsed\n100,10,40,0\n100,10,40,100000000\n100,10,40,200000000\n100,10,40,300000000\n";
+  await page.locator("#file-input").setInputFiles({ name: "periodic-mangohud.csv", mimeType: "text/csv", buffer: Buffer.from(csv) });
+  await expect(page.locator("#status-area [role=alert]")).toContainText("Recapture with log_interval=0");
+  expect((await report(page)).runs.a.metrics).toEqual(before.runs.a.metrics);
+  await page.locator("#new-session-btn").click();
+  await page.getByRole("button", { name: "MangoHud", exact: true }).click();
+  await expect(page.locator(".timing-note summary")).toContainText("assume per-frame logging");
+  await page.locator(".timing-note summary").click();
+  await expect(page.locator(".timing-note")).toContainText("matching clock spans do not prove every frame was logged");
+  expect((await report(page)).source.timingEvidence.status).toBe("compatible");
+});
