@@ -59,3 +59,5 @@ jobs:
           node dist-cli/cli/index.js --version
           node dist-cli/cli/index.js summary examples/samples/presentmon2-synthetic-demo.csv
           node dist-cli/cli/index.js summary examples/samples/generic-synthetic-demo.csv
+          node dist-cli/cli/index.js summary examples/controlled-browser/controlled-a.csv --start 1.5 --end 8.5 --events --json
+          node dist-cli/cli/index.js compare examples/controlled-browser/controlled-a.csv examples/controlled-browser/controlled-b.csv --a-start 1.5 --a-end 8.5 --b-start 1.5 --b-end 8.5 --json

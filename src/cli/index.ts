@@ -9,7 +9,10 @@ import { basename } from "node:path";
 import { detectFormat, createParserFor } from "../core/parsers/index.ts";
 import { decodeText, requireText } from "../core/encoding.ts";
 import { parseTextSync, requireFrames } from "../core/stream.ts";
-import { computeMetricsSummary, DEFAULT_STUTTER_OPTIONS, summaryForJson, type StutterOptions } from "../core/metrics.ts";
+import { DEFAULT_STUTTER_OPTIONS, summaryForJson, type StutterOptions } from "../core/metrics.ts";
+import { analyzeCapture, type CaptureAnalysis } from "../core/analysis.ts";
+import { buildJsonReport, buildComparisonReport } from "../core/report.ts";
+import { slowEpisodes } from "../core/episodes.ts";
 import { FORMAT_LABELS, ParseError, SOURCE_FORMATS, type SourceFormat } from "../core/types.ts";
 import { describeStream } from "../core/streams.ts";
 import { VERSION } from "./version.ts";
@@ -68,6 +71,11 @@ function fmt(n: number, digits = 1): string {
 interface Args {
   file?: string;
   json: boolean;
+  events?: boolean;
+  start?: number;
+  end?: number;
+  aStart?: number; aEnd?: number; bStart?: number; bEnd?: number;
+  aStream?: string; bStream?: string;
   format?: SourceFormat;
   genericColumn?: string;
   genericKind?: GenericValueKind;
@@ -86,7 +94,7 @@ function isGenericKind(v: string): v is GenericValueKind {
   return Object.hasOwn(GENERIC_VALUE_KIND_LABELS, v);
 }
 
-function parseArgs(argv: string[]): Args {
+function parseArgs(argv: string[], comparison = false): Args {
   const args: Args = { json: false, stutterOptions: { ...DEFAULT_STUTTER_OPTIONS } };
   const value = (i: number, flag: string): string => {
     const v = argv[i];
@@ -96,7 +104,7 @@ function parseArgs(argv: string[]): Args {
   const number = (i: number, flag: string, min: number, integer = false): number => {
     const raw = value(i, flag);
     const n = Number(raw);
-    if (!Number.isFinite(n) || n < min || (integer && !Number.isInteger(n))) {
+    if (raw.trim() === "" || !Number.isFinite(n) || n < min || (integer && !Number.isSafeInteger(n))) {
       throw new UsageError(`${flag} must be ${integer ? "an integer" : "a number"} >= ${min}, got "${raw}"`);
     }
     return n;
@@ -105,6 +113,15 @@ function parseArgs(argv: string[]): Args {
     const a = argv[i];
     if (a === undefined) continue;
     if (a === "--json") args.json = true;
+    else if (a === "--events") args.events = true;
+    else if (a === "--start") args.start = number(++i, a, 0);
+    else if (a === "--end") args.end = number(++i, a, 0);
+    else if (comparison && a === "--a-start") args.aStart = number(++i, a, 0);
+    else if (comparison && a === "--a-end") args.aEnd = number(++i, a, 0);
+    else if (comparison && a === "--b-start") args.bStart = number(++i, a, 0);
+    else if (comparison && a === "--b-end") args.bEnd = number(++i, a, 0);
+    else if (comparison && a === "--a-stream") args.aStream = value(++i, a);
+    else if (comparison && a === "--b-stream") args.bStream = value(++i, a);
     else if (a === "--format") {
       const f = value(++i, a);
       if (!isFormat(f)) throw new UsageError(`unknown format "${f}"; one of: ${SOURCE_FORMATS.join(", ")}`);
@@ -173,6 +190,7 @@ function printHelp(): void {
 
 Usage:
   stutterscope summary <file.csv> [options]
+  stutterscope compare <a.csv> <b.csv> [options]
   stutterscope --version
 
 Options:
@@ -188,7 +206,103 @@ Options:
                            an application name, a process id, or pid:swapchain (default: the busiest
                            stream that isn't dwm.exe)
   --json                   print the full metrics summary as JSON instead
+  --start <seconds>        analyze frames ending after this point (default: 0)
+  --end <seconds>          include frames ending at or before this point (default: capture end)
+                           bounds use accumulated usable frame time, not source wall-clock time;
+                           whole frames are kept, with full-stream stutter-detection context
+  --events                 list slow-frame episodes with original frame numbers and CSV lines
+
+Comparison overrides (otherwise the shared --start, --end and --stream apply to both):
+  --a-start / --a-end <s>   Run A interval bounds
+  --b-start / --b-end <s>   Run B interval bounds
+  --a-stream <sel>         Run A present stream
+  --b-stream <sel>         Run B present stream
+  --json                   include both reports, intervals, settings and every slow-frame episode
 `);
+}
+
+function readCapture(file: string, args: Args) {
+  let text: string;
+  try {
+    text = decodeText(readFileSync(file));
+  } catch (err) {
+    throw new Error(`Could not read ${file}: ${err instanceof Error ? err.message : String(err)}`, { cause: err });
+  }
+
+  let format: SourceFormat;
+  let series;
+  let mapping: GenericMapping | undefined;
+  let guessed: string | undefined;
+  try {
+    const sample = text.slice(0, 65536);
+    requireText(sample);
+    format = args.format ?? detectFormat(sample).best.format;
+    if (format === "generic") {
+      const resolved = genericMapping(sample, args);
+      if (typeof resolved === "string") {
+        throw new Error(resolved);
+      }
+      mapping = resolved.mapping;
+      guessed = resolved.guessed;
+    }
+    series = requireFrames(
+      parseTextSync(text, createParserFor(format, mapping, { stream: args.stream }), basename(file)),
+    );
+  } catch (err) {
+    if (!(err instanceof ParseError)) throw err;
+    throw new Error(`Could not parse ${file}: ${err.message}`, { cause: err });
+  }
+  let analysis: CaptureAnalysis;
+  try {
+    const range = args.start !== undefined || args.end !== undefined
+      ? { startSec: args.start ?? 0, endSec: args.end ?? null } : null;
+    analysis = analyzeCapture(series, args.stutterOptions, range);
+  } catch (error) {
+    throw new Error(`Could not analyze ${file}: ${error instanceof Error ? error.message : String(error)}`, { cause: error });
+  }
+  return { analysis, format, mapping, guessed };
+}
+
+function compareFiles(argv: string[]): void {
+  if (argv.includes("--help") || argv.includes("-h")) { printHelp(); return; }
+  try {
+    const [aFile, bFile, ...flags] = argv;
+    if (!aFile || !bFile || aFile.startsWith("-") || bFile.startsWith("-")) throw new UsageError("compare needs two files followed by options");
+    const args = parseArgs(flags, true);
+    if (args.file) throw new UsageError("compare takes exactly two files");
+    const a = readCapture(aFile, { ...args, start: args.aStart ?? args.start, end: args.aEnd ?? args.end, stream: args.aStream ?? args.stream });
+    const b = readCapture(bFile, { ...args, start: args.bStart ?? args.start, end: args.bEnd ?? args.end, stream: args.bStream ?? args.stream });
+    const reportFor = (run: typeof a) => buildJsonReport(run.analysis.series, run.analysis.summary, args.stutterOptions, run.mapping, run.analysis.selection);
+    if (args.json) { console.log(JSON.stringify(buildComparisonReport(reportFor(a), reportFor(b)), null, 2)); return; }
+    console.log(color(`A: ${basename(aFile)}   B: ${basename(bFile)}`, BOLD));
+    for (const [label, run] of [["A", a], ["B", b]] as const) {
+      const { selection, series, summary } = run.analysis;
+      const requested = selection.requested;
+      console.log(color(`${label}: ${requested ? `requested ${requested.startSec}-${requested.endSec ?? "end"} s` : "entire capture"}; frames ${selection.firstFrameIndex + 1}-${selection.lastFrameIndex + 1} of ${selection.sourceFrameCount}; ${fmt(summary.durationSec, 6)} s analyzed; ${series.meta.skippedRows} source rows skipped.`, DIM));
+      if (series.meta.selectedStream) console.log(color(`   Stream: ${series.meta.selectedStream} (${series.meta.application ?? "unnamed"})`, DIM));
+      if (run.mapping) console.log(color(`   Column: ${run.mapping.valueColumn} (${run.mapping.valueKind})${run.guessed ? "; inferred from column name/values" : ""}.`, DIM));
+    }
+    console.log(color(`Detection: k = ${args.stutterOptions.kMultiplier}, radius = ${args.stutterOptions.windowRadius}, hitch > ${args.stutterOptions.hitchThresholdMs} ms; full-stream neighbors.`, DIM));
+    console.log("Accumulated usable frame time; descriptive comparison, not a hardware-gain claim.\n");
+    const sa = a.analysis.summary;
+    const sb = b.analysis.summary;
+    const rows: Array<[string, number, number]> = [
+      ["Average FPS", sa.averageFps, sb.averageFps],
+      ["1% low percentile (fps)", sa.onePercentLow.percentileMethodFps, sb.onePercentLow.percentileMethodFps],
+      ["1% low slowest-mean (fps)", sa.onePercentLow.meanOfSlowestMethodFps, sb.onePercentLow.meanOfSlowestMethodFps],
+      ["P99 frame time (ms)", sa.percentilesMs.p99, sb.percentilesMs.p99],
+      ["Stutter frames", sa.stutter.stutterEventCount, sb.stutter.stutterEventCount],
+      ["Stutter time (%)", sa.stutter.stutterTimeFraction * 100, sb.stutter.stutterTimeFraction * 100],
+      ["Hitches / 1,000 frames", sa.stutter.hitchCount / sa.frameCount * 1000, sb.stutter.hitchCount / sb.frameCount * 1000],
+      ["Pacing MASD (ms)", sa.masdMs, sb.masdMs],
+    ];
+    console.log("Metric".padEnd(28) + "A".padStart(12) + "B".padStart(12) + "B - A".padStart(12));
+    for (const [name, av, bv] of rows) console.log(name.padEnd(28) + fmt(av, 3).padStart(12) + fmt(bv, 3).padStart(12) + fmt(bv - av, 3).padStart(12));
+    if (args.events) { printEpisodes(a.analysis, "Run A"); printEpisodes(b.analysis, "Run B"); }
+  } catch (error) {
+    console.error(color(`stutterscope: ${error instanceof Error ? error.message : String(error)}`, RED));
+    process.exitCode = 1;
+  }
 }
 
 function main(): void {
@@ -197,6 +311,7 @@ function main(): void {
     console.log(`stutterscope ${VERSION}`);
     return;
   }
+  if (command === "compare") { compareFiles(rest); return; }
   if (command !== "summary" || rest.length === 0 || rest.includes("-h") || rest.includes("--help")) {
     printHelp();
     process.exit(command === "summary" && rest.length > 0 ? 0 : 1);
@@ -216,54 +331,34 @@ function main(): void {
     process.exit(1);
   }
 
-  let text: string;
-  try {
-    text = decodeText(readFileSync(args.file));
-  } catch (err) {
-    console.error(color(`Could not read ${args.file}: ${err instanceof Error ? err.message : String(err)}`, RED));
+  let loaded: ReturnType<typeof readCapture>;
+  try { loaded = readCapture(args.file, args); }
+  catch (error) {
+    console.error(color(error instanceof Error ? error.message : String(error), RED));
     process.exit(1);
-    return;
   }
-
-  let format: SourceFormat;
-  let series;
-  let mapping: GenericMapping | undefined;
-  let guessed: string | undefined;
-  try {
-    const sample = text.slice(0, 65536);
-    requireText(sample);
-    format = args.format ?? detectFormat(sample).best.format;
-    if (format === "generic") {
-      const resolved = genericMapping(sample, args);
-      if (typeof resolved === "string") {
-        console.error(color(resolved, RED));
-        process.exit(1);
-        return;
-      }
-      mapping = resolved.mapping;
-      guessed = resolved.guessed;
-    }
-    series = requireFrames(
-      parseTextSync(text, createParserFor(format, mapping, { stream: args.stream }), basename(args.file)),
-    );
-  } catch (err) {
-    if (!(err instanceof ParseError)) throw err;
-    console.error(color(`Could not parse ${args.file}: ${err.message}`, RED));
-    process.exit(1);
-    return;
-  }
-  const summary = computeMetricsSummary(series, args.stutterOptions);
+  const { analysis, format, mapping, guessed } = loaded;
+  const series = analysis.series;
+  const { summary, selection } = analysis;
   const { streams, selectedStream } = series.meta;
 
   if (args.json) {
     const streamInfo = streams && streams.length > 1 ? { streams, selectedStream } : {};
     const genericInfo = mapping ? { generic: { column: mapping.valueColumn, kind: mapping.valueKind, guessed: guessed !== undefined } } : {};
-    console.log(JSON.stringify({ file: args.file, format, ...genericInfo, ...streamInfo, summary: summaryForJson(summary) }, null, 2));
+    const report = buildJsonReport(series, summary, args.stutterOptions, mapping, selection);
+    // Keep the existing CLI summary key; source and analysis carry the same schema as browser reports.
+    console.log(JSON.stringify({ file: args.file, format, ...genericInfo, ...streamInfo,
+      schemaVersion: report.schemaVersion, source: report.source, analysis: report.analysis,
+      ...(args.events ? { episodes: report.episodes } : {}), summary: summaryForJson(summary) }, null, 2));
     return;
   }
 
   console.log(`${color(basename(args.file), BOLD)}  ${color(FORMAT_LABELS[format], DIM)}`);
   console.log(color(`${series.frameCount.toLocaleString("en-US")} ${series.frameCount === 1 ? "frame" : "frames"}, ${fmt(summary.durationSec, 1)}s`, DIM));
+  if (selection.requested) {
+    console.log(color(`Interval: requested ${selection.requested.startSec} to ${selection.requested.endSec ?? "end"} s; source frames ${selection.firstFrameIndex + 1}-${selection.lastFrameIndex + 1} of ${selection.sourceFrameCount}.`, AMBER));
+    console.log(color(`Actual frame coverage ${fmt(selection.startSec, 6)}-${fmt(selection.endSec, 6)} s; accumulated frame time, full-stream detection context.`, DIM));
+  }
   if (mapping) {
     const read = `column "${mapping.valueColumn}" read as: ${GENERIC_VALUE_KIND_LABELS[mapping.valueKind]}`;
     console.log(
@@ -308,6 +403,20 @@ function main(): void {
   if (summary.latency) {
     console.log(`  Display latency P99    ${fmt(summary.latency.p99, 2)} ms`);
   }
+  if (args.events) printEpisodes(analysis);
 }
+
+function printEpisodes(analysis: CaptureAnalysis, label = ""): void {
+    const episodes = slowEpisodes(analysis);
+    console.log(`\n${label ? label + " " : ""}Slow-frame episodes: ${episodes.length} (consecutive retained stutter/hitch frames; no cause inferred)`);
+    console.log("  Frames          Time (s)                Worst (ms)  CSV lines");
+    for (const event of episodes.slice(0, 20)) {
+      const frames = `${event.firstFrame}-${event.lastFrame}`.padEnd(15);
+      const time = `${fmt(event.startSec, 4)}-${fmt(event.endSec, 4)}`.padEnd(24);
+      const lines = event.firstSourceLine === null ? "unavailable" : `${event.firstSourceLine}-${event.lastSourceLine}`;
+      console.log(`  ${frames} ${time}${fmt(event.longestFrameMs, 3).padEnd(12)}${lines}${event.touchesSelectionStart || event.touchesSelectionEnd ? " (selection boundary)" : ""}`);
+    }
+    if (episodes.length > 20) console.log(`  Showing 20 of ${episodes.length}. --events --json retains every episode.`);
+  }
 
 main();
