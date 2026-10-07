@@ -17,6 +17,7 @@ const COMPOSITORS = new Set(["dwm.exe"]);
 
 export interface SeriesColumns {
   frameTimeMs: Float64Array;
+  sourceLine?: Float64Array;
   channels: OptionalChannels;
 }
 
@@ -147,6 +148,7 @@ function filterRows(columns: SeriesColumns, rowStream: Uint32Array, keep: number
   const c = columns.channels;
   return {
     frameTimeMs: pick(columns.frameTimeMs, f64)!,
+    sourceLine: pick(columns.sourceLine, f64),
     channels: {
       dropped: pick(c.dropped, u8),
       cpuBusyMs: pick(c.cpuBusyMs, f64),
@@ -160,8 +162,13 @@ function filterRows(columns: SeriesColumns, rowStream: Uint32Array, keep: number
 export function cumulativeSeconds(frameTimeMs: Float64Array): Float64Array {
   const timeSec = new Float64Array(frameTimeMs.length);
   let acc = 0;
+  let correction = 0;
   for (let i = 0; i < frameTimeMs.length; i++) {
-    acc += frameTimeMs[i]! / 1000;
+    // Compensated accumulation keeps e.g. 100 x 10 ms on the 1 s boundary.
+    const term = frameTimeMs[i]! / 1000 - correction;
+    const next = acc + term;
+    correction = (next - acc) - term;
+    acc = next;
     timeSec[i] = acc;
   }
   return timeSec;

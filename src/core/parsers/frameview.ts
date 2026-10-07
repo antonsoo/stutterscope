@@ -38,6 +38,7 @@ class FrameViewParser implements StreamingParser {
   private application: string | undefined;
   private readonly skipped = new SkippedRows();
   private readonly frameTimeMs = new Float64Builder(4096);
+  private readonly sourceLine = new Float64Builder(4096);
   private readonly dropped = new Uint8Builder(4096);
   private readonly displayLatencyMs = new Float64Builder(4096);
   private hasLatency = false;
@@ -69,6 +70,7 @@ class FrameViewParser implements StreamingParser {
       return;
     }
     this.frameTimeMs.push(ft);
+    this.sourceLine.push(lineIndex + 1);
     this.dropped.push(parseFloatOrNull(get("Dropped")) === 1 ? 1 : 0);
     if (this.hasLatency) this.displayLatencyMs.push(parseFloatOrNull(get("MsPCLatency")) ?? NaN);
     this.streams.track(fields);
@@ -76,9 +78,9 @@ class FrameViewParser implements StreamingParser {
   }
 
   finish(sourceFileName: string): FrameSeries {
-    const { frameTimeMs, channels, streams, selected } = this.streams.select(
+    const { frameTimeMs, sourceLine, channels, streams, selected } = this.streams.select(
       {
-        frameTimeMs: this.frameTimeMs.toArray(),
+        frameTimeMs: this.frameTimeMs.toArray(), sourceLine: this.sourceLine.toArray(),
         channels: {
           dropped: this.dropped.toArray(),
           displayLatencyMs: this.hasLatency ? this.displayLatencyMs.toArray() : undefined,
@@ -99,6 +101,7 @@ class FrameViewParser implements StreamingParser {
       },
       frameCount: frameTimeMs.length,
       frameTimeMs,
+      sourceLine,
       timeSec: cumulativeSeconds(frameTimeMs),
       channels,
     };

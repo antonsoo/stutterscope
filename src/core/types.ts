@@ -8,7 +8,10 @@
  * another). `timeSec[i]` is the cumulative capture time up to and including
  * frame `i`, derived as a running sum of `frameTimeMs`, so it is internally
  * consistent even for formats whose own absolute-time column has coarser
- * precision than their frame-time column.
+ * precision than their frame-time column. An interval view keeps these
+ * original times; its duration is the sum of its selected frame durations,
+ * not its last timestamp. This is accumulated usable frame time, not a
+ * reconstruction of the source's wall clock or of missing rows.
  */
 
 export const SOURCE_FORMATS = [
@@ -83,6 +86,8 @@ export interface FrameSeries {
   frameCount: number;
   frameTimeMs: Float64Array;
   timeSec: Float64Array;
+  /** One-based physical CSV line per frame. Absent for caller-created series. */
+  sourceLine?: Float64Array;
   channels: OptionalChannels;
 }
 

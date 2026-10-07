@@ -4,4 +4,7 @@ export * from "./csv.ts";
 export * from "./stream.ts";
 export * from "./metrics.ts";
 export * from "./streams.ts";
+export * from "./analysis.ts";
+export * from "./episodes.ts";
+export * from "./report.ts";
 export * as parsers from "./parsers/index.ts";

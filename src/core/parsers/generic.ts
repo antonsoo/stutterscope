@@ -1,3 +1,4 @@
+import { cumulativeSeconds } from "../streams.ts";
 /**
  * Fallback for any CSV that isn't one of the recognized capture tools: the
  * user (or `--format generic:...` on the CLI) picks which column holds the
@@ -243,6 +244,7 @@ class GenericParser implements StreamingParser {
   private header: Map<string, number> | null = null;
   private readonly skipped = new SkippedRows();
   private readonly frameTimeMs = new Float64Builder(4096);
+  private readonly sourceLine = new Float64Builder(4096);
   private readonly dropped = new Uint8Builder(4096);
   private hasDropped = false;
   private previousTimestamp: number | null = null;
@@ -273,6 +275,10 @@ class GenericParser implements StreamingParser {
       const ft = valueToFrameTimeMs(this.mapping.valueKind, value, this.previousTimestamp);
       this.previousTimestamp = value;
       if (ft === null) return; // first row: nothing to diff against yet
+      if (!Number.isFinite(ft)) {
+        this.skipped.add(lineIndex, "frame time overflows milliseconds");
+        return;
+      }
       if (ft < 0) {
         // Two logs joined into one file, or a counter that wrapped. The row restarts the clock
         // (it is the next row's previous timestamp) and carries no frame time of its own.
@@ -286,12 +292,17 @@ class GenericParser implements StreamingParser {
         this.skipped.add(lineIndex, "non-positive FPS value");
         return;
       }
+      if (!Number.isFinite(ft)) {
+        this.skipped.add(lineIndex, "frame time overflows milliseconds");
+        return;
+      }
       if (ft < 0) {
         this.skipped.add(lineIndex, `negative ${this.mapping.valueColumn}`);
         return;
       }
       this.frameTimeMs.push(ft === 0 ? 0 : ft);
     }
+    this.sourceLine.push(lineIndex + 1);
     if (this.hasDropped) {
       const dIdx = h.get(this.mapping.droppedColumn!);
       const dVal = dIdx === undefined ? undefined : fields[dIdx];
@@ -301,12 +312,7 @@ class GenericParser implements StreamingParser {
 
   finish(sourceFileName: string): FrameSeries {
     const frameTimeMs = this.frameTimeMs.toArray();
-    const timeSec = new Float64Array(frameTimeMs.length);
-    let acc = 0;
-    for (let i = 0; i < frameTimeMs.length; i++) {
-      acc += frameTimeMs[i]! / 1000;
-      timeSec[i] = acc;
-    }
+    const timeSec = cumulativeSeconds(frameTimeMs);
     return {
       meta: {
         format: "generic",
@@ -317,6 +323,7 @@ class GenericParser implements StreamingParser {
       },
       frameCount: frameTimeMs.length,
       frameTimeMs,
+      sourceLine: this.sourceLine.toArray(),
       timeSec,
       channels: { dropped: this.hasDropped ? this.dropped.toArray() : undefined },
     };

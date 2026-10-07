@@ -81,9 +81,16 @@ export function percentileCurve(
  * times are uneven — the exact case this tool exists to surface.
  */
 export function averageFps(series: FrameSeries): number {
-  const totalSec = series.timeSec[series.timeSec.length - 1] ?? 0;
+  const totalSec = frameDurationSec(series.frameTimeMs);
   if (totalSec <= 0) return NaN;
   return series.frameCount / totalSec;
+}
+
+/** Summing durations also works for an interval whose timestamps retain their original origin. */
+export function frameDurationSec(frameTimeMs: Float64Array): number {
+  let total = 0;
+  for (const value of frameTimeMs) total += value / 1000;
+  return total;
 }
 
 /** The (misleading) mean-of-instantaneous-FPS figure, exposed only for comparison/education. */
@@ -243,22 +250,30 @@ export function detectStutter(
 ): StutterResult {
   const n = frameTimeMs.length;
   const isStutter = new Uint8Array(n);
+  const medians = rollingMedian(frameTimeMs, options.windowRadius);
+  for (let i = 0; i < n; i++) {
+    if (medians[i]! > 0 && frameTimeMs[i]! > options.kMultiplier * medians[i]!) isStutter[i] = 1;
+  }
+  return summarizeStutter(frameTimeMs, isStutter, options.hitchThresholdMs);
+}
+
+/** Count a selection using flags detected with the full stream's neighboring frames. */
+export function summarizeStutter(frameTimeMs: Float64Array, isStutter: Uint8Array, hitchThresholdMs: number): StutterResult {
+  if (frameTimeMs.length !== isStutter.length) throw new RangeError("Stutter flags must match the selected frames.");
   let stutterEventCount = 0;
   let totalStutterTimeMs = 0;
   let hitchCount = 0;
   let totalHitchTimeMs = 0;
   let totalTimeMs = 0;
 
-  const medians = rollingMedian(frameTimeMs, options.windowRadius);
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < frameTimeMs.length; i++) {
     const ft = frameTimeMs[i]!;
     totalTimeMs += ft;
-    if (medians[i]! > 0 && ft > options.kMultiplier * medians[i]!) {
-      isStutter[i] = 1;
+    if (isStutter[i] === 1) {
       stutterEventCount++;
       totalStutterTimeMs += ft;
     }
-    if (ft > options.hitchThresholdMs) {
+    if (ft > hitchThresholdMs) {
       hitchCount++;
       totalHitchTimeMs += ft;
     }
@@ -269,7 +284,7 @@ export function detectStutter(
     stutterEventCount,
     totalStutterTimeMs,
     stutterTimeFraction: totalTimeMs > 0 ? totalStutterTimeMs / totalTimeMs : 0,
-    hitchThresholdMs: options.hitchThresholdMs,
+    hitchThresholdMs,
     hitchCount,
     totalHitchTimeMs,
     hitchTimeFraction: totalTimeMs > 0 ? totalHitchTimeMs / totalTimeMs : 0,
@@ -288,7 +303,7 @@ export function detectStutter(
  */
 export function meanAbsoluteSuccessiveDifference(frameTimeMs: Float64Array): number {
   const n = frameTimeMs.length;
-  if (n < 2) return 0;
+  if (n < 2) return NaN; // No successive pair exists; zero would claim perfectly steady pacing.
   let sum = 0;
   for (let i = 1; i < n; i++) sum += Math.abs(frameTimeMs[i]! - frameTimeMs[i - 1]!);
   return sum / (n - 1);
@@ -498,17 +513,18 @@ export interface MetricsSummary {
 export function computeMetricsSummary(
   series: FrameSeries,
   stutterOptions: StutterOptions = DEFAULT_STUTTER_OPTIONS,
+  stutter: StutterResult = detectStutter(series.frameTimeMs, stutterOptions),
 ): MetricsSummary {
   const sorted = sortedCopy(series.frameTimeMs);
   return {
     frameCount: series.frameCount,
-    durationSec: series.timeSec[series.timeSec.length - 1] ?? 0,
+    durationSec: frameDurationSec(series.frameTimeMs),
     averageFps: averageFps(series),
     meanOfInstantaneousFps: meanOfInstantaneousFps(series.frameTimeMs),
     percentilesMs: frameTimePercentiles(sorted),
     onePercentLow: onePercentLow(sorted),
     pointOnePercentLow: pointOnePercentLow(sorted),
-    stutter: detectStutter(series.frameTimeMs, stutterOptions),
+    stutter,
     masdMs: meanAbsoluteSuccessiveDifference(series.frameTimeMs),
     dropped: droppedFrames(series),
     boundShare: boundShare(series),

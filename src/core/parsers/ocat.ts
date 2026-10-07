@@ -39,6 +39,7 @@ export class PresentFamilyParser implements StreamingParser {
   protected application: string | undefined;
   protected readonly skipped = new SkippedRows();
   protected readonly frameTimeMs = new Float64Builder(4096);
+  protected readonly sourceLine = new Float64Builder(4096);
   protected readonly dropped = new Uint8Builder(4096);
   protected columns: string[] = [];
   private readonly format: "ocat" | "capframex";
@@ -69,14 +70,15 @@ export class PresentFamilyParser implements StreamingParser {
       return;
     }
     this.frameTimeMs.push(ft);
+    this.sourceLine.push(lineIndex + 1);
     this.dropped.push(parseFloatOrNull(get("Dropped")) === 1 ? 1 : 0);
     this.streams.track(fields);
     if (this.application === undefined) this.application = get("Application");
   }
 
   finish(sourceFileName: string): FrameSeries {
-    const { frameTimeMs, channels, streams, selected } = this.streams.select(
-      { frameTimeMs: this.frameTimeMs.toArray(), channels: { dropped: this.dropped.toArray() } },
+    const { frameTimeMs, sourceLine, channels, streams, selected } = this.streams.select(
+      { frameTimeMs: this.frameTimeMs.toArray(), sourceLine: this.sourceLine.toArray(), channels: { dropped: this.dropped.toArray() } },
       this.options.stream,
     );
     return {
@@ -92,6 +94,7 @@ export class PresentFamilyParser implements StreamingParser {
       },
       frameCount: frameTimeMs.length,
       frameTimeMs,
+      sourceLine,
       timeSec: cumulativeSeconds(frameTimeMs),
       channels,
     };

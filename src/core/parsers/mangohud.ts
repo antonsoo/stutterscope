@@ -1,3 +1,4 @@
+import { cumulativeSeconds } from "../streams.ts";
 /**
  * MangoHud CSV log (github.com/flightlessmango/MangoHud, `output_folder` /
  * `Shift_L+F2` logging, not the separate one-line-per-run summary CSV).
@@ -46,6 +47,7 @@ class MangoHudParser implements StreamingParser {
   private header: Map<string, number> | null = null;
   private readonly skipped = new SkippedRows();
   private readonly frameTimeMs = new Float64Builder(4096);
+  private readonly sourceLine = new Float64Builder(4096);
   private columns: string[] = [];
 
   pushLine(line: string, lineIndex: number): void {
@@ -63,16 +65,12 @@ class MangoHudParser implements StreamingParser {
       return;
     }
     this.frameTimeMs.push(ft);
+    this.sourceLine.push(lineIndex + 1);
   }
 
   finish(sourceFileName: string): FrameSeries {
     const frameTimeMs = this.frameTimeMs.toArray();
-    const timeSec = new Float64Array(frameTimeMs.length);
-    let acc = 0;
-    for (let i = 0; i < frameTimeMs.length; i++) {
-      acc += frameTimeMs[i]! / 1000;
-      timeSec[i] = acc;
-    }
+    const timeSec = cumulativeSeconds(frameTimeMs);
     return {
       meta: {
         format: "mangohud",
@@ -83,6 +81,7 @@ class MangoHudParser implements StreamingParser {
       },
       frameCount: frameTimeMs.length,
       frameTimeMs,
+      sourceLine: this.sourceLine.toArray(),
       timeSec,
       channels: {},
     };
