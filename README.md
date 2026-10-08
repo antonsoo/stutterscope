@@ -15,6 +15,19 @@ These additions have not been published to npm or the hosted demo.
 
 ![Stutterscope compares selected intervals from two recorded browser captures, retaining original frame numbers and measured slow-frame counts](docs/assets/interval-comparison.png)
 
+**What "1% low" means in other tools, measured on public captures (source checkout).**
+On 8 public captures of 907 to 117,569 frames, four implementations of the
+percentile "1% low" (MangoHud, mangoplot, CapFrameX, stutterscope) agree to a
+median 0.13% and at most 3.7%, while the mean-of-slowest and time-weighted
+definitions sit a median 17% and 10% lower and up to 99.7% lower on a capture
+with a 5-second stall. stutterscope matched MangoHud's own summary of a
+117,569-frame log to 0.03% (1% low) and 0.21% (0.1% low). Against two real
+FrameView summaries, release 0.2.5 was 1.9% to 28.6% low on the slowest-mean
+figure because it rounded the bucket size instead of rounding up; fixed in the
+checkout, which also adds the time-weighted figure. Only 34 files could be found
+and 18 of them are PresentMon test fixtures, so this is not a census.
+[Study, sources and numbers](studies/real-captures/README.md).
+
 ## Why this exists
 
 Average FPS is the number every benchmark chart leads with, and it's the
@@ -82,8 +95,8 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
 - **Metrics**, each with a documented formula in
   [`docs/metrics.md`](docs/metrics.md): average FPS computed correctly
   (frames ÷ total time, not a mean of per-frame FPS), frame-time
-  percentiles (P50/P90/P95/P99/P99.9), 1% and 0.1% lows under *both*
-  common definitions, configurable stutter-event and hitch detection,
+  percentiles (P50/P90/P95/P99/P99.9), 1% and 0.1% lows under two
+  common definitions (three in the source checkout), configurable stutter-event and hitch detection,
   frame-pacing variability (MASD), dropped frames, CPU-/GPU-bound share and
   display latency where the format supports it.
 - **Visuals**: a frame-time trace with stutter markers (drag to zoom,

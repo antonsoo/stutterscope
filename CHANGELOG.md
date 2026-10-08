@@ -19,11 +19,23 @@ Changes below are in the source checkout and have not been published.
 - `stutterscope compare A.csv B.csv`, shared and per-run interval/stream options,
   and summary `--start`, `--end`, `--events`. Comparisons use the same evidence
   schema as the browser.
+- A third "1% low" / "0.1% low" figure, `timeWeightedFps` (the frame time at which
+  the slowest frames use up 1% or 0.1% of the capture's time; CapFrameX's "low
+  integral"), in the CLI summary and compare table, the JSON report and the
+  browser's Markdown/JSON export. The browser stat tiles still show two.
+- `studies/real-captures`: what "1% low" means in MangoHud, CapFrameX and
+  FrameView's summary, measured on 34 public capture files (8 long enough to
+  compare), and a parse census of released 0.2.5 against this checkout.
 - A retained controlled Chromium animation capture and a one-click scene
   comparison, with workload code, capture hashes, and independent NumPy checks.
 
 ### Fixed
 
+- The mean-of-slowest "1% low" / "0.1% low" averaged `round(n * fraction)` frames,
+  which is too few on short captures. It now averages `ceil(n * fraction)`, the
+  rule that reproduces the "1% Low FPS" and "0.1% Low FPS" columns of two real
+  FrameView summaries (0.2.5 was 1.9% to 28.6% low against them). See
+  `studies/real-captures`.
 - MangoHud periodic snapshots could masquerade as per-frame captures and report
   a duration much shorter than the logging span. Compare its elapsed clock with
   frame durations, refuse large contradictions and reversed clocks, and retain

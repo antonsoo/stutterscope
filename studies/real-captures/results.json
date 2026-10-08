@@ -1,0 +1,1740 @@
+{
+ "files": 34,
+ "tally": {
+  "released": {
+   "parsed:ocat": 10,
+   "parsed:presentmon1": 6,
+   "parsed:presentmon2": 6,
+   "parsed:mangohud": 5,
+   "parsed:frameview": 4,
+   "refused": 3
+  },
+  "checkout": {
+   "parsed:ocat": 10,
+   "parsed:presentmon1": 6,
+   "parsed:presentmon2": 6,
+   "parsed:mangohud": 1,
+   "refused": 7,
+   "parsed:frameview": 4
+  }
+ },
+ "census": [
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_0.csv",
+   "bytes": 96887,
+   "independent": {
+    "column": "MsBetweenPresents",
+    "streams": 10,
+    "stream": [
+     "Presenter.exe",
+     "10792",
+     "0x20979A6D5F8"
+    ],
+    "frames": 18,
+    "durationSec": 0.25925149999999997,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 18,
+    "durationSec": 0.2592515,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 18,
+    "durationSec": 0.2592515,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_0_v1.csv",
+   "bytes": 101313,
+   "independent": {
+    "column": "msBetweenPresents",
+    "streams": 10,
+    "stream": [
+     "Presenter.exe",
+     "10792",
+     "0x0000020979A6D5F8"
+    ],
+    "frames": 19,
+    "durationSec": 0.27583099999999994,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "presentmon1",
+    "frames": 19,
+    "durationSec": 0.27583100000000005,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "presentmon1",
+    "frames": 19,
+    "durationSec": 0.27583100000000005,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_0_v2.csv",
+   "bytes": 68524,
+   "independent": {
+    "column": "FrameTime",
+    "streams": 10,
+    "stream": [
+     "Presenter.exe",
+     "10792",
+     "0x20979A6D5F8"
+    ],
+    "frames": 18,
+    "durationSec": 0.27362460000000005,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "presentmon2",
+    "frames": 18,
+    "durationSec": 0.2736246,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "presentmon2",
+    "frames": 18,
+    "durationSec": 0.2736246,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_1.csv",
+   "bytes": 14033,
+   "independent": {
+    "column": "MsBetweenPresents",
+    "streams": 4,
+    "stream": [
+     "Presenter.exe",
+     "24560",
+     "0x2019D7777C0"
+    ],
+    "frames": 7,
+    "durationSec": 0.0669893,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 7,
+    "durationSec": 0.06698930000000002,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 7,
+    "durationSec": 0.06698930000000002,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_1_v1.csv",
+   "bytes": 15624,
+   "independent": {
+    "column": "msBetweenPresents",
+    "streams": 6,
+    "stream": [
+     "Presenter.exe",
+     "24560",
+     "0x000002019D7777C0"
+    ],
+    "frames": 8,
+    "durationSec": 0.0759952,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "presentmon1",
+    "frames": 8,
+    "durationSec": 0.07599520000000001,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "presentmon1",
+    "frames": 8,
+    "durationSec": 0.07599520000000001,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_1_v2.csv",
+   "bytes": 9849,
+   "independent": {
+    "column": "FrameTime",
+    "streams": 4,
+    "stream": [
+     "Presenter.exe",
+     "24560",
+     "0x2019D7777C0"
+    ],
+    "frames": 7,
+    "durationSec": 0.0660831,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "presentmon2",
+    "frames": 7,
+    "durationSec": 0.0660831,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "presentmon2",
+    "frames": 7,
+    "durationSec": 0.0660831,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_2.csv",
+   "bytes": 25669,
+   "independent": {
+    "column": "MsBetweenPresents",
+    "streams": 4,
+    "stream": [
+     "Presenter.exe",
+     "10016",
+     "0x1BA6DC82C58"
+    ],
+    "frames": 18,
+    "durationSec": 0.26005399999999995,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 18,
+    "durationSec": 0.260054,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 18,
+    "durationSec": 0.260054,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_2_v1.csv",
+   "bytes": 26918,
+   "independent": {
+    "column": "msBetweenPresents",
+    "streams": 4,
+    "stream": [
+     "Presenter.exe",
+     "10016",
+     "0x000001BA6DC82C58"
+    ],
+    "frames": 19,
+    "durationSec": 0.27662879999999995,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "presentmon1",
+    "frames": 19,
+    "durationSec": 0.2766288,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "presentmon1",
+    "frames": 19,
+    "durationSec": 0.2766288,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_2_v2.csv",
+   "bytes": 18186,
+   "independent": {
+    "column": "FrameTime",
+    "streams": 4,
+    "stream": [
+     "Presenter.exe",
+     "10016",
+     "0x1BA6DC82C58"
+    ],
+    "frames": 18,
+    "durationSec": 0.2697717,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "presentmon2",
+    "frames": 18,
+    "durationSec": 0.26977170000000006,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "presentmon2",
+    "frames": 18,
+    "durationSec": 0.26977170000000006,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_3.csv",
+   "bytes": 32046,
+   "independent": {
+    "column": "MsBetweenPresents",
+    "streams": 4,
+    "stream": [
+     "Presenter.exe",
+     "5892",
+     "0x1F0FF310E98"
+    ],
+    "frames": 18,
+    "durationSec": 0.2688288,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 18,
+    "durationSec": 0.2688288,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 18,
+    "durationSec": 0.2688288,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_3_v1.csv",
+   "bytes": 33374,
+   "independent": {
+    "column": "msBetweenPresents",
+    "streams": 4,
+    "stream": [
+     "Presenter.exe",
+     "5892",
+     "0x000001F0FF310E98"
+    ],
+    "frames": 19,
+    "durationSec": 0.2854584,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "presentmon1",
+    "frames": 19,
+    "durationSec": 0.2854584,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "presentmon1",
+    "frames": 19,
+    "durationSec": 0.2854584,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_3_v2.csv",
+   "bytes": 22780,
+   "independent": {
+    "column": "FrameTime",
+    "streams": 4,
+    "stream": [
+     "Presenter.exe",
+     "5892",
+     "0x1F0FF310E98"
+    ],
+    "frames": 18,
+    "durationSec": 0.2816304,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "presentmon2",
+    "frames": 18,
+    "durationSec": 0.28163039999999995,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "presentmon2",
+    "frames": 18,
+    "durationSec": 0.28163039999999995,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_4.csv",
+   "bytes": 51285,
+   "independent": {
+    "column": "MsBetweenPresents",
+    "streams": 5,
+    "stream": [
+     "Presenter.exe",
+     "9620",
+     "0x19E52815138"
+    ],
+    "frames": 18,
+    "durationSec": 0.28923200000000004,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 18,
+    "durationSec": 0.28923200000000004,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 18,
+    "durationSec": 0.28923200000000004,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_4_v1.csv",
+   "bytes": 53330,
+   "independent": {
+    "column": "msBetweenPresents",
+    "streams": 5,
+    "stream": [
+     "Presenter.exe",
+     "9620",
+     "0x0000019E52815138"
+    ],
+    "frames": 19,
+    "durationSec": 0.30594660000000007,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "presentmon1",
+    "frames": 19,
+    "durationSec": 0.30594660000000007,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "presentmon1",
+    "frames": 19,
+    "durationSec": 0.30594660000000007,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_4_v2.csv",
+   "bytes": 36220,
+   "independent": {
+    "column": "FrameTime",
+    "streams": 5,
+    "stream": [
+     "Presenter.exe",
+     "9620",
+     "0x19E52815138"
+    ],
+    "frames": 18,
+    "durationSec": 0.30069570000000007,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "presentmon2",
+    "frames": 18,
+    "durationSec": 0.3006957,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "presentmon2",
+    "frames": 18,
+    "durationSec": 0.3006957,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_5.csv",
+   "bytes": 175274,
+   "independent": {
+    "column": "MsBetweenPresents",
+    "streams": 7,
+    "stream": [
+     "PresentBench.exe",
+     "24892",
+     "0x2A70D2CAC00"
+    ],
+    "frames": 258,
+    "durationSec": 2.9025974000000003,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 258,
+    "durationSec": 2.902597400000002,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 258,
+    "durationSec": 2.902597400000002,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_5_v1.csv",
+   "bytes": 179365,
+   "independent": {
+    "column": "msBetweenPresents",
+    "streams": 7,
+    "stream": [
+     "PresentBench.exe",
+     "24892",
+     "0x000002A70D2CAC00"
+    ],
+    "frames": 259,
+    "durationSec": 2.9136028,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "presentmon1",
+    "frames": 259,
+    "durationSec": 2.9136028000000023,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "presentmon1",
+    "frames": 259,
+    "durationSec": 2.9136028000000023,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "GameTechDev:Tests/Gold/test_case_5_v2.csv",
+   "bytes": 122952,
+   "independent": {
+    "column": "FrameTime",
+    "streams": 7,
+    "stream": [
+     "PresentBench.exe",
+     "24892",
+     "0x2A70D2CAC00"
+    ],
+    "frames": 258,
+    "durationSec": 2.9025904,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "presentmon2",
+    "frames": 258,
+    "durationSec": 2.902590400000002,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "presentmon2",
+    "frames": 258,
+    "durationSec": 2.902590400000002,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "Reason7322:Witchfire-Win64-Shipping_2026-08-12_14-16-42.csv",
+   "bytes": 11416701,
+   "independent": {
+    "elapsedSpanSec": 869.206309351,
+    "medianElapsedStepMs": 6.987772999971639,
+    "column": "frametime",
+    "streams": 1,
+    "stream": [],
+    "frames": 117569,
+    "durationSec": 869.1436530500087,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "mangohud",
+    "frames": 117569,
+    "durationSec": 869.1436530500002,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "mangohud",
+    "frames": 117569,
+    "durationSec": 869.1436530500002,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "xD3I:examples/mangohud.csv",
+   "bytes": 325605,
+   "independent": {
+    "elapsedSpanSec": 369.588318055,
+    "medianElapsedStepMs": 100.07597200002056,
+    "column": "frametime",
+    "streams": 1,
+    "stream": [],
+    "frames": 3694,
+    "durationSec": 24.069590480000002,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "mangohud",
+    "frames": 3694,
+    "durationSec": 24.06959048,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "refused",
+    "message": "Could not parse <file>: MangoHud logging intervals do not match frame durations: 369.588318 s of elapsed intervals versus 24.063798 s of frame durations across 3693 adjacent records. This may be periodic logging or missing frames. Recapture with log_interval=0; snapshots cannot reconstruct a per-frame stutter report."
+   }
+  },
+  {
+   "id": "xD3I:examples/frameview-1-6.csv",
+   "bytes": 57432330,
+   "independent": {
+    "column": "MsBetweenPresents",
+    "streams": 1,
+    "stream": [
+     "re4.exe",
+     "25784",
+     "0x0000000132CF7570"
+    ],
+    "frames": 112316,
+    "durationSec": 548.0188479999971,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "frameview",
+    "frames": 112316,
+    "durationSec": 548.018848000003,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "frameview",
+    "frames": 112316,
+    "durationSec": 548.018848000003,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "erkexzcx:testdata/afterburner/GOD.OF.WAR_Windows.csv",
+   "bytes": 88030,
+   "independent": {
+    "error": "no frame-time column among MsBetweenPresents,msBetweenPresents,FrameTime,frametime"
+   },
+   "released": {
+    "status": "refused",
+    "message": "This isn't a capture format stutterscope knows, and no single column says it holds frame times. Columns: 0, 24-10-2025 15:41:23, Hardware monitoring log v1.6, , , , , , , , , , and 1 more. Pick one with --generic-column <name> --generic-kind <frametime_ms | frametime_us | frametime_s | fps | timestamp_s_cumulative | timestamp_ms_cumulative>."
+   },
+   "checkout": {
+    "status": "refused",
+    "message": "This isn't a capture format stutterscope knows, and no single column says it holds frame times. Columns: 0, 24-10-2025 15:41:23, Hardware monitoring log v1.6, , , , , , , , , , and 1 more. Pick one with --generic-column <name> --generic-kind <frametime_ms | frametime_us | frametime_s | fps | timestamp_s_cumulative | timestamp_ms_cumulative>."
+   }
+  },
+  {
+   "id": "erkexzcx:testdata/afterburner/RE3_Windows.csv",
+   "bytes": 53052,
+   "independent": {
+    "error": "no frame-time column among MsBetweenPresents,msBetweenPresents,FrameTime,frametime"
+   },
+   "released": {
+    "status": "refused",
+    "message": "This isn't a capture format stutterscope knows, and no single column says it holds frame times. Columns: 0, 24-10-2025 16:56:05, Hardware monitoring log v1.6, , , , , , , , , , and 1 more. Pick one with --generic-column <name> --generic-kind <frametime_ms | frametime_us | frametime_s | fps | timestamp_s_cumulative | timestamp_ms_cumulative>."
+   },
+   "checkout": {
+    "status": "refused",
+    "message": "This isn't a capture format stutterscope knows, and no single column says it holds frame times. Columns: 0, 24-10-2025 16:56:05, Hardware monitoring log v1.6, , , , , , , , , , and 1 more. Pick one with --generic-column <name> --generic-kind <frametime_ms | frametime_us | frametime_s | fps | timestamp_s_cumulative | timestamp_ms_cumulative>."
+   }
+  },
+  {
+   "id": "erkexzcx:testdata/afterburner/u4_Windows.csv",
+   "bytes": 162969,
+   "independent": {
+    "error": "no frame-time column among MsBetweenPresents,msBetweenPresents,FrameTime,frametime"
+   },
+   "released": {
+    "status": "refused",
+    "message": "This isn't a capture format stutterscope knows, and no single column says it holds frame times. Columns: 0, 24-10-2025 18:04:41, Hardware monitoring log v1.6, , , , , , , , , , and 1 more. Pick one with --generic-column <name> --generic-kind <frametime_ms | frametime_us | frametime_s | fps | timestamp_s_cumulative | timestamp_ms_cumulative>."
+   },
+   "checkout": {
+    "status": "refused",
+    "message": "This isn't a capture format stutterscope knows, and no single column says it holds frame times. Columns: 0, 24-10-2025 18:04:41, Hardware monitoring log v1.6, , , , , , , , , , and 1 more. Pick one with --generic-column <name> --generic-kind <frametime_ms | frametime_us | frametime_s | fps | timestamp_s_cumulative | timestamp_ms_cumulative>."
+   }
+  },
+  {
+   "id": "erkexzcx:testdata/mangohud/run1.csv",
+   "bytes": 24203,
+   "independent": {
+    "elapsedSpanSec": 29.7211155,
+    "medianElapsedStepMs": 100.07043500000145,
+    "column": "frametime",
+    "streams": 1,
+    "stream": [],
+    "frames": 298,
+    "durationSec": 1.2354860700000003,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "mangohud",
+    "frames": 298,
+    "durationSec": 1.2354860699999985,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "refused",
+    "message": "Could not parse <file>: MangoHud logging intervals do not match frame durations: 29.721116 s of elapsed intervals versus 1.231299 s of frame durations across 297 adjacent records. This may be periodic logging or missing frames. Recapture with log_interval=0; snapshots cannot reconstruct a per-frame stutter report."
+   }
+  },
+  {
+   "id": "erkexzcx:testdata/mangohud/run2.csv",
+   "bytes": 24208,
+   "independent": {
+    "elapsedSpanSec": 29.720532828,
+    "medianElapsedStepMs": 100.0698539999994,
+    "column": "frametime",
+    "streams": 1,
+    "stream": [],
+    "frames": 298,
+    "durationSec": 1.2331207100000006,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "mangohud",
+    "frames": 298,
+    "durationSec": 1.2331207100000008,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "refused",
+    "message": "Could not parse <file>: MangoHud logging intervals do not match frame durations: 29.720533 s of elapsed intervals versus 1.228895 s of frame durations across 297 adjacent records. This may be periodic logging or missing frames. Recapture with log_interval=0; snapshots cannot reconstruct a per-frame stutter report."
+   }
+  },
+  {
+   "id": "erkexzcx:testdata/mangohud/run3.csv",
+   "bytes": 24060,
+   "independent": {
+    "elapsedSpanSec": 29.520381408000002,
+    "medianElapsedStepMs": 100.069974,
+    "column": "frametime",
+    "streams": 1,
+    "stream": [],
+    "frames": 296,
+    "durationSec": 1.2324932500000003,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "mangohud",
+    "frames": 296,
+    "durationSec": 1.2324932499999997,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "refused",
+    "message": "Could not parse <file>: MangoHud logging intervals do not match frame durations: 29.520381 s of elapsed intervals versus 1.228533 s of frame durations across 295 adjacent records. This may be periodic logging or missing frames. Recapture with log_interval=0; snapshots cannot reconstruct a per-frame stutter report."
+   }
+  },
+  {
+   "id": "cosmiclf:Logs/pmcap-r5apex_dx12.exe-250709-222018.csv",
+   "bytes": 4138448,
+   "independent": {
+    "column": "MsBetweenPresents",
+    "streams": 1,
+    "stream": [
+     "r5apex_dx12.exe",
+     "18660",
+     "0x1F741139B80"
+    ],
+    "frames": 10652,
+    "durationSec": 69.18850979999998,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 10652,
+    "durationSec": 69.1885098000002,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 10652,
+    "durationSec": 69.1885098000002,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "cosmiclf:Logs/pmcap-r5apex_dx12.exe-250709-222519.csv",
+   "bytes": 3118772,
+   "independent": {
+    "column": "MsBetweenPresents",
+    "streams": 1,
+    "stream": [
+     "r5apex_dx12.exe",
+     "18660",
+     "0x1F741139B80"
+    ],
+    "frames": 8020,
+    "durationSec": 61.2937644000001,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 8020,
+    "durationSec": 61.29376440000013,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 8020,
+    "durationSec": 61.29376440000013,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "cosmiclf:Logs/pmcap-superposition.exe-250719-215451.csv",
+   "bytes": 5174729,
+   "independent": {
+    "column": "MsBetweenPresents",
+    "streams": 1,
+    "stream": [
+     "superposition.exe",
+     "14952",
+     "0x2A78FAA5940"
+    ],
+    "frames": 13143,
+    "durationSec": 191.05371850000031,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 13143,
+    "durationSec": 191.05371850000014,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 13143,
+    "durationSec": 191.05371850000014,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "cosmiclf:Logs/pmcap-superposition.exe-250719-220716.csv",
+   "bytes": 4883958,
+   "independent": {
+    "column": "MsBetweenPresents",
+    "streams": 1,
+    "stream": [
+     "superposition.exe",
+     "1148",
+     "0x1843739CC00"
+    ],
+    "frames": 12431,
+    "durationSec": 174.69184619999967,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 12431,
+    "durationSec": 174.69184619999945,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "ocat",
+    "frames": 12431,
+    "durationSec": 174.69184619999945,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "Pavelioso:assets/witcher_3.csv",
+   "bytes": 607775,
+   "independent": {
+    "column": "MsBetweenPresents",
+    "streams": 1,
+    "stream": [
+     "witcher3.exe",
+     "1832",
+     "0x000002900C071B50"
+    ],
+    "frames": 1146,
+    "durationSec": 26.929546000000023,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "frameview",
+    "frames": 1146,
+    "durationSec": 26.929546000000034,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "frameview",
+    "frames": 1146,
+    "durationSec": 26.929546000000034,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "Pavelioso:assets/witcher_3_gdrive.csv",
+   "bytes": 469275,
+   "independent": {
+    "column": "MsBetweenPresents",
+    "streams": 1,
+    "stream": [
+     "witcher3.exe",
+     "7820",
+     "0x000001D01D577200"
+    ],
+    "frames": 907,
+    "durationSec": 20.226202999999987,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "frameview",
+    "frames": 907,
+    "durationSec": 20.226203000000027,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "frameview",
+    "frames": 907,
+    "durationSec": 20.226203000000027,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  },
+  {
+   "id": "Pavelioso:assets/witcher_3_test.csv",
+   "bytes": 469185,
+   "independent": {
+    "column": "MsBetweenPresents",
+    "streams": 2,
+    "stream": [
+     "witcher3.exe",
+     "7820",
+     "0x000001D01D577200"
+    ],
+    "frames": 906,
+    "durationSec": 28.006088999999985,
+    "nonNumericRows": 0
+   },
+   "released": {
+    "status": "parsed",
+    "format": "frameview",
+    "frames": 906,
+    "durationSec": 28.006088999999964,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   },
+   "checkout": {
+    "status": "parsed",
+    "format": "frameview",
+    "frames": 906,
+    "durationSec": 28.006088999999964,
+    "warnings": 0,
+    "frameCountMatchesIndependent": true,
+    "durationMatchesIndependent": true
+   }
+  }
+ ],
+ "definitions": {
+  "minFrames": 900,
+  "captures": [
+   {
+    "id": "Reason7322:Witchfire-Win64-Shipping_2026-08-12_14-16-42.csv",
+    "frames": 117569,
+    "durationSec": 869.14365305,
+    "averageFps": 135.26992872516152,
+    "meanOfInstantaneousFps": 141.68656678886435,
+    "p1": {
+     "values": {
+      "stutterscope_percentile": 65.76406798636744,
+      "stutterscope_slowest_mean": 52.87461760995614,
+      "released_slowest_mean_round": 52.87461760995614,
+      "mangohud_summary": 65.74405940299191,
+      "mangoplot_index": 65.75789259105824,
+      "capframex_percentile_r8": 65.75813474157452,
+      "capframex_low_average": 52.87461760995614,
+      "capframex_low_integral": 58.35531383487781,
+      "stutterscope_time_weighted": 58.35531383487781
+     },
+     "spreadPct": 24.377387410144124
+    },
+    "p01": {
+     "values": {
+      "stutterscope_percentile": 49.57930570885314,
+      "stutterscope_slowest_mean": 25.22698622217458,
+      "released_slowest_mean_round": 25.22698622217458,
+      "mangohud_summary": 49.47506910909054,
+      "mangoplot_index": 49.518923656675405,
+      "capframex_percentile_r8": 49.51465177167393,
+      "capframex_low_average": 25.121655913059147,
+      "capframex_low_integral": 4.7389995971850345,
+      "stutterscope_time_weighted": 4.7389995971850345
+     },
+     "spreadPct": 946.1977194153645
+    },
+    "stutterscope_reported": {
+     "p1_percentile": 65.76406798636744,
+     "p1_slowest_mean": 52.87461760995611,
+     "p01_percentile": 49.57930570885314,
+     "p01_slowest_mean": 25.22698622217458,
+     "p1_time_weighted": 58.35531383487781,
+     "p01_time_weighted": 4.7389995971850345,
+     "averageFps": 135.26992872516146
+    },
+    "released_reported": {
+     "p1_slowest_mean": 52.87461760995611,
+     "p01_slowest_mean": 25.22698622217458,
+     "p1_percentile": 65.76406798636744,
+     "p01_percentile": 49.57930570885314
+    }
+   },
+   {
+    "id": "xD3I:examples/frameview-1-6.csv",
+    "frames": 112316,
+    "durationSec": 548.018848,
+    "averageFps": 204.94915532540224,
+    "meanOfInstantaneousFps": 209.19683812520708,
+    "p1": {
+     "values": {
+      "stutterscope_percentile": 151.3317191283293,
+      "stutterscope_slowest_mean": 127.76776639778222,
+      "released_slowest_mean_round": 127.75005309647132,
+      "mangohud_summary": 151.28592735267011,
+      "mangoplot_index": 151.3317191283293,
+      "capframex_percentile_r8": 151.3086686753736,
+      "capframex_low_average": 127.75005309647132,
+      "capframex_low_integral": 139.39224979091162,
+      "stutterscope_time_weighted": 139.39224979091162
+     },
+     "spreadPct": 18.459222098365878
+    },
+    "p01": {
+     "values": {
+      "stutterscope_percentile": 103.69007037963199,
+      "stutterscope_slowest_mean": 91.22422915526364,
+      "released_slowest_mean_round": 91.1269968610004,
+      "mangohud_summary": 103.53038191598978,
+      "mangoplot_index": 103.60547036883548,
+      "capframex_percentile_r8": 103.57915348003434,
+      "capframex_low_average": 91.1269968610004,
+      "capframex_low_integral": 92.7213722763097,
+      "stutterscope_time_weighted": 92.7213722763097
+     },
+     "spreadPct": 13.786335500328772
+    },
+    "stutterscope_reported": {
+     "p1_percentile": 151.3317191283293,
+     "p1_slowest_mean": 127.7677663977822,
+     "p01_percentile": 103.69007037963199,
+     "p01_slowest_mean": 91.22422915526364,
+     "p1_time_weighted": 139.39224979091162,
+     "p01_time_weighted": 92.7213722763097,
+     "averageFps": 204.9491553254011
+    },
+    "released_reported": {
+     "p1_slowest_mean": 127.75005309647128,
+     "p01_slowest_mean": 91.12699686100042,
+     "p1_percentile": 151.3317191283293,
+     "p01_percentile": 103.69007037963199
+    }
+   },
+   {
+    "id": "cosmiclf:Logs/pmcap-r5apex_dx12.exe-250709-222018.csv",
+    "frames": 10652,
+    "durationSec": 69.1885098,
+    "averageFps": 153.9561992416261,
+    "meanOfInstantaneousFps": 172.89153607454855,
+    "p1": {
+     "values": {
+      "stutterscope_percentile": 68.66576984593532,
+      "stutterscope_slowest_mean": 62.046167799627746,
+      "released_slowest_mean_round": 62.046167799627746,
+      "mangohud_summary": 68.52178093008129,
+      "mangoplot_index": 68.62899849702494,
+      "capframex_percentile_r8": 68.61360986630756,
+      "capframex_low_average": 61.990073167000325,
+      "capframex_low_integral": 63.601902968936834,
+      "stutterscope_time_weighted": 63.601902968936834
+     },
+     "spreadPct": 10.76897693111405
+    },
+    "p01": {
+     "values": {
+      "stutterscope_percentile": 56.04501629864701,
+      "stutterscope_slowest_mean": 46.282037688725524,
+      "released_slowest_mean_round": 46.282037688725524,
+      "mangohud_summary": 54.768413519238905,
+      "mangoplot_index": 55.93216546971833,
+      "capframex_percentile_r8": 55.915135749544454,
+      "capframex_low_average": 45.49706452939656,
+      "capframex_low_integral": 39.90072699124578,
+      "stutterscope_time_weighted": 39.90072699124578
+     },
+     "spreadPct": 40.46114074799512
+    },
+    "stutterscope_reported": {
+     "p1_percentile": 68.66576984593532,
+     "p1_slowest_mean": 62.046167799627746,
+     "p01_percentile": 56.04501629864701,
+     "p01_slowest_mean": 46.282037688725524,
+     "p1_time_weighted": 63.601902968936834,
+     "p01_time_weighted": 39.90072699124578,
+     "averageFps": 153.95619924162565
+    },
+    "released_reported": {
+     "p1_slowest_mean": 62.046167799627746,
+     "p01_slowest_mean": 46.282037688725524,
+     "p1_percentile": 68.66576984593532,
+     "p01_percentile": 56.04501629864701
+    }
+   },
+   {
+    "id": "cosmiclf:Logs/pmcap-r5apex_dx12.exe-250709-222519.csv",
+    "frames": 8020,
+    "durationSec": 61.2937644,
+    "averageFps": 130.84528383118854,
+    "meanOfInstantaneousFps": 145.2574749834227,
+    "p1": {
+     "values": {
+      "stutterscope_percentile": 56.617197201887585,
+      "stutterscope_slowest_mean": 52.403499440996995,
+      "released_slowest_mean_round": 52.35501358808935,
+      "mangohud_summary": 56.53678544515947,
+      "mangoplot_index": 56.596618917985836,
+      "capframex_percentile_r8": 56.568879125184225,
+      "capframex_low_average": 52.35501358808935,
+      "capframex_low_integral": 51.962898490477805,
+      "stutterscope_time_weighted": 51.962898490477805
+     },
+     "spreadPct": 8.956965155172547
+    },
+    "p01": {
+     "values": {
+      "stutterscope_percentile": 48.76423432876463,
+      "stutterscope_slowest_mean": 45.67183265840514,
+      "released_slowest_mean_round": 45.3131735024421,
+      "mangohud_summary": 48.300547384953305,
+      "mangoplot_index": 48.75931912486774,
+      "capframex_percentile_r8": 48.461808311798556,
+      "capframex_low_average": 45.3131735024421,
+      "capframex_low_integral": 44.15303441729033,
+      "stutterscope_time_weighted": 44.15303441729033
+     },
+     "spreadPct": 10.443676119502566
+    },
+    "stutterscope_reported": {
+     "p1_percentile": 56.617197201887585,
+     "p1_slowest_mean": 52.40349944099698,
+     "p01_percentile": 48.76423432876463,
+     "p01_slowest_mean": 45.671832658405144,
+     "p1_time_weighted": 51.962898490477805,
+     "p01_time_weighted": 44.15303441729033,
+     "averageFps": 130.84528383118828
+    },
+    "released_reported": {
+     "p1_slowest_mean": 52.355013588089335,
+     "p01_slowest_mean": 45.313173502442105,
+     "p1_percentile": 56.617197201887585,
+     "p01_percentile": 48.76423432876463
+    }
+   },
+   {
+    "id": "cosmiclf:Logs/pmcap-superposition.exe-250719-215451.csv",
+    "frames": 13143,
+    "durationSec": 191.0537185,
+    "averageFps": 68.79217061666351,
+    "meanOfInstantaneousFps": 75.05464243392306,
+    "p1": {
+     "values": {
+      "stutterscope_percentile": 55.3708016473921,
+      "stutterscope_slowest_mean": 8.33449395370979,
+      "released_slowest_mean_round": 8.280806889914524,
+      "mangohud_summary": 55.30759342218055,
+      "mangoplot_index": 55.310346353388866,
+      "capframex_percentile_r8": 55.30970392162394,
+      "capframex_low_average": 8.280806889914524,
+      "capframex_low_integral": 0.19005773041572924,
+      "stutterscope_time_weighted": 0.19005773041572924
+     },
+     "spreadPct": 29033.675081921105
+    },
+    "p01": {
+     "values": {
+      "stutterscope_percentile": 9.788978654322923,
+      "stutterscope_slowest_mean": 1.2364915396908354,
+      "released_slowest_mean_round": 1.1586667147245968,
+      "mangohud_summary": 9.70193737486472,
+      "mangoplot_index": 9.749848146115124,
+      "capframex_percentile_r8": 9.724715823948943,
+      "capframex_low_average": 1.1586667147245968,
+      "capframex_low_integral": 0.19005773041572924,
+      "stutterscope_time_weighted": 0.19005773041572924
+     },
+     "spreadPct": 5050.52906972564
+    },
+    "stutterscope_reported": {
+     "p1_percentile": 55.3708016473921,
+     "p1_slowest_mean": 8.33449395370979,
+     "p01_percentile": 9.788978654322923,
+     "p01_slowest_mean": 1.2364915396908354,
+     "p1_time_weighted": 0.19005773041572924,
+     "p01_time_weighted": 0.19005773041572924,
+     "averageFps": 68.79217061666346
+    },
+    "released_reported": {
+     "p1_slowest_mean": 8.280806889914523,
+     "p01_slowest_mean": 1.158666714724597,
+     "p1_percentile": 55.3708016473921,
+     "p01_percentile": 9.788978654322923
+    }
+   },
+   {
+    "id": "cosmiclf:Logs/pmcap-superposition.exe-250719-220716.csv",
+    "frames": 12431,
+    "durationSec": 174.6918462,
+    "averageFps": 71.15958913026817,
+    "meanOfInstantaneousFps": 72.24154284421674,
+    "p1": {
+     "values": {
+      "stutterscope_percentile": 55.65728470370844,
+      "stutterscope_slowest_mean": 51.228284176652664,
+      "released_slowest_mean_round": 51.19543614155852,
+      "mangohud_summary": 55.65573628661906,
+      "mangoplot_index": 55.65635539922303,
+      "capframex_percentile_r8": 55.65613650090463,
+      "capframex_low_average": 51.19543614155852,
+      "capframex_low_integral": 54.96861292202153,
+      "stutterscope_time_weighted": 54.96861292202153
+     },
+     "spreadPct": 8.715324838355976
+    },
+    "p01": {
+     "values": {
+      "stutterscope_percentile": 46.66373867260937,
+      "stutterscope_slowest_mean": 36.69356022372911,
+      "released_slowest_mean_round": 36.07117564378031,
+      "mangohud_summary": 46.1054714719933,
+      "mangoplot_index": 46.27487274409995,
+      "capframex_percentile_r8": 46.23489492882778,
+      "capframex_low_average": 36.07117564378031,
+      "capframex_low_integral": 39.371783817409415,
+      "stutterscope_time_weighted": 39.371783817409415
+     },
+     "spreadPct": 29.36572717627939
+    },
+    "stutterscope_reported": {
+     "p1_percentile": 55.65728470370844,
+     "p1_slowest_mean": 51.228284176652636,
+     "p01_percentile": 46.66373867260937,
+     "p01_slowest_mean": 36.693560223729115,
+     "p1_time_weighted": 54.96861292202153,
+     "p01_time_weighted": 39.371783817409415,
+     "averageFps": 71.1595891302684
+    },
+    "released_reported": {
+     "p1_slowest_mean": 51.1954361415585,
+     "p01_slowest_mean": 36.07117564378031,
+     "p1_percentile": 55.65728470370844,
+     "p01_percentile": 46.66373867260937
+    }
+   },
+   {
+    "id": "Pavelioso:assets/witcher_3.csv",
+    "frames": 1146,
+    "durationSec": 26.929546,
+    "averageFps": 42.55548905280468,
+    "meanOfInstantaneousFps": 44.501412069039446,
+    "p1": {
+     "values": {
+      "stutterscope_percentile": 21.64694269404864,
+      "stutterscope_slowest_mean": 13.093118257044098,
+      "released_slowest_mean_round": 12.64927582895879,
+      "mangohud_summary": 21.22150938050232,
+      "mangoplot_index": 21.32332558585837,
+      "capframex_percentile_r8": 21.302544056323946,
+      "capframex_low_average": 12.64927582895879,
+      "capframex_low_integral": 8.8371229862406,
+      "stutterscope_time_weighted": 8.8371229862406
+     },
+     "spreadPct": 144.954638831585
+    },
+    "p01": {
+     "values": {
+      "stutterscope_percentile": 9.307616203610372,
+      "stutterscope_slowest_mean": 5.30526494493135,
+      "released_slowest_mean_round": 3.790391357907704,
+      "mangohud_summary": 3.7903911825284804,
+      "mangoplot_index": 8.8371229862406,
+      "capframex_percentile_r8": 5.220418002837734,
+      "capframex_low_average": 3.790391357907704,
+      "capframex_low_integral": 3.790391357907704,
+      "stutterscope_time_weighted": 3.790391357907704
+     },
+     "spreadPct": 145.55819585358685
+    },
+    "stutterscope_reported": {
+     "p1_percentile": 21.64694269404864,
+     "p1_slowest_mean": 13.093118257044098,
+     "p01_percentile": 9.307616203610372,
+     "p01_slowest_mean": 5.30526494493135,
+     "p1_time_weighted": 8.8371229862406,
+     "p01_time_weighted": 3.790391357907704,
+     "averageFps": 42.555489052804624
+    },
+    "released_reported": {
+     "p1_slowest_mean": 12.64927582895879,
+     "p01_slowest_mean": 3.790391357907704,
+     "p1_percentile": 21.64694269404864,
+     "p01_percentile": 9.307616203610372
+    }
+   },
+   {
+    "id": "Pavelioso:assets/witcher_3_gdrive.csv",
+    "frames": 907,
+    "durationSec": 20.226203,
+    "averageFps": 44.84282096842398,
+    "meanOfInstantaneousFps": 46.70565140619903,
+    "p1": {
+     "values": {
+      "stutterscope_percentile": 20.660644777402247,
+      "stutterscope_slowest_mean": 17.02440618871214,
+      "released_slowest_mean_round": 16.700345697155935,
+      "mangohud_summary": 19.92388998629655,
+      "mangoplot_index": 20.626637239330872,
+      "capframex_percentile_r8": 20.20381609678434,
+      "capframex_low_average": 16.700345697155935,
+      "capframex_low_integral": 16.610743829108667,
+      "stutterscope_time_weighted": 16.610743829108667
+     },
+     "spreadPct": 24.381213688917015
+    },
+    "p01": {
+     "values": {
+      "stutterscope_percentile": 15.526817142226884,
+      "stutterscope_slowest_mean": 11.421653170079837,
+      "released_slowest_mean_round": 11.421653170079837,
+      "mangohud_summary": 11.421652986947167,
+      "mangoplot_index": 11.421653170079837,
+      "capframex_percentile_r8": 12.284413658793543,
+      "capframex_low_average": 11.421653170079837,
+      "capframex_low_integral": 11.421653170079837,
+      "stutterscope_time_weighted": 11.421653170079837
+     },
+     "spreadPct": 35.94194430500697
+    },
+    "stutterscope_reported": {
+     "p1_percentile": 20.660644777402247,
+     "p1_slowest_mean": 17.02440618871214,
+     "p01_percentile": 15.526817142226884,
+     "p01_slowest_mean": 11.421653170079837,
+     "p1_time_weighted": 16.610743829108667,
+     "p01_time_weighted": 11.421653170079837,
+     "averageFps": 44.84282096842392
+    },
+    "released_reported": {
+     "p1_slowest_mean": 16.700345697155928,
+     "p01_slowest_mean": 11.421653170079837,
+     "p1_percentile": 20.660644777402247,
+     "p01_percentile": 15.526817142226884
+    }
+   }
+  ],
+  "summary": {
+   "p1_spreadPct": {
+    "median": 21.418304754255,
+    "worst": 29033.675081921105,
+    "n": 8
+   },
+   "p1_percentile_family_spreadPct": {
+    "keys": [
+     "stutterscope_percentile",
+     "mangohud_summary",
+     "mangoplot_index",
+     "capframex_percentile_r8"
+    ],
+    "median": 0.12825699375524913,
+    "worst": 3.697846111439218,
+    "n": 8
+   },
+   "p1_vs_stutterscope_percentile_pct": {
+    "stutterscope_percentile": {
+     "median": 0.0,
+     "worst_abs": 0.0
+    },
+    "stutterscope_slowest_mean": {
+     "median": -16.58544554111812,
+     "worst_abs": -84.94785391263639
+    },
+    "released_slowest_mean_round": {
+     "median": -17.37554384906675,
+     "worst_abs": -85.04481307197304
+    },
+    "mangohud_summary": {
+     "median": -0.12809076119829066,
+     "worst_abs": -3.565981599526491
+    },
+    "mangoplot_index": {
+     "median": -0.044948778098241604,
+     "worst_abs": -1.4949783568246833
+    },
+    "capframex_percentile_r8": {
+     "median": -0.08065191208042055,
+     "worst_abs": -2.2111056336323376
+    },
+    "capframex_low_average": {
+     "median": -17.37554384906675,
+     "worst_abs": -85.04481307197304
+    },
+    "capframex_low_integral": {
+     "median": -9.743150795136156,
+     "worst_abs": -99.65675459852281
+    },
+    "stutterscope_time_weighted": {
+     "median": -9.743150795136156,
+     "worst_abs": -99.65675459852281
+    }
+   },
+   "p01_spreadPct": {
+    "median": 38.20154252650104,
+    "worst": 5050.52906972564,
+    "n": 8
+   },
+   "p01_percentile_family_spreadPct": {
+    "keys": [
+     "stutterscope_percentile",
+     "mangohud_summary",
+     "mangoplot_index",
+     "capframex_percentile_r8"
+    ],
+    "median": 1.085425771555304,
+    "worst": 145.55819585358685,
+    "n": 8
+   },
+   "p01_vs_stutterscope_percentile_pct": {
+    "stutterscope_percentile": {
+     "median": 0.0,
+     "worst_abs": 0.0
+    },
+    "stutterscope_slowest_mean": {
+     "median": -23.902597037073242,
+     "worst_abs": -87.36853370147266
+    },
+    "released_slowest_mean_round": {
+     "median": -24.569479500473168,
+     "worst_abs": -88.16355867511349
+    },
+    "mangohud_summary": {
+     "median": -1.0736184921519898,
+     "worst_abs": -59.276455973139406
+    },
+    "mangoplot_index": {
+     "median": -0.3005489663460481,
+     "worst_abs": -26.43918540769442
+    },
+    "capframex_percentile_r8": {
+     "median": -0.6383307201811239,
+     "worst_abs": -43.91240583370033
+    },
+    "capframex_low_average": {
+     "median": -24.569479500473168,
+     "worst_abs": -88.16355867511349
+    },
+    "capframex_low_integral": {
+     "median": -27.622558724387893,
+     "worst_abs": -98.05845188627725
+    },
+    "stutterscope_time_weighted": {
+     "median": -27.622558724387893,
+     "worst_abs": -98.05845188627725
+    }
+   }
+  },
+  "yardsticks": {
+   "mangohud_witchfire": {
+    "summary_file": {
+     "p01": 49.475,
+     "p1": 65.744,
+     "avg": 135.2,
+     "avg_recomputed_float32_sum": 135.15931918153913
+    },
+    "recomputed_mangohud_rule": {
+     "p01": 49.47506910909054,
+     "p1": 65.74405940299191
+    },
+    "stutterscope": {
+     "p01": 49.57930570885314,
+     "p1": 65.76406798636744,
+     "avg": 135.26992872516146
+    },
+    "all_definitions_p1": {
+     "stutterscope_percentile": 65.76406798636744,
+     "stutterscope_slowest_mean": 52.87461760995614,
+     "released_slowest_mean_round": 52.87461760995614,
+     "mangohud_summary": 65.74405940299191,
+     "mangoplot_index": 65.75789259105824,
+     "capframex_percentile_r8": 65.75813474157452,
+     "capframex_low_average": 52.87461760995614,
+     "capframex_low_integral": 58.35531383487781,
+     "stutterscope_time_weighted": 58.35531383487781
+    },
+    "all_definitions_p01": {
+     "stutterscope_percentile": 49.57930570885314,
+     "stutterscope_slowest_mean": 25.22698622217458,
+     "released_slowest_mean_round": 25.22698622217458,
+     "mangohud_summary": 49.47506910909054,
+     "mangoplot_index": 49.518923656675405,
+     "capframex_percentile_r8": 49.51465177167393,
+     "capframex_low_average": 25.121655913059147,
+     "capframex_low_integral": 4.7389995971850345,
+     "stutterscope_time_weighted": 4.7389995971850345
+    }
+   },
+   "frameview_summary_rows": [
+    {
+     "log": "FrameView_witcher3.exe_2023_02_25T144502_Log.csv",
+     "avg": 44.843,
+     "low1": 17.024,
+     "low01": 11.422,
+     "fps01": 11.422,
+     "fps1": 20.627,
+     "min": 11.422,
+     "max": 64.248
+    },
+    {
+     "log": "FrameView_witcher3.exe_2023_02_25T151022_Log.csv",
+     "avg": 42.556,
+     "low1": 13.093,
+     "low01": 5.305,
+     "fps01": 8.837,
+     "fps1": 21.323,
+     "min": 3.79,
+     "max": 65.244
+    }
+   ],
+   "frameview": [
+    {
+     "capture": "Pavelioso:assets/witcher_3.csv",
+     "summary_row_log": "FrameView_witcher3.exe_2023_02_25T151022_Log.csv",
+     "frames": 1146,
+     "match_basis": "Avg FPS, Min FPS and Max FPS agree with the summary row to its printed precision",
+     "frameview": {
+      "log": "FrameView_witcher3.exe_2023_02_25T151022_Log.csv",
+      "avg": 42.556,
+      "low1": 13.093,
+      "low01": 5.305,
+      "fps01": 8.837,
+      "fps1": 21.323,
+      "min": 3.79,
+      "max": 65.244
+     },
+     "index_rule_1pct": 21.32332558585837,
+     "index_rule_0p1pct": 8.8371229862406,
+     "released": {
+      "p1_slowest_mean": 12.64927582895879,
+      "p01_slowest_mean": 3.790391357907704,
+      "p1_percentile": 21.64694269404864,
+      "p01_percentile": 9.307616203610372
+     },
+     "checkout": {
+      "p1_percentile": 21.64694269404864,
+      "p1_slowest_mean": 13.093118257044098,
+      "p01_percentile": 9.307616203610372,
+      "p01_slowest_mean": 5.30526494493135,
+      "p1_time_weighted": 8.8371229862406,
+      "p01_time_weighted": 3.790391357907704,
+      "averageFps": 42.555489052804624
+     },
+     "averageFps": 42.55548905280468
+    },
+    {
+     "capture": "Pavelioso:assets/witcher_3_gdrive.csv",
+     "summary_row_log": "FrameView_witcher3.exe_2023_02_25T144502_Log.csv",
+     "frames": 907,
+     "match_basis": "Avg FPS, Min FPS and Max FPS agree with the summary row to its printed precision",
+     "frameview": {
+      "log": "FrameView_witcher3.exe_2023_02_25T144502_Log.csv",
+      "avg": 44.843,
+      "low1": 17.024,
+      "low01": 11.422,
+      "fps01": 11.422,
+      "fps1": 20.627,
+      "min": 11.422,
+      "max": 64.248
+     },
+     "index_rule_1pct": 20.626637239330872,
+     "index_rule_0p1pct": 11.421653170079837,
+     "released": {
+      "p1_slowest_mean": 16.700345697155928,
+      "p01_slowest_mean": 11.421653170079837,
+      "p1_percentile": 20.660644777402247,
+      "p01_percentile": 15.526817142226884
+     },
+     "checkout": {
+      "p1_percentile": 20.660644777402247,
+      "p1_slowest_mean": 17.02440618871214,
+      "p01_percentile": 15.526817142226884,
+      "p01_slowest_mean": 11.421653170079837,
+      "p1_time_weighted": 16.610743829108667,
+      "p01_time_weighted": 11.421653170079837,
+      "averageFps": 44.84282096842392
+     },
+     "averageFps": 44.84282096842398
+    }
+   ]
+  }
+ }
+}
