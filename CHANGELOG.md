@@ -6,9 +6,36 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-In the web page; the npm package (the CLI) is unchanged.
+Changes below are in the source checkout and have not been published.
+
+### Added
+
+- Independent interval analysis for both runs, including typed bounds, applying
+  the trace's visible range, full-capture restoration, cancellation, and recovery.
+  Whole frames retain their original timeline and physical CSV line references.
+- Slow-frame episode inspection with original frame/line ranges, per-episode
+  counts, neighboring frame evidence, available timing channels, trace navigation,
+  paging, and complete JSON evidence.
+- `stutterscope compare A.csv B.csv`, shared and per-run interval/stream options,
+  and summary `--start`, `--end`, `--events`. Comparisons use the same evidence
+  schema as the browser.
+- A retained controlled Chromium animation capture and a one-click scene
+  comparison, with workload code, capture hashes, and independent NumPy checks.
 
 ### Fixed
+
+- MangoHud periodic snapshots could masquerade as per-frame captures and report
+  a duration much shorter than the logging span. Compare its elapsed clock with
+  frame durations, refuse large contradictions and reversed clocks, and retain
+  the `log_interval=0` assumption and clock evidence in browser/CLI reports.
+  Missing or insufficient clock coverage stays explicitly unverified.
+- Cropping a stutter retains full-stream rolling-median context. Interval FPS
+  divides by selected frame duration, not an absolute ending timestamp. Decimal
+  boundaries retain their intended frames despite floating-point accumulation.
+- Generic FPS/seconds conversions skip finite inputs that overflow into infinite
+  frame durations. One-frame pacing variability is unavailable, not a zero.
+- Comparison exports include both runs and their independent selections. Histogram
+  overlays use each run's share instead of raw counts that depend on capture length.
 
 - New imports, cancellation, removing a comparison, and New session now stop
   the superseded worker. An older import can no longer replace the chosen
@@ -30,7 +57,8 @@ In the web page; the npm package (the CLI) is unchanged.
 
 ### Changed
 
-- Web JSON exports use schema version 2 and retain source columns, skipped
+- Web JSON exports use schema version 3, include complete episode/interval
+  evidence, and retain source columns, skipped
   rows, retained warnings and the count of omitted warning details, selected
   stream, generic-column mapping, and the applied detection settings. Markdown
   carries the same interpretation and warning context and escapes source text.

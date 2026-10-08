@@ -6,13 +6,14 @@ Frame-time analysis for PC gamers and hardware reviewers. Drop in a capture, see
 [![License: MIT](https://img.shields.io/badge/license-MIT-7cffb2.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/demo-antonsoo.github.io%2Fstutterscope-7cffb2)](https://antonsoo.github.io/stutterscope/)
 
-![stutterscope: stat tiles, a frame-time trace with two hitches clamped and labeled at the top of a robust y-range, FPS over time, and a frame-time histogram, for a synthetic PresentMon 2.x capture](docs/assets/hero.png)
+**New in this source checkout:** measure a selected interval in each run, inspect
+slow-frame episodes back to their original CSV lines, and export both runs together.
+The app's **Open recorded comparison** loads a controlled browser capture with four
+measured scene hitches in A and none in B. This is a local animation experiment,
+not a game benchmark. [Walkthrough and exact selection rules](docs/interval-analysis.md).
+These additions have not been published to npm or the hosted demo.
 
-Two-run comparison, with a metric-by-metric delta table. Run A is the bundled
-PresentMon sample; run B is a synthetic 8–12 ms trace with two 36 ms spikes.
-These illustrate the comparison controls, not measured hardware gains:
-
-![stutterscope comparison view: applied detection settings, overlaid percentile curves, and a delta table for two synthetic captures](docs/assets/comparison.png)
+![Stutterscope compares selected intervals from two recorded browser captures, retaining original frame numbers and measured slow-frame counts](docs/assets/interval-comparison.png)
 
 ## Why this exists
 
@@ -23,8 +24,8 @@ average barely moves, but the frame *feels* wrong the whole time. That
 information lives in the frame-time trace, not the mean.
 
 Frame-time capture tools (PresentMon, FrameView, CapFrameX, MangoHud, OCAT)
-already record the right data. The gap is in the analysis: it's mostly
-Windows desktop apps, "1% low" means two different things depending which
+already record frame timings when configured for per-frame capture. The gap is in
+the analysis: it's mostly Windows desktop apps, "1% low" means two different things depending which
 tool computed it and nobody tells you which, and there's no fast way to
 drop two runs side by side and see what actually changed. stutterscope is a
 single-page, in-browser analyzer that reads six real capture formats plus
@@ -42,8 +43,9 @@ npm install && npm run dev
 
 Open the printed local URL, click one of the "load a synthetic sample"
 links, and you're looking at a real (synthetic, clearly labelled) capture.
-Or skip the clone and use the [live demo](https://antonsoo.github.io/stutterscope/) —
-same app, same guarantee that nothing you drop on it leaves your browser.
+The [live demo](https://antonsoo.github.io/stutterscope/) runs the published
+version; source-checkout additions above await release. Both process captures
+locally in the browser.
 
 Prefer the terminal? `npx` runs the published CLI
 ([`@antonsoloviev/stutterscope`](https://www.npmjs.com/package/@antonsoloviev/stutterscope)
@@ -55,6 +57,13 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
 
 ## Features
 
+- **Interval analysis and slow-frame inspection (source checkout)**: independently
+  select the part of A and B to measure, keep original frame/CSV-line references,
+  and inspect the neighboring evidence around each slow-frame episode. Detection
+  retains full-stream context across interval boundaries. Browser comparison
+  exports include both runs and their applied intervals; the source CLI adds
+  `compare`, `--start` / `--end`, and per-run bounds. See the
+  [captured experiment and walkthrough](docs/interval-analysis.md).
 - **Parsers** for PresentMon 1.x and 2.x, NVIDIA FrameView, CapFrameX,
   MangoHud, and OCAT CSVs, auto-detected from the file's header. Any other
   CSV (an engine's frame log, a FRAPS-style `frametimes.csv`, a
@@ -89,11 +98,14 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
   screen reading a live trace, and a light variant would work against that
   rather than with it.
 - **Sharing**: export a PNG report card, a Markdown table (paste into a
-  forum post or PR description), or a full JSON summary of run A. Web reports
+  forum post or PR description), or a JSON evidence report. In this source
+  checkout, JSON and Markdown exports include both loaded runs; PNG remains a
+  card for run A. Web reports
   retain the applied detection settings and skipped-row counts. JSON and
   Markdown include warning details, the selected process, and generic-column
-  interpretation; JSON schema version 2 also records source columns and the
-  count of warning details omitted by the parser's retention limit. Nothing is
+  interpretation; JSON schema version 3 also records analyzed intervals,
+  complete slow-frame episode evidence, source columns, and the count of warning
+  details omitted by the parser's retention limit. Nothing is
   uploaded at any point, and the page's Content-Security-Policy
   (`connect-src 'self'`) has the browser enforce that.
 - **Fast on real-sized captures**: parsing streams off the file in a Web
@@ -166,9 +178,12 @@ strings: `src/core/stream.ts` reads the `File` in chunks via
 numeric channel accumulates into a growable typed-array builder
 (`src/core/buffer.ts`) that doubles capacity like a `Vec`, so a 430k-row
 capture ends up as a handful of `Float64Array`s, not 430k small objects.
-Measured on this machine (14 vCPU WSL2 Linux, 48 GB RAM): a synthetic
-430,000-row / 66.7 MB PresentMon 2.x CSV parses in **574 ms** and computes
-its full metrics summary in another **108 ms** (`tests/core/performance.test.ts`).
+One 2026-10-07 measurement on Node 24.21.0 (14 vCPU WSL2 Linux, about
+47 GiB RAM): a synthetic 430,000-row / 66.7 MiB PresentMon 2.x CSV parsed in
+**782 ms** and computed its full metrics summary in **130 ms**. This excludes
+CSV generation and browser rendering; timings vary with machine load. The
+[verification record](docs/verification-intervals-2026-10-07.md) gives the command
+and a second, busier observation (`tests/core/performance.test.ts`).
 
 **Off the main thread.** `src/worker/parse.worker.ts` owns parsing and
 metrics; the UI (`src/ui/`) only ever talks to it through a small
@@ -177,15 +192,17 @@ back. Large results come back as structured-cloned typed arrays; only the
 worker's own cached copy of a run is kept around so applying detection
 settings can recompute without re-parsing. Each slot has its own worker;
 replacing a capture terminates that worker. If it fails, a retry reloads the
-same file, column mapping, and process selection before recomputing.
+same file, column mapping, process selection, and analysis interval before
+recomputing.
 
 **Charts.** The frame-time trace, FPS-over-time, and percentile-curve
 charts use [uPlot](https://github.com/leeoniya/uPlot), which renders
 directly from typed arrays on a single canvas — the reason this stays
 smooth at hundreds of thousands of points without any bundled charting
 framework. The histogram is a ~30-line canvas draw. Total JS bundle:
-**91 kB (36 kB gzipped)** for the app plus a 25 kB worker chunk — see
-`npm run build`'s output.
+**110.38 kB (41.28 kB gzipped)** for the app plus a **29.33 kB** worker
+chunk in the 2026-10-07 source build. These numbers exclude CSS, local fonts,
+and the example captures; see `npm run build`'s output.
 
 **Metrics.** Every formula is written out in
 [`docs/metrics.md`](docs/metrics.md) and mirrored exactly in
@@ -209,6 +226,12 @@ pre-built or committed.
 
 ## Accuracy and limitations
 
+- **MangoHud requires `log_interval=0`.** Periodic logging records snapshots,
+  which cannot reconstruct a per-frame stutter report. The CSV omits that setting.
+  This source checkout cross-checks its elapsed clock against frame durations,
+  refuses large contradictions, and preserves the assumption in reports. A
+  compatible clock does not prove complete coverage; short or incomplete clocks
+  remain unverified. See the [upstream evidence and check limits](docs/formats.md#mangohud).
 - **Format verification is source/sample-based, not device-tested.**
   Parsers are checked against upstream source code, official docs, or a
   real captured file from each project's own repository (all cited in
@@ -281,11 +304,18 @@ A/AA and axe best-practice rules at desktop and phone widths. Install the
 test engines with `npx playwright install chromium firefox` before the first
 browser run; CI also installs their system dependencies.
 
-To refresh the actual UI screenshots, serve `npm run build` with
-`npm run preview -- --port 4194`, then run
-`node scripts/capture-screenshots.js`. The script creates its comparison
-trace deterministically and also captures the [phone layout](docs/assets/mobile.png)
-and the [PNG report card](docs/assets/report-card.png).
+The [2026-10-07 verification record](docs/verification-intervals-2026-10-07.md)
+includes the retained raw capture, independent NumPy results, clean-install
+checks, and installed-package/browser report agreement. Use Node 24 for source
+development; the compiled CLI also supports Node 22.6 and later.
+
+To refresh the interval screenshots, serve `npm run build` with
+`npm run preview -- --port 4194`, then run `node scripts/capture-intervals.mjs`.
+It uses the retained measured capture, checks browser/CLI report agreement, and
+saves the [phone layout](docs/assets/interval-mobile.png),
+[frame evidence](docs/assets/interval-evidence.png), and
+[PNG report card](docs/assets/interval-report-card.png). The existing
+`node scripts/capture-screenshots.js` recreates the older synthetic examples.
 
 ## Contributing
 

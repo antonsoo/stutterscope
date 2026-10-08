@@ -160,3 +160,13 @@ severe hitch. Frames above that range are still drawn — clamped to the top
 of the plot, with an upward-arrow marker and their real value labeled — and
 a "Full range" toggle switches to the true `[0, max(frame_time_ms)]` range
 on demand.
+
+## Metrics over a selected interval (source checkout)
+
+An interval keeps whole frames whose ending accumulated time is after start and
+at or before end. Average FPS uses the selected count divided by the sum of
+selected durations. Percentiles, lows, optional channels, and MASD use the
+selected frames; MASD needs at least two frames and is otherwise unavailable.
+Stutter flags retain the full stream's rolling-median context and are counted
+within the interval. See [interval analysis](interval-analysis.md) for exact
+boundary rules, original-source coordinates, and comparison/export behavior.
