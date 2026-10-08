@@ -36,10 +36,12 @@ value = sorted[lower] + (sorted[upper] - sorted[lower]) * frac
 `tests/core/oracle.test.ts` cross-checks this against `numpy.percentile`
 directly (see `scripts/oracle.py`).
 
-## 1% low / 0.1% low — two definitions, on purpose
+## 1% low / 0.1% low — three definitions, on purpose
 
-Tools disagree about "1% low" because there are two legitimate definitions
-in circulation, and stutterscope reports both rather than picking a side:
+Tools disagree about "1% low" because several definitions are in circulation.
+stutterscope reports the three that real tools print, labelled, rather than
+picking a side. [`studies/real-captures`](../studies/real-captures/README.md)
+cites each tool's source and measures how far apart they land on real captures.
 
 **Percentile method** — convert the P99 (or P99.9) frame time straight to
 FPS:
@@ -50,15 +52,25 @@ point_one_percent_low_percentile = 1000 / percentile(frame_time_ms, 99.9)
 ```
 
 This answers "how bad is the frame time right at the boundary of the worst
-1% of frames" — a single point on the distribution.
+1% of frames" — a single point on the distribution. The percentile uses
+linear interpolation (above). MangoHud and FrameView's "1% FPS" take a frame
+by index instead of interpolating, and CapFrameX uses a different
+interpolation; on a capture of tens of thousands of frames the figures agree
+to within a fraction of a percent.
 
 **Mean-of-slowest-N% method** — average the frame times of the slowest 1%
 (or 0.1%) of frames, *then* convert to FPS:
 
 ```
-slowest = sort_descending(frame_time_ms)[0 : round(n * 0.01)]
+slowest = sort_descending(frame_time_ms)[0 : ceil(n * 0.01)]
 one_percent_low_mean = 1000 / mean(slowest)
 ```
+
+The bucket holds `ceil(n * fraction)` frames (at least one), so it always
+covers at least the stated fraction of the capture. Releases up to 0.2.5
+used `round(n * fraction)`, which gave a smaller bucket on short captures:
+on a 1,146-frame FrameView capture, 11 frames for the 1% low and 1 frame for
+the 0.1% low, where FrameView's own summary of that capture is reproduced by 12 and 2.
 
 This answers "how bad are the worst frames on average," and is pulled
 further down by a heavy tail: a handful of severe hitches drag the *mean*
@@ -67,9 +79,33 @@ one 500ms shader-compile stall in 8,000 frames, the percentile-method 1%
 low barely moves (it's set by the 80th-worst frame, not the worst one),
 while the mean-of-slowest-1% number can be dragged down substantially,
 because that one 500ms frame is now averaged in with the other ~79 frames
-in the slowest bucket. **Neither number is wrong; they answer different
-questions**, and a reviewer quoting "1% low" from two different tools may
-be quoting two different quantities.
+in the slowest bucket.
+
+**Time-weighted method** (source checkout) — sort frames slowest first and
+add up their durations until the sum reaches 1% (or 0.1%) of the capture's
+total time; the frame time reached is the figure:
+
+```
+used = 0
+for ft in sort_descending(frame_time_ms):
+    used += ft
+    if used >= 0.01 * sum(frame_time_ms): break
+one_percent_low_time_weighted = 1000 / ft
+```
+
+This is the "low integral" CapFrameX prints next to its "low average". A
+single 500 ms stall in 1,000 frames of 10 ms uses up the whole 1% allowance
+(0.01 × 10,490 ms = 105 ms) on its own, so the figure is 2 fps; the
+mean-of-slowest method averages that stall with nine 10 ms frames and gives
+about 17 fps. The three figures can differ by a factor of two or more on a
+capture with a long stall.
+
+**Neither number is wrong; they answer different questions**, and a reviewer
+quoting "1% low" from two different tools may be quoting two different
+quantities. The CLI and the JSON report carry the three figures under
+`onePercentLow` and `pointOnePercentLow` as `percentileMethodFps`,
+`meanOfSlowestMethodFps` and `timeWeightedFps`. The browser tiles still show
+the first two; the time-weighted figure is in the browser's JSON export and Markdown table.
 
 ## Stutter events and hitches
 

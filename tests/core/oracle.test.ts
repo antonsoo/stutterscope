@@ -26,8 +26,8 @@ interface OracleExpected {
   durationSec: number;
   averageFps: number;
   percentilesMs: { p50: number; p90: number; p95: number; p99: number; p999: number };
-  onePercentLow: { percentileMethodFps: number; meanOfSlowestMethodFps: number };
-  pointOnePercentLow: { percentileMethodFps: number; meanOfSlowestMethodFps: number };
+  onePercentLow: { percentileMethodFps: number; meanOfSlowestMethodFps: number; timeWeightedFps: number };
+  pointOnePercentLow: { percentileMethodFps: number; meanOfSlowestMethodFps: number; timeWeightedFps: number };
   masdMs: number;
 }
 
@@ -89,7 +89,7 @@ describe("metrics vs. numpy oracle", () => {
     expectCloseRelative(p.p999, expected.percentilesMs.p999, "p999");
   });
 
-  it("agrees on 1% low under both definitions", () => {
+  it("agrees on 1% low under all three definitions", () => {
     const result = onePercentLow(sorted);
     expectCloseRelative(result.percentileMethodFps, expected.onePercentLow.percentileMethodFps, "1% percentile");
     expectCloseRelative(
@@ -97,9 +97,10 @@ describe("metrics vs. numpy oracle", () => {
       expected.onePercentLow.meanOfSlowestMethodFps,
       "1% mean-of-slowest",
     );
+    expectCloseRelative(result.timeWeightedFps, expected.onePercentLow.timeWeightedFps, "1% time-weighted");
   });
 
-  it("agrees on 0.1% low under both definitions", () => {
+  it("agrees on 0.1% low under all three definitions", () => {
     const result = pointOnePercentLow(sorted);
     expectCloseRelative(
       result.percentileMethodFps,
@@ -111,6 +112,7 @@ describe("metrics vs. numpy oracle", () => {
       expected.pointOnePercentLow.meanOfSlowestMethodFps,
       "0.1% mean-of-slowest",
     );
+    expectCloseRelative(result.timeWeightedFps, expected.pointOnePercentLow.timeWeightedFps, "0.1% time-weighted");
   });
 
   it("agrees on mean absolute successive difference", () => {

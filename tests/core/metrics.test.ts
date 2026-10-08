@@ -80,6 +80,45 @@ describe("1% / 0.1% lows", () => {
   });
 });
 
+describe("lows on a real capture's tail", () => {
+  // The 12 slowest frames of a real FrameView capture of The Witcher 3 (1,146
+  // frames; github.com/Pavelioso/Frameviewer assets/witcher_3.csv at 084d4cb),
+  // padded with 16 ms frames to the same length. FrameView's own summary of that
+  // capture reports 1% Low FPS 13.093 and 0.1% Low FPS 5.305, which are
+  // 1000 / mean(slowest 12) and 1000 / mean(slowest 2): n * 0.01 = 11.46 and
+  // n * 0.001 = 1.146 frames, rounded up.
+  const tail = [263.825, 113.159, 73.71, 62.512, 58.172, 54.667, 50.249, 49.911, 48.372, 47.916, 47.122, 46.897];
+  const sorted = sortedCopy(Float64Array.from([...tail, ...Array.from({ length: 1134 }, () => 16)]));
+
+  it("rounds the slowest-frame count up, as FrameView's summary does", () => {
+    expect(onePercentLow(sorted).meanOfSlowestMethodFps).toBeCloseTo(13.093, 3);
+    expect(pointOnePercentLow(sorted).meanOfSlowestMethodFps).toBeCloseTo(5.305, 3);
+  });
+
+  it("does not round up when the fraction of frames is exact", () => {
+    const hundred = sortedCopy(Float64Array.from([100, ...Array.from({ length: 99 }, () => 10)]));
+    expect(onePercentLow(hundred).meanOfSlowestMethodFps).toBeCloseTo(10, 10); // 1 frame, 1000/100
+    const seven = sortedCopy(Float64Array.from([50, 40, 30, 20, 10, 10, 10, ...Array.from({ length: 693 }, () => 10)])); // 700 frames
+    expect(onePercentLow(seven).meanOfSlowestMethodFps).toBeCloseTo(1000 / (170 / 7), 10);
+  });
+
+  it("time-weighted low reaches the frame time where the slowest frames use up the time allowance", () => {
+   
+    const total = sorted.reduce((a, b) => a + b, 0);
+    const allowance = total * 0.01;
+    let used = 0;
+    let reached = 0;
+    for (let i = sorted.length - 1; i >= 0 && used < allowance; i--) {
+      used += sorted[i]!;
+      reached = sorted[i]!;
+    }
+    expect(onePercentLow(sorted).timeWeightedFps).toBeCloseTo(1000 / reached, 10);
+    // A single 500 ms stall in 1,000 steady 10 ms frames exhausts 1% of the time at once.
+    const stall = sortedCopy(Float64Array.from([500, ...Array.from({ length: 999 }, () => 10)]));
+    expect(onePercentLow(stall).timeWeightedFps).toBeCloseTo(2, 10);
+  });
+});
+
 describe("meanAbsoluteSuccessiveDifference", () => {
   it("is 0 for perfectly steady pacing", () => {
     expect(meanAbsoluteSuccessiveDifference(Float64Array.from([10, 10, 10, 10]))).toBe(0);

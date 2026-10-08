@@ -40,7 +40,7 @@ describe("stutterscope summary on unusual files", () => {
   it("summarises the plain capture", () => {
     expect(reference.status).toBe(0);
     expect(reference.stdout).toContain("5 frames");
-    expect(reference.stdout).toContain("Average FPS            62.5");
+    expect(reference.stdout).toContain("Average FPS              62.5");
   });
 
   it("reads CR-only and CRLF line endings", () => {

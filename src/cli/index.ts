@@ -291,6 +291,7 @@ function compareFiles(argv: string[]): void {
       ["Average FPS", sa.averageFps, sb.averageFps],
       ["1% low percentile (fps)", sa.onePercentLow.percentileMethodFps, sb.onePercentLow.percentileMethodFps],
       ["1% low slowest-mean (fps)", sa.onePercentLow.meanOfSlowestMethodFps, sb.onePercentLow.meanOfSlowestMethodFps],
+      ["1% low time-weighted (fps)", sa.onePercentLow.timeWeightedFps, sb.onePercentLow.timeWeightedFps],
       ["P99 frame time (ms)", sa.percentilesMs.p99, sb.percentilesMs.p99],
       ["Stutter frames", sa.stutter.stutterEventCount, sb.stutter.stutterEventCount],
       ["Stutter time (%)", sa.stutter.stutterTimeFraction * 100, sb.stutter.stutterTimeFraction * 100],
@@ -381,29 +382,34 @@ function main(): void {
     console.log(color(`${skippedRows.toLocaleString("en-US")} ${skippedRows === 1 ? "row" : "rows"} skipped while parsing`, AMBER));
   }
   console.log();
-  console.log(`  Average FPS            ${color(fmt(summary.averageFps), GREEN)}`);
-  console.log(`  1% low (percentile)    ${color(fmt(summary.onePercentLow.percentileMethodFps), GREEN)} fps`);
-  console.log(`  1% low (slowest-mean)  ${color(fmt(summary.onePercentLow.meanOfSlowestMethodFps), GREEN)} fps`);
-  console.log(`  0.1% low (percentile)  ${color(fmt(summary.pointOnePercentLow.percentileMethodFps), GREEN)} fps`);
-  console.log(`  P99 frame time         ${fmt(summary.percentilesMs.p99, 2)} ms`);
-  console.log(`  P99.9 frame time       ${fmt(summary.percentilesMs.p999, 2)} ms`);
-  console.log(
-    `  Stutter events         ${summary.stutter.stutterEventCount > 0 ? color(String(summary.stutter.stutterEventCount), AMBER) : "0"}  (${fmt(summary.stutter.stutterTimeFraction * 100, 2)}% of capture time)`,
+  const line = (label: string, value: string) => console.log(`  ${label.padEnd(25)}${value}`);
+  line("Average FPS", color(fmt(summary.averageFps), GREEN));
+  const lows = (label: string, low: typeof summary.onePercentLow) => {
+    line(`${label} (percentile)`, `${color(fmt(low.percentileMethodFps), GREEN)} fps`);
+    line(`${label} (slowest-mean)`, `${color(fmt(low.meanOfSlowestMethodFps), GREEN)} fps`);
+    line(`${label} (time-weighted)`, `${color(fmt(low.timeWeightedFps), GREEN)} fps`);
+  };
+  lows("1% low", summary.onePercentLow);
+  lows("0.1% low", summary.pointOnePercentLow);
+  line("P99 frame time", `${fmt(summary.percentilesMs.p99, 2)} ms`);
+  line("P99.9 frame time", `${fmt(summary.percentilesMs.p999, 2)} ms`);
+  line(
+    "Stutter events",
+    `${summary.stutter.stutterEventCount > 0 ? color(String(summary.stutter.stutterEventCount), AMBER) : "0"}  (${fmt(summary.stutter.stutterTimeFraction * 100, 2)}% of capture time)`,
   );
-  console.log(
-    `  ${`Hitches (>${args.stutterOptions.hitchThresholdMs}ms)`.padEnd(22)} ${summary.stutter.hitchCount > 0 ? color(String(summary.stutter.hitchCount), RED) : "0"}`,
+  line(
+    `Hitches (>${args.stutterOptions.hitchThresholdMs}ms)`,
+    summary.stutter.hitchCount > 0 ? color(String(summary.stutter.hitchCount), RED) : "0",
   );
-  console.log(`  Pacing (MASD)          ${fmt(summary.masdMs, 2)} ms`);
+  line("Pacing (MASD)", `${fmt(summary.masdMs, 2)} ms`);
   if (summary.dropped) {
-    console.log(`  Dropped frames         ${summary.dropped.droppedCount} (${fmt(summary.dropped.droppedFraction * 100, 2)}%)`);
+    line("Dropped frames", `${summary.dropped.droppedCount} (${fmt(summary.dropped.droppedFraction * 100, 2)}%)`);
   }
   if (summary.boundShare) {
-    console.log(
-      `  CPU- / GPU-bound       ${fmt(summary.boundShare.cpuBoundFraction * 100, 0)}% / ${fmt(summary.boundShare.gpuBoundFraction * 100, 0)}%`,
-    );
+    line("CPU- / GPU-bound", `${fmt(summary.boundShare.cpuBoundFraction * 100, 0)}% / ${fmt(summary.boundShare.gpuBoundFraction * 100, 0)}%`);
   }
   if (summary.latency) {
-    console.log(`  Display latency P99    ${fmt(summary.latency.p99, 2)} ms`);
+    line("Display latency P99", `${fmt(summary.latency.p99, 2)} ms`);
   }
   if (args.events) printEpisodes(analysis);
 }

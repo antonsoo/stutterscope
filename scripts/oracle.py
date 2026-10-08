@@ -16,6 +16,7 @@ use numpy's default 'linear' interpolation, which is the same method
 `percentileOfSorted` in src/core/metrics.ts implements by hand.
 """
 import json
+import math
 import pathlib
 
 import numpy as np
@@ -48,9 +49,16 @@ def generate_frame_times() -> np.ndarray:
 
 def slowest_fraction_mean_fps(sorted_asc: np.ndarray, fraction: float) -> float:
     n = len(sorted_asc)
-    count = max(1, round(n * fraction))
+    count = min(n, max(1, math.ceil(n * fraction - 1e-9)))
     slowest = sorted_asc[n - count :]
     return 1000.0 / float(np.mean(slowest))
+
+
+def time_weighted_fps(sorted_asc: np.ndarray, fraction: float) -> float:
+    slowest_first = sorted_asc[::-1]
+    used = np.cumsum(slowest_first)
+    i = int(np.argmax(used >= float(np.sum(sorted_asc)) * fraction))
+    return 1000.0 / float(slowest_first[i])
 
 
 def main() -> None:
@@ -89,10 +97,12 @@ def main() -> None:
         "onePercentLow": {
             "percentileMethodFps": one_pct_percentile_fps,
             "meanOfSlowestMethodFps": one_pct_mean_fps,
+            "timeWeightedFps": time_weighted_fps(sorted_asc, 0.01),
         },
         "pointOnePercentLow": {
             "percentileMethodFps": point1_pct_percentile_fps,
             "meanOfSlowestMethodFps": point1_pct_mean_fps,
+            "timeWeightedFps": time_weighted_fps(sorted_asc, 0.001),
         },
         "masdMs": masd,
     }

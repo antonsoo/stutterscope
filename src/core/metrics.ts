@@ -108,13 +108,19 @@ export function meanOfInstantaneousFps(frameTimeMs: Float64Array): number {
 export interface LowFpsResult {
   /** fps = 1000 / percentile(frameTime, 99 or 99.9) — the frame-time value AT that percentile. */
   percentileMethodFps: number;
-  /** fps = 1000 / mean(frame times of the slowest 1% or 0.1% of frames). */
+  /** fps = 1000 / mean(frame times of the slowest ceil(1% or 0.1% of n) frames). */
   meanOfSlowestMethodFps: number;
+  /**
+   * fps = 1000 / the frame time at which the slowest frames, taken in order,
+   * have used up 1% (or 0.1%) of the capture's total time. Weights by time, not
+   * by frame count.
+   */
+  timeWeightedFps: number;
 }
 
 /**
- * Two industry definitions of "1% low" / "0.1% low", both in wide use and
- * both reported here so users can see why tools disagree:
+ * Three definitions of "1% low" / "0.1% low", each used by a tool people
+ * compare against, all reported here so users can see why tools disagree:
  *
  * - **Percentile method**: convert the P99 (or P99.9) frame time straight to
  *   FPS. This answers "how bad is frame time at the boundary of the worst
@@ -126,21 +132,43 @@ export interface LowFpsResult {
  *   a single percentile. When a capture has rare, severe stutters (e.g. one
  *   500 ms shader-compile stall in 10,000 frames), the two numbers can
  *   diverge sharply even though both are "correct" by their own definition.
+ *   The bucket holds ceil(n * fraction) frames, so it always covers at least
+ *   the stated fraction of the capture (the rule that reproduces the
+ *   "1% Low FPS" / "0.1% Low FPS" columns of a FrameView summary, see
+ *   studies/real-captures).
+ * - **Time-weighted method**: sort frames slowest first and add up their
+ *   durations until the sum reaches 1% (or 0.1%) of the capture's total time;
+ *   the frame time reached is the figure. One 500 ms stall is then 500 ms of
+ *   the allowance, not one frame of a hundred, which is the "integral" variant
+ *   CapFrameX reports next to its "low average".
  */
 export function lowFps(sortedFrameTimeMsAscending: Float64Array, fraction: number): LowFpsResult {
   const n = sortedFrameTimeMsAscending.length;
-  if (n === 0) return { percentileMethodFps: NaN, meanOfSlowestMethodFps: NaN };
+  if (n === 0) return { percentileMethodFps: NaN, meanOfSlowestMethodFps: NaN, timeWeightedFps: NaN };
   const percentile = 100 * (1 - fraction);
   const percentileFrameTime = percentileOfSorted(sortedFrameTimeMsAscending, percentile);
 
-  const slowestCount = Math.max(1, Math.round(n * fraction));
+  // The epsilon keeps n * fraction = 7.000000000000001 from becoming 8 frames.
+  const slowestCount = Math.min(n, Math.max(1, Math.ceil(n * fraction - 1e-9)));
   let sum = 0;
   for (let i = n - slowestCount; i < n; i++) sum += sortedFrameTimeMsAscending[i]!;
   const meanSlowest = sum / slowestCount;
 
+  let total = 0;
+  for (let i = 0; i < n; i++) total += sortedFrameTimeMsAscending[i]!;
+  const allowance = total * fraction;
+  let used = 0;
+  let reached = sortedFrameTimeMsAscending[n - 1]!;
+  for (let i = n - 1; i >= 0; i--) {
+    used += sortedFrameTimeMsAscending[i]!;
+    reached = sortedFrameTimeMsAscending[i]!;
+    if (used >= allowance) break;
+  }
+
   return {
     percentileMethodFps: 1000 / percentileFrameTime,
     meanOfSlowestMethodFps: 1000 / meanSlowest,
+    timeWeightedFps: 1000 / reached,
   };
 }
 

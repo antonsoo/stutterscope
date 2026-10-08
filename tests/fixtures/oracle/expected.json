@@ -11,11 +11,13 @@
   },
   "onePercentLow": {
     "percentileMethodFps": 55.9634022487563,
-    "meanOfSlowestMethodFps": 24.886875941168046
+    "meanOfSlowestMethodFps": 24.886875941168046,
+    "timeWeightedFps": 34.220028029953625
   },
   "pointOnePercentLow": {
     "percentileMethodFps": 34.21983659157735,
-    "meanOfSlowestMethodFps": 6.127228959421751
+    "meanOfSlowestMethodFps": 6.127228959421751,
+    "timeWeightedFps": 5.076986901190876
   },
   "masdMs": 0.9158164711420367
 }
