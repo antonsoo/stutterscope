@@ -1,0 +1,119 @@
+{
+  "python": "3.14.7",
+  "numpy": "2.5.3",
+  "checks": [
+    {
+      "capture": "controlled-a.csv",
+      "sha256": "8b4afb5a19745287d1b9779a06e47694b3089d6b127c7bac281afe7d69acbda4",
+      "startSec": 0,
+      "endSec": null,
+      "frameCount": 543,
+      "durationSec": 10.016300000000001,
+      "averageFps": 54.21163503489312,
+      "masdMs": 3.643726937269372,
+      "p99Ms": 74.68400000000409,
+      "onePercentLowPercentileFps": 13.389748808311623,
+      "onePercentLowSlowestMeanFps": 5.2631578947368425,
+      "stutterFrames": 6,
+      "hitchFrames": 6,
+      "episodeSourceLines": [
+        17,
+        115,
+        217,
+        319,
+        421,
+        517
+      ]
+    },
+    {
+      "capture": "controlled-a.csv",
+      "sha256": "8b4afb5a19745287d1b9779a06e47694b3089d6b127c7bac281afe7d69acbda4",
+      "startSec": 1.5,
+      "endSec": 8.5,
+      "frameCount": 396,
+      "durationSec": 6.9998,
+      "averageFps": 56.573044944141266,
+      "masdMs": 2.102278481012656,
+      "p99Ms": 21.790000000001136,
+      "onePercentLowPercentileFps": 45.89261128957998,
+      "onePercentLowSlowestMeanFps": 8.572653236176597,
+      "stutterFrames": 4,
+      "hitchFrames": 4,
+      "episodeSourceLines": [
+        115,
+        217,
+        319,
+        421
+      ]
+    },
+    {
+      "capture": "controlled-a.csv",
+      "sha256": "8b4afb5a19745287d1b9779a06e47694b3089d6b127c7bac281afe7d69acbda4",
+      "startSec": 2.2,
+      "endSec": 2.34,
+      "frameCount": 2,
+      "durationSec": 0.13329999999999997,
+      "averageFps": 15.003750937734436,
+      "masdMs": 99.89999999999999,
+      "p99Ms": 115.601,
+      "onePercentLowPercentileFps": 8.650444200309686,
+      "onePercentLowSlowestMeanFps": 8.576329331046313,
+      "stutterFrames": 1,
+      "hitchFrames": 1,
+      "episodeSourceLines": [
+        115
+      ]
+    },
+    {
+      "capture": "controlled-b.csv",
+      "sha256": "3034ff1dc1db38567396acbb8ae9ad763a018b6e63baf27401d0b6305a1bd405",
+      "startSec": 0,
+      "endSec": null,
+      "frameCount": 567,
+      "durationSec": 10.016200000000001,
+      "averageFps": 56.60829456280825,
+      "masdMs": 2.082332155477031,
+      "p99Ms": 16.8,
+      "onePercentLowPercentileFps": 59.52380952380952,
+      "onePercentLowSlowestMeanFps": 8.992805755395683,
+      "stutterFrames": 2,
+      "hitchFrames": 2,
+      "episodeSourceLines": [
+        17,
+        541
+      ]
+    },
+    {
+      "capture": "controlled-b.csv",
+      "sha256": "3034ff1dc1db38567396acbb8ae9ad763a018b6e63baf27401d0b6305a1bd405",
+      "startSec": 1.5,
+      "endSec": 8.5,
+      "frameCount": 420,
+      "durationSec": 6.9998,
+      "averageFps": 60.001714334695286,
+      "masdMs": 0.08162291169450943,
+      "p99Ms": 16.8,
+      "onePercentLowPercentileFps": 59.52380952380952,
+      "onePercentLowSlowestMeanFps": 59.52380952380952,
+      "stutterFrames": 0,
+      "hitchFrames": 0,
+      "episodeSourceLines": []
+    },
+    {
+      "capture": "controlled-b.csv",
+      "sha256": "3034ff1dc1db38567396acbb8ae9ad763a018b6e63baf27401d0b6305a1bd405",
+      "startSec": 2.2,
+      "endSec": 2.34,
+      "frameCount": 8,
+      "durationSec": 0.1334,
+      "averageFps": 59.970014992503756,
+      "masdMs": 0.05714285714285643,
+      "p99Ms": 16.793,
+      "onePercentLowPercentileFps": 59.548621449413446,
+      "onePercentLowSlowestMeanFps": 59.52380952380952,
+      "stutterFrames": 0,
+      "hitchFrames": 0,
+      "episodeSourceLines": []
+    }
+  ]
+}

@@ -16,9 +16,12 @@ import sys
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
+manifest = json.loads((ROOT / "examples" / "controlled-browser" / "capture.json").read_text())
+assert hashlib.sha256((ROOT / "scripts" / "capture-browser-workload.mjs").read_bytes()).hexdigest() == manifest["scriptSha256"]
 outcomes = []
 for name in ("a", "b"):
     path = ROOT / "examples" / "controlled-browser" / f"controlled-{name}.csv"
+    assert hashlib.sha256(path.read_bytes()).hexdigest() == next(capture["sha256"] for capture in manifest["captures"] if capture["file"] == path.name)
     with path.open(newline="") as handle:
         rows = list(csv.DictReader(handle))
     full = np.array([float(row["frame_time_ms"]) for row in rows])
@@ -44,9 +47,12 @@ for name in ("a", "b"):
             "frameCount": len(selected),
             "durationSec": float(np.sum(selected) / 1000),
             "averageFps": float(len(selected) * 1000 / np.sum(selected)),
-            "masdMs": float(np.mean(np.abs(np.diff(selected)))) if len(selected) > 1 else 0,
+            "masdMs": float(np.mean(np.abs(np.diff(selected)))) if len(selected) > 1 else None,
         }
         for key, value in expected.items():
+            if value is None:
+                assert summary[key] is None
+                continue
             np.testing.assert_allclose(summary[key], value, rtol=1e-11, atol=1e-11, err_msg=f"{name}/{start}/{end}: {key}")
         for key, percentile in (("p50", 50), ("p90", 90), ("p95", 95), ("p99", 99), ("p999", 99.9)):
             np.testing.assert_allclose(summary["percentilesMs"][key], np.percentile(selected, percentile), rtol=1e-11, atol=1e-11)

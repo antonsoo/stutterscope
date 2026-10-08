@@ -1,0 +1,27 @@
+A: controlled-a.csv   B: controlled-b.csv
+A: requested 1.5-8.5 s; frames 71-466 of 543; 6.999800 s analyzed; 0 source rows skipped.
+   Column: frame_time_ms (frametime_ms); inferred from column name/values.
+B: requested 1.5-8.5 s; frames 71-490 of 567; 6.999800 s analyzed; 0 source rows skipped.
+   Column: frame_time_ms (frametime_ms); inferred from column name/values.
+Detection: k = 2, radius = 10, hitch > 50 ms; full-stream neighbors.
+Accumulated usable frame time; descriptive comparison, not a hardware-gain claim.
+
+Metric                                 A           B       B - A
+Average FPS                       56.573      60.002       3.429
+1% low percentile (fps)           45.893      59.524      13.631
+1% low slowest-mean (fps)          8.573      59.524      50.951
+P99 frame time (ms)               21.790      16.800      -4.990
+Stutter frames                     4.000       0.000      -4.000
+Stutter time (%)                   6.666       0.000      -6.666
+Hitches / 1,000 frames            10.101       0.000     -10.101
+Pacing MASD (ms)                   2.102       0.082      -2.021
+
+Run A Slow-frame episodes: 4 (consecutive retained stutter/hitch frames; no cause inferred)
+  Frames          Time (s)                Worst (ms)  CSV lines
+  114-114         2.2166-2.3332           116.600     115-115
+  216-216         4.0165-4.1332           116.700     217-217
+  318-318         5.8164-5.9331           116.700     319-319
+  420-420         7.6164-7.7330           116.600     421-421
+
+Run B Slow-frame episodes: 0 (consecutive retained stutter/hitch frames; no cause inferred)
+  Frames          Time (s)                Worst (ms)  CSV lines

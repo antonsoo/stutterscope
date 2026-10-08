@@ -1,0 +1,40 @@
+{
+  "capturedAt": "2026-10-08T00:12:28.311Z",
+  "browser": "153.0.8010.12",
+  "node": "v26.7.0",
+  "source": "Retained controlled browser experiment; MangoHud images use the labeled synthetic sample.",
+  "browserCliReportsMatch": true,
+  "errors": [],
+  "externalRequests": [],
+  "cspViolations": [],
+  "assets": [
+    {
+      "file": "interval-report-card.png",
+      "sha256": "f4e15e033bc12c1bb622b61ce009540ae6b62aafe14597a19cb6784d36387f89"
+    },
+    {
+      "file": "interval-comparison.png",
+      "sha256": "fddf671a50ab3ff9d3850609e39aa12c8374e9a78dfca694ffebee446996e568"
+    },
+    {
+      "file": "interval-evidence.png",
+      "sha256": "7b5ee6e3f796d93fd972b39102939bb440b56b5b56b6a1be1fad57a9b3fee0de"
+    },
+    {
+      "file": "interval-mobile.png",
+      "sha256": "a2eb74b83a873208cefe8cb09c44e3517aa409723545fc72d8124a76440e3336"
+    },
+    {
+      "file": "interval-evidence-mobile.png",
+      "sha256": "3f27120db6b27abbddee6e84c26dcc9f28bbf472d49bf53ba6ca2884e2fd8cfa"
+    },
+    {
+      "file": "mangohud-clock-note.png",
+      "sha256": "5be539624b9f0318bfc8607f086619cd5f1b5aecc7427d25fbaed145a7e8a9a3"
+    },
+    {
+      "file": "mangohud-clock-card.png",
+      "sha256": "4e016204978b39a5ea243d0bf67496fc212b7b802023b7d4025e43f9949926ea"
+    }
+  ]
+}
