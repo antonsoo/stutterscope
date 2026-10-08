@@ -32,9 +32,9 @@ Changes below are in the source checkout and have not been published.
 ### Fixed
 
 - The mean-of-slowest "1% low" / "0.1% low" averaged `round(n * fraction)` frames,
-  which is too few on short captures. It now averages `ceil(n * fraction)`, the
-  rule that reproduces the "1% Low FPS" and "0.1% Low FPS" columns of two real
-  FrameView summaries (0.2.5 was 1.9% to 28.6% low against them). See
+  which is too few on short captures. It now averages `ceil(n * fraction)`, one
+  of the rules that reproduce the "1% Low FPS" and "0.1% Low FPS" columns of two
+  real FrameView summaries (0.2.5 was 1.9% to 28.6% low against them). See
   `studies/real-captures`.
 - MangoHud periodic snapshots could masquerade as per-frame captures and report
   a duration much shorter than the logging span. Compare its elapsed clock with

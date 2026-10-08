@@ -133,7 +133,7 @@ export interface LowFpsResult {
  *   500 ms shader-compile stall in 10,000 frames), the two numbers can
  *   diverge sharply even though both are "correct" by their own definition.
  *   The bucket holds ceil(n * fraction) frames, so it always covers at least
- *   the stated fraction of the capture (the rule that reproduces the
+ *   the stated fraction of the capture (one of the rules that reproduce the
  *   "1% Low FPS" / "0.1% Low FPS" columns of a FrameView summary, see
  *   studies/real-captures).
  * - **Time-weighted method**: sort frames slowest first and add up their

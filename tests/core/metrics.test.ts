@@ -103,7 +103,7 @@ describe("lows on a real capture's tail", () => {
   });
 
   it("time-weighted low reaches the frame time where the slowest frames use up the time allowance", () => {
-   
+
     const total = sorted.reduce((a, b) => a + b, 0);
     const allowance = total * 0.01;
     let used = 0;

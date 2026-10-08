@@ -1,19 +1,19 @@
 # What "1% low" means in the tools people compare against: 34 public capture files, 8 long enough to measure
 
-I looked for real frame-time captures made by other people and found 34 files in five public GitHub repositories. Eighteen of those are the expected-output ("gold") CSVs of PresentMon's own test suite, which checks them against ETW traces ([`Tests/README.md` L3](https://github.com/GameTechDev/PresentMon/blob/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/README.md)); they cover six traces, each in three CSV schemas, and they are test fixtures, not captures from users' machines. The other 16 are user or example captures: 4 PresentMon logs, 1 MangoHud log (with MangoHud's own summary), 2 files in the xD3I/Benchmarks repository, 3 FrameView logs (with FrameView's own summary for two of them), 3 MSI Afterburner logs and 3 MangoHud logs. Only 8 per-frame captures have 900 frames or more, which is where a "1% low" starts to mean anything, so the definition comparison below is on 8 captures. This is not a census.
+This study looked for real frame-time captures made by other people and found 34 files in six public GitHub repositories. There was no systematic crawl: these are the files that turned up in the capture tools' own repositories and a few others. Eighteen of those are the expected-output ("gold") CSVs of PresentMon's own test suite, which checks them against ETW traces ([`Tests/README.md` L3](https://github.com/GameTechDev/PresentMon/blob/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/README.md)); they cover six traces, each in three CSV schemas, and they are test fixtures, not captures from users' machines. The other 16 are user or example captures: 4 PresentMon logs, 1 MangoHud log (with MangoHud's own summary), 2 files in the xD3I/Benchmarks repository, 3 FrameView logs (with FrameView's own summary for two of them), 3 MSI Afterburner logs and 3 MangoHud logs. Nine per-frame captures have 900 frames or more, which is where a "1% low" starts to mean anything. One of them, `witcher_3_test.csv` (906 frames), is left out because its origin is unclear and it holds a 7.8-second frame, so the definition comparison below is on 8 captures: five titles, one of them a benchmark, and some pairs from the same machine. This is not a census.
 
-Flightlessmango.com, the benchmark site I meant to use as the yardstick, returned HTTP 502 on every URL I tried on 2026-10-08, at 02:45, 03:48 and 04:20 local time. Nothing in this study uses it.
+Flightlessmango.com, the benchmark site that was meant to be the yardstick, returned HTTP 502 on every attempt on 8 October 2026. Nothing in this study uses it.
 
 stutterscope reports a "1% low" in two forms, and the question here is whether those forms are the ones the tools people compare against print, and how far apart the forms land.
 
 ## What came out
 
-- **The percentile definitions agree; the others do not.** Four implementations of the 99th-percentile frame time (stutterscope's linear interpolation, MangoHud's summary, mangoplot, CapFrameX's R8 quantile) differ by a median of 0.13% and at most 3.7% on the 1% low across the 8 captures. Across all the definitions, the highest 1% low is a median of 21% above the lowest, and on a capture with a 5.3 s stall it is 29,000% above (55.4 fps against 0.19 fps).
+- **The percentile definitions agree; the others do not.** Four implementations of the 99th-percentile frame time (stutterscope's linear interpolation, MangoHud's summary, mangoplot, CapFrameX's R8 quantile) differ by a median of 0.13% and at most 3.7% on the 1% low across the 8 captures. Across all the definitions, the highest 1% low is a median of 21% above the lowest, and on a capture with a 5.3 s stall it is 29,000% above (55.4 fps against 0.19 fps). (`mangoplot` itself skips logs under 10,000 frames, which three of the 8 are; its rule is applied to them here all the same.)
 - **stutterscope matched MangoHud's own summary of one capture to 0.03% (1% low) and 0.21% (0.1% low).** The file is one 117,569-frame Witchfire log. MangoHud's rule, re-implemented from its source, reproduced its two printed figures exactly (49.475 and 65.744).
-- **The released 0.2.5 "slowest-mean" figure disagreed with FrameView's own summary on short captures, and the cause was a rounding rule.** On the two FrameView captures that come with a FrameView summary, 0.2.5 was 1.9% and 3.4% below FrameView's "1% Low FPS" and 28.6% below its "0.1% Low FPS" on one of them. FrameView's four printed figures are reproduced exactly by averaging the slowest `ceil(n × fraction)` frames; 0.2.5 used `round(n × fraction)`. The source checkout now uses `ceil` and matches all four. That after-score is on the two rows I used to find the rule.
-- **The source checkout adds a third figure, the time-weighted low CapFrameX calls "low integral".** On the 8 captures it is a median 9.7% below the percentile figure and as much as 99.7% below it. Neither released stutterscope nor any other figure stutterscope printed corresponded to it.
+- **The released 0.2.5 "slowest-mean" figure disagreed with FrameView's own summary on short captures, and the cause was a rounding rule.** On the two FrameView captures that come with a FrameView summary, 0.2.5 was 1.9% and 3.4% below FrameView's "1% Low FPS" and 28.6% below its "0.1% Low FPS" on one of them. FrameView's four printed figures are reproduced exactly by averaging the slowest `ceil(n × fraction)` frames; 0.2.5 used `round(n × fraction)`. The source checkout now uses `ceil` and matches all four. That after-score is on the two rows the rule was found on, and `ceil` is not the only rule that fits them: see below.
+- **The source checkout adds a third figure, the time-weighted low CapFrameX calls "low integral".** On the 8 captures it is a median 9.7% below the percentile figure and as much as 99.7% below it (the mean-of-slowest figure is at most 85% below). Neither released stutterscope nor any other figure stutterscope printed corresponded to it.
 - **Four MangoHud files that 0.2.5 parsed are not per-frame captures, and the checkout refuses them.** Their `elapsed` column steps by about 100 ms per row (consistent with a non-zero `log_interval`), so 3,694 rows span 369.6 s while the rows' frame times sum to 24.1 s. 0.2.5 reported that file as a 24.1 s capture. The refusal comes from commit 9f4d75a, made after v0.2.5 and before this study; this study is the first measurement of it on files not made for its tests.
-- **No mis-parse was found.** For all 31 files that 0.2.5 parsed and all 27 that the checkout parsed, frame count and duration equal my own count (csv module, no stutterscope code), the duration to 1 microsecond.
+- **Frame counts and durations agree with an independent count.** For all 31 files that 0.2.5 parsed and all 27 that the checkout parsed, frame count and duration equal a count made with the csv module and no stutterscope code, the duration to 1 microsecond. That count reads the same columns the parser chose, so it checks the arithmetic and not the interpretation: 4 of the 31 that 0.2.5 parsed are not per-frame captures at all (next point).
 
 ## The data
 
@@ -32,7 +32,7 @@ Repositories without a stated licence are fetched and hashed, not redistributed 
 
 ## What each tool computes
 
-Each row quotes the source at the pinned commit. I read these files on 2026-10-08 and describe nothing from memory. PresentMon's own source was not examined, and closed tools' methods were not read.
+Each row quotes the source at the pinned commit. These files were read on 2026-10-08, and nothing here is described from memory. PresentMon's own source was not examined, and closed tools' methods were not read.
 
 | Tool | "1% low" as the source computes it | Where |
 |---|---|---|
@@ -104,7 +104,7 @@ FrameView (`definitions.yardsticks.frameview`). Each summary row was matched to 
 | | 1% FPS | 21.323 | 21.647 percentile (+1.5%) | same |
 | | 0.1% FPS | 8.837 | 9.308 percentile (+5.3%) | same |
 
-"1% Low FPS" and "0.1% Low FPS" equal `1000 / mean(slowest ceil(n × fraction) frames)` on all four values, to the printed three decimals. "1% FPS" and "0.1% FPS" equal the ascending-`fps` array at index `int(n × fraction)` on all four values, the rule `mangoplot.py` L357-L358 uses. `floor(n × fraction) + 1` would fit the first rule equally well; it differs from `ceil` only when `n × fraction` is a whole number, and I chose `ceil` because it does not add a frame to an exact 1%. These are four numbers from two captures of one game on one machine; they are enough to show that `round` was wrong at small n, and not enough to say that FrameView implements `ceil` everywhere.
+"1% Low FPS" and "0.1% Low FPS" equal `1000 / mean(slowest ceil(n × fraction) frames)` on all four values, to the printed three decimals. "1% FPS" and "0.1% FPS" equal the ascending-`fps` array at index `int(n × fraction)` on all four values, the rule `mangoplot.py` L357-L358 uses. Two other rules fit the first one equally well: `floor(n × fraction) + 1`, which differs from `ceil` only when `n × fraction` is a whole number, and the mean of the frames at or above the linearly interpolated percentile, which differs for some n (at n = 1,001 it takes 10 frames where `ceil` takes 11). `ceil` was chosen because it does not add a frame to an exact 1%. These are four numbers from two captures of one game on one machine; they are enough to show that `round` was wrong at small n, and not enough to say which of the three rules FrameView implements.
 
 ### Parse census (`results.json`, `census`)
 
@@ -113,7 +113,7 @@ FrameView (`definitions.yardsticks.frameview`). Each summary row was matched to 
 | Files | 34 | 34 |
 | Parsed | 31 | 27 |
 | Refused | 3 (Afterburner `.csv`, "isn't a capture format stutterscope knows") | 7 (the same 3, and the 4 periodic MangoHud logs) |
-| Frame count and duration differ from my count | 0 | 0 |
+| Frame count and duration differ from the independent count | 0 | 0 |
 | Format labels | PresentMon 1.x 6, PresentMon 2.x 6, OCAT 10, FrameView 4, MangoHud 5 | same, MangoHud 1 |
 
 The 10 files labelled OCAT are PresentMon 2.0/2.1 console logs (the 6 unsuffixed Gold files and the 4 Apex and Superposition logs): their schema is the OCAT schema, and `docs/formats.md` states that the two cannot be told apart from content. The Gold files in the three schemas parse with the same frame counts, except that each `_v1` file has one more frame in the analysed stream than the other two (19 against 18 in trace 0); I did not investigate why.
@@ -133,7 +133,7 @@ These are source-checkout changes and are not published.
 - Afterburner logs are refused. Three were available; the format is not one of the six.
 - The 0.1% percentile on captures under about 2,000 frames is one frame wide in every tool; no definition fixes that.
 - stutterscope's percentile interpolates; MangoHud, mangoplot and FrameView's "1% FPS" take an index. On the 8 captures this is within 3.7% at 1% and was not changed.
-- I did not look at flightlessmango.com's code or output, PresentMon's own statistics, or CapFrameX's published numbers for any capture.
+- flightlessmango.com's code and output, PresentMon's own statistics, and CapFrameX's published numbers for any capture were not looked at.
 
 ## What this does not show
 
@@ -141,8 +141,8 @@ These are source-checkout changes and are not published.
 - Eighteen of the 34 files are PresentMon's test fixtures; a clean parse of those says the parsers handle the schemas, not that real user captures parse.
 - The FrameView rule is inferred from four numbers on two captures. The ceil change was found on those numbers, so its after-score is on the data that selected it; no held-out FrameView summary was available.
 - MangoHud's summary is one capture. The 0.03% and 0.21% agreements say nothing about other files.
-- The parse census counts rows and summed frame times against my own reader. It cannot catch a wrong choice of frame-time column that I made the same way; I used `MsBetweenPresents` or `FrameTime` as the format documents say.
-- I did not check the claim in CapFrameX's source comment that the integral rule equals MSI Afterburner's.
+- The parse census counts rows and summed frame times against a separate reader. It cannot catch a wrong choice of frame-time column made the same way in both; the reader used `MsBetweenPresents` or `FrameTime` as the format documents say.
+- The claim in CapFrameX's source comment that the integral rule equals MSI Afterburner's was not checked.
 
 ## Reproduce
 
@@ -161,4 +161,4 @@ The sources quoted in the table were fetched at the commits shown in the links (
 
 ## References and licences
 
-MangoHud and MathNet.Numerics are MIT. CapFrameX's licence was not detected by GitHub's API; only line numbers and short excerpts of its code are quoted. The capture files are not redistributed; `manifest.json` has URL, commit and SHA-256 for each, and licences are in the table above (PresentMon MIT, xD3I/Benchmarks Unlicense, the rest unstated).
+MangoHud and MathNet.Numerics are MIT. CapFrameX's `LICENSE` file at the pinned commit is MIT, with third-party licences appended (GitHub's API reports it as unrecognised for that reason); only line numbers and short excerpts of its code are quoted. The capture files are not redistributed; `manifest.json` has URL, commit and SHA-256 for each, and licences are in the table above (PresentMon MIT, xD3I/Benchmarks Unlicense, the rest unstated).
