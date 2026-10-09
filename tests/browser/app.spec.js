@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { readFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { Buffer } from "node:buffer";
 import AxeBuilder from "@axe-core/playwright";
@@ -10,6 +10,49 @@ const generic = { name: "custom.csv", mimeType: "text/csv", buffer: Buffer.from(
 const input = (page) => page.locator("#file-input");
 const workspace = (page) => page.locator("#workspace-section");
 const apply = (page) => page.getByRole("button", { name: "Apply settings", exact: true });
+
+test("partial telemetry keeps observed denominators through worker, interval, and downloaded reports", async ({ page, browserName }) => {
+  await page.goto("./");
+  await load(page, fileURLToPath(new URL("../../examples/telemetry/controlled-partial-presentmon2.csv", import.meta.url)));
+  const drops = page.locator("#tile-grid-a .tile").filter({ hasText: "DROPPED" });
+  await expect(drops.locator('.tile-value')).toHaveText('1');
+  await expect(drops).toContainText('50.0% of observed');
+  await expect(page.locator('#secondary-table-a')).toContainText('2/4 frames observed');
+  await expect(page.locator('#secondary-table-a')).toContainText('1/4 frames observed');
+  const full = await jsonReport(page);
+  expect(full.schemaVersion).toBe(4);
+  expect(full.metrics.dropped).toEqual({ droppedCount: 1, observedFrames: 2, droppedFraction: 0.5 });
+  expect(full.metrics.telemetryCoverage.cpuGpuBusy).toEqual({ observedFrames: 1, unknownFrames: 3 });
+  expect(full.metrics.telemetryCoverage.displayLatency).toEqual({ observedFrames: 1, unknownFrames: 3 });
+  const directory = fileURLToPath(new URL('../../docs/assets/telemetry/', import.meta.url));
+  if (process.env.UPDATE_TELEMETRY_SCREENSHOTS) await mkdir(directory, { recursive: true });
+  for (const width of [1440, 375]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    const audit = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+    expect(audit.violations).toEqual([]);
+    if (process.env.UPDATE_TELEMETRY_SCREENSHOTS) await page.screenshot({ path: `${directory}/${browserName}-${width}.png`, fullPage: true });
+  }
+  const mdDownload = page.waitForEvent('download');
+  await page.locator('#export-md-btn').click();
+  const markdown = await readFile(await (await mdDownload).path(), 'utf8');
+  expect(markdown).toContain('50.0% of observed');
+  expect(markdown).toContain('1/4 frames observed');
+  await page.locator('#interval-start-a').fill('0.032');
+  await page.locator('#interval-end-a').fill('');
+  await page.locator('#apply-interval-a').click();
+  await expect(page.locator('#interval-a .interval-applied')).toHaveText('Interval applied');
+  await expect(drops.locator('.tile-value')).toHaveText('Unknown');
+  await expect(page.locator('#secondary-table-a')).toContainText('0/2 frames observed');
+  await expect(page.locator('#secondary-table-a')).toContainText('Unavailable');
+  const unknown = await jsonReport(page);
+  expect(unknown.metrics.dropped).toBeNull();
+  expect(unknown.metrics.latency).toBeNull();
+  expect(unknown.metrics.telemetryCoverage.dropped).toEqual({ observedFrames: 0, unknownFrames: 2 });
+  if (process.env.UPDATE_TELEMETRY_SCREENSHOTS) {
+    await writeFile(`${directory}/${browserName}-downloads.json`, JSON.stringify({ full, unknown, markdown }, null, 2) + '\n');
+  }
+});
 
 async function load(page, file = fixture) {
   await input(page).setInputFiles(file);

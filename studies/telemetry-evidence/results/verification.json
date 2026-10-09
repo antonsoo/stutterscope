@@ -1,0 +1,29 @@
+{
+  "baseCommit": "4997beb",
+  "currentSourceSha256": {
+    "src/core/csv.ts": "4b4aa177dca10f678bb89effb1dbb5f70e8fbfdc33828976d3f100823230cb79",
+    "src/core/metrics.ts": "c310c66e93ca292d2c60f053cf106d3bfb68c38535c77d14402234af679f7e10",
+    "src/core/types.ts": "d962f989d4afc19fab7c836b0b2eee0b7cb81fe26d6e69b3080d1d1e6f3276b5",
+    "src/core/report.ts": "fd5ea7b2fad089a837b981de9d37db1ed50c6576398f5466ecab026f009396eb",
+    "src/core/parsers/presentmon1.ts": "e9264291743e8b796c0766072a01b70e52ad5ea33691a934279f7b45b796d730",
+    "src/core/parsers/presentmon2.ts": "4c9c90d0c619457cf2393266b2b5121fa77a7c53e2c0aedef60536c8e713e7ed",
+    "src/core/parsers/ocat.ts": "84c00f20d7819c4b1be107364af04c09815274f062c5b7a84a68d8ffa7a0e7e5",
+    "src/core/parsers/frameview.ts": "88dcde2552a085755f317ce5e7944480fce92e67ed6f6d2f100f9f369c4bbf08",
+    "src/core/parsers/generic.ts": "e7ee556aa8ed45bf91e99c659a0ebb16772df2226347313e237190cb35358411"
+  },
+  "oracleSha256": "882d3187316369c87cd36ff02332b5c16e90c738f2d18b821266f624099d3aa8",
+  "node22ArchiveSha256": "acbbe539edc33209bb3e1b25f7545b5ca5d70e6256ed8318e1ec1e41e7b35703",
+  "validation": {
+    "unitTests": 218,
+    "browserScenarios": 56,
+    "browserExitCode": 0,
+    "browserEngines": [
+      "Chromium",
+      "Firefox"
+    ],
+    "runtimeVersions": [
+      "26.7.0",
+      "22.6.0"
+    ]
+  }
+}

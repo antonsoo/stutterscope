@@ -1,0 +1,245 @@
+{
+  "full": {
+    "tool": "stutterscope",
+    "schemaVersion": 4,
+    "generatedAt": "2026-10-09T10:12:06.158Z",
+    "source": {
+      "fileName": "controlled-partial-presentmon2.csv",
+      "format": "presentmon2",
+      "application": "synthetic-game",
+      "stream": "1:0x1",
+      "streams": [
+        {
+          "id": "1:0x1",
+          "application": "synthetic-game",
+          "processId": "1",
+          "swapChain": "0x1",
+          "frameCount": 4
+        }
+      ],
+      "frameCount": 4,
+      "durationSec": 0.064,
+      "columns": [
+        "Application",
+        "ProcessID",
+        "SwapChainAddress",
+        "FrameTime",
+        "CPUBusy",
+        "GPUBusy",
+        "DisplayedTime",
+        "DisplayLatency"
+      ],
+      "skippedRows": 0,
+      "warnings": [],
+      "omittedWarningDetails": 0,
+      "genericMapping": null,
+      "timingEvidence": null
+    },
+    "analysis": {
+      "stutterOptions": {
+        "windowRadius": 10,
+        "kMultiplier": 2,
+        "hitchThresholdMs": 50
+      },
+      "selection": {
+        "requested": null,
+        "timeBasis": "accumulated-frame-time",
+        "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+        "detectionContext": "full-stream",
+        "sourceFrameCount": 4,
+        "sourceDurationSec": 0.064,
+        "firstFrameIndex": 0,
+        "lastFrameIndex": 3,
+        "startSec": 0,
+        "endSec": 0.064,
+        "durationSec": 0.064,
+        "excludedBefore": 0,
+        "excludedAfter": 0
+      },
+      "stutterIndexBasis": "selected-series-zero-based"
+    },
+    "episodes": [],
+    "metrics": {
+      "frameCount": 4,
+      "durationSec": 0.064,
+      "averageFps": 62.5,
+      "meanOfInstantaneousFps": 62.5,
+      "percentilesMs": {
+        "p50": 16,
+        "p90": 16,
+        "p95": 16,
+        "p99": 16,
+        "p999": 16
+      },
+      "onePercentLow": {
+        "percentileMethodFps": 62.5,
+        "meanOfSlowestMethodFps": 62.5,
+        "timeWeightedFps": 62.5
+      },
+      "pointOnePercentLow": {
+        "percentileMethodFps": 62.5,
+        "meanOfSlowestMethodFps": 62.5,
+        "timeWeightedFps": 62.5
+      },
+      "stutter": {
+        "stutterEventCount": 0,
+        "totalStutterTimeMs": 0,
+        "stutterTimeFraction": 0,
+        "hitchThresholdMs": 50,
+        "hitchCount": 0,
+        "totalHitchTimeMs": 0,
+        "hitchTimeFraction": 0,
+        "stutterFrameIndices": []
+      },
+      "masdMs": 0,
+      "dropped": {
+        "droppedCount": 1,
+        "observedFrames": 2,
+        "droppedFraction": 0.5
+      },
+      "boundShare": {
+        "cpuBoundFrames": 0,
+        "gpuBoundFrames": 1,
+        "cpuBoundFraction": 0,
+        "gpuBoundFraction": 1
+      },
+      "latency": {
+        "observedFrames": 1,
+        "meanMs": 10,
+        "p50": 10,
+        "p90": 10,
+        "p99": 10
+      },
+      "telemetryCoverage": {
+        "dropped": {
+          "observedFrames": 2,
+          "unknownFrames": 2
+        },
+        "cpuGpuBusy": {
+          "observedFrames": 1,
+          "unknownFrames": 3
+        },
+        "displayLatency": {
+          "observedFrames": 1,
+          "unknownFrames": 3
+        }
+      }
+    }
+  },
+  "unknown": {
+    "tool": "stutterscope",
+    "schemaVersion": 4,
+    "generatedAt": "2026-10-09T10:12:08.253Z",
+    "source": {
+      "fileName": "controlled-partial-presentmon2.csv",
+      "format": "presentmon2",
+      "application": "synthetic-game",
+      "stream": "1:0x1",
+      "streams": [
+        {
+          "id": "1:0x1",
+          "application": "synthetic-game",
+          "processId": "1",
+          "swapChain": "0x1",
+          "frameCount": 4
+        }
+      ],
+      "frameCount": 4,
+      "durationSec": 0.064,
+      "columns": [
+        "Application",
+        "ProcessID",
+        "SwapChainAddress",
+        "FrameTime",
+        "CPUBusy",
+        "GPUBusy",
+        "DisplayedTime",
+        "DisplayLatency"
+      ],
+      "skippedRows": 0,
+      "warnings": [],
+      "omittedWarningDetails": 0,
+      "genericMapping": null,
+      "timingEvidence": null
+    },
+    "analysis": {
+      "stutterOptions": {
+        "windowRadius": 10,
+        "kMultiplier": 2,
+        "hitchThresholdMs": 50
+      },
+      "selection": {
+        "requested": {
+          "startSec": 0.032,
+          "endSec": null
+        },
+        "timeBasis": "accumulated-frame-time",
+        "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+        "detectionContext": "full-stream",
+        "sourceFrameCount": 4,
+        "sourceDurationSec": 0.064,
+        "firstFrameIndex": 2,
+        "lastFrameIndex": 3,
+        "startSec": 0.032,
+        "endSec": 0.064,
+        "durationSec": 0.032,
+        "excludedBefore": 2,
+        "excludedAfter": 0
+      },
+      "stutterIndexBasis": "selected-series-zero-based"
+    },
+    "episodes": [],
+    "metrics": {
+      "frameCount": 2,
+      "durationSec": 0.032,
+      "averageFps": 62.5,
+      "meanOfInstantaneousFps": 62.5,
+      "percentilesMs": {
+        "p50": 16,
+        "p90": 16,
+        "p95": 16,
+        "p99": 16,
+        "p999": 16
+      },
+      "onePercentLow": {
+        "percentileMethodFps": 62.5,
+        "meanOfSlowestMethodFps": 62.5,
+        "timeWeightedFps": 62.5
+      },
+      "pointOnePercentLow": {
+        "percentileMethodFps": 62.5,
+        "meanOfSlowestMethodFps": 62.5,
+        "timeWeightedFps": 62.5
+      },
+      "stutter": {
+        "stutterEventCount": 0,
+        "totalStutterTimeMs": 0,
+        "stutterTimeFraction": 0,
+        "hitchThresholdMs": 50,
+        "hitchCount": 0,
+        "totalHitchTimeMs": 0,
+        "hitchTimeFraction": 0,
+        "stutterFrameIndices": []
+      },
+      "masdMs": 0,
+      "dropped": null,
+      "boundShare": null,
+      "latency": null,
+      "telemetryCoverage": {
+        "dropped": {
+          "observedFrames": 0,
+          "unknownFrames": 2
+        },
+        "cpuGpuBusy": {
+          "observedFrames": 0,
+          "unknownFrames": 2
+        },
+        "displayLatency": {
+          "observedFrames": 0,
+          "unknownFrames": 2
+        }
+      }
+    }
+  },
+  "markdown": "| Metric | controlled-partial-presentmon2.csv |\n| --- | --- |\n| Average FPS | 62.5 |\n| 1% Low \\(percentile\\) | 62.5 |\n| 1% Low \\(slowest-mean\\) | 62.5 |\n| 1% Low \\(time-weighted\\) | 62.5 |\n| 0.1% Low \\(percentile\\) | 62.5 |\n| 0.1% Low \\(slowest-mean\\) | 62.5 |\n| 0.1% Low \\(time-weighted\\) | 62.5 |\n| P99 frame time \\(ms\\) | 16.00 |\n| P99.9 frame time \\(ms\\) | 16.00 |\n| Stutter events | 0 |\n| Hitches \\(&gt;50ms\\) | 0 |\n| Pacing \\(MASD, ms\\) | 0.00 |\n| Dropped frames | 1 \\(50.0% of observed\\) |\n| Drop observations | 2/4 frames observed |\n| CPU-bound frames | 0.0% |\n| GPU-bound frames | 100.0% |\n| CPU/GPU observations | 1/4 frames observed; busy-time heuristic |\n| Display latency P99 \\(ms\\) | 10.00 |\n| Latency observations | 1/4 frames observed |\n\nSource format: presentmon2. Analyzed frames: 4 of 4.\n\nEntire capture; frames 1-4; 0.064000 s of frame time. Detection uses full-stream neighbors.\n\nDetection: k = 2, window radius = 10, hitch threshold > 50 ms.\n\nSelected stream: 1:0x1 (synthetic-game). Other streams are excluded.\n\nSkipped rows: 0. Retained warning details: 0.\n"
+}

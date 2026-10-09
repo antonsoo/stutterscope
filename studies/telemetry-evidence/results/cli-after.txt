@@ -1,0 +1,21 @@
+controlled-partial-presentmon2.csv  PresentMon 2.x
+4 frames, 0.1s
+
+  Average FPS              62.5
+  1% low (percentile)      62.5 fps
+  1% low (slowest-mean)    62.5 fps
+  1% low (time-weighted)   62.5 fps
+  0.1% low (percentile)    62.5 fps
+  0.1% low (slowest-mean)  62.5 fps
+  0.1% low (time-weighted) 62.5 fps
+  P99 frame time           16.00 ms
+  P99.9 frame time         16.00 ms
+  Stutter events           0  (0.00% of capture time)
+  Hitches (>50ms)          0
+  Pacing (MASD)            0.00 ms
+  Dropped frames           1 (50.00% of observed)
+  Drop observations        2/4 frames observed; 2 unknown
+  CPU- / GPU-bound         0% / 100% (busy-time heuristic)
+  CPU/GPU observations     1/4 frames observed; 3 unknown
+  Display latency P99      10.00 ms
+  Latency observations     1/4 frames observed; 3 unknown
