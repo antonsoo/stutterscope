@@ -56,6 +56,13 @@ whose `DisplayedTime` is `NA` (never made it to screen), which we use as the
 dropped-frame channel. This is a different definition from 1.x's `Dropped`
 flag (see [`docs/metrics.md`](metrics.md)), and we say so in the UI.
 
+In the source checkout, only the explicit `NA` marker establishes that a frame
+was not displayed. A finite non-negative duration establishes a displayed
+outcome. A blank, missing, negative or malformed cell is **unknown**, not an
+inferred drop. `N/A` is also unknown: the cited format specifies `NA`.
+Across the explicit-flag formats, only numeric `0` and `1` establish an outcome;
+other cells are unknown. Without the column, the metric is unavailable.
+
 `CPUStartQPC` is renamed `CPUStartTime`/`CPUStartQPCTime`/`CPUStartDateTime`
 depending on `--qpc_time`/`--qpc_time_ms`/`--date_time`; we don't read it, so
 this doesn't affect parsing.

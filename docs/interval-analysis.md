@@ -144,7 +144,9 @@ existing top-level `summary` key.
 
 ## Export coordinates and limits
 
-Browser reports and the comparison CLI use schema version 3. A single browser
+Browser reports and the comparison CLI now use schema version 4 (the retained
+earlier capture below used version 3). Version 4 adds optional-telemetry
+coverage and uses observed outcomes as the dropped-fraction denominator. A single browser
 report contains `source`, `analysis`, `metrics`, and `episodes`. A comparison
 contains two such reports at `runs.a` and `runs.b`. Both record applied detection
 settings, generic mapping, selected stream, source warnings, and interval rules.

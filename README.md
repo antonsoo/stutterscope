@@ -6,6 +6,16 @@ Frame-time analysis for PC gamers and hardware reviewers. Drop in a capture, see
 [![License: MIT](https://img.shields.io/badge/license-MIT-7cffb2.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/demo-antonsoo.github.io%2Fstutterscope-7cffb2)](https://antonsoo.github.io/stutterscope/)
 
+**Missing telemetry is not a measured outcome (source checkout).** A blank
+`DisplayedTime` cell no longer counts as a dropped frame; a missing `Dropped`
+column no longer means zero drops. Optional metrics show how many frames
+actually supplied an observation, including after selecting a process or time
+interval. A four-frame control with one displayed, one explicitly not displayed
+and two unknown outcomes now reports **1 drop / 2 observed**, with two unknowns.
+Six unmodified upstream capture files also stop reporting an invented zero.
+[Rules, pinned-capture replay and actual exports](studies/telemetry-evidence/README.md).
+These changes are local and have not been published.
+
 **New in this source checkout:** measure a selected interval in each run, inspect
 slow-frame episodes back to their original CSV lines, and export both runs together.
 The app's **Open recorded comparison** loads a controlled browser capture with four
@@ -117,7 +127,8 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
   card for run A. Web reports
   retain the applied detection settings and skipped-row counts. JSON and
   Markdown include warning details, the selected process, and generic-column
-  interpretation; JSON schema version 3 also records analyzed intervals,
+  interpretation; JSON schema version 4 also records observed and unknown
+  telemetry counts, alongside analyzed intervals,
   complete slow-frame episode evidence, source columns, and the count of warning
   details omitted by the parser's retention limit. Nothing is
   uploaded at any point, and the page's Content-Security-Policy

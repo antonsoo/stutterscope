@@ -10,6 +10,12 @@ Changes below are in the source checkout and have not been published.
 
 ### Added
 
+- Optional-telemetry coverage in the browser, CLI summary and JSON/Markdown
+  exports: observed and unknown frames for dropped outcomes, paired CPU/GPU
+  busy times and latency. Counts follow the selected stream and interval.
+- Evidence report schema 4, documenting that dropped fractions use observed
+  outcomes as their denominator. All-unknown metrics remain `null`, with
+  explicit coverage; missing columns have `null` coverage.
 - Independent interval analysis for both runs, including typed bounds, applying
   the trace's visible range, full-capture restoration, cancellation, and recovery.
   Whole frames retain their original timeline and physical CSV line references.
@@ -31,6 +37,14 @@ Changes below are in the source checkout and have not been published.
 
 ### Fixed
 
+- Missing or invalid dropped flags no longer become displayed frames, and a
+  missing flag column no longer produces a zero-drop result. PresentMon 2
+  uses only explicit `NA` as not displayed; blank, malformed and negative
+  display durations remain unknown. Unknown outcomes survive worker transfer
+  and selection. Usable frame times are retained.
+- Non-finite or negative busy/latency values cannot enter optional estimates.
+  Explicit zero remains an observation. CPU/GPU share remains a busy-time
+  heuristic and reports its observed-frame denominator.
 - The mean-of-slowest "1% low" / "0.1% low" averaged `round(n * fraction)` frames,
   which is too few on short captures. It now averages `ceil(n * fraction)`, one
   of the rules that reproduce the "1% Low FPS" and "0.1% Low FPS" columns of two

@@ -144,12 +144,20 @@ FPS looks fine, which is exactly the case average FPS hides.
 ## Dropped frames
 
 Reported when the source format has a native dropped/not-displayed
-concept; `null` otherwise (MangoHud and generic CSVs don't carry this).
+concept; `null` otherwise (MangoHud has no such channel; generic CSVs require
+an explicit dropped-column mapping).
 **The definition differs by format** — PresentMon 1.x, OCAT, CapFrameX, and
 FrameView all have an explicit `Dropped` flag; PresentMon 2.x has no such
 column, so stutterscope treats a frame whose `DisplayedTime` is `NA` as the
 2.x equivalent (see `docs/formats.md`). These are not guaranteed to mean
 exactly the same thing across tools, and the UI doesn't claim they do.
+
+The source checkout keeps three channel values: `0` displayed, `1` not
+displayed, `2` unknown. A missing column means the channel is absent. The drop
+fraction is `droppedCount / observedFrames`, counting only `0` and `1`, and
+`null` when no outcome is observed. The latter is different from observing
+zero drops. Optional metrics include observed-frame coverage in the UI and
+exports. Generic CSVs can supply an explicitly mapped dropped column.
 
 ## CPU-/GPU-bound share
 
@@ -163,7 +171,13 @@ frame is CPU-bound if CPUBusy[i] >= GPUBusy[i], else GPU-bound
 A frame where either value is `NA` is left out of both counts, and the two
 shares are fractions of the frames that could be classified.
 
-This is the standard reviewer heuristic, and a simplification: real frames
+Non-finite and negative values are also excluded. Both values must be observed
+on the same frame; two separate coverage counts would overstate usable pairs.
+The UI displays this denominator, so a 100% GPU share from one observed frame
+cannot masquerade as complete coverage. Zero is an observation, and ties retain
+the existing CPU-side assignment.
+
+This is a busy-time heuristic and a simplification: real frames
 can be limited by sync waits or the display pipeline rather than either
 engine being the bottleneck. It requires no instrumentation beyond what
 PresentMon 2.x already reports.
@@ -174,6 +188,25 @@ Reported when the source format has a latency channel (PresentMon 2.x's
 `DisplayLatency`, FrameView's `MsPCLatency`): mean, P50, P90, P99. `null`
 otherwise. What exactly each tool measures as "latency" differs (see
 `docs/formats.md`) — this is not a normalized cross-tool latency number.
+
+Only finite, non-negative samples contribute. `observedFrames` records the
+sample count; no observations means no percentile estimate, rather than zero
+latency. A one-sample percentile still exists but carries its one-frame coverage.
+
+### Coverage in evidence reports (source checkout)
+
+Browser and comparison reports use schema version 4. `metrics.telemetryCoverage`
+has `dropped`, `cpuGpuBusy` and `displayLatency` entries. An entry is `null` when
+its required source column(s) are absent; otherwise it contains
+`observedFrames` and `unknownFrames`, summing to the analyzed frame count.
+When the entry has zero observations the metric itself is `null`. The summary
+CLI's flat JSON has the same coverage field beside its existing metrics.
+
+Counts cover retained frames in the selected process/swap chain and interval,
+not skipped frame-time rows, other streams or unrecorded frames. Coverage is
+not a confidence interval or proof that the observations are representative.
+Frame-time/FPS/stutter calculations retain every otherwise usable frame;
+an absent optional channel is not a reason to discard its frame time.
 
 ## Percentile curve, histogram
 
