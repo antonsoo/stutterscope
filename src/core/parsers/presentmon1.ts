@@ -20,7 +20,7 @@
  * all capitalize the `Ms` prefix.
  */
 import { Float64Builder, Uint8Builder } from "../buffer.ts";
-import { indexHeader, LINE_BREAK, parseFloatOrNull, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
+import { indexHeader, LINE_BREAK, parseDroppedOrUnknown, parseFloatOrNull, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
 import type { FrameSeries, ParserOptions, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
 import { cumulativeSeconds, StreamTracker } from "../streams.ts";
@@ -46,6 +46,7 @@ class PresentMon1Parser implements StreamingParser {
   private readonly gpuBusyMs = new Float64Builder(4096);
   private hasGpuColumn = false;
   private columns: string[] = [];
+  private hasDropped = false;
   private readonly streams = new StreamTracker();
   private readonly options: ParserOptions;
 
@@ -58,6 +59,7 @@ class PresentMon1Parser implements StreamingParser {
     if (this.header === null) {
       this.header = indexHeader(fields);
       this.columns = fields.map((f) => f.trim());
+      this.hasDropped = this.header.has("Dropped");
       this.hasGpuColumn = this.header.has("msGPUActive");
       this.streams.setHeader(this.header);
       return;
@@ -74,7 +76,7 @@ class PresentMon1Parser implements StreamingParser {
     }
     this.frameTimeMs.push(ft);
     this.sourceLine.push(lineIndex + 1);
-    this.dropped.push(parseFloatOrNull(get("Dropped")) === 1 ? 1 : 0);
+    if (this.hasDropped) this.dropped.push(parseDroppedOrUnknown(get("Dropped")));
     if (this.hasGpuColumn) {
       this.gpuBusyMs.push(parseFloatOrNull(get("msGPUActive")) ?? NaN);
     }
@@ -89,7 +91,7 @@ class PresentMon1Parser implements StreamingParser {
       {
         frameTimeMs: this.frameTimeMs.toArray(), sourceLine: this.sourceLine.toArray(),
         channels: {
-          dropped: this.dropped.toArray(),
+          dropped: this.hasDropped ? this.dropped.toArray() : undefined,
           gpuBusyMs: this.hasGpuColumn ? this.gpuBusyMs.toArray() : undefined,
         },
       },

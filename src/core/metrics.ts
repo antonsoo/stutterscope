@@ -343,6 +343,8 @@ export function meanAbsoluteSuccessiveDifference(frameTimeMs: Float64Array): num
 
 export interface DroppedFramesResult {
   droppedCount: number;
+  /** Denominator: only frames with an explicit displayed/not-displayed outcome. */
+  observedFrames: number;
   droppedFraction: number;
 }
 
@@ -350,8 +352,13 @@ export function droppedFrames(series: FrameSeries): DroppedFramesResult | null {
   const dropped = series.channels.dropped;
   if (!dropped || dropped.length === 0) return null;
   let count = 0;
-  for (let i = 0; i < dropped.length; i++) if (dropped[i] === 1) count++;
-  return { droppedCount: count, droppedFraction: dropped.length > 0 ? count / dropped.length : 0 };
+  let observedFrames = 0;
+  for (let i = 0; i < series.frameCount; i++) {
+    if (dropped[i] !== 0 && dropped[i] !== 1) continue;
+    observedFrames++;
+    if (dropped[i] === 1) count++;
+  }
+  return observedFrames === 0 ? null : { droppedCount: count, observedFrames, droppedFraction: count / observedFrames };
 }
 
 // ---------------------------------------------------------------------------
@@ -379,13 +386,13 @@ export function boundShare(series: FrameSeries): BoundShareResult | null {
   if (!cpu || !gpu || cpu.length === 0 || gpu.length === 0) return null;
   let cpuBound = 0;
   let gpuBound = 0;
-  const len = Math.min(cpu.length, gpu.length);
+  const len = Math.min(cpu.length, gpu.length, series.frameCount);
   for (let i = 0; i < len; i++) {
     const c = cpu[i]!;
     const g = gpu[i]!;
     // A frame missing either value (NA in the capture) can't be classified;
     // counting it on either side would bias the split.
-    if (Number.isNaN(c) || Number.isNaN(g)) continue;
+    if (!Number.isFinite(c) || !Number.isFinite(g) || c < 0 || g < 0) continue;
     if (c >= g) cpuBound++;
     else gpuBound++;
   }
@@ -404,6 +411,7 @@ export function boundShare(series: FrameSeries): BoundShareResult | null {
 // ---------------------------------------------------------------------------
 
 export interface LatencyResult {
+  observedFrames: number;
   meanMs: number;
   p50: number;
   p90: number;
@@ -413,13 +421,14 @@ export interface LatencyResult {
 export function displayLatency(series: FrameSeries): LatencyResult | null {
   const latency = series.channels.displayLatencyMs;
   if (!latency || latency.length === 0) return null;
-  const clean = Array.from(latency).filter((v) => Number.isFinite(v));
+  const clean = Array.from(latency.subarray(0, series.frameCount)).filter((v) => Number.isFinite(v) && v >= 0);
   if (clean.length === 0) return null;
   clean.sort((a, b) => a - b);
   const sorted = Float64Array.from(clean);
   let sum = 0;
   for (const v of clean) sum += v;
   return {
+    observedFrames: clean.length,
     meanMs: sum / clean.length,
     p50: percentileOfSorted(sorted, 50),
     p90: percentileOfSorted(sorted, 90),
@@ -523,6 +532,11 @@ export function frameTimeHistogramPair(a: Float64Array, b: Float64Array, bucketC
 // Aggregate summary
 // ---------------------------------------------------------------------------
 
+export interface TelemetryCoverage {
+  observedFrames: number;
+  unknownFrames: number;
+}
+
 export interface MetricsSummary {
   frameCount: number;
   durationSec: number;
@@ -536,6 +550,12 @@ export interface MetricsSummary {
   dropped: DroppedFramesResult | null;
   boundShare: BoundShareResult | null;
   latency: LatencyResult | null;
+  /** Coverage within the analyzed stream/interval; null means the required column is absent. */
+  telemetryCoverage: {
+    dropped: TelemetryCoverage | null;
+    cpuGpuBusy: TelemetryCoverage | null;
+    displayLatency: TelemetryCoverage | null;
+  };
 }
 
 export function computeMetricsSummary(
@@ -544,6 +564,11 @@ export function computeMetricsSummary(
   stutter: StutterResult = detectStutter(series.frameTimeMs, stutterOptions),
 ): MetricsSummary {
   const sorted = sortedCopy(series.frameTimeMs);
+  const dropped = droppedFrames(series);
+  const bound = boundShare(series);
+  const latency = displayLatency(series);
+  const coverage = (present: boolean, observedFrames: number): TelemetryCoverage | null =>
+    present ? { observedFrames, unknownFrames: series.frameCount - observedFrames } : null;
   return {
     frameCount: series.frameCount,
     durationSec: frameDurationSec(series.frameTimeMs),
@@ -554,9 +579,15 @@ export function computeMetricsSummary(
     pointOnePercentLow: pointOnePercentLow(sorted),
     stutter,
     masdMs: meanAbsoluteSuccessiveDifference(series.frameTimeMs),
-    dropped: droppedFrames(series),
-    boundShare: boundShare(series),
-    latency: displayLatency(series),
+    dropped,
+    boundShare: bound,
+    latency,
+    telemetryCoverage: {
+      dropped: coverage(series.channels.dropped !== undefined, dropped?.observedFrames ?? 0),
+      cpuGpuBusy: coverage(series.channels.cpuBusyMs !== undefined && series.channels.gpuBusyMs !== undefined,
+        bound ? bound.cpuBoundFrames + bound.gpuBoundFrames : 0),
+      displayLatency: coverage(series.channels.displayLatencyMs !== undefined, latency?.observedFrames ?? 0),
+    },
   };
 }
 

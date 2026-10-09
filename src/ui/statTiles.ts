@@ -1,5 +1,5 @@
 import type { MetricsSummary } from "../core/metrics.ts";
-import { fmtFps, fmtInt, fmtMs, fmtPct } from "./format.ts";
+import { fmtCoverage, fmtFps, fmtInt, fmtMs, fmtPct } from "./format.ts";
 
 export interface Tile {
   label: string;
@@ -31,7 +31,8 @@ export interface TileSet {
  * count — this design can't do either, by construction.
  */
 export function buildTiles(summary: MetricsSummary): TileSet {
-  const hasDropped = summary.dropped !== null;
+  const coverage = summary.telemetryCoverage;
+  const hasDropped = coverage.dropped !== null;
 
   const headline: Tile[] = [
     {
@@ -85,10 +86,10 @@ export function buildTiles(summary: MetricsSummary): TileSet {
     hasDropped
       ? {
           label: "DROPPED",
-          title: "Frames the capture reported as dropped / not displayed",
-          value: fmtInt(summary.dropped!.droppedCount),
-          sub: fmtPct(summary.dropped!.droppedFraction),
-          tone: summary.dropped!.droppedCount > 0 ? "warn" : undefined,
+          title: "Reported drops among frames with an observed outcome; unknown cells are excluded",
+          value: summary.dropped ? fmtInt(summary.dropped.droppedCount) : "Unknown",
+          sub: summary.dropped ? `${fmtPct(summary.dropped.droppedFraction)} of observed` : "No observed outcomes",
+          tone: (summary.dropped?.droppedCount ?? 0) > 0 || coverage.dropped!.unknownFrames > 0 ? "warn" : undefined,
         }
       : {
           label: "P99",
@@ -108,18 +109,21 @@ export function buildTiles(summary: MetricsSummary): TileSet {
   ];
   if (hasDropped) {
     secondary.push({ label: "P99 frame time", value: `${fmtMs(summary.percentilesMs.p99)} ms` });
+    secondary.push({ label: "Drop observations", value: fmtCoverage(coverage.dropped!) });
   }
-  if (summary.boundShare) {
+  if (coverage.cpuGpuBusy) {
     secondary.push({
       label: "CPU- / GPU-bound share",
-      value: `${fmtPct(summary.boundShare.cpuBoundFraction, 0)} / ${fmtPct(summary.boundShare.gpuBoundFraction, 0)}`,
+      value: summary.boundShare ? `${fmtPct(summary.boundShare.cpuBoundFraction, 0)} / ${fmtPct(summary.boundShare.gpuBoundFraction, 0)}` : "Unavailable",
     });
+    secondary.push({ label: "CPU/GPU observations (busy-time heuristic)", value: fmtCoverage(coverage.cpuGpuBusy) });
   }
-  if (summary.latency) {
+  if (coverage.displayLatency) {
     secondary.push({
       label: "Display latency, P99 (mean)",
-      value: `${fmtMs(summary.latency.p99)} ms (${fmtMs(summary.latency.meanMs)} ms)`,
+      value: summary.latency ? `${fmtMs(summary.latency.p99)} ms (${fmtMs(summary.latency.meanMs)} ms)` : "Unavailable",
     });
+    secondary.push({ label: "Latency observations", value: fmtCoverage(coverage.displayLatency) });
   }
 
   return { headline, secondary };

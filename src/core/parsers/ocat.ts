@@ -18,7 +18,7 @@
  * which only appear once and are ignored here.
  */
 import { Float64Builder, Uint8Builder } from "../buffer.ts";
-import { indexHeader, LINE_BREAK, parseFloatOrNull, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
+import { indexHeader, LINE_BREAK, parseDroppedOrUnknown, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
 import type { FrameSeries, ParserOptions, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
 import { cumulativeSeconds, StreamTracker } from "../streams.ts";
@@ -41,6 +41,7 @@ export class PresentFamilyParser implements StreamingParser {
   protected readonly frameTimeMs = new Float64Builder(4096);
   protected readonly sourceLine = new Float64Builder(4096);
   protected readonly dropped = new Uint8Builder(4096);
+  private hasDropped = false;
   protected columns: string[] = [];
   private readonly format: "ocat" | "capframex";
   private readonly streams = new StreamTracker();
@@ -56,6 +57,7 @@ export class PresentFamilyParser implements StreamingParser {
     if (this.header === null) {
       this.header = indexHeader(fields);
       this.columns = fields.map((f) => f.trim());
+      this.hasDropped = this.header.has("Dropped");
       this.streams.setHeader(this.header);
       return;
     }
@@ -71,14 +73,14 @@ export class PresentFamilyParser implements StreamingParser {
     }
     this.frameTimeMs.push(ft);
     this.sourceLine.push(lineIndex + 1);
-    this.dropped.push(parseFloatOrNull(get("Dropped")) === 1 ? 1 : 0);
+    if (this.hasDropped) this.dropped.push(parseDroppedOrUnknown(get("Dropped")));
     this.streams.track(fields);
     if (this.application === undefined) this.application = get("Application");
   }
 
   finish(sourceFileName: string): FrameSeries {
     const { frameTimeMs, sourceLine, channels, streams, selected } = this.streams.select(
-      { frameTimeMs: this.frameTimeMs.toArray(), sourceLine: this.sourceLine.toArray(), channels: { dropped: this.dropped.toArray() } },
+      { frameTimeMs: this.frameTimeMs.toArray(), sourceLine: this.sourceLine.toArray(), channels: { dropped: this.hasDropped ? this.dropped.toArray() : undefined } },
       this.options.stream,
     );
     return {

@@ -156,6 +156,18 @@ export function parseFloatOrNull(value: string | undefined): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
+/** Drop channels keep unknown separate from either observed outcome (0/1). */
+export function parseDroppedOrUnknown(value: string | undefined): 0 | 1 | 2 {
+  const flag = parseFloatOrNull(value);
+  return flag === 0 || flag === 1 ? flag : 2;
+}
+
+/** PresentMon 2 explicitly uses NA for not displayed; blanks/invalid cells are unknown. */
+export function parseDisplayedTimeOrUnknown(value: string | undefined): 0 | 1 | 2 {
+  if (value?.trim() === "NA") return 1;
+  return parseFrameTimeOrNull(value) === null ? 2 : 0;
+}
+
 /**
  * Parses a frame-time cell. Besides what `parseFloatOrNull` refuses, a
  * negative value is no frame time: counted, it would subtract from the

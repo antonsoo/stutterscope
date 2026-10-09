@@ -38,7 +38,7 @@ export const FORMAT_LABELS: Record<SourceFormat, string> = {
 
 /** Optional per-frame channels that not every format provides. */
 export interface OptionalChannels {
-  /** 1 = frame was not displayed (dropped, or superseded before scan-out), 0 = displayed. */
+  /** 1 = not displayed, 0 = displayed, 2 = unknown. Absence means no source column. */
   dropped?: Uint8Array;
   cpuBusyMs?: Float64Array;
   gpuBusyMs?: Float64Array;

@@ -1,3 +1,9 @@
+import type { TelemetryCoverage } from "../core/metrics.ts";
+
+export function fmtCoverage(coverage: TelemetryCoverage): string {
+  return `${fmtInt(coverage.observedFrames)}/${fmtInt(coverage.observedFrames + coverage.unknownFrames)} frames observed`;
+}
+
 export function fmtMs(v: number, digits = 2): string {
   if (!Number.isFinite(v)) return "—";
   return v.toFixed(digits);

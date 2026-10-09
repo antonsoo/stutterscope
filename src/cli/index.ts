@@ -402,14 +402,20 @@ function main(): void {
     summary.stutter.hitchCount > 0 ? color(String(summary.stutter.hitchCount), RED) : "0",
   );
   line("Pacing (MASD)", `${fmt(summary.masdMs, 2)} ms`);
-  if (summary.dropped) {
-    line("Dropped frames", `${summary.dropped.droppedCount} (${fmt(summary.dropped.droppedFraction * 100, 2)}%)`);
+  const coverage = summary.telemetryCoverage;
+  const observations = (label: string, c: { observedFrames: number; unknownFrames: number }) =>
+    line(label, `${c.observedFrames}/${c.observedFrames + c.unknownFrames} frames observed; ${c.unknownFrames} unknown`);
+  if (coverage.dropped) {
+    line("Dropped frames", summary.dropped ? `${summary.dropped.droppedCount} (${fmt(summary.dropped.droppedFraction * 100, 2)}% of observed)` : "Unknown");
+    observations("Drop observations", coverage.dropped);
   }
-  if (summary.boundShare) {
-    line("CPU- / GPU-bound", `${fmt(summary.boundShare.cpuBoundFraction * 100, 0)}% / ${fmt(summary.boundShare.gpuBoundFraction * 100, 0)}%`);
+  if (coverage.cpuGpuBusy) {
+    line("CPU- / GPU-bound", summary.boundShare ? `${fmt(summary.boundShare.cpuBoundFraction * 100, 0)}% / ${fmt(summary.boundShare.gpuBoundFraction * 100, 0)}% (busy-time heuristic)` : "Unavailable");
+    observations("CPU/GPU observations", coverage.cpuGpuBusy);
   }
-  if (summary.latency) {
-    line("Display latency P99", `${fmt(summary.latency.p99, 2)} ms`);
+  if (coverage.displayLatency) {
+    line("Display latency P99", summary.latency ? `${fmt(summary.latency.p99, 2)} ms` : "Unavailable");
+    observations("Latency observations", coverage.displayLatency);
   }
   if (args.events) printEpisodes(analysis);
 }

@@ -7,7 +7,7 @@ import { slowEpisodes } from "./episodes.ts";
 export function buildJsonReport(series: FrameSeries, summary: MetricsSummary, options: StutterOptions, mapping?: GenericMapping, selection = selectFrames(series).selection) {
   return {
     tool: "stutterscope",
-    schemaVersion: 3,
+    schemaVersion: 4,
     generatedAt: new Date().toISOString(),
     source: {
       fileName: series.meta.sourceFileName,
@@ -35,5 +35,5 @@ export function buildJsonReport(series: FrameSeries, summary: MetricsSummary, op
 export type CaptureReport = ReturnType<typeof buildJsonReport>;
 
 export function buildComparisonReport(a: CaptureReport, b: CaptureReport) {
-  return { tool: "stutterscope", schemaVersion: 3, kind: "comparison", generatedAt: new Date().toISOString(), runs: { a, b } };
+  return { tool: "stutterscope", schemaVersion: 4, kind: "comparison", generatedAt: new Date().toISOString(), runs: { a, b } };
 }

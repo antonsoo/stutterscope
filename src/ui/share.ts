@@ -4,7 +4,7 @@ import { buildJsonReport, buildComparisonReport, type CaptureReport } from "../c
 export { buildJsonReport } from "../core/report.ts";
 import { selectFrames, type FrameSelection } from "../core/analysis.ts";
 import type { GenericMapping } from "../core/parsers/generic.ts";
-import { fmtFps, fmtInt, fmtMs, fmtPct } from "./format.ts";
+import { fmtCoverage, fmtFps, fmtInt, fmtMs, fmtPct } from "./format.ts";
 
 function downloadBlob(blob: Blob, filename: string): void {
   const url = URL.createObjectURL(blob);
@@ -40,10 +40,22 @@ export function buildMarkdownTable(series: FrameSeries, summary: MetricsSummary,
     [`Hitches (>${summary.stutter.hitchThresholdMs}ms)`, fmtInt(summary.stutter.hitchCount)],
     ["Pacing (MASD, ms)", fmtMs(summary.masdMs)],
   ];
-  if (summary.dropped) rows.push(["Dropped frames", `${fmtInt(summary.dropped.droppedCount)} (${fmtPct(summary.dropped.droppedFraction)})`]);
+  const coverage = summary.telemetryCoverage;
+  if (coverage.dropped) {
+    rows.push(["Dropped frames", summary.dropped ? `${fmtInt(summary.dropped.droppedCount)} (${fmtPct(summary.dropped.droppedFraction)} of observed)` : "Unknown"]);
+    rows.push(["Drop observations", fmtCoverage(coverage.dropped)]);
+  }
   if (summary.boundShare) {
     rows.push(["CPU-bound frames", fmtPct(summary.boundShare.cpuBoundFraction)]);
     rows.push(["GPU-bound frames", fmtPct(summary.boundShare.gpuBoundFraction)]);
+  }
+  if (coverage.cpuGpuBusy) {
+    if (!summary.boundShare) rows.push(["CPU/GPU busy share", "Unavailable"]);
+    rows.push(["CPU/GPU observations", `${fmtCoverage(coverage.cpuGpuBusy)}; busy-time heuristic`]);
+  }
+  if (coverage.displayLatency) {
+    rows.push(["Display latency P99 (ms)", summary.latency ? fmtMs(summary.latency.p99) : "Unavailable"]);
+    rows.push(["Latency observations", fmtCoverage(coverage.displayLatency)]);
   }
 
   const header = `| Metric | ${escapeMd(series.meta.sourceFileName)} |\n| --- | --- |`;

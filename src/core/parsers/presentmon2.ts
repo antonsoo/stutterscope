@@ -21,7 +21,7 @@
  * definition PresentMon 1.x uses for `Dropped`.
  */
 import { Float64Builder, Uint8Builder } from "../buffer.ts";
-import { indexHeader, LINE_BREAK, parseFloatOrNull, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
+import { indexHeader, LINE_BREAK, parseDisplayedTimeOrUnknown, parseFloatOrNull, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
 import type { FrameSeries, ParserOptions, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
 import { cumulativeSeconds, StreamTracker } from "../streams.ts";
@@ -83,7 +83,7 @@ class PresentMon2Parser implements StreamingParser {
     this.frameTimeMs.push(ft);
     this.sourceLine.push(lineIndex + 1);
     if (this.hasDisplayedTime) {
-      this.dropped.push(parseFloatOrNull(get("DisplayedTime")) === null ? 1 : 0);
+      this.dropped.push(parseDisplayedTimeOrUnknown(get("DisplayedTime")));
     }
     if (this.hasCpuBusy) this.cpuBusyMs.push(parseFloatOrNull(get("CPUBusy")) ?? NaN);
     if (this.hasGpuBusy) this.gpuBusyMs.push(parseFloatOrNull(get("GPUBusy")) ?? NaN);
