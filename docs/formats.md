@@ -5,6 +5,27 @@ own source/documentation or a real captured sample, cited below. Where a
 format is closed-source or undocumented, that's stated explicitly rather
 than guessed at.
 
+## CSV boundaries
+
+Named header columns must be unique after trimming whitespace (names remain
+case-sensitive). A duplicate `FrameTime` or `GPUBusy` is ambiguous even if the
+two cells happen to agree in one row. The import stops with the header's line
+number and both column positions, so a report cannot silently choose one.
+Empty padding headers are allowed.
+
+Quoted commas, doubled literal quotes, and spaces or tabs around a quoted
+field are supported. Quotes inside an unquoted field, text after a closing
+quote, and unclosed quotes stop the import with the physical line and field
+number. Records must fit on one physical line; multiline quoted fields are
+unsupported. A value such as `1"00"` is an error, not a 100 ms frame.
+
+CapFrameX comment metadata and MangoHud's preamble are handled separately
+from frame records. OCAT's shorter rows after its first hardware-information
+row are still supported. Missing or invalid numerical cells retain the
+format-specific skipped-row/unknown rules described below; structurally
+ambiguous CSV stops the whole import. [Counterexamples and a replay of the
+pinned capture corpus](../studies/csv-integrity/README.md) document these limits.
+
 ## PresentMon 1.x
 
 The legacy console app (`GameTechDev/PresentMon`, pre-2.0, and any 2.x

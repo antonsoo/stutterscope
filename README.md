@@ -14,14 +14,15 @@ interval. A four-frame control with one displayed, one explicitly not displayed
 and two unknown outcomes now reports **1 drop / 2 observed**, with two unknowns.
 Six unmodified upstream capture files also stop reporting an invented zero.
 [Rules, pinned-capture replay and actual exports](studies/telemetry-evidence/README.md).
-These changes are local and have not been published.
+These source changes have not been released to npm.
 
 **New in this source checkout:** measure a selected interval in each run, inspect
 slow-frame episodes back to their original CSV lines, and export both runs together.
 The app's **Open recorded comparison** loads a controlled browser capture with four
 measured scene hitches in A and none in B. This is a local animation experiment,
 not a game benchmark. [Walkthrough and exact selection rules](docs/interval-analysis.md).
-These additions have not been published to npm or the hosted demo.
+These additions have not been released to npm; the retained verification uses
+a locally built production site.
 
 ![Stutterscope compares selected intervals from two recorded browser captures, retaining original frame numbers and measured slow-frame counts](docs/assets/interval-comparison.png)
 
@@ -250,6 +251,11 @@ published (and whenever npm installs it from git), so nothing has to be
 pre-built or committed.
 
 ## Accuracy and limitations
+
+CSV imports reject duplicate named headers and malformed quotes before reporting
+metrics. A retained two-frame counterexample previously reported 100 FPS by
+silently choosing one of two `FrameTime` columns; it now identifies the ambiguity.
+[Counterexamples, unchanged capture replay, and browser evidence](studies/csv-integrity/README.md).
 
 - **MangoHud requires `log_interval=0`.** Periodic logging records snapshots,
   which cannot reconstruct a per-frame stutter report. The CSV omits that setting.

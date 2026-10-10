@@ -1,0 +1,26 @@
+{
+  "codeCommit": "21fe7bad05f2b61909e7e76a87034a0ab61585c7",
+  "cleanArchive": true,
+  "npmCi": true,
+  "lint": true,
+  "typecheck": true,
+  "unitAndCliTests": 241,
+  "chromiumAndFirefoxChecks": 64,
+  "productionBuild": true,
+  "tarballSha256": "f71b92e4bde1c225ff87c912a60d7b1cd875352abffc659ee509b0ec637dbf80",
+  "runtimes": [
+    "v26.7.0",
+    "v22.6.0"
+  ],
+  "caseCount": 18,
+  "installedDisagreements": [
+    0,
+    0
+  ],
+  "comparisonWithAmbiguousCandidate": {
+    "exit": 1,
+    "stdout": "",
+    "stderr": "stutterscope: Could not parse studies/csv-integrity/fixtures/presentmon2-duplicate.csv: line 1: duplicate column \"FrameTime\" at columns 11 and 12; give each named column a unique header"
+  },
+  "commaDecimalLocaleTests": 241
+}

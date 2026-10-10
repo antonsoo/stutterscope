@@ -6,7 +6,7 @@ display outcomes neither increase drops nor dilute their observed fraction;
 missing columns do not claim zero. CPU/GPU and latency estimates carry the
 number of frames that supplied their inputs.
 
-This work is local and unreleased. The baseline is `4997beb`; the retained
+This study describes source changes, not an npm release. The baseline is `4997beb`; the retained
 results came from the actual source, built browser worker and installed npm
 tarball. No telemetry was uploaded, and the synthetic controls are not game
 benchmarks or evidence about how often captures are damaged.

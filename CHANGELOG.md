@@ -6,7 +6,7 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-Changes below are in the source checkout and have not been published.
+Changes below are in source and have not been released as an npm package.
 
 ### Added
 
@@ -37,6 +37,10 @@ Changes below are in the source checkout and have not been published.
 
 ### Fixed
 
+- Ambiguous named CSV columns now stop imports instead of silently choosing the
+  first occurrence. Malformed quotes cannot concatenate numeric fragments or
+  discard record boundaries. Errors identify physical lines and fields; native
+  metadata and valid quoted CSV remain supported.
 - Missing or invalid dropped flags no longer become displayed frames, and a
   missing flag column no longer produces a zero-drop result. PresentMon 2
   uses only explicit `NA` as not displayed; blank, malformed and negative

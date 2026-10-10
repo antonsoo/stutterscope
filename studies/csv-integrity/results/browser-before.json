@@ -1,0 +1,316 @@
+{
+  "label": "before",
+  "browser": "Chromium",
+  "observations": [
+    {
+      "width": 1440,
+      "workspaceVisible": true,
+      "alert": [],
+      "exported": {
+        "tool": "stutterscope",
+        "schemaVersion": 4,
+        "generatedAt": "2026-10-10T07:49:03.360Z",
+        "source": {
+          "fileName": "presentmon2-duplicate.csv",
+          "format": "presentmon2",
+          "application": "demo.exe",
+          "stream": "1000:0x1",
+          "streams": [
+            {
+              "id": "1000:0x1",
+              "application": "demo.exe",
+              "processId": "1000",
+              "swapChain": "0x1",
+              "frameCount": 2
+            }
+          ],
+          "frameCount": 2,
+          "durationSec": 0.02,
+          "columns": [
+            "Application",
+            "ProcessID",
+            "SwapChainAddress",
+            "PresentRuntime",
+            "SyncInterval",
+            "PresentFlags",
+            "AllowsTearing",
+            "PresentMode",
+            "FrameType",
+            "CPUStartQPC",
+            "FrameTime",
+            "FrameTime",
+            "CPUBusy",
+            "CPUWait",
+            "GPULatency",
+            "GPUTime",
+            "GPUBusy",
+            "GPUWait",
+            "VideoBusy",
+            "DisplayLatency",
+            "DisplayedTime",
+            "AnimationError",
+            "AnimationTime",
+            "MsFlipDelay",
+            "AllInputToPhotonLatency",
+            "ClickToPhotonLatency",
+            "InstrumentedLatency"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.02,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.02,
+            "durationSec": 0.02,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based"
+        },
+        "episodes": [],
+        "metrics": {
+          "frameCount": 2,
+          "durationSec": 0.02,
+          "averageFps": 100,
+          "meanOfInstantaneousFps": 100,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 10,
+            "p95": 10,
+            "p99": 10,
+            "p999": 10
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "dropped": {
+            "droppedCount": 0,
+            "observedFrames": 2,
+            "droppedFraction": 0
+          },
+          "boundShare": {
+            "cpuBoundFrames": 1,
+            "gpuBoundFrames": 1,
+            "cpuBoundFraction": 0.5,
+            "gpuBoundFraction": 0.5
+          },
+          "latency": {
+            "observedFrames": 2,
+            "meanMs": 20,
+            "p50": 20,
+            "p90": 20,
+            "p99": 20
+          },
+          "telemetryCoverage": {
+            "dropped": {
+              "observedFrames": 2,
+              "unknownFrames": 0
+            },
+            "cpuGpuBusy": {
+              "observedFrames": 2,
+              "unknownFrames": 0
+            },
+            "displayLatency": {
+              "observedFrames": 2,
+              "unknownFrames": 0
+            }
+          }
+        }
+      },
+      "horizontalOverflow": false,
+      "axeViolations": [],
+      "errors": [],
+      "external": []
+    },
+    {
+      "width": 375,
+      "workspaceVisible": true,
+      "alert": [],
+      "exported": {
+        "tool": "stutterscope",
+        "schemaVersion": 4,
+        "generatedAt": "2026-10-10T07:49:05.139Z",
+        "source": {
+          "fileName": "presentmon2-duplicate.csv",
+          "format": "presentmon2",
+          "application": "demo.exe",
+          "stream": "1000:0x1",
+          "streams": [
+            {
+              "id": "1000:0x1",
+              "application": "demo.exe",
+              "processId": "1000",
+              "swapChain": "0x1",
+              "frameCount": 2
+            }
+          ],
+          "frameCount": 2,
+          "durationSec": 0.02,
+          "columns": [
+            "Application",
+            "ProcessID",
+            "SwapChainAddress",
+            "PresentRuntime",
+            "SyncInterval",
+            "PresentFlags",
+            "AllowsTearing",
+            "PresentMode",
+            "FrameType",
+            "CPUStartQPC",
+            "FrameTime",
+            "FrameTime",
+            "CPUBusy",
+            "CPUWait",
+            "GPULatency",
+            "GPUTime",
+            "GPUBusy",
+            "GPUWait",
+            "VideoBusy",
+            "DisplayLatency",
+            "DisplayedTime",
+            "AnimationError",
+            "AnimationTime",
+            "MsFlipDelay",
+            "AllInputToPhotonLatency",
+            "ClickToPhotonLatency",
+            "InstrumentedLatency"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.02,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.02,
+            "durationSec": 0.02,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based"
+        },
+        "episodes": [],
+        "metrics": {
+          "frameCount": 2,
+          "durationSec": 0.02,
+          "averageFps": 100,
+          "meanOfInstantaneousFps": 100,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 10,
+            "p95": 10,
+            "p99": 10,
+            "p999": 10
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "dropped": {
+            "droppedCount": 0,
+            "observedFrames": 2,
+            "droppedFraction": 0
+          },
+          "boundShare": {
+            "cpuBoundFrames": 1,
+            "gpuBoundFrames": 1,
+            "cpuBoundFraction": 0.5,
+            "gpuBoundFraction": 0.5
+          },
+          "latency": {
+            "observedFrames": 2,
+            "meanMs": 20,
+            "p50": 20,
+            "p90": 20,
+            "p99": 20
+          },
+          "telemetryCoverage": {
+            "dropped": {
+              "observedFrames": 2,
+              "unknownFrames": 0
+            },
+            "cpuGpuBusy": {
+              "observedFrames": 2,
+              "unknownFrames": 0
+            },
+            "displayLatency": {
+              "observedFrames": 2,
+              "unknownFrames": 0
+            }
+          }
+        }
+      },
+      "horizontalOverflow": false,
+      "axeViolations": [],
+      "errors": [],
+      "external": []
+    }
+  ]
+}

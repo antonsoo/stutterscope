@@ -1,0 +1,30 @@
+{
+  "label": "after",
+  "browser": "Chromium",
+  "observations": [
+    {
+      "width": 1440,
+      "workspaceVisible": false,
+      "alert": [
+        "Could not parse presentmon2-duplicate.csv: line 1: duplicate column \"FrameTime\" at columns 11 and 12; give each named column a unique header Retry import"
+      ],
+      "exported": null,
+      "horizontalOverflow": false,
+      "axeViolations": [],
+      "errors": [],
+      "external": []
+    },
+    {
+      "width": 375,
+      "workspaceVisible": false,
+      "alert": [
+        "Could not parse presentmon2-duplicate.csv: line 1: duplicate column \"FrameTime\" at columns 11 and 12; give each named column a unique header Retry import"
+      ],
+      "exported": null,
+      "horizontalOverflow": false,
+      "axeViolations": [],
+      "errors": [],
+      "external": []
+    }
+  ]
+}

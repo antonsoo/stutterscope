@@ -125,7 +125,7 @@ The 10 files labelled OCAT are PresentMon 2.0/2.1 console logs (the 6 unsuffixed
 3. **CLI column width.** The new labels are longer, so the summary block is aligned to 25 columns. This changes the text output, and one test string.
 4. `docs/metrics.md` describes three definitions and states where each is used.
 
-These are source-checkout changes and are not published.
+These are source changes and have not been released as an npm package.
 
 ## What is left
 
