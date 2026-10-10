@@ -357,7 +357,11 @@ time is missing, is not a number, or is negative (counted, a negative frame
 time would subtract from the capture's duration and raise its average FPS).
 In a generic CSV of cumulative timestamps, a timestamp lower than the one
 before it is skipped the same way and restarts the clock, which is what two
-logs joined into one file look like. A frame time of zero is kept: a clock
+logs joined into one file look like. A missing or invalid timestamp breaks
+adjacency: that record and the next valid record have no derivable frame
+time, and both are counted as skipped. The next valid timestamp establishes
+a new starting point; several frames are never combined across the gap.
+Entirely blank lines are formatting, not timestamp observations. A frame time of zero is kept: a clock
 coarser than the frame rate produces it honestly, and those frames count
 toward the average. The web app and the CLI report how many rows were
 skipped. The parser keeps a message with the line number for the first 50
@@ -373,5 +377,6 @@ see that the wrong column or format was picked).
 one-based physical CSV line. These references survive process filtering and
 interval selection, including blank lines, format preambles and skipped rows.
 For a cumulative-timestamp mapping, the reference names the ending sample whose
-value is differenced from the preceding usable timestamp. Derived frame times
+value is differenced from the preceding timestamp observation. Both must
+be valid; missing records are not bridged. Derived frame times
 that overflow milliseconds are skipped with a warning.

@@ -254,6 +254,7 @@ class GenericParser implements StreamingParser {
   private readonly dropped = new Uint8Builder(4096);
   private hasDropped = false;
   private previousTimestamp: number | null = null;
+  private timestampGap = false;
   private columns: string[] = [];
   private readonly mapping: GenericMapping;
 
@@ -275,12 +276,24 @@ class GenericParser implements StreamingParser {
     const value = parseFloatOrNull(raw);
     if (value === null) {
       this.skipped.add(lineIndex, `missing/invalid ${this.mapping.valueColumn}`);
+      // A missing observation breaks adjacency. Differencing the next timestamp
+      // against an older one would combine several frames into a false hitch.
+      if (isCumulative(this.mapping.valueKind)) {
+        this.previousTimestamp = null;
+        this.timestampGap = true;
+      }
       return;
     }
     if (isCumulative(this.mapping.valueKind)) {
       const ft = valueToFrameTimeMs(this.mapping.valueKind, value, this.previousTimestamp);
       this.previousTimestamp = value;
-      if (ft === null) return; // first row: nothing to diff against yet
+      if (ft === null) {
+        if (this.timestampGap) {
+          this.skipped.add(lineIndex, `cannot derive frame time after missing/invalid ${this.mapping.valueColumn}`);
+          this.timestampGap = false;
+        }
+        return; // first observation (or first after a gap): establish the clock
+      }
       if (!Number.isFinite(ft)) {
         this.skipped.add(lineIndex, "frame time overflows milliseconds");
         return;

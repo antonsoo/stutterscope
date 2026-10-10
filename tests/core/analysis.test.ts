@@ -86,8 +86,8 @@ describe("actual interval analysis", () => {
     const streamed = await parseStreaming(new Blob([text]), mapping, "source.csv");
     expect([...streamed.sourceLine!]).toEqual([2, 5]);
     const cumulative = parse("time\n0\n10\nbad\n20\n5\n30", { valueColumn: "time", valueKind: "timestamp_ms_cumulative" });
-    expect([...cumulative.sourceLine!]).toEqual([3, 5, 7]);
-    expect([...cumulative.frameTimeMs]).toEqual([10, 10, 25]);
+    expect([...cumulative.sourceLine!]).toEqual([3, 7]);
+    expect([...cumulative.frameTimeMs]).toEqual([10, 25]);
   });
 
   it("skips finite input values that overflow when converted to frame milliseconds", () => {

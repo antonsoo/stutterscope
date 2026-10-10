@@ -1,0 +1,558 @@
+[
+  {
+    "browser": "chromium",
+    "version": "153.0.8010.12",
+    "width": 1440,
+    "errors": [],
+    "overflow": false,
+    "screenshot": "../../docs/assets/timestamp-gaps/chromium-1440.png",
+    "report": {
+      "tool": "stutterscope",
+      "schemaVersion": 4,
+      "generatedAt": "2026-10-10T20:02:10.171Z",
+      "source": {
+        "fileName": "missing.csv",
+        "format": "generic",
+        "application": null,
+        "frameCount": 562,
+        "durationSec": 9.933000000000002,
+        "columns": [
+          "frame",
+          "elapsed_ms"
+        ],
+        "skippedRows": 4,
+        "warnings": [
+          "line 151: missing/invalid elapsed_ms, row skipped",
+          "line 152: missing/invalid elapsed_ms, row skipped",
+          "line 153: missing/invalid elapsed_ms, row skipped",
+          "line 154: cannot derive frame time after missing/invalid elapsed_ms, row skipped"
+        ],
+        "omittedWarningDetails": 0,
+        "genericMapping": {
+          "valueColumn": "elapsed_ms",
+          "valueKind": "timestamp_ms_cumulative"
+        },
+        "timingEvidence": null
+      },
+      "analysis": {
+        "stutterOptions": {
+          "windowRadius": 10,
+          "kMultiplier": 2,
+          "hitchThresholdMs": 50
+        },
+        "selection": {
+          "requested": null,
+          "timeBasis": "accumulated-frame-time",
+          "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+          "detectionContext": "full-stream",
+          "sourceFrameCount": 562,
+          "sourceDurationSec": 9.933000000000002,
+          "firstFrameIndex": 0,
+          "lastFrameIndex": 561,
+          "startSec": 0,
+          "endSec": 9.933000000000002,
+          "durationSec": 9.933000000000021,
+          "excludedBefore": 0,
+          "excludedAfter": 0
+        },
+        "stutterIndexBasis": "selected-series-zero-based"
+      },
+      "episodes": [
+        {
+          "firstFrame": 15,
+          "lastFrame": 15,
+          "startSec": 0.2334,
+          "endSec": 0.5833999999999999,
+          "frameCount": 1,
+          "stutterFrames": 1,
+          "hitchFrames": 1,
+          "totalTimeMs": 350,
+          "longestFrameMs": 350,
+          "longestFrame": 15,
+          "firstSourceLine": 17,
+          "lastSourceLine": 17,
+          "touchesSelectionStart": false,
+          "touchesSelectionEnd": false
+        },
+        {
+          "firstFrame": 535,
+          "lastFrame": 535,
+          "startSec": 9.2331,
+          "endSec": 9.4831,
+          "frameCount": 1,
+          "stutterFrames": 1,
+          "hitchFrames": 1,
+          "totalTimeMs": 250,
+          "longestFrameMs": 250,
+          "longestFrame": 535,
+          "firstSourceLine": 541,
+          "lastSourceLine": 541,
+          "touchesSelectionStart": false,
+          "touchesSelectionEnd": false
+        }
+      ],
+      "metrics": {
+        "frameCount": 562,
+        "durationSec": 9.933000000000021,
+        "averageFps": 56.57907983489367,
+        "meanOfInstantaneousFps": 59.80154190600103,
+        "percentilesMs": {
+          "p50": 16.699999999999818,
+          "p90": 16.700000000000728,
+          "p95": 16.799999999999272,
+          "p99": 16.800000000000537,
+          "p999": 293.9000000000078
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 59.52380952380762,
+          "meanOfSlowestMethodFps": 8.992805755395624,
+          "timeWeightedFps": 2.857142857142857
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 3.402517863218691,
+          "meanOfSlowestMethodFps": 2.857142857142857,
+          "timeWeightedFps": 2.857142857142857
+        },
+        "stutter": {
+          "stutterEventCount": 2,
+          "totalStutterTimeMs": 600,
+          "stutterTimeFraction": 0.06040471156750227,
+          "hitchThresholdMs": 50,
+          "hitchCount": 2,
+          "totalHitchTimeMs": 600,
+          "hitchTimeFraction": 0.06040471156750227,
+          "stutterFrameIndices": [
+            14,
+            534
+          ]
+        },
+        "masdMs": 2.1000000000001853,
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    }
+  },
+  {
+    "browser": "chromium",
+    "version": "153.0.8010.12",
+    "width": 375,
+    "errors": [],
+    "overflow": false,
+    "screenshot": "../../docs/assets/timestamp-gaps/chromium-375.png",
+    "report": {
+      "tool": "stutterscope",
+      "schemaVersion": 4,
+      "generatedAt": "2026-10-10T20:02:10.704Z",
+      "source": {
+        "fileName": "missing.csv",
+        "format": "generic",
+        "application": null,
+        "frameCount": 562,
+        "durationSec": 9.933000000000002,
+        "columns": [
+          "frame",
+          "elapsed_ms"
+        ],
+        "skippedRows": 4,
+        "warnings": [
+          "line 151: missing/invalid elapsed_ms, row skipped",
+          "line 152: missing/invalid elapsed_ms, row skipped",
+          "line 153: missing/invalid elapsed_ms, row skipped",
+          "line 154: cannot derive frame time after missing/invalid elapsed_ms, row skipped"
+        ],
+        "omittedWarningDetails": 0,
+        "genericMapping": {
+          "valueColumn": "elapsed_ms",
+          "valueKind": "timestamp_ms_cumulative"
+        },
+        "timingEvidence": null
+      },
+      "analysis": {
+        "stutterOptions": {
+          "windowRadius": 10,
+          "kMultiplier": 2,
+          "hitchThresholdMs": 50
+        },
+        "selection": {
+          "requested": null,
+          "timeBasis": "accumulated-frame-time",
+          "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+          "detectionContext": "full-stream",
+          "sourceFrameCount": 562,
+          "sourceDurationSec": 9.933000000000002,
+          "firstFrameIndex": 0,
+          "lastFrameIndex": 561,
+          "startSec": 0,
+          "endSec": 9.933000000000002,
+          "durationSec": 9.933000000000021,
+          "excludedBefore": 0,
+          "excludedAfter": 0
+        },
+        "stutterIndexBasis": "selected-series-zero-based"
+      },
+      "episodes": [
+        {
+          "firstFrame": 15,
+          "lastFrame": 15,
+          "startSec": 0.2334,
+          "endSec": 0.5833999999999999,
+          "frameCount": 1,
+          "stutterFrames": 1,
+          "hitchFrames": 1,
+          "totalTimeMs": 350,
+          "longestFrameMs": 350,
+          "longestFrame": 15,
+          "firstSourceLine": 17,
+          "lastSourceLine": 17,
+          "touchesSelectionStart": false,
+          "touchesSelectionEnd": false
+        },
+        {
+          "firstFrame": 535,
+          "lastFrame": 535,
+          "startSec": 9.2331,
+          "endSec": 9.4831,
+          "frameCount": 1,
+          "stutterFrames": 1,
+          "hitchFrames": 1,
+          "totalTimeMs": 250,
+          "longestFrameMs": 250,
+          "longestFrame": 535,
+          "firstSourceLine": 541,
+          "lastSourceLine": 541,
+          "touchesSelectionStart": false,
+          "touchesSelectionEnd": false
+        }
+      ],
+      "metrics": {
+        "frameCount": 562,
+        "durationSec": 9.933000000000021,
+        "averageFps": 56.57907983489367,
+        "meanOfInstantaneousFps": 59.80154190600103,
+        "percentilesMs": {
+          "p50": 16.699999999999818,
+          "p90": 16.700000000000728,
+          "p95": 16.799999999999272,
+          "p99": 16.800000000000537,
+          "p999": 293.9000000000078
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 59.52380952380762,
+          "meanOfSlowestMethodFps": 8.992805755395624,
+          "timeWeightedFps": 2.857142857142857
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 3.402517863218691,
+          "meanOfSlowestMethodFps": 2.857142857142857,
+          "timeWeightedFps": 2.857142857142857
+        },
+        "stutter": {
+          "stutterEventCount": 2,
+          "totalStutterTimeMs": 600,
+          "stutterTimeFraction": 0.06040471156750227,
+          "hitchThresholdMs": 50,
+          "hitchCount": 2,
+          "totalHitchTimeMs": 600,
+          "hitchTimeFraction": 0.06040471156750227,
+          "stutterFrameIndices": [
+            14,
+            534
+          ]
+        },
+        "masdMs": 2.1000000000001853,
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    }
+  },
+  {
+    "browser": "firefox",
+    "version": "155.0",
+    "width": 1440,
+    "errors": [],
+    "overflow": false,
+    "screenshot": "../../docs/assets/timestamp-gaps/firefox-1440.png",
+    "report": {
+      "tool": "stutterscope",
+      "schemaVersion": 4,
+      "generatedAt": "2026-10-10T20:02:12.761Z",
+      "source": {
+        "fileName": "missing.csv",
+        "format": "generic",
+        "application": null,
+        "frameCount": 562,
+        "durationSec": 9.933000000000002,
+        "columns": [
+          "frame",
+          "elapsed_ms"
+        ],
+        "skippedRows": 4,
+        "warnings": [
+          "line 151: missing/invalid elapsed_ms, row skipped",
+          "line 152: missing/invalid elapsed_ms, row skipped",
+          "line 153: missing/invalid elapsed_ms, row skipped",
+          "line 154: cannot derive frame time after missing/invalid elapsed_ms, row skipped"
+        ],
+        "omittedWarningDetails": 0,
+        "genericMapping": {
+          "valueColumn": "elapsed_ms",
+          "valueKind": "timestamp_ms_cumulative"
+        },
+        "timingEvidence": null
+      },
+      "analysis": {
+        "stutterOptions": {
+          "windowRadius": 10,
+          "kMultiplier": 2,
+          "hitchThresholdMs": 50
+        },
+        "selection": {
+          "requested": null,
+          "timeBasis": "accumulated-frame-time",
+          "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+          "detectionContext": "full-stream",
+          "sourceFrameCount": 562,
+          "sourceDurationSec": 9.933000000000002,
+          "firstFrameIndex": 0,
+          "lastFrameIndex": 561,
+          "startSec": 0,
+          "endSec": 9.933000000000002,
+          "durationSec": 9.933000000000021,
+          "excludedBefore": 0,
+          "excludedAfter": 0
+        },
+        "stutterIndexBasis": "selected-series-zero-based"
+      },
+      "episodes": [
+        {
+          "firstFrame": 15,
+          "lastFrame": 15,
+          "startSec": 0.2334,
+          "endSec": 0.5833999999999999,
+          "frameCount": 1,
+          "stutterFrames": 1,
+          "hitchFrames": 1,
+          "totalTimeMs": 350,
+          "longestFrameMs": 350,
+          "longestFrame": 15,
+          "firstSourceLine": 17,
+          "lastSourceLine": 17,
+          "touchesSelectionStart": false,
+          "touchesSelectionEnd": false
+        },
+        {
+          "firstFrame": 535,
+          "lastFrame": 535,
+          "startSec": 9.2331,
+          "endSec": 9.4831,
+          "frameCount": 1,
+          "stutterFrames": 1,
+          "hitchFrames": 1,
+          "totalTimeMs": 250,
+          "longestFrameMs": 250,
+          "longestFrame": 535,
+          "firstSourceLine": 541,
+          "lastSourceLine": 541,
+          "touchesSelectionStart": false,
+          "touchesSelectionEnd": false
+        }
+      ],
+      "metrics": {
+        "frameCount": 562,
+        "durationSec": 9.933000000000021,
+        "averageFps": 56.57907983489367,
+        "meanOfInstantaneousFps": 59.80154190600103,
+        "percentilesMs": {
+          "p50": 16.699999999999818,
+          "p90": 16.700000000000728,
+          "p95": 16.799999999999272,
+          "p99": 16.800000000000537,
+          "p999": 293.9000000000078
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 59.52380952380762,
+          "meanOfSlowestMethodFps": 8.992805755395624,
+          "timeWeightedFps": 2.857142857142857
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 3.402517863218691,
+          "meanOfSlowestMethodFps": 2.857142857142857,
+          "timeWeightedFps": 2.857142857142857
+        },
+        "stutter": {
+          "stutterEventCount": 2,
+          "totalStutterTimeMs": 600,
+          "stutterTimeFraction": 0.06040471156750227,
+          "hitchThresholdMs": 50,
+          "hitchCount": 2,
+          "totalHitchTimeMs": 600,
+          "hitchTimeFraction": 0.06040471156750227,
+          "stutterFrameIndices": [
+            14,
+            534
+          ]
+        },
+        "masdMs": 2.1000000000001853,
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    }
+  },
+  {
+    "browser": "firefox",
+    "version": "155.0",
+    "width": 375,
+    "errors": [],
+    "overflow": false,
+    "screenshot": "../../docs/assets/timestamp-gaps/firefox-375.png",
+    "report": {
+      "tool": "stutterscope",
+      "schemaVersion": 4,
+      "generatedAt": "2026-10-10T20:02:13.366Z",
+      "source": {
+        "fileName": "missing.csv",
+        "format": "generic",
+        "application": null,
+        "frameCount": 562,
+        "durationSec": 9.933000000000002,
+        "columns": [
+          "frame",
+          "elapsed_ms"
+        ],
+        "skippedRows": 4,
+        "warnings": [
+          "line 151: missing/invalid elapsed_ms, row skipped",
+          "line 152: missing/invalid elapsed_ms, row skipped",
+          "line 153: missing/invalid elapsed_ms, row skipped",
+          "line 154: cannot derive frame time after missing/invalid elapsed_ms, row skipped"
+        ],
+        "omittedWarningDetails": 0,
+        "genericMapping": {
+          "valueColumn": "elapsed_ms",
+          "valueKind": "timestamp_ms_cumulative"
+        },
+        "timingEvidence": null
+      },
+      "analysis": {
+        "stutterOptions": {
+          "windowRadius": 10,
+          "kMultiplier": 2,
+          "hitchThresholdMs": 50
+        },
+        "selection": {
+          "requested": null,
+          "timeBasis": "accumulated-frame-time",
+          "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+          "detectionContext": "full-stream",
+          "sourceFrameCount": 562,
+          "sourceDurationSec": 9.933000000000002,
+          "firstFrameIndex": 0,
+          "lastFrameIndex": 561,
+          "startSec": 0,
+          "endSec": 9.933000000000002,
+          "durationSec": 9.933000000000021,
+          "excludedBefore": 0,
+          "excludedAfter": 0
+        },
+        "stutterIndexBasis": "selected-series-zero-based"
+      },
+      "episodes": [
+        {
+          "firstFrame": 15,
+          "lastFrame": 15,
+          "startSec": 0.2334,
+          "endSec": 0.5833999999999999,
+          "frameCount": 1,
+          "stutterFrames": 1,
+          "hitchFrames": 1,
+          "totalTimeMs": 350,
+          "longestFrameMs": 350,
+          "longestFrame": 15,
+          "firstSourceLine": 17,
+          "lastSourceLine": 17,
+          "touchesSelectionStart": false,
+          "touchesSelectionEnd": false
+        },
+        {
+          "firstFrame": 535,
+          "lastFrame": 535,
+          "startSec": 9.2331,
+          "endSec": 9.4831,
+          "frameCount": 1,
+          "stutterFrames": 1,
+          "hitchFrames": 1,
+          "totalTimeMs": 250,
+          "longestFrameMs": 250,
+          "longestFrame": 535,
+          "firstSourceLine": 541,
+          "lastSourceLine": 541,
+          "touchesSelectionStart": false,
+          "touchesSelectionEnd": false
+        }
+      ],
+      "metrics": {
+        "frameCount": 562,
+        "durationSec": 9.933000000000021,
+        "averageFps": 56.57907983489367,
+        "meanOfInstantaneousFps": 59.80154190600103,
+        "percentilesMs": {
+          "p50": 16.699999999999818,
+          "p90": 16.700000000000728,
+          "p95": 16.799999999999272,
+          "p99": 16.800000000000537,
+          "p999": 293.9000000000078
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 59.52380952380762,
+          "meanOfSlowestMethodFps": 8.992805755395624,
+          "timeWeightedFps": 2.857142857142857
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 3.402517863218691,
+          "meanOfSlowestMethodFps": 2.857142857142857,
+          "timeWeightedFps": 2.857142857142857
+        },
+        "stutter": {
+          "stutterEventCount": 2,
+          "totalStutterTimeMs": 600,
+          "stutterTimeFraction": 0.06040471156750227,
+          "hitchThresholdMs": 50,
+          "hitchCount": 2,
+          "totalHitchTimeMs": 600,
+          "hitchTimeFraction": 0.06040471156750227,
+          "stutterFrameIndices": [
+            14,
+            534
+          ]
+        },
+        "masdMs": 2.1000000000001853,
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    }
+  }
+]

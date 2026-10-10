@@ -191,6 +191,10 @@ which format you point the CLI or the web app at (they do: it's how this
 project's cross-format tests catch a parser silently reading the wrong
 column).
 
+Missing cumulative timestamps now break frame adjacency instead of creating a
+false hitch. The [retained capture replay](studies/timestamp-gaps/README.md)
+compares the CLI and browser exports with adjacent-row arithmetic.
+
 ## How it works
 
 **Parsing.** Each format has its own `sniff()`/parser pair in
