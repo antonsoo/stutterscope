@@ -19,8 +19,8 @@ export function stripBom(text: string): string {
   return text.charCodeAt(0) === 0xfeff ? text.slice(1) : text;
 }
 
-/** Splits one CSV record into fields, honoring double-quoted fields. */
-export function splitCsvLine(line: string): string[] {
+/** One physical line per record; quoted commas and doubled quotes are supported. */
+export function splitCsvLine(line: string, lineNumber?: number): string[] {
   if (line.indexOf('"') === -1) {
     // Fast path: the overwhelming majority of data rows have no quotes.
     return line.split(",");
@@ -28,6 +28,10 @@ export function splitCsvLine(line: string): string[] {
   const fields: string[] = [];
   let field = "";
   let inQuotes = false;
+  let closedQuote = false;
+  const invalid = (reason: string): ParseError => new ParseError(
+    `${lineNumber === undefined ? "" : `line ${lineNumber}: `}CSV field ${fields.length + 1}: ${reason}`,
+  );
   for (let i = 0; i < line.length; i++) {
     const ch = line[i];
     if (inQuotes) {
@@ -37,19 +41,28 @@ export function splitCsvLine(line: string): string[] {
           i++;
         } else {
           inQuotes = false;
+          closedQuote = true;
         }
       } else {
         field += ch;
       }
     } else if (ch === '"') {
+      if (closedQuote || field.trim().length > 0) {
+        throw invalid('unexpected quote in an unquoted field; quote the entire field and double any literal quotes');
+      }
       inQuotes = true;
     } else if (ch === ",") {
       fields.push(field);
       field = "";
+      closedQuote = false;
     } else {
+      if (closedQuote && ch !== " " && ch !== "\t") {
+        throw invalid('unexpected text after a closing quote; separate fields with a comma');
+      }
       field += ch;
     }
   }
+  if (inQuotes) throw invalid('unclosed quoted field; each CSV record must fit on one line (multiline fields are not supported)');
   fields.push(field);
   return fields;
 }
@@ -204,11 +217,16 @@ export function parseWarnings(skipped: SkippedRows, frameCount: number): string[
   return frameCount === 0 ? [...skipped.messages, "no data rows parsed"] : skipped.messages;
 }
 
-/** Builds a header-name -> column-index lookup, case-sensitive, first match wins. */
-export function indexHeader(headerFields: string[]): Map<string, number> {
+/** Case-sensitive names after trimming. Duplicate named columns cannot be selected safely. */
+export function indexHeader(headerFields: string[], lineNumber?: number): Map<string, number> {
   const map = new Map<string, number>();
   headerFields.forEach((name, i) => {
     const trimmed = name.trim();
+    const previous = map.get(trimmed);
+    if (trimmed && previous !== undefined) {
+      const label = JSON.stringify(trimmed.length > 80 ? `${trimmed.slice(0, 80)}...` : trimmed);
+      throw new ParseError(`${lineNumber === undefined ? "" : `line ${lineNumber}: `}duplicate column ${label} at columns ${previous + 1} and ${i + 1}; give each named column a unique header`);
+    }
     if (!map.has(trimmed)) map.set(trimmed, i);
   });
   return map;

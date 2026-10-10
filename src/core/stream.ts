@@ -19,9 +19,9 @@ export async function parseFileStreaming(
   onProgress?: ProgressCallback,
 ): Promise<FrameSeries> {
   const totalBytes = file.size;
-  const reader = file.stream().getReader();
   // The encoding shows in the file's first two bytes, which may not be the first chunk's.
   const decoder = new TextDecoder(detectEncoding(new Uint8Array(await file.slice(0, 2).arrayBuffer())));
+  const reader = file.stream().getReader();
   const scanner = new LineScanner();
 
   let bytesRead = 0;
@@ -37,40 +37,48 @@ export async function parseFileStreaming(
     onProgress(progress);
   };
 
-  for (;;) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    bytesRead += value.byteLength;
-    const chunk = decoder.decode(value, { stream: true });
-    for (const line of scanner.feed(chunk)) {
+  try {
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      bytesRead += value.byteLength;
+      const chunk = decoder.decode(value, { stream: true });
+      for (const line of scanner.feed(chunk)) {
+        if (line.length > 0) {
+          parser.pushLine(line, lineIndex);
+          rowsParsed++;
+        }
+        lineIndex++;
+      }
+      report(false);
+    }
+    const tail = decoder.decode(); // flush any pending multi-byte sequence
+    if (tail.length > 0) {
+      for (const line of scanner.feed(tail)) {
+        if (line.length > 0) {
+          parser.pushLine(line, lineIndex);
+          rowsParsed++;
+        }
+        lineIndex++;
+      }
+    }
+    for (const line of scanner.finish()) {
       if (line.length > 0) {
         parser.pushLine(line, lineIndex);
         rowsParsed++;
       }
       lineIndex++;
     }
-    report(false);
-  }
-  const tail = decoder.decode(); // flush any pending multi-byte sequence
-  if (tail.length > 0) {
-    for (const line of scanner.feed(tail)) {
-      if (line.length > 0) {
-        parser.pushLine(line, lineIndex);
-        rowsParsed++;
-      }
-      lineIndex++;
-    }
-  }
-  for (const line of scanner.finish()) {
-    if (line.length > 0) {
-      parser.pushLine(line, lineIndex);
-      rowsParsed++;
-    }
-    lineIndex++;
-  }
-  report(true);
+    report(true);
 
-  return parser.finish(fileName);
+    return parser.finish(fileName);
+  } catch (error) {
+    // A malformed record stops the import. Do not leave unread input locked.
+    await reader.cancel().catch(() => undefined);
+    throw error;
+  } finally {
+    reader.releaseLock();
+  }
 }
 
 /**

@@ -1,0 +1,136 @@
+[
+  {
+    "id": "presentmon1-duplicate",
+    "file": "fixtures/presentmon1-duplicate.csv",
+    "expected": "rejected",
+    "options": []
+  },
+  {
+    "id": "presentmon2-duplicate",
+    "file": "fixtures/presentmon2-duplicate.csv",
+    "expected": "rejected",
+    "options": []
+  },
+  {
+    "id": "ocat-duplicate",
+    "file": "fixtures/ocat-duplicate.csv",
+    "expected": "rejected",
+    "options": []
+  },
+  {
+    "id": "frameview-duplicate",
+    "file": "fixtures/frameview-duplicate.csv",
+    "expected": "rejected",
+    "options": []
+  },
+  {
+    "id": "capframex-duplicate",
+    "file": "fixtures/capframex-duplicate.csv",
+    "expected": "rejected",
+    "options": []
+  },
+  {
+    "id": "mangohud-duplicate",
+    "file": "fixtures/mangohud-duplicate.csv",
+    "expected": "rejected",
+    "options": []
+  },
+  {
+    "id": "generic-duplicate",
+    "file": "fixtures/generic-duplicate.csv",
+    "expected": "rejected",
+    "options": [
+      "--format",
+      "generic",
+      "--generic-column",
+      "frame_ms",
+      "--generic-kind",
+      "frametime_ms"
+    ]
+  },
+  {
+    "id": "quote-in-number",
+    "file": "fixtures/quote-in-number.csv",
+    "expected": "rejected",
+    "options": []
+  },
+  {
+    "id": "text-after-quote",
+    "file": "fixtures/text-after-quote.csv",
+    "expected": "rejected",
+    "options": []
+  },
+  {
+    "id": "unclosed-last-field",
+    "file": "fixtures/unclosed-last-field.csv",
+    "expected": "rejected",
+    "options": []
+  },
+  {
+    "id": "multiline-field",
+    "file": "fixtures/multiline-field.csv",
+    "expected": "rejected",
+    "options": []
+  },
+  {
+    "id": "duplicate-telemetry",
+    "file": "fixtures/duplicate-telemetry.csv",
+    "expected": "rejected",
+    "options": []
+  },
+  {
+    "id": "quoted-commas-and-quotes",
+    "file": "fixtures/quoted-commas-and-quotes.csv",
+    "expected": "parsed",
+    "options": [],
+    "frames": 2,
+    "averageFps": 18.181818181818183
+  },
+  {
+    "id": "quoted-numbers",
+    "file": "fixtures/quoted-numbers.csv",
+    "expected": "parsed",
+    "options": [],
+    "frames": 2,
+    "averageFps": 18.181818181818183
+  },
+  {
+    "id": "empty-header-padding",
+    "file": "fixtures/empty-header-padding.csv",
+    "expected": "parsed",
+    "options": [],
+    "frames": 2,
+    "averageFps": 18.181818181818183
+  },
+  {
+    "id": "generic-quoted-column",
+    "file": "fixtures/generic-quoted-column.csv",
+    "expected": "parsed",
+    "options": [
+      "--format",
+      "generic",
+      "--generic-column",
+      "frame, ms",
+      "--generic-kind",
+      "frametime_ms"
+    ],
+    "frames": 2,
+    "averageFps": 18.181818181818183
+  },
+  {
+    "id": "capframex-non-csv-metadata",
+    "file": "fixtures/capframex-non-csv-metadata.csv",
+    "expected": "parsed",
+    "options": [],
+    "frames": 2,
+    "averageFps": 18.181818181818183
+  },
+  {
+    "id": "ocat-ragged-metadata",
+    "file": "fixtures/ocat-ragged-metadata.csv",
+    "expected": "parsed",
+    "options": [],
+    "frames": 2,
+    "averageFps": 18.181818181818183
+  }
+]

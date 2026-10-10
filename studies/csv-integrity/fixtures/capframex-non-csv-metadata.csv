@@ -1,0 +1,4 @@
+//GameName=A "quoted" title
+Application,MsBetweenPresents,TimeInSeconds
+game.exe,10,0.01
+game.exe,100,0.11

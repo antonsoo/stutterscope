@@ -1,0 +1,4 @@
+Application,FrameTime,CPUBusy,GPUBusy
+"game
+.exe",100,5,5
+game.exe,10,5,5

@@ -55,9 +55,9 @@ class PresentMon1Parser implements StreamingParser {
   }
 
   pushLine(line: string, lineIndex: number): void {
-    const fields = splitCsvLine(line);
+    const fields = splitCsvLine(line, lineIndex + 1);
     if (this.header === null) {
-      this.header = indexHeader(fields);
+      this.header = indexHeader(fields, lineIndex + 1);
       this.columns = fields.map((f) => f.trim());
       this.hasDropped = this.header.has("Dropped");
       this.hasGpuColumn = this.header.has("msGPUActive");

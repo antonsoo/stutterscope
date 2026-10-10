@@ -38,8 +38,14 @@ function looksLikeFrameHeader(fields: string[]): boolean {
 export function sniff(sampleText: string): SniffResult {
   const lines = sampleText.split(LINE_BREAK, 10);
   for (const line of lines) {
-    if (looksLikeFrameHeader(splitCsvLine(line))) {
-      return { format: "mangohud", confidence: 0.95, reason: "found fps,frametime,cpu_load,... header" };
+    try {
+      if (looksLikeFrameHeader(splitCsvLine(line))) {
+        return { format: "mangohud", confidence: 0.95, reason: "found fps,frametime,cpu_load,... header" };
+      }
+    } catch (error) {
+      // Samples can end mid-field; other formats' metadata need not be CSV.
+      // The chosen parser validates complete records, with their line numbers.
+      if (!(error instanceof ParseError)) throw error;
     }
   }
   return { format: "mangohud", confidence: 0, reason: "no MangoHud frame-metrics header found" };
@@ -59,10 +65,16 @@ class MangoHudParser implements StreamingParser {
   private reversedElapsed = false;
 
   pushLine(line: string, lineIndex: number): void {
-    const fields = splitCsvLine(line);
+    let fields: string[];
+    try {
+      fields = splitCsvLine(line, lineIndex + 1);
+    } catch (error) {
+      if (this.header === null && error instanceof ParseError) return; // preamble is not frame data
+      throw error;
+    }
     if (this.header === null) {
       if (!looksLikeFrameHeader(fields)) return; // skip version/system-info preamble
-      this.header = indexHeader(fields);
+      this.header = indexHeader(fields, lineIndex + 1);
       this.columns = fields.map((f) => f.trim());
       return;
     }

@@ -40,12 +40,15 @@ export interface GenericMapping {
 /** Reads just the header row, for the column-picker UI. */
 export function readHeader(sampleText: string): string[] {
   const firstLine = stripBom(sampleText).split(LINE_BREAK, 1)[0] ?? "";
-  return splitCsvLine(firstLine).map((f) => f.trim());
+  const fields = splitCsvLine(firstLine, 1).map((f) => f.trim());
+  indexHeader(fields, 1);
+  return fields;
 }
 
 export function sniff(sampleText: string): SniffResult {
-  const header = readHeader(sampleText);
-  if (header.length >= 1) {
+  // This is also called for native formats with non-CSV metadata preambles.
+  // Validate the header only when the generic parser/column picker is selected.
+  if (sampleText.trim().length > 0) {
     return { format: "generic", confidence: 0.01, reason: "fallback: any CSV can be mapped manually" };
   }
   return { format: "generic", confidence: 0, reason: "empty file" };
@@ -180,19 +183,22 @@ function formatTypical(value: number): string {
 function sampleColumns(sampleText: string): { header: string[]; columns: number[][] } {
   const lines = stripBom(sampleText).split(LINE_BREAK);
   // The sample is the first chunk of the file, so its last line may be cut short.
-  if (lines.length > 2) lines.pop();
-  const header = splitCsvLine(lines[0] ?? "").map((f) => f.trim());
+  if (lines.length > 1) lines.pop();
+  const header = readHeader(sampleText);
   const columns: number[][] = header.map(() => []);
-  const rows = lines.slice(1, 1 + GUESS_ROWS).filter((line) => line.trim().length > 0);
-  for (const line of rows) {
-    const fields = splitCsvLine(line);
+  const rows = lines.slice(1, 1 + GUESS_ROWS);
+  let nonemptyRows = 0;
+  for (const [row, line] of rows.entries()) {
+    if (line.trim().length === 0) continue;
+    nonemptyRows++;
+    const fields = splitCsvLine(line, row + 2);
     for (let c = 0; c < header.length; c++) {
       const value = parseFloatOrNull(fields[c]);
       if (value !== null) columns[c]!.push(value);
     }
   }
   // A column counts if nearly every sampled row has a number in it.
-  const needed = Math.max(2, Math.ceil(rows.length * 0.8));
+  const needed = Math.max(2, Math.ceil(nonemptyRows * 0.8));
   return { header, columns: columns.map((values) => (values.length >= needed ? values : [])) };
 }
 
@@ -256,9 +262,9 @@ class GenericParser implements StreamingParser {
   }
 
   pushLine(line: string, lineIndex: number): void {
-    const fields = splitCsvLine(line);
+    const fields = splitCsvLine(line, lineIndex + 1);
     if (this.header === null) {
-      this.header = indexHeader(fields);
+      this.header = indexHeader(fields, lineIndex + 1);
       this.columns = fields.map((f) => f.trim());
       this.hasDropped = this.mapping.droppedColumn !== undefined && this.header.has(this.mapping.droppedColumn);
       return;
