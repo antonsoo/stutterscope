@@ -226,14 +226,21 @@ replacing a capture terminates that worker. If it fails, a retry reloads the
 same file, column mapping, process selection, and analysis interval before
 recomputing.
 
+The current source bundles the parser with the initial page, so the first
+local-file import, comparison, replacement and downloads work after disconnecting.
+This requires an already loaded production page: it is not an offline page
+installer. Unloaded examples still need the network, and lazy font subsets may
+fall back to system fonts. [Reproduction and scope](studies/offline-import/README.md).
+
 **Charts.** The frame-time trace, FPS-over-time, and percentile-curve
 charts use [uPlot](https://github.com/leeoniya/uPlot), which renders
 directly from typed arrays on a single canvas — the reason this stays
 smooth at hundreds of thousands of points without any bundled charting
-framework. The histogram is a ~30-line canvas draw. Total JS bundle:
-**110.38 kB (41.28 kB gzipped)** for the app plus a **29.33 kB** worker
-chunk in the 2026-10-07 source build. These numbers exclude CSS, local fonts,
-and the example captures; see `npm run build`'s output.
+framework. The histogram is a ~30-line canvas draw. The 2026-10-11 source build
+includes the worker in **143,286 bytes** of app JavaScript (**49,942 bytes** with
+Python's default gzip compression). These numbers exclude source maps, CSS,
+local fonts and example captures; they are sizes, not a loading-time benchmark.
+[Before/after bundle receipt](studies/offline-import/bundle-sizes.json).
 
 **Metrics.** Every formula is written out in
 [`docs/metrics.md`](docs/metrics.md) and mirrored exactly in

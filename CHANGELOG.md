@@ -37,6 +37,11 @@ Changes below are in source and have not been released as an npm package.
 
 ### Fixed
 
+- The first local CSV import, comparison, replacement and report downloads can
+  run after disconnecting an already loaded production page. The parser travels
+  in the initial app bundle and starts independent local workers; it no longer
+  requires a later script download. Worker failure and retry remain recoverable.
+
 - Ambiguous named CSV columns now stop imports instead of silently choosing the
   first occurrence. Malformed quotes cannot concatenate numeric fragments or
   discard record boundaries. Errors identify physical lines and fields; native

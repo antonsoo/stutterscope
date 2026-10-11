@@ -215,16 +215,27 @@ test("a delayed sample download cannot supersede a chosen local capture", async 
   expect((await jsonReport(page)).source.fileName).toBe("sample.csv");
 });
 
-test("worker startup failure is actionable and Retry import creates a healthy worker", async ({ page }) => {
-  let first = true;
-  await page.route("**/parse.worker-*.js", async (route) => {
-    if (!first) return route.continue();
-    first = false;
-    await route.fulfill({ contentType: "text/javascript", body: 'throw new Error("Injected startup failure");' });
-  });
+test("worker startup failure is actionable and Retry import creates a healthy worker offline", async ({ page, context }) => {
   await page.goto("./");
+  await context.setOffline(true);
+  await page.evaluate(() => {
+    const Original = window.Worker;
+    let first = true;
+    window.Worker = class extends Original {
+      constructor(url, options) {
+        if (first) {
+          first = false;
+          window.failedStartupWorkerUrl = URL.createObjectURL(new Blob([
+            'throw new Error("Injected startup failure");',
+          ], { type: "text/javascript" }));
+          super(window.failedStartupWorkerUrl, options);
+        } else super(url, options);
+      }
+    };
+  });
   await input(page).setInputFiles(fixture);
   await expect(page.getByRole("alert")).toContainText("worker stopped unexpectedly");
+  await page.evaluate(() => URL.revokeObjectURL(window.failedStartupWorkerUrl));
   await page.getByRole("button", { name: "Retry import" }).click();
   await expect(workspace(page)).toBeVisible();
 });

@@ -1,0 +1,27 @@
+{
+  "scope": "Uncompressed and gzip sizes of built JavaScript, excluding maps/fonts/CSS. Size is not a loading-time benchmark.",
+  "files": {
+    "before": [
+      {
+        "path": "assets/index-zURlZEu0.js",
+        "bytes": 111429,
+        "gzipBytes": 41101,
+        "sha256": "ed5a2f870a33d453205355780d125677a449d822887cf83569695ab68734a564"
+      },
+      {
+        "path": "assets/parse.worker-BHlrI1vH.js",
+        "bytes": 31492,
+        "gzipBytes": 9578,
+        "sha256": "144e423779aeed1b88dd79939e649e923e72a76f3ba3f299afd1e755effbf185"
+      }
+    ],
+    "after": [
+      {
+        "path": "assets/index-iaPPIs7n.js",
+        "bytes": 143286,
+        "gzipBytes": 49942,
+        "sha256": "6e9acac846437620f57bee637ef994d67a4af4848b4796be5aa7b0f81e341973"
+      }
+    ]
+  }
+}

@@ -3,6 +3,7 @@ import type { GenericMapping } from "../core/parsers/generic.ts";
 import type { StutterOptions } from "../core/metrics.ts";
 import type { AnalysisRange } from "../core/analysis.ts";
 import type { WorkerRequest, WorkerResponse, ResultResponse, NeedsMappingResponse } from "../worker/protocol.ts";
+import ParserWorker from "../worker/parse.worker.ts?worker&inline";
 
 export type Slot = "a" | "b";
 export type LoadOutcome =
@@ -35,7 +36,9 @@ export class ParseClient {
   private nextRequestId = 1;
 
   private createSession(slot: Slot): Session {
-    const worker = new Worker(new URL("../worker/parse.worker.ts", import.meta.url), { type: "module" });
+    // Include the parser in the initial app load. Each slot still gets an
+    // independent, cancellable worker even when the first import is offline.
+    const worker = new ParserWorker();
     const session: Session = { worker, ready: false, pending: new Map() };
     this.sessions.set(slot, session);
     worker.addEventListener("message", (event: MessageEvent<WorkerResponse>) => {

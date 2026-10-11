@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-11T01:43:01.051Z",
+  "results": [
+    {
+      "engine": "chromium",
+      "body": "STUTTERSCOPE\nframe-time analysis, entirely in your browser\nsource\nDrop in a capture. See the stutter.\n\nPresentMon, FrameView, CapFrameX, MangoHud, and OCAT CSVs are auto-detected. Everything runs locally — nothing leaves your browser.\n\nPresentMon 1.x\nPresentMon 2.x\nNVIDIA FrameView\nCapFrameX\nMangoHud\nOCAT\nGeneric CSV\nChoose file…\nor load a synthetic sample: PresentMon 1.x PresentMon 2.x NVIDIA FrameView CapFrameX MangoHud OCAT Generic CSV\nRecorded browser experiment\n\nTwo measured animation runs with known blocking work. Inspect the scene separately from startup and follow a hitch to its CSV line.\n\nOpen recorded comparison\nControlled local capture, not a game or GPU benchmark.\nCould not parse controlled-partial-presentmon2.csv: The capture worker stopped unexpectedly. Retry the import or apply detection settings to reload the capture. Retry import\nNothing you drop here is uploaded — parsing and every chart run locally in your browser. · stutterscope is MIT-licensed.",
+      "workspaceVisible": false,
+      "failed": [
+        {
+          "url": "https://antonsoo.github.io/stutterscope/assets/parse.worker-BHlrI1vH.js",
+          "failure": {
+            "errorText": "net::ERR_ABORTED"
+          }
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "body": "STUTTERSCOPE\nframe-time analysis, entirely in your browser\nsource\nDrop in a capture. See the stutter.\n\nPresentMon, FrameView, CapFrameX, MangoHud, and OCAT CSVs are auto-detected. Everything runs locally — nothing leaves your browser.\n\nPresentMon 1.x\nPresentMon 2.x\nNVIDIA FrameView\nCapFrameX\nMangoHud\nOCAT\nGeneric CSV\nChoose file…\nor load a synthetic sample: PresentMon 1.x PresentMon 2.x NVIDIA FrameView CapFrameX MangoHud OCAT Generic CSV\nRecorded browser experiment\n\nTwo measured animation runs with known blocking work. Inspect the scene separately from startup and follow a hitch to its CSV line.\n\nOpen recorded comparison\nControlled local capture, not a game or GPU benchmark.\nCould not parse controlled-partial-presentmon2.csv: The capture worker stopped unexpectedly. Retry the import or apply detection settings to reload the capture. Retry import\nNothing you drop here is uploaded — parsing and every chart run locally in your browser. · stutterscope is MIT-licensed.",
+      "workspaceVisible": false,
+      "failed": [
+        {
+          "url": "https://antonsoo.github.io/stutterscope/assets/parse.worker-BHlrI1vH.js",
+          "failure": {
+            "errorText": "NS_ERROR_OFFLINE"
+          }
+        }
+      ]
+    }
+  ]
+}

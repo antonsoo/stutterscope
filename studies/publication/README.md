@@ -64,6 +64,8 @@ One separate boundary remains at this recorded revision: disconnecting before
 the first import prevents the parser worker from loading. The passing offline
 interval/export checks imported a capture online first. This publication does
 not establish first-import offline support.
+The subsequent [first-import correction](../offline-import/README.md) addresses
+that separate worker-loading dependency.
 
 No npm release or tag was published; npm still reports 0.2.5. These are local
 and hosted checks, not a claim of successful remote CI or ongoing availability.
