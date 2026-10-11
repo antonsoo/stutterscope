@@ -1,0 +1,61 @@
+{
+  "scope": "All fields of eight actual hosted exported reports match the prior b1c33fd deployment, excluding only generatedAt. Captures use the same fixture bytes and file names.",
+  "matches": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "name": "missing-timestamps",
+      "inputSha256": "2962f67830372c6127398a095b1b482df6ef5f0f335f30cc42cd8bf8a72b95e5",
+      "reportSha256WithoutGeneratedAt": "d86249c5b8095b0a1da13371fee7997bce5a64572908ec17eaf25d284bfe2719"
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "name": "partial-telemetry",
+      "inputSha256": "91dedf895e23ca9a32736adeb70e654cbd11ad392846ad30afc13b00b2c926a8",
+      "reportSha256WithoutGeneratedAt": "4a46e878165a5410eb58b84310043cde1d5cb8eaf71d12c1a79a9a1280b187b4"
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "name": "missing-timestamps",
+      "inputSha256": "2962f67830372c6127398a095b1b482df6ef5f0f335f30cc42cd8bf8a72b95e5",
+      "reportSha256WithoutGeneratedAt": "d86249c5b8095b0a1da13371fee7997bce5a64572908ec17eaf25d284bfe2719"
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "name": "partial-telemetry",
+      "inputSha256": "91dedf895e23ca9a32736adeb70e654cbd11ad392846ad30afc13b00b2c926a8",
+      "reportSha256WithoutGeneratedAt": "4a46e878165a5410eb58b84310043cde1d5cb8eaf71d12c1a79a9a1280b187b4"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "name": "missing-timestamps",
+      "inputSha256": "2962f67830372c6127398a095b1b482df6ef5f0f335f30cc42cd8bf8a72b95e5",
+      "reportSha256WithoutGeneratedAt": "d86249c5b8095b0a1da13371fee7997bce5a64572908ec17eaf25d284bfe2719"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "name": "partial-telemetry",
+      "inputSha256": "91dedf895e23ca9a32736adeb70e654cbd11ad392846ad30afc13b00b2c926a8",
+      "reportSha256WithoutGeneratedAt": "4a46e878165a5410eb58b84310043cde1d5cb8eaf71d12c1a79a9a1280b187b4"
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "name": "missing-timestamps",
+      "inputSha256": "2962f67830372c6127398a095b1b482df6ef5f0f335f30cc42cd8bf8a72b95e5",
+      "reportSha256WithoutGeneratedAt": "d86249c5b8095b0a1da13371fee7997bce5a64572908ec17eaf25d284bfe2719"
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "name": "partial-telemetry",
+      "inputSha256": "91dedf895e23ca9a32736adeb70e654cbd11ad392846ad30afc13b00b2c926a8",
+      "reportSha256WithoutGeneratedAt": "4a46e878165a5410eb58b84310043cde1d5cb8eaf71d12c1a79a9a1280b187b4"
+    }
+  ]
+}

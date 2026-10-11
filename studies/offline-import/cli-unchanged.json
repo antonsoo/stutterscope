@@ -1,0 +1,89 @@
+{
+  "scope": "Every compiled CLI file matches the previous clean b1c33fd artifact, already checked on Node 26.7.0 and 22.6.0. This change affects browser worker loading.",
+  "files": [
+    {
+      "path": "cli/index.js",
+      "sha256": "980b8ff906fd59488f5a370bebd7c94b44a99a8dbd3e64ddad915c38798e9cb5"
+    },
+    {
+      "path": "cli/version.js",
+      "sha256": "025c43b0174cddba9eed71580899a21e527500cba7b5a82adb384c647d228a7e"
+    },
+    {
+      "path": "core/analysis.js",
+      "sha256": "587150051d773f6fc0a1be1e717cf56684e4cc1cf4d9cfb52f6e1b0700c42500"
+    },
+    {
+      "path": "core/buffer.js",
+      "sha256": "e873af844bc1c061472297ea7e56fd5fd074048a9062f65e21fffe5ad593fa1c"
+    },
+    {
+      "path": "core/csv.js",
+      "sha256": "0af9f09b9523db052ab2c6454235e5bd8449570efec7b14e5518a70aedaf9d6f"
+    },
+    {
+      "path": "core/encoding.js",
+      "sha256": "61da83cb47e822997aa1cdb893030d72fb40f3ca77bf94e6c55416ce35aac018"
+    },
+    {
+      "path": "core/episodes.js",
+      "sha256": "fca562a7e8abf767be96ec84712ad442d23e85df7cad6e4d52ee2df8c440330c"
+    },
+    {
+      "path": "core/index.js",
+      "sha256": "da269c2a188596acaef3a1371494578d3b121cf2a9a958fbe958faf8ced0d485"
+    },
+    {
+      "path": "core/metrics.js",
+      "sha256": "e5e6c7874add9ba0750244d340ef271c1a0dbc80ec4e86edab004b93b27812c2"
+    },
+    {
+      "path": "core/parsers/capframex.js",
+      "sha256": "a2c84980c2309c41be7c20ef6e127a9a0bc3ed1cf8918277eccd6186e2e54500"
+    },
+    {
+      "path": "core/parsers/frameview.js",
+      "sha256": "faaff9b0557da1d997f91063d1f9901d4e3a4df24e8dc9c69448f6b47a7cfab3"
+    },
+    {
+      "path": "core/parsers/generic.js",
+      "sha256": "82f33fd4953f5b065685faf9ab5d765b743fb85aa91c6725efbcbf843daa2ea2"
+    },
+    {
+      "path": "core/parsers/index.js",
+      "sha256": "ff42582427e4f3a1dd5cc3edf0f5514aa729b433916283e6799dff6abc4488bd"
+    },
+    {
+      "path": "core/parsers/mangohud.js",
+      "sha256": "8c2d46eafa448f4cbb7ccbbcee769c5eeda91e80cc24bbb15cd96d65874002b5"
+    },
+    {
+      "path": "core/parsers/ocat.js",
+      "sha256": "ba2ecccc456663fe8edfb9b871dc1ddd1158cb5eaa3c41a95eee831c2ad5b192"
+    },
+    {
+      "path": "core/parsers/presentmon1.js",
+      "sha256": "cb5c31861c0bd1f58348fcc73bd3ef5e7cbc5e9314e20b708fd73ad6c2ccf8bd"
+    },
+    {
+      "path": "core/parsers/presentmon2.js",
+      "sha256": "a02c8721c5d94bf08d9b1ccbf7f3b93a57ae619129cec410cd02d18e287af8de"
+    },
+    {
+      "path": "core/report.js",
+      "sha256": "ec4521dbb6be22a389f7aad5799937d2b295c2d9725ef1afbf327447a1386bd2"
+    },
+    {
+      "path": "core/stream.js",
+      "sha256": "a08ff5bbe79155097c89ac92a1f325ae4bd6f1830955fda186f9c2bdb25871ee"
+    },
+    {
+      "path": "core/streams.js",
+      "sha256": "d4db3bf193e2b50803f5818fcaafdb8749b6ebafcb2e078f6dee8e4de8d98b72"
+    },
+    {
+      "path": "core/types.js",
+      "sha256": "d34bba7125fd99ddd4b49ea7d41d601f07568be60bb4eb4e2398ae99b1e2e8ca"
+    }
+  ]
+}

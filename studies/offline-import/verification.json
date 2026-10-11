@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-11T01:54:53.658636+00:00",
+  "sourceRevision": "6201044621e96c445b77d006e32c599862873a18",
+  "browserTestRevision": "7187680130cee671eea4ea12edff28ebc8eca4b0",
+  "pagesRevision": "4dabfd35b268b5d241749b077153969d8df0aca7",
+  "cleanArchive": {
+    "node": "26.7.0",
+    "npm": "12.0.1",
+    "install": "npm ci",
+    "lint": "passed",
+    "typecheck": "passed",
+    "coreChecksNormalLocale": 254,
+    "coreChecksCommaDecimalLocale": 254,
+    "browserWorkflows": 70,
+    "cliFilesUnchanged": 21,
+    "buildFilesMatchFirstSourceBuild": 30,
+    "buildCommand": "npm run build",
+    "buildDirectory": "dist"
+  },
+  "hosted": {
+    "matchingFiles": 30,
+    "browserWorkflows": 70,
+    "counterexampleExportsUnchangedExceptGeneratedAt": 8,
+    "offlineCaptures": 2,
+    "note": "Fresh contexts disconnected before first import. Local blob workers operate without script downloads; optional same-origin font requests may fail and use system fallbacks."
+  },
+  "fixtures": [
+    {
+      "path": "examples/telemetry/controlled-partial-presentmon2.csv",
+      "sha256": "91dedf895e23ca9a32736adeb70e654cbd11ad392846ad30afc13b00b2c926a8",
+      "bytes": 226
+    },
+    {
+      "path": "studies/timestamp-gaps/missing.csv",
+      "sha256": "2962f67830372c6127398a095b1b482df6ef5f0f335f30cc42cd8bf8a72b95e5",
+      "bytes": 10597
+    },
+    {
+      "path": "studies/csv-integrity/fixtures/presentmon2-duplicate.csv",
+      "sha256": "63ba8b059c2b75dfdfe6b75056e573d0a24839eb6e6f35f07b8c43339b9d9dfc",
+      "bytes": 650
+    }
+  ],
+  "checkCorrection": "Initial run passed 61 and rejected local blob URLs in nine Chromium origin guards. Test-only 7187680 uses URL.origin, retaining external-origin rejection. The complete corrected 70-workflow run passed against the unchanged source build.",
+  "scope": "Browser worker packaging and CSP change. Actual hosted offline workflows verified. No CLI/runtime formula change, npm package release, tag or remote CI claim."
+}

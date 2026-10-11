@@ -226,7 +226,7 @@ replacing a capture terminates that worker. If it fails, a retry reloads the
 same file, column mapping, process selection, and analysis interval before
 recomputing.
 
-The current source bundles the parser with the initial page, so the first
+The source and live demo bundle the parser with the initial page, so the first
 local-file import, comparison, replacement and downloads work after disconnecting.
 This requires an already loaded production page: it is not an offline page
 installer. Unloaded examples still need the network, and lazy font subsets may

@@ -1,0 +1,58 @@
+{
+  "stats": {
+    "startTime": "2026-10-11T01:50:16.251Z",
+    "duration": 44135.618,
+    "expected": 61,
+    "skipped": 0,
+    "unexpected": 9,
+    "flaky": 0
+  },
+  "failures": [
+    {
+      "title": "recorded experiment opens both scene intervals, preserves evidence, and exports both runs offline",
+      "engine": "chromium",
+      "cause": "Origin guard incorrectly classified same-origin blob worker URLs as external requests."
+    },
+    {
+      "title": "viewing an episode does not change statistics; Analyze visible trace applies the viewed interval",
+      "engine": "chromium",
+      "cause": "Origin guard incorrectly classified same-origin blob worker URLs as external requests."
+    },
+    {
+      "title": "bad ranges and worker failures retain results; retry and settings preserve each interval",
+      "engine": "chromium",
+      "cause": "Origin guard incorrectly classified same-origin blob worker URLs as external requests."
+    },
+    {
+      "title": "cancel and a replacement source cannot receive an obsolete interval result",
+      "engine": "chromium",
+      "cause": "Origin guard incorrectly classified same-origin blob worker URLs as external requests."
+    },
+    {
+      "title": "episode pages bound the table while filters retain complete downloadable evidence",
+      "engine": "chromium",
+      "cause": "Origin guard incorrectly classified same-origin blob worker URLs as external requests."
+    },
+    {
+      "title": "interval and source-evidence controls are accessible at 1440px",
+      "engine": "chromium",
+      "cause": "Origin guard incorrectly classified same-origin blob worker URLs as external requests."
+    },
+    {
+      "title": "interval and source-evidence controls are accessible at 375px",
+      "engine": "chromium",
+      "cause": "Origin guard incorrectly classified same-origin blob worker URLs as external requests."
+    },
+    {
+      "title": "interval and source-evidence controls are accessible at 320px",
+      "engine": "chromium",
+      "cause": "Origin guard incorrectly classified same-origin blob worker URLs as external requests."
+    },
+    {
+      "title": "periodic MangoHud logging cannot replace the current report with misleading frame metrics",
+      "engine": "chromium",
+      "cause": "Origin guard incorrectly classified same-origin blob worker URLs as external requests."
+    }
+  ],
+  "correction": "Test-only revision 7187680 compares URL.origin, as the existing main browser checks already did. HTTP requests to any external origin remain rejected."
+}

@@ -1,0 +1,606 @@
+{
+  "stats": {
+    "startTime": "2026-10-11T01:51:36.765Z",
+    "duration": 41449.784,
+    "expected": 70,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "captures": [
+    {
+      "engine": "chromium",
+      "initial": {
+        "frameCount": 4,
+        "durationSec": 0.064,
+        "averageFps": 62.5,
+        "meanOfInstantaneousFps": 62.5,
+        "percentilesMs": {
+          "p50": 16,
+          "p90": 16,
+          "p95": 16,
+          "p99": 16,
+          "p999": 16
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 62.5,
+          "meanOfSlowestMethodFps": 62.5,
+          "timeWeightedFps": 62.5
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 62.5,
+          "meanOfSlowestMethodFps": 62.5,
+          "timeWeightedFps": 62.5
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0,
+        "dropped": {
+          "droppedCount": 1,
+          "observedFrames": 2,
+          "droppedFraction": 0.5
+        },
+        "boundShare": {
+          "cpuBoundFrames": 0,
+          "gpuBoundFrames": 1,
+          "cpuBoundFraction": 0,
+          "gpuBoundFraction": 1
+        },
+        "latency": {
+          "observedFrames": 1,
+          "meanMs": 10,
+          "p50": 10,
+          "p90": 10,
+          "p99": 10
+        },
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 2,
+            "unknownFrames": 2
+          },
+          "cpuGpuBusy": {
+            "observedFrames": 1,
+            "unknownFrames": 3
+          },
+          "displayLatency": {
+            "observedFrames": 1,
+            "unknownFrames": 3
+          }
+        }
+      },
+      "comparison": {
+        "a": {
+          "frameCount": 4,
+          "durationSec": 0.064,
+          "averageFps": 62.5,
+          "meanOfInstantaneousFps": 62.5,
+          "percentilesMs": {
+            "p50": 16,
+            "p90": 16,
+            "p95": 16,
+            "p99": 16,
+            "p999": 16
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 62.5,
+            "meanOfSlowestMethodFps": 62.5,
+            "timeWeightedFps": 62.5
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 62.5,
+            "meanOfSlowestMethodFps": 62.5,
+            "timeWeightedFps": 62.5
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "dropped": {
+            "droppedCount": 1,
+            "observedFrames": 2,
+            "droppedFraction": 0.5
+          },
+          "boundShare": {
+            "cpuBoundFrames": 0,
+            "gpuBoundFrames": 1,
+            "cpuBoundFraction": 0,
+            "gpuBoundFraction": 1
+          },
+          "latency": {
+            "observedFrames": 1,
+            "meanMs": 10,
+            "p50": 10,
+            "p90": 10,
+            "p99": 10
+          },
+          "telemetryCoverage": {
+            "dropped": {
+              "observedFrames": 2,
+              "unknownFrames": 2
+            },
+            "cpuGpuBusy": {
+              "observedFrames": 1,
+              "unknownFrames": 3
+            },
+            "displayLatency": {
+              "observedFrames": 1,
+              "unknownFrames": 3
+            }
+          }
+        },
+        "b": {
+          "frameCount": 562,
+          "durationSec": 9.933000000000021,
+          "averageFps": 56.57907983489367,
+          "meanOfInstantaneousFps": 59.80154190600103,
+          "percentilesMs": {
+            "p50": 16.699999999999818,
+            "p90": 16.700000000000728,
+            "p95": 16.799999999999272,
+            "p99": 16.800000000000537,
+            "p999": 293.9000000000078
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 59.52380952380762,
+            "meanOfSlowestMethodFps": 8.992805755395624,
+            "timeWeightedFps": 2.857142857142857
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 3.402517863218691,
+            "meanOfSlowestMethodFps": 2.857142857142857,
+            "timeWeightedFps": 2.857142857142857
+          },
+          "stutter": {
+            "stutterEventCount": 2,
+            "totalStutterTimeMs": 600,
+            "stutterTimeFraction": 0.06040471156750227,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 600,
+            "hitchTimeFraction": 0.06040471156750227,
+            "stutterFrameIndices": [
+              14,
+              534
+            ]
+          },
+          "masdMs": 2.1000000000001853,
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "selected": {
+        "a": {
+          "frameCount": 2,
+          "durationSec": 0.032,
+          "averageFps": 62.5,
+          "meanOfInstantaneousFps": 62.5,
+          "percentilesMs": {
+            "p50": 16,
+            "p90": 16,
+            "p95": 16,
+            "p99": 16,
+            "p999": 16
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 62.5,
+            "meanOfSlowestMethodFps": 62.5,
+            "timeWeightedFps": 62.5
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 62.5,
+            "meanOfSlowestMethodFps": 62.5,
+            "timeWeightedFps": 62.5
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": {
+              "observedFrames": 0,
+              "unknownFrames": 2
+            },
+            "cpuGpuBusy": {
+              "observedFrames": 0,
+              "unknownFrames": 2
+            },
+            "displayLatency": {
+              "observedFrames": 0,
+              "unknownFrames": 2
+            }
+          }
+        },
+        "b": {
+          "frameCount": 562,
+          "durationSec": 9.933000000000021,
+          "averageFps": 56.57907983489367,
+          "meanOfInstantaneousFps": 59.80154190600103,
+          "percentilesMs": {
+            "p50": 16.699999999999818,
+            "p90": 16.700000000000728,
+            "p95": 16.799999999999272,
+            "p99": 16.800000000000537,
+            "p999": 293.9000000000078
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 59.52380952380762,
+            "meanOfSlowestMethodFps": 8.992805755395624,
+            "timeWeightedFps": 2.857142857142857
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 3.402517863218691,
+            "meanOfSlowestMethodFps": 2.857142857142857,
+            "timeWeightedFps": 2.857142857142857
+          },
+          "stutter": {
+            "stutterEventCount": 2,
+            "totalStutterTimeMs": 600,
+            "stutterTimeFraction": 0.06040471156750227,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 600,
+            "hitchTimeFraction": 0.06040471156750227,
+            "stutterFrameIndices": [
+              14,
+              534
+            ]
+          },
+          "masdMs": 2.1000000000001853,
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "newSessionReplacementMatches": true,
+      "malformedInputRejected": true,
+      "markdownDownloaded": true,
+      "requestsAfterDisconnect": [
+        {
+          "url": "http://127.0.0.1:4193/stutterscope/assets/jetbrains-mono-greek-D3oMJlXt.woff2",
+          "type": "font"
+        }
+      ],
+      "pageErrors": [],
+      "cspViolations": []
+    },
+    {
+      "engine": "firefox",
+      "initial": {
+        "frameCount": 4,
+        "durationSec": 0.064,
+        "averageFps": 62.5,
+        "meanOfInstantaneousFps": 62.5,
+        "percentilesMs": {
+          "p50": 16,
+          "p90": 16,
+          "p95": 16,
+          "p99": 16,
+          "p999": 16
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 62.5,
+          "meanOfSlowestMethodFps": 62.5,
+          "timeWeightedFps": 62.5
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 62.5,
+          "meanOfSlowestMethodFps": 62.5,
+          "timeWeightedFps": 62.5
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0,
+        "dropped": {
+          "droppedCount": 1,
+          "observedFrames": 2,
+          "droppedFraction": 0.5
+        },
+        "boundShare": {
+          "cpuBoundFrames": 0,
+          "gpuBoundFrames": 1,
+          "cpuBoundFraction": 0,
+          "gpuBoundFraction": 1
+        },
+        "latency": {
+          "observedFrames": 1,
+          "meanMs": 10,
+          "p50": 10,
+          "p90": 10,
+          "p99": 10
+        },
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 2,
+            "unknownFrames": 2
+          },
+          "cpuGpuBusy": {
+            "observedFrames": 1,
+            "unknownFrames": 3
+          },
+          "displayLatency": {
+            "observedFrames": 1,
+            "unknownFrames": 3
+          }
+        }
+      },
+      "comparison": {
+        "a": {
+          "frameCount": 4,
+          "durationSec": 0.064,
+          "averageFps": 62.5,
+          "meanOfInstantaneousFps": 62.5,
+          "percentilesMs": {
+            "p50": 16,
+            "p90": 16,
+            "p95": 16,
+            "p99": 16,
+            "p999": 16
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 62.5,
+            "meanOfSlowestMethodFps": 62.5,
+            "timeWeightedFps": 62.5
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 62.5,
+            "meanOfSlowestMethodFps": 62.5,
+            "timeWeightedFps": 62.5
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "dropped": {
+            "droppedCount": 1,
+            "observedFrames": 2,
+            "droppedFraction": 0.5
+          },
+          "boundShare": {
+            "cpuBoundFrames": 0,
+            "gpuBoundFrames": 1,
+            "cpuBoundFraction": 0,
+            "gpuBoundFraction": 1
+          },
+          "latency": {
+            "observedFrames": 1,
+            "meanMs": 10,
+            "p50": 10,
+            "p90": 10,
+            "p99": 10
+          },
+          "telemetryCoverage": {
+            "dropped": {
+              "observedFrames": 2,
+              "unknownFrames": 2
+            },
+            "cpuGpuBusy": {
+              "observedFrames": 1,
+              "unknownFrames": 3
+            },
+            "displayLatency": {
+              "observedFrames": 1,
+              "unknownFrames": 3
+            }
+          }
+        },
+        "b": {
+          "frameCount": 562,
+          "durationSec": 9.933000000000021,
+          "averageFps": 56.57907983489367,
+          "meanOfInstantaneousFps": 59.80154190600103,
+          "percentilesMs": {
+            "p50": 16.699999999999818,
+            "p90": 16.700000000000728,
+            "p95": 16.799999999999272,
+            "p99": 16.800000000000537,
+            "p999": 293.9000000000078
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 59.52380952380762,
+            "meanOfSlowestMethodFps": 8.992805755395624,
+            "timeWeightedFps": 2.857142857142857
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 3.402517863218691,
+            "meanOfSlowestMethodFps": 2.857142857142857,
+            "timeWeightedFps": 2.857142857142857
+          },
+          "stutter": {
+            "stutterEventCount": 2,
+            "totalStutterTimeMs": 600,
+            "stutterTimeFraction": 0.06040471156750227,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 600,
+            "hitchTimeFraction": 0.06040471156750227,
+            "stutterFrameIndices": [
+              14,
+              534
+            ]
+          },
+          "masdMs": 2.1000000000001853,
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "selected": {
+        "a": {
+          "frameCount": 2,
+          "durationSec": 0.032,
+          "averageFps": 62.5,
+          "meanOfInstantaneousFps": 62.5,
+          "percentilesMs": {
+            "p50": 16,
+            "p90": 16,
+            "p95": 16,
+            "p99": 16,
+            "p999": 16
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 62.5,
+            "meanOfSlowestMethodFps": 62.5,
+            "timeWeightedFps": 62.5
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 62.5,
+            "meanOfSlowestMethodFps": 62.5,
+            "timeWeightedFps": 62.5
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": {
+              "observedFrames": 0,
+              "unknownFrames": 2
+            },
+            "cpuGpuBusy": {
+              "observedFrames": 0,
+              "unknownFrames": 2
+            },
+            "displayLatency": {
+              "observedFrames": 0,
+              "unknownFrames": 2
+            }
+          }
+        },
+        "b": {
+          "frameCount": 562,
+          "durationSec": 9.933000000000021,
+          "averageFps": 56.57907983489367,
+          "meanOfInstantaneousFps": 59.80154190600103,
+          "percentilesMs": {
+            "p50": 16.699999999999818,
+            "p90": 16.700000000000728,
+            "p95": 16.799999999999272,
+            "p99": 16.800000000000537,
+            "p999": 293.9000000000078
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 59.52380952380762,
+            "meanOfSlowestMethodFps": 8.992805755395624,
+            "timeWeightedFps": 2.857142857142857
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 3.402517863218691,
+            "meanOfSlowestMethodFps": 2.857142857142857,
+            "timeWeightedFps": 2.857142857142857
+          },
+          "stutter": {
+            "stutterEventCount": 2,
+            "totalStutterTimeMs": 600,
+            "stutterTimeFraction": 0.06040471156750227,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 600,
+            "hitchTimeFraction": 0.06040471156750227,
+            "stutterFrameIndices": [
+              14,
+              534
+            ]
+          },
+          "masdMs": 2.1000000000001853,
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "newSessionReplacementMatches": true,
+      "malformedInputRejected": true,
+      "markdownDownloaded": true,
+      "requestsAfterDisconnect": [
+        {
+          "url": "http://127.0.0.1:4193/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+          "type": "font"
+        },
+        {
+          "url": "http://127.0.0.1:4193/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+          "type": "font"
+        },
+        {
+          "url": "http://127.0.0.1:4193/stutterscope/assets/jetbrains-mono-greek-D3oMJlXt.woff2",
+          "type": "font"
+        },
+        {
+          "url": "http://127.0.0.1:4193/stutterscope/assets/jetbrains-mono-greek-D3oMJlXt.woff2",
+          "type": "font"
+        }
+      ],
+      "pageErrors": [],
+      "cspViolations": []
+    }
+  ]
+}
