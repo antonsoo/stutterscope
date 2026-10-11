@@ -25,7 +25,7 @@ test.beforeEach(async ({ page }) => {
   const errors = [];
   const external = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  page.on("request", (request) => { if (!request.url().startsWith("http://127.0.0.1:4193/")) external.push(request.url()); });
+  page.on("request", (request) => { if (new URL(request.url()).origin !== "http://127.0.0.1:4193") external.push(request.url()); });
   await page.exposeFunction("intervalBrowserEvidence", () => ({ errors, external }));
   await page.addInitScript(() => {
     window.intervalCsp = [];
