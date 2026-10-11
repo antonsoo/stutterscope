@@ -6,7 +6,7 @@ Frame-time analysis for PC gamers and hardware reviewers. Drop in a capture, see
 [![License: MIT](https://img.shields.io/badge/license-MIT-7cffb2.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/demo-antonsoo.github.io%2Fstutterscope-7cffb2)](https://antonsoo.github.io/stutterscope/)
 
-**Missing telemetry is not a measured outcome (source checkout).** A blank
+**Missing telemetry is not a measured outcome (source and live demo).** A blank
 `DisplayedTime` cell no longer counts as a dropped frame; a missing `Dropped`
 column no longer means zero drops. Optional metrics show how many frames
 actually supplied an observation, including after selecting a process or time
@@ -16,13 +16,14 @@ Six unmodified upstream capture files also stop reporting an invented zero.
 [Rules, pinned-capture replay and actual exports](studies/telemetry-evidence/README.md).
 These source changes have not been released to npm.
 
-**New in this source checkout:** measure a selected interval in each run, inspect
+**In the source checkout and live demo:** measure a selected interval in each run, inspect
 slow-frame episodes back to their original CSV lines, and export both runs together.
 The app's **Open recorded comparison** loads a controlled browser capture with four
 measured scene hitches in A and none in B. This is a local animation experiment,
 not a game benchmark. [Walkthrough and exact selection rules](docs/interval-analysis.md).
-These additions have not been released to npm; the retained verification uses
-a locally built production site.
+These additions have not been released to npm. The
+[public deployment verification](studies/publication/README.md) retains fresh
+worker imports, downloads, recovery checks and served-file hashes.
 
 ![Stutterscope compares selected intervals from two recorded browser captures, retaining original frame numbers and measured slow-frame counts](docs/assets/interval-comparison.png)
 
@@ -68,9 +69,9 @@ npm install && npm run dev
 
 Open the printed local URL, click one of the "load a synthetic sample"
 links, and you're looking at a real (synthetic, clearly labelled) capture.
-The [live demo](https://antonsoo.github.io/stutterscope/) runs the published
-version; source-checkout additions above await release. Both process captures
-locally in the browser.
+The [live demo](https://antonsoo.github.io/stutterscope/) includes the current
+source corrections and interval analysis. The npm CLI still predates those
+changes. Both process captures locally; no capture is uploaded.
 
 Prefer the terminal? `npx` runs the published CLI
 ([`@antonsoloviev/stutterscope`](https://www.npmjs.com/package/@antonsoloviev/stutterscope)

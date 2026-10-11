@@ -1,0 +1,253 @@
+{
+  "checkedAt": "2026-10-11T01:40:44.312839+00:00",
+  "files": [
+    {
+      "path": "assets/index-x_73MQio.css",
+      "url": "https://antonsoo.github.io/stutterscope/assets/index-x_73MQio.css",
+      "bytes": 37779,
+      "expected_sha256": "f2dd2a21378d496b931b0546b7c31fdbcca39c59235d32baffcc7ab9683d9799",
+      "served_sha256": "f2dd2a21378d496b931b0546b7c31fdbcca39c59235d32baffcc7ab9683d9799",
+      "matches": true
+    },
+    {
+      "path": "assets/index-zURlZEu0.js",
+      "url": "https://antonsoo.github.io/stutterscope/assets/index-zURlZEu0.js",
+      "bytes": 111429,
+      "expected_sha256": "ed5a2f870a33d453205355780d125677a449d822887cf83569695ab68734a564",
+      "served_sha256": "ed5a2f870a33d453205355780d125677a449d822887cf83569695ab68734a564",
+      "matches": true
+    },
+    {
+      "path": "assets/index-zURlZEu0.js.map",
+      "url": "https://antonsoo.github.io/stutterscope/assets/index-zURlZEu0.js.map",
+      "bytes": 462040,
+      "expected_sha256": "540cc3fc033bff3147ec95df92a16f15a41528c848196b8bfd0e9be0052e7784",
+      "served_sha256": "540cc3fc033bff3147ec95df92a16f15a41528c848196b8bfd0e9be0052e7784",
+      "matches": true
+    },
+    {
+      "path": "assets/inter-cyrillic-DqGufNeO.woff2",
+      "url": "https://antonsoo.github.io/stutterscope/assets/inter-cyrillic-DqGufNeO.woff2",
+      "bytes": 18748,
+      "expected_sha256": "71d5ee93cc1e9f1d520a3a8b66456de18c7879d8df09d57fcd2eaff75fef0075",
+      "served_sha256": "71d5ee93cc1e9f1d520a3a8b66456de18c7879d8df09d57fcd2eaff75fef0075",
+      "matches": true
+    },
+    {
+      "path": "assets/inter-cyrillic-ext-BOeWTOD4.woff2",
+      "url": "https://antonsoo.github.io/stutterscope/assets/inter-cyrillic-ext-BOeWTOD4.woff2",
+      "bytes": 25960,
+      "expected_sha256": "ca157063339ac4ad418f214f3abfed119b0798ab4d377386ce5c9e5a7a435ebd",
+      "served_sha256": "ca157063339ac4ad418f214f3abfed119b0798ab4d377386ce5c9e5a7a435ebd",
+      "matches": true
+    },
+    {
+      "path": "assets/inter-greek-CkhJZR-_.woff2",
+      "url": "https://antonsoo.github.io/stutterscope/assets/inter-greek-CkhJZR-_.woff2",
+      "bytes": 18996,
+      "expected_sha256": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6",
+      "served_sha256": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6",
+      "matches": true
+    },
+    {
+      "path": "assets/inter-greek-ext-DlzME5K_.woff2",
+      "url": "https://antonsoo.github.io/stutterscope/assets/inter-greek-ext-DlzME5K_.woff2",
+      "bytes": 11232,
+      "expected_sha256": "6e9e020a25f9b56d418f2c085b1d3c09725a4da23fe693a5b463064606732190",
+      "served_sha256": "6e9e020a25f9b56d418f2c085b1d3c09725a4da23fe693a5b463064606732190",
+      "matches": true
+    },
+    {
+      "path": "assets/inter-latin-Dx4kXJAl.woff2",
+      "url": "https://antonsoo.github.io/stutterscope/assets/inter-latin-Dx4kXJAl.woff2",
+      "bytes": 48256,
+      "expected_sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+      "served_sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+      "matches": true
+    },
+    {
+      "path": "assets/inter-latin-ext-DO1Apj_S.woff2",
+      "url": "https://antonsoo.github.io/stutterscope/assets/inter-latin-ext-DO1Apj_S.woff2",
+      "bytes": 85068,
+      "expected_sha256": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956",
+      "served_sha256": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956",
+      "matches": true
+    },
+    {
+      "path": "assets/inter-vietnamese-CBcvBZtf.woff2",
+      "url": "https://antonsoo.github.io/stutterscope/assets/inter-vietnamese-CBcvBZtf.woff2",
+      "bytes": 10252,
+      "expected_sha256": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2",
+      "served_sha256": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2",
+      "matches": true
+    },
+    {
+      "path": "assets/jetbrains-mono-cyrillic-Buze_B52.woff2",
+      "url": "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-cyrillic-Buze_B52.woff2",
+      "bytes": 8872,
+      "expected_sha256": "e17cfd15fb96909d64095015f958207063a0c07191da3512df7d560a781aebdf",
+      "served_sha256": "e17cfd15fb96909d64095015f958207063a0c07191da3512df7d560a781aebdf",
+      "matches": true
+    },
+    {
+      "path": "assets/jetbrains-mono-greek-D3oMJlXt.woff2",
+      "url": "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-greek-D3oMJlXt.woff2",
+      "bytes": 6836,
+      "expected_sha256": "0a557721b1f8b36d3f3f84442689a71ca4a744300abcb46a1953f51bfc663b66",
+      "served_sha256": "0a557721b1f8b36d3f3f84442689a71ca4a744300abcb46a1953f51bfc663b66",
+      "matches": true
+    },
+    {
+      "path": "assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+      "url": "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+      "bytes": 31432,
+      "expected_sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be",
+      "served_sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be",
+      "matches": true
+    },
+    {
+      "path": "assets/jetbrains-mono-latin-ext-DIC32ArD.woff2",
+      "url": "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-latin-ext-DIC32ArD.woff2",
+      "bytes": 11624,
+      "expected_sha256": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52",
+      "served_sha256": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52",
+      "matches": true
+    },
+    {
+      "path": "assets/jetbrains-mono-vietnamese-BehTv68k.woff2",
+      "url": "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-vietnamese-BehTv68k.woff2",
+      "bytes": 5888,
+      "expected_sha256": "c89b9cc0bc6262bd4f8d8494b6961601f3aefa829d08c2e3635f4d501d3a47c2",
+      "served_sha256": "c89b9cc0bc6262bd4f8d8494b6961601f3aefa829d08c2e3635f4d501d3a47c2",
+      "matches": true
+    },
+    {
+      "path": "assets/parse.worker-BHlrI1vH.js",
+      "url": "https://antonsoo.github.io/stutterscope/assets/parse.worker-BHlrI1vH.js",
+      "bytes": 31492,
+      "expected_sha256": "144e423779aeed1b88dd79939e649e923e72a76f3ba3f299afd1e755effbf185",
+      "served_sha256": "144e423779aeed1b88dd79939e649e923e72a76f3ba3f299afd1e755effbf185",
+      "matches": true
+    },
+    {
+      "path": "assets/parse.worker-BHlrI1vH.js.map",
+      "url": "https://antonsoo.github.io/stutterscope/assets/parse.worker-BHlrI1vH.js.map",
+      "bytes": 149787,
+      "expected_sha256": "831ba7646927cdbd6d1090ad43ace17708958d1d7a52a916eb1b437e16ad3a57",
+      "served_sha256": "831ba7646927cdbd6d1090ad43ace17708958d1d7a52a916eb1b437e16ad3a57",
+      "matches": true
+    },
+    {
+      "path": "controlled-browser/README.md",
+      "url": "https://antonsoo.github.io/stutterscope/controlled-browser/README.md",
+      "bytes": 2650,
+      "expected_sha256": "b5deb6728d2a802392e57672e42a5887d799786d4158a24197a9d0facea340f1",
+      "served_sha256": "b5deb6728d2a802392e57672e42a5887d799786d4158a24197a9d0facea340f1",
+      "matches": true
+    },
+    {
+      "path": "controlled-browser/capture.json",
+      "url": "https://antonsoo.github.io/stutterscope/controlled-browser/capture.json",
+      "bytes": 2700,
+      "expected_sha256": "1d8faa03441c4b208c151f98affa213f43c5ae9a54db11b69e1a131bd8aef854",
+      "served_sha256": "1d8faa03441c4b208c151f98affa213f43c5ae9a54db11b69e1a131bd8aef854",
+      "matches": true
+    },
+    {
+      "path": "controlled-browser/controlled-a.csv",
+      "url": "https://antonsoo.github.io/stutterscope/controlled-browser/controlled-a.csv",
+      "bytes": 20518,
+      "expected_sha256": "8b4afb5a19745287d1b9779a06e47694b3089d6b127c7bac281afe7d69acbda4",
+      "served_sha256": "8b4afb5a19745287d1b9779a06e47694b3089d6b127c7bac281afe7d69acbda4",
+      "matches": true
+    },
+    {
+      "path": "controlled-browser/controlled-b.csv",
+      "url": "https://antonsoo.github.io/stutterscope/controlled-browser/controlled-b.csv",
+      "bytes": 21427,
+      "expected_sha256": "3034ff1dc1db38567396acbb8ae9ad763a018b6e63baf27401d0b6305a1bd405",
+      "served_sha256": "3034ff1dc1db38567396acbb8ae9ad763a018b6e63baf27401d0b6305a1bd405",
+      "matches": true
+    },
+    {
+      "path": "index.html",
+      "url": "https://antonsoo.github.io/stutterscope/index.html",
+      "bytes": 2510,
+      "expected_sha256": "0f652edbc79373f1b5d2a9de460dbe37f912d4c946ddf4191e58527ab5c060ab",
+      "served_sha256": "0f652edbc79373f1b5d2a9de460dbe37f912d4c946ddf4191e58527ab5c060ab",
+      "matches": true
+    },
+    {
+      "path": "samples/capframex-synthetic-demo.csv",
+      "url": "https://antonsoo.github.io/stutterscope/samples/capframex-synthetic-demo.csv",
+      "bytes": 1054953,
+      "expected_sha256": "a51fa824f31df997997491da14429a58fc20cb4160312e804e50ed5f9c022c34",
+      "served_sha256": "a51fa824f31df997997491da14429a58fc20cb4160312e804e50ed5f9c022c34",
+      "matches": true
+    },
+    {
+      "path": "samples/frameview-synthetic-demo.csv",
+      "url": "https://antonsoo.github.io/stutterscope/samples/frameview-synthetic-demo.csv",
+      "bytes": 1863110,
+      "expected_sha256": "14506dfd27f6df3bf65cef74bea3e0cf1e5bd8cf71fe8b5b0a6366d33811d094",
+      "served_sha256": "14506dfd27f6df3bf65cef74bea3e0cf1e5bd8cf71fe8b5b0a6366d33811d094",
+      "matches": true
+    },
+    {
+      "path": "samples/generic-synthetic-demo.csv",
+      "url": "https://antonsoo.github.io/stutterscope/samples/generic-synthetic-demo.csv",
+      "bytes": 222267,
+      "expected_sha256": "3bc8f650fbbe12410248dca64439866acefcbe6ce40c07f8d228bb94cee0081b",
+      "served_sha256": "3bc8f650fbbe12410248dca64439866acefcbe6ce40c07f8d228bb94cee0081b",
+      "matches": true
+    },
+    {
+      "path": "samples/mangohud-synthetic-demo.csv",
+      "url": "https://antonsoo.github.io/stutterscope/samples/mangohud-synthetic-demo.csv",
+      "bytes": 630106,
+      "expected_sha256": "914efc0329f0180f4d5765bb4a936829819335a1f9f385239fe4b1cc518c0902",
+      "served_sha256": "914efc0329f0180f4d5765bb4a936829819335a1f9f385239fe4b1cc518c0902",
+      "matches": true
+    },
+    {
+      "path": "samples/manifest.json",
+      "url": "https://antonsoo.github.io/stutterscope/samples/manifest.json",
+      "bytes": 3158,
+      "expected_sha256": "8fad4687b513b6622c1f9a971926241ea0ac45445c235bf30130c86f54195e65",
+      "served_sha256": "8fad4687b513b6622c1f9a971926241ea0ac45445c235bf30130c86f54195e65",
+      "matches": true
+    },
+    {
+      "path": "samples/ocat-synthetic-demo.csv",
+      "url": "https://antonsoo.github.io/stutterscope/samples/ocat-synthetic-demo.csv",
+      "bytes": 1054715,
+      "expected_sha256": "966125eef3db46eb973d40e15d63097bae33ad9f79211cc126bdddc0df595dba",
+      "served_sha256": "966125eef3db46eb973d40e15d63097bae33ad9f79211cc126bdddc0df595dba",
+      "matches": true
+    },
+    {
+      "path": "samples/presentmon1-synthetic-demo.csv",
+      "url": "https://antonsoo.github.io/stutterscope/samples/presentmon1-synthetic-demo.csv",
+      "bytes": 1342527,
+      "expected_sha256": "2a79f4ac252ef248111cf0f5b8f9c3167c41af78cdbad21b54dc124081967fa8",
+      "served_sha256": "2a79f4ac252ef248111cf0f5b8f9c3167c41af78cdbad21b54dc124081967fa8",
+      "matches": true
+    },
+    {
+      "path": "samples/presentmon2-synthetic-demo.csv",
+      "url": "https://antonsoo.github.io/stutterscope/samples/presentmon2-synthetic-demo.csv",
+      "bytes": 1565513,
+      "expected_sha256": "69826838214e56ebe770a6630fbdcbfd671b23b737493512aeffa9ec1209b900",
+      "served_sha256": "69826838214e56ebe770a6630fbdcbfd671b23b737493512aeffa9ec1209b900",
+      "matches": true
+    },
+    {
+      "path": "telemetry/controlled-partial-presentmon2.csv",
+      "url": "https://antonsoo.github.io/stutterscope/telemetry/controlled-partial-presentmon2.csv",
+      "bytes": 226,
+      "expected_sha256": "91dedf895e23ca9a32736adeb70e654cbd11ad392846ad30afc13b00b2c926a8",
+      "served_sha256": "91dedf895e23ca9a32736adeb70e654cbd11ad392846ad30afc13b00b2c926a8",
+      "matches": true
+    }
+  ]
+}

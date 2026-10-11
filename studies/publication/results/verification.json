@@ -1,0 +1,928 @@
+{
+  "checkedAt": "2026-10-11T01:43:59.549049+00:00",
+  "sourceRevision": "b1c33fd913938dc6c53d6b3ae9310da9e3e23855",
+  "pagesRevision": "8b58b10af367bbf5a0f854efc667ed4feb1c04c6",
+  "runtime": {
+    "node": "26.7.0",
+    "npm": "12.0.1"
+  },
+  "cleanArchive": {
+    "install": "npm ci",
+    "lint": "passed",
+    "typecheck": "passed",
+    "tests": 254,
+    "commaDecimalLocaleTests": 254,
+    "browserWorkflows": 68,
+    "buildCommand": "npm run build",
+    "buildDirectory": "dist"
+  },
+  "oracles": {
+    "timestampCasesPerRuntime": 2,
+    "telemetryCasesPerRuntime": 199,
+    "disagreeingCases": 0,
+    "runtimes": [
+      "26.7.0",
+      "22.6.0"
+    ]
+  },
+  "hosted": {
+    "matchingFiles": 31,
+    "stats": {
+      "startTime": "2026-10-11T01:41:14.380Z",
+      "duration": 110978.80200000001,
+      "expected": 68,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "workflows": [
+      {
+        "file": "app.spec.js",
+        "title": "partial telemetry keeps observed denominators through worker, interval, and downloaded reports",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 7415,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "a newer import cancels its predecessor and exports only the selected capture",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2370,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "cancelling the first import keeps the empty screen usable",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1479,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "New session retires an in-flight comparison and resets applied settings",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2151,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "removing comparison cancels an in-flight process switch",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3029,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "sample manifest-http errors are visible and can retry",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2865,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "sample manifest-json errors are visible and can retry",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1902,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "sample download-http errors are visible and can retry",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2186,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "a delayed sample download cannot supersede a chosen local capture",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1304,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "worker startup failure is actionable and Retry import creates a healthy worker",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1436,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "settings validate without changing reports and apply on keyboard submission",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2604,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "a failure updating B preserves both reports and retry restores its cached source",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3362,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "mapping can be cancelled with Escape; exports retain mapping and skipped-row evidence",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2311,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "an in-flight settings result cannot overwrite a comparison loaded afterward",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2859,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "New session cancels a pending settings calculation without resurrecting the report",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2174,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "redraw and reset release observers and global chart handlers",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2849,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "loaded plots resize from desktop to phone and back without horizontal overflow",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1626,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "production comparison is accessible at 1280px and exports a PNG",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 6948,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "production comparison is accessible at 375px and exports a PNG",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 6190,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "partial telemetry keeps observed denominators through worker, interval, and downloaded reports",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 6081,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "a newer import cancels its predecessor and exports only the selected capture",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2514,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "cancelling the first import keeps the empty screen usable",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1409,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "New session retires an in-flight comparison and resets applied settings",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2344,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "removing comparison cancels an in-flight process switch",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1907,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "sample manifest-http errors are visible and can retry",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2318,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "sample manifest-json errors are visible and can retry",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2118,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "sample download-http errors are visible and can retry",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3697,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "a delayed sample download cannot supersede a chosen local capture",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3243,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "worker startup failure is actionable and Retry import creates a healthy worker",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1313,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "settings validate without changing reports and apply on keyboard submission",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1685,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "a failure updating B preserves both reports and retry restores its cached source",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1986,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "mapping can be cancelled with Escape; exports retain mapping and skipped-row evidence",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2037,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "an in-flight settings result cannot overwrite a comparison loaded afterward",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2507,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "New session cancels a pending settings calculation without resurrecting the report",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2095,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "redraw and reset release observers and global chart handlers",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2019,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "loaded plots resize from desktop to phone and back without horizontal overflow",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1476,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "production comparison is accessible at 1280px and exports a PNG",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 4891,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "app.spec.js",
+        "title": "production comparison is accessible at 375px and exports a PNG",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 6873,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "csv-integrity.spec.js",
+        "title": "presentmon2-duplicate: import refuses false metrics and a corrected capture can be exported",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2150,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "csv-integrity.spec.js",
+        "title": "quote-in-number: import refuses false metrics and a corrected capture can be exported",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1896,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "csv-integrity.spec.js",
+        "title": "generic-duplicate: import refuses false metrics and a corrected capture can be exported",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3669,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "csv-integrity.spec.js",
+        "title": "a rejected replacement preserves the identity and export of the previous valid capture",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3828,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "csv-integrity.spec.js",
+        "title": "presentmon2-duplicate: import refuses false metrics and a corrected capture can be exported",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 4378,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "csv-integrity.spec.js",
+        "title": "quote-in-number: import refuses false metrics and a corrected capture can be exported",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1959,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "csv-integrity.spec.js",
+        "title": "generic-duplicate: import refuses false metrics and a corrected capture can be exported",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1189,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "csv-integrity.spec.js",
+        "title": "a rejected replacement preserves the identity and export of the previous valid capture",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1166,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "recorded experiment opens both scene intervals, preserves evidence, and exports both runs offline",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3151,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "viewing an episode does not change statistics; Analyze visible trace applies the viewed interval",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 4823,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "bad ranges and worker failures retain results; retry and settings preserve each interval",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3752,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "cancel and a replacement source cannot receive an obsolete interval result",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 4941,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "episode pages bound the table while filters retain complete downloadable evidence",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3259,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "interval and source-evidence controls are accessible at 1440px",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 4606,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "interval and source-evidence controls are accessible at 375px",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 4210,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "interval and source-evidence controls are accessible at 320px",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 4345,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "periodic MangoHud logging cannot replace the current report with misleading frame metrics",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3343,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "recorded experiment opens both scene intervals, preserves evidence, and exports both runs offline",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1484,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "viewing an episode does not change statistics; Analyze visible trace applies the viewed interval",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2166,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "bad ranges and worker failures retain results; retry and settings preserve each interval",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2886,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "cancel and a replacement source cannot receive an obsolete interval result",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2137,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "episode pages bound the table while filters retain complete downloadable evidence",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1425,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "interval and source-evidence controls are accessible at 1440px",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3469,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "interval and source-evidence controls are accessible at 375px",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 4276,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "interval and source-evidence controls are accessible at 320px",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 5327,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "intervals.spec.js",
+        "title": "periodic MangoHud logging cannot replace the current report with misleading frame metrics",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 5807,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "timestamp-gaps.spec.js",
+        "title": "missing timestamps remain missing in the worker and JSON export at 1440px",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2247,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "timestamp-gaps.spec.js",
+        "title": "missing timestamps remain missing in the worker and JSON export at 375px",
+        "engine": "chromium",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2475,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "timestamp-gaps.spec.js",
+        "title": "missing timestamps remain missing in the worker and JSON export at 1440px",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2663,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "file": "timestamp-gaps.spec.js",
+        "title": "missing timestamps remain missing in the worker and JSON export at 375px",
+        "engine": "firefox",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2337,
+            "errors": []
+          }
+        ]
+      }
+    ],
+    "exportCaptures": 8,
+    "adaptation": "Same production browser workflows, replacing local base URL and permitted origin with public Pages. Hosted timeout 60 seconds."
+  },
+  "scope": "Existing source repairs rebuilt and published. No registry package or tag. First import after disconnecting is a separate unresolved worker-loading issue at this revision; offline interval/export checks first imported a capture online."
+}

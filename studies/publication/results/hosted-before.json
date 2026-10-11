@@ -1,0 +1,190 @@
+{
+  "checkedAt": "2026-10-11T01:37:24.707Z",
+  "url": "https://antonsoo.github.io/stutterscope/",
+  "results": [
+    {
+      "name": "missing-timestamps",
+      "inputSha256": "2962f67830372c6127398a095b1b482df6ef5f0f335f30cc42cd8bf8a72b95e5",
+      "inputBytes": 10597,
+      "report": {
+        "tool": "stutterscope",
+        "schemaVersion": 2,
+        "generatedAt": "2026-10-11T01:37:23.257Z",
+        "source": {
+          "fileName": "missing-timestamps.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 563,
+          "durationSec": 9.999600000000022,
+          "columns": [
+            "frame",
+            "elapsed_ms"
+          ],
+          "skippedRows": 3,
+          "warnings": [
+            "line 151: missing/invalid elapsed_ms, row skipped",
+            "line 152: missing/invalid elapsed_ms, row skipped",
+            "line 153: missing/invalid elapsed_ms, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "elapsed_ms",
+            "valueKind": "timestamp_ms_cumulative"
+          }
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          }
+        },
+        "metrics": {
+          "frameCount": 563,
+          "durationSec": 9.999600000000022,
+          "averageFps": 56.30225209008348,
+          "meanOfInstantaneousFps": 59.721992124667125,
+          "percentilesMs": {
+            "p50": 16.699999999999818,
+            "p90": 16.700000000000728,
+            "p95": 16.799999999999272,
+            "p99": 16.80000000000109,
+            "p999": 293.8000000000102
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 59.52380952380566,
+            "meanOfSlowestMethodFps": 8.368200836820046
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 3.4036759700475336,
+            "meanOfSlowestMethodFps": 2.857142857142857
+          },
+          "stutter": {
+            "stutterEventCount": 3,
+            "totalStutterTimeMs": 666.5999999999999,
+            "stutterTimeFraction": 0.06666266650666025,
+            "hitchThresholdMs": 50,
+            "hitchCount": 3,
+            "totalHitchTimeMs": 666.5999999999999,
+            "hitchTimeFraction": 0.06666266650666025,
+            "stutterFrameIndices": [
+              14,
+              148,
+              535
+            ]
+          },
+          "masdMs": 2.2734875444841713,
+          "dropped": null,
+          "boundShare": null,
+          "latency": null
+        }
+      },
+      "body": "STUTTERSCOPE\nframe-time analysis, entirely in your browser\nsource\nmissing-timestamps.csv\nGeneric CSV\n563 frames\n10.0 s\n10.3 KB\n+ Compare another run\nExport PNG\nExport Markdown\nExport JSON\nNew session\nRun A: 3 rows were skipped: bad or missing frame time\nAVG FPS\n56.3fps\n1% LOW · P99\n59.5fps\nP99 frame time\n0.1% LOW · P99.9\n3.4fps\nP99.9 frame time\nP99.9\n293.80ms\nframe time\nSTUTTER EVENTS\n3\n6.7% of time\nHITCHES >50MS\n3\n6.7% of time\nPACING · MASD\n2.27ms\nmean |Δ|\nP99\n16.80ms\nframe time\n\nMORE METRICS\nhover a tile above for its full definition\n\n1% low, slowest-mean (AVG)\t8.4 fps\n0.1% low, slowest-mean (AVG)\t2.9 fps\n\nFRAME TIME TRACE\ndrag to zoom · shift+drag to pan · wheel to zoom · dblclick to reset\nFull range\n\ntime--frame time--stutter--\n\nFPS OVER TIME\n\ntime--fps--\n\nFRAME TIME HISTOGRAM\nP99 / P99.9 markers\n\nPERCENTILE CURVE\n\npercentile--run A--\n\nSTUTTER DETECTION\nframe time > k × local median (window radius r); hitch = absolute threshold\n\nk multiplier\nwindow radius\nhitch threshold (ms)\nApply settings\n\nApplied settings: k = 2, radius = 10, hitch > 50 ms.\n\nNothing you drop here is uploaded — parsing and every chart run locally in your browser. · stutterscope is MIT-licensed.",
+      "assets": [
+        "https://antonsoo.github.io/stutterscope/assets/index-BQ9aUgvh.js"
+      ],
+      "errors": []
+    },
+    {
+      "name": "partial-telemetry",
+      "inputSha256": "91dedf895e23ca9a32736adeb70e654cbd11ad392846ad30afc13b00b2c926a8",
+      "inputBytes": 226,
+      "report": {
+        "tool": "stutterscope",
+        "schemaVersion": 2,
+        "generatedAt": "2026-10-11T01:37:24.515Z",
+        "source": {
+          "fileName": "partial-telemetry.csv",
+          "format": "presentmon2",
+          "application": "synthetic-game",
+          "stream": "1:0x1",
+          "streams": [
+            {
+              "id": "1:0x1",
+              "application": "synthetic-game",
+              "processId": "1",
+              "swapChain": "0x1",
+              "frameCount": 4
+            }
+          ],
+          "frameCount": 4,
+          "durationSec": 0.064,
+          "columns": [
+            "Application",
+            "ProcessID",
+            "SwapChainAddress",
+            "FrameTime",
+            "CPUBusy",
+            "GPUBusy",
+            "DisplayedTime",
+            "DisplayLatency"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          }
+        },
+        "metrics": {
+          "frameCount": 4,
+          "durationSec": 0.064,
+          "averageFps": 62.5,
+          "meanOfInstantaneousFps": 62.5,
+          "percentilesMs": {
+            "p50": 16,
+            "p90": 16,
+            "p95": 16,
+            "p99": 16,
+            "p999": 16
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 62.5,
+            "meanOfSlowestMethodFps": 62.5
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 62.5,
+            "meanOfSlowestMethodFps": 62.5
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "dropped": {
+            "droppedCount": 3,
+            "droppedFraction": 0.75
+          },
+          "boundShare": {
+            "cpuBoundFrames": 0,
+            "gpuBoundFrames": 1,
+            "cpuBoundFraction": 0,
+            "gpuBoundFraction": 1
+          },
+          "latency": {
+            "meanMs": 10,
+            "p50": 10,
+            "p90": 10,
+            "p99": 10
+          }
+        }
+      },
+      "body": "STUTTERSCOPE\nframe-time analysis, entirely in your browser\nsource\npartial-telemetry.csv\nPresentMon 2.x\n4 frames\n0.1 s\n226 B\n+ Compare another run\nExport PNG\nExport Markdown\nExport JSON\nNew session\nAVG FPS\n62.5fps\n1% LOW · P99\n62.5fps\nP99 frame time\n0.1% LOW · P99.9\n62.5fps\nP99.9 frame time\nP99.9\n16.00ms\nframe time\nSTUTTER EVENTS\n0\n0.0% of time\nHITCHES >50MS\n0\n0.0% of time\nPACING · MASD\n0.00ms\nmean |Δ|\nDROPPED\n3\n75.0%\n\nMORE METRICS\nhover a tile above for its full definition\n\n1% low, slowest-mean (AVG)\t62.5 fps\n0.1% low, slowest-mean (AVG)\t62.5 fps\nP99 frame time\t16.00 ms\nCPU- / GPU-bound share\t0% / 100%\nDisplay latency, P99 (mean)\t10.00 ms (10.00 ms)\n\nFRAME TIME TRACE\ndrag to zoom · shift+drag to pan · wheel to zoom · dblclick to reset\nFull range\n\ntime--frame time--stutter--\n\nFPS OVER TIME\n\ntime--fps--\n\nFRAME TIME HISTOGRAM\nP99 / P99.9 markers\n\nPERCENTILE CURVE\n\npercentile--run A--\n\nSTUTTER DETECTION\nframe time > k × local median (window radius r); hitch = absolute threshold\n\nk multiplier\nwindow radius\nhitch threshold (ms)\nApply settings\n\nApplied settings: k = 2, radius = 10, hitch > 50 ms.\n\nNothing you drop here is uploaded — parsing and every chart run locally in your browser. · stutterscope is MIT-licensed.",
+      "assets": [
+        "https://antonsoo.github.io/stutterscope/assets/index-BQ9aUgvh.js"
+      ],
+      "errors": []
+    }
+  ]
+}
