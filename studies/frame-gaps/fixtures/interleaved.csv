@@ -1,0 +1,8 @@
+Application,ProcessID,SwapChainAddress,FrameTime,CPUBusy,GPUBusy
+game.exe,1,0x1,60,20,30
+overlay.exe,2,0x2,10,3,4
+overlay.exe,2,0x2,NA,3,4
+game.exe,1,0x1,120,20,30
+overlay.exe,2,0x2,10,3,4
+game.exe,1,0x1,NA,20,30
+game.exe,1,0x1,70,20,30

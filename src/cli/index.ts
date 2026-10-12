@@ -297,6 +297,8 @@ function compareFiles(argv: string[]): void {
       ["Stutter time (%)", sa.stutter.stutterTimeFraction * 100, sb.stutter.stutterTimeFraction * 100],
       ["Hitches / 1,000 frames", sa.stutter.hitchCount / sa.frameCount * 1000, sb.stutter.hitchCount / sb.frameCount * 1000],
       ["Pacing MASD (ms)", sa.masdMs, sb.masdMs],
+      ["Observed adjacent pairs", sa.pacingCoverage.observedPairs, sb.pacingCoverage.observedPairs],
+      ["Gaps between frames", sa.pacingCoverage.gapBoundaries, sb.pacingCoverage.gapBoundaries],
     ];
     console.log("Metric".padEnd(28) + "A".padStart(12) + "B".padStart(12) + "B - A".padStart(12));
     for (const [name, av, bv] of rows) console.log(name.padEnd(28) + fmt(av, 3).padStart(12) + fmt(bv, 3).padStart(12) + fmt(bv - av, 3).padStart(12));
@@ -401,7 +403,8 @@ function main(): void {
     `Hitches (>${args.stutterOptions.hitchThresholdMs}ms)`,
     summary.stutter.hitchCount > 0 ? color(String(summary.stutter.hitchCount), RED) : "0",
   );
-  line("Pacing (MASD)", `${fmt(summary.masdMs, 2)} ms`);
+  line("Pacing (MASD)", Number.isFinite(summary.masdMs) ? `${fmt(summary.masdMs, 2)} ms` : "Unavailable");
+  line("Pacing observations", `${summary.pacingCoverage.observedPairs} adjacent pairs; ${summary.pacingCoverage.gapBoundaries} gaps between analyzed frames`);
   const coverage = summary.telemetryCoverage;
   const observations = (label: string, c: { observedFrames: number; unknownFrames: number }) =>
     line(label, `${c.observedFrames}/${c.observedFrames + c.unknownFrames} frames observed; ${c.unknownFrames} unknown`);
@@ -422,13 +425,13 @@ function main(): void {
 
 function printEpisodes(analysis: CaptureAnalysis, label = ""): void {
     const episodes = slowEpisodes(analysis);
-    console.log(`\n${label ? label + " " : ""}Slow-frame episodes: ${episodes.length} (consecutive retained stutter/hitch frames; no cause inferred)`);
+    console.log(`\n${label ? label + " " : ""}Slow-frame episodes: ${episodes.length} (consecutive observed stutter/hitch frames; split at source gaps; no cause inferred)`);
     console.log("  Frames          Time (s)                Worst (ms)  CSV lines");
     for (const event of episodes.slice(0, 20)) {
       const frames = `${event.firstFrame}-${event.lastFrame}`.padEnd(15);
       const time = `${fmt(event.startSec, 4)}-${fmt(event.endSec, 4)}`.padEnd(24);
       const lines = event.firstSourceLine === null ? "unavailable" : `${event.firstSourceLine}-${event.lastSourceLine}`;
-      console.log(`  ${frames} ${time}${fmt(event.longestFrameMs, 3).padEnd(12)}${lines}${event.touchesSelectionStart || event.touchesSelectionEnd ? " (selection boundary)" : ""}`);
+      console.log(`  ${frames} ${time}${fmt(event.longestFrameMs, 3).padEnd(12)}${lines}${event.touchesSelectionStart || event.touchesSelectionEnd ? " (selection boundary)" : ""}${event.startsAfterGap || event.endsBeforeGap ? " (source gap)" : ""}`);
     }
     if (episodes.length > 20) console.log(`  Showing 20 of ${episodes.length}. --events --json retains every episode.`);
   }

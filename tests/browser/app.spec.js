@@ -20,7 +20,7 @@ test("partial telemetry keeps observed denominators through worker, interval, an
   await expect(page.locator('#secondary-table-a')).toContainText('2/4 frames observed');
   await expect(page.locator('#secondary-table-a')).toContainText('1/4 frames observed');
   const full = await jsonReport(page);
-  expect(full.schemaVersion).toBe(4);
+  expect(full.schemaVersion).toBe(5);
   expect(full.metrics.dropped).toEqual({ droppedCount: 1, observedFrames: 2, droppedFraction: 0.5 });
   expect(full.metrics.telemetryCoverage.cpuGpuBusy).toEqual({ observedFrames: 1, unknownFrames: 3 });
   expect(full.metrics.telemetryCoverage.displayLatency).toEqual({ observedFrames: 1, unknownFrames: 3 });

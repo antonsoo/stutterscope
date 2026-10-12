@@ -97,6 +97,10 @@ export interface FrameSeries {
   timeSec: Float64Array;
   /** One-based physical CSV line per frame. Absent for caller-created series. */
   sourceLine?: Float64Array;
+  /** 1 before a retained frame separated from its predecessor by unusable source rows.
+   * Per selected stream; does not estimate missing frame counts or durations.
+   * Absent for caller-created series that assume uninterrupted observations. */
+  gapBefore?: Uint8Array;
   channels: OptionalChannels;
 }
 

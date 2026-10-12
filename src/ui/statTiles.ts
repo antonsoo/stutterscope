@@ -78,10 +78,10 @@ export function buildTiles(summary: MetricsSummary): TileSet {
     },
     {
       label: "PACING · MASD",
-      title: "Mean absolute successive difference: mean(|frame time[i] - frame time[i-1]|)",
+      title: "Mean absolute successive difference over observed adjacent pairs. Unusable rows break continuity; no observed pairs means unavailable.",
       value: fmtMs(summary.masdMs),
-      unit: "ms",
-      sub: "mean |Δ|",
+      unit: summary.pacingCoverage.observedPairs > 0 ? "ms" : undefined,
+      sub: summary.pacingCoverage.observedPairs > 0 ? `${fmtInt(summary.pacingCoverage.observedPairs)} observed pairs` : "No observed pairs",
     },
     hasDropped
       ? {
@@ -107,6 +107,9 @@ export function buildTiles(summary: MetricsSummary): TileSet {
       value: `${fmtFps(summary.pointOnePercentLow.meanOfSlowestMethodFps)} fps`,
     },
   ];
+  if (summary.pacingCoverage.gapBoundaries > 0) {
+    secondary.push({ label: "Gaps between analyzed frames", value: `${fmtInt(summary.pacingCoverage.gapBoundaries)}; missing duration unknown` });
+  }
   if (hasDropped) {
     secondary.push({ label: "P99 frame time", value: `${fmtMs(summary.percentilesMs.p99)} ms` });
     secondary.push({ label: "Drop observations", value: fmtCoverage(coverage.dropped!) });

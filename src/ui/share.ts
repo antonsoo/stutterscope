@@ -38,7 +38,8 @@ export function buildMarkdownTable(series: FrameSeries, summary: MetricsSummary,
     ["P99.9 frame time (ms)", fmtMs(summary.percentilesMs.p999)],
     ["Stutter events", fmtInt(summary.stutter.stutterEventCount)],
     [`Hitches (>${summary.stutter.hitchThresholdMs}ms)`, fmtInt(summary.stutter.hitchCount)],
-    ["Pacing (MASD, ms)", fmtMs(summary.masdMs)],
+    ["Pacing (MASD, ms)", Number.isFinite(summary.masdMs) ? fmtMs(summary.masdMs) : "Unavailable"],
+    ["Pacing observations", `${fmtInt(summary.pacingCoverage.observedPairs)} adjacent pairs; ${fmtInt(summary.pacingCoverage.gapBoundaries)} gaps between analyzed frames`],
   ];
   const coverage = summary.telemetryCoverage;
   if (coverage.dropped) {
@@ -64,7 +65,7 @@ export function buildMarkdownTable(series: FrameSeries, summary: MetricsSummary,
     `Source format: ${series.meta.format}. Analyzed frames: ${fmtInt(series.frameCount)} of ${fmtInt(selection.sourceFrameCount)}.`,
     selectionText(selection),
     ...(series.meta.timingEvidence ? [escapeMd(series.meta.timingEvidence.note)] : []),
-    `Detection: k = ${options.kMultiplier}, window radius = ${options.windowRadius}, hitch threshold > ${options.hitchThresholdMs} ms.`,
+    `Detection: k = ${options.kMultiplier}, window radius = ${options.windowRadius}, hitch threshold > ${options.hitchThresholdMs} ms. Rolling context and episodes stop at source gaps; missing durations are unknown.`,
     ...(series.meta.selectedStream ? [`Selected stream: ${escapeMd(series.meta.selectedStream)} (${escapeMd(series.meta.application ?? "application not recorded")}). Other streams are excluded.`] : []),
     ...(mapping ? [`Column: ${escapeMd(mapping.valueColumn)}. Interpretation: ${mapping.valueKind}.`] : []),
     `Skipped rows: ${fmtInt(series.meta.skippedRows)}. Retained warning details: ${fmtInt(series.meta.warnings.length)}.`,
@@ -106,6 +107,7 @@ export function renderReportCardCanvas(series: FrameSeries, summary: MetricsSumm
 
   // corner brackets
   ctx.strokeStyle = "#7cffb2";
+  ctx.fillStyle = "#7cffb2";
   ctx.lineWidth = 3;
   const b = 28;
   ctx.beginPath();
@@ -125,20 +127,21 @@ export function renderReportCardCanvas(series: FrameSeries, summary: MetricsSumm
   ctx.fillText(truncate(series.meta.sourceFileName, 70), 60, 104);
 
   // sparkline of frame time
-  const spark = decimate(series.frameTimeMs, 400);
+  const spark = decimate(series.frameTimeMs, 400, series.gapBefore);
   const sparkX = 60;
   const sparkY = 140;
   const sparkW = CARD_W - 120;
   const sparkH = 120;
-  const max = Math.max(...spark, 1);
+  const max = Math.max(...spark.map((p) => p.value), 1);
   ctx.strokeStyle = "#7cffb2";
   ctx.lineWidth = 2;
   ctx.beginPath();
-  spark.forEach((v, i) => {
+  spark.forEach((point, i) => {
     const x = sparkX + (i / Math.max(1, spark.length - 1)) * sparkW;
-    const y = sparkY + sparkH - (v / max) * sparkH;
-    if (i === 0) ctx.moveTo(x, y);
+    const y = sparkY + sparkH - (point.value / max) * sparkH;
+    if (i === 0 || point.gapBefore || spark[i - 1]!.gapAfter) ctx.moveTo(x, y);
     else ctx.lineTo(x, y);
+    if (point.gapBefore || point.gapAfter || spark[i + 1]?.gapBefore || spark[i - 1]?.gapAfter || spark.length === 1) ctx.fillRect(x - 1, y - 1, 2, 2);
   });
   ctx.stroke();
   ctx.strokeStyle = "#1c2a26";
@@ -152,7 +155,7 @@ export function renderReportCardCanvas(series: FrameSeries, summary: MetricsSumm
     ["0.1% LOW", fmtFps(summary.pointOnePercentLow.percentileMethodFps)],
     ["STUTTER EVENTS", fmtInt(summary.stutter.stutterEventCount)],
     ["P99 FRAME TIME", `${fmtMs(summary.percentilesMs.p99)} ms`],
-    ["MASD", `${fmtMs(summary.masdMs)} ms`],
+    [`MASD (${fmtInt(summary.pacingCoverage.observedPairs)} PAIRS)`, Number.isFinite(summary.masdMs) ? `${fmtMs(summary.masdMs)} ms` : "Unavailable"],
   ];
   const colW = (CARD_W - 120) / 3;
   stats.forEach(([label, value], i) => {
@@ -191,16 +194,25 @@ export function renderReportCardCanvas(series: FrameSeries, summary: MetricsSumm
   return canvas;
 }
 
-function decimate(values: Float64Array, points: number): number[] {
-  if (values.length <= points) return Array.from(values);
-  const out: number[] = [];
-  const bucket = values.length / points;
-  for (let i = 0; i < points; i++) {
+function decimate(values: Float64Array, points: number, gapBefore?: Uint8Array): Array<{ value: number; gapBefore: boolean; gapAfter: boolean }> {
+  const count = Math.min(values.length, points);
+  const out: Array<{ value: number; gapBefore: boolean; gapAfter: boolean }> = [];
+  const bucket = values.length / count;
+  for (let i = 0; i < count; i++) {
     const start = Math.floor(i * bucket);
     const end = Math.max(start + 1, Math.floor((i + 1) * bucket));
     let max = -Infinity;
-    for (let j = start; j < end && j < values.length; j++) if (values[j]! > max) max = values[j]!;
-    out.push(max);
+    let gap = false;
+    let internalGap = false;
+    for (let j = start; j < end && j < values.length; j++) {
+      if (values[j]! > max) max = values[j]!;
+      if (gapBefore?.[j] === 1) {
+        gap = true;
+        if (j > start) internalGap = true;
+      }
+    }
+    // A bucket spanning a gap cannot justify a connection on either side.
+    out.push({ value: max, gapBefore: gap, gapAfter: internalGap });
   }
   return out;
 }

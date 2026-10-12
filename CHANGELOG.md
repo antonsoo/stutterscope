@@ -10,6 +10,9 @@ Changes below are in source and have not been released as an npm package.
 
 ### Added
 
+- Evidence report schema 5 with observed pacing-pair counts and source-gap
+  coordinates. Episodes identify their visible gap boundaries.
+
 - Optional-telemetry coverage in the browser, CLI summary and JSON/Markdown
   exports: observed and unknown frames for dropped outcomes, paired CPU/GPU
   busy times and latency. Counts follow the selected stream and interval.
@@ -36,6 +39,11 @@ Changes below are in source and have not been released as an npm package.
   comparison, with workload code, capture hashes, and independent NumPy checks.
 
 ### Fixed
+
+- Unusable frame rows no longer invent successive pacing changes, join separate
+  slow-frame episodes, or lend rolling-median context across a source gap.
+  Boundaries survive per-stream filtering, interval selection, worker
+  recomputation, charts and exports. No observed pair means unavailable MASD.
 
 - The first local CSV import, comparison, replacement and report downloads can
   run after disconnecting an already loaded production page. The parser travels

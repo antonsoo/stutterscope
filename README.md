@@ -129,8 +129,8 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
   card for run A. Web reports
   retain the applied detection settings and skipped-row counts. JSON and
   Markdown include warning details, the selected process, and generic-column
-  interpretation; JSON schema version 4 also records observed and unknown
-  telemetry counts, alongside analyzed intervals,
+  interpretation; JSON schema version 5 also records observed and unknown
+  telemetry counts, observed pacing pairs and source-gap boundaries, alongside analyzed intervals,
   complete slow-frame episode evidence, source columns, and the count of warning
   details omitted by the parser's retention limit. Nothing is
   uploaded at any point, and the page's Content-Security-Policy

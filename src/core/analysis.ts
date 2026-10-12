@@ -65,6 +65,7 @@ export function selectFrames(source: FrameSeries, range: AnalysisRange | null = 
       frameTimeMs: source.frameTimeMs.slice(start, end),
       timeSec: source.timeSec.slice(start, end),
       sourceLine: source.sourceLine?.slice(start, end),
+      gapBefore: source.gapBefore?.slice(start, end),
       channels,
     };
   }
@@ -87,7 +88,7 @@ export function selectFrames(source: FrameSeries, range: AnalysisRange | null = 
 
 export function analyzeCapture(source: FrameSeries, options: StutterOptions = DEFAULT_STUTTER_OPTIONS, range: AnalysisRange | null = null): CaptureAnalysis {
   const { series, selection } = selectFrames(source, range);
-  const fullDetection = detectStutter(source.frameTimeMs, options);
+  const fullDetection = detectStutter(source.frameTimeMs, options, source.gapBefore);
   const stutter = series === source ? fullDetection : summarizeStutter(series.frameTimeMs,
     fullDetection.isStutter.slice(selection.firstFrameIndex, selection.lastFrameIndex + 1), options.hitchThresholdMs);
   return { series, selection, summary: computeMetricsSummary(series, options, stutter) };

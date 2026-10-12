@@ -380,3 +380,16 @@ For a cumulative-timestamp mapping, the reference names the ending sample whose
 value is differenced from the preceding timestamp observation. Both must
 be valid; missing records are not bridged. Derived frame times
 that overflow milliseconds are skipped with a warning.
+
+**Continuity (source checkout).** Every reader retains a `gapBefore` marker when
+unusable timing rows separate two retained frames. Present-hook readers track
+this per process/swap chain: unrelated presents and unrelated bad rows do not
+break the selected stream. If a bad row lacks any identity component required
+by its header, all previously observed streams are conservatively interrupted.
+Missing optional telemetry alone does not break frame-time continuity.
+
+Pacing pairs, rolling-median neighborhoods, episodes and trace lines stop at
+these boundaries. No missing duration or frame count is imputed; accumulated
+time still sums only usable durations. Leading/trailing skipped rows have no
+pair of retained endpoints to mark, and remain visible in source warnings and
+skipped-row counts. See [metrics](metrics.md#frame-pacing-variability-masd).

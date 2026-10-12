@@ -1,3 +1,4 @@
+import { FrameContinuity } from "../continuity.ts";
 import { cumulativeSeconds } from "../streams.ts";
 /**
  * MangoHud CSV log (github.com/flightlessmango/MangoHud, `output_folder` /
@@ -53,6 +54,7 @@ export function sniff(sampleText: string): SniffResult {
 
 class MangoHudParser implements StreamingParser {
   private header: Map<string, number> | null = null;
+  private readonly continuity = new FrameContinuity();
   private readonly skipped = new SkippedRows();
   private readonly frameTimeMs = new Float64Builder(4096);
   private readonly sourceLine = new Float64Builder(4096);
@@ -81,6 +83,7 @@ class MangoHudParser implements StreamingParser {
     const idx = this.header.get("frametime");
     const ft = idx === undefined ? null : parseFrameTimeOrNull(fields[idx]);
     if (ft === null) {
+      this.continuity.skip();
       this.skipped.add(lineIndex, "missing/invalid frametime");
       this.previousElapsed = null;
       return;
@@ -103,6 +106,7 @@ class MangoHudParser implements StreamingParser {
       this.previousElapsed = elapsed;
     }
     this.frameTimeMs.push(ft);
+    this.continuity.keep();
     this.sourceLine.push(lineIndex + 1);
   }
 
@@ -122,6 +126,7 @@ class MangoHudParser implements StreamingParser {
       frameCount: frameTimeMs.length,
       frameTimeMs,
       sourceLine: this.sourceLine.toArray(),
+      gapBefore: this.continuity.toArray(),
       timeSec,
       channels: {},
     };

@@ -5,9 +5,13 @@ import { selectFrames } from "./analysis.ts";
 import { slowEpisodes } from "./episodes.ts";
 
 export function buildJsonReport(series: FrameSeries, summary: MetricsSummary, options: StutterOptions, mapping?: GenericMapping, selection = selectFrames(series).selection) {
+  const gaps: Array<{ beforeFrame: number; sourceLine: number | null }> = [];
+  for (let i = 0; i < series.frameCount; i++) {
+    if (series.gapBefore?.[i] === 1) gaps.push({ beforeFrame: selection.firstFrameIndex + i + 1, sourceLine: series.sourceLine?.[i] ?? null });
+  }
   return {
     tool: "stutterscope",
-    schemaVersion: 4,
+    schemaVersion: 5,
     generatedAt: new Date().toISOString(),
     source: {
       fileName: series.meta.sourceFileName,
@@ -25,7 +29,8 @@ export function buildJsonReport(series: FrameSeries, summary: MetricsSummary, op
       genericMapping: mapping ? { ...mapping } : null,
       timingEvidence: series.meta.timingEvidence ? { ...series.meta.timingEvidence } : null,
     },
-    analysis: { stutterOptions: { ...options }, selection: { ...selection, requested: selection.requested ? { ...selection.requested } : null }, stutterIndexBasis: "selected-series-zero-based" },
+    analysis: { stutterOptions: { ...options }, selection: { ...selection, requested: selection.requested ? { ...selection.requested } : null }, stutterIndexBasis: "selected-series-zero-based",
+      continuity: { basis: "source-row-evidence", frameNumberBasis: "source-selected-stream-one-based", gaps } },
     episodes: slowEpisodes({ series, summary, selection }),
     metrics: summaryForJson(summary),
   };
@@ -35,5 +40,5 @@ export function buildJsonReport(series: FrameSeries, summary: MetricsSummary, op
 export type CaptureReport = ReturnType<typeof buildJsonReport>;
 
 export function buildComparisonReport(a: CaptureReport, b: CaptureReport) {
-  return { tool: "stutterscope", schemaVersion: 4, kind: "comparison", generatedAt: new Date().toISOString(), runs: { a, b } };
+  return { tool: "stutterscope", schemaVersion: 5, kind: "comparison", generatedAt: new Date().toISOString(), runs: { a, b } };
 }

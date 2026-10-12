@@ -58,7 +58,7 @@ test.afterEach(async ({ page }) => {
 test("recorded experiment opens both scene intervals, preserves evidence, and exports both runs offline", async ({ page, context }) => {
   await example(page);
   const result = await report(page);
-  expect(result).toMatchObject({ schemaVersion: 4, kind: "comparison" });
+  expect(result).toMatchObject({ schemaVersion: 5, kind: "comparison" });
   expect(result.runs.a.source.frameCount).toBe(543);
   expect(result.runs.a.metrics.frameCount).toBe(396);
   expect(result.runs.b.metrics.frameCount).toBe(420);

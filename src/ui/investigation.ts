@@ -45,7 +45,7 @@ export function mountEpisodes(container: HTMLElement, analysis: CaptureAnalysis,
     const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
     page = Math.min(page, pages - 1);
     container.innerHTML = `<div class="episode-heading"><h2>Slow-frame episodes</h2><span>${fmtInt(episodes.length)} in the analyzed interval</span></div>
-      <p class="hint">Consecutive retained frames flagged as a stutter or hitch. These locate the slowdown; they do not identify its cause. JSON exports include every episode.</p>
+      <p class="hint">Consecutive observed frames flagged as a stutter or hitch, split at unusable source rows. These locate the slowdown; they do not identify its cause. JSON exports include every episode.</p>
       <div class="episode-controls">
         <label for="episode-filter">Show <select id="episode-filter"><option value="all">All slow frames</option><option value="hitches">Hitches only</option></select></label>
         <label for="episode-order">Order <select id="episode-order"><option value="time">Capture order</option><option value="worst">Longest frame first</option></select></label>
@@ -89,6 +89,7 @@ export function mountEpisodes(container: HTMLElement, analysis: CaptureAnalysis,
     detail.innerHTML = `<div class="episode-detail"><h3>Evidence around frame ${fmtInt(episode.longestFrame)}</h3>
       <p>Longest frame: <strong>${fmtMs(episode.longestFrameMs, 3)} ms</strong>. Episode covers ${fmtMs(episode.totalTimeMs, 3)} ms across ${fmtInt(episode.frameCount)} flagged ${episode.frameCount === 1 ? "frame" : "frames"}.</p>
       <p>Source frames ${fmtInt(episode.firstFrame)}–${fmtInt(episode.lastFrame)}${episode.firstSourceLine === null ? "; CSV lines unavailable" : `; CSV lines ${fmtInt(episode.firstSourceLine)}–${fmtInt(episode.lastSourceLine!)}`}.</p>
+      ${episode.startsAfterGap || episode.endsBeforeGap ? '<p class="hint">A source gap interrupts this episode. Missing frame counts and durations are unknown.</p>' : ""}
       ${episode.touchesSelectionStart || episode.touchesSelectionEnd ? '<p class="hint">This episode touches a selection boundary and may continue outside the interval.</p>' : ""}
       <p class="hint">Up to five neighboring frames on each side, within the analyzed interval. Line numbers refer to the original file; intervening lines may belong to another process or be skipped.</p>
       <button class="btn small" type="button" id="zoom-episode">Show episode on trace</button>
@@ -96,7 +97,7 @@ export function mountEpisodes(container: HTMLElement, analysis: CaptureAnalysis,
         <th scope="col">Frame</th><th scope="col">CSV line</th><th scope="col">End (s)</th><th scope="col">Time (ms)</th><th scope="col">Flags</th>${channels.map(({ label }) => `<th scope="col">${label}</th>`).join("")}</tr></thead>
         <tbody>${Array.from({ length: end - from }, (_, n) => n + from).map((i) => `<tr${i === worstIndex ? ' class="selected-episode"' : ""}>
           <th scope="row">${fmtInt(selection.firstFrameIndex + i + 1)}</th><td>${series.sourceLine?.[i] ?? "Unavailable"}</td><td>${fmtMs(series.timeSec[i]!, 6)}</td><td>${fmtMs(series.frameTimeMs[i]!, 3)}</td>
-          <td>${[summary.stutter.isStutter[i] === 1 ? "Stutter" : "", series.frameTimeMs[i]! > summary.stutter.hitchThresholdMs ? "Hitch" : ""].filter(Boolean).join(" / ") || "—"}</td>
+          <td>${[series.gapBefore?.[i] === 1 ? "Gap before" : "", summary.stutter.isStutter[i] === 1 ? "Stutter" : "", series.frameTimeMs[i]! > summary.stutter.hitchThresholdMs ? "Hitch" : ""].filter(Boolean).join(" / ") || "—"}</td>
           ${channels.map(({ key }) => `<td>${value(series.channels[key], i)}</td>`).join("")}</tr>`).join("")}</tbody></table></div></div>`;
     detail.querySelector("#zoom-episode")!.addEventListener("click", () => {
       const padding = Math.max(0.1, (episode.endSec - episode.startSec) * 2);

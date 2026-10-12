@@ -68,6 +68,7 @@ class FrameViewParser implements StreamingParser {
     };
     const ft = parseFrameTimeOrNull(get("MsBetweenPresents"));
     if (ft === null) {
+      this.streams.skip(fields);
       this.skipped.add(lineIndex, "missing/invalid MsBetweenPresents");
       return;
     }
@@ -80,7 +81,7 @@ class FrameViewParser implements StreamingParser {
   }
 
   finish(sourceFileName: string): FrameSeries {
-    const { frameTimeMs, sourceLine, channels, streams, selected } = this.streams.select(
+    const { frameTimeMs, sourceLine, gapBefore, channels, streams, selected } = this.streams.select(
       {
         frameTimeMs: this.frameTimeMs.toArray(), sourceLine: this.sourceLine.toArray(),
         channels: {
@@ -104,6 +105,7 @@ class FrameViewParser implements StreamingParser {
       frameCount: frameTimeMs.length,
       frameTimeMs,
       sourceLine,
+      gapBefore,
       timeSec: cumulativeSeconds(frameTimeMs),
       channels,
     };

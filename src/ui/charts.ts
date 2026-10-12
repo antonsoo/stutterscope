@@ -1,4 +1,5 @@
 import uPlot from "uplot";
+import { traceData } from "./traceData.ts";
 import { percentileOfSorted, sortedCopy } from "../core/metrics.ts";
 import type { HistogramBucket, HistogramBucketPair } from "../core/metrics.ts";
 
@@ -171,6 +172,7 @@ export function createTraceChart(
   frameTimeMs: Float64Array,
   isStutter: Uint8Array,
   slot: "a" | "b" = "a",
+  gapBefore?: Uint8Array,
 ): TraceChartControls {
   const stutterSeries = new Array<number | null>(frameTimeMs.length);
   for (let i = 0; i < frameTimeMs.length; i++) {
@@ -184,6 +186,7 @@ export function createTraceChart(
   const clampedMax = robustYMax(frameTimeMs);
   let currentYMax = clampedMax;
   let fullRange = false;
+  const trace = traceData(timeSec, [frameTimeMs, stutterSeries], gapBefore);
 
   const opts: uPlot.Options = {
     width: el.clientWidth || 600,
@@ -193,7 +196,7 @@ export function createTraceChart(
     scales: { x: { time: false } },
     series: [
       { label: "time" },
-      { label: `Run ${slot.toUpperCase()} frame time`, stroke: slot === "a" ? TRACE_A : TRACE_B, width: 1.3, points: { show: false } },
+      { label: `Run ${slot.toUpperCase()} frame time`, stroke: slot === "a" ? TRACE_A : TRACE_B, width: 1.3, spanGaps: false, points: { show: trace.isolated.length > 0, filter: trace.isolated, size: 4 } },
       {
         label: "stutter",
         stroke: STUTTER,
@@ -212,7 +215,7 @@ export function createTraceChart(
     },
   };
 
-  const uplot = new uPlot(opts, [timeSec, frameTimeMs, stutterSeries], el);
+  const uplot = new uPlot(opts, trace.data, el);
   if (fullMax > fullMin) uplot.setScale("x", { min: fullMin, max: fullMax });
   uplot.setScale("y", { min: 0, max: currentYMax });
   const handle = manageChart(el, uplot, attachZoomPan(uplot, () => [fullMin, fullMax]));
@@ -228,11 +231,12 @@ export function createTraceChart(
   };
 }
 
-export function createFpsChart(el: HTMLElement, timeSec: Float64Array, frameTimeMs: Float64Array): TraceChartHandle {
+export function createFpsChart(el: HTMLElement, timeSec: Float64Array, frameTimeMs: Float64Array, gapBefore?: Uint8Array): TraceChartHandle {
   const fps = new Float64Array(frameTimeMs.length);
   for (let i = 0; i < frameTimeMs.length; i++) fps[i] = 1000 / frameTimeMs[i]!;
   const fullMin = timeSec.length > 0 ? timeSec[0]! : 0;
   const fullMax = timeSec.length > 0 ? timeSec[timeSec.length - 1]! : 1;
+  const trace = traceData(timeSec, [fps], gapBefore);
 
   const opts: uPlot.Options = {
     width: el.clientWidth || 600,
@@ -240,14 +244,14 @@ export function createFpsChart(el: HTMLElement, timeSec: Float64Array, frameTime
     padding: [12, 12, 0, 0],
     cursor: { drag: { x: true, y: false, setScale: true } },
     scales: { x: { time: false } },
-    series: [{ label: "time" }, { label: "fps", stroke: TRACE_A, width: 1.3, points: { show: false } }],
+    series: [{ label: "time" }, { label: "fps", stroke: TRACE_A, width: 1.3, spanGaps: false, points: { show: trace.isolated.length > 0, filter: trace.isolated, size: 4 } }],
     axes: [
       { ...baseAxis, label: "time (s)" },
       { ...baseAxis, label: "fps" },
     ],
     legend: { show: true },
   };
-  const uplot = new uPlot(opts, [timeSec, fps], el);
+  const uplot = new uPlot(opts, trace.data, el);
   return manageChart(el, uplot, attachZoomPan(uplot, () => [fullMin, fullMax]));
 }
 

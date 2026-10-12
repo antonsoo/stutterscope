@@ -144,7 +144,7 @@ existing top-level `summary` key.
 
 ## Export coordinates and limits
 
-Browser reports and the comparison CLI now use schema version 4 (the retained
+Browser reports and the comparison CLI now use schema version 5 (the retained
 earlier capture below used version 3). Version 4 adds optional-telemetry
 coverage and uses observed outcomes as the dropped-fraction denominator. A single browser
 report contains `source`, `analysis`, `metrics`, and `episodes`. A comparison
@@ -184,3 +184,12 @@ from the controlled browser capture.
 The [verification record](verification-intervals-2026-10-07.md) links the exported
 comparison, independent arithmetic, screenshots, and package checks from this
 implementation.
+
+Schema 5 adds `metrics.pacingCoverage` and `analysis.continuity`. The latter lists
+`gaps`, each with `beforeFrame` (one-based in the original selected present stream)
+and the following retained frame's physical `sourceLine`. A gap immediately
+before the first selected frame remains in this list, but is not counted as a
+gap *between* selected frames in pacing coverage. Episode flags `startsAfterGap`
+and `endsBeforeGap` identify interruptions visible in the selected data; they do
+not infer what happened in missing rows or beyond the selection. Context uses
+the full stream but stops at gaps. JSON emits unavailable MASD as `null`.

@@ -113,7 +113,7 @@ Two independent definitions, both configurable in the UI:
 
 - **Stutter event**: `frame_time[i] > k × rolling_median(frame_time, window
   radius r)[i]`, where the rolling median is computed over a centered
-  window `[i - r, i + r]` (clipped at the ends of the capture). Defaults:
+  window `[i - r, i + r]` (clipped at capture ends and source gaps). Defaults:
   `k = 2.0`, `r = 10` frames. This flags frames that are anomalous
   *relative to their neighborhood* — catches stutter in a capture whose
   overall pace varies a lot (e.g. a CPU-bound section running at a
@@ -133,13 +133,27 @@ of total capture time.
 Mean absolute successive difference:
 
 ```
-masd_ms = mean(|frame_time[i] - frame_time[i-1]|) for i = 1..n-1
+masd_ms = mean(|frame_time[i] - frame_time[i-1]|)
+          over adjacent observed pairs only; never across a source gap
 ```
 
 A perfectly steady capture is 0ms regardless of its average frame rate; a
 capture that alternates between two frame times (the classic vsync-mismatch
 sawtooth — see the synthetic samples) has a high MASD even if its average
 FPS looks fine, which is exactly the case average FPS hides.
+
+A source gap separates frames when the parser skipped an unusable timing row.
+A bad row with a known process/swap-chain identity interrupts only that stream;
+a bad row with incomplete identity conservatively interrupts every previously
+observed stream. Normal interleaving, blank lines and missing optional telemetry
+do not create gaps. Callers constructing a `FrameSeries` without `gapBefore`
+assert uninterrupted observations; CSV line distance alone cannot establish this.
+
+The trace, FPS chart and slow-frame episodes stop at the same boundaries.
+Retained durations, distribution metrics and absolute hitches remain usable.
+Neither a low stutter count nor an empty gap list proves complete recording:
+missing rows that left no evidence in the file cannot be detected. A short
+segment can have too little local context to reveal a relative anomaly.
 
 ## Dropped frames
 
@@ -195,7 +209,7 @@ latency. A one-sample percentile still exists but carries its one-frame coverage
 
 ### Coverage in evidence reports (source checkout)
 
-Browser and comparison reports use schema version 4. `metrics.telemetryCoverage`
+Browser and comparison reports use schema version 5. `metrics.telemetryCoverage`
 has `dropped`, `cpuGpuBusy` and `displayLatency` entries. An entry is `null` when
 its required source column(s) are absent; otherwise it contains
 `observedFrames` and `unknownFrames`, summing to the analyzed frame count.
@@ -235,7 +249,10 @@ on demand.
 An interval keeps whole frames whose ending accumulated time is after start and
 at or before end. Average FPS uses the selected count divided by the sum of
 selected durations. Percentiles, lows, optional channels, and MASD use the
-selected frames; MASD needs at least two frames and is otherwise unavailable.
-Stutter flags retain the full stream's rolling-median context and are counted
+selected frames; MASD needs at least one observed adjacent pair and is otherwise
+unavailable (`null` in JSON). `pacingCoverage.observedPairs` gives its denominator;
+`gapBoundaries` counts interruptions between selected frames, not missing frames.
+Stutter flags retain the full stream's rolling-median context within each
+uninterrupted segment and are counted
 within the interval. See [interval analysis](interval-analysis.md) for exact
 boundary rules, original-source coordinates, and comparison/export behavior.

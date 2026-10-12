@@ -390,7 +390,7 @@ function renderWorkspace(): void {
         <h2 id="interval-title">Analyzed intervals</h2>
         <p class="hint">Choose the part of each capture to measure. Times sum usable frame durations; they are not wall-clock timestamps. Start excludes frames ending at that point; end includes them. Whole frames are kept.</p>
         <div class="interval-runs">${intervalControls("a", a.file.name, a.response.selection, a.rangeDraft)}${runs.b ? intervalControls("b", runs.b.file.name, runs.b.response.selection, runs.b.rangeDraft) : ""}</div>
-        <p class="hint">Stutter detection keeps the full stream's neighboring frames. Zooming a chart changes the view; apply an interval to change metrics and exports.${hasB ? " JSON and Markdown exports include both runs. PNG shows Run A." : ""}</p>
+        <p class="hint">Stutter detection keeps neighboring frames from the full stream, stopping at source gaps. Traces also break at gaps; their time axis sums usable frame durations and does not reconstruct missing time. Zooming a chart changes the view; apply an interval to change metrics and exports.${hasB ? " JSON and Markdown exports include both runs. PNG shows Run A." : ""}</p>
         <button class="btn small" id="cancel-analysis" type="button" hidden>Cancel analysis</button>
       </section>
       <p class="panel-label">Run A metrics <span class="hint">${a.response.selection.requested ? "applied interval" : "entire capture"}</span></p>
@@ -465,8 +465,8 @@ function renderWorkspace(): void {
   traceSelect.addEventListener("change", () => { traceSlot = traceSelect.value as Slot; renderWorkspace(); });
   const traceElement = document.getElementById("trace-chart")!;
   traceElement.setAttribute("aria-label", `Run ${traceSlot.toUpperCase()}: ${chartSummary(inspected.response.summary)}`);
-  charts.trace = createTraceChart(traceElement, inspected.response.series.timeSec, inspected.response.series.frameTimeMs, inspected.response.chart.isStutter, traceSlot);
-  charts.fps = createFpsChart(document.getElementById("fps-chart")!, inspected.response.series.timeSec, inspected.response.series.frameTimeMs);
+  charts.trace = createTraceChart(traceElement, inspected.response.series.timeSec, inspected.response.series.frameTimeMs, inspected.response.chart.isStutter, traceSlot, inspected.response.series.gapBefore);
+  charts.fps = createFpsChart(document.getElementById("fps-chart")!, inspected.response.series.timeSec, inspected.response.series.frameTimeMs, inspected.response.series.gapBefore);
   document.getElementById("fps-chart")!.setAttribute("aria-label", `FPS over time for Run ${traceSlot.toUpperCase()}: ${inspected.file.name}`);
   mountEpisodes(document.getElementById("episode-inspector")!, inspected.response, (start, end) => {
     charts.trace?.uplot.setScale("x", { min: start, max: end });

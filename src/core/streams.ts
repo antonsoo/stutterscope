@@ -10,6 +10,7 @@
  * chain) and exactly one stream is analysed.
  */
 import { Uint32Builder } from "./buffer.ts";
+import { FrameContinuity } from "./continuity.ts";
 import { ParseError, type OptionalChannels, type PresentStream } from "./types.ts";
 
 /** Presents that are never the thing being measured, so they lose the default pick even when busier. */
@@ -18,6 +19,7 @@ const COMPOSITORS = new Set(["dwm.exe"]);
 export interface SeriesColumns {
   frameTimeMs: Float64Array;
   sourceLine?: Float64Array;
+  gapBefore?: Uint8Array;
   channels: OptionalChannels;
 }
 
@@ -35,6 +37,7 @@ export class StreamTracker {
   private readonly indexById = new Map<string, number>();
   private readonly list: PresentStream[] = [];
   private readonly rowStream = new Uint32Builder(4096);
+  private readonly continuity = new FrameContinuity();
   // The previous row's raw key fields: consecutive rows usually share a stream,
   // and comparing two strings is cheaper than building and hashing a key.
   private lastIndex = -1;
@@ -55,7 +58,7 @@ export class StreamTracker {
 
   /** Records which stream a kept row belongs to. Call once per row the parser keeps, never for a skipped one. */
   track(fields: string[]): void {
-    if (!this.enabled) return;
+    if (!this.enabled) { this.continuity.keep(); return; }
     const app = this.appIdx >= 0 ? fields[this.appIdx] : undefined;
     const pid = this.pidIdx >= 0 ? fields[this.pidIdx] : undefined;
     const swap = this.swapIdx >= 0 ? fields[this.swapIdx] : undefined;
@@ -81,6 +84,23 @@ export class StreamTracker {
     }
     this.list[index]!.frameCount++;
     this.rowStream.push(index);
+    this.continuity.keep(index);
+  }
+
+  /** Invalid frame time, with identity still available when the row is intact. */
+  skip(fields: string[]): void {
+    if (!this.enabled) { this.continuity.skip(); return; }
+    const indices = this.pidIdx >= 0 || this.swapIdx >= 0
+      ? [this.pidIdx, this.swapIdx].filter((i) => i >= 0) : [this.appIdx];
+    if (indices.some((i) => !fields[i]?.trim())) {
+      this.continuity.skip(); // Do not silently assign a damaged identity to another stream.
+      return;
+    }
+    const id = this.pidIdx >= 0 || this.swapIdx >= 0
+      ? `${this.pidIdx >= 0 ? fields[this.pidIdx]!.trim() : ""}:${this.swapIdx >= 0 ? fields[this.swapIdx]!.trim() : ""}`
+      : fields[this.appIdx]!.trim();
+    const index = this.indexById.get(id);
+    if (index !== undefined) this.continuity.skip(index);
   }
 
   /**
@@ -88,6 +108,7 @@ export class StreamTracker {
    * isn't the compositor; a selector is matched by `matchStream`.
    */
   select(columns: SeriesColumns, selector?: string): StreamSelection {
+    columns = { ...columns, gapBefore: this.continuity.toArray() };
     const streams = [...this.list].sort((a, b) => b.frameCount - a.frameCount);
     if (streams.length === 0) return { ...columns, streams };
     const selected = selector === undefined ? defaultStream(streams) : matchStream(streams, selector);
@@ -149,6 +170,7 @@ function filterRows(columns: SeriesColumns, rowStream: Uint32Array, keep: number
   return {
     frameTimeMs: pick(columns.frameTimeMs, f64)!,
     sourceLine: pick(columns.sourceLine, f64),
+    gapBefore: pick(columns.gapBefore, u8),
     channels: {
       dropped: pick(c.dropped, u8),
       cpuBusyMs: pick(c.cpuBusyMs, f64),

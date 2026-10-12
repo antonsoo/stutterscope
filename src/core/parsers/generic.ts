@@ -1,3 +1,4 @@
+import { FrameContinuity } from "../continuity.ts";
 import { cumulativeSeconds } from "../streams.ts";
 /**
  * Fallback for any CSV that isn't one of the recognized capture tools: the
@@ -248,6 +249,7 @@ export function guessKind(sampleText: string, column: string): MappingGuess | nu
 
 class GenericParser implements StreamingParser {
   private header: Map<string, number> | null = null;
+  private readonly continuity = new FrameContinuity();
   private readonly skipped = new SkippedRows();
   private readonly frameTimeMs = new Float64Builder(4096);
   private readonly sourceLine = new Float64Builder(4096);
@@ -275,6 +277,7 @@ class GenericParser implements StreamingParser {
     const raw = valueIdx === undefined ? undefined : fields[valueIdx];
     const value = parseFloatOrNull(raw);
     if (value === null) {
+      this.continuity.skip();
       this.skipped.add(lineIndex, `missing/invalid ${this.mapping.valueColumn}`);
       // A missing observation breaks adjacency. Differencing the next timestamp
       // against an older one would combine several frames into a false hitch.
@@ -289,18 +292,21 @@ class GenericParser implements StreamingParser {
       this.previousTimestamp = value;
       if (ft === null) {
         if (this.timestampGap) {
+          this.continuity.skip();
           this.skipped.add(lineIndex, `cannot derive frame time after missing/invalid ${this.mapping.valueColumn}`);
           this.timestampGap = false;
         }
         return; // first observation (or first after a gap): establish the clock
       }
       if (!Number.isFinite(ft)) {
+        this.continuity.skip();
         this.skipped.add(lineIndex, "frame time overflows milliseconds");
         return;
       }
       if (ft < 0) {
         // Two logs joined into one file, or a counter that wrapped. The row restarts the clock
         // (it is the next row's previous timestamp) and carries no frame time of its own.
+        this.continuity.skip();
         this.skipped.add(lineIndex, `${this.mapping.valueColumn} goes backwards`);
         return;
       }
@@ -308,19 +314,23 @@ class GenericParser implements StreamingParser {
     } else {
       const ft = valueToFrameTimeMs(this.mapping.valueKind, value, null);
       if (ft === null) {
+        this.continuity.skip();
         this.skipped.add(lineIndex, "non-positive FPS value");
         return;
       }
       if (!Number.isFinite(ft)) {
+        this.continuity.skip();
         this.skipped.add(lineIndex, "frame time overflows milliseconds");
         return;
       }
       if (ft < 0) {
+        this.continuity.skip();
         this.skipped.add(lineIndex, `negative ${this.mapping.valueColumn}`);
         return;
       }
       this.frameTimeMs.push(ft === 0 ? 0 : ft);
     }
+    this.continuity.keep();
     this.sourceLine.push(lineIndex + 1);
     if (this.hasDropped) {
       const dIdx = h.get(this.mapping.droppedColumn!);
@@ -343,6 +353,7 @@ class GenericParser implements StreamingParser {
       frameCount: frameTimeMs.length,
       frameTimeMs,
       sourceLine: this.sourceLine.toArray(),
+      gapBefore: this.continuity.toArray(),
       timeSec,
       channels: { dropped: this.hasDropped ? this.dropped.toArray() : undefined },
     };

@@ -275,12 +275,19 @@ function rollingMedian(values: Float64Array, radius: number): Float64Array {
 export function detectStutter(
   frameTimeMs: Float64Array,
   options: StutterOptions = DEFAULT_STUTTER_OPTIONS,
+  gapBefore?: Uint8Array,
 ): StutterResult {
   const n = frameTimeMs.length;
   const isStutter = new Uint8Array(n);
-  const medians = rollingMedian(frameTimeMs, options.windowRadius);
-  for (let i = 0; i < n; i++) {
-    if (medians[i]! > 0 && frameTimeMs[i]! > options.kMultiplier * medians[i]!) isStutter[i] = 1;
+  let start = 0;
+  for (let end = 1; end <= n; end++) {
+    if (end < n && gapBefore?.[end] !== 1) continue;
+    const medians = rollingMedian(frameTimeMs.subarray(start, end), options.windowRadius);
+    for (let i = start; i < end; i++) {
+      const median = medians[i - start]!;
+      if (median > 0 && frameTimeMs[i]! > options.kMultiplier * median) isStutter[i] = 1;
+    }
+    start = end;
   }
   return summarizeStutter(frameTimeMs, isStutter, options.hitchThresholdMs);
 }
@@ -329,12 +336,23 @@ export function summarizeStutter(frameTimeMs: Float64Array, isStutter: Uint8Arra
  * capture alternating between fast and slow frames (common with VRR/vsync
  * mismatches) is high even if its average FPS looks fine.
  */
-export function meanAbsoluteSuccessiveDifference(frameTimeMs: Float64Array): number {
+export function meanAbsoluteSuccessiveDifference(frameTimeMs: Float64Array, gapBefore?: Uint8Array): number {
   const n = frameTimeMs.length;
   if (n < 2) return NaN; // No successive pair exists; zero would claim perfectly steady pacing.
   let sum = 0;
-  for (let i = 1; i < n; i++) sum += Math.abs(frameTimeMs[i]! - frameTimeMs[i - 1]!);
-  return sum / (n - 1);
+  let pairs = 0;
+  for (let i = 1; i < n; i++) {
+    if (gapBefore?.[i] === 1) continue;
+    sum += Math.abs(frameTimeMs[i]! - frameTimeMs[i - 1]!);
+    pairs++;
+  }
+  return pairs > 0 ? sum / pairs : NaN;
+}
+
+export function pacingCoverage(series: FrameSeries): { observedPairs: number; gapBoundaries: number } {
+  let gapBoundaries = 0;
+  for (let i = 1; i < series.frameCount; i++) if (series.gapBefore?.[i] === 1) gapBoundaries++;
+  return { observedPairs: Math.max(0, series.frameCount - 1) - gapBoundaries, gapBoundaries };
 }
 
 // ---------------------------------------------------------------------------
@@ -547,6 +565,8 @@ export interface MetricsSummary {
   pointOnePercentLow: LowFpsResult;
   stutter: StutterResult;
   masdMs: number;
+  /** Gaps between selected retained frames, not an estimate of missing frame count. */
+  pacingCoverage: ReturnType<typeof pacingCoverage>;
   dropped: DroppedFramesResult | null;
   boundShare: BoundShareResult | null;
   latency: LatencyResult | null;
@@ -561,7 +581,7 @@ export interface MetricsSummary {
 export function computeMetricsSummary(
   series: FrameSeries,
   stutterOptions: StutterOptions = DEFAULT_STUTTER_OPTIONS,
-  stutter: StutterResult = detectStutter(series.frameTimeMs, stutterOptions),
+  stutter: StutterResult = detectStutter(series.frameTimeMs, stutterOptions, series.gapBefore),
 ): MetricsSummary {
   const sorted = sortedCopy(series.frameTimeMs);
   const dropped = droppedFrames(series);
@@ -578,7 +598,8 @@ export function computeMetricsSummary(
     onePercentLow: onePercentLow(sorted),
     pointOnePercentLow: pointOnePercentLow(sorted),
     stutter,
-    masdMs: meanAbsoluteSuccessiveDifference(series.frameTimeMs),
+    masdMs: meanAbsoluteSuccessiveDifference(series.frameTimeMs, series.gapBefore),
+    pacingCoverage: pacingCoverage(series),
     dropped,
     boundShare: bound,
     latency,
