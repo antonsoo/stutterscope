@@ -90,3 +90,70 @@ unchanged. Screenshots wait for the existing trace entrance animation to finish.
 
 This correction is source-only; the npm package and hosted demo have not been
 updated by this work.
+
+## Verified artifacts, 2026-10-12
+
+The final clean archive was made from
+`f5beb334c80b73186402828b5b08dff5e47ce7b6`. No production code changed after
+that archive. [artifacts.json](results/artifacts.json) binds 98 source, test and
+configuration inputs to it and records the package and served-build hashes.
+
+- `npm ci`, `npm run typecheck`, `npm run lint`, `npm test`,
+  `npm run build:cli`, `npm pack`, and `npm run test:browser` passed under
+  Node 24.21.0. The suite ran 318 tests and 76 Chromium/Firefox workflows.
+- The packed package was installed offline outside the source tree. All 25
+  package files match the tarball bytes. The artifact is 45,832 bytes, SHA-256
+  `0dd5e59f4cf9522ab2db55105afa475bf2f4527898820c67b3550cb69e6e691b`.
+- All 55 CLI cases passed on both the declared minimum Node **22.6.0** and
+  Node **24.21.0**. Their case records are identical:
+  [minimum runtime](results/installed-node22.json),
+  [Node 24](results/installed-node24.json). Each entirely unidentified input
+  exits 1 with the missing-application reason.
+- All 34 pinned public captures (89,496,929 bytes) were hash-checked and
+  replayed. The entire [before](results/public-before.json) and
+  [after](results/public-after.json) receipts are identical: 27 parse to
+  278,107 selected frames; four periodic MangoHud logs are refused by the
+  existing clock check and three generic files lack a confident automatic
+  column mapping. Those seven are not counted as successful parses.
+- All 30 files from the browser build were fetched from the local preview
+  server and byte-compared to the tested `dist/`. This verifies the local
+  build, not the hosted demo. `npm run build` produces that `dist/` directory.
+
+Actual offline browser downloads are retained for
+[Chromium desktop](results/chromium-1440.json),
+[Chromium phone](results/chromium-375.json),
+[Firefox desktop](results/firefox-1440.json), and
+[Firefox phone](results/firefox-375.json). All four screenshots were inspected;
+the stream picker, 100 FPS result and flat trace remain visible, and the phone
+layout wraps without clipping the controls. No UI styling changed.
+
+![Actual Chromium report after selecting the game from the synthetic two-application CSV](../../docs/assets/stream-identity/chromium-1440.png)
+
+[Phone screenshot](../../docs/assets/stream-identity/chromium-375.png) ·
+[Firefox desktop](../../docs/assets/stream-identity/firefox-1440.png) ·
+[Firefox phone](../../docs/assets/stream-identity/firefox-375.png)
+
+## Throughput cost
+
+[`benchmark.mjs`](benchmark.mjs) measures parsing 430,000 synthetic rows, with
+one full warmup and five measured repetitions per runtime/profile, alternating
+before/after order and collecting garbage outside each timed parse. It excludes
+CSV generation and metrics. The host was WSL2 Linux, 14 available CPUs and
+47.0 GiB RAM, using Node 24.21.0. [Raw samples](results/benchmark.json).
+
+| Identity columns / row order | Before median | After median |
+| --- | ---: | ---: |
+| PID present, one stream | 186.5 ms | 192.4 ms |
+| PID present, alternating two streams | 225.5 ms | 240.4 ms |
+| No PID, one application | 175.6 ms | 168.1 ms |
+| No PID, alternating two applications | 210.3 ms | 375.5 ms |
+
+The last case costs more because the corrected parser constructs application
+and swap-chain tuple IDs and filters the selected stream; the baseline merged
+all 430,000 rows incorrectly. The corrected result retains the 215,000 game
+frames. These are local throughput observations, not latency guarantees or a
+claim that the repair improves performance.
+
+```bash
+node --expose-gc studies/stream-identity/benchmark.mjs /path/to/baseline/src /path/to/installed/dist-cli /tmp/stream-benchmark.json
+```

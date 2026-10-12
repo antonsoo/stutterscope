@@ -1,0 +1,4728 @@
+{
+  "node": "v24.21.0",
+  "results": [
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_0.csv",
+      "sha256": "0036a3c35caa7fc06b13604484fcd1758bf1912ee53aa8416812b020f95d8993",
+      "bytes": 96887,
+      "status": "parsed",
+      "meta": {
+        "format": "ocat",
+        "sourceFileName": "Tests/Gold/test_case_0.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "TimeInQPC",
+          "MsBetweenSimulationStart",
+          "MsBetweenPresents",
+          "MsBetweenDisplayChange",
+          "MsInPresentAPI",
+          "MsRenderPresentLatency",
+          "MsUntilDisplayed",
+          "MsPCLatency",
+          "CPUStartQPC",
+          "MsBetweenAppStart",
+          "MsCPUBusy",
+          "MsCPUWait",
+          "MsGPULatency",
+          "MsGPUTime",
+          "MsGPUBusy",
+          "MsGPUWait",
+          "MsVideoBusy",
+          "MsAnimationError",
+          "AnimationTime",
+          "MsFlipDelay",
+          "MsAllInputToPhotonLatency",
+          "MsClickToPhotonLatency",
+          "MsInstrumentedLatency"
+        ],
+        "streams": [
+          {
+            "id": "1268:0x224B280A1C0",
+            "application": "dwm.exe",
+            "processId": "1268",
+            "swapChain": "0x224B280A1C0",
+            "frameCount": 197
+          },
+          {
+            "id": "10792:0x20979A6D5F8",
+            "application": "Presenter.exe",
+            "processId": "10792",
+            "swapChain": "0x20979A6D5F8",
+            "frameCount": 18
+          },
+          {
+            "id": "8320:0x15EFD8424E0",
+            "application": "Presenter.exe",
+            "processId": "8320",
+            "swapChain": "0x15EFD8424E0",
+            "frameCount": 18
+          },
+          {
+            "id": "11648:0x1B95496E4B0",
+            "application": "Presenter.exe",
+            "processId": "11648",
+            "swapChain": "0x1B95496E4B0",
+            "frameCount": 18
+          },
+          {
+            "id": "3976:0x0",
+            "application": "Presenter.exe",
+            "processId": "3976",
+            "swapChain": "0x0",
+            "frameCount": 18
+          },
+          {
+            "id": "2032:0x29A5884FF18",
+            "application": "Presenter.exe",
+            "processId": "2032",
+            "swapChain": "0x29A5884FF18",
+            "frameCount": 18
+          },
+          {
+            "id": "5988:0x224CBFFD9D8",
+            "application": "Presenter.exe",
+            "processId": "5988",
+            "swapChain": "0x224CBFFD9D8",
+            "frameCount": 18
+          },
+          {
+            "id": "12268:0x20DBB4358B0",
+            "application": "Presenter.exe",
+            "processId": "12268",
+            "swapChain": "0x20DBB4358B0",
+            "frameCount": 18
+          },
+          {
+            "id": "11112:0x0",
+            "application": "Presenter.exe",
+            "processId": "11112",
+            "swapChain": "0x0",
+            "frameCount": 17
+          },
+          {
+            "id": "11100:0x0",
+            "application": "Presenter.exe",
+            "processId": "11100",
+            "swapChain": "0x0",
+            "frameCount": 17
+          }
+        ],
+        "selectedStream": "10792:0x20979A6D5F8"
+      },
+      "arrays": {
+        "frameTimeMs": "7270553797898d2d0d56fa6a1c4e8fcd4a9acabcb4a038012ea6b70130a958c2",
+        "timeSec": "f63963051d9f1d5194c2df18def46181521b0f8592d586390dce37ba8e31c323",
+        "sourceLine": "c1b6b84f642356789b0c828cec83b8441645cecfe2c603273d9e5eaf1c02882f",
+        "gapBefore": "60daa3a5f7dbfa200f8c82840ecf5b42640b70f3b7218a4c6bbd67db542e75a4",
+        "dropped": null,
+        "cpuBusyMs": null,
+        "gpuBusyMs": null,
+        "displayLatencyMs": null
+      },
+      "summary": {
+        "frameCount": 18,
+        "durationSec": 0.2592515,
+        "averageFps": 69.43064938872098,
+        "meanOfInstantaneousFps": 161.7992035927559,
+        "percentilesMs": {
+          "p50": 16.6575,
+          "p90": 16.781029999999998,
+          "p95": 16.85615,
+          "p99": 16.87587,
+          "p999": 16.880307000000002
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 59.25620427272787,
+          "meanOfSlowestMethodFps": 59.23889863039666,
+          "timeWeightedFps": 59.23889863039666
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 59.24062873974981,
+          "meanOfSlowestMethodFps": 59.23889863039666,
+          "timeWeightedFps": 59.23889863039666
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 2.834658823529411,
+        "pacingCoverage": {
+          "observedPairs": 17,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_0_v1.csv",
+      "sha256": "c44407ee31bf829f241a8e64d5e8f5e5209d042b312c46f2da0bd26e330a979f",
+      "bytes": 101313,
+      "status": "parsed",
+      "meta": {
+        "format": "presentmon1",
+        "sourceFileName": "Tests/Gold/test_case_0_v1.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "Runtime",
+          "SyncInterval",
+          "PresentFlags",
+          "Dropped",
+          "TimeInSeconds",
+          "msInPresentAPI",
+          "msBetweenPresents",
+          "AllowsTearing",
+          "PresentMode",
+          "msUntilRenderComplete",
+          "msUntilDisplayed",
+          "msBetweenDisplayChange",
+          "msFlipDelay",
+          "msUntilRenderStart",
+          "msGPUActive",
+          "msGPUVideoActive",
+          "msSinceInput",
+          "QPCTime"
+        ],
+        "streams": [
+          {
+            "id": "1268:0x00000224B280A1C0",
+            "application": "dwm.exe",
+            "processId": "1268",
+            "swapChain": "0x00000224B280A1C0",
+            "frameCount": 199
+          },
+          {
+            "id": "10792:0x0000020979A6D5F8",
+            "application": "Presenter.exe",
+            "processId": "10792",
+            "swapChain": "0x0000020979A6D5F8",
+            "frameCount": 19
+          },
+          {
+            "id": "8320:0x0000015EFD8424E0",
+            "application": "Presenter.exe",
+            "processId": "8320",
+            "swapChain": "0x0000015EFD8424E0",
+            "frameCount": 19
+          },
+          {
+            "id": "11648:0x000001B95496E4B0",
+            "application": "Presenter.exe",
+            "processId": "11648",
+            "swapChain": "0x000001B95496E4B0",
+            "frameCount": 19
+          },
+          {
+            "id": "3976:0x0000000000000000",
+            "application": "Presenter.exe",
+            "processId": "3976",
+            "swapChain": "0x0000000000000000",
+            "frameCount": 19
+          },
+          {
+            "id": "2032:0x0000029A5884FF18",
+            "application": "Presenter.exe",
+            "processId": "2032",
+            "swapChain": "0x0000029A5884FF18",
+            "frameCount": 19
+          },
+          {
+            "id": "5988:0x00000224CBFFD9D8",
+            "application": "Presenter.exe",
+            "processId": "5988",
+            "swapChain": "0x00000224CBFFD9D8",
+            "frameCount": 19
+          },
+          {
+            "id": "12268:0x0000020DBB4358B0",
+            "application": "Presenter.exe",
+            "processId": "12268",
+            "swapChain": "0x0000020DBB4358B0",
+            "frameCount": 19
+          },
+          {
+            "id": "11112:0x0000000000000000",
+            "application": "Presenter.exe",
+            "processId": "11112",
+            "swapChain": "0x0000000000000000",
+            "frameCount": 18
+          },
+          {
+            "id": "11100:0x0000000000000000",
+            "application": "Presenter.exe",
+            "processId": "11100",
+            "swapChain": "0x0000000000000000",
+            "frameCount": 18
+          }
+        ],
+        "selectedStream": "10792:0x0000020979A6D5F8"
+      },
+      "arrays": {
+        "frameTimeMs": "7cb43ce83bd8d92f4f30c9dcb2122cdee768435ef11dfd1ef708896b7ed1db6c",
+        "timeSec": "29b9bfd58fe0adc294d7fc07d172a667ce83a689c880505267e56f37a60c8298",
+        "sourceLine": "b856eab4172f5f27645fc06928ec969a54612ec6bf1337eb397cdc64ebd1661d",
+        "gapBefore": "d6fd62f5ce537d90ea3ea45841b17f34d727bcbc4128748cba14fb87c0ffd9d1",
+        "dropped": "893d8b4da961cfb6d88b649eb4490286ae464dde99e1dc5d542574021da9fc75",
+        "cpuBusyMs": null,
+        "gpuBusyMs": "c14d459f23e27f57eef4bca9cf5d5e5a5d6ef1ef4b49783d4fcd4287f6bfa1a6",
+        "displayLatencyMs": null
+      },
+      "summary": {
+        "frameCount": 19,
+        "durationSec": 0.27583100000000005,
+        "averageFps": 68.8827579206108,
+        "meanOfInstantaneousFps": 156.45795339326702,
+        "percentilesMs": {
+          "p50": 16.6504,
+          "p90": 16.77092,
+          "p95": 16.8547,
+          "p99": 16.87558,
+          "p999": 16.880278
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 59.25722256657253,
+          "meanOfSlowestMethodFps": 59.23889863039666,
+          "timeWeightedFps": 59.23889863039666
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 59.24073051403537,
+          "meanOfSlowestMethodFps": 59.23889863039666,
+          "timeWeightedFps": 59.23889863039666
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 2.686399999999999,
+        "pacingCoverage": {
+          "observedPairs": 18,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 1,
+          "observedFrames": 19,
+          "droppedFraction": 0.05263157894736842
+        },
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 19,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_0_v2.csv",
+      "sha256": "46a596f04065f76364f37eaf9b5edc064132a71daa8e7650c29cf2ef537041af",
+      "bytes": 68524,
+      "status": "parsed",
+      "meta": {
+        "format": "presentmon2",
+        "sourceFileName": "Tests/Gold/test_case_0_v2.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "CPUStartQPC",
+          "FrameTime",
+          "CPUBusy",
+          "CPUWait",
+          "GPULatency",
+          "GPUTime",
+          "GPUBusy",
+          "GPUWait",
+          "VideoBusy",
+          "DisplayLatency",
+          "DisplayedTime",
+          "AnimationError",
+          "AnimationTime",
+          "MsFlipDelay",
+          "AllInputToPhotonLatency",
+          "ClickToPhotonLatency",
+          "InstrumentedLatency"
+        ],
+        "streams": [
+          {
+            "id": "1268:0x224B280A1C0",
+            "application": "dwm.exe",
+            "processId": "1268",
+            "swapChain": "0x224B280A1C0",
+            "frameCount": 197
+          },
+          {
+            "id": "10792:0x20979A6D5F8",
+            "application": "Presenter.exe",
+            "processId": "10792",
+            "swapChain": "0x20979A6D5F8",
+            "frameCount": 18
+          },
+          {
+            "id": "8320:0x15EFD8424E0",
+            "application": "Presenter.exe",
+            "processId": "8320",
+            "swapChain": "0x15EFD8424E0",
+            "frameCount": 18
+          },
+          {
+            "id": "11648:0x1B95496E4B0",
+            "application": "Presenter.exe",
+            "processId": "11648",
+            "swapChain": "0x1B95496E4B0",
+            "frameCount": 18
+          },
+          {
+            "id": "3976:0x0",
+            "application": "Presenter.exe",
+            "processId": "3976",
+            "swapChain": "0x0",
+            "frameCount": 18
+          },
+          {
+            "id": "2032:0x29A5884FF18",
+            "application": "Presenter.exe",
+            "processId": "2032",
+            "swapChain": "0x29A5884FF18",
+            "frameCount": 18
+          },
+          {
+            "id": "5988:0x224CBFFD9D8",
+            "application": "Presenter.exe",
+            "processId": "5988",
+            "swapChain": "0x224CBFFD9D8",
+            "frameCount": 18
+          },
+          {
+            "id": "12268:0x20DBB4358B0",
+            "application": "Presenter.exe",
+            "processId": "12268",
+            "swapChain": "0x20DBB4358B0",
+            "frameCount": 18
+          },
+          {
+            "id": "11112:0x0",
+            "application": "Presenter.exe",
+            "processId": "11112",
+            "swapChain": "0x0",
+            "frameCount": 17
+          },
+          {
+            "id": "11100:0x0",
+            "application": "Presenter.exe",
+            "processId": "11100",
+            "swapChain": "0x0",
+            "frameCount": 17
+          }
+        ],
+        "selectedStream": "10792:0x20979A6D5F8"
+      },
+      "arrays": {
+        "frameTimeMs": "d74e25eaf894d1616db0c1282f0b557cbb8d49f60b3c7e591d3e707a429daf75",
+        "timeSec": "78162f7adb1a038b706899a5917fc34b001e45f4b9a480e5846c476444b54108",
+        "sourceLine": "c1b6b84f642356789b0c828cec83b8441645cecfe2c603273d9e5eaf1c02882f",
+        "gapBefore": "60daa3a5f7dbfa200f8c82840ecf5b42640b70f3b7218a4c6bbd67db542e75a4",
+        "dropped": "67a11c202ec081bddae7454b5bd442e299ed1f8e58010a29cf9395b0430e4faa",
+        "cpuBusyMs": "a4e4613f5c6286a49582dfc994521d2ee5fb3c628f92602aa966adc889c31e5f",
+        "gpuBusyMs": "c28c2ca56b46163b9187fa2819867611802625240bd9055cdfca4a96580a3083",
+        "displayLatencyMs": "d1ea1d5a14ad9ed42f437d0da171444c753d50e54ed8c5281fd89a99464a6dbd"
+      },
+      "summary": {
+        "frameCount": 18,
+        "durationSec": 0.2736246,
+        "averageFps": 65.78355893439405,
+        "meanOfInstantaneousFps": 140.50675231285268,
+        "percentilesMs": {
+          "p50": 16.66135,
+          "p90": 16.72664,
+          "p95": 16.74621,
+          "p99": 16.749882000000003,
+          "p999": 16.750708200000002
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 59.70191312392528,
+          "meanOfSlowestMethodFps": 59.698641258924944,
+          "timeWeightedFps": 59.698641258924944
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 59.69896842928706,
+          "meanOfSlowestMethodFps": 59.698641258924944,
+          "timeWeightedFps": 59.698641258924944
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 2.448647058823529,
+        "pacingCoverage": {
+          "observedPairs": 17,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 1,
+          "observedFrames": 18,
+          "droppedFraction": 0.05555555555555555
+        },
+        "boundShare": {
+          "cpuBoundFrames": 2,
+          "gpuBoundFrames": 16,
+          "cpuBoundFraction": 0.1111111111111111,
+          "gpuBoundFraction": 0.8888888888888888
+        },
+        "latency": {
+          "observedFrames": 17,
+          "meanMs": 47.02947647058824,
+          "p50": 49.5936,
+          "p90": 49.62936,
+          "p99": 49.635012
+        },
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 18,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": {
+            "observedFrames": 18,
+            "unknownFrames": 0
+          },
+          "displayLatency": {
+            "observedFrames": 17,
+            "unknownFrames": 1
+          }
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_1.csv",
+      "sha256": "56e149cacfd10a280a3e3dffc99aed38ccff7a440da1cc681844311e1945316b",
+      "bytes": 14033,
+      "status": "parsed",
+      "meta": {
+        "format": "ocat",
+        "sourceFileName": "Tests/Gold/test_case_1.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "TimeInQPC",
+          "MsBetweenSimulationStart",
+          "MsBetweenPresents",
+          "MsBetweenDisplayChange",
+          "MsInPresentAPI",
+          "MsRenderPresentLatency",
+          "MsUntilDisplayed",
+          "MsPCLatency",
+          "CPUStartQPC",
+          "MsBetweenAppStart",
+          "MsCPUBusy",
+          "MsCPUWait",
+          "MsGPULatency",
+          "MsGPUTime",
+          "MsGPUBusy",
+          "MsGPUWait",
+          "MsVideoBusy",
+          "MsAnimationError",
+          "AnimationTime",
+          "MsFlipDelay",
+          "MsAllInputToPhotonLatency",
+          "MsClickToPhotonLatency",
+          "MsInstrumentedLatency"
+        ],
+        "streams": [
+          {
+            "id": "1564:0x2408E0B7CA0",
+            "application": "dwm.exe",
+            "processId": "1564",
+            "swapChain": "0x2408E0B7CA0",
+            "frameCount": 25
+          },
+          {
+            "id": "1564:0x240A8D570F0",
+            "application": "dwm.exe",
+            "processId": "1564",
+            "swapChain": "0x240A8D570F0",
+            "frameCount": 15
+          },
+          {
+            "id": "24560:0x2019D7777C0",
+            "application": "Presenter.exe",
+            "processId": "24560",
+            "swapChain": "0x2019D7777C0",
+            "frameCount": 7
+          },
+          {
+            "id": "24944:0x1E25CF20",
+            "application": "devenv.exe",
+            "processId": "24944",
+            "swapChain": "0x1E25CF20",
+            "frameCount": 3
+          }
+        ],
+        "selectedStream": "24560:0x2019D7777C0"
+      },
+      "arrays": {
+        "frameTimeMs": "75787f3545dab6ea670c7ba399bf01ffc3cbbaf12c28b36ef7264182376f798e",
+        "timeSec": "7216e65eefae6b0fde6deaf546ba427f4809d512fdf4c56b8d42dd6a37918763",
+        "sourceLine": "db1f6cbb70b224467eed65c90aea4f0d8d292537f30236f58667e108c94c69a6",
+        "gapBefore": "837885c8f8091aeaeb9ec3c3f85a6ff470a415e610b8ba3e49f9b33c9cf9d619",
+        "dropped": null,
+        "cpuBusyMs": null,
+        "gpuBusyMs": null,
+        "displayLatencyMs": null
+      },
+      "summary": {
+        "frameCount": 7,
+        "durationSec": 0.06698930000000002,
+        "averageFps": 104.49429983594392,
+        "meanOfInstantaneousFps": 105.57453996818273,
+        "percentilesMs": {
+          "p50": 9.0017,
+          "p90": 10.79748,
+          "p95": 11.400089999999999,
+          "p99": 11.882178,
+          "p999": 11.990647800000001
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 84.15965490501826,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 83.39832982167985,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.5059166666666668,
+        "pacingCoverage": {
+          "observedPairs": 6,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_1_v1.csv",
+      "sha256": "847c8ce11556d6308278aab665fd706fa730afe4e6d6fdd7fd4edfbe0b625e8b",
+      "bytes": 15624,
+      "status": "parsed",
+      "meta": {
+        "format": "presentmon1",
+        "sourceFileName": "Tests/Gold/test_case_1_v1.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "Runtime",
+          "SyncInterval",
+          "PresentFlags",
+          "Dropped",
+          "TimeInSeconds",
+          "msInPresentAPI",
+          "msBetweenPresents",
+          "AllowsTearing",
+          "PresentMode",
+          "msUntilRenderComplete",
+          "msUntilDisplayed",
+          "msBetweenDisplayChange",
+          "msFlipDelay",
+          "msUntilRenderStart",
+          "msGPUActive",
+          "msGPUVideoActive",
+          "msSinceInput",
+          "QPCTime"
+        ],
+        "streams": [
+          {
+            "id": "1564:0x000002408E0B7CA0",
+            "application": "dwm.exe",
+            "processId": "1564",
+            "swapChain": "0x000002408E0B7CA0",
+            "frameCount": 26
+          },
+          {
+            "id": "1564:0x00000240A8D570F0",
+            "application": "dwm.exe",
+            "processId": "1564",
+            "swapChain": "0x00000240A8D570F0",
+            "frameCount": 16
+          },
+          {
+            "id": "24560:0x000002019D7777C0",
+            "application": "Presenter.exe",
+            "processId": "24560",
+            "swapChain": "0x000002019D7777C0",
+            "frameCount": 8
+          },
+          {
+            "id": "24944:0x000000001E25CF20",
+            "application": "devenv.exe",
+            "processId": "24944",
+            "swapChain": "0x000000001E25CF20",
+            "frameCount": 4
+          },
+          {
+            "id": "11024:0x0000027943F86F20",
+            "application": "chrome.exe",
+            "processId": "11024",
+            "swapChain": "0x0000027943F86F20",
+            "frameCount": 1
+          },
+          {
+            "id": "1564:0x0000000000000000",
+            "application": "dwm.exe",
+            "processId": "1564",
+            "swapChain": "0x0000000000000000",
+            "frameCount": 1
+          }
+        ],
+        "selectedStream": "24560:0x000002019D7777C0"
+      },
+      "arrays": {
+        "frameTimeMs": "29ba0452cd2f96c45bc910bae228708cbe87d41106b93cdef7298ad3c5eaca3c",
+        "timeSec": "3ee956d77b154b74f41e419fd7bc465b9cb6c627ab2cc405fd91683c3c3772e8",
+        "sourceLine": "e0ce700469b0ba6168f0e72233227989d3809154b1b9fa59e74539c4c01f8c34",
+        "gapBefore": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc",
+        "dropped": "e03bb68c650bcbe9ef789ec65c52bb63ae5506ea0c21ed553c20de5ebdf1798a",
+        "cpuBusyMs": null,
+        "gpuBusyMs": "f6f9ebd84d9a6e3ff8424fb44b0396cfa39448861b310548e2db451a2487352a",
+        "displayLatencyMs": null
+      },
+      "summary": {
+        "frameCount": 8,
+        "durationSec": 0.07599520000000001,
+        "averageFps": 105.2698065140956,
+        "meanOfInstantaneousFps": 106.25751238765973,
+        "percentilesMs": {
+          "p50": 9.0038,
+          "p90": 10.59661,
+          "p95": 11.299655,
+          "p99": 11.862091,
+          "p999": 11.988639100000002
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 84.30216898521518,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 83.41230323631977,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.43460000000000015,
+        "pacingCoverage": {
+          "observedPairs": 7,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 3,
+          "observedFrames": 8,
+          "droppedFraction": 0.375
+        },
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 8,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_1_v2.csv",
+      "sha256": "744bb42853b8821f6c97ef6a7b5bd588617bf2fb1ab47ef955dba90c9c7a28d8",
+      "bytes": 9849,
+      "status": "parsed",
+      "meta": {
+        "format": "presentmon2",
+        "sourceFileName": "Tests/Gold/test_case_1_v2.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "CPUStartQPC",
+          "FrameTime",
+          "CPUBusy",
+          "CPUWait",
+          "GPULatency",
+          "GPUTime",
+          "GPUBusy",
+          "GPUWait",
+          "VideoBusy",
+          "DisplayLatency",
+          "DisplayedTime",
+          "AnimationError",
+          "AnimationTime",
+          "MsFlipDelay",
+          "AllInputToPhotonLatency",
+          "ClickToPhotonLatency",
+          "InstrumentedLatency"
+        ],
+        "streams": [
+          {
+            "id": "1564:0x2408E0B7CA0",
+            "application": "dwm.exe",
+            "processId": "1564",
+            "swapChain": "0x2408E0B7CA0",
+            "frameCount": 25
+          },
+          {
+            "id": "1564:0x240A8D570F0",
+            "application": "dwm.exe",
+            "processId": "1564",
+            "swapChain": "0x240A8D570F0",
+            "frameCount": 15
+          },
+          {
+            "id": "24560:0x2019D7777C0",
+            "application": "Presenter.exe",
+            "processId": "24560",
+            "swapChain": "0x2019D7777C0",
+            "frameCount": 7
+          },
+          {
+            "id": "24944:0x1E25CF20",
+            "application": "devenv.exe",
+            "processId": "24944",
+            "swapChain": "0x1E25CF20",
+            "frameCount": 3
+          }
+        ],
+        "selectedStream": "24560:0x2019D7777C0"
+      },
+      "arrays": {
+        "frameTimeMs": "40004fe2f82fe24c6de16911537f729bdb4ee09ad568cb3f2ad041c3e8e10800",
+        "timeSec": "748062ba2dcd523a271d53ff405b43f2f9deb5e347de3484a4363e7d3fa3e96e",
+        "sourceLine": "db1f6cbb70b224467eed65c90aea4f0d8d292537f30236f58667e108c94c69a6",
+        "gapBefore": "837885c8f8091aeaeb9ec3c3f85a6ff470a415e610b8ba3e49f9b33c9cf9d619",
+        "dropped": "bef963beca2b0075fc528fd7ef5999ffc6566aab45b757208a981621c8b99a66",
+        "cpuBusyMs": "a0c822ceba5906133129e6dbe609ba7d2d95039d21a72bee1a050d9857dcd5ed",
+        "gpuBusyMs": "9ced5f162928c6af3d55ed153f45ce9fd0674271b11f5714fbe453d15ac88a1b",
+        "displayLatencyMs": "418c316b88e932a587b8b0b70f1b5cf533830889b29f3d53baecae95b9fe25a3"
+      },
+      "summary": {
+        "frameCount": 7,
+        "durationSec": 0.0660831,
+        "averageFps": 105.92723404319712,
+        "meanOfInstantaneousFps": 106.68477774055957,
+        "percentilesMs": {
+          "p50": 9.0375,
+          "p90": 10.4596,
+          "p95": 10.920399999999999,
+          "p99": 11.28904,
+          "p999": 11.371984000000001
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 88.58149142885489,
+          "meanOfSlowestMethodFps": 87.86419709696693,
+          "timeWeightedFps": 87.86419709696693
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 87.93540335617777,
+          "meanOfSlowestMethodFps": 87.86419709696693,
+          "timeWeightedFps": 87.86419709696693
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.47078333333333333,
+        "pacingCoverage": {
+          "observedPairs": 6,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 3,
+          "observedFrames": 7,
+          "droppedFraction": 0.42857142857142855
+        },
+        "boundShare": {
+          "cpuBoundFrames": 7,
+          "gpuBoundFrames": 0,
+          "cpuBoundFraction": 1,
+          "gpuBoundFraction": 0
+        },
+        "latency": {
+          "observedFrames": 4,
+          "meanMs": 30.964525,
+          "p50": 31.7879,
+          "p90": 33.57135,
+          "p99": 33.913575
+        },
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 7,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": {
+            "observedFrames": 7,
+            "unknownFrames": 0
+          },
+          "displayLatency": {
+            "observedFrames": 4,
+            "unknownFrames": 3
+          }
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_2.csv",
+      "sha256": "4c1c2a92c8d2cd234d0f1d44b6bbe17b56d936947d2874a9217228a0347c6d5c",
+      "bytes": 25669,
+      "status": "parsed",
+      "meta": {
+        "format": "ocat",
+        "sourceFileName": "Tests/Gold/test_case_2.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "TimeInQPC",
+          "MsBetweenSimulationStart",
+          "MsBetweenPresents",
+          "MsBetweenDisplayChange",
+          "MsInPresentAPI",
+          "MsRenderPresentLatency",
+          "MsUntilDisplayed",
+          "MsPCLatency",
+          "CPUStartQPC",
+          "MsBetweenAppStart",
+          "MsCPUBusy",
+          "MsCPUWait",
+          "MsGPULatency",
+          "MsGPUTime",
+          "MsGPUBusy",
+          "MsGPUWait",
+          "MsVideoBusy",
+          "MsAnimationError",
+          "AnimationTime",
+          "MsFlipDelay",
+          "MsAllInputToPhotonLatency",
+          "MsClickToPhotonLatency",
+          "MsInstrumentedLatency"
+        ],
+        "streams": [
+          {
+            "id": "1300:0x296989CD030",
+            "application": "dwm.exe",
+            "processId": "1300",
+            "swapChain": "0x296989CD030",
+            "frameCount": 56
+          },
+          {
+            "id": "10016:0x1BA6DC82C58",
+            "application": "Presenter.exe",
+            "processId": "10016",
+            "swapChain": "0x1BA6DC82C58",
+            "frameCount": 18
+          },
+          {
+            "id": "5348:0x28F99FCFD50",
+            "application": "Presenter.exe",
+            "processId": "5348",
+            "swapChain": "0x28F99FCFD50",
+            "frameCount": 18
+          },
+          {
+            "id": "5220:0x13B8AF7D830",
+            "application": "Presenter.exe",
+            "processId": "5220",
+            "swapChain": "0x13B8AF7D830",
+            "frameCount": 1
+          }
+        ],
+        "selectedStream": "10016:0x1BA6DC82C58"
+      },
+      "arrays": {
+        "frameTimeMs": "e4ccc4d149619192f0b9811e2bf7e631bcc96125b586febcadfa043d6aa14edc",
+        "timeSec": "8e6d50f9ddcb1cc77da0c36b846cf99dbdde39343698e66b6fb4d5dfc5a0dac4",
+        "sourceLine": "ba6806d0cf0b6e0f7cd1953de0ddd48924a67e63d0525df09ecf7842735d4366",
+        "gapBefore": "60daa3a5f7dbfa200f8c82840ecf5b42640b70f3b7218a4c6bbd67db542e75a4",
+        "dropped": null,
+        "cpuBusyMs": null,
+        "gpuBusyMs": null,
+        "displayLatencyMs": null
+      },
+      "summary": {
+        "frameCount": 18,
+        "durationSec": 0.260054,
+        "averageFps": 69.21639351826929,
+        "meanOfInstantaneousFps": 120.15938913880001,
+        "percentilesMs": {
+          "p50": 16.64055,
+          "p90": 16.996760000000002,
+          "p95": 17.107785,
+          "p99": 17.575556999999996,
+          "p999": 17.6808057
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 56.897201038920144,
+          "meanOfSlowestMethodFps": 56.52112477038293,
+          "timeWeightedFps": 56.52112477038293
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 56.55850852995913,
+          "meanOfSlowestMethodFps": 56.52112477038293,
+          "timeWeightedFps": 56.52112477038293
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 3.2638117647058817,
+        "pacingCoverage": {
+          "observedPairs": 17,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_2_v1.csv",
+      "sha256": "1c454ac79f69ff9229c7ab4410ae1a15ae984ce0cd9ee6b74099a0ec8b1cd825",
+      "bytes": 26918,
+      "status": "parsed",
+      "meta": {
+        "format": "presentmon1",
+        "sourceFileName": "Tests/Gold/test_case_2_v1.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "Runtime",
+          "SyncInterval",
+          "PresentFlags",
+          "Dropped",
+          "TimeInSeconds",
+          "msInPresentAPI",
+          "msBetweenPresents",
+          "AllowsTearing",
+          "PresentMode",
+          "msUntilRenderComplete",
+          "msUntilDisplayed",
+          "msBetweenDisplayChange",
+          "msFlipDelay",
+          "msUntilRenderStart",
+          "msGPUActive",
+          "msGPUVideoActive",
+          "msSinceInput",
+          "QPCTime"
+        ],
+        "streams": [
+          {
+            "id": "1300:0x00000296989CD030",
+            "application": "dwm.exe",
+            "processId": "1300",
+            "swapChain": "0x00000296989CD030",
+            "frameCount": 57
+          },
+          {
+            "id": "10016:0x000001BA6DC82C58",
+            "application": "Presenter.exe",
+            "processId": "10016",
+            "swapChain": "0x000001BA6DC82C58",
+            "frameCount": 19
+          },
+          {
+            "id": "5348:0x0000028F99FCFD50",
+            "application": "Presenter.exe",
+            "processId": "5348",
+            "swapChain": "0x0000028F99FCFD50",
+            "frameCount": 19
+          },
+          {
+            "id": "5220:0x0000013B8AF7D830",
+            "application": "Presenter.exe",
+            "processId": "5220",
+            "swapChain": "0x0000013B8AF7D830",
+            "frameCount": 2
+          }
+        ],
+        "selectedStream": "10016:0x000001BA6DC82C58"
+      },
+      "arrays": {
+        "frameTimeMs": "ac1a743f546540687eaba7684fea2dbca4671fc395246c50748894ebea99df80",
+        "timeSec": "f36ba579ffcc2c0a25775b3a1becde9b0be398081885c350713e032f4e66bce5",
+        "sourceLine": "7346cce8275b6051a6ca59ff696b5ad46dcce67c0df18b29894fba814b07d620",
+        "gapBefore": "d6fd62f5ce537d90ea3ea45841b17f34d727bcbc4128748cba14fb87c0ffd9d1",
+        "dropped": "b55e1e213950d53270603aab52e3fbc706bf3dd4e958a1ef7c78eb362c42c380",
+        "cpuBusyMs": null,
+        "gpuBusyMs": "3aef9b454722bb580c97f114b67dc7a9571fe27e68c17f0b6a61a0b914d11ec3",
+        "displayLatencyMs": null
+      },
+      "summary": {
+        "frameCount": 19,
+        "durationSec": 0.2766288,
+        "averageFps": 68.68409941408848,
+        "meanOfInstantaneousFps": 117.01060829109022,
+        "percentilesMs": {
+          "p50": 16.6093,
+          "p90": 16.99564,
+          "p95": 17.07339,
+          "p99": 17.568678,
+          "p999": 17.6801178
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 56.919479086588076,
+          "meanOfSlowestMethodFps": 56.52112477038293,
+          "timeWeightedFps": 56.52112477038293
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 56.56070911473225,
+          "meanOfSlowestMethodFps": 56.52112477038293,
+          "timeWeightedFps": 56.52112477038293
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 3.105744444444444,
+        "pacingCoverage": {
+          "observedPairs": 18,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 1,
+          "observedFrames": 19,
+          "droppedFraction": 0.05263157894736842
+        },
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 19,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_2_v2.csv",
+      "sha256": "c59ee6459dd3977b10b3e096a0c9598649dd1f1029758027f2df4e03d0d4d7e9",
+      "bytes": 18186,
+      "status": "parsed",
+      "meta": {
+        "format": "presentmon2",
+        "sourceFileName": "Tests/Gold/test_case_2_v2.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "CPUStartQPC",
+          "FrameTime",
+          "CPUBusy",
+          "CPUWait",
+          "GPULatency",
+          "GPUTime",
+          "GPUBusy",
+          "GPUWait",
+          "VideoBusy",
+          "DisplayLatency",
+          "DisplayedTime",
+          "AnimationError",
+          "AnimationTime",
+          "MsFlipDelay",
+          "AllInputToPhotonLatency",
+          "ClickToPhotonLatency",
+          "InstrumentedLatency"
+        ],
+        "streams": [
+          {
+            "id": "1300:0x296989CD030",
+            "application": "dwm.exe",
+            "processId": "1300",
+            "swapChain": "0x296989CD030",
+            "frameCount": 56
+          },
+          {
+            "id": "10016:0x1BA6DC82C58",
+            "application": "Presenter.exe",
+            "processId": "10016",
+            "swapChain": "0x1BA6DC82C58",
+            "frameCount": 18
+          },
+          {
+            "id": "5348:0x28F99FCFD50",
+            "application": "Presenter.exe",
+            "processId": "5348",
+            "swapChain": "0x28F99FCFD50",
+            "frameCount": 18
+          },
+          {
+            "id": "5220:0x13B8AF7D830",
+            "application": "Presenter.exe",
+            "processId": "5220",
+            "swapChain": "0x13B8AF7D830",
+            "frameCount": 1
+          }
+        ],
+        "selectedStream": "10016:0x1BA6DC82C58"
+      },
+      "arrays": {
+        "frameTimeMs": "f3211494ae2432a39a7dc670b15eed6392c058ed1f497200c02b409499eefc4c",
+        "timeSec": "5f9c732027836c7b26b3a6b557f1b5ea968ef4c361145ec946a33e406073e9fb",
+        "sourceLine": "ba6806d0cf0b6e0f7cd1953de0ddd48924a67e63d0525df09ecf7842735d4366",
+        "gapBefore": "60daa3a5f7dbfa200f8c82840ecf5b42640b70f3b7218a4c6bbd67db542e75a4",
+        "dropped": "c53b6f04276bcd0c7928e2de470e9c09c571110574a7685399ea2bcba3291a2b",
+        "cpuBusyMs": "b779a3050633710d8ced22c041166513463798fd8a991bbe36fcc5a534ac05d2",
+        "gpuBusyMs": "5f3921f5a593be3574afffa955fdb4322064df3bb3fa663a34b1e6e98692eac0",
+        "displayLatencyMs": "363b06735135474ca5789a44d561da4eaabbadac72846b96a5adca5fc2d593e8"
+      },
+      "summary": {
+        "frameCount": 18,
+        "durationSec": 0.26977170000000006,
+        "averageFps": 66.72308474165376,
+        "meanOfInstantaneousFps": 113.6039558701271,
+        "percentilesMs": {
+          "p50": 16.68815,
+          "p90": 17.0092,
+          "p95": 17.08173,
+          "p99": 17.223306,
+          "p999": 17.2551606
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 58.0608624151484,
+          "meanOfSlowestMethodFps": 57.941791676082204,
+          "timeWeightedFps": 57.941791676082204
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 57.953676768444566,
+          "meanOfSlowestMethodFps": 57.941791676082204,
+          "timeWeightedFps": 57.941791676082204
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 2.8655941176470594,
+        "pacingCoverage": {
+          "observedPairs": 17,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 1,
+          "observedFrames": 18,
+          "droppedFraction": 0.05555555555555555
+        },
+        "boundShare": {
+          "cpuBoundFrames": 0,
+          "gpuBoundFrames": 18,
+          "cpuBoundFraction": 0,
+          "gpuBoundFraction": 1
+        },
+        "latency": {
+          "observedFrames": 17,
+          "meanMs": 46.814099999999996,
+          "p50": 48.6184,
+          "p90": 49.18058,
+          "p99": 49.396352
+        },
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 18,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": {
+            "observedFrames": 18,
+            "unknownFrames": 0
+          },
+          "displayLatency": {
+            "observedFrames": 17,
+            "unknownFrames": 1
+          }
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_3.csv",
+      "sha256": "fe00d7cdba06dbfbd31797e24bbe08df8f3ee402e3ce53e2777cc333e1ab87d0",
+      "bytes": 32046,
+      "status": "parsed",
+      "meta": {
+        "format": "ocat",
+        "sourceFileName": "Tests/Gold/test_case_3.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "TimeInQPC",
+          "MsBetweenSimulationStart",
+          "MsBetweenPresents",
+          "MsBetweenDisplayChange",
+          "MsInPresentAPI",
+          "MsRenderPresentLatency",
+          "MsUntilDisplayed",
+          "MsPCLatency",
+          "CPUStartQPC",
+          "MsBetweenAppStart",
+          "MsCPUBusy",
+          "MsCPUWait",
+          "MsGPULatency",
+          "MsGPUTime",
+          "MsGPUBusy",
+          "MsGPUWait",
+          "MsVideoBusy",
+          "MsAnimationError",
+          "AnimationTime",
+          "MsFlipDelay",
+          "MsAllInputToPhotonLatency",
+          "MsClickToPhotonLatency",
+          "MsInstrumentedLatency"
+        ],
+        "streams": [
+          {
+            "id": "1252:0x22E6AFA2560",
+            "application": "dwm.exe",
+            "processId": "1252",
+            "swapChain": "0x22E6AFA2560",
+            "frameCount": 61
+          },
+          {
+            "id": "5892:0x1F0FF310E98",
+            "application": "Presenter.exe",
+            "processId": "5892",
+            "swapChain": "0x1F0FF310E98",
+            "frameCount": 18
+          },
+          {
+            "id": "10112:0x1ED7B93C580",
+            "application": "Presenter.exe",
+            "processId": "10112",
+            "swapChain": "0x1ED7B93C580",
+            "frameCount": 18
+          },
+          {
+            "id": "12980:0x2C6BEB300A0",
+            "application": "Presenter.exe",
+            "processId": "12980",
+            "swapChain": "0x2C6BEB300A0",
+            "frameCount": 18
+          }
+        ],
+        "selectedStream": "5892:0x1F0FF310E98"
+      },
+      "arrays": {
+        "frameTimeMs": "d715b2c971782236e6b796978a3b534c93669061fe555b56be50b95e8df8156d",
+        "timeSec": "cd90edb41f5a17ecc6ed37f3ed887229eb3eeb75cba9ac84e1236618eea5e055",
+        "sourceLine": "fd0fd937c92c9305d2a2ac42e4070c07848e8ba15a570bfba7d46a1c66d5a707",
+        "gapBefore": "60daa3a5f7dbfa200f8c82840ecf5b42640b70f3b7218a4c6bbd67db542e75a4",
+        "dropped": null,
+        "cpuBusyMs": null,
+        "gpuBusyMs": null,
+        "displayLatencyMs": null
+      },
+      "summary": {
+        "frameCount": 18,
+        "durationSec": 0.2688288,
+        "averageFps": 66.95711173802808,
+        "meanOfInstantaneousFps": 177.8287235969725,
+        "percentilesMs": {
+          "p50": 16.54785,
+          "p90": 16.85835,
+          "p95": 16.993465,
+          "p99": 17.026853,
+          "p999": 17.0343653
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 58.73075899580504,
+          "meanOfSlowestMethodFps": 58.70198177890486,
+          "timeWeightedFps": 58.70198177890486
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 58.70485823149512,
+          "meanOfSlowestMethodFps": 58.70198177890486,
+          "timeWeightedFps": 58.70198177890486
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 2.833676470588235,
+        "pacingCoverage": {
+          "observedPairs": 17,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_3_v1.csv",
+      "sha256": "f26570a25f7234076d8c80181e6b6bf40d7183d363e8f94569524c07d211c2d4",
+      "bytes": 33374,
+      "status": "parsed",
+      "meta": {
+        "format": "presentmon1",
+        "sourceFileName": "Tests/Gold/test_case_3_v1.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "Runtime",
+          "SyncInterval",
+          "PresentFlags",
+          "Dropped",
+          "TimeInSeconds",
+          "msInPresentAPI",
+          "msBetweenPresents",
+          "AllowsTearing",
+          "PresentMode",
+          "msUntilRenderComplete",
+          "msUntilDisplayed",
+          "msBetweenDisplayChange",
+          "msFlipDelay",
+          "msUntilRenderStart",
+          "msGPUActive",
+          "msGPUVideoActive",
+          "msSinceInput",
+          "QPCTime"
+        ],
+        "streams": [
+          {
+            "id": "1252:0x0000022E6AFA2560",
+            "application": "dwm.exe",
+            "processId": "1252",
+            "swapChain": "0x0000022E6AFA2560",
+            "frameCount": 62
+          },
+          {
+            "id": "5892:0x000001F0FF310E98",
+            "application": "Presenter.exe",
+            "processId": "5892",
+            "swapChain": "0x000001F0FF310E98",
+            "frameCount": 19
+          },
+          {
+            "id": "10112:0x000001ED7B93C580",
+            "application": "Presenter.exe",
+            "processId": "10112",
+            "swapChain": "0x000001ED7B93C580",
+            "frameCount": 19
+          },
+          {
+            "id": "12980:0x000002C6BEB300A0",
+            "application": "Presenter.exe",
+            "processId": "12980",
+            "swapChain": "0x000002C6BEB300A0",
+            "frameCount": 19
+          }
+        ],
+        "selectedStream": "5892:0x000001F0FF310E98"
+      },
+      "arrays": {
+        "frameTimeMs": "97dbe45c7e5ae75c67d10a716603f1d71da1b8ba78221cb11b35c8bd9c28114a",
+        "timeSec": "4a616577c5417208a600dd3c121b4fde8dbc71fb4d73a710b127cc141356a804",
+        "sourceLine": "49b9706e94b6e177dc13ecb6b612103218a5577fd9c609899d5b53cd1e987db0",
+        "gapBefore": "d6fd62f5ce537d90ea3ea45841b17f34d727bcbc4128748cba14fb87c0ffd9d1",
+        "dropped": "7d84271f4c882eba35881142e96539bb7a61b9f45a8c212de827f24d732c929c",
+        "cpuBusyMs": null,
+        "gpuBusyMs": "38e01a886518795de057cfd9a89ccde4059835c5785fc4321d95e11e812708b5",
+        "displayLatencyMs": null
+      },
+      "summary": {
+        "frameCount": 19,
+        "durationSec": 0.2854584,
+        "averageFps": 66.55961078742122,
+        "meanOfInstantaneousFps": 171.63425064092388,
+        "percentilesMs": {
+          "p50": 16.573,
+          "p90": 16.8401,
+          "p95": 16.99101,
+          "p99": 17.026362,
+          "p999": 17.0343162
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 58.732452651952315,
+          "meanOfSlowestMethodFps": 58.70198177890486,
+          "timeWeightedFps": 58.70198177890486
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 58.70502744336753,
+          "meanOfSlowestMethodFps": 58.70198177890486,
+          "timeWeightedFps": 58.70198177890486
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 2.6793944444444446,
+        "pacingCoverage": {
+          "observedPairs": 18,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 1,
+          "observedFrames": 19,
+          "droppedFraction": 0.05263157894736842
+        },
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 19,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_3_v2.csv",
+      "sha256": "d955fa9762ac4bf44f1274886f4c418fe7b036f0f8dcb38e671c6d1b25fccb73",
+      "bytes": 22780,
+      "status": "parsed",
+      "meta": {
+        "format": "presentmon2",
+        "sourceFileName": "Tests/Gold/test_case_3_v2.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "CPUStartQPC",
+          "FrameTime",
+          "CPUBusy",
+          "CPUWait",
+          "GPULatency",
+          "GPUTime",
+          "GPUBusy",
+          "GPUWait",
+          "VideoBusy",
+          "DisplayLatency",
+          "DisplayedTime",
+          "AnimationError",
+          "AnimationTime",
+          "MsFlipDelay",
+          "AllInputToPhotonLatency",
+          "ClickToPhotonLatency",
+          "InstrumentedLatency"
+        ],
+        "streams": [
+          {
+            "id": "1252:0x22E6AFA2560",
+            "application": "dwm.exe",
+            "processId": "1252",
+            "swapChain": "0x22E6AFA2560",
+            "frameCount": 61
+          },
+          {
+            "id": "5892:0x1F0FF310E98",
+            "application": "Presenter.exe",
+            "processId": "5892",
+            "swapChain": "0x1F0FF310E98",
+            "frameCount": 18
+          },
+          {
+            "id": "10112:0x1ED7B93C580",
+            "application": "Presenter.exe",
+            "processId": "10112",
+            "swapChain": "0x1ED7B93C580",
+            "frameCount": 18
+          },
+          {
+            "id": "12980:0x2C6BEB300A0",
+            "application": "Presenter.exe",
+            "processId": "12980",
+            "swapChain": "0x2C6BEB300A0",
+            "frameCount": 18
+          }
+        ],
+        "selectedStream": "5892:0x1F0FF310E98"
+      },
+      "arrays": {
+        "frameTimeMs": "a1b4760412cc6281355225c610cdf5e4e0c7e78cb2fe57b190253568781a467f",
+        "timeSec": "4744aaaf1dd290a0208d41cbde49b0ff3f551fd0b298cd299841498ecdaf93a4",
+        "sourceLine": "fd0fd937c92c9305d2a2ac42e4070c07848e8ba15a570bfba7d46a1c66d5a707",
+        "gapBefore": "60daa3a5f7dbfa200f8c82840ecf5b42640b70f3b7218a4c6bbd67db542e75a4",
+        "dropped": "ccf37850ceebd8811278760a8d40c02ea3bc985f9c53141af10bd3662d7aa84c",
+        "cpuBusyMs": "6637d934698948df2f8edc4742d8cec1cb7882d23386540533102ed38349522e",
+        "gpuBusyMs": "49b533d79a631e698954ff1960da9c822072f7cecb4cf25a7e35c5df9a9e7be2",
+        "displayLatencyMs": "2206149e56c8590d0a2e1cda3dfb6d2275d8a40d1f42209a053d00d55b12a9f3"
+      },
+      "summary": {
+        "frameCount": 18,
+        "durationSec": 0.28163039999999995,
+        "averageFps": 63.91355478669917,
+        "meanOfInstantaneousFps": 166.98857181479096,
+        "percentilesMs": {
+          "p50": 16.5574,
+          "p90": 16.811680000000003,
+          "p95": 16.995885,
+          "p99": 17.013497,
+          "p999": 17.0174597
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 58.77686403918018,
+          "meanOfSlowestMethodFps": 58.76165684367636,
+          "timeWeightedFps": 58.76165684367636
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 58.763177209110715,
+          "meanOfSlowestMethodFps": 58.76165684367636,
+          "timeWeightedFps": 58.76165684367636
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 2.1060823529411765,
+        "pacingCoverage": {
+          "observedPairs": 17,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 1,
+          "observedFrames": 18,
+          "droppedFraction": 0.05555555555555555
+        },
+        "boundShare": {
+          "cpuBoundFrames": 0,
+          "gpuBoundFrames": 18,
+          "cpuBoundFraction": 0,
+          "gpuBoundFraction": 1
+        },
+        "latency": {
+          "observedFrames": 17,
+          "meanMs": 47.983311764705874,
+          "p50": 49.0013,
+          "p90": 49.2599,
+          "p99": 49.323812000000004
+        },
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 18,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": {
+            "observedFrames": 18,
+            "unknownFrames": 0
+          },
+          "displayLatency": {
+            "observedFrames": 17,
+            "unknownFrames": 1
+          }
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_4.csv",
+      "sha256": "064c9dc9eb99907b12b03cbff4f9e02e6538305b556fa4fde9946dd1c4ace365",
+      "bytes": 51285,
+      "status": "parsed",
+      "meta": {
+        "format": "ocat",
+        "sourceFileName": "Tests/Gold/test_case_4.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "TimeInQPC",
+          "MsBetweenSimulationStart",
+          "MsBetweenPresents",
+          "MsBetweenDisplayChange",
+          "MsInPresentAPI",
+          "MsRenderPresentLatency",
+          "MsUntilDisplayed",
+          "MsPCLatency",
+          "CPUStartQPC",
+          "MsBetweenAppStart",
+          "MsCPUBusy",
+          "MsCPUWait",
+          "MsGPULatency",
+          "MsGPUTime",
+          "MsGPUBusy",
+          "MsGPUWait",
+          "MsVideoBusy",
+          "MsAnimationError",
+          "AnimationTime",
+          "MsFlipDelay",
+          "MsAllInputToPhotonLatency",
+          "MsClickToPhotonLatency",
+          "MsInstrumentedLatency"
+        ],
+        "streams": [
+          {
+            "id": "10376:0x1BF098B1ED0",
+            "application": "dwm.exe",
+            "processId": "10376",
+            "swapChain": "0x1BF098B1ED0",
+            "frameCount": 114
+          },
+          {
+            "id": "9620:0x19E52815138",
+            "application": "Presenter.exe",
+            "processId": "9620",
+            "swapChain": "0x19E52815138",
+            "frameCount": 18
+          },
+          {
+            "id": "8536:0x197B10BAB70",
+            "application": "Presenter.exe",
+            "processId": "8536",
+            "swapChain": "0x197B10BAB70",
+            "frameCount": 18
+          },
+          {
+            "id": "5236:0x285B4C0D1B0",
+            "application": "Presenter.exe",
+            "processId": "5236",
+            "swapChain": "0x285B4C0D1B0",
+            "frameCount": 18
+          },
+          {
+            "id": "5192:0x0",
+            "application": "Presenter.exe",
+            "processId": "5192",
+            "swapChain": "0x0",
+            "frameCount": 18
+          }
+        ],
+        "selectedStream": "9620:0x19E52815138"
+      },
+      "arrays": {
+        "frameTimeMs": "b39c297bccf58e2172922a86d5a45942e688a994a33ce90238bba058745e443f",
+        "timeSec": "b80d96aa00ce0b5884ce8859f8afcd4541600cb89c7cdd4272c3843dba556933",
+        "sourceLine": "30df090870a903a51236328e3e895270c42814aa9cd2365174086d26ce78780a",
+        "gapBefore": "60daa3a5f7dbfa200f8c82840ecf5b42640b70f3b7218a4c6bbd67db542e75a4",
+        "dropped": null,
+        "cpuBusyMs": null,
+        "gpuBusyMs": null,
+        "displayLatencyMs": null
+      },
+      "summary": {
+        "frameCount": 18,
+        "durationSec": 0.28923200000000004,
+        "averageFps": 62.2337777286054,
+        "meanOfInstantaneousFps": 66.74906199149143,
+        "percentilesMs": {
+          "p50": 16.665750000000003,
+          "p90": 16.986250000000002,
+          "p95": 17.196804999999998,
+          "p99": 17.984720999999997,
+          "p999": 18.1620021
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 55.602753025748925,
+          "meanOfSlowestMethodFps": 55.000357502323766,
+          "timeWeightedFps": 55.000357502323766
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 55.06000905043393,
+          "meanOfSlowestMethodFps": 55.000357502323766,
+          "timeWeightedFps": 55.000357502323766
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 1.1644705882352935,
+        "pacingCoverage": {
+          "observedPairs": 17,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_4_v1.csv",
+      "sha256": "1bf9b3dcc4fcab50e7962372b58a68f3a1d947e868917a97e494e0f7eb741da8",
+      "bytes": 53330,
+      "status": "parsed",
+      "meta": {
+        "format": "presentmon1",
+        "sourceFileName": "Tests/Gold/test_case_4_v1.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "Runtime",
+          "SyncInterval",
+          "PresentFlags",
+          "Dropped",
+          "TimeInSeconds",
+          "msInPresentAPI",
+          "msBetweenPresents",
+          "AllowsTearing",
+          "PresentMode",
+          "msUntilRenderComplete",
+          "msUntilDisplayed",
+          "msBetweenDisplayChange",
+          "msFlipDelay",
+          "msUntilRenderStart",
+          "msGPUActive",
+          "msGPUVideoActive",
+          "msSinceInput",
+          "QPCTime"
+        ],
+        "streams": [
+          {
+            "id": "10376:0x000001BF098B1ED0",
+            "application": "dwm.exe",
+            "processId": "10376",
+            "swapChain": "0x000001BF098B1ED0",
+            "frameCount": 116
+          },
+          {
+            "id": "9620:0x0000019E52815138",
+            "application": "Presenter.exe",
+            "processId": "9620",
+            "swapChain": "0x0000019E52815138",
+            "frameCount": 19
+          },
+          {
+            "id": "8536:0x00000197B10BAB70",
+            "application": "Presenter.exe",
+            "processId": "8536",
+            "swapChain": "0x00000197B10BAB70",
+            "frameCount": 19
+          },
+          {
+            "id": "5236:0x00000285B4C0D1B0",
+            "application": "Presenter.exe",
+            "processId": "5236",
+            "swapChain": "0x00000285B4C0D1B0",
+            "frameCount": 19
+          },
+          {
+            "id": "5192:0x0000000000000000",
+            "application": "Presenter.exe",
+            "processId": "5192",
+            "swapChain": "0x0000000000000000",
+            "frameCount": 19
+          }
+        ],
+        "selectedStream": "9620:0x0000019E52815138"
+      },
+      "arrays": {
+        "frameTimeMs": "96da504f563418ecea15fd9c5871bdc46cdb1b173a85a09758e927f5ee54410b",
+        "timeSec": "f6961880830034e8f0466d0ee17031425ea7bacb4016f3ed6e378936f01a6db9",
+        "sourceLine": "3f505a03c2d84765bc4fb045aa37fff7acb2b1907854323e0e2633d0896abcdf",
+        "gapBefore": "d6fd62f5ce537d90ea3ea45841b17f34d727bcbc4128748cba14fb87c0ffd9d1",
+        "dropped": "d6fd62f5ce537d90ea3ea45841b17f34d727bcbc4128748cba14fb87c0ffd9d1",
+        "cpuBusyMs": null,
+        "gpuBusyMs": "12136b66bde4b5a1c0f3f814ff253f08f1cfbcf9411846375f571fe4ccc58d50",
+        "displayLatencyMs": null
+      },
+      "summary": {
+        "frameCount": 19,
+        "durationSec": 0.30594660000000007,
+        "averageFps": 62.102340735278624,
+        "meanOfInstantaneousFps": 66.38479214243107,
+        "percentilesMs": {
+          "p50": 16.6717,
+          "p90": 16.981,
+          "p95": 17.138869999999997,
+          "p99": 17.973133999999998,
+          "p999": 18.160843400000005
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 55.6385992559784,
+          "meanOfSlowestMethodFps": 55.000357502323766,
+          "timeWeightedFps": 55.000357502323766
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 55.063521994798975,
+          "meanOfSlowestMethodFps": 55.000357502323766,
+          "timeWeightedFps": 55.000357502323766
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 1.1088944444444437,
+        "pacingCoverage": {
+          "observedPairs": 18,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 0,
+          "observedFrames": 19,
+          "droppedFraction": 0
+        },
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 19,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_4_v2.csv",
+      "sha256": "be5823b2a0b7dbb1a06111bf0abcc9f5bb10e0359e528277604960cf69f57cf5",
+      "bytes": 36220,
+      "status": "parsed",
+      "meta": {
+        "format": "presentmon2",
+        "sourceFileName": "Tests/Gold/test_case_4_v2.csv",
+        "application": "Presenter.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "CPUStartQPC",
+          "FrameTime",
+          "CPUBusy",
+          "CPUWait",
+          "GPULatency",
+          "GPUTime",
+          "GPUBusy",
+          "GPUWait",
+          "VideoBusy",
+          "DisplayLatency",
+          "DisplayedTime",
+          "AnimationError",
+          "AnimationTime",
+          "MsFlipDelay",
+          "AllInputToPhotonLatency",
+          "ClickToPhotonLatency",
+          "InstrumentedLatency"
+        ],
+        "streams": [
+          {
+            "id": "10376:0x1BF098B1ED0",
+            "application": "dwm.exe",
+            "processId": "10376",
+            "swapChain": "0x1BF098B1ED0",
+            "frameCount": 114
+          },
+          {
+            "id": "9620:0x19E52815138",
+            "application": "Presenter.exe",
+            "processId": "9620",
+            "swapChain": "0x19E52815138",
+            "frameCount": 18
+          },
+          {
+            "id": "8536:0x197B10BAB70",
+            "application": "Presenter.exe",
+            "processId": "8536",
+            "swapChain": "0x197B10BAB70",
+            "frameCount": 18
+          },
+          {
+            "id": "5236:0x285B4C0D1B0",
+            "application": "Presenter.exe",
+            "processId": "5236",
+            "swapChain": "0x285B4C0D1B0",
+            "frameCount": 18
+          },
+          {
+            "id": "5192:0x0",
+            "application": "Presenter.exe",
+            "processId": "5192",
+            "swapChain": "0x0",
+            "frameCount": 18
+          }
+        ],
+        "selectedStream": "9620:0x19E52815138"
+      },
+      "arrays": {
+        "frameTimeMs": "cd9a74245fffbe628da0a3a7560b4fbc76111784f3cdd873c605b015270f7158",
+        "timeSec": "6395536a7484d6e5a94ef088f91c5b164c6ae9ea8bf0b887d562775ed96cced5",
+        "sourceLine": "30df090870a903a51236328e3e895270c42814aa9cd2365174086d26ce78780a",
+        "gapBefore": "60daa3a5f7dbfa200f8c82840ecf5b42640b70f3b7218a4c6bbd67db542e75a4",
+        "dropped": "60daa3a5f7dbfa200f8c82840ecf5b42640b70f3b7218a4c6bbd67db542e75a4",
+        "cpuBusyMs": "400fdae0f3b613b7b885f6c68f4cde1afe265186fcdbeb58daf75b8e083a9887",
+        "gpuBusyMs": "36ef8b6dcb6440481dce2c18cb40d7076c767a5ada2dbd4d6995aaedc8f99408",
+        "displayLatencyMs": "c1ca3be8f8d74998fc39d1afc1845fe722c199d5119262b8d634bbfa5848e982"
+      },
+      "summary": {
+        "frameCount": 18,
+        "durationSec": 0.3006957,
+        "averageFps": 59.861181919129535,
+        "meanOfInstantaneousFps": 59.87092624087617,
+        "percentilesMs": {
+          "p50": 16.677,
+          "p90": 16.911620000000003,
+          "p95": 17.002755,
+          "p99": 17.214711,
+          "p999": 17.2624011
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 58.08985117438218,
+          "meanOfSlowestMethodFps": 57.91159216340334,
+          "timeWeightedFps": 57.91159216340334
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 57.92936881764379,
+          "meanOfSlowestMethodFps": 57.91159216340334,
+          "timeWeightedFps": 57.91159216340334
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.2594588235294121,
+        "pacingCoverage": {
+          "observedPairs": 17,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 0,
+          "observedFrames": 18,
+          "droppedFraction": 0
+        },
+        "boundShare": {
+          "cpuBoundFrames": 1,
+          "gpuBoundFrames": 17,
+          "cpuBoundFraction": 0.05555555555555555,
+          "gpuBoundFraction": 0.9444444444444444
+        },
+        "latency": {
+          "observedFrames": 18,
+          "meanMs": 48.75941666666667,
+          "p50": 48.721599999999995,
+          "p90": 48.90354,
+          "p99": 49.234149
+        },
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 18,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": {
+            "observedFrames": 18,
+            "unknownFrames": 0
+          },
+          "displayLatency": {
+            "observedFrames": 18,
+            "unknownFrames": 0
+          }
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_5.csv",
+      "sha256": "0ecd9ac4ab37d53a65ba3dd36cedf5a0a5d758789c0101a20f516b354f1163ab",
+      "bytes": 175274,
+      "status": "parsed",
+      "meta": {
+        "format": "ocat",
+        "sourceFileName": "Tests/Gold/test_case_5.csv",
+        "application": "PresentBench.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "TimeInQPC",
+          "MsBetweenSimulationStart",
+          "MsBetweenPresents",
+          "MsBetweenDisplayChange",
+          "MsInPresentAPI",
+          "MsRenderPresentLatency",
+          "MsUntilDisplayed",
+          "MsPCLatency",
+          "CPUStartQPC",
+          "MsBetweenAppStart",
+          "MsCPUBusy",
+          "MsCPUWait",
+          "MsGPULatency",
+          "MsGPUTime",
+          "MsGPUBusy",
+          "MsGPUWait",
+          "MsVideoBusy",
+          "MsAnimationError",
+          "AnimationTime",
+          "MsFlipDelay",
+          "MsAllInputToPhotonLatency",
+          "MsClickToPhotonLatency",
+          "MsInstrumentedLatency"
+        ],
+        "streams": [
+          {
+            "id": "24892:0x2A70D2CAC00",
+            "application": "PresentBench.exe",
+            "processId": "24892",
+            "swapChain": "0x2A70D2CAC00",
+            "frameCount": 258
+          },
+          {
+            "id": "2656:0x19D7EF5E390",
+            "application": "dwm.exe",
+            "processId": "2656",
+            "swapChain": "0x19D7EF5E390",
+            "frameCount": 174
+          },
+          {
+            "id": "2656:0x19D7F1BA8F0",
+            "application": "dwm.exe",
+            "processId": "2656",
+            "swapChain": "0x19D7F1BA8F0",
+            "frameCount": 174
+          },
+          {
+            "id": "3980:0x21C48E8A710",
+            "application": "steamwebhelper.exe",
+            "processId": "3980",
+            "swapChain": "0x21C48E8A710",
+            "frameCount": 24
+          },
+          {
+            "id": "24892:0x0",
+            "application": "PresentBench.exe",
+            "processId": "24892",
+            "swapChain": "0x0",
+            "frameCount": 7
+          },
+          {
+            "id": "2656:0x0",
+            "application": "dwm.exe",
+            "processId": "2656",
+            "swapChain": "0x0",
+            "frameCount": 5
+          },
+          {
+            "id": "2656:0x100000000",
+            "application": "dwm.exe",
+            "processId": "2656",
+            "swapChain": "0x100000000",
+            "frameCount": 5
+          }
+        ],
+        "selectedStream": "24892:0x2A70D2CAC00"
+      },
+      "arrays": {
+        "frameTimeMs": "e33dbe4b6ac3cbc80a5812a72c5fc6d39db172d30b89df37d8b58e6629f22f74",
+        "timeSec": "dc25686c04049197141d1231f4f9a017edd540cde1431465087b2b84f2311866",
+        "sourceLine": "bd62a8185f0b47e91c24dce4a118abf3ee1b30dbd65b75b3b2a66a4410134547",
+        "gapBefore": "6bd3749a368b56ead82399ee6d06456c94bde1edab4477a48d4b48ea5e032053",
+        "dropped": null,
+        "cpuBusyMs": null,
+        "gpuBusyMs": null,
+        "displayLatencyMs": null
+      },
+      "summary": {
+        "frameCount": 258,
+        "durationSec": 2.902597400000002,
+        "averageFps": 88.88590611980835,
+        "meanOfInstantaneousFps": 88.99884794910382,
+        "percentilesMs": {
+          "p50": 11.0512,
+          "p90": 12.01623,
+          "p95": 12.042535,
+          "p99": 12.117664,
+          "p999": 12.1400183
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 82.52415647108222,
+          "meanOfSlowestMethodFps": 82.3996989664331,
+          "timeWeightedFps": 82.4279991427488
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 82.37219873054063,
+          "meanOfSlowestMethodFps": 82.35807644476657,
+          "timeWeightedFps": 82.35807644476657
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.3290342412451365,
+        "pacingCoverage": {
+          "observedPairs": 257,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_5_v1.csv",
+      "sha256": "cdd209120d092989384533150e2a83fc00a7a685ee81d4c07906c724964f8eaa",
+      "bytes": 179365,
+      "status": "parsed",
+      "meta": {
+        "format": "presentmon1",
+        "sourceFileName": "Tests/Gold/test_case_5_v1.csv",
+        "application": "PresentBench.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "Runtime",
+          "SyncInterval",
+          "PresentFlags",
+          "Dropped",
+          "TimeInSeconds",
+          "msInPresentAPI",
+          "msBetweenPresents",
+          "AllowsTearing",
+          "PresentMode",
+          "msUntilRenderComplete",
+          "msUntilDisplayed",
+          "msBetweenDisplayChange",
+          "msFlipDelay",
+          "msUntilRenderStart",
+          "msGPUActive",
+          "msGPUVideoActive",
+          "msSinceInput",
+          "QPCTime"
+        ],
+        "streams": [
+          {
+            "id": "24892:0x000002A70D2CAC00",
+            "application": "PresentBench.exe",
+            "processId": "24892",
+            "swapChain": "0x000002A70D2CAC00",
+            "frameCount": 259
+          },
+          {
+            "id": "2656:0x0000019D7EF5E390",
+            "application": "dwm.exe",
+            "processId": "2656",
+            "swapChain": "0x0000019D7EF5E390",
+            "frameCount": 175
+          },
+          {
+            "id": "2656:0x0000019D7F1BA8F0",
+            "application": "dwm.exe",
+            "processId": "2656",
+            "swapChain": "0x0000019D7F1BA8F0",
+            "frameCount": 175
+          },
+          {
+            "id": "3980:0x0000021C48E8A710",
+            "application": "steamwebhelper.exe",
+            "processId": "3980",
+            "swapChain": "0x0000021C48E8A710",
+            "frameCount": 25
+          },
+          {
+            "id": "24892:0x0000000000000000",
+            "application": "PresentBench.exe",
+            "processId": "24892",
+            "swapChain": "0x0000000000000000",
+            "frameCount": 8
+          },
+          {
+            "id": "2656:0x0000000000000000",
+            "application": "dwm.exe",
+            "processId": "2656",
+            "swapChain": "0x0000000000000000",
+            "frameCount": 6
+          },
+          {
+            "id": "2656:0x0000000100000000",
+            "application": "dwm.exe",
+            "processId": "2656",
+            "swapChain": "0x0000000100000000",
+            "frameCount": 6
+          }
+        ],
+        "selectedStream": "24892:0x000002A70D2CAC00"
+      },
+      "arrays": {
+        "frameTimeMs": "b07e1bd266f17faac38999c51c5937c00a8ae9b40a5a3fc70a68ed7a877ad560",
+        "timeSec": "00545e2b21f611ac5e44691e1f418ca3576f7a787c982da39cc5609475d16718",
+        "sourceLine": "9f99872c988d17984f63bc5a90ee49df08394dade3713291daabdf3a4e9d14c0",
+        "gapBefore": "6d38a4fbdd3f2075a63519fdb87338feae247d0a6573315cf0e98c3c504047fc",
+        "dropped": "8af6f8e594e932bc14ef41c8a23afb1c323160720c95732a3c45ecea34e109e3",
+        "cpuBusyMs": null,
+        "gpuBusyMs": "18baddbccb12f2807bf1183be844eac227d91b2e626b2c9de806e334997965f6",
+        "displayLatencyMs": null
+      },
+      "summary": {
+        "frameCount": 259,
+        "durationSec": 2.9136028000000023,
+        "averageFps": 88.89337970158451,
+        "meanOfInstantaneousFps": 89.00605117983125,
+        "percentilesMs": {
+          "p50": 11.0502,
+          "p90": 12.016219999999999,
+          "p95": 12.04249,
+          "p99": 12.117415999999999,
+          "p999": 12.140010199999999
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 82.52584544427624,
+          "meanOfSlowestMethodFps": 82.3996989664331,
+          "timeWeightedFps": 82.4279991427488
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 82.37225369052821,
+          "meanOfSlowestMethodFps": 82.35807644476657,
+          "timeWeightedFps": 82.35807644476657
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.3279527131782949,
+        "pacingCoverage": {
+          "observedPairs": 258,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 84,
+          "observedFrames": 259,
+          "droppedFraction": 0.32432432432432434
+        },
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 259,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_5_v2.csv",
+      "sha256": "569536581907592bd3b428d453e996a1dce689e6178429c7e66a143470319f4e",
+      "bytes": 122952,
+      "status": "parsed",
+      "meta": {
+        "format": "presentmon2",
+        "sourceFileName": "Tests/Gold/test_case_5_v2.csv",
+        "application": "PresentBench.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "CPUStartQPC",
+          "FrameTime",
+          "CPUBusy",
+          "CPUWait",
+          "GPULatency",
+          "GPUTime",
+          "GPUBusy",
+          "GPUWait",
+          "VideoBusy",
+          "DisplayLatency",
+          "DisplayedTime",
+          "AnimationError",
+          "AnimationTime",
+          "MsFlipDelay",
+          "AllInputToPhotonLatency",
+          "ClickToPhotonLatency",
+          "InstrumentedLatency"
+        ],
+        "streams": [
+          {
+            "id": "24892:0x2A70D2CAC00",
+            "application": "PresentBench.exe",
+            "processId": "24892",
+            "swapChain": "0x2A70D2CAC00",
+            "frameCount": 258
+          },
+          {
+            "id": "2656:0x19D7EF5E390",
+            "application": "dwm.exe",
+            "processId": "2656",
+            "swapChain": "0x19D7EF5E390",
+            "frameCount": 174
+          },
+          {
+            "id": "2656:0x19D7F1BA8F0",
+            "application": "dwm.exe",
+            "processId": "2656",
+            "swapChain": "0x19D7F1BA8F0",
+            "frameCount": 174
+          },
+          {
+            "id": "3980:0x21C48E8A710",
+            "application": "steamwebhelper.exe",
+            "processId": "3980",
+            "swapChain": "0x21C48E8A710",
+            "frameCount": 24
+          },
+          {
+            "id": "24892:0x0",
+            "application": "PresentBench.exe",
+            "processId": "24892",
+            "swapChain": "0x0",
+            "frameCount": 7
+          },
+          {
+            "id": "2656:0x0",
+            "application": "dwm.exe",
+            "processId": "2656",
+            "swapChain": "0x0",
+            "frameCount": 5
+          },
+          {
+            "id": "2656:0x100000000",
+            "application": "dwm.exe",
+            "processId": "2656",
+            "swapChain": "0x100000000",
+            "frameCount": 5
+          }
+        ],
+        "selectedStream": "24892:0x2A70D2CAC00"
+      },
+      "arrays": {
+        "frameTimeMs": "d40bb09e8d6d04994b5773fb465b4dcf7d37f6cb1dec7887eecc0b4e0f72e02a",
+        "timeSec": "70c585cb9eb20bd8d4c1ebff4120d5603394d369a8846f0f6c3ddc107a88151b",
+        "sourceLine": "bd62a8185f0b47e91c24dce4a118abf3ee1b30dbd65b75b3b2a66a4410134547",
+        "gapBefore": "6bd3749a368b56ead82399ee6d06456c94bde1edab4477a48d4b48ea5e032053",
+        "dropped": "4acd5d3fd964aaba596c5a5639555d9ecbd18ae5e3c0dd6af91b59a0894cadbb",
+        "cpuBusyMs": "2c1c75364f13ae58403894f48280fd002cbccb9fa50b2999e196221f056d2c2a",
+        "gpuBusyMs": "382d23f966e96acdfe1adae6c4b2cad234e7ddd7537deca3224cd44c9686dbc7",
+        "displayLatencyMs": "cd1c75f224dd2b6369896729dfe2273eb10fde62551988aac4809bbc6cb41152"
+      },
+      "summary": {
+        "frameCount": 258,
+        "durationSec": 2.902590400000002,
+        "averageFps": 88.88612048051968,
+        "meanOfInstantaneousFps": 88.98444066299301,
+        "percentilesMs": {
+          "p50": 11.06575,
+          "p90": 11.93942,
+          "p95": 11.994805,
+          "p99": 12.071892,
+          "p999": 12.146553000000003
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 82.83705652767603,
+          "meanOfSlowestMethodFps": 82.53072206128732,
+          "timeWeightedFps": 82.70272505479056
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 82.32788347443096,
+          "meanOfSlowestMethodFps": 82.20439300276207,
+          "timeWeightedFps": 82.20439300276207
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.298668871595331,
+        "pacingCoverage": {
+          "observedPairs": 257,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 84,
+          "observedFrames": 258,
+          "droppedFraction": 0.32558139534883723
+        },
+        "boundShare": {
+          "cpuBoundFrames": 258,
+          "gpuBoundFrames": 0,
+          "cpuBoundFraction": 1,
+          "gpuBoundFraction": 0
+        },
+        "latency": {
+          "observedFrames": 174,
+          "meanMs": 33.38186724137929,
+          "p50": 33.6041,
+          "p90": 37.86596,
+          "p99": 39.172802
+        },
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 258,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": {
+            "observedFrames": 258,
+            "unknownFrames": 0
+          },
+          "displayLatency": {
+            "observedFrames": 174,
+            "unknownFrames": 84
+          }
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Reason7322/mangohudlogs/72a3bfac974b776581e382b3e2bbe2218e40c667/Witchfire-Win64-Shipping_2026-08-12_14-16-42.csv",
+      "sha256": "f80aee599f38847c804cc2c06bbac26bf7fa21ac4a29c4813bce02ca1363aba6",
+      "bytes": 11416701,
+      "status": "parsed",
+      "meta": {
+        "format": "mangohud",
+        "sourceFileName": "Witchfire-Win64-Shipping_2026-08-12_14-16-42.csv",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "fps",
+          "frametime",
+          "cpu_load",
+          "cpu_power",
+          "gpu_load",
+          "cpu_temp",
+          "gpu_temp",
+          "gpu_core_clock",
+          "gpu_mem_clock",
+          "gpu_vram_used",
+          "gpu_power",
+          "ram_used",
+          "swap_used",
+          "process_rss",
+          "cpu_mhz",
+          "elapsed"
+        ],
+        "timingEvidence": {
+          "kind": "mangohud-elapsed",
+          "status": "compatible",
+          "comparedIntervals": 117568,
+          "observedSpanSec": 869.2063093509953,
+          "recordedFrameSpanSec": 869.1378240600002,
+          "note": "No large elapsed/frame-duration contradiction found. MangoHud frame metrics require log_interval=0. The CSV does not record this setting; matching clock spans do not prove every frame was logged."
+        }
+      },
+      "arrays": {
+        "frameTimeMs": "44c05f69ee957f3f9fd343e8d7999a5304ea10aa2877d00324a7fda56d41ca02",
+        "timeSec": "cd18cabf41741fe4c933927acff7735703eb812dc9de6dbc52fa70511f2f845a",
+        "sourceLine": "7ba5f3ec15c19b1078131d004d8416958dbbb72250c577d21064a2974ccf0972",
+        "gapBefore": "27fff73cbcc448b4a286e89e007cab4eb5a2bc3d3d5b1ee18402d266bde0fd86"
+      },
+      "summary": {
+        "frameCount": 117569,
+        "durationSec": 869.1436530500002,
+        "averageFps": 135.26992872516146,
+        "meanOfInstantaneousFps": 141.68656678886526,
+        "percentilesMs": {
+          "p50": 6.98771,
+          "p90": 9.276209999999999,
+          "p95": 10.37736,
+          "p99": 15.205871999999983,
+          "p999": 20.16970560000066
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 65.76406798636744,
+          "meanOfSlowestMethodFps": 52.87461760995611,
+          "timeWeightedFps": 58.35531383487781
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 49.57930570885314,
+          "meanOfSlowestMethodFps": 25.22698622217458,
+          "timeWeightedFps": 4.7389995971850345
+        },
+        "stutter": {
+          "stutterEventCount": 269,
+          "totalStutterTimeMs": 6884.351400000002,
+          "stutterTimeFraction": 0.007920844127252564,
+          "hitchThresholdMs": 50,
+          "hitchCount": 13,
+          "totalHitchTimeMs": 1925.9185000000002,
+          "hitchTimeFraction": 0.002215880531649222,
+          "stutterFrameIndices": [
+            847,
+            989,
+            4007,
+            4014,
+            4452,
+            5617,
+            5873,
+            8554,
+            8872,
+            9060,
+            9411,
+            11080,
+            11713,
+            12645,
+            12648,
+            12939,
+            12940,
+            12944,
+            12945,
+            12954,
+            12987,
+            13097,
+            13098,
+            13105,
+            13106,
+            13108,
+            13109,
+            13118,
+            13119,
+            13133,
+            13151,
+            13152,
+            13176,
+            13199,
+            13201,
+            13202,
+            13205,
+            13206,
+            13208,
+            13344,
+            13400,
+            13468,
+            13507,
+            13772,
+            15306,
+            15814,
+            19297,
+            19681,
+            22226,
+            22284,
+            22332,
+            22625,
+            23015,
+            23492,
+            24013,
+            24557,
+            24572,
+            25451,
+            25839,
+            25895,
+            26084,
+            26946,
+            27677,
+            27720,
+            28506,
+            28742,
+            28792,
+            28903,
+            30422,
+            30576,
+            31605,
+            31628,
+            31695,
+            32220,
+            32928,
+            32949,
+            33329,
+            33950,
+            34001,
+            34003,
+            34202,
+            34330,
+            35373,
+            35375,
+            35376,
+            37454,
+            38845,
+            39217,
+            39553,
+            39676,
+            41369,
+            41635,
+            42379,
+            42385,
+            42589,
+            42590,
+            42591,
+            43563,
+            43675,
+            44538,
+            44676,
+            45643,
+            46277,
+            46812,
+            47833,
+            48258,
+            48819,
+            48839,
+            49551,
+            49741,
+            49776,
+            49990,
+            50122,
+            50175,
+            51333,
+            52488,
+            52801,
+            53301,
+            53557,
+            53601,
+            54758,
+            54866,
+            54867,
+            55366,
+            55367,
+            57986,
+            58802,
+            58863,
+            58870,
+            58964,
+            59124,
+            59835,
+            59842,
+            59899,
+            59934,
+            60000,
+            60097,
+            65369,
+            65550,
+            65746,
+            66012,
+            66108,
+            66136,
+            66162,
+            66186,
+            66214,
+            66274,
+            66306,
+            66345,
+            66382,
+            66777,
+            66808,
+            66844,
+            66881,
+            66943,
+            66974,
+            67007,
+            67044,
+            67082,
+            67123,
+            67165,
+            67496,
+            67599,
+            67977,
+            68497,
+            68502,
+            68999,
+            69006,
+            69426,
+            70379,
+            71053,
+            71130,
+            71219,
+            71554,
+            71709,
+            71710,
+            72073,
+            73275,
+            73551,
+            73577,
+            74212,
+            74351,
+            74810,
+            74811,
+            75257,
+            75377,
+            75379,
+            75394,
+            76678,
+            76685,
+            76800,
+            77392,
+            78029,
+            78724,
+            78850,
+            79109,
+            79226,
+            79513,
+            79589,
+            79709,
+            80384,
+            80648,
+            80996,
+            82504,
+            82735,
+            82895,
+            82896,
+            84069,
+            84191,
+            84216,
+            84307,
+            84951,
+            84959,
+            85289,
+            88486,
+            89098,
+            89099,
+            89289,
+            90439,
+            91010,
+            91055,
+            97504,
+            98144,
+            98523,
+            99484,
+            99683,
+            101128,
+            101292,
+            101960,
+            103602,
+            104030,
+            104135,
+            104246,
+            104261,
+            104279,
+            105464,
+            105478,
+            105491,
+            105548,
+            105932,
+            106234,
+            106520,
+            106521,
+            107921,
+            111655,
+            111855,
+            112544,
+            112905,
+            113541,
+            113696,
+            114290,
+            114970,
+            115349,
+            116171,
+            116799,
+            116806,
+            116807,
+            116809,
+            116811,
+            116983,
+            116984,
+            116996,
+            117042,
+            117062,
+            117064,
+            117173,
+            117223,
+            117251,
+            117275
+          ]
+        },
+        "masdMs": 0.7575825235608334,
+        "pacingCoverage": {
+          "observedPairs": 117568,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/xD3I/Benchmarks/6dc50486ac5289c10c99704234ec3fe38d5b4421/examples/mangohud.csv",
+      "sha256": "00ba3e9713e12acee8bbecaa1c0fa33f8769737633e30c988e207f355f148a13",
+      "bytes": 325605,
+      "status": "refused",
+      "reason": "MangoHud logging intervals do not match frame durations: 369.588318 s of elapsed intervals versus 24.063798 s of frame durations across 3693 adjacent records. This may be periodic logging or missing frames. Recapture with log_interval=0; snapshots cannot reconstruct a per-frame stutter report."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/xD3I/Benchmarks/6dc50486ac5289c10c99704234ec3fe38d5b4421/examples/frameview-1-6.csv",
+      "sha256": "b2d5f951273be8acb69af3c7635168001a6baa5a26093a87896b6079493f54b7",
+      "bytes": 57432330,
+      "status": "parsed",
+      "meta": {
+        "format": "frameview",
+        "sourceFileName": "examples/frameview-1-6.csv",
+        "application": "re4.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "GPU",
+          "CPU",
+          "Resolution",
+          "Runtime",
+          "AllowsTearing",
+          "ProcessID",
+          "SwapChainAddress",
+          "SyncInterval",
+          "PresentFlags",
+          "PresentMode",
+          "Dropped",
+          "FlipToken",
+          "TimeInSeconds",
+          "MsBetweenSimulationStart",
+          "MsBetweenPresents",
+          "MsBetweenDisplayChange",
+          "MsInPresentAPI",
+          "MsRenderPresentLatency",
+          "MsUntilDisplayed",
+          "Render Queue Depth",
+          "MsPCLatency",
+          "GPU0Clk(MHz)",
+          "GPU0MemClk(MHz)",
+          "GPU0Util(%)",
+          "GPU0Temp(C)",
+          "GPU1Clk(MHz)",
+          "GPU1MemClk(MHz)",
+          "GPU1Util(%)",
+          "GPU1Temp(C)",
+          "PCAT Power Total(W)",
+          "Perf/W Total(F/J) (PCAT)",
+          "Perf/W Total(F/J) (API)",
+          "Perf/W GPUOnly(F/J) (API)",
+          "Perf/W Total-USBC(F/J) (API)",
+          "GPUOnlyPwr(W) (API)",
+          "NV-Total-USBCPwr(W) (API)",
+          "NV Pwr(W) (API)",
+          "AMDPwr(W) (API)",
+          "CPUClk(MHz)",
+          "CPUUtil(%)",
+          "CPU Package Temp(C)",
+          "CPU Package Power(W)",
+          "CPU TDP (W)",
+          "CPUCoreUtil%[ 0]",
+          "CPUCoreUtil%[ 1]",
+          "CPUCoreUtil%[ 2]",
+          "CPUCoreUtil%[ 3]",
+          "CPUCoreUtil%[ 4]",
+          "CPUCoreUtil%[ 5]",
+          "CPUCoreUtil%[ 6]",
+          "CPUCoreUtil%[ 7]",
+          "CPUCoreUtil%[ 8]",
+          "CPUCoreUtil%[ 9]",
+          "CPUCoreUtil%[10]",
+          "CPUCoreUtil%[11]",
+          "CPUCoreUtil%[12]",
+          "CPUCoreUtil%[13]",
+          "CPUCoreUtil%[14]",
+          "CPUCoreUtil%[15]",
+          "CPUCoreUtil%[16]",
+          "CPUCoreUtil%[17]",
+          "CPUCoreUtil%[18]",
+          "CPUCoreUtil%[19]",
+          "CPUCoreUtil%[20]",
+          "CPUCoreUtil%[21]",
+          "CPUCoreUtil%[22]",
+          "CPUCoreUtil%[23]",
+          "CPUCoreUtil%[24]",
+          "CPUCoreUtil%[25]",
+          "CPUCoreUtil%[26]",
+          "CPUCoreUtil%[27]",
+          "CPUCoreUtil%[28]",
+          "CPUCoreUtil%[29]",
+          "CPUCoreUtil%[30]",
+          "CPUCoreUtil%[31]",
+          "CPUCoreUtil%[32]",
+          "CPUCoreUtil%[33]",
+          "CPUCoreUtil%[34]",
+          "CPUCoreUtil%[35]",
+          "CPUCoreUtil%[36]",
+          "CPUCoreUtil%[37]",
+          "CPUCoreUtil%[38]",
+          "CPUCoreUtil%[39]",
+          "CPUCoreUtil%[40]",
+          "CPUCoreUtil%[41]",
+          "CPUCoreUtil%[42]",
+          "CPUCoreUtil%[43]",
+          "CPUCoreUtil%[44]",
+          "CPUCoreUtil%[45]",
+          "CPUCoreUtil%[46]",
+          "CPUCoreUtil%[47]",
+          "CPUCoreUtil%[48]",
+          "CPUCoreUtil%[49]",
+          "CPUCoreUtil%[50]",
+          "CPUCoreUtil%[51]",
+          "CPUCoreUtil%[52]",
+          "CPUCoreUtil%[53]",
+          "CPUCoreUtil%[54]",
+          "CPUCoreUtil%[55]",
+          "CPUCoreUtil%[56]",
+          "CPUCoreUtil%[57]",
+          "CPUCoreUtil%[58]",
+          "CPUCoreUtil%[59]",
+          "CPUCoreUtil%[60]",
+          "CPUCoreUtil%[61]",
+          "CPUCoreUtil%[62]",
+          "CPUCoreUtil%[63]",
+          "Current Battery Capacity(Wh)",
+          "Total Battery Capacity(Wh)",
+          "Battery Percentage",
+          "Battery Drain Rate(W)"
+        ],
+        "streams": [
+          {
+            "id": "25784:0x0000000132CF7570",
+            "application": "re4.exe",
+            "processId": "25784",
+            "swapChain": "0x0000000132CF7570",
+            "frameCount": 112316
+          }
+        ],
+        "selectedStream": "25784:0x0000000132CF7570"
+      },
+      "arrays": {
+        "frameTimeMs": "de179ba5506ec2a1c9a747be1e646bb508a59a1751091433936cae37c8948bdf",
+        "timeSec": "71bdbf02976c037cafbbdcfc11dfd6b702f8259e2beedd94546a91ce2800d5c4",
+        "sourceLine": "20c563b13207f2ec665d2279443fc36101c3c51e8d73f97e479bb1902d12b2a0",
+        "gapBefore": "09b2f846302fca85c77ab0c657f97fa65e17974458f11a0ec53de0278ba4afa2",
+        "dropped": "09b2f846302fca85c77ab0c657f97fa65e17974458f11a0ec53de0278ba4afa2",
+        "displayLatencyMs": "ad96821bc7cddf730f3c61fc5398a29fcee3731fb917c5ed88c214f42e3108c4"
+      },
+      "summary": {
+        "frameCount": 112316,
+        "durationSec": 548.018848000003,
+        "averageFps": 204.9491553254011,
+        "meanOfInstantaneousFps": 209.19683812520688,
+        "percentilesMs": {
+          "p50": 4.873,
+          "p90": 5.556,
+          "p95": 5.798,
+          "p99": 6.608,
+          "p999": 9.644125000000304
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 151.3317191283293,
+          "meanOfSlowestMethodFps": 127.7677663977822,
+          "timeWeightedFps": 139.39224979091162
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 103.69007037963199,
+          "meanOfSlowestMethodFps": 91.22422915526364,
+          "timeWeightedFps": 92.7213722763097
+        },
+        "stutter": {
+          "stutterEventCount": 94,
+          "totalStutterTimeMs": 1028.161,
+          "stutterTimeFraction": 0.0018761416760614874,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": [
+            989,
+            7273,
+            9930,
+            10539,
+            10675,
+            12106,
+            12172,
+            12880,
+            13719,
+            14019,
+            14189,
+            18985,
+            19241,
+            20042,
+            25548,
+            25925,
+            26332,
+            26524,
+            28214,
+            29283,
+            29929,
+            30577,
+            30597,
+            30639,
+            31668,
+            31675,
+            31802,
+            32311,
+            32606,
+            33803,
+            39433,
+            40655,
+            40910,
+            42448,
+            44141,
+            44408,
+            44826,
+            45572,
+            46284,
+            46350,
+            47699,
+            48281,
+            48495,
+            49993,
+            50959,
+            52882,
+            55396,
+            59542,
+            61682,
+            61835,
+            62706,
+            67059,
+            70366,
+            71467,
+            74085,
+            76752,
+            77369,
+            78270,
+            79298,
+            81426,
+            81581,
+            81592,
+            83528,
+            83731,
+            84512,
+            84716,
+            84985,
+            85175,
+            85305,
+            86000,
+            86065,
+            86299,
+            87197,
+            87302,
+            89243,
+            91565,
+            92941,
+            93031,
+            93220,
+            93233,
+            93417,
+            93534,
+            93676,
+            93899,
+            94374,
+            94414,
+            95528,
+            97259,
+            97397,
+            97760,
+            97811,
+            99544,
+            99566,
+            108579
+          ]
+        },
+        "masdMs": 0.3880250634376529,
+        "pacingCoverage": {
+          "observedPairs": 112315,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 0,
+          "observedFrames": 112316,
+          "droppedFraction": 0
+        },
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 112316,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": null,
+          "displayLatency": {
+            "observedFrames": 0,
+            "unknownFrames": 112316
+          }
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/erkexzcx/flightlesssomething/ab582e57e7baf0dcbba80f9f13b758ec0da2dd18/testdata/afterburner/GOD.OF.WAR_Windows.csv",
+      "sha256": "f34324d33065564e76a807c795e62d19ee55fa0c33566cb82b1bd219dc8bca16",
+      "bytes": 88030,
+      "status": "refused",
+      "reason": "generic format requires a column mapping"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/erkexzcx/flightlesssomething/ab582e57e7baf0dcbba80f9f13b758ec0da2dd18/testdata/afterburner/RE3_Windows.csv",
+      "sha256": "26c422b533718cacf91100c638bdeeaf3ae899ce68d35d1ebcc0568fbdaaec8d",
+      "bytes": 53052,
+      "status": "refused",
+      "reason": "generic format requires a column mapping"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/erkexzcx/flightlesssomething/ab582e57e7baf0dcbba80f9f13b758ec0da2dd18/testdata/afterburner/u4_Windows.csv",
+      "sha256": "5315fea47e2e17a20dfd0199365a92b87ac97250c0d2897d2ad047277e69262c",
+      "bytes": 162969,
+      "status": "refused",
+      "reason": "generic format requires a column mapping"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/erkexzcx/flightlesssomething/ab582e57e7baf0dcbba80f9f13b758ec0da2dd18/testdata/mangohud/run1.csv",
+      "sha256": "307792b81f66febe7c91f0b04d1814deb903474256e44d70e9368eeb082fb2da",
+      "bytes": 24203,
+      "status": "refused",
+      "reason": "MangoHud logging intervals do not match frame durations: 29.721116 s of elapsed intervals versus 1.231299 s of frame durations across 297 adjacent records. This may be periodic logging or missing frames. Recapture with log_interval=0; snapshots cannot reconstruct a per-frame stutter report."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/erkexzcx/flightlesssomething/ab582e57e7baf0dcbba80f9f13b758ec0da2dd18/testdata/mangohud/run2.csv",
+      "sha256": "b0f9b53e690316d9d4e8fb58c6c6f6842127968737f229b5646b55f7977f3441",
+      "bytes": 24208,
+      "status": "refused",
+      "reason": "MangoHud logging intervals do not match frame durations: 29.720533 s of elapsed intervals versus 1.228895 s of frame durations across 297 adjacent records. This may be periodic logging or missing frames. Recapture with log_interval=0; snapshots cannot reconstruct a per-frame stutter report."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/erkexzcx/flightlesssomething/ab582e57e7baf0dcbba80f9f13b758ec0da2dd18/testdata/mangohud/run3.csv",
+      "sha256": "804ad195ced5c15a327c1b33bc18eea80f0bdd8b0a487acb8cb44d31bbf02659",
+      "bytes": 24060,
+      "status": "refused",
+      "reason": "MangoHud logging intervals do not match frame durations: 29.520381 s of elapsed intervals versus 1.228533 s of frame durations across 295 adjacent records. This may be periodic logging or missing frames. Recapture with log_interval=0; snapshots cannot reconstruct a per-frame stutter report."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/cosmiclf/Intel_PresentMon_Performance_Analysis/afceff47fe2ebc74181b4d8c6d0beceb2051e9dd/Logs/pmcap-r5apex_dx12.exe-250709-222018.csv",
+      "sha256": "68ea6ae2da9e3277f40741f1b0f3b1e18a8079a2549baaa7ea7971497c3ca5c7",
+      "bytes": 4138448,
+      "status": "parsed",
+      "meta": {
+        "format": "ocat",
+        "sourceFileName": "Logs/pmcap-r5apex_dx12.exe-250709-222018.csv",
+        "application": "r5apex_dx12.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "TimeInSeconds",
+          "MsBetweenSimulationStart",
+          "MsBetweenPresents",
+          "MsBetweenDisplayChange",
+          "MsInPresentAPI",
+          "MsRenderPresentLatency",
+          "MsUntilDisplayed",
+          "MsPCLatency",
+          "CPUStartTime",
+          "MsBetweenAppStart",
+          "MsCPUBusy",
+          "MsCPUWait",
+          "MsGPULatency",
+          "MsGPUTime",
+          "MsGPUBusy",
+          "MsGPUWait",
+          "MsAnimationError",
+          "AnimationTime",
+          "MsAllInputToPhotonLatency",
+          "MsClickToPhotonLatency",
+          "InstrumentedLatency",
+          "GPUPower",
+          "GPUVoltage",
+          "GPUFrequency",
+          "GPUTemperature",
+          "GPUUtilization",
+          "3D/ComputeUtilization",
+          "MediaUtilization",
+          "GPUMemoryPower",
+          "GPUMemoryVoltage",
+          "GPUMemoryFrequency",
+          "GPUMemoryEffectiveFrequency",
+          "GPUMemoryTemperature",
+          "GPUMemorySize",
+          "GPUMemorySizeUsed",
+          "GPUMemoryMaxBandwidth",
+          "GPUMemoryReadBandwidth",
+          "GPUMemoryWriteBandwidth",
+          "GPUFanSpeed[0]",
+          "GPUFanSpeed[1]",
+          "GPUFanSpeed[2]",
+          "GPUFanSpeed[3]",
+          "GPUPowerLimited",
+          "GPUTemperatureLimited",
+          "GPUCurrentLimited",
+          "GPUVoltageLimited",
+          "GPUUtilizationLimited",
+          "GPUMemoryPowerLimited",
+          "GPUMemoryTemperatureLimited",
+          "GPUMemoryCurrentLimited",
+          "GPUMemoryVoltageLimited",
+          "GPUMemoryUtilizationLimited",
+          "CPUUtilization",
+          "CPUPower",
+          "CPUTemperature",
+          "CPUFrequency"
+        ],
+        "streams": [
+          {
+            "id": "18660:0x1F741139B80",
+            "application": "r5apex_dx12.exe",
+            "processId": "18660",
+            "swapChain": "0x1F741139B80",
+            "frameCount": 10652
+          }
+        ],
+        "selectedStream": "18660:0x1F741139B80"
+      },
+      "arrays": {
+        "frameTimeMs": "9e6a797bebe0b2f61ba71a5621f67ae6e41ea90a2b69292188f4b4670f7dd501",
+        "timeSec": "76a7351c3451ccc3fca3f9ff6de7ef12d9e1c5b926beef423bfefc075ae7dfcc",
+        "sourceLine": "0e878575e82a1ccc26d6956fdeaf35c70488bafaf5a64bb5d4330ffef615216f",
+        "gapBefore": "d0974c21ad0754a6d055108149a13538f84f2b9b5a3b56e056f06f04571ec82a",
+        "dropped": null
+      },
+      "summary": {
+        "frameCount": 10652,
+        "durationSec": 69.1885098000002,
+        "averageFps": 153.95619924162565,
+        "meanOfInstantaneousFps": 172.89153607454895,
+        "percentilesMs": {
+          "p50": 6.23935,
+          "p90": 9.20476,
+          "p95": 10.801784999999999,
+          "p99": 14.563296999999997,
+          "p999": 17.842799700000107
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 68.66576984593532,
+          "meanOfSlowestMethodFps": 62.046167799627746,
+          "timeWeightedFps": 63.601902968936834
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 56.04501629864701,
+          "meanOfSlowestMethodFps": 46.282037688725524,
+          "timeWeightedFps": 39.90072699124578
+        },
+        "stutter": {
+          "stutterEventCount": 18,
+          "totalStutterTimeMs": 268.5189,
+          "stutterTimeFraction": 0.0038809753350114804,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": [
+            6,
+            208,
+            642,
+            846,
+            891,
+            1015,
+            1051,
+            1109,
+            1359,
+            1604,
+            2876,
+            5307,
+            6232,
+            6233,
+            6841,
+            7447,
+            8776,
+            10297
+          ]
+        },
+        "masdMs": 1.5147389259224566,
+        "pacingCoverage": {
+          "observedPairs": 10651,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/cosmiclf/Intel_PresentMon_Performance_Analysis/afceff47fe2ebc74181b4d8c6d0beceb2051e9dd/Logs/pmcap-r5apex_dx12.exe-250709-222519.csv",
+      "sha256": "e037cb6bb23dca584410932bad2b3af519aa9a1ea1c211f91e2fa7b6dfec2845",
+      "bytes": 3118772,
+      "status": "parsed",
+      "meta": {
+        "format": "ocat",
+        "sourceFileName": "Logs/pmcap-r5apex_dx12.exe-250709-222519.csv",
+        "application": "r5apex_dx12.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "TimeInSeconds",
+          "MsBetweenSimulationStart",
+          "MsBetweenPresents",
+          "MsBetweenDisplayChange",
+          "MsInPresentAPI",
+          "MsRenderPresentLatency",
+          "MsUntilDisplayed",
+          "MsPCLatency",
+          "CPUStartTime",
+          "MsBetweenAppStart",
+          "MsCPUBusy",
+          "MsCPUWait",
+          "MsGPULatency",
+          "MsGPUTime",
+          "MsGPUBusy",
+          "MsGPUWait",
+          "MsAnimationError",
+          "AnimationTime",
+          "MsAllInputToPhotonLatency",
+          "MsClickToPhotonLatency",
+          "InstrumentedLatency",
+          "GPUPower",
+          "GPUVoltage",
+          "GPUFrequency",
+          "GPUTemperature",
+          "GPUUtilization",
+          "3D/ComputeUtilization",
+          "MediaUtilization",
+          "GPUMemoryPower",
+          "GPUMemoryVoltage",
+          "GPUMemoryFrequency",
+          "GPUMemoryEffectiveFrequency",
+          "GPUMemoryTemperature",
+          "GPUMemorySize",
+          "GPUMemorySizeUsed",
+          "GPUMemoryMaxBandwidth",
+          "GPUMemoryReadBandwidth",
+          "GPUMemoryWriteBandwidth",
+          "GPUFanSpeed[0]",
+          "GPUFanSpeed[1]",
+          "GPUFanSpeed[2]",
+          "GPUFanSpeed[3]",
+          "GPUPowerLimited",
+          "GPUTemperatureLimited",
+          "GPUCurrentLimited",
+          "GPUVoltageLimited",
+          "GPUUtilizationLimited",
+          "GPUMemoryPowerLimited",
+          "GPUMemoryTemperatureLimited",
+          "GPUMemoryCurrentLimited",
+          "GPUMemoryVoltageLimited",
+          "GPUMemoryUtilizationLimited",
+          "CPUUtilization",
+          "CPUPower",
+          "CPUTemperature",
+          "CPUFrequency"
+        ],
+        "streams": [
+          {
+            "id": "18660:0x1F741139B80",
+            "application": "r5apex_dx12.exe",
+            "processId": "18660",
+            "swapChain": "0x1F741139B80",
+            "frameCount": 8020
+          }
+        ],
+        "selectedStream": "18660:0x1F741139B80"
+      },
+      "arrays": {
+        "frameTimeMs": "40ca36152e9a60cc92ec5664fb8ddd1b3ab8468515a16b9f454ed490238854df",
+        "timeSec": "7b00409c2121ae50ae609be0faedf33fa6df691500b20b6587374731c869afe6",
+        "sourceLine": "3d3521734c3fc478ef8ab149ba982f0a34f89a3b70ee8ab627afb4afabbc0379",
+        "gapBefore": "0f4af2f0b230076b685762e840eb40ec55c4fb0629ac438b48c7766f92b5ce21",
+        "dropped": null
+      },
+      "summary": {
+        "frameCount": 8020,
+        "durationSec": 61.29376440000013,
+        "averageFps": 130.84528383118828,
+        "meanOfInstantaneousFps": 145.25747498342227,
+        "percentilesMs": {
+          "p50": 7.36065,
+          "p90": 10.450920000000002,
+          "p95": 12.696044999999996,
+          "p99": 17.662477999999982,
+          "p999": 20.506832800000073
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 56.617197201887585,
+          "meanOfSlowestMethodFps": 52.40349944099698,
+          "timeWeightedFps": 51.962898490477805
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 48.76423432876463,
+          "meanOfSlowestMethodFps": 45.671832658405144,
+          "timeWeightedFps": 44.15303441729033
+        },
+        "stutter": {
+          "stutterEventCount": 2,
+          "totalStutterTimeMs": 25.996499999999997,
+          "stutterTimeFraction": 0.00042412960363060934,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": [
+            155,
+            6223
+          ]
+        },
+        "masdMs": 1.2762432846988383,
+        "pacingCoverage": {
+          "observedPairs": 8019,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/cosmiclf/Intel_PresentMon_Performance_Analysis/afceff47fe2ebc74181b4d8c6d0beceb2051e9dd/Logs/pmcap-superposition.exe-250719-215451.csv",
+      "sha256": "b71ab808920c3aaba41fa8e9d0090f7b342bf43e0c8e69e36864e1457447b66b",
+      "bytes": 5174729,
+      "status": "parsed",
+      "meta": {
+        "format": "ocat",
+        "sourceFileName": "Logs/pmcap-superposition.exe-250719-215451.csv",
+        "application": "superposition.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "TimeInSeconds",
+          "MsBetweenSimulationStart",
+          "MsBetweenPresents",
+          "MsBetweenDisplayChange",
+          "MsInPresentAPI",
+          "MsRenderPresentLatency",
+          "MsUntilDisplayed",
+          "MsPCLatency",
+          "CPUStartTime",
+          "MsBetweenAppStart",
+          "MsCPUBusy",
+          "MsCPUWait",
+          "MsGPULatency",
+          "MsGPUTime",
+          "MsGPUBusy",
+          "MsGPUWait",
+          "MsAnimationError",
+          "AnimationTime",
+          "MsAllInputToPhotonLatency",
+          "MsClickToPhotonLatency",
+          "InstrumentedLatency",
+          "GPUPower",
+          "GPUVoltage",
+          "GPUFrequency",
+          "GPUTemperature",
+          "GPUUtilization",
+          "3D/ComputeUtilization",
+          "MediaUtilization",
+          "GPUMemoryPower",
+          "GPUMemoryVoltage",
+          "GPUMemoryFrequency",
+          "GPUMemoryEffectiveFrequency",
+          "GPUMemoryTemperature",
+          "GPUMemorySize",
+          "GPUMemorySizeUsed",
+          "GPUMemoryMaxBandwidth",
+          "GPUMemoryReadBandwidth",
+          "GPUMemoryWriteBandwidth",
+          "GPUFanSpeed[0]",
+          "GPUFanSpeed[1]",
+          "GPUFanSpeed[2]",
+          "GPUFanSpeed[3]",
+          "GPUPowerLimited",
+          "GPUTemperatureLimited",
+          "GPUCurrentLimited",
+          "GPUVoltageLimited",
+          "GPUUtilizationLimited",
+          "GPUMemoryPowerLimited",
+          "GPUMemoryTemperatureLimited",
+          "GPUMemoryCurrentLimited",
+          "GPUMemoryVoltageLimited",
+          "GPUMemoryUtilizationLimited",
+          "CPUUtilization",
+          "CPUPower",
+          "CPUTemperature",
+          "CPUFrequency"
+        ],
+        "streams": [
+          {
+            "id": "14952:0x2A78FAA5940",
+            "application": "superposition.exe",
+            "processId": "14952",
+            "swapChain": "0x2A78FAA5940",
+            "frameCount": 13143
+          }
+        ],
+        "selectedStream": "14952:0x2A78FAA5940"
+      },
+      "arrays": {
+        "frameTimeMs": "e7abcf93f28b9130148840a7f4c2ee95315a83604c3128524e1b476a4a2e3d7b",
+        "timeSec": "315cc5d58070ce8bcbd1a2675c94009a384bd0c237abec2e8a38ec83a0d805cf",
+        "sourceLine": "2d80923bb1d81ae5ed14312d5423ccc80f92a59dfa482e32f64364ee2f82dd9c",
+        "gapBefore": "2ffcbba5945bdb33a928b4de4ffbc2dac58aae4669a18b4da156c243b5303627",
+        "dropped": null
+      },
+      "summary": {
+        "frameCount": 13143,
+        "durationSec": 191.05371850000014,
+        "averageFps": 68.79217061666346,
+        "meanOfInstantaneousFps": 75.05464243392294,
+        "percentilesMs": {
+          "p50": 13.5641,
+          "p90": 15.595180000000001,
+          "p95": 16.21466,
+          "p99": 18.060059999999996,
+          "p999": 102.15570340000576
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 55.3708016473921,
+          "meanOfSlowestMethodFps": 8.33449395370979,
+          "timeWeightedFps": 0.19005773041572924
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 9.788978654322923,
+          "meanOfSlowestMethodFps": 1.2364915396908354,
+          "timeWeightedFps": 0.19005773041572924
+        },
+        "stutter": {
+          "stutterEventCount": 13,
+          "totalStutterTimeMs": 10700.843700000003,
+          "stutterTimeFraction": 0.05600960705718997,
+          "hitchThresholdMs": 50,
+          "hitchCount": 46,
+          "totalHitchTimeMs": 13877.197400000001,
+          "hitchTimeFraction": 0.07263505525541487,
+          "stutterFrameIndices": [
+            1,
+            3,
+            5,
+            8,
+            58,
+            61,
+            62,
+            63,
+            71,
+            122,
+            217,
+            1489,
+            7713
+          ]
+        },
+        "masdMs": 2.813212707350486,
+        "pacingCoverage": {
+          "observedPairs": 13142,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/cosmiclf/Intel_PresentMon_Performance_Analysis/afceff47fe2ebc74181b4d8c6d0beceb2051e9dd/Logs/pmcap-superposition.exe-250719-220716.csv",
+      "sha256": "6ca4bf3e1482976e74acb365f31788a08a29983f4bef1c835c80bb59cb046a13",
+      "bytes": 4883958,
+      "status": "parsed",
+      "meta": {
+        "format": "ocat",
+        "sourceFileName": "Logs/pmcap-superposition.exe-250719-220716.csv",
+        "application": "superposition.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "ProcessID",
+          "SwapChainAddress",
+          "PresentRuntime",
+          "SyncInterval",
+          "PresentFlags",
+          "AllowsTearing",
+          "PresentMode",
+          "FrameType",
+          "TimeInSeconds",
+          "MsBetweenSimulationStart",
+          "MsBetweenPresents",
+          "MsBetweenDisplayChange",
+          "MsInPresentAPI",
+          "MsRenderPresentLatency",
+          "MsUntilDisplayed",
+          "MsPCLatency",
+          "CPUStartTime",
+          "MsBetweenAppStart",
+          "MsCPUBusy",
+          "MsCPUWait",
+          "MsGPULatency",
+          "MsGPUTime",
+          "MsGPUBusy",
+          "MsGPUWait",
+          "MsAnimationError",
+          "AnimationTime",
+          "MsAllInputToPhotonLatency",
+          "MsClickToPhotonLatency",
+          "InstrumentedLatency",
+          "GPUPower",
+          "GPUVoltage",
+          "GPUFrequency",
+          "GPUTemperature",
+          "GPUUtilization",
+          "3D/ComputeUtilization",
+          "MediaUtilization",
+          "GPUMemoryPower",
+          "GPUMemoryVoltage",
+          "GPUMemoryFrequency",
+          "GPUMemoryEffectiveFrequency",
+          "GPUMemoryTemperature",
+          "GPUMemorySize",
+          "GPUMemorySizeUsed",
+          "GPUMemoryMaxBandwidth",
+          "GPUMemoryReadBandwidth",
+          "GPUMemoryWriteBandwidth",
+          "GPUFanSpeed[0]",
+          "GPUFanSpeed[1]",
+          "GPUFanSpeed[2]",
+          "GPUFanSpeed[3]",
+          "GPUPowerLimited",
+          "GPUTemperatureLimited",
+          "GPUCurrentLimited",
+          "GPUVoltageLimited",
+          "GPUUtilizationLimited",
+          "GPUMemoryPowerLimited",
+          "GPUMemoryTemperatureLimited",
+          "GPUMemoryCurrentLimited",
+          "GPUMemoryVoltageLimited",
+          "GPUMemoryUtilizationLimited",
+          "CPUUtilization",
+          "CPUPower",
+          "CPUTemperature",
+          "CPUFrequency"
+        ],
+        "streams": [
+          {
+            "id": "1148:0x1843739CC00",
+            "application": "superposition.exe",
+            "processId": "1148",
+            "swapChain": "0x1843739CC00",
+            "frameCount": 12431
+          }
+        ],
+        "selectedStream": "1148:0x1843739CC00"
+      },
+      "arrays": {
+        "frameTimeMs": "2d6c69d732f45b458f37cb3d03b35c81e51106b5b9751beffae7f1f39a229f66",
+        "timeSec": "af4d80ed44d24d7ff4469942c3d511b7f8f37917d37e602fb7d0db58b8e11fd6",
+        "sourceLine": "dd5c7686db16d0f3896c51a0ded1ff1361c8fb5bc660757b31016072d2150351",
+        "gapBefore": "3ccd59822bac3ee5386d6b767a6975def10cfcb69dbfe612105d4f885866a1e3",
+        "dropped": null
+      },
+      "summary": {
+        "frameCount": 12431,
+        "durationSec": 174.69184619999945,
+        "averageFps": 71.1595891302684,
+        "meanOfInstantaneousFps": 72.24154284421681,
+        "percentilesMs": {
+          "p50": 14.101,
+          "p90": 16.0938,
+          "p95": 16.71355,
+          "p99": 17.967100000000002,
+          "p999": 21.429916000000638
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 55.65728470370844,
+          "meanOfSlowestMethodFps": 51.228284176652636,
+          "timeWeightedFps": 54.96861292202153
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 46.66373867260937,
+          "meanOfSlowestMethodFps": 36.693560223729115,
+          "timeWeightedFps": 39.371783817409415
+        },
+        "stutter": {
+          "stutterEventCount": 3,
+          "totalStutterTimeMs": 113.02980000000001,
+          "stutterTimeFraction": 0.0006470239021379134,
+          "hitchThresholdMs": 50,
+          "hitchCount": 1,
+          "totalHitchTimeMs": 59.4527,
+          "hitchTimeFraction": 0.0003403289924129276,
+          "stutterFrameIndices": [
+            1211,
+            7212,
+            9243
+          ]
+        },
+        "masdMs": 0.988744641995174,
+        "pacingCoverage": {
+          "observedPairs": 12430,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Pavelioso/Frameviewer/084d4cb69e35839fd4ae2738119429f5cddd2ee6/assets/witcher_3.csv",
+      "sha256": "b8e5e5d998bd68331a03e035ccf37356075b04012e319810d4700843b8ebba27",
+      "bytes": 607775,
+      "status": "parsed",
+      "meta": {
+        "format": "frameview",
+        "sourceFileName": "assets/witcher_3.csv",
+        "application": "witcher3.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "GPU",
+          "CPU",
+          "Resolution",
+          "Runtime",
+          "AllowsTearing",
+          "ProcessID",
+          "SwapChainAddress",
+          "SyncInterval",
+          "PresentFlags",
+          "PresentMode",
+          "Dropped",
+          "TimeInSeconds",
+          "MsBetweenPresents",
+          "MsBetweenDisplayChange",
+          "MsInPresentAPI",
+          "MsRenderPresentLatency",
+          "MsUntilDisplayed",
+          "Render Queue Depth",
+          "MsPCLatency",
+          "GPU0Clk(MHz)",
+          "GPU0MemClk(MHz)",
+          "GPU0Util(%)",
+          "GPU0Temp(C)",
+          "GPU1Clk(MHz)",
+          "GPU1MemClk(MHz)",
+          "GPU1Util(%)",
+          "GPU1Temp(C)",
+          "PCAT Power Total(W)",
+          "Perf/W Total(F/J) (PCAT)",
+          "Perf/W Total(F/J) (API)",
+          "Perf/W GPUOnly(F/J) (API)",
+          "Perf/W Total-USBC(F/J) (API)",
+          "GPUOnlyPwr(W) (API)",
+          "NV-Total-USBCPwr(W) (API)",
+          "NV Pwr(W) (API)",
+          "AMDPwr(W) (API)",
+          "CPUClk(MHz)",
+          "CPUUtil(%)",
+          "CPU Package Temp(C)",
+          "CPU Package Power(W)",
+          "CPU TDP (W)",
+          "CPUCoreUtil%[ 0]",
+          "CPUCoreUtil%[ 1]",
+          "CPUCoreUtil%[ 2]",
+          "CPUCoreUtil%[ 3]",
+          "CPUCoreUtil%[ 4]",
+          "CPUCoreUtil%[ 5]",
+          "CPUCoreUtil%[ 6]",
+          "CPUCoreUtil%[ 7]",
+          "CPUCoreUtil%[ 8]",
+          "CPUCoreUtil%[ 9]",
+          "CPUCoreUtil%[10]",
+          "CPUCoreUtil%[11]",
+          "CPUCoreUtil%[12]",
+          "CPUCoreUtil%[13]",
+          "CPUCoreUtil%[14]",
+          "CPUCoreUtil%[15]",
+          "CPUCoreUtil%[16]",
+          "CPUCoreUtil%[17]",
+          "CPUCoreUtil%[18]",
+          "CPUCoreUtil%[19]",
+          "CPUCoreUtil%[20]",
+          "CPUCoreUtil%[21]",
+          "CPUCoreUtil%[22]",
+          "CPUCoreUtil%[23]",
+          "CPUCoreUtil%[24]",
+          "CPUCoreUtil%[25]",
+          "CPUCoreUtil%[26]",
+          "CPUCoreUtil%[27]",
+          "CPUCoreUtil%[28]",
+          "CPUCoreUtil%[29]",
+          "CPUCoreUtil%[30]",
+          "CPUCoreUtil%[31]",
+          "CPUCoreUtil%[32]",
+          "CPUCoreUtil%[33]",
+          "CPUCoreUtil%[34]",
+          "CPUCoreUtil%[35]",
+          "CPUCoreUtil%[36]",
+          "CPUCoreUtil%[37]",
+          "CPUCoreUtil%[38]",
+          "CPUCoreUtil%[39]",
+          "CPUCoreUtil%[40]",
+          "CPUCoreUtil%[41]",
+          "CPUCoreUtil%[42]",
+          "CPUCoreUtil%[43]",
+          "CPUCoreUtil%[44]",
+          "CPUCoreUtil%[45]",
+          "CPUCoreUtil%[46]",
+          "CPUCoreUtil%[47]",
+          "CPUCoreUtil%[48]",
+          "CPUCoreUtil%[49]",
+          "CPUCoreUtil%[50]",
+          "CPUCoreUtil%[51]",
+          "CPUCoreUtil%[52]",
+          "CPUCoreUtil%[53]",
+          "CPUCoreUtil%[54]",
+          "CPUCoreUtil%[55]",
+          "CPUCoreUtil%[56]",
+          "CPUCoreUtil%[57]",
+          "CPUCoreUtil%[58]",
+          "CPUCoreUtil%[59]",
+          "CPUCoreUtil%[60]",
+          "CPUCoreUtil%[61]",
+          "CPUCoreUtil%[62]",
+          "CPUCoreUtil%[63]",
+          "Current Battery Capacity(Wh)",
+          "Total Battery Capacity(Wh)",
+          "Battery Percentage",
+          "Battery Drain Rate(W)"
+        ],
+        "streams": [
+          {
+            "id": "1832:0x000002900C071B50",
+            "application": "witcher3.exe",
+            "processId": "1832",
+            "swapChain": "0x000002900C071B50",
+            "frameCount": 1146
+          }
+        ],
+        "selectedStream": "1832:0x000002900C071B50"
+      },
+      "arrays": {
+        "frameTimeMs": "4d61aab56ff4654fad275158398ede2508ee2532fe866615c30f6531d83e9685",
+        "timeSec": "c684ae5583b5fc210aefbf98b1efd3c214573e5417b34ac28adc504fb891973f",
+        "sourceLine": "886e9d68c1a748885fc7c6a6e1cd6e3f4613d6e42929753bced7893dcf740d5b",
+        "gapBefore": "3e09815634eca18c8870453dfe3f64d9ee8eadcda98ec7c8ddffb2233152f1cb",
+        "dropped": "3e09815634eca18c8870453dfe3f64d9ee8eadcda98ec7c8ddffb2233152f1cb",
+        "displayLatencyMs": "84ba5edead5c9b6a2b76cb10aa492a2a2a088dbe95a8f62a104030ec017df1a9"
+      },
+      "summary": {
+        "frameCount": 1146,
+        "durationSec": 26.929546000000034,
+        "averageFps": 42.555489052804624,
+        "meanOfInstantaneousFps": 44.50141206903948,
+        "percentilesMs": {
+          "p50": 21.8125,
+          "p90": 28.4275,
+          "p95": 32.58575,
+          "p99": 46.19589999999993,
+          "p999": 107.43889500000071
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 21.64694269404864,
+          "meanOfSlowestMethodFps": 13.093118257044098,
+          "timeWeightedFps": 8.8371229862406
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 9.307616203610372,
+          "meanOfSlowestMethodFps": 5.30526494493135,
+          "timeWeightedFps": 3.790391357907704
+        },
+        "stutter": {
+          "stutterEventCount": 18,
+          "totalStutterTimeMs": 1180.9099999999999,
+          "stutterTimeFraction": 0.04385183470972733,
+          "hitchThresholdMs": 50,
+          "hitchCount": 7,
+          "totalHitchTimeMs": 676.2940000000001,
+          "hitchTimeFraction": 0.025113457167083304,
+          "stutterFrameIndices": [
+            226,
+            252,
+            296,
+            305,
+            365,
+            366,
+            428,
+            528,
+            540,
+            542,
+            760,
+            924,
+            960,
+            972,
+            984,
+            1076,
+            1088,
+            1096
+          ]
+        },
+        "masdMs": 4.631923144104807,
+        "pacingCoverage": {
+          "observedPairs": 1145,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 0,
+          "observedFrames": 1146,
+          "droppedFraction": 0
+        },
+        "boundShare": null,
+        "latency": {
+          "observedFrames": 1146,
+          "meanMs": 107.69247382198955,
+          "p50": 105.84899999999999,
+          "p90": 120.9185,
+          "p99": 134.48184999999998
+        },
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 1146,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": null,
+          "displayLatency": {
+            "observedFrames": 1146,
+            "unknownFrames": 0
+          }
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Pavelioso/Frameviewer/084d4cb69e35839fd4ae2738119429f5cddd2ee6/assets/witcher_3_gdrive.csv",
+      "sha256": "97817910caed86d19df599ea6bf98becd5d5407eae7e70b1a24660f31b20a3c5",
+      "bytes": 469275,
+      "status": "parsed",
+      "meta": {
+        "format": "frameview",
+        "sourceFileName": "assets/witcher_3_gdrive.csv",
+        "application": "witcher3.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "GPU",
+          "CPU",
+          "Resolution",
+          "Runtime",
+          "AllowsTearing",
+          "ProcessID",
+          "SwapChainAddress",
+          "SyncInterval",
+          "PresentFlags",
+          "PresentMode",
+          "Dropped",
+          "TimeInSeconds",
+          "MsBetweenPresents",
+          "MsBetweenDisplayChange",
+          "MsInPresentAPI",
+          "MsRenderPresentLatency",
+          "MsUntilDisplayed",
+          "Render Queue Depth",
+          "MsPCLatency",
+          "GPU0Clk(MHz)",
+          "GPU0MemClk(MHz)",
+          "GPU0Util(%)",
+          "GPU0Temp(C)",
+          "GPU1Clk(MHz)",
+          "GPU1MemClk(MHz)",
+          "GPU1Util(%)",
+          "GPU1Temp(C)",
+          "PCAT Power Total(W)",
+          "Perf/W Total(F/J) (PCAT)",
+          "Perf/W Total(F/J) (API)",
+          "Perf/W GPUOnly(F/J) (API)",
+          "Perf/W Total-USBC(F/J) (API)",
+          "GPUOnlyPwr(W) (API)",
+          "NV-Total-USBCPwr(W) (API)",
+          "NV Pwr(W) (API)",
+          "AMDPwr(W) (API)",
+          "CPUClk(MHz)",
+          "CPUUtil(%)",
+          "CPU Package Temp(C)",
+          "CPU Package Power(W)",
+          "CPU TDP (W)",
+          "CPUCoreUtil%[ 0]",
+          "CPUCoreUtil%[ 1]",
+          "CPUCoreUtil%[ 2]",
+          "CPUCoreUtil%[ 3]",
+          "CPUCoreUtil%[ 4]",
+          "CPUCoreUtil%[ 5]",
+          "CPUCoreUtil%[ 6]",
+          "CPUCoreUtil%[ 7]",
+          "CPUCoreUtil%[ 8]",
+          "CPUCoreUtil%[ 9]",
+          "CPUCoreUtil%[10]",
+          "CPUCoreUtil%[11]",
+          "CPUCoreUtil%[12]",
+          "CPUCoreUtil%[13]",
+          "CPUCoreUtil%[14]",
+          "CPUCoreUtil%[15]",
+          "CPUCoreUtil%[16]",
+          "CPUCoreUtil%[17]",
+          "CPUCoreUtil%[18]",
+          "CPUCoreUtil%[19]",
+          "CPUCoreUtil%[20]",
+          "CPUCoreUtil%[21]",
+          "CPUCoreUtil%[22]",
+          "CPUCoreUtil%[23]",
+          "CPUCoreUtil%[24]",
+          "CPUCoreUtil%[25]",
+          "CPUCoreUtil%[26]",
+          "CPUCoreUtil%[27]",
+          "CPUCoreUtil%[28]",
+          "CPUCoreUtil%[29]",
+          "CPUCoreUtil%[30]",
+          "CPUCoreUtil%[31]",
+          "CPUCoreUtil%[32]",
+          "CPUCoreUtil%[33]",
+          "CPUCoreUtil%[34]",
+          "CPUCoreUtil%[35]",
+          "CPUCoreUtil%[36]",
+          "CPUCoreUtil%[37]",
+          "CPUCoreUtil%[38]",
+          "CPUCoreUtil%[39]",
+          "CPUCoreUtil%[40]",
+          "CPUCoreUtil%[41]",
+          "CPUCoreUtil%[42]",
+          "CPUCoreUtil%[43]",
+          "CPUCoreUtil%[44]",
+          "CPUCoreUtil%[45]",
+          "CPUCoreUtil%[46]",
+          "CPUCoreUtil%[47]",
+          "CPUCoreUtil%[48]",
+          "CPUCoreUtil%[49]",
+          "CPUCoreUtil%[50]",
+          "CPUCoreUtil%[51]",
+          "CPUCoreUtil%[52]",
+          "CPUCoreUtil%[53]",
+          "CPUCoreUtil%[54]",
+          "CPUCoreUtil%[55]",
+          "CPUCoreUtil%[56]",
+          "CPUCoreUtil%[57]",
+          "CPUCoreUtil%[58]",
+          "CPUCoreUtil%[59]",
+          "CPUCoreUtil%[60]",
+          "CPUCoreUtil%[61]",
+          "CPUCoreUtil%[62]",
+          "CPUCoreUtil%[63]",
+          "Current Battery Capacity(Wh)",
+          "Total Battery Capacity(Wh)",
+          "Battery Percentage",
+          "Battery Drain Rate(W)"
+        ],
+        "streams": [
+          {
+            "id": "7820:0x000001D01D577200",
+            "application": "witcher3.exe",
+            "processId": "7820",
+            "swapChain": "0x000001D01D577200",
+            "frameCount": 907
+          }
+        ],
+        "selectedStream": "7820:0x000001D01D577200"
+      },
+      "arrays": {
+        "frameTimeMs": "fb832b97761727eb3aa42acafec508d72c3693bcddc82652511a9a3bcf449bd8",
+        "timeSec": "8aeaf783fda97e2dc4339fe4e3361efd9e2a3ea9cc80ec4881dd6bcceb7e5935",
+        "sourceLine": "5fc6d515bff9ce726eda61382d653aab277f11b2a5721a0dcc5f3aebdf7b6806",
+        "gapBefore": "c3cf22710f8ea8a68cb24b73c7b66b5e01d88be0e0379836032dfbc78f4c214b",
+        "dropped": "c3cf22710f8ea8a68cb24b73c7b66b5e01d88be0e0379836032dfbc78f4c214b",
+        "displayLatencyMs": "f001e8f3e52d52e69a5ca087b0215e33d301bccddd315b542870ea67aa1d3b7b"
+      },
+      "summary": {
+        "frameCount": 907,
+        "durationSec": 20.226203000000027,
+        "averageFps": 44.84282096842392,
+        "meanOfInstantaneousFps": 46.705651406199074,
+        "percentilesMs": {
+          "p50": 20.941,
+          "p90": 27.0616,
+          "p95": 32.76729999999998,
+          "p99": 48.401199999999925,
+          "p999": 64.4047000000013
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 20.660644777402247,
+          "meanOfSlowestMethodFps": 17.02440618871214,
+          "timeWeightedFps": 16.610743829108667
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 15.526817142226884,
+          "meanOfSlowestMethodFps": 11.421653170079837,
+          "timeWeightedFps": 11.421653170079837
+        },
+        "stutter": {
+          "stutterEventCount": 20,
+          "totalStutterTimeMs": 1018.824,
+          "stutterTimeFraction": 0.050371490882396494,
+          "hitchThresholdMs": 50,
+          "hitchCount": 9,
+          "totalHitchTimeMs": 538.911,
+          "hitchTimeFraction": 0.026644200100236326,
+          "stutterFrameIndices": [
+            10,
+            26,
+            62,
+            112,
+            144,
+            162,
+            174,
+            294,
+            306,
+            342,
+            358,
+            385,
+            418,
+            446,
+            470,
+            542,
+            554,
+            722,
+            730,
+            870
+          ]
+        },
+        "masdMs": 4.472062913907284,
+        "pacingCoverage": {
+          "observedPairs": 906,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 0,
+          "observedFrames": 907,
+          "droppedFraction": 0
+        },
+        "boundShare": null,
+        "latency": {
+          "observedFrames": 907,
+          "meanMs": 104.39634729878726,
+          "p50": 103.567,
+          "p90": 116.3134,
+          "p99": 129.16443999999998
+        },
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 907,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": null,
+          "displayLatency": {
+            "observedFrames": 907,
+            "unknownFrames": 0
+          }
+        }
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Pavelioso/Frameviewer/084d4cb69e35839fd4ae2738119429f5cddd2ee6/assets/witcher_3_test.csv",
+      "sha256": "42cdd54631db2fc0f3e4934287185763a9f93c18226e25ac5a2810460442a3e8",
+      "bytes": 469185,
+      "status": "parsed",
+      "meta": {
+        "format": "frameview",
+        "sourceFileName": "assets/witcher_3_test.csv",
+        "application": "witcher3.exe",
+        "warnings": [],
+        "skippedRows": 0,
+        "columns": [
+          "Application",
+          "GPU",
+          "CPU",
+          "Resolution",
+          "Runtime",
+          "AllowsTearing",
+          "ProcessID",
+          "SwapChainAddress",
+          "SyncInterval",
+          "PresentFlags",
+          "PresentMode",
+          "Dropped",
+          "10",
+          "MsBetweenPresents",
+          "MsBetweenDisplayChange",
+          "MsInPresentAPI",
+          "MsRenderPresentLatency",
+          "MsUntilDisplayed",
+          "Render Queue Depth",
+          "MsPCLatency",
+          "GPU0Clk(MHz)",
+          "GPU0MemClk(MHz)",
+          "GPU0Util(%)",
+          "GPU0Temp(C)",
+          "GPU1Clk(MHz)",
+          "GPU1MemClk(MHz)",
+          "GPU1Util(%)",
+          "GPU1Temp(C)",
+          "PCAT Power Total(W)",
+          "Perf/W Total(F/J) (PCAT)",
+          "Perf/W Total(F/J) (API)",
+          "Perf/W GPUOnly(F/J) (API)",
+          "Perf/W Total-USBC(F/J) (API)",
+          "GPUOnlyPwr(W) (API)",
+          "NV-Total-USBCPwr(W) (API)",
+          "NV Pwr(W) (API)",
+          "AMDPwr(W) (API)",
+          "CPUClk(MHz)",
+          "CPUUtil(%)",
+          "CPU Package Temp(C)",
+          "CPU Package Power(W)",
+          "CPU TDP (W)",
+          "CPUCoreUtil%[ 0]",
+          "CPUCoreUtil%[ 1]",
+          "CPUCoreUtil%[ 2]",
+          "CPUCoreUtil%[ 3]",
+          "CPUCoreUtil%[ 4]",
+          "CPUCoreUtil%[ 5]",
+          "CPUCoreUtil%[ 6]",
+          "CPUCoreUtil%[ 7]",
+          "CPUCoreUtil%[ 8]",
+          "CPUCoreUtil%[ 9]",
+          "CPUCoreUtil%[10]",
+          "CPUCoreUtil%[11]",
+          "CPUCoreUtil%[12]",
+          "CPUCoreUtil%[13]",
+          "CPUCoreUtil%[14]",
+          "CPUCoreUtil%[15]",
+          "CPUCoreUtil%[16]",
+          "CPUCoreUtil%[17]",
+          "CPUCoreUtil%[18]",
+          "CPUCoreUtil%[19]",
+          "CPUCoreUtil%[20]",
+          "CPUCoreUtil%[21]",
+          "CPUCoreUtil%[22]",
+          "CPUCoreUtil%[23]",
+          "CPUCoreUtil%[24]",
+          "CPUCoreUtil%[25]",
+          "CPUCoreUtil%[26]",
+          "CPUCoreUtil%[27]",
+          "CPUCoreUtil%[28]",
+          "CPUCoreUtil%[29]",
+          "CPUCoreUtil%[30]",
+          "CPUCoreUtil%[31]",
+          "CPUCoreUtil%[32]",
+          "CPUCoreUtil%[33]",
+          "CPUCoreUtil%[34]",
+          "CPUCoreUtil%[35]",
+          "CPUCoreUtil%[36]",
+          "CPUCoreUtil%[37]",
+          "CPUCoreUtil%[38]",
+          "CPUCoreUtil%[39]",
+          "CPUCoreUtil%[40]",
+          "CPUCoreUtil%[41]",
+          "CPUCoreUtil%[42]",
+          "CPUCoreUtil%[43]",
+          "CPUCoreUtil%[44]",
+          "CPUCoreUtil%[45]",
+          "CPUCoreUtil%[46]",
+          "CPUCoreUtil%[47]",
+          "CPUCoreUtil%[48]",
+          "CPUCoreUtil%[49]",
+          "CPUCoreUtil%[50]",
+          "CPUCoreUtil%[51]",
+          "CPUCoreUtil%[52]",
+          "CPUCoreUtil%[53]",
+          "CPUCoreUtil%[54]",
+          "CPUCoreUtil%[55]",
+          "CPUCoreUtil%[56]",
+          "CPUCoreUtil%[57]",
+          "CPUCoreUtil%[58]",
+          "CPUCoreUtil%[59]",
+          "CPUCoreUtil%[60]",
+          "CPUCoreUtil%[61]",
+          "CPUCoreUtil%[62]",
+          "CPUCoreUtil%[63]",
+          "Current Battery Capacity(Wh)",
+          "Total Battery Capacity(Wh)",
+          "Battery Percentage",
+          "Battery Drain Rate(W)"
+        ],
+        "streams": [
+          {
+            "id": "7820:0x000001D01D577200",
+            "application": "witcher3.exe",
+            "processId": "7820",
+            "swapChain": "0x000001D01D577200",
+            "frameCount": 906
+          },
+          {
+            "id": "73:83",
+            "application": "witcher3.exe",
+            "processId": "73",
+            "swapChain": "83",
+            "frameCount": 1
+          }
+        ],
+        "selectedStream": "7820:0x000001D01D577200"
+      },
+      "arrays": {
+        "frameTimeMs": "f3b4043149232c8740c30501b51b214e0ae7ce1fdd88b8661e2bbb02e24a2550",
+        "timeSec": "85a12cf72c67252f7ff4819582a1f1f49b5ce113234b1df571104da4a1371aa4",
+        "sourceLine": "c7c70e7381b81dc2623a5b223b58c07b1a41b1069aedf320a2fd8dd8de806348",
+        "gapBefore": "e900b76b5ebd777afdbfc5f0704e24507f32df1b69020c8da66ba64704813ff4",
+        "dropped": "87c7fe5965ee3c06672cb3d2ba27832744f8e8dc5a333b0b29444ff3023bb56d",
+        "cpuBusyMs": null,
+        "gpuBusyMs": null,
+        "displayLatencyMs": "5482478fb4051a870ff7f101ad812e7cf5a066ff3033b2401047d6edf762077c"
+      },
+      "summary": {
+        "frameCount": 906,
+        "durationSec": 28.006088999999964,
+        "averageFps": 32.350107864043466,
+        "meanOfInstantaneousFps": 46.646592552917745,
+        "percentilesMs": {
+          "p50": 20.9435,
+          "p90": 27.078,
+          "p95": 32.9635,
+          "p99": 50.10550000000008,
+          "p999": 822.1354650010901
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 19.957888854516938,
+          "meanOfSlowestMethodFps": 1.1963280862782244,
+          "timeWeightedFps": 0.1278772378516624
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 1.2163445594682794,
+          "meanOfSlowestMethodFps": 0.1278772378516624,
+          "timeWeightedFps": 0.1278772378516624
+        },
+        "stutter": {
+          "stutterEventCount": 21,
+          "totalStutterTimeMs": 8838.824000000002,
+          "stutterTimeFraction": 0.3156036531912759,
+          "hitchThresholdMs": 50,
+          "hitchCount": 10,
+          "totalHitchTimeMs": 8358.911,
+          "hitchTimeFraction": 0.29846762966439205,
+          "stutterFrameIndices": [
+            10,
+            15,
+            25,
+            61,
+            111,
+            143,
+            161,
+            173,
+            293,
+            305,
+            341,
+            357,
+            384,
+            417,
+            445,
+            469,
+            541,
+            553,
+            721,
+            729,
+            869
+          ]
+        },
+        "masdMs": 21.706067403315,
+        "pacingCoverage": {
+          "observedPairs": 905,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 0,
+          "observedFrames": 905,
+          "droppedFraction": 0
+        },
+        "boundShare": null,
+        "latency": {
+          "observedFrames": 906,
+          "meanMs": 104.44163308167778,
+          "p50": 103.60849999999999,
+          "p90": 116.31649999999999,
+          "p99": 129.16670000000002
+        },
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 905,
+            "unknownFrames": 1
+          },
+          "cpuGpuBusy": null,
+          "displayLatency": {
+            "observedFrames": 906,
+            "unknownFrames": 0
+          }
+        }
+      }
+    }
+  ]
+}

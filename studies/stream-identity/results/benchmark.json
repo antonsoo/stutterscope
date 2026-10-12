@@ -1,0 +1,128 @@
+{
+  "node": "v24.21.0",
+  "platform": "linux",
+  "release": "6.18.54.1-microsoft-standard-WSL2",
+  "cpus": 14,
+  "totalMemoryBytes": 50516520960,
+  "rows": 430000,
+  "repetitions": 5,
+  "procedure": "One unrecorded full warmup per runtime/profile. Alternating runtime order each repetition. Explicit GC before each timed parse. CSV generation excluded; metrics excluded.",
+  "profiles": [
+    {
+      "pid": true,
+      "interleaved": false,
+      "bytes": 9460065,
+      "selectedFrames": {
+        "before": 430000,
+        "after": 430000
+      },
+      "samplesMs": {
+        "before": [
+          187.45087,
+          201.68607700000007,
+          173.53796499999999,
+          184.50460399999997,
+          186.5255659999998
+        ],
+        "after": [
+          192.37601899999993,
+          190.43635199999994,
+          194.6947439999999,
+          184.41626800000017,
+          203.6962510000003
+        ]
+      },
+      "mediansMs": {
+        "before": 186.5255659999998,
+        "after": 192.37601899999993
+      }
+    },
+    {
+      "pid": true,
+      "interleaved": true,
+      "bytes": 9245065,
+      "selectedFrames": {
+        "before": 215000,
+        "after": 215000
+      },
+      "samplesMs": {
+        "before": [
+          232.5340000000001,
+          252.76130599999988,
+          215.313666,
+          225.45278299999973,
+          223.3255709999994
+        ],
+        "after": [
+          251.23594999999978,
+          244.21429800000033,
+          234.39192399999956,
+          226.93856199999937,
+          240.3654970000007
+        ]
+      },
+      "mediansMs": {
+        "before": 225.45278299999973,
+        "after": 240.3654970000007
+      }
+    },
+    {
+      "pid": false,
+      "interleaved": false,
+      "bytes": 8600055,
+      "selectedFrames": {
+        "before": 430000,
+        "after": 430000
+      },
+      "samplesMs": {
+        "before": [
+          175.60197900000003,
+          171.95934600000055,
+          181.14583799999946,
+          171.78035199999977,
+          214.5023029999993
+        ],
+        "after": [
+          164.52505799999926,
+          175.8433329999998,
+          166.79455599999983,
+          168.14960299999984,
+          183.45584899999994
+        ]
+      },
+      "mediansMs": {
+        "before": 175.60197900000003,
+        "after": 168.14960299999984
+      }
+    },
+    {
+      "pid": false,
+      "interleaved": true,
+      "bytes": 8385055,
+      "selectedFrames": {
+        "before": 430000,
+        "after": 215000
+      },
+      "samplesMs": {
+        "before": [
+          219.95804700000008,
+          207.79754700000012,
+          209.5211990000007,
+          216.79273999999896,
+          210.3443350000016
+        ],
+        "after": [
+          378.4470000000001,
+          385.59883400000035,
+          375.4869469999994,
+          374.04032000000007,
+          353.0446729999985
+        ]
+      },
+      "mediansMs": {
+        "before": 210.3443350000016,
+        "after": 375.4869469999994
+      }
+    }
+  ]
+}

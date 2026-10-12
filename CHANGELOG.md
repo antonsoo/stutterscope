@@ -13,6 +13,7 @@ Changes below are in source and have not been released as an npm package.
 - Preserve application identity alongside the swap chain when `ProcessID` is
   absent. Selecting a compositor or overlay no longer merges it into another
   application at the same address or invents stutter between their frames.
+  PresentMon 1 exports remain auto-detectable after the PID column is removed.
 - Skip rows with blank declared identity cells, retain line-specific warnings,
   and break continuity for every stream they could belong to. Missing frame
   times use the same grouping rules. Complete PID/swap-chain IDs are unchanged.
