@@ -67,7 +67,7 @@ describe("stutterscope summary on unusual files", () => {
     [
       "all-na.csv",
       sample.split("\n").map((line, i) => (i === 0 ? line : line.replace(/^(([^,]*,){10})[^,]*/, "$1NA"))).join("\n"),
-      /^Could not parse .*all-na\.csv: none of its 5 data rows has a usable frame time \(line 2: missing\/invalid FrameTime, row skipped\)\n$/,
+      /^Could not parse .*all-na\.csv: none of its 5 data rows produced a usable frame \(line 2: missing\/invalid FrameTime, row skipped\)\n$/,
     ],
     ["minified.json", `{"frames":[${"16.6,".repeat(300_000)}16.6]}`, /^Could not parse .*minified\.json: line 1: CSV field 1: unexpected quote in an unquoted field/],
   ];

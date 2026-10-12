@@ -56,8 +56,9 @@ export class StreamTracker {
     return this.pidIdx >= 0 || this.swapIdx >= 0 || this.appIdx >= 0;
   }
 
-  /** Records which stream a kept row belongs to. Call once per row the parser keeps, never for a skipped one. */
-  track(fields: string[]): void {
+  /** Records a row, or interrupts continuity and returns why its identity is unusable.
+   * Call before appending the row's measurements; an error means none may be kept. */
+  track(fields: string[]): string | undefined {
     if (!this.enabled) { this.continuity.keep(); return; }
     const app = this.appIdx >= 0 ? fields[this.appIdx] : undefined;
     const pid = this.pidIdx >= 0 ? fields[this.pidIdx] : undefined;
@@ -67,8 +68,12 @@ export class StreamTracker {
       const application = (app ?? "").trim();
       const processId = (pid ?? "").trim();
       const swapChain = (swap ?? "").trim();
-      // Without a process id the application name is the best identity there is.
-      const id = this.pidIdx >= 0 || this.swapIdx >= 0 ? `${processId}:${swapChain}` : application;
+      const problem = this.identityProblem(application, processId, swapChain);
+      if (problem) {
+        this.continuity.skip();
+        return problem;
+      }
+      const id = this.id(application, processId, swapChain);
       const known = this.indexById.get(id);
       if (known === undefined) {
         index = this.list.length;
@@ -90,17 +95,34 @@ export class StreamTracker {
   /** Invalid frame time, with identity still available when the row is intact. */
   skip(fields: string[]): void {
     if (!this.enabled) { this.continuity.skip(); return; }
-    const indices = this.pidIdx >= 0 || this.swapIdx >= 0
-      ? [this.pidIdx, this.swapIdx].filter((i) => i >= 0) : [this.appIdx];
-    if (indices.some((i) => !fields[i]?.trim())) {
+    const application = (fields[this.appIdx] ?? "").trim();
+    const processId = (fields[this.pidIdx] ?? "").trim();
+    const swapChain = (fields[this.swapIdx] ?? "").trim();
+    if (this.identityProblem(application, processId, swapChain)) {
       this.continuity.skip(); // Do not silently assign a damaged identity to another stream.
       return;
     }
-    const id = this.pidIdx >= 0 || this.swapIdx >= 0
-      ? `${this.pidIdx >= 0 ? fields[this.pidIdx]!.trim() : ""}:${this.swapIdx >= 0 ? fields[this.swapIdx]!.trim() : ""}`
-      : fields[this.appIdx]!.trim();
-    const index = this.indexById.get(id);
+    const index = this.indexById.get(this.id(application, processId, swapChain));
     if (index !== undefined) this.continuity.skip(index);
+  }
+
+  private identityProblem(application: string, processId: string, swapChain: string): string | undefined {
+    // An absent column establishes a capture-wide fallback. A blank cell in a
+    // declared identity column does not establish which known stream owns it.
+    const missing = this.pidIdx >= 0 && !processId ? "ProcessID"
+      : this.pidIdx < 0 && this.appIdx >= 0 && !application ? "Application"
+      : this.swapIdx >= 0 && !swapChain ? "SwapChainAddress" : undefined;
+    return missing ? `missing ${missing}; cannot assign frame to a present stream` : undefined;
+  }
+
+  private id(application: string, processId: string, swapChain: string): string {
+    if (this.pidIdx >= 0) return `${processId}:${swapChain}`;
+    if (this.appIdx >= 0) {
+      // Addresses are process-local. Without a PID, retain the application
+      // name as well; a tuple keeps delimiters in either field unambiguous.
+      return this.swapIdx >= 0 ? `app:${JSON.stringify([application, swapChain])}` : application;
+    }
+    return `:${swapChain}`;
   }
 
   /**

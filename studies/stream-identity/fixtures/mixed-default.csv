@@ -1,0 +1,6 @@
+Application,SwapChainAddress,FrameTime,CPUBusy,GPUBusy
+game.exe,0x1,10,2,3
+dwm.exe,0x1,40,4,5
+game.exe,0x1,10,6,7
+dwm.exe,0x1,40,8,9
+game.exe,0x1,10,10,11

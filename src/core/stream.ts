@@ -94,8 +94,8 @@ export function requireFrames(series: FrameSeries): FrameSeries {
   if (skippedRows === 0) throw new ParseError("the file has a header and no data rows");
   const rows =
     skippedRows === 1
-      ? "its one data row has no usable frame time"
-      : `none of its ${skippedRows.toLocaleString("en-US")} data rows has a usable frame time`;
+      ? "its one data row did not produce a usable frame"
+      : `none of its ${skippedRows.toLocaleString("en-US")} data rows produced a usable frame`;
   throw new ParseError(`${rows} (${warnings[0]})`);
 }
 

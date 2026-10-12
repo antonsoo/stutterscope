@@ -81,6 +81,11 @@ class PresentMon2Parser implements StreamingParser {
       this.skipped.add(lineIndex, "missing/invalid FrameTime");
       return;
     }
+    const identityProblem = this.streams.track(fields);
+    if (identityProblem) {
+      this.skipped.add(lineIndex, identityProblem);
+      return;
+    }
     this.frameTimeMs.push(ft);
     this.sourceLine.push(lineIndex + 1);
     if (this.hasDisplayedTime) {
@@ -91,7 +96,6 @@ class PresentMon2Parser implements StreamingParser {
     if (this.hasDisplayLatency) {
       this.displayLatencyMs.push(parseFloatOrNull(get("DisplayLatency")) ?? NaN);
     }
-    this.streams.track(fields);
     if (this.application === undefined) {
       this.application = get("Application");
     }

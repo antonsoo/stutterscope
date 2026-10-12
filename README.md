@@ -83,6 +83,13 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
 
 ## Features
 
+- **Correct grouping after removing process IDs (source only):** application
+  names and swap-chain addresses stay together. A controlled five-row export
+  previously labeled two applications as one game at 45.5 FPS with two false
+  stutters; the game alone now reports its actual 100 FPS and no stutter.
+  Blank declared identity cells produce skipped-row warnings and continuity
+  breaks. [Reproduction, public-capture controls and limits](studies/stream-identity/README.md).
+  This correction is not yet in the npm package or live demo.
 - **Interval analysis and slow-frame inspection (source checkout)**: independently
   select the part of A and B to measure, keep original frame/CSV-line references,
   and inspect the neighboring evidence around each slow-frame episode. Detection

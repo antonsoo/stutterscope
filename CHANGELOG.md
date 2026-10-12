@@ -8,6 +8,16 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 Changes below are in source and have not been released as an npm package.
 
+### Stream identity correction (source only)
+
+- Preserve application identity alongside the swap chain when `ProcessID` is
+  absent. Selecting a compositor or overlay no longer merges it into another
+  application at the same address or invents stutter between their frames.
+- Skip rows with blank declared identity cells, retain line-specific warnings,
+  and break continuity for every stream they could belong to. Missing frame
+  times use the same grouping rules. Complete PID/swap-chain IDs are unchanged.
+  See the [replay and limitations](studies/stream-identity/README.md).
+
 ### Added
 
 - Evidence report schema 5 with observed pacing-pair counts and source-gap

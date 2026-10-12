@@ -72,10 +72,14 @@ export class PresentFamilyParser implements StreamingParser {
       this.skipped.add(lineIndex, "missing/invalid MsBetweenPresents");
       return;
     }
+    const identityProblem = this.streams.track(fields);
+    if (identityProblem) {
+      this.skipped.add(lineIndex, identityProblem);
+      return;
+    }
     this.frameTimeMs.push(ft);
     this.sourceLine.push(lineIndex + 1);
     if (this.hasDropped) this.dropped.push(parseDroppedOrUnknown(get("Dropped")));
-    this.streams.track(fields);
     if (this.application === undefined) this.application = get("Application");
   }
 

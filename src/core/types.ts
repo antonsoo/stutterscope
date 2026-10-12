@@ -52,7 +52,9 @@ export interface OptionalChannels {
  * otherwise; see `streams.ts`.
  */
 export interface PresentStream {
-  /** `processId:swapChain`, or the application name when the format has neither column. */
+  /** `processId:swapChain`; without PID, `app:["application","swapChain"]`,
+   * or the application name alone when there is no swap-chain column.
+   * A capture with only a swap-chain column uses `:swapChain`. */
   id: string;
   application: string;
   processId: string;
@@ -71,7 +73,7 @@ export interface FrameSeriesMeta {
    * was usable at all.
    */
   warnings: string[];
-  /** How many data rows were left out because their frame time was missing or unusable. */
+  /** How many data rows had unusable frame times or missing declared stream identities. */
   skippedRows: number;
   /** Column names actually present in the source file, for diagnostics. */
   columns: string[];

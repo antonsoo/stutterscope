@@ -183,11 +183,11 @@ describe("files that are not captures", () => {
     // MangoHud's header is looked for, not assumed to be line 1: without it nothing is a header.
     expect(() => requireFrames(mangohud.parse("a,b,c\n1,2,3\n"))).toThrow("no header row found");
     expect(() => requireFrames(mangohud.parse("fps,frametime,cpu_load\n60,NA,1\n"))).toThrow(
-      "its one data row has no usable frame time (line 2: missing/invalid frametime, row skipped)",
+      "its one data row did not produce a usable frame (line 2: missing/invalid frametime, row skipped)",
     );
     const na = "fps,frametime,cpu_load\n" + "60,NA,1\n".repeat(1234);
     expect(() => requireFrames(mangohud.parse(na))).toThrow(
-      "none of its 1,234 data rows has a usable frame time (line 2: missing/invalid frametime, row skipped)",
+      "none of its 1,234 data rows produced a usable frame (line 2: missing/invalid frametime, row skipped)",
     );
     expect(() => requireFrames(presentmon2.parse(na))).toThrow(/none of its 1,234 data rows .*missing\/invalid FrameTime/);
     try {

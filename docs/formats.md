@@ -303,7 +303,7 @@ in time order. Each row's frame time is measured per swap chain, so
 concatenating the streams double-counts wall time and alternates between
 unrelated frame rates; every metric comes out wrong.
 
-So those four parsers group rows into streams by process id and swap chain
+So those parsers group rows into streams by process id and swap chain
 (`src/core/streams.ts`) and analyse one:
 
 - by default, the stream with the most frames that isn't `dwm.exe` (the
@@ -315,8 +315,29 @@ So those four parsers group rows into streams by process id and swap chain
   `pid:swapchain`, and the summary lists the other streams with the flag
   that selects each.
 
-A capture with one stream parses exactly as before. Rows skipped for a bad
-frame time aren't counted toward any stream.
+A capture with complete identities keeps its existing stream IDs. For an
+edited export with no `ProcessID` column, the source checkout groups by
+application **and** swap chain. The full fallback ID is
+`app:["game.exe","0x1"]`; `--stream game.exe` selects that application's
+busiest chain. If both PID and swap-chain columns are absent, the application
+name alone is used. With only a swap-chain column, the ID remains `:0x1`.
+
+An absent column differs from a blank cell. A blank `ProcessID` in a declared
+PID column, a blank `SwapChainAddress` in a declared swap-chain column, or a
+blank `Application` when it supplies process identity makes that row
+unassignable. It is skipped with a physical line number and reason. Every
+previously observed stream gets a continuity break when it next resumes;
+pacing and slow-frame episodes cannot bridge the unidentified observation.
+Rows skipped for a bad frame time are assigned using the same identity rules,
+so a known compositor's bad row interrupts only its own stream.
+
+The application fallback cannot distinguish two instances of the same
+executable using the same address. Address-only captures cannot distinguish
+processes at all, and captures with no identity columns remain a single
+series. Keep process IDs for reliable per-process analysis. PID/address reuse
+across process lifetimes is not reconstructed. The retained
+[synthetic counterexamples and public-capture controls](../studies/stream-identity/README.md)
+document the source correction; it is not yet in the npm package or live demo.
 
 ## What "verified" means here
 
