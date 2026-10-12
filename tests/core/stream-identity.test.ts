@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createParserFor } from "../../src/core/parsers/index.ts";
+import { createParserFor, detectFormat } from "../../src/core/parsers/index.ts";
 import { parseFileStreaming, parseTextSync } from "../../src/core/stream.ts";
 import { analyzeCapture } from "../../src/core/analysis.ts";
 import type { SourceFormat } from "../../src/core/types.ts";
@@ -85,4 +85,9 @@ it("application fallback tuples cannot collide through delimiters or quoting", (
   const streams = read().meta.streams!;
   expect(new Set(streams.map(s => s.id)).size).toBe(3);
   expect(streams.map(s => [...read(s.id).frameTimeMs])).toEqual([[10], [20], [30]]);
+});
+
+it("recognizes an edited PresentMon 1 export after its PID column is removed", () => {
+  const csv = "Application,SwapChainAddress,msBetweenPresents,msInPresentAPI\ngame.exe,0x1,10,1\n";
+  expect(detectFormat(csv).best.format).toBe("presentmon1");
 });

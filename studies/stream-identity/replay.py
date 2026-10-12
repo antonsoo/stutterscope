@@ -19,11 +19,14 @@ def cases():
     for fmt in ['presentmon1', 'presentmon2', 'ocat', 'capframex', 'frameview']:
         ft = 'msBetweenPresents' if fmt == 'presentmon1' else 'FrameTime' if fmt == 'presentmon2' else 'MsBetweenPresents'
         def csv(identity, rows):
-            return f'{identity},{ft},CPUBusy,GPUBusy\n' + '\n'.join(rows) + '\n'
+            marker = ',msInPresentAPI' if fmt == 'presentmon1' else ',GPU0Util(%)' if fmt == 'frameview' else ''
+            preamble = '//GameName=controlled\n' if fmt == 'capframex' else ''
+            return preamble + f'{identity},{ft},CPUBusy,GPUBusy{marker}\n' + '\n'.join(rows) + '\n'
         mixed = csv('Application,SwapChainAddress', [
             'game.exe,0x1,10,2,3', 'dwm.exe,0x1,40,4,5', 'game.exe,0x1,10,6,7',
             'dwm.exe,0x1,40,8,9', 'game.exe,0x1,10,10,11'])
         yield fmt, 'mixed-default', mixed, [], [[10, 10, 10]], 'game.exe', 2, 0
+        yield fmt, 'auto-detection', mixed, [], [[10, 10, 10]], 'game.exe', 2, 0
         yield fmt, 'mixed-compositor', mixed, ['--stream', 'dwm.exe'], [[40, 40]], 'dwm.exe', 2, 0
         yield fmt, 'second-swapchain', csv('Application,SwapChainAddress', [
             'game.exe,0x1,10', 'game.exe,0x2,80', 'game.exe,0x1,10', 'game.exe,0x2,80', 'game.exe,0x1,10']), [
@@ -69,7 +72,8 @@ def main():
         for fmt, name, text, flags, segments, app, streams, skipped in cases():
             source = Path(tmp)/f'{fmt}-{name}.csv'
             source.write_text(text)
-            proc = subprocess.run([args.node, str(args.cli), 'summary', str(source), '--format', fmt,
+            format_flags = [] if name == 'auto-detection' else ['--format', fmt]
+            proc = subprocess.run([args.node, str(args.cli), 'summary', str(source), *format_flags,
                                    '--json', '--events', *flags], capture_output=True, text=True, timeout=30)
             expected = oracle(segments, app, streams, skipped)
             report = json.loads(proc.stdout) if proc.returncode == 0 else None

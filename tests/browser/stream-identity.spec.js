@@ -44,11 +44,16 @@ for (const width of [1440, 375]) {
     expect(missing.episodes.map(e => e.firstSourceLine)).toEqual([2, 4]);
     await page.locator('#file-input').setInputFiles(fixture('all-unidentified'));
     await expect(page.getByRole('alert')).toContainText('missing Application');
+    await page.locator('#file-input').setInputFiles(fixture('mixed-presentmon1'));
+    await expect(page.locator('#stream-select-a')).toBeVisible();
+    const pm1 = await report(page);
+    expect(pm1.source.format).toBe('presentmon1');
+    expect(pm1.metrics).toMatchObject({ frameCount: 3, averageFps: 100, masdMs: 0 });
     await page.locator('#file-input').setInputFiles(fixture('mixed-default'));
     await expect(page.locator('#stream-select-a')).toBeVisible();
     expect((await report(page)).metrics).toEqual(game.metrics);
     if (process.env.STUTTERSCOPE_IDENTITY_EVIDENCE) {
-      await writeFile(`${process.env.STUTTERSCOPE_IDENTITY_EVIDENCE}/${testInfo.project.name}-${width}.json`, JSON.stringify({ game, compositor, missing, errors }, null, 2) + '\n');
+      await writeFile(`${process.env.STUTTERSCOPE_IDENTITY_EVIDENCE}/${testInfo.project.name}-${width}.json`, JSON.stringify({ game, compositor, missing, pm1, errors }, null, 2) + '\n');
     }
     expect(errors).toEqual([]);
   });

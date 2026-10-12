@@ -38,8 +38,8 @@
   "cases": [
     {
       "name": "presentmon1-mixed-default",
-      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
-      "sha256": "d8f578ac8bd9c60a77318368f5e679ba8412a4366108dcae50a0386632eff7f8",
+      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy,msInPresentAPI\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
+      "sha256": "b50f9a6f704fc2f58232db35b1ca441984405bae0342b310688737b641c798d5",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -108,7 +108,8 @@
             "SwapChainAddress",
             "msBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "msInPresentAPI"
           ],
           "skippedRows": 0,
           "warnings": [],
@@ -234,9 +235,47 @@
       }
     },
     {
+      "name": "presentmon1-auto-detection",
+      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy,msInPresentAPI\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
+      "sha256": "b50f9a6f704fc2f58232db35b1ca441984405bae0342b310688737b641c798d5",
+      "flags": [],
+      "exitCode": 1,
+      "stderr": "This isn't a capture format stutterscope knows, and no single column says it holds frame times. Columns: Application, SwapChainAddress, msBetweenPresents, CPUBusy, GPUBusy, msInPresentAPI. Pick one with --generic-column <name> --generic-kind <frametime_ms | frametime_us | frametime_s | fps | timestamp_s_cumulative | timestamp_ms_cumulative>.\n",
+      "expected": {
+        "refused": false,
+        "application": "game.exe",
+        "streams": 2,
+        "frames": 3,
+        "averageFps": 100.0,
+        "masdMs": 0.0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 0
+        },
+        "skippedRows": 0,
+        "stutterEvents": 0
+      },
+      "observed": {
+        "refused": true
+      },
+      "agrees": false,
+      "checks": {
+        "refused": false,
+        "application": false,
+        "streams": false,
+        "frames": false,
+        "averageFps": false,
+        "masdMs": false,
+        "pacingCoverage": false,
+        "skippedRows": false,
+        "stutterEvents": false
+      },
+      "report": null
+    },
+    {
       "name": "presentmon1-mixed-compositor",
-      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
-      "sha256": "d8f578ac8bd9c60a77318368f5e679ba8412a4366108dcae50a0386632eff7f8",
+      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy,msInPresentAPI\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
+      "sha256": "b50f9a6f704fc2f58232db35b1ca441984405bae0342b310688737b641c798d5",
       "flags": [
         "--stream",
         "dwm.exe"
@@ -276,8 +315,8 @@
     },
     {
       "name": "presentmon1-second-swapchain",
-      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10\ngame.exe,0x2,80\ngame.exe,0x1,10\ngame.exe,0x2,80\ngame.exe,0x1,10\n",
-      "sha256": "7c16cc157391ee55fa2e6dae33806020fe601079e66257c49722699d329ed5d5",
+      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy,msInPresentAPI\ngame.exe,0x1,10\ngame.exe,0x2,80\ngame.exe,0x1,10\ngame.exe,0x2,80\ngame.exe,0x1,10\n",
+      "sha256": "7ed38a15b460fc1bbf2c8582fe323344c9040a4bc1f1f8753bc6af5674106b27",
       "flags": [
         "--stream",
         "app:[\"game.exe\",\"0x2\"]"
@@ -317,8 +356,8 @@
     },
     {
       "name": "presentmon1-skip-other-application",
-      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\noverlay.exe,0x1,NA\ngame.exe,0x1,120\n",
-      "sha256": "7b134bba9dbcdab6f331f89b1e6e5c11b723c9fdcd550510790d84da99786cdc",
+      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy,msInPresentAPI\ngame.exe,0x1,60\noverlay.exe,0x1,NA\ngame.exe,0x1,120\n",
+      "sha256": "dcbf646e74ad55f03fab8b1ccf7a292c9a2094d73a9d06ae5d9fca06bb55821d",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -387,7 +426,8 @@
             "SwapChainAddress",
             "msBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "msInPresentAPI"
           ],
           "skippedRows": 1,
           "warnings": [
@@ -518,8 +558,8 @@
     },
     {
       "name": "presentmon1-skip-same-application",
-      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\ngame.exe,0x1,NA\ngame.exe,0x1,120\n",
-      "sha256": "168d6b893433400cd306c8371e153aff8e4e73dddf4597ab2567406334a1378f",
+      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy,msInPresentAPI\ngame.exe,0x1,60\ngame.exe,0x1,NA\ngame.exe,0x1,120\n",
+      "sha256": "b2019bb28c189056acb27cd03074a5e9ec72554e7f9aab6f8c8c1ad857ca6132",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -588,7 +628,8 @@
             "SwapChainAddress",
             "msBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "msInPresentAPI"
           ],
           "skippedRows": 1,
           "warnings": [
@@ -719,8 +760,8 @@
     },
     {
       "name": "presentmon1-blank-application",
-      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\n,0x1,10\ngame.exe,0x1,120\n",
-      "sha256": "4ebb34c11eb9891831ce81d7c42590f4c71316c112b2c7dbfcb4767ebc6deaba",
+      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy,msInPresentAPI\ngame.exe,0x1,60\n,0x1,10\ngame.exe,0x1,120\n",
+      "sha256": "2a1be6ae64f38c41ab22258f40e6b3e6ac23fd5b5f376884ae2aa31999a23d36",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -789,7 +830,8 @@
             "SwapChainAddress",
             "msBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "msInPresentAPI"
           ],
           "skippedRows": 0,
           "warnings": [],
@@ -913,8 +955,8 @@
     },
     {
       "name": "presentmon1-blank-swapchain",
-      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\ngame.exe,,10\ngame.exe,0x1,120\n",
-      "sha256": "f344a66dc463ddc15cd7b7b99eb8ded004abb82d6fb6d0d8216340078b65dc4d",
+      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy,msInPresentAPI\ngame.exe,0x1,60\ngame.exe,,10\ngame.exe,0x1,120\n",
+      "sha256": "11c378374c811a6b2d49e778640352f091f2107d200058304a64450af9e1d660",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -1007,7 +1049,8 @@
             "SwapChainAddress",
             "msBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "msInPresentAPI"
           ],
           "skippedRows": 0,
           "warnings": [],
@@ -1113,8 +1156,8 @@
     },
     {
       "name": "presentmon1-blank-pid",
-      "csv": "Application,ProcessID,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy\ngame.exe,1,0x1,60\ngame.exe,,0x1,10\ngame.exe,1,0x1,120\n",
-      "sha256": "98633a63bc1541ea09a319e39ef7090dfc6267f932b56253e13c61514c9f22b5",
+      "csv": "Application,ProcessID,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy,msInPresentAPI\ngame.exe,1,0x1,60\ngame.exe,,0x1,10\ngame.exe,1,0x1,120\n",
+      "sha256": "67f2a119071db9bced1b4837effbf0f43ad28ffd9e25fb92a9d3429a59a64d7a",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -1208,7 +1251,8 @@
             "SwapChainAddress",
             "msBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "msInPresentAPI"
           ],
           "skippedRows": 0,
           "warnings": [],
@@ -1314,8 +1358,8 @@
     },
     {
       "name": "presentmon1-all-unidentified",
-      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy\n,0x1,10\n,0x1,20\n",
-      "sha256": "b4f915f5ada655974a163a0332b147fa6b96d894eb598b23b6349c9f3586bb59",
+      "csv": "Application,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy,msInPresentAPI\n,0x1,10\n,0x1,20\n",
+      "sha256": "d0466d19f75b196d0d77f8c7f31d7165f3be38a0da9d8337df9dc173c8322f19",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -1365,7 +1409,8 @@
             "SwapChainAddress",
             "msBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "msInPresentAPI"
           ],
           "skippedRows": 0,
           "warnings": [],
@@ -1452,8 +1497,8 @@
     },
     {
       "name": "presentmon1-full-identity-control",
-      "csv": "Application,ProcessID,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy\ngame.exe,1,0x1,10,2,3\ndwm.exe,2,0x1,40,4,5\ngame.exe,1,0x1,10,6,7\ndwm.exe,2,0x1,40,8,9\ngame.exe,1,0x1,10,10,11\n",
-      "sha256": "9fbfb2a4a0c6087b6d3655cabd38df69c245f2ab8d971e22271ba9f970500b6a",
+      "csv": "Application,ProcessID,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy,msInPresentAPI\ngame.exe,1,0x1,10,2,3\ndwm.exe,2,0x1,40,4,5\ngame.exe,1,0x1,10,6,7\ndwm.exe,2,0x1,40,8,9\ngame.exe,1,0x1,10,10,11\n",
+      "sha256": "845f3aa4ae07a735b29d99aab960d88e6b02abb73284a8dec7736ebf59485292",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -1547,7 +1592,8 @@
             "SwapChainAddress",
             "msBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "msInPresentAPI"
           ],
           "skippedRows": 0,
           "warnings": [],
@@ -1685,6 +1731,211 @@
         "schemaVersion": 5,
         "source": {
           "fileName": "presentmon2-mixed-default.csv",
+          "format": "presentmon2",
+          "application": "game.exe",
+          "stream": ":0x1",
+          "streams": [
+            {
+              "id": ":0x1",
+              "application": "game.exe",
+              "processId": "",
+              "swapChain": "0x1",
+              "frameCount": 5
+            }
+          ],
+          "frameCount": 5,
+          "durationSec": 0.11,
+          "columns": [
+            "Application",
+            "SwapChainAddress",
+            "FrameTime",
+            "CPUBusy",
+            "GPUBusy"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 5,
+            "sourceDurationSec": 0.11,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 4,
+            "startSec": 0,
+            "endSec": 0.11,
+            "durationSec": 0.11,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.01,
+            "endSec": 0.05,
+            "frameCount": 1,
+            "stutterFrames": 1,
+            "hitchFrames": 0,
+            "totalTimeMs": 40,
+            "longestFrameMs": 40,
+            "longestFrame": 2,
+            "firstSourceLine": 3,
+            "lastSourceLine": 3,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          },
+          {
+            "firstFrame": 4,
+            "lastFrame": 4,
+            "startSec": 0.060000000000000005,
+            "endSec": 0.1,
+            "frameCount": 1,
+            "stutterFrames": 1,
+            "hitchFrames": 0,
+            "totalTimeMs": 40,
+            "longestFrameMs": 40,
+            "longestFrame": 4,
+            "firstSourceLine": 5,
+            "lastSourceLine": 5,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 5,
+          "durationSec": 0.11,
+          "averageFps": 45.45454545454545,
+          "meanOfInstantaneousFps": 70,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 40,
+            "p95": 40,
+            "p99": 40,
+            "p999": 40
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 25,
+            "meanOfSlowestMethodFps": 25,
+            "timeWeightedFps": 25
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 25,
+            "meanOfSlowestMethodFps": 25,
+            "timeWeightedFps": 25
+          },
+          "stutter": {
+            "stutterEventCount": 2,
+            "totalStutterTimeMs": 80,
+            "stutterTimeFraction": 0.7272727272727273,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": [
+              1,
+              3
+            ]
+          },
+          "masdMs": 30,
+          "pacingCoverage": {
+            "observedPairs": 4,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": {
+            "cpuBoundFrames": 0,
+            "gpuBoundFrames": 5,
+            "cpuBoundFraction": 0,
+            "gpuBoundFraction": 1
+          },
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": {
+              "observedFrames": 5,
+              "unknownFrames": 0
+            },
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "presentmon2-auto-detection",
+      "csv": "Application,SwapChainAddress,FrameTime,CPUBusy,GPUBusy\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
+      "sha256": "02a6080ba227aca598dd20937e66a9d4b100e586f446c6f6dad2596debf25b13",
+      "flags": [],
+      "exitCode": 0,
+      "stderr": "",
+      "expected": {
+        "refused": false,
+        "application": "game.exe",
+        "streams": 2,
+        "frames": 3,
+        "averageFps": 100.0,
+        "masdMs": 0.0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 0
+        },
+        "skippedRows": 0,
+        "stutterEvents": 0
+      },
+      "observed": {
+        "refused": false,
+        "application": "game.exe",
+        "streams": 1,
+        "frames": 5,
+        "averageFps": 45.45454545454545,
+        "masdMs": 30,
+        "pacingCoverage": {
+          "observedPairs": 4,
+          "gapBoundaries": 0
+        },
+        "skippedRows": 0,
+        "stutterEvents": 2
+      },
+      "agrees": false,
+      "checks": {
+        "refused": true,
+        "application": true,
+        "streams": false,
+        "frames": false,
+        "averageFps": false,
+        "masdMs": false,
+        "pacingCoverage": false,
+        "skippedRows": true,
+        "stutterEvents": false
+      },
+      "report": {
+        "file": "presentmon2-auto-detection.csv",
+        "format": "presentmon2",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "presentmon2-auto-detection.csv",
           "format": "presentmon2",
           "application": "game.exe",
           "stream": ":0x1",
@@ -3460,6 +3711,203 @@
       }
     },
     {
+      "name": "ocat-auto-detection",
+      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
+      "sha256": "aa2af7dbf8119457fb0bb7bb5a1b8984ebf3d1f1e90b7d06d842769446a3fad2",
+      "flags": [],
+      "exitCode": 0,
+      "stderr": "",
+      "expected": {
+        "refused": false,
+        "application": "game.exe",
+        "streams": 2,
+        "frames": 3,
+        "averageFps": 100.0,
+        "masdMs": 0.0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 0
+        },
+        "skippedRows": 0,
+        "stutterEvents": 0
+      },
+      "observed": {
+        "refused": false,
+        "application": "game.exe",
+        "streams": 1,
+        "frames": 5,
+        "averageFps": 45.45454545454545,
+        "masdMs": 30,
+        "pacingCoverage": {
+          "observedPairs": 4,
+          "gapBoundaries": 0
+        },
+        "skippedRows": 0,
+        "stutterEvents": 2
+      },
+      "agrees": false,
+      "checks": {
+        "refused": true,
+        "application": true,
+        "streams": false,
+        "frames": false,
+        "averageFps": false,
+        "masdMs": false,
+        "pacingCoverage": false,
+        "skippedRows": true,
+        "stutterEvents": false
+      },
+      "report": {
+        "file": "ocat-auto-detection.csv",
+        "format": "ocat",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "ocat-auto-detection.csv",
+          "format": "ocat",
+          "application": "game.exe",
+          "stream": ":0x1",
+          "streams": [
+            {
+              "id": ":0x1",
+              "application": "game.exe",
+              "processId": "",
+              "swapChain": "0x1",
+              "frameCount": 5
+            }
+          ],
+          "frameCount": 5,
+          "durationSec": 0.11,
+          "columns": [
+            "Application",
+            "SwapChainAddress",
+            "MsBetweenPresents",
+            "CPUBusy",
+            "GPUBusy"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 5,
+            "sourceDurationSec": 0.11,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 4,
+            "startSec": 0,
+            "endSec": 0.11,
+            "durationSec": 0.11,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.01,
+            "endSec": 0.05,
+            "frameCount": 1,
+            "stutterFrames": 1,
+            "hitchFrames": 0,
+            "totalTimeMs": 40,
+            "longestFrameMs": 40,
+            "longestFrame": 2,
+            "firstSourceLine": 3,
+            "lastSourceLine": 3,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          },
+          {
+            "firstFrame": 4,
+            "lastFrame": 4,
+            "startSec": 0.060000000000000005,
+            "endSec": 0.1,
+            "frameCount": 1,
+            "stutterFrames": 1,
+            "hitchFrames": 0,
+            "totalTimeMs": 40,
+            "longestFrameMs": 40,
+            "longestFrame": 4,
+            "firstSourceLine": 5,
+            "lastSourceLine": 5,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 5,
+          "durationSec": 0.11,
+          "averageFps": 45.45454545454545,
+          "meanOfInstantaneousFps": 70,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 40,
+            "p95": 40,
+            "p99": 40,
+            "p999": 40
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 25,
+            "meanOfSlowestMethodFps": 25,
+            "timeWeightedFps": 25
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 25,
+            "meanOfSlowestMethodFps": 25,
+            "timeWeightedFps": 25
+          },
+          "stutter": {
+            "stutterEventCount": 2,
+            "totalStutterTimeMs": 80,
+            "stutterTimeFraction": 0.7272727272727273,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": [
+              1,
+              3
+            ]
+          },
+          "masdMs": 30,
+          "pacingCoverage": {
+            "observedPairs": 4,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
       "name": "ocat-mixed-compositor",
       "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
       "sha256": "aa2af7dbf8119457fb0bb7bb5a1b8984ebf3d1f1e90b7d06d842769446a3fad2",
@@ -4860,8 +5308,8 @@
     },
     {
       "name": "capframex-mixed-default",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
-      "sha256": "aa2af7dbf8119457fb0bb7bb5a1b8984ebf3d1f1e90b7d06d842769446a3fad2",
+      "csv": "//GameName=controlled\nApplication,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
+      "sha256": "64e8768d7d014e0d05561418acfe2bad8211214fc09b1379c2ce7b88396cbe1e",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -4978,8 +5426,8 @@
             "totalTimeMs": 40,
             "longestFrameMs": 40,
             "longestFrame": 2,
-            "firstSourceLine": 3,
-            "lastSourceLine": 3,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
             "touchesSelectionStart": false,
             "touchesSelectionEnd": false,
             "startsAfterGap": false,
@@ -4996,8 +5444,205 @@
             "totalTimeMs": 40,
             "longestFrameMs": 40,
             "longestFrame": 4,
-            "firstSourceLine": 5,
-            "lastSourceLine": 5,
+            "firstSourceLine": 6,
+            "lastSourceLine": 6,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 5,
+          "durationSec": 0.11,
+          "averageFps": 45.45454545454545,
+          "meanOfInstantaneousFps": 70,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 40,
+            "p95": 40,
+            "p99": 40,
+            "p999": 40
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 25,
+            "meanOfSlowestMethodFps": 25,
+            "timeWeightedFps": 25
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 25,
+            "meanOfSlowestMethodFps": 25,
+            "timeWeightedFps": 25
+          },
+          "stutter": {
+            "stutterEventCount": 2,
+            "totalStutterTimeMs": 80,
+            "stutterTimeFraction": 0.7272727272727273,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": [
+              1,
+              3
+            ]
+          },
+          "masdMs": 30,
+          "pacingCoverage": {
+            "observedPairs": 4,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "capframex-auto-detection",
+      "csv": "//GameName=controlled\nApplication,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
+      "sha256": "64e8768d7d014e0d05561418acfe2bad8211214fc09b1379c2ce7b88396cbe1e",
+      "flags": [],
+      "exitCode": 0,
+      "stderr": "",
+      "expected": {
+        "refused": false,
+        "application": "game.exe",
+        "streams": 2,
+        "frames": 3,
+        "averageFps": 100.0,
+        "masdMs": 0.0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 0
+        },
+        "skippedRows": 0,
+        "stutterEvents": 0
+      },
+      "observed": {
+        "refused": false,
+        "application": "game.exe",
+        "streams": 1,
+        "frames": 5,
+        "averageFps": 45.45454545454545,
+        "masdMs": 30,
+        "pacingCoverage": {
+          "observedPairs": 4,
+          "gapBoundaries": 0
+        },
+        "skippedRows": 0,
+        "stutterEvents": 2
+      },
+      "agrees": false,
+      "checks": {
+        "refused": true,
+        "application": true,
+        "streams": false,
+        "frames": false,
+        "averageFps": false,
+        "masdMs": false,
+        "pacingCoverage": false,
+        "skippedRows": true,
+        "stutterEvents": false
+      },
+      "report": {
+        "file": "capframex-auto-detection.csv",
+        "format": "capframex",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "capframex-auto-detection.csv",
+          "format": "capframex",
+          "application": "game.exe",
+          "stream": ":0x1",
+          "streams": [
+            {
+              "id": ":0x1",
+              "application": "game.exe",
+              "processId": "",
+              "swapChain": "0x1",
+              "frameCount": 5
+            }
+          ],
+          "frameCount": 5,
+          "durationSec": 0.11,
+          "columns": [
+            "Application",
+            "SwapChainAddress",
+            "MsBetweenPresents",
+            "CPUBusy",
+            "GPUBusy"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 5,
+            "sourceDurationSec": 0.11,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 4,
+            "startSec": 0,
+            "endSec": 0.11,
+            "durationSec": 0.11,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.01,
+            "endSec": 0.05,
+            "frameCount": 1,
+            "stutterFrames": 1,
+            "hitchFrames": 0,
+            "totalTimeMs": 40,
+            "longestFrameMs": 40,
+            "longestFrame": 2,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          },
+          {
+            "firstFrame": 4,
+            "lastFrame": 4,
+            "startSec": 0.060000000000000005,
+            "endSec": 0.1,
+            "frameCount": 1,
+            "stutterFrames": 1,
+            "hitchFrames": 0,
+            "totalTimeMs": 40,
+            "longestFrameMs": 40,
+            "longestFrame": 4,
+            "firstSourceLine": 6,
+            "lastSourceLine": 6,
             "touchesSelectionStart": false,
             "touchesSelectionEnd": false,
             "startsAfterGap": false,
@@ -5057,8 +5702,8 @@
     },
     {
       "name": "capframex-mixed-compositor",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
-      "sha256": "aa2af7dbf8119457fb0bb7bb5a1b8984ebf3d1f1e90b7d06d842769446a3fad2",
+      "csv": "//GameName=controlled\nApplication,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
+      "sha256": "64e8768d7d014e0d05561418acfe2bad8211214fc09b1379c2ce7b88396cbe1e",
       "flags": [
         "--stream",
         "dwm.exe"
@@ -5098,8 +5743,8 @@
     },
     {
       "name": "capframex-second-swapchain",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10\ngame.exe,0x2,80\ngame.exe,0x1,10\ngame.exe,0x2,80\ngame.exe,0x1,10\n",
-      "sha256": "e27188c45050441044cb4deb07f8ac62ac28b1b06a2f249cc461e82dc3afd7cf",
+      "csv": "//GameName=controlled\nApplication,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10\ngame.exe,0x2,80\ngame.exe,0x1,10\ngame.exe,0x2,80\ngame.exe,0x1,10\n",
+      "sha256": "3e59df4399270b8cda65c72aeb44462c186ceca0909c1b694c3baa73981703d5",
       "flags": [
         "--stream",
         "app:[\"game.exe\",\"0x2\"]"
@@ -5139,8 +5784,8 @@
     },
     {
       "name": "capframex-skip-other-application",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\noverlay.exe,0x1,NA\ngame.exe,0x1,120\n",
-      "sha256": "733b0337a5e28d3f2fd79b815160082ba9aa7c24707c86b67ca4355266b4e6b7",
+      "csv": "//GameName=controlled\nApplication,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\noverlay.exe,0x1,NA\ngame.exe,0x1,120\n",
+      "sha256": "806fbdb436de1f5ef2cf5cce4214dee213bcd14725c475ebefa8ecec70011753",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -5213,7 +5858,7 @@
           ],
           "skippedRows": 1,
           "warnings": [
-            "line 3: missing/invalid MsBetweenPresents, row skipped"
+            "line 4: missing/invalid MsBetweenPresents, row skipped"
           ],
           "omittedWarningDetails": 0,
           "genericMapping": null,
@@ -5247,7 +5892,7 @@
             "gaps": [
               {
                 "beforeFrame": 2,
-                "sourceLine": 4
+                "sourceLine": 5
               }
             ]
           }
@@ -5264,8 +5909,8 @@
             "totalTimeMs": 60,
             "longestFrameMs": 60,
             "longestFrame": 1,
-            "firstSourceLine": 2,
-            "lastSourceLine": 2,
+            "firstSourceLine": 3,
+            "lastSourceLine": 3,
             "touchesSelectionStart": false,
             "touchesSelectionEnd": false,
             "startsAfterGap": false,
@@ -5282,8 +5927,8 @@
             "totalTimeMs": 120,
             "longestFrameMs": 120,
             "longestFrame": 2,
-            "firstSourceLine": 4,
-            "lastSourceLine": 4,
+            "firstSourceLine": 5,
+            "lastSourceLine": 5,
             "touchesSelectionStart": false,
             "touchesSelectionEnd": false,
             "startsAfterGap": true,
@@ -5340,8 +5985,8 @@
     },
     {
       "name": "capframex-skip-same-application",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\ngame.exe,0x1,NA\ngame.exe,0x1,120\n",
-      "sha256": "0532fd35ee10ddf25f8a34f2af892c652f8253d8254637d86c111a084f130c36",
+      "csv": "//GameName=controlled\nApplication,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\ngame.exe,0x1,NA\ngame.exe,0x1,120\n",
+      "sha256": "6b3ffff3882ab10ec16c19fa11682a8829f9ad6718aeb24ea2573dc49b96729d",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -5414,7 +6059,7 @@
           ],
           "skippedRows": 1,
           "warnings": [
-            "line 3: missing/invalid MsBetweenPresents, row skipped"
+            "line 4: missing/invalid MsBetweenPresents, row skipped"
           ],
           "omittedWarningDetails": 0,
           "genericMapping": null,
@@ -5448,7 +6093,7 @@
             "gaps": [
               {
                 "beforeFrame": 2,
-                "sourceLine": 4
+                "sourceLine": 5
               }
             ]
           }
@@ -5465,8 +6110,8 @@
             "totalTimeMs": 60,
             "longestFrameMs": 60,
             "longestFrame": 1,
-            "firstSourceLine": 2,
-            "lastSourceLine": 2,
+            "firstSourceLine": 3,
+            "lastSourceLine": 3,
             "touchesSelectionStart": false,
             "touchesSelectionEnd": false,
             "startsAfterGap": false,
@@ -5483,8 +6128,8 @@
             "totalTimeMs": 120,
             "longestFrameMs": 120,
             "longestFrame": 2,
-            "firstSourceLine": 4,
-            "lastSourceLine": 4,
+            "firstSourceLine": 5,
+            "lastSourceLine": 5,
             "touchesSelectionStart": false,
             "touchesSelectionEnd": false,
             "startsAfterGap": true,
@@ -5541,8 +6186,8 @@
     },
     {
       "name": "capframex-blank-application",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\n,0x1,10\ngame.exe,0x1,120\n",
-      "sha256": "954e6f4cc9e64362aa7c3cce98a12e7bdee316005b9047b4bc0bf69fa9d767e1",
+      "csv": "//GameName=controlled\nApplication,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\n,0x1,10\ngame.exe,0x1,120\n",
+      "sha256": "6d7062eea4cddaa27304c19f3eca8b35517ff3b44b36673d8936ea0a9db4fdba",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -5659,8 +6304,8 @@
             "totalTimeMs": 60,
             "longestFrameMs": 60,
             "longestFrame": 1,
-            "firstSourceLine": 2,
-            "lastSourceLine": 2,
+            "firstSourceLine": 3,
+            "lastSourceLine": 3,
             "touchesSelectionStart": false,
             "touchesSelectionEnd": false,
             "startsAfterGap": false,
@@ -5677,8 +6322,8 @@
             "totalTimeMs": 120,
             "longestFrameMs": 120,
             "longestFrame": 3,
-            "firstSourceLine": 4,
-            "lastSourceLine": 4,
+            "firstSourceLine": 5,
+            "lastSourceLine": 5,
             "touchesSelectionStart": false,
             "touchesSelectionEnd": false,
             "startsAfterGap": false,
@@ -5735,8 +6380,8 @@
     },
     {
       "name": "capframex-blank-swapchain",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\ngame.exe,,10\ngame.exe,0x1,120\n",
-      "sha256": "48d511097c8f0305bb2e2bd872970a7164e8280839dd2d5d312724d04159bd5b",
+      "csv": "//GameName=controlled\nApplication,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\ngame.exe,,10\ngame.exe,0x1,120\n",
+      "sha256": "337696fadf4dafe8c0ec54cf5f66e7118a60a33d1c1521b16b5c3d32e396535b",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -5877,8 +6522,8 @@
             "totalTimeMs": 180,
             "longestFrameMs": 120,
             "longestFrame": 2,
-            "firstSourceLine": 2,
-            "lastSourceLine": 4,
+            "firstSourceLine": 3,
+            "lastSourceLine": 5,
             "touchesSelectionStart": false,
             "touchesSelectionEnd": false,
             "startsAfterGap": false,
@@ -5935,8 +6580,8 @@
     },
     {
       "name": "capframex-blank-pid",
-      "csv": "Application,ProcessID,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,1,0x1,60\ngame.exe,,0x1,10\ngame.exe,1,0x1,120\n",
-      "sha256": "04ce05983c3a8c5ef4aeeb605b137224d58a27f7620175394ab1efd2b64fd81b",
+      "csv": "//GameName=controlled\nApplication,ProcessID,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,1,0x1,60\ngame.exe,,0x1,10\ngame.exe,1,0x1,120\n",
+      "sha256": "d70c879f06c72390a89a8424c511a05fc9ead9127e57a87fc346879789eec9cc",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -6078,8 +6723,8 @@
             "totalTimeMs": 180,
             "longestFrameMs": 120,
             "longestFrame": 2,
-            "firstSourceLine": 2,
-            "lastSourceLine": 4,
+            "firstSourceLine": 3,
+            "lastSourceLine": 5,
             "touchesSelectionStart": false,
             "touchesSelectionEnd": false,
             "startsAfterGap": false,
@@ -6136,8 +6781,8 @@
     },
     {
       "name": "capframex-all-unidentified",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\n,0x1,10\n,0x1,20\n",
-      "sha256": "48bb6c71b222c4c9b0aeff09744b8a266b080d94d42ff84653a3ba3008bbef3b",
+      "csv": "//GameName=controlled\nApplication,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\n,0x1,10\n,0x1,20\n",
+      "sha256": "abe7fd5fb0ee3afc3652f613fcbc9ec28e908a3497f7eb0c0b2472765be5f0a1",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -6274,8 +6919,8 @@
     },
     {
       "name": "capframex-full-identity-control",
-      "csv": "Application,ProcessID,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,1,0x1,10,2,3\ndwm.exe,2,0x1,40,4,5\ngame.exe,1,0x1,10,6,7\ndwm.exe,2,0x1,40,8,9\ngame.exe,1,0x1,10,10,11\n",
-      "sha256": "dc54789ea220414ff93e883ca0bbd60dbb01108bde01ce152f1b8f3e494ae991",
+      "csv": "//GameName=controlled\nApplication,ProcessID,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,1,0x1,10,2,3\ndwm.exe,2,0x1,40,4,5\ngame.exe,1,0x1,10,6,7\ndwm.exe,2,0x1,40,8,9\ngame.exe,1,0x1,10,10,11\n",
+      "sha256": "e38fa3475573c0bf0f3ce5a7a88fe0c36e01daefaa24600adb1d394d98fb09c0",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -6456,8 +7101,8 @@
     },
     {
       "name": "frameview-mixed-default",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
-      "sha256": "aa2af7dbf8119457fb0bb7bb5a1b8984ebf3d1f1e90b7d06d842769446a3fad2",
+      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy,GPU0Util(%)\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
+      "sha256": "e09840834980c2e4658b2613ae37dd86d42b18541db56f6395017ee5d2538dc5",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -6526,7 +7171,206 @@
             "SwapChainAddress",
             "MsBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "GPU0Util(%)"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 5,
+            "sourceDurationSec": 0.11,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 4,
+            "startSec": 0,
+            "endSec": 0.11,
+            "durationSec": 0.11,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.01,
+            "endSec": 0.05,
+            "frameCount": 1,
+            "stutterFrames": 1,
+            "hitchFrames": 0,
+            "totalTimeMs": 40,
+            "longestFrameMs": 40,
+            "longestFrame": 2,
+            "firstSourceLine": 3,
+            "lastSourceLine": 3,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          },
+          {
+            "firstFrame": 4,
+            "lastFrame": 4,
+            "startSec": 0.060000000000000005,
+            "endSec": 0.1,
+            "frameCount": 1,
+            "stutterFrames": 1,
+            "hitchFrames": 0,
+            "totalTimeMs": 40,
+            "longestFrameMs": 40,
+            "longestFrame": 4,
+            "firstSourceLine": 5,
+            "lastSourceLine": 5,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 5,
+          "durationSec": 0.11,
+          "averageFps": 45.45454545454545,
+          "meanOfInstantaneousFps": 70,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 40,
+            "p95": 40,
+            "p99": 40,
+            "p999": 40
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 25,
+            "meanOfSlowestMethodFps": 25,
+            "timeWeightedFps": 25
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 25,
+            "meanOfSlowestMethodFps": 25,
+            "timeWeightedFps": 25
+          },
+          "stutter": {
+            "stutterEventCount": 2,
+            "totalStutterTimeMs": 80,
+            "stutterTimeFraction": 0.7272727272727273,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": [
+              1,
+              3
+            ]
+          },
+          "masdMs": 30,
+          "pacingCoverage": {
+            "observedPairs": 4,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "frameview-auto-detection",
+      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy,GPU0Util(%)\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
+      "sha256": "e09840834980c2e4658b2613ae37dd86d42b18541db56f6395017ee5d2538dc5",
+      "flags": [],
+      "exitCode": 0,
+      "stderr": "",
+      "expected": {
+        "refused": false,
+        "application": "game.exe",
+        "streams": 2,
+        "frames": 3,
+        "averageFps": 100.0,
+        "masdMs": 0.0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 0
+        },
+        "skippedRows": 0,
+        "stutterEvents": 0
+      },
+      "observed": {
+        "refused": false,
+        "application": "game.exe",
+        "streams": 1,
+        "frames": 5,
+        "averageFps": 45.45454545454545,
+        "masdMs": 30,
+        "pacingCoverage": {
+          "observedPairs": 4,
+          "gapBoundaries": 0
+        },
+        "skippedRows": 0,
+        "stutterEvents": 2
+      },
+      "agrees": false,
+      "checks": {
+        "refused": true,
+        "application": true,
+        "streams": false,
+        "frames": false,
+        "averageFps": false,
+        "masdMs": false,
+        "pacingCoverage": false,
+        "skippedRows": true,
+        "stutterEvents": false
+      },
+      "report": {
+        "file": "frameview-auto-detection.csv",
+        "format": "frameview",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "frameview-auto-detection.csv",
+          "format": "frameview",
+          "application": "game.exe",
+          "stream": ":0x1",
+          "streams": [
+            {
+              "id": ":0x1",
+              "application": "game.exe",
+              "processId": "",
+              "swapChain": "0x1",
+              "frameCount": 5
+            }
+          ],
+          "frameCount": 5,
+          "durationSec": 0.11,
+          "columns": [
+            "Application",
+            "SwapChainAddress",
+            "MsBetweenPresents",
+            "CPUBusy",
+            "GPUBusy",
+            "GPU0Util(%)"
           ],
           "skippedRows": 0,
           "warnings": [],
@@ -6653,8 +7497,8 @@
     },
     {
       "name": "frameview-mixed-compositor",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
-      "sha256": "aa2af7dbf8119457fb0bb7bb5a1b8984ebf3d1f1e90b7d06d842769446a3fad2",
+      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy,GPU0Util(%)\ngame.exe,0x1,10,2,3\ndwm.exe,0x1,40,4,5\ngame.exe,0x1,10,6,7\ndwm.exe,0x1,40,8,9\ngame.exe,0x1,10,10,11\n",
+      "sha256": "e09840834980c2e4658b2613ae37dd86d42b18541db56f6395017ee5d2538dc5",
       "flags": [
         "--stream",
         "dwm.exe"
@@ -6694,8 +7538,8 @@
     },
     {
       "name": "frameview-second-swapchain",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,10\ngame.exe,0x2,80\ngame.exe,0x1,10\ngame.exe,0x2,80\ngame.exe,0x1,10\n",
-      "sha256": "e27188c45050441044cb4deb07f8ac62ac28b1b06a2f249cc461e82dc3afd7cf",
+      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy,GPU0Util(%)\ngame.exe,0x1,10\ngame.exe,0x2,80\ngame.exe,0x1,10\ngame.exe,0x2,80\ngame.exe,0x1,10\n",
+      "sha256": "2b3b26b40904506191a993da3684892e53dfaf1b3b73f4984451531cd49b6301",
       "flags": [
         "--stream",
         "app:[\"game.exe\",\"0x2\"]"
@@ -6735,8 +7579,8 @@
     },
     {
       "name": "frameview-skip-other-application",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\noverlay.exe,0x1,NA\ngame.exe,0x1,120\n",
-      "sha256": "733b0337a5e28d3f2fd79b815160082ba9aa7c24707c86b67ca4355266b4e6b7",
+      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy,GPU0Util(%)\ngame.exe,0x1,60\noverlay.exe,0x1,NA\ngame.exe,0x1,120\n",
+      "sha256": "ebc59dd05a9194dbf978b6723a8d7acf18ffcb4e1655f74437fefc670a15847c",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -6805,7 +7649,8 @@
             "SwapChainAddress",
             "MsBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "GPU0Util(%)"
           ],
           "skippedRows": 1,
           "warnings": [
@@ -6936,8 +7781,8 @@
     },
     {
       "name": "frameview-skip-same-application",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\ngame.exe,0x1,NA\ngame.exe,0x1,120\n",
-      "sha256": "0532fd35ee10ddf25f8a34f2af892c652f8253d8254637d86c111a084f130c36",
+      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy,GPU0Util(%)\ngame.exe,0x1,60\ngame.exe,0x1,NA\ngame.exe,0x1,120\n",
+      "sha256": "702b0a40ce0449153a85a763683833f28ae38dda4433012a07b9a8b2522898b1",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -7006,7 +7851,8 @@
             "SwapChainAddress",
             "MsBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "GPU0Util(%)"
           ],
           "skippedRows": 1,
           "warnings": [
@@ -7137,8 +7983,8 @@
     },
     {
       "name": "frameview-blank-application",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\n,0x1,10\ngame.exe,0x1,120\n",
-      "sha256": "954e6f4cc9e64362aa7c3cce98a12e7bdee316005b9047b4bc0bf69fa9d767e1",
+      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy,GPU0Util(%)\ngame.exe,0x1,60\n,0x1,10\ngame.exe,0x1,120\n",
+      "sha256": "1abe40751177f3da7339f90a992b692b45ac3bfcd5e7caf59c819d7df67e5d9a",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -7207,7 +8053,8 @@
             "SwapChainAddress",
             "MsBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "GPU0Util(%)"
           ],
           "skippedRows": 0,
           "warnings": [],
@@ -7331,8 +8178,8 @@
     },
     {
       "name": "frameview-blank-swapchain",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,0x1,60\ngame.exe,,10\ngame.exe,0x1,120\n",
-      "sha256": "48d511097c8f0305bb2e2bd872970a7164e8280839dd2d5d312724d04159bd5b",
+      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy,GPU0Util(%)\ngame.exe,0x1,60\ngame.exe,,10\ngame.exe,0x1,120\n",
+      "sha256": "c7db51803cedf7ba72a9cd0c1836c07c4933ee30c4454831fefc8b493d0b340b",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -7425,7 +8272,8 @@
             "SwapChainAddress",
             "MsBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "GPU0Util(%)"
           ],
           "skippedRows": 0,
           "warnings": [],
@@ -7531,8 +8379,8 @@
     },
     {
       "name": "frameview-blank-pid",
-      "csv": "Application,ProcessID,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,1,0x1,60\ngame.exe,,0x1,10\ngame.exe,1,0x1,120\n",
-      "sha256": "04ce05983c3a8c5ef4aeeb605b137224d58a27f7620175394ab1efd2b64fd81b",
+      "csv": "Application,ProcessID,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy,GPU0Util(%)\ngame.exe,1,0x1,60\ngame.exe,,0x1,10\ngame.exe,1,0x1,120\n",
+      "sha256": "635c813f597d57afaa9eaf0970f2c824a6874b78b088c3ae2e50cdfd688bd19b",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -7626,7 +8474,8 @@
             "SwapChainAddress",
             "MsBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "GPU0Util(%)"
           ],
           "skippedRows": 0,
           "warnings": [],
@@ -7732,8 +8581,8 @@
     },
     {
       "name": "frameview-all-unidentified",
-      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\n,0x1,10\n,0x1,20\n",
-      "sha256": "48bb6c71b222c4c9b0aeff09744b8a266b080d94d42ff84653a3ba3008bbef3b",
+      "csv": "Application,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy,GPU0Util(%)\n,0x1,10\n,0x1,20\n",
+      "sha256": "e6fdeab92c14321a47f443d0d12036b6ab9dc1d9302c15f37eee6abd892fd94a",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -7783,7 +8632,8 @@
             "SwapChainAddress",
             "MsBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "GPU0Util(%)"
           ],
           "skippedRows": 0,
           "warnings": [],
@@ -7870,8 +8720,8 @@
     },
     {
       "name": "frameview-full-identity-control",
-      "csv": "Application,ProcessID,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy\ngame.exe,1,0x1,10,2,3\ndwm.exe,2,0x1,40,4,5\ngame.exe,1,0x1,10,6,7\ndwm.exe,2,0x1,40,8,9\ngame.exe,1,0x1,10,10,11\n",
-      "sha256": "dc54789ea220414ff93e883ca0bbd60dbb01108bde01ce152f1b8f3e494ae991",
+      "csv": "Application,ProcessID,SwapChainAddress,MsBetweenPresents,CPUBusy,GPUBusy,GPU0Util(%)\ngame.exe,1,0x1,10,2,3\ndwm.exe,2,0x1,40,4,5\ngame.exe,1,0x1,10,6,7\ndwm.exe,2,0x1,40,8,9\ngame.exe,1,0x1,10,10,11\n",
+      "sha256": "d29de1b1df066ce5cb0366bcc5e2bf09bd03200d005ece6ab05d950317780959",
       "flags": [],
       "exitCode": 0,
       "stderr": "",
@@ -7965,7 +8815,8 @@
             "SwapChainAddress",
             "MsBetweenPresents",
             "CPUBusy",
-            "GPUBusy"
+            "GPUBusy",
+            "GPU0Util(%)"
           ],
           "skippedRows": 0,
           "warnings": [],

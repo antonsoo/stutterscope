@@ -29,7 +29,9 @@ export function sniff(sampleText: string): SniffResult {
   const firstLine = sampleText.split(LINE_BREAK, 1)[0] ?? "";
   const hasV1Markers =
     firstLine.includes("msBetweenPresents") && firstLine.includes("msInPresentAPI");
-  const hasApplication = firstLine.includes("Application") && firstLine.includes("ProcessID");
+  // PID columns may be removed from an edited export; the v1 timing markers
+  // and application column still identify it, and grouping has an app fallback.
+  const hasApplication = firstLine.includes("Application");
   if (hasV1Markers && hasApplication) {
     return { format: "presentmon1", confidence: 0.98, reason: "header has msBetweenPresents/msInPresentAPI" };
   }

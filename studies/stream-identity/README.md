@@ -53,10 +53,10 @@ matching stream. Keep process IDs in captures when possible.
 [`replay.py`](replay.py) invokes the actual CLI and imports no application
 code. It supplies explicit frame lists, partitions at known missing
 observations, and computes expected FPS and pacing with Python rational
-arithmetic. Its 50 cases cover the five present-hook formats, application and
-swap-chain selection, invalid times from the same or another application,
+arithmetic. Its 55 cases cover the five present-hook formats, application and
+swap-chain selection, automatic format detection, invalid times from the same or another application,
 blank identity cells, refusal of entirely unassigned inputs, and full-identity
-controls. Ten cases agreed before the correction; all 50 agree after it.
+controls. Ten cases agreed before the correction; all 55 agree after it.
 
 ```bash
 npm ci && npm run build:cli
