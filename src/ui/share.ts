@@ -107,7 +107,6 @@ export function renderReportCardCanvas(series: FrameSeries, summary: MetricsSumm
 
   // corner brackets
   ctx.strokeStyle = "#7cffb2";
-  ctx.fillStyle = "#7cffb2";
   ctx.lineWidth = 3;
   const b = 28;
   ctx.beginPath();
@@ -134,6 +133,7 @@ export function renderReportCardCanvas(series: FrameSeries, summary: MetricsSumm
   const sparkH = 120;
   const max = Math.max(...spark.map((p) => p.value), 1);
   ctx.strokeStyle = "#7cffb2";
+  ctx.fillStyle = "#7cffb2";
   ctx.lineWidth = 2;
   ctx.beginPath();
   spark.forEach((point, i) => {
