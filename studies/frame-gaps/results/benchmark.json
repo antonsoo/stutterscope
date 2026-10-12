@@ -1,0 +1,65 @@
+{
+  "synthetic": true,
+  "inputRows": 500000,
+  "inputBytes": 3500026,
+  "inputSha256": "cf84749cd9a2d3e3be69bad587400c796ed8facfbafa75116d232d2a567764c9",
+  "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "node": "v26.7.0",
+  "runs": [
+    {
+      "build": "before",
+      "seconds": 0.32,
+      "peakRssKiB": 107952,
+      "pacingCoverage": null
+    },
+    {
+      "build": "after",
+      "seconds": 0.37,
+      "peakRssKiB": 110740,
+      "pacingCoverage": {
+        "observedPairs": 499000,
+        "gapBoundaries": 499
+      }
+    },
+    {
+      "build": "before",
+      "seconds": 0.32,
+      "peakRssKiB": 111784,
+      "pacingCoverage": null
+    },
+    {
+      "build": "after",
+      "seconds": 0.46,
+      "peakRssKiB": 107288,
+      "pacingCoverage": {
+        "observedPairs": 499000,
+        "gapBoundaries": 499
+      }
+    },
+    {
+      "build": "before",
+      "seconds": 0.45,
+      "peakRssKiB": 112104,
+      "pacingCoverage": null
+    },
+    {
+      "build": "after",
+      "seconds": 0.45,
+      "peakRssKiB": 111224,
+      "pacingCoverage": {
+        "observedPairs": 499000,
+        "gapBoundaries": 499
+      }
+    }
+  ],
+  "medians": {
+    "before": {
+      "seconds": 0.32,
+      "peakRssKiB": 111784
+    },
+    "after": {
+      "seconds": 0.45,
+      "peakRssKiB": 110740
+    }
+  }
+}

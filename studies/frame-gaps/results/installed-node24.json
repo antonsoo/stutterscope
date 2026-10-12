@@ -1,0 +1,6808 @@
+{
+  "node": "v24.21.0",
+  "runtimeSha256": {
+    "cli/index.js": "aa3edaee41a456757903a7c482a79821e94734494aaa51b09c38004957ed588d",
+    "cli/version.js": "025c43b0174cddba9eed71580899a21e527500cba7b5a82adb384c647d228a7e",
+    "core/analysis.js": "cb8a916ef1b5155034344f38bc44e18442988b261e3b08eb74704aa10bfe0de4",
+    "core/buffer.js": "e873af844bc1c061472297ea7e56fd5fd074048a9062f65e21fffe5ad593fa1c",
+    "core/continuity.js": "3727cec1c0e05457f05e6091debec38c974360e613d3d5522769f91ab547783b",
+    "core/csv.js": "0af9f09b9523db052ab2c6454235e5bd8449570efec7b14e5518a70aedaf9d6f",
+    "core/encoding.js": "61da83cb47e822997aa1cdb893030d72fb40f3ca77bf94e6c55416ce35aac018",
+    "core/episodes.js": "326def178fb3e8833f433109dcedd05728fa735418e86d242c883436294dfa72",
+    "core/index.js": "da269c2a188596acaef3a1371494578d3b121cf2a9a958fbe958faf8ced0d485",
+    "core/metrics.js": "e08b13c47d60d156a13593d331ddd4ef02a40805991d54c4d3d60d09eb70a524",
+    "core/parsers/capframex.js": "a2c84980c2309c41be7c20ef6e127a9a0bc3ed1cf8918277eccd6186e2e54500",
+    "core/parsers/frameview.js": "7ab3f157be1fc15febb876c053569d172dd59d03560b4801615a57d3c15965db",
+    "core/parsers/generic.js": "60face284e218658251b0d678c8834a2e78184fbacb1bf66f2c4b0bd29d21029",
+    "core/parsers/index.js": "ff42582427e4f3a1dd5cc3edf0f5514aa729b433916283e6799dff6abc4488bd",
+    "core/parsers/mangohud.js": "24057586b659e20559bd6e18d32935e0b4dc879711f3dc5f65b888894b2f3349",
+    "core/parsers/ocat.js": "7c0146f0bc7d6e9b36af7226f4dbe899575a4c673810f07730f35b2fc3eea430",
+    "core/parsers/presentmon1.js": "16b2edd9d2d8ad6639e9f75afdf844f7678b3e0c9aab5414beb13f663f86c270",
+    "core/parsers/presentmon2.js": "ed9113a39e0edd4203be58bda86e13a4d16a890a6f639206b58f4f5c29ec1337",
+    "core/report.js": "ac7cc75e1b2c590d57bf5e5c59b90dd264aa09760407410d9f2df84857ab4b9a",
+    "core/stream.js": "a08ff5bbe79155097c89ac92a1f325ae4bd6f1830955fda186f9c2bdb25871ee",
+    "core/streams.js": "666c93d4670ed5490d67f9808cd8e3bcf6c0595afdfb6e7fcf1a4aa2418d8e71",
+    "core/types.js": "d34bba7125fd99ddd4b49ea7d41d601f07568be60bb4eb4e2398ae99b1e2e8ca"
+  },
+  "cases": [
+    {
+      "name": "generic-hitches",
+      "text": "ms\n60\nNA\n120\n",
+      "args": [
+        "--format",
+        "generic",
+        "--generic-column",
+        "ms",
+        "--generic-kind",
+        "frametime_ms"
+      ],
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "sha256": "19deb853b368da9550b9585b547ab50613e429c2d782c7f7704a422991014650",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "generic-hitches.csv",
+        "format": "generic",
+        "generic": {
+          "column": "ms",
+          "kind": "frametime_ms",
+          "guessed": false
+        },
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "generic-hitches.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "ms"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid ms, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "ms",
+            "valueKind": "frametime_ms"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 4
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 2,
+            "lastSourceLine": 2,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "generic-regime",
+      "text": "ms\n10\n10\n10\nNA\n80\n",
+      "args": [
+        "--format",
+        "generic",
+        "--generic-column",
+        "ms",
+        "--generic-kind",
+        "frametime_ms"
+      ],
+      "segments": [
+        [
+          10,
+          10,
+          10
+        ],
+        [
+          80
+        ]
+      ],
+      "sha256": "754c684c63261f8b5d5b6b1d29dbc4cca948b4e4a08b766f98e6df4e57be0699",
+      "oracle": {
+        "masdMs": 0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 1,
+        "frameCount": 4,
+        "durationMs": 110.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 80
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 1
+        },
+        "frameCount": 4,
+        "stutterFrameIndices": [],
+        "hitchCount": 1,
+        "durationMs": 110.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 80
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "generic-regime.csv",
+        "format": "generic",
+        "generic": {
+          "column": "ms",
+          "kind": "frametime_ms",
+          "guessed": false
+        },
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "generic-regime.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 4,
+          "durationSec": 0.11,
+          "columns": [
+            "ms"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 5: missing/invalid ms, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "ms",
+            "valueKind": "frametime_ms"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 4,
+            "sourceDurationSec": 0.11,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 3,
+            "startSec": 0,
+            "endSec": 0.11,
+            "durationSec": 0.11,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 4,
+                "sourceLine": 6
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 4,
+            "lastFrame": 4,
+            "startSec": 0.03,
+            "endSec": 0.11,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 80,
+            "longestFrameMs": 80,
+            "longestFrame": 4,
+            "firstSourceLine": 6,
+            "lastSourceLine": 6,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 4,
+          "durationSec": 0.11,
+          "averageFps": 36.36363636363637,
+          "meanOfInstantaneousFps": 78.125,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 59.000000000000014,
+            "p95": 69.49999999999997,
+            "p99": 77.89999999999998,
+            "p999": 79.79000000000002
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 12.836970474967911,
+            "meanOfSlowestMethodFps": 12.5,
+            "timeWeightedFps": 12.5
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 12.5328988595062,
+            "meanOfSlowestMethodFps": 12.5,
+            "timeWeightedFps": 12.5
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 1,
+            "totalHitchTimeMs": 80,
+            "hitchTimeFraction": 0.7272727272727273,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 2,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "generic-complete",
+      "text": "ms\n60\n120\n",
+      "args": [
+        "--format",
+        "generic",
+        "--generic-column",
+        "ms",
+        "--generic-kind",
+        "frametime_ms"
+      ],
+      "segments": [
+        [
+          60,
+          120
+        ]
+      ],
+      "sha256": "f00b1b327d31e817d12983c2414df0929bbaacf2ccd3fa579f6e7772be9c1143",
+      "oracle": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "generic-complete.csv",
+        "format": "generic",
+        "generic": {
+          "column": "ms",
+          "kind": "frametime_ms",
+          "guessed": false
+        },
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "generic-complete.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "ms"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "ms",
+            "valueKind": "frametime_ms"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "frameCount": 2,
+            "stutterFrames": 0,
+            "hitchFrames": 2,
+            "totalTimeMs": 180,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 2,
+            "lastSourceLine": 3,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 60,
+          "pacingCoverage": {
+            "observedPairs": 1,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "presentmon1-hitches",
+      "text": "msBetweenPresents\n60\nNA\n120\n",
+      "args": [
+        "--format",
+        "presentmon1"
+      ],
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "sha256": "8cfc8eb09961cfe785659ed9ad518d3fc375ecfa89bbe3121bdee9f8ffce603f",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "presentmon1-hitches.csv",
+        "format": "presentmon1",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "presentmon1-hitches.csv",
+          "format": "presentmon1",
+          "application": null,
+          "streams": [],
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "msBetweenPresents"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid msBetweenPresents, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 4
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 2,
+            "lastSourceLine": 2,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "presentmon1-regime",
+      "text": "msBetweenPresents\n10\n10\n10\nNA\n80\n",
+      "args": [
+        "--format",
+        "presentmon1"
+      ],
+      "segments": [
+        [
+          10,
+          10,
+          10
+        ],
+        [
+          80
+        ]
+      ],
+      "sha256": "fcb971dd7b0951b6e95f332175b19a43f49670cff8bf4a4b33d624761ac8f32b",
+      "oracle": {
+        "masdMs": 0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 1,
+        "frameCount": 4,
+        "durationMs": 110.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 80
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 1
+        },
+        "frameCount": 4,
+        "stutterFrameIndices": [],
+        "hitchCount": 1,
+        "durationMs": 110.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 80
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "presentmon1-regime.csv",
+        "format": "presentmon1",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "presentmon1-regime.csv",
+          "format": "presentmon1",
+          "application": null,
+          "streams": [],
+          "frameCount": 4,
+          "durationSec": 0.11,
+          "columns": [
+            "msBetweenPresents"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 5: missing/invalid msBetweenPresents, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 4,
+            "sourceDurationSec": 0.11,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 3,
+            "startSec": 0,
+            "endSec": 0.11,
+            "durationSec": 0.11,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 4,
+                "sourceLine": 6
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 4,
+            "lastFrame": 4,
+            "startSec": 0.03,
+            "endSec": 0.11,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 80,
+            "longestFrameMs": 80,
+            "longestFrame": 4,
+            "firstSourceLine": 6,
+            "lastSourceLine": 6,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 4,
+          "durationSec": 0.11,
+          "averageFps": 36.36363636363637,
+          "meanOfInstantaneousFps": 78.125,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 59.000000000000014,
+            "p95": 69.49999999999997,
+            "p99": 77.89999999999998,
+            "p999": 79.79000000000002
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 12.836970474967911,
+            "meanOfSlowestMethodFps": 12.5,
+            "timeWeightedFps": 12.5
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 12.5328988595062,
+            "meanOfSlowestMethodFps": 12.5,
+            "timeWeightedFps": 12.5
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 1,
+            "totalHitchTimeMs": 80,
+            "hitchTimeFraction": 0.7272727272727273,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 2,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "presentmon1-complete",
+      "text": "msBetweenPresents\n60\n120\n",
+      "args": [
+        "--format",
+        "presentmon1"
+      ],
+      "segments": [
+        [
+          60,
+          120
+        ]
+      ],
+      "sha256": "bb5723c61aafa34081917cecb0ae07d089fefe9711379bd60e8c72bd1311b658",
+      "oracle": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "presentmon1-complete.csv",
+        "format": "presentmon1",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "presentmon1-complete.csv",
+          "format": "presentmon1",
+          "application": null,
+          "streams": [],
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "msBetweenPresents"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "frameCount": 2,
+            "stutterFrames": 0,
+            "hitchFrames": 2,
+            "totalTimeMs": 180,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 2,
+            "lastSourceLine": 3,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 60,
+          "pacingCoverage": {
+            "observedPairs": 1,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "presentmon2-hitches",
+      "text": "FrameTime\n60\nNA\n120\n",
+      "args": [
+        "--format",
+        "presentmon2"
+      ],
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "sha256": "e11586b1be3bafd025ce9094db370129eac86aac6dc13f15d22aa3d3407f046a",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "presentmon2-hitches.csv",
+        "format": "presentmon2",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "presentmon2-hitches.csv",
+          "format": "presentmon2",
+          "application": null,
+          "streams": [],
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "FrameTime"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid FrameTime, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 4
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 2,
+            "lastSourceLine": 2,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "presentmon2-regime",
+      "text": "FrameTime\n10\n10\n10\nNA\n80\n",
+      "args": [
+        "--format",
+        "presentmon2"
+      ],
+      "segments": [
+        [
+          10,
+          10,
+          10
+        ],
+        [
+          80
+        ]
+      ],
+      "sha256": "143dba3d9eda2022fa11ec6fc8f0eb4e49d2261d66a6c74b4c6f85875d38359f",
+      "oracle": {
+        "masdMs": 0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 1,
+        "frameCount": 4,
+        "durationMs": 110.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 80
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 1
+        },
+        "frameCount": 4,
+        "stutterFrameIndices": [],
+        "hitchCount": 1,
+        "durationMs": 110.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 80
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "presentmon2-regime.csv",
+        "format": "presentmon2",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "presentmon2-regime.csv",
+          "format": "presentmon2",
+          "application": null,
+          "streams": [],
+          "frameCount": 4,
+          "durationSec": 0.11,
+          "columns": [
+            "FrameTime"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 5: missing/invalid FrameTime, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 4,
+            "sourceDurationSec": 0.11,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 3,
+            "startSec": 0,
+            "endSec": 0.11,
+            "durationSec": 0.11,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 4,
+                "sourceLine": 6
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 4,
+            "lastFrame": 4,
+            "startSec": 0.03,
+            "endSec": 0.11,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 80,
+            "longestFrameMs": 80,
+            "longestFrame": 4,
+            "firstSourceLine": 6,
+            "lastSourceLine": 6,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 4,
+          "durationSec": 0.11,
+          "averageFps": 36.36363636363637,
+          "meanOfInstantaneousFps": 78.125,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 59.000000000000014,
+            "p95": 69.49999999999997,
+            "p99": 77.89999999999998,
+            "p999": 79.79000000000002
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 12.836970474967911,
+            "meanOfSlowestMethodFps": 12.5,
+            "timeWeightedFps": 12.5
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 12.5328988595062,
+            "meanOfSlowestMethodFps": 12.5,
+            "timeWeightedFps": 12.5
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 1,
+            "totalHitchTimeMs": 80,
+            "hitchTimeFraction": 0.7272727272727273,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 2,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "presentmon2-complete",
+      "text": "FrameTime\n60\n120\n",
+      "args": [
+        "--format",
+        "presentmon2"
+      ],
+      "segments": [
+        [
+          60,
+          120
+        ]
+      ],
+      "sha256": "624de35562d5c8131dce6f574068a1b8744ce74c647c13d39ed6f229adb87e9f",
+      "oracle": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "presentmon2-complete.csv",
+        "format": "presentmon2",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "presentmon2-complete.csv",
+          "format": "presentmon2",
+          "application": null,
+          "streams": [],
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "FrameTime"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "frameCount": 2,
+            "stutterFrames": 0,
+            "hitchFrames": 2,
+            "totalTimeMs": 180,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 2,
+            "lastSourceLine": 3,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 60,
+          "pacingCoverage": {
+            "observedPairs": 1,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "frameview-hitches",
+      "text": "MsBetweenPresents\n60\nNA\n120\n",
+      "args": [
+        "--format",
+        "frameview"
+      ],
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "sha256": "f6207f39a594f656e1e43c581f0a8c3ddc14589c167d548b7508dca07e439c9d",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "frameview-hitches.csv",
+        "format": "frameview",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "frameview-hitches.csv",
+          "format": "frameview",
+          "application": null,
+          "streams": [],
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "MsBetweenPresents"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid MsBetweenPresents, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 4
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 2,
+            "lastSourceLine": 2,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "frameview-regime",
+      "text": "MsBetweenPresents\n10\n10\n10\nNA\n80\n",
+      "args": [
+        "--format",
+        "frameview"
+      ],
+      "segments": [
+        [
+          10,
+          10,
+          10
+        ],
+        [
+          80
+        ]
+      ],
+      "sha256": "578a3be733774c9fb88ad0a1e43f0c1578baf9a3159b8dff08bae95892e9e42a",
+      "oracle": {
+        "masdMs": 0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 1,
+        "frameCount": 4,
+        "durationMs": 110.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 80
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 1
+        },
+        "frameCount": 4,
+        "stutterFrameIndices": [],
+        "hitchCount": 1,
+        "durationMs": 110.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 80
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "frameview-regime.csv",
+        "format": "frameview",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "frameview-regime.csv",
+          "format": "frameview",
+          "application": null,
+          "streams": [],
+          "frameCount": 4,
+          "durationSec": 0.11,
+          "columns": [
+            "MsBetweenPresents"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 5: missing/invalid MsBetweenPresents, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 4,
+            "sourceDurationSec": 0.11,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 3,
+            "startSec": 0,
+            "endSec": 0.11,
+            "durationSec": 0.11,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 4,
+                "sourceLine": 6
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 4,
+            "lastFrame": 4,
+            "startSec": 0.03,
+            "endSec": 0.11,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 80,
+            "longestFrameMs": 80,
+            "longestFrame": 4,
+            "firstSourceLine": 6,
+            "lastSourceLine": 6,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 4,
+          "durationSec": 0.11,
+          "averageFps": 36.36363636363637,
+          "meanOfInstantaneousFps": 78.125,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 59.000000000000014,
+            "p95": 69.49999999999997,
+            "p99": 77.89999999999998,
+            "p999": 79.79000000000002
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 12.836970474967911,
+            "meanOfSlowestMethodFps": 12.5,
+            "timeWeightedFps": 12.5
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 12.5328988595062,
+            "meanOfSlowestMethodFps": 12.5,
+            "timeWeightedFps": 12.5
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 1,
+            "totalHitchTimeMs": 80,
+            "hitchTimeFraction": 0.7272727272727273,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 2,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "frameview-complete",
+      "text": "MsBetweenPresents\n60\n120\n",
+      "args": [
+        "--format",
+        "frameview"
+      ],
+      "segments": [
+        [
+          60,
+          120
+        ]
+      ],
+      "sha256": "7596c5145c2eaf8fd651b07411aa0bd499d05aee7841a6aa3e134eb4baf46d1b",
+      "oracle": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "frameview-complete.csv",
+        "format": "frameview",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "frameview-complete.csv",
+          "format": "frameview",
+          "application": null,
+          "streams": [],
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "MsBetweenPresents"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "frameCount": 2,
+            "stutterFrames": 0,
+            "hitchFrames": 2,
+            "totalTimeMs": 180,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 2,
+            "lastSourceLine": 3,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 60,
+          "pacingCoverage": {
+            "observedPairs": 1,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "ocat-hitches",
+      "text": "MsBetweenPresents\n60\nNA\n120\n",
+      "args": [
+        "--format",
+        "ocat"
+      ],
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "sha256": "f6207f39a594f656e1e43c581f0a8c3ddc14589c167d548b7508dca07e439c9d",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "ocat-hitches.csv",
+        "format": "ocat",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "ocat-hitches.csv",
+          "format": "ocat",
+          "application": null,
+          "streams": [],
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "MsBetweenPresents"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid MsBetweenPresents, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 4
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 2,
+            "lastSourceLine": 2,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "ocat-regime",
+      "text": "MsBetweenPresents\n10\n10\n10\nNA\n80\n",
+      "args": [
+        "--format",
+        "ocat"
+      ],
+      "segments": [
+        [
+          10,
+          10,
+          10
+        ],
+        [
+          80
+        ]
+      ],
+      "sha256": "578a3be733774c9fb88ad0a1e43f0c1578baf9a3159b8dff08bae95892e9e42a",
+      "oracle": {
+        "masdMs": 0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 1,
+        "frameCount": 4,
+        "durationMs": 110.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 80
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 1
+        },
+        "frameCount": 4,
+        "stutterFrameIndices": [],
+        "hitchCount": 1,
+        "durationMs": 110.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 80
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "ocat-regime.csv",
+        "format": "ocat",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "ocat-regime.csv",
+          "format": "ocat",
+          "application": null,
+          "streams": [],
+          "frameCount": 4,
+          "durationSec": 0.11,
+          "columns": [
+            "MsBetweenPresents"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 5: missing/invalid MsBetweenPresents, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 4,
+            "sourceDurationSec": 0.11,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 3,
+            "startSec": 0,
+            "endSec": 0.11,
+            "durationSec": 0.11,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 4,
+                "sourceLine": 6
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 4,
+            "lastFrame": 4,
+            "startSec": 0.03,
+            "endSec": 0.11,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 80,
+            "longestFrameMs": 80,
+            "longestFrame": 4,
+            "firstSourceLine": 6,
+            "lastSourceLine": 6,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 4,
+          "durationSec": 0.11,
+          "averageFps": 36.36363636363637,
+          "meanOfInstantaneousFps": 78.125,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 59.000000000000014,
+            "p95": 69.49999999999997,
+            "p99": 77.89999999999998,
+            "p999": 79.79000000000002
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 12.836970474967911,
+            "meanOfSlowestMethodFps": 12.5,
+            "timeWeightedFps": 12.5
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 12.5328988595062,
+            "meanOfSlowestMethodFps": 12.5,
+            "timeWeightedFps": 12.5
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 1,
+            "totalHitchTimeMs": 80,
+            "hitchTimeFraction": 0.7272727272727273,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 2,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "ocat-complete",
+      "text": "MsBetweenPresents\n60\n120\n",
+      "args": [
+        "--format",
+        "ocat"
+      ],
+      "segments": [
+        [
+          60,
+          120
+        ]
+      ],
+      "sha256": "7596c5145c2eaf8fd651b07411aa0bd499d05aee7841a6aa3e134eb4baf46d1b",
+      "oracle": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "ocat-complete.csv",
+        "format": "ocat",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "ocat-complete.csv",
+          "format": "ocat",
+          "application": null,
+          "streams": [],
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "MsBetweenPresents"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "frameCount": 2,
+            "stutterFrames": 0,
+            "hitchFrames": 2,
+            "totalTimeMs": 180,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 2,
+            "lastSourceLine": 3,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 60,
+          "pacingCoverage": {
+            "observedPairs": 1,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "capframex-hitches",
+      "text": "//GameName=demo\nMsBetweenPresents\n60\nNA\n120\n",
+      "args": [
+        "--format",
+        "capframex"
+      ],
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "sha256": "72930614feb4f6d89d96a9c1dd9bdc13afe52101dbcd2ae7527e4dc10a289ba1",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "capframex-hitches.csv",
+        "format": "capframex",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "capframex-hitches.csv",
+          "format": "capframex",
+          "application": "demo",
+          "streams": [],
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "MsBetweenPresents"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 4: missing/invalid MsBetweenPresents, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 5
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 3,
+            "lastSourceLine": 3,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 5,
+            "lastSourceLine": 5,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "capframex-regime",
+      "text": "//GameName=demo\nMsBetweenPresents\n10\n10\n10\nNA\n80\n",
+      "args": [
+        "--format",
+        "capframex"
+      ],
+      "segments": [
+        [
+          10,
+          10,
+          10
+        ],
+        [
+          80
+        ]
+      ],
+      "sha256": "556e2815e1da577903faf1bf967e44286cda74b420aff32795189c75663a1d83",
+      "oracle": {
+        "masdMs": 0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 1,
+        "frameCount": 4,
+        "durationMs": 110.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 80
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 1
+        },
+        "frameCount": 4,
+        "stutterFrameIndices": [],
+        "hitchCount": 1,
+        "durationMs": 110.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 80
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "capframex-regime.csv",
+        "format": "capframex",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "capframex-regime.csv",
+          "format": "capframex",
+          "application": "demo",
+          "streams": [],
+          "frameCount": 4,
+          "durationSec": 0.11,
+          "columns": [
+            "MsBetweenPresents"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 6: missing/invalid MsBetweenPresents, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 4,
+            "sourceDurationSec": 0.11,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 3,
+            "startSec": 0,
+            "endSec": 0.11,
+            "durationSec": 0.11,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 4,
+                "sourceLine": 7
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 4,
+            "lastFrame": 4,
+            "startSec": 0.03,
+            "endSec": 0.11,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 80,
+            "longestFrameMs": 80,
+            "longestFrame": 4,
+            "firstSourceLine": 7,
+            "lastSourceLine": 7,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 4,
+          "durationSec": 0.11,
+          "averageFps": 36.36363636363637,
+          "meanOfInstantaneousFps": 78.125,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 59.000000000000014,
+            "p95": 69.49999999999997,
+            "p99": 77.89999999999998,
+            "p999": 79.79000000000002
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 12.836970474967911,
+            "meanOfSlowestMethodFps": 12.5,
+            "timeWeightedFps": 12.5
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 12.5328988595062,
+            "meanOfSlowestMethodFps": 12.5,
+            "timeWeightedFps": 12.5
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 1,
+            "totalHitchTimeMs": 80,
+            "hitchTimeFraction": 0.7272727272727273,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 2,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "capframex-complete",
+      "text": "//GameName=demo\nMsBetweenPresents\n60\n120\n",
+      "args": [
+        "--format",
+        "capframex"
+      ],
+      "segments": [
+        [
+          60,
+          120
+        ]
+      ],
+      "sha256": "7bbe320d4dce131a5125383fee4f59330575f8a3b98a367a95c32269c5a07024",
+      "oracle": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "capframex-complete.csv",
+        "format": "capframex",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "capframex-complete.csv",
+          "format": "capframex",
+          "application": "demo",
+          "streams": [],
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "MsBetweenPresents"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "frameCount": 2,
+            "stutterFrames": 0,
+            "hitchFrames": 2,
+            "totalTimeMs": 180,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 3,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 60,
+          "pacingCoverage": {
+            "observedPairs": 1,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "mangohud-hitches",
+      "text": "fps,frametime,cpu_load\n20,60,5\n20,NA,5\n20,120,5\n",
+      "args": [
+        "--format",
+        "mangohud"
+      ],
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "sha256": "c8affa2315d7ead28cb9c4ffa0c6ceb791eada7d949c03b89e92dc05a39474cb",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "mangohud-hitches.csv",
+        "format": "mangohud",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "mangohud-hitches.csv",
+          "format": "mangohud",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "fps",
+            "frametime",
+            "cpu_load"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid frametime, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": {
+            "kind": "mangohud-elapsed",
+            "status": "unverified",
+            "comparedIntervals": 0,
+            "observedSpanSec": null,
+            "recordedFrameSpanSec": null,
+            "note": "Clock coverage is missing, too short, or interrupted; per-frame coverage is unverified. MangoHud frame metrics require log_interval=0. The CSV does not record this setting; matching clock spans do not prove every frame was logged."
+          }
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 4
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 2,
+            "lastSourceLine": 2,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "mangohud-regime",
+      "text": "fps,frametime,cpu_load\n20,10,5\n20,10,5\n20,10,5\n20,NA,5\n20,80,5\n",
+      "args": [
+        "--format",
+        "mangohud"
+      ],
+      "segments": [
+        [
+          10,
+          10,
+          10
+        ],
+        [
+          80
+        ]
+      ],
+      "sha256": "daed5e10b4fda61fb01725a8728f87038d47d866d957c06064fc21275b6742c3",
+      "oracle": {
+        "masdMs": 0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 1,
+        "frameCount": 4,
+        "durationMs": 110.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 80
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 0,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 1
+        },
+        "frameCount": 4,
+        "stutterFrameIndices": [],
+        "hitchCount": 1,
+        "durationMs": 110.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 80
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "mangohud-regime.csv",
+        "format": "mangohud",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "mangohud-regime.csv",
+          "format": "mangohud",
+          "application": null,
+          "frameCount": 4,
+          "durationSec": 0.11,
+          "columns": [
+            "fps",
+            "frametime",
+            "cpu_load"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 5: missing/invalid frametime, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": {
+            "kind": "mangohud-elapsed",
+            "status": "unverified",
+            "comparedIntervals": 0,
+            "observedSpanSec": null,
+            "recordedFrameSpanSec": null,
+            "note": "Clock coverage is missing, too short, or interrupted; per-frame coverage is unverified. MangoHud frame metrics require log_interval=0. The CSV does not record this setting; matching clock spans do not prove every frame was logged."
+          }
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 4,
+            "sourceDurationSec": 0.11,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 3,
+            "startSec": 0,
+            "endSec": 0.11,
+            "durationSec": 0.11,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 4,
+                "sourceLine": 6
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 4,
+            "lastFrame": 4,
+            "startSec": 0.03,
+            "endSec": 0.11,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 80,
+            "longestFrameMs": 80,
+            "longestFrame": 4,
+            "firstSourceLine": 6,
+            "lastSourceLine": 6,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 4,
+          "durationSec": 0.11,
+          "averageFps": 36.36363636363637,
+          "meanOfInstantaneousFps": 78.125,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 59.000000000000014,
+            "p95": 69.49999999999997,
+            "p99": 77.89999999999998,
+            "p999": 79.79000000000002
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 12.836970474967911,
+            "meanOfSlowestMethodFps": 12.5,
+            "timeWeightedFps": 12.5
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 12.5328988595062,
+            "meanOfSlowestMethodFps": 12.5,
+            "timeWeightedFps": 12.5
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 1,
+            "totalHitchTimeMs": 80,
+            "hitchTimeFraction": 0.7272727272727273,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 2,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "mangohud-complete",
+      "text": "fps,frametime,cpu_load\n20,60,5\n20,120,5\n",
+      "args": [
+        "--format",
+        "mangohud"
+      ],
+      "segments": [
+        [
+          60,
+          120
+        ]
+      ],
+      "sha256": "1ca41a057b865e96e2e72745ce1a198236687f2bb45ba69f30f029e996fc4c9e",
+      "oracle": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "mangohud-complete.csv",
+        "format": "mangohud",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "mangohud-complete.csv",
+          "format": "mangohud",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "fps",
+            "frametime",
+            "cpu_load"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": {
+            "kind": "mangohud-elapsed",
+            "status": "unverified",
+            "comparedIntervals": 0,
+            "observedSpanSec": null,
+            "recordedFrameSpanSec": null,
+            "note": "Clock coverage is missing, too short, or interrupted; per-frame coverage is unverified. MangoHud frame metrics require log_interval=0. The CSV does not record this setting; matching clock spans do not prove every frame was logged."
+          }
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "frameCount": 2,
+            "stutterFrames": 0,
+            "hitchFrames": 2,
+            "totalTimeMs": 180,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 2,
+            "lastSourceLine": 3,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 60,
+          "pacingCoverage": {
+            "observedPairs": 1,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "timestamp",
+      "text": "ms\n0\n60\nNA\n300\n420\n",
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "args": [
+        "--format",
+        "generic",
+        "--generic-column",
+        "ms",
+        "--generic-kind",
+        "timestamp_ms_cumulative"
+      ],
+      "sha256": "7bf673151b8caf687e2e407eb7db90aee7e40a0c96e844fd306326d3bc6cef9e",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "timestamp.csv",
+        "format": "generic",
+        "generic": {
+          "column": "ms",
+          "kind": "timestamp_ms_cumulative",
+          "guessed": false
+        },
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "timestamp.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "ms"
+          ],
+          "skippedRows": 2,
+          "warnings": [
+            "line 4: missing/invalid ms, row skipped",
+            "line 5: cannot derive frame time after missing/invalid ms, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "ms",
+            "valueKind": "timestamp_ms_cumulative"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 6
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 3,
+            "lastSourceLine": 3,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 6,
+            "lastSourceLine": 6,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "clock-reset",
+      "text": "ms\n0\n60\n5\n125\n",
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "args": [
+        "--format",
+        "generic",
+        "--generic-column",
+        "ms",
+        "--generic-kind",
+        "timestamp_ms_cumulative"
+      ],
+      "sha256": "23d77e0e51fb7700eedc2ffa2d7d9e9ec1eb1ae992b151470e8c3b08402ef496",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "clock-reset.csv",
+        "format": "generic",
+        "generic": {
+          "column": "ms",
+          "kind": "timestamp_ms_cumulative",
+          "guessed": false
+        },
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "clock-reset.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "ms"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 4: ms goes backwards, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "ms",
+            "valueKind": "timestamp_ms_cumulative"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 5
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 3,
+            "lastSourceLine": 3,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 5,
+            "lastSourceLine": 5,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "seconds",
+      "text": "ms\n0.06\nNA\n0.12\n",
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "args": [
+        "--format",
+        "generic",
+        "--generic-column",
+        "ms",
+        "--generic-kind",
+        "frametime_s"
+      ],
+      "sha256": "251c32d1f2dbf338130621676737b56139901db40c37a6bb8f159cc35ae68066",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "seconds.csv",
+        "format": "generic",
+        "generic": {
+          "column": "ms",
+          "kind": "frametime_s",
+          "guessed": false
+        },
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "seconds.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "ms"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid ms, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "ms",
+            "valueKind": "frametime_s"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 4
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 2,
+            "lastSourceLine": 2,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "microseconds",
+      "text": "ms\n60000\nNA\n120000\n",
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "args": [
+        "--format",
+        "generic",
+        "--generic-column",
+        "ms",
+        "--generic-kind",
+        "frametime_us"
+      ],
+      "sha256": "5cc67e1b0224bf91fc99735cbe5f37dc71b0288554639e4092812495082c0981",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "microseconds.csv",
+        "format": "generic",
+        "generic": {
+          "column": "ms",
+          "kind": "frametime_us",
+          "guessed": false
+        },
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "microseconds.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "ms"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid ms, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "ms",
+            "valueKind": "frametime_us"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 4
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 2,
+            "lastSourceLine": 2,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "fps",
+      "text": "ms\n10\n0\n5\n",
+      "segments": [
+        [
+          100
+        ],
+        [
+          200
+        ]
+      ],
+      "args": [
+        "--format",
+        "generic",
+        "--generic-column",
+        "ms",
+        "--generic-kind",
+        "fps"
+      ],
+      "sha256": "2a4882b57971a0a2a21db3c3dcb1f7e7d94e1e119eb92a89889150abda9b459d",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 300.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 100
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 200
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 300.00000000000006,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 100
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 200
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "fps.csv",
+        "format": "generic",
+        "generic": {
+          "column": "ms",
+          "kind": "fps",
+          "guessed": false
+        },
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "fps.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.30000000000000004,
+          "columns": [
+            "ms"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: non-positive FPS value, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "ms",
+            "valueKind": "fps"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.30000000000000004,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.30000000000000004,
+            "durationSec": 0.30000000000000004,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 4
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.1,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 100,
+            "longestFrameMs": 100,
+            "longestFrame": 1,
+            "firstSourceLine": 2,
+            "lastSourceLine": 2,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.1,
+            "endSec": 0.30000000000000004,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 200,
+            "longestFrameMs": 200,
+            "longestFrame": 2,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.30000000000000004,
+          "averageFps": 6.666666666666666,
+          "meanOfInstantaneousFps": 7.5,
+          "percentilesMs": {
+            "p50": 150,
+            "p90": 190,
+            "p95": 195,
+            "p99": 199,
+            "p999": 199.9
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 5.025125628140704,
+            "meanOfSlowestMethodFps": 5,
+            "timeWeightedFps": 5
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 5.002501250625312,
+            "meanOfSlowestMethodFps": 5,
+            "timeWeightedFps": 5
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 300,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "negative",
+      "text": "ms\n60\n-1\n120\n",
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "args": [
+        "--format",
+        "generic",
+        "--generic-column",
+        "ms",
+        "--generic-kind",
+        "frametime_ms"
+      ],
+      "sha256": "c2346a5145af62dc91ef6c8ab02c017be20aa02d979e685b617df8bc85322356",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "negative.csv",
+        "format": "generic",
+        "generic": {
+          "column": "ms",
+          "kind": "frametime_ms",
+          "guessed": false
+        },
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "negative.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "ms"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: negative ms, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "ms",
+            "valueKind": "frametime_ms"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 4
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 2,
+            "lastSourceLine": 2,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "overflow",
+      "text": "ms\n0.06\n1e308\n0.12\n",
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "args": [
+        "--format",
+        "generic",
+        "--generic-column",
+        "ms",
+        "--generic-kind",
+        "frametime_s"
+      ],
+      "sha256": "4d1963f82a7feec278c0011322b89245b5b1483fd7750249b852f71e9f50b2df",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "overflow.csv",
+        "format": "generic",
+        "generic": {
+          "column": "ms",
+          "kind": "frametime_s",
+          "guessed": false
+        },
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "overflow.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "ms"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: frame time overflows milliseconds, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "ms",
+            "valueKind": "frametime_s"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 4
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 2,
+            "lastSourceLine": 2,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "zero",
+      "text": "ms\n60\n0\n120\n",
+      "segments": [
+        [
+          60,
+          0,
+          120
+        ]
+      ],
+      "args": [
+        "--format",
+        "generic",
+        "--generic-column",
+        "ms",
+        "--generic-kind",
+        "frametime_ms"
+      ],
+      "sha256": "72516290752af44ff62b83741ba41557a09f1b1fb739e058299ccf2b8a57622e",
+      "oracle": {
+        "masdMs": 90,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 0
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 3,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 90,
+        "pacingCoverage": {
+          "observedPairs": 2,
+          "gapBoundaries": 0
+        },
+        "frameCount": 3,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "zero.csv",
+        "format": "generic",
+        "generic": {
+          "column": "ms",
+          "kind": "frametime_ms",
+          "guessed": false
+        },
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "zero.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 3,
+          "durationSec": 0.18,
+          "columns": [
+            "ms"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "ms",
+            "valueKind": "frametime_ms"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 3,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 2,
+            "lastSourceLine": 2,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          },
+          {
+            "firstFrame": 3,
+            "lastFrame": 3,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 3,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 3,
+          "durationSec": 0.18,
+          "averageFps": 16.666666666666668,
+          "meanOfInstantaneousFps": null,
+          "percentilesMs": {
+            "p50": 60,
+            "p90": 108,
+            "p95": 114,
+            "p99": 118.8,
+            "p999": 119.88000000000001
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.417508417508417,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.341675008341674,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 90,
+          "pacingCoverage": {
+            "observedPairs": 2,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "edges",
+      "text": "ms\nNA\n60\n120\nNA\n",
+      "segments": [
+        [
+          60,
+          120
+        ]
+      ],
+      "args": [
+        "--format",
+        "generic",
+        "--generic-column",
+        "ms",
+        "--generic-kind",
+        "frametime_ms"
+      ],
+      "sha256": "414a595ffbccb0dfd7c706110eb8c76479d24136892ff63620b25fa6d1628584",
+      "oracle": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "edges.csv",
+        "format": "generic",
+        "generic": {
+          "column": "ms",
+          "kind": "frametime_ms",
+          "guessed": false
+        },
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "edges.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "ms"
+          ],
+          "skippedRows": 2,
+          "warnings": [
+            "line 2: missing/invalid ms, row skipped",
+            "line 5: missing/invalid ms, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "ms",
+            "valueKind": "frametime_ms"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "frameCount": 2,
+            "stutterFrames": 0,
+            "hitchFrames": 2,
+            "totalTimeMs": 180,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 3,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 60,
+          "pacingCoverage": {
+            "observedPairs": 1,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "interval-across-gap",
+      "text": "ms\n10\n60\nNA\n120\n10\n",
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "args": [
+        "--format",
+        "generic",
+        "--generic-column",
+        "ms",
+        "--generic-kind",
+        "frametime_ms",
+        "--start",
+        ".01",
+        "--end",
+        ".19"
+      ],
+      "sha256": "cd5121cfbe4b3377267b21f7aec6107e19f59bdd87ed66b47f91650102d7c8e5",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "interval-across-gap.csv",
+        "format": "generic",
+        "generic": {
+          "column": "ms",
+          "kind": "frametime_ms",
+          "guessed": false
+        },
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "interval-across-gap.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 4,
+          "durationSec": 0.19999999999999998,
+          "columns": [
+            "ms"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 4: missing/invalid ms, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "ms",
+            "valueKind": "frametime_ms"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": {
+              "startSec": 0.01,
+              "endSec": 0.19
+            },
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 4,
+            "sourceDurationSec": 0.19999999999999998,
+            "firstFrameIndex": 1,
+            "lastFrameIndex": 2,
+            "startSec": 0.01,
+            "endSec": 0.19,
+            "durationSec": 0.18,
+            "excludedBefore": 1,
+            "excludedAfter": 1
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 3,
+                "sourceLine": 5
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.01,
+            "endSec": 0.06999999999999999,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 2,
+            "firstSourceLine": 3,
+            "lastSourceLine": 3,
+            "touchesSelectionStart": true,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 3,
+            "lastFrame": 3,
+            "startSec": 0.06999999999999999,
+            "endSec": 0.19,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 3,
+            "firstSourceLine": 5,
+            "lastSourceLine": 5,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": true,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "other-stream",
+      "text": "Application,ProcessID,SwapChainAddress,FrameTime,CPUBusy,GPUBusy\ngame,1,0x1,60,1,1\noverlay,2,0x2,NA,1,1\ngame,1,0x1,120,1,1\n",
+      "args": [
+        "--format",
+        "presentmon2"
+      ],
+      "segments": [
+        [
+          60,
+          120
+        ]
+      ],
+      "sha256": "f82242dfee4d0f91a036c5200375e10916ad9eb7d0f840be48600df23652ab05",
+      "oracle": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "other-stream.csv",
+        "format": "presentmon2",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "other-stream.csv",
+          "format": "presentmon2",
+          "application": "game",
+          "stream": "1:0x1",
+          "streams": [
+            {
+              "id": "1:0x1",
+              "application": "game",
+              "processId": "1",
+              "swapChain": "0x1",
+              "frameCount": 2
+            }
+          ],
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "Application",
+            "ProcessID",
+            "SwapChainAddress",
+            "FrameTime",
+            "CPUBusy",
+            "GPUBusy"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid FrameTime, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "frameCount": 2,
+            "stutterFrames": 0,
+            "hitchFrames": 2,
+            "totalTimeMs": 180,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 2,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 60,
+          "pacingCoverage": {
+            "observedPairs": 1,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": {
+            "cpuBoundFrames": 2,
+            "gpuBoundFrames": 0,
+            "cpuBoundFraction": 1,
+            "gpuBoundFraction": 0
+          },
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": {
+              "observedFrames": 2,
+              "unknownFrames": 0
+            },
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "other-swapchain",
+      "text": "Application,ProcessID,SwapChainAddress,FrameTime,CPUBusy,GPUBusy\ngame,1,0x1,60,1,1\ngame,1,0x2,NA,1,1\ngame,1,0x1,120,1,1\n",
+      "args": [
+        "--format",
+        "presentmon2"
+      ],
+      "segments": [
+        [
+          60,
+          120
+        ]
+      ],
+      "sha256": "40a35832a8a097450c8ff2c34ffc912d9e344a8d485f40a3aeeea72d0bb15071",
+      "oracle": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": 60,
+        "pacingCoverage": {
+          "observedPairs": 1,
+          "gapBoundaries": 0
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 2,
+            "totalTimeMs": 180
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "other-swapchain.csv",
+        "format": "presentmon2",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "other-swapchain.csv",
+          "format": "presentmon2",
+          "application": "game",
+          "stream": "1:0x1",
+          "streams": [
+            {
+              "id": "1:0x1",
+              "application": "game",
+              "processId": "1",
+              "swapChain": "0x1",
+              "frameCount": 2
+            }
+          ],
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "Application",
+            "ProcessID",
+            "SwapChainAddress",
+            "FrameTime",
+            "CPUBusy",
+            "GPUBusy"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid FrameTime, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "frameCount": 2,
+            "stutterFrames": 0,
+            "hitchFrames": 2,
+            "totalTimeMs": 180,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 2,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 60,
+          "pacingCoverage": {
+            "observedPairs": 1,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": {
+            "cpuBoundFrames": 2,
+            "gpuBoundFrames": 0,
+            "cpuBoundFraction": 1,
+            "gpuBoundFraction": 0
+          },
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": {
+              "observedFrames": 2,
+              "unknownFrames": 0
+            },
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "same-stream",
+      "text": "Application,ProcessID,SwapChainAddress,FrameTime,CPUBusy,GPUBusy\ngame,1,0x1,60,1,1\ngame,1,0x1,NA,1,1\ngame,1,0x1,120,1,1\n",
+      "args": [
+        "--format",
+        "presentmon2"
+      ],
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "sha256": "aeb7bfbdedad824bfab95c1d36da28059ac337de271c7f02cea8f97c11b00664",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "same-stream.csv",
+        "format": "presentmon2",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "same-stream.csv",
+          "format": "presentmon2",
+          "application": "game",
+          "stream": "1:0x1",
+          "streams": [
+            {
+              "id": "1:0x1",
+              "application": "game",
+              "processId": "1",
+              "swapChain": "0x1",
+              "frameCount": 2
+            }
+          ],
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "Application",
+            "ProcessID",
+            "SwapChainAddress",
+            "FrameTime",
+            "CPUBusy",
+            "GPUBusy"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid FrameTime, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 4
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 2,
+            "lastSourceLine": 2,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": {
+            "cpuBoundFrames": 2,
+            "gpuBoundFrames": 0,
+            "cpuBoundFraction": 1,
+            "gpuBoundFraction": 0
+          },
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": {
+              "observedFrames": 2,
+              "unknownFrames": 0
+            },
+            "displayLatency": null
+          }
+        }
+      }
+    },
+    {
+      "name": "unknown-stream",
+      "text": "Application,ProcessID,SwapChainAddress,FrameTime,CPUBusy,GPUBusy\ngame,1,0x1,60,1,1\n,,,NA,1,1\ngame,1,0x1,120,1,1\n",
+      "args": [
+        "--format",
+        "presentmon2"
+      ],
+      "segments": [
+        [
+          60
+        ],
+        [
+          120
+        ]
+      ],
+      "sha256": "b80a70017790e20396885920cbdee88ad383adf36ce9c0e89b9844a2d3f71a15",
+      "oracle": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "frameCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "observed": {
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 1
+        },
+        "frameCount": 2,
+        "stutterFrameIndices": [],
+        "hitchCount": 2,
+        "durationMs": 180.0,
+        "episodes": [
+          {
+            "frameCount": 1,
+            "totalTimeMs": 60
+          },
+          {
+            "frameCount": 1,
+            "totalTimeMs": 120
+          }
+        ]
+      },
+      "agrees": true,
+      "behaviorAgrees": true,
+      "report": {
+        "file": "unknown-stream.csv",
+        "format": "presentmon2",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "unknown-stream.csv",
+          "format": "presentmon2",
+          "application": "game",
+          "stream": "1:0x1",
+          "streams": [
+            {
+              "id": "1:0x1",
+              "application": "game",
+              "processId": "1",
+              "swapChain": "0x1",
+              "frameCount": 2
+            }
+          ],
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "Application",
+            "ProcessID",
+            "SwapChainAddress",
+            "FrameTime",
+            "CPUBusy",
+            "GPUBusy"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid FrameTime, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": [
+              {
+                "beforeFrame": 2,
+                "sourceLine": 4
+              }
+            ]
+          }
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 1,
+            "startSec": 0,
+            "endSec": 0.06,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 60,
+            "longestFrameMs": 60,
+            "longestFrame": 1,
+            "firstSourceLine": 2,
+            "lastSourceLine": 2,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": false,
+            "endsBeforeGap": true
+          },
+          {
+            "firstFrame": 2,
+            "lastFrame": 2,
+            "startSec": 0.06,
+            "endSec": 0.18,
+            "frameCount": 1,
+            "stutterFrames": 0,
+            "hitchFrames": 1,
+            "totalTimeMs": 120,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 4,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false,
+            "startsAfterGap": true,
+            "endsBeforeGap": false
+          }
+        ],
+        "summary": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": null,
+          "pacingCoverage": {
+            "observedPairs": 0,
+            "gapBoundaries": 1
+          },
+          "dropped": null,
+          "boundShare": {
+            "cpuBoundFrames": 2,
+            "gpuBoundFrames": 0,
+            "cpuBoundFraction": 1,
+            "gpuBoundFraction": 0
+          },
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": {
+              "observedFrames": 2,
+              "unknownFrames": 0
+            },
+            "displayLatency": null
+          }
+        }
+      }
+    }
+  ]
+}

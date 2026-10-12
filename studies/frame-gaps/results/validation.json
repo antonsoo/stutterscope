@@ -1,0 +1,30 @@
+{
+  "fullSuiteSource": "c16af5e89d80ed861850af7517b42d455a99450a",
+  "finalSource": "3ce96b9e390c10609edae120f312686587a7e0ca",
+  "fullSuite": {
+    "node": "24.21.0",
+    "freshInstall": "npm ci",
+    "lint": "passed",
+    "typecheck": "passed",
+    "unit": 271,
+    "commaDecimalLocaleUnit": 271,
+    "productionBuild": "passed",
+    "chromiumFirefox": 72
+  },
+  "finalChange": "Move the PNG isolated-point fill color from the corner-bracket setup to the sparkline draw. CLI/core source unchanged.",
+  "finalChecks": {
+    "lint": "passed",
+    "typecheckAndBuild": "passed",
+    "targetedBrowser": 6,
+    "offlineStudyFlows": 4,
+    "fullReportCliParity": 28,
+    "installedReplay": {
+      "node22.6.0": 35,
+      "node24.21.0": 35
+    }
+  },
+  "buildCommand": "npm run build",
+  "buildOutput": "dist/",
+  "packageScope": "Local npm pack tarball, separately installed, precompiled modules matched. No npm release or manual hosted deployment.",
+  "screenshots": "All ten retained PNGs visually inspected: four browser views plus a report card for each of before and after."
+}

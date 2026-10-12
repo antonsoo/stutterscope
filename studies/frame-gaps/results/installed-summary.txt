@@ -1,0 +1,22 @@
+presentmon2-synthetic-demo.csv  PresentMon 2.x
+7,969 frames, 119.9s
+
+  Average FPS              66.5
+  1% low (percentile)      29.6 fps
+  1% low (slowest-mean)    21.3 fps
+  1% low (time-weighted)   28.7 fps
+  0.1% low (percentile)    29.2 fps
+  0.1% low (slowest-mean)  6.1 fps
+  0.1% low (time-weighted) 1.5 fps
+  P99 frame time           33.81 ms
+  P99.9 frame time         34.22 ms
+  Stutter events           28  (1.55% of capture time)
+  Hitches (>50ms)          2
+  Pacing (MASD)            5.29 ms
+  Pacing observations      7968 adjacent pairs; 0 gaps between analyzed frames
+  Dropped frames           4 (0.05% of observed)
+  Drop observations        7969/7969 frames observed; 0 unknown
+  CPU- / GPU-bound         25% / 75% (busy-time heuristic)
+  CPU/GPU observations     7969/7969 frames observed; 0 unknown
+  Display latency P99      68.33 ms
+  Latency observations     7969/7969 frames observed; 0 unknown

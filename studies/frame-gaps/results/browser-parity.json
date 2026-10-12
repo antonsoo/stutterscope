@@ -1,0 +1,198 @@
+[
+  {
+    "case": "first",
+    "browser": "chromium",
+    "width": 1440,
+    "completeReportMatches": true,
+    "reportSha256": "68a4c097c2ad01191740e9c52009d7685910fbf25ab98349ada444ad4866cebd"
+  },
+  {
+    "case": "first",
+    "browser": "chromium",
+    "width": 375,
+    "completeReportMatches": true,
+    "reportSha256": "68a4c097c2ad01191740e9c52009d7685910fbf25ab98349ada444ad4866cebd"
+  },
+  {
+    "case": "first",
+    "browser": "firefox",
+    "width": 1440,
+    "completeReportMatches": true,
+    "reportSha256": "68a4c097c2ad01191740e9c52009d7685910fbf25ab98349ada444ad4866cebd"
+  },
+  {
+    "case": "first",
+    "browser": "firefox",
+    "width": 375,
+    "completeReportMatches": true,
+    "reportSha256": "68a4c097c2ad01191740e9c52009d7685910fbf25ab98349ada444ad4866cebd"
+  },
+  {
+    "case": "recomputed",
+    "browser": "chromium",
+    "width": 1440,
+    "completeReportMatches": true,
+    "reportSha256": "95f90b37e44c72d6399fa1e28b50bc9aa3d3c19d741832ec4c28bb207dc8745d"
+  },
+  {
+    "case": "recomputed",
+    "browser": "chromium",
+    "width": 375,
+    "completeReportMatches": true,
+    "reportSha256": "95f90b37e44c72d6399fa1e28b50bc9aa3d3c19d741832ec4c28bb207dc8745d"
+  },
+  {
+    "case": "recomputed",
+    "browser": "firefox",
+    "width": 1440,
+    "completeReportMatches": true,
+    "reportSha256": "95f90b37e44c72d6399fa1e28b50bc9aa3d3c19d741832ec4c28bb207dc8745d"
+  },
+  {
+    "case": "recomputed",
+    "browser": "firefox",
+    "width": 375,
+    "completeReportMatches": true,
+    "reportSha256": "95f90b37e44c72d6399fa1e28b50bc9aa3d3c19d741832ec4c28bb207dc8745d"
+  },
+  {
+    "case": "selected",
+    "browser": "chromium",
+    "width": 1440,
+    "completeReportMatches": true,
+    "reportSha256": "eeb1872975dcb08aacd42949e7667ac71afc6fcad56e2175a55de2156b5a5d4a"
+  },
+  {
+    "case": "selected",
+    "browser": "chromium",
+    "width": 375,
+    "completeReportMatches": true,
+    "reportSha256": "eeb1872975dcb08aacd42949e7667ac71afc6fcad56e2175a55de2156b5a5d4a"
+  },
+  {
+    "case": "selected",
+    "browser": "firefox",
+    "width": 1440,
+    "completeReportMatches": true,
+    "reportSha256": "eeb1872975dcb08aacd42949e7667ac71afc6fcad56e2175a55de2156b5a5d4a"
+  },
+  {
+    "case": "selected",
+    "browser": "firefox",
+    "width": 375,
+    "completeReportMatches": true,
+    "reportSha256": "eeb1872975dcb08aacd42949e7667ac71afc6fcad56e2175a55de2156b5a5d4a"
+  },
+  {
+    "case": "restored",
+    "browser": "chromium",
+    "width": 1440,
+    "completeReportMatches": true,
+    "reportSha256": "95f90b37e44c72d6399fa1e28b50bc9aa3d3c19d741832ec4c28bb207dc8745d"
+  },
+  {
+    "case": "restored",
+    "browser": "chromium",
+    "width": 375,
+    "completeReportMatches": true,
+    "reportSha256": "95f90b37e44c72d6399fa1e28b50bc9aa3d3c19d741832ec4c28bb207dc8745d"
+  },
+  {
+    "case": "restored",
+    "browser": "firefox",
+    "width": 1440,
+    "completeReportMatches": true,
+    "reportSha256": "95f90b37e44c72d6399fa1e28b50bc9aa3d3c19d741832ec4c28bb207dc8745d"
+  },
+  {
+    "case": "restored",
+    "browser": "firefox",
+    "width": 375,
+    "completeReportMatches": true,
+    "reportSha256": "95f90b37e44c72d6399fa1e28b50bc9aa3d3c19d741832ec4c28bb207dc8745d"
+  },
+  {
+    "case": "regime",
+    "browser": "chromium",
+    "width": 1440,
+    "completeReportMatches": true,
+    "reportSha256": "4695e149055b8c0cbd5ca8b867fd05d4c0b0674dbb6ab9659d11cf01d3036de7"
+  },
+  {
+    "case": "regime",
+    "browser": "chromium",
+    "width": 375,
+    "completeReportMatches": true,
+    "reportSha256": "4695e149055b8c0cbd5ca8b867fd05d4c0b0674dbb6ab9659d11cf01d3036de7"
+  },
+  {
+    "case": "regime",
+    "browser": "firefox",
+    "width": 1440,
+    "completeReportMatches": true,
+    "reportSha256": "4695e149055b8c0cbd5ca8b867fd05d4c0b0674dbb6ab9659d11cf01d3036de7"
+  },
+  {
+    "case": "regime",
+    "browser": "firefox",
+    "width": 375,
+    "completeReportMatches": true,
+    "reportSha256": "4695e149055b8c0cbd5ca8b867fd05d4c0b0674dbb6ab9659d11cf01d3036de7"
+  },
+  {
+    "case": "game",
+    "browser": "chromium",
+    "width": 1440,
+    "completeReportMatches": true,
+    "reportSha256": "d16c8b707eab1ad09ab49b755ec55b18d19b51d2f6ca581bbe0c26b3e7c34cfd"
+  },
+  {
+    "case": "game",
+    "browser": "chromium",
+    "width": 375,
+    "completeReportMatches": true,
+    "reportSha256": "d16c8b707eab1ad09ab49b755ec55b18d19b51d2f6ca581bbe0c26b3e7c34cfd"
+  },
+  {
+    "case": "game",
+    "browser": "firefox",
+    "width": 1440,
+    "completeReportMatches": true,
+    "reportSha256": "d16c8b707eab1ad09ab49b755ec55b18d19b51d2f6ca581bbe0c26b3e7c34cfd"
+  },
+  {
+    "case": "game",
+    "browser": "firefox",
+    "width": 375,
+    "completeReportMatches": true,
+    "reportSha256": "d16c8b707eab1ad09ab49b755ec55b18d19b51d2f6ca581bbe0c26b3e7c34cfd"
+  },
+  {
+    "case": "overlay",
+    "browser": "chromium",
+    "width": 1440,
+    "completeReportMatches": true,
+    "reportSha256": "940e4c763f166e2d1143d64c4f04772d3b01c684b72409df62bb8c3827137e11"
+  },
+  {
+    "case": "overlay",
+    "browser": "chromium",
+    "width": 375,
+    "completeReportMatches": true,
+    "reportSha256": "940e4c763f166e2d1143d64c4f04772d3b01c684b72409df62bb8c3827137e11"
+  },
+  {
+    "case": "overlay",
+    "browser": "firefox",
+    "width": 1440,
+    "completeReportMatches": true,
+    "reportSha256": "940e4c763f166e2d1143d64c4f04772d3b01c684b72409df62bb8c3827137e11"
+  },
+  {
+    "case": "overlay",
+    "browser": "firefox",
+    "width": 375,
+    "completeReportMatches": true,
+    "reportSha256": "940e4c763f166e2d1143d64c4f04772d3b01c684b72409df62bb8c3827137e11"
+  }
+]

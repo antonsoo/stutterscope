@@ -1,0 +1,505 @@
+[
+  {
+    "browser": "chromium",
+    "version": "153.0.8010.12",
+    "width": 1440,
+    "errors": [],
+    "external": [],
+    "offlineRequests": [
+      "http://127.0.0.1:4195/stutterscope/assets/jetbrains-mono-greek-D3oMJlXt.woff2"
+    ],
+    "overflow": false,
+    "screenshot": "docs/assets/frame-gaps/before/chromium-1440.png",
+    "observations": {
+      "first": {
+        "tool": "stutterscope",
+        "schemaVersion": 4,
+        "generatedAt": "2026-10-12T00:28:59.889Z",
+        "source": {
+          "fileName": "hitches.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "frame",
+            "frame_time_ms"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid frame_time_ms, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "frame_time_ms",
+            "valueKind": "frametime_ms"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based"
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "frameCount": 2,
+            "stutterFrames": 0,
+            "hitchFrames": 2,
+            "totalTimeMs": 180,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 2,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false
+          }
+        ],
+        "metrics": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 60,
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "pacing": "PACING \u00b7 MASD\n60.00ms\nmean |\u0394|",
+      "card": "docs/assets/frame-gaps/before/report-card.png"
+    }
+  },
+  {
+    "browser": "chromium",
+    "version": "153.0.8010.12",
+    "width": 375,
+    "errors": [],
+    "external": [],
+    "offlineRequests": [
+      "http://127.0.0.1:4195/stutterscope/assets/jetbrains-mono-greek-D3oMJlXt.woff2"
+    ],
+    "overflow": false,
+    "screenshot": "docs/assets/frame-gaps/before/chromium-375.png",
+    "observations": {
+      "first": {
+        "tool": "stutterscope",
+        "schemaVersion": 4,
+        "generatedAt": "2026-10-12T00:29:00.745Z",
+        "source": {
+          "fileName": "hitches.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "frame",
+            "frame_time_ms"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid frame_time_ms, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "frame_time_ms",
+            "valueKind": "frametime_ms"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based"
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "frameCount": 2,
+            "stutterFrames": 0,
+            "hitchFrames": 2,
+            "totalTimeMs": 180,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 2,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false
+          }
+        ],
+        "metrics": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 60,
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "pacing": "PACING \u00b7 MASD\n60.00ms\nmean |\u0394|"
+    }
+  },
+  {
+    "browser": "firefox",
+    "version": "155.0",
+    "width": 1440,
+    "errors": [],
+    "external": [],
+    "offlineRequests": [
+      "http://127.0.0.1:4195/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+      "http://127.0.0.1:4195/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+      "http://127.0.0.1:4195/stutterscope/assets/jetbrains-mono-greek-D3oMJlXt.woff2",
+      "http://127.0.0.1:4195/stutterscope/assets/inter-latin-Dx4kXJAl.woff2"
+    ],
+    "overflow": false,
+    "screenshot": "docs/assets/frame-gaps/before/firefox-1440.png",
+    "observations": {
+      "first": {
+        "tool": "stutterscope",
+        "schemaVersion": 4,
+        "generatedAt": "2026-10-12T00:29:03.345Z",
+        "source": {
+          "fileName": "hitches.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "frame",
+            "frame_time_ms"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid frame_time_ms, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "frame_time_ms",
+            "valueKind": "frametime_ms"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based"
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "frameCount": 2,
+            "stutterFrames": 0,
+            "hitchFrames": 2,
+            "totalTimeMs": 180,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 2,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false
+          }
+        ],
+        "metrics": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 60,
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "pacing": "PACING \u00b7 MASD\n60.00ms\nmean |\u0394|"
+    }
+  },
+  {
+    "browser": "firefox",
+    "version": "155.0",
+    "width": 375,
+    "errors": [],
+    "external": [],
+    "offlineRequests": [
+      "http://127.0.0.1:4195/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+      "http://127.0.0.1:4195/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+      "http://127.0.0.1:4195/stutterscope/assets/jetbrains-mono-greek-D3oMJlXt.woff2",
+      "http://127.0.0.1:4195/stutterscope/assets/inter-latin-Dx4kXJAl.woff2"
+    ],
+    "overflow": false,
+    "screenshot": "docs/assets/frame-gaps/before/firefox-375.png",
+    "observations": {
+      "first": {
+        "tool": "stutterscope",
+        "schemaVersion": 4,
+        "generatedAt": "2026-10-12T00:29:04.373Z",
+        "source": {
+          "fileName": "hitches.csv",
+          "format": "generic",
+          "application": null,
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "columns": [
+            "frame",
+            "frame_time_ms"
+          ],
+          "skippedRows": 1,
+          "warnings": [
+            "line 3: missing/invalid frame_time_ms, row skipped"
+          ],
+          "omittedWarningDetails": 0,
+          "genericMapping": {
+            "valueColumn": "frame_time_ms",
+            "valueKind": "frametime_ms"
+          },
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 2,
+            "sourceDurationSec": 0.18,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 1,
+            "startSec": 0,
+            "endSec": 0.18,
+            "durationSec": 0.18,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based"
+        },
+        "episodes": [
+          {
+            "firstFrame": 1,
+            "lastFrame": 2,
+            "startSec": 0,
+            "endSec": 0.18,
+            "frameCount": 2,
+            "stutterFrames": 0,
+            "hitchFrames": 2,
+            "totalTimeMs": 180,
+            "longestFrameMs": 120,
+            "longestFrame": 2,
+            "firstSourceLine": 2,
+            "lastSourceLine": 4,
+            "touchesSelectionStart": false,
+            "touchesSelectionEnd": false
+          }
+        ],
+        "metrics": {
+          "frameCount": 2,
+          "durationSec": 0.18,
+          "averageFps": 11.11111111111111,
+          "meanOfInstantaneousFps": 12.5,
+          "percentilesMs": {
+            "p50": 90,
+            "p90": 114,
+            "p95": 117,
+            "p99": 119.4,
+            "p999": 119.94
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 8.375209380234505,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 8.33750208437552,
+            "meanOfSlowestMethodFps": 8.333333333333334,
+            "timeWeightedFps": 8.333333333333334
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 2,
+            "totalHitchTimeMs": 180,
+            "hitchTimeFraction": 1,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 60,
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "pacing": "PACING \u00b7 MASD\n60.00ms\nmean |\u0394|"
+    }
+  }
+]
