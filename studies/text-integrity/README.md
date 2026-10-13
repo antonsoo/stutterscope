@@ -97,6 +97,34 @@ allowed; if a file was already damaged and re-saved as valid Unicode, this check
 cannot recover its original identities or detect that history. Valid Unicode
 alone does not establish that the capture is complete or physically correct.
 
+## Clean archive and installed package
+
+The [verification receipt](verification.json) records a fresh archive of
+implementation `0b710e1`: all 353 tracked files stayed byte-identical through
+installation and checks. Node 24.21.0 completed `npm ci`, lint, type checking,
+343 core checks in each of the default and German locales, both builds and
+76 Chromium/Firefox checks. The
+[core](results/clean-tests.txt), [German-locale](results/clean-tests-de.txt)
+and [browser](results/clean-browser.txt) logs are retained with the temporary
+archive path normalized. All 30 clean web-build files matched the build used
+for the offline observations above. All generated screenshots were inspected.
+
+The local npm tarball is 46,207 bytes, SHA-256
+`bcd66f853873a37c1db0b558a4f00615481542d8c44722c33904a1c831b0fcef`.
+It was installed in a separate directory with lifecycle scripts disabled;
+all 22 compiled runtime files matched the clean build. All 23 cases agreed
+with the intended outcomes on both the declared minimum
+[Node 22.6.0](results/installed-node22.json) and
+[Node 24.21.0](results/installed-node24.json), with the same reports as the
+corrected source. The installed executable also completed normal summary and
+interval-comparison commands on the existing synthetic samples.
+
+After the archive run, the replay runner was tightened to require the explicit
+`Invalid UTF-` error in addition to exit 1 and empty stdout. Replaying the
+baseline, corrected source and both installed runtimes preserved every retained
+observation. No runtime code changed after the clean checks. Package version
+remains 0.2.5; neither the tarball nor the web build was published.
+
 ## Reproduce
 
 ```bash

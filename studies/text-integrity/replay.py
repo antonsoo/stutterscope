@@ -65,7 +65,7 @@ def main():
         if "expected" in case:
             ok = record["status"] == case["expected"]
             if case["expected"] == "rejected":
-                ok = ok and run.returncode == 1 and run.stdout == ""
+                ok = ok and run.returncode == 1 and run.stdout == "" and "Invalid UTF-" in stderr
             if case.get("frames") and run.returncode == 0:
                 ok = ok and record["frames"] == case["frames"] and math.isclose(record["averageFps"], case["averageFps"], rel_tol=1e-12)
                 ok = ok and len(record["streams"]) == case["streams"] and record["application"] == case["application"]

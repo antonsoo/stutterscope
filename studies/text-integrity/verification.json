@@ -1,0 +1,308 @@
+{
+  "implementationCommit": "0b710e126bb50620e41a8628e632efdb78eb6a99",
+  "nodeBuild": "v24.21.0",
+  "steps": [
+    {
+      "name": "clean-install",
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "exitCode": 0,
+      "seconds": 3.828
+    },
+    {
+      "name": "clean-lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "seconds": 5.393
+    },
+    {
+      "name": "clean-types",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 1.947
+    },
+    {
+      "name": "clean-tests",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--maxWorkers=1"
+      ],
+      "exitCode": 0,
+      "seconds": 10.739
+    },
+    {
+      "name": "clean-tests-de",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--maxWorkers=1"
+      ],
+      "exitCode": 0,
+      "seconds": 10.742
+    },
+    {
+      "name": "clean-build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 5.618
+    },
+    {
+      "name": "clean-cli",
+      "command": [
+        "npm",
+        "run",
+        "build:cli"
+      ],
+      "exitCode": 0,
+      "seconds": 1.257
+    },
+    {
+      "name": "clean-browser",
+      "command": [
+        "npm",
+        "run",
+        "test:browser"
+      ],
+      "exitCode": 0,
+      "seconds": 58.36
+    },
+    {
+      "name": "clean-pack",
+      "command": [
+        "npm",
+        "pack",
+        "--ignore-scripts",
+        "--pack-destination",
+        "<scratch>"
+      ],
+      "exitCode": 0,
+      "seconds": 0.454
+    },
+    {
+      "name": "artifact-install",
+      "command": [
+        "npm",
+        "install",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "<scratch>/antonsoloviev-stutterscope-0.2.5.tgz"
+      ],
+      "exitCode": 0,
+      "seconds": 0.372
+    },
+    {
+      "name": "installed-node22",
+      "command": [
+        "python3",
+        "-I",
+        "<scratch>/clean-0b710e1/studies/text-integrity/replay.py",
+        "<scratch>/installed/node_modules/@antonsoloviev/stutterscope/dist-cli/cli/index.js",
+        "--label",
+        "installed-node22",
+        "--node",
+        "<node22>"
+      ],
+      "exitCode": 0,
+      "seconds": 1.304
+    },
+    {
+      "name": "version-node22",
+      "command": [
+        "<node22>",
+        "<scratch>/installed/node_modules/.bin/stutterscope",
+        "--version"
+      ],
+      "exitCode": 0,
+      "seconds": 0.045
+    },
+    {
+      "name": "summary-node22",
+      "command": [
+        "<node22>",
+        "<scratch>/installed/node_modules/.bin/stutterscope",
+        "summary",
+        "<scratch>/clean-0b710e1/examples/samples/presentmon2-synthetic-demo.csv"
+      ],
+      "exitCode": 0,
+      "seconds": 0.1
+    },
+    {
+      "name": "compare-node22",
+      "command": [
+        "<node22>",
+        "<scratch>/installed/node_modules/.bin/stutterscope",
+        "compare",
+        "<scratch>/clean-0b710e1/examples/controlled-browser/controlled-a.csv",
+        "<scratch>/clean-0b710e1/examples/controlled-browser/controlled-b.csv",
+        "--a-start",
+        "1.5",
+        "--a-end",
+        "8.5",
+        "--b-start",
+        "1.5",
+        "--b-end",
+        "8.5",
+        "--json"
+      ],
+      "exitCode": 0,
+      "seconds": 0.056
+    },
+    {
+      "name": "installed-node24",
+      "command": [
+        "python3",
+        "-I",
+        "<scratch>/clean-0b710e1/studies/text-integrity/replay.py",
+        "<scratch>/installed/node_modules/@antonsoloviev/stutterscope/dist-cli/cli/index.js",
+        "--label",
+        "installed-node24",
+        "--node",
+        "<node24>"
+      ],
+      "exitCode": 0,
+      "seconds": 0.98
+    },
+    {
+      "name": "version-node24",
+      "command": [
+        "<node24>",
+        "<scratch>/installed/node_modules/.bin/stutterscope",
+        "--version"
+      ],
+      "exitCode": 0,
+      "seconds": 0.036
+    },
+    {
+      "name": "summary-node24",
+      "command": [
+        "<node24>",
+        "<scratch>/installed/node_modules/.bin/stutterscope",
+        "summary",
+        "<scratch>/clean-0b710e1/examples/samples/presentmon2-synthetic-demo.csv"
+      ],
+      "exitCode": 0,
+      "seconds": 0.092
+    },
+    {
+      "name": "compare-node24",
+      "command": [
+        "<node24>",
+        "<scratch>/installed/node_modules/.bin/stutterscope",
+        "compare",
+        "<scratch>/clean-0b710e1/examples/controlled-browser/controlled-a.csv",
+        "<scratch>/clean-0b710e1/examples/controlled-browser/controlled-b.csv",
+        "--a-start",
+        "1.5",
+        "--a-end",
+        "8.5",
+        "--b-start",
+        "1.5",
+        "--b-end",
+        "8.5",
+        "--json"
+      ],
+      "exitCode": 0,
+      "seconds": 0.045
+    }
+  ],
+  "web": {
+    "files": 30,
+    "allMatchOfflineTestedBuild": true,
+    "sha256": {
+      "index.html": "8043c5f1e9f24a443f33acdfe29f5fdd4e2ab91b0d9dfe279086dd6a9f87c7e9",
+      "samples/mangohud-synthetic-demo.csv": "914efc0329f0180f4d5765bb4a936829819335a1f9f385239fe4b1cc518c0902",
+      "samples/presentmon2-synthetic-demo.csv": "69826838214e56ebe770a6630fbdcbfd671b23b737493512aeffa9ec1209b900",
+      "samples/ocat-synthetic-demo.csv": "966125eef3db46eb973d40e15d63097bae33ad9f79211cc126bdddc0df595dba",
+      "samples/frameview-synthetic-demo.csv": "14506dfd27f6df3bf65cef74bea3e0cf1e5bd8cf71fe8b5b0a6366d33811d094",
+      "samples/manifest.json": "8fad4687b513b6622c1f9a971926241ea0ac45445c235bf30130c86f54195e65",
+      "samples/presentmon1-synthetic-demo.csv": "2a79f4ac252ef248111cf0f5b8f9c3167c41af78cdbad21b54dc124081967fa8",
+      "samples/generic-synthetic-demo.csv": "3bc8f650fbbe12410248dca64439866acefcbe6ce40c07f8d228bb94cee0081b",
+      "samples/capframex-synthetic-demo.csv": "a51fa824f31df997997491da14429a58fc20cb4160312e804e50ed5f9c022c34",
+      "telemetry/controlled-partial-presentmon2.csv": "91dedf895e23ca9a32736adeb70e654cbd11ad392846ad30afc13b00b2c926a8",
+      "controlled-browser/capture.json": "1d8faa03441c4b208c151f98affa213f43c5ae9a54db11b69e1a131bd8aef854",
+      "controlled-browser/controlled-a.csv": "8b4afb5a19745287d1b9779a06e47694b3089d6b127c7bac281afe7d69acbda4",
+      "controlled-browser/controlled-b.csv": "3034ff1dc1db38567396acbb8ae9ad763a018b6e63baf27401d0b6305a1bd405",
+      "controlled-browser/README.md": "b5deb6728d2a802392e57672e42a5887d799786d4158a24197a9d0facea340f1",
+      "assets/index-BjCyV6TJ.js.map": "d6a144dfa0fa9d3d631eb0ef4602c470e076c1270061a0198d81353157a2e17d",
+      "assets/jetbrains-mono-cyrillic-Buze_B52.woff2": "e17cfd15fb96909d64095015f958207063a0c07191da3512df7d560a781aebdf",
+      "assets/inter-vietnamese-CBcvBZtf.woff2": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2",
+      "assets/jetbrains-mono-latin-ext-DIC32ArD.woff2": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52",
+      "assets/index-x_73MQio.css": "f2dd2a21378d496b931b0546b7c31fdbcca39c59235d32baffcc7ab9683d9799",
+      "assets/inter-greek-CkhJZR-_.woff2": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6",
+      "assets/parse.worker-D5v1al8N.js.map": "b7cc6cc3ff816382678e0088e4150e6f04a3ae9a0a6e03769f604e8cc7ae9829",
+      "assets/inter-cyrillic-ext-BOeWTOD4.woff2": "ca157063339ac4ad418f214f3abfed119b0798ab4d377386ce5c9e5a7a435ebd",
+      "assets/inter-latin-Dx4kXJAl.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+      "assets/inter-greek-ext-DlzME5K_.woff2": "6e9e020a25f9b56d418f2c085b1d3c09725a4da23fe693a5b463064606732190",
+      "assets/jetbrains-mono-greek-D3oMJlXt.woff2": "0a557721b1f8b36d3f3f84442689a71ca4a744300abcb46a1953f51bfc663b66",
+      "assets/jetbrains-mono-vietnamese-BehTv68k.woff2": "c89b9cc0bc6262bd4f8d8494b6961601f3aefa829d08c2e3635f4d501d3a47c2",
+      "assets/inter-cyrillic-DqGufNeO.woff2": "71d5ee93cc1e9f1d520a3a8b66456de18c7879d8df09d57fcd2eaff75fef0075",
+      "assets/index-BjCyV6TJ.js": "43fcf9008f26839cafe5538524d67466f44c6332210a685ba9e1458aaaea1d87",
+      "assets/jetbrains-mono-latin-6fWv1k7M.woff2": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be",
+      "assets/inter-latin-ext-DO1Apj_S.woff2": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956"
+    }
+  },
+  "package": {
+    "name": "antonsoloviev-stutterscope-0.2.5.tgz",
+    "bytes": 46207,
+    "sha256": "bcd66f853873a37c1db0b558a4f00615481542d8c44722c33904a1c831b0fcef"
+  },
+  "runtime": {
+    "files": 22,
+    "allInstalledBytesMatch": true,
+    "sha256": {
+      "core/csv.js": "0af9f09b9523db052ab2c6454235e5bd8449570efec7b14e5518a70aedaf9d6f",
+      "core/buffer.js": "e873af844bc1c061472297ea7e56fd5fd074048a9062f65e21fffe5ad593fa1c",
+      "core/analysis.js": "cb8a916ef1b5155034344f38bc44e18442988b261e3b08eb74704aa10bfe0de4",
+      "core/streams.js": "39d3a84849e52cf2108cb25177105f246983ad05b9334752f2d0afff4596df7a",
+      "core/metrics.js": "e08b13c47d60d156a13593d331ddd4ef02a40805991d54c4d3d60d09eb70a524",
+      "core/stream.js": "b175271390b1b1ce51c0e22951adae63d2f133aa287c6ce8f6191637275bb249",
+      "core/index.js": "da269c2a188596acaef3a1371494578d3b121cf2a9a958fbe958faf8ced0d485",
+      "core/report.js": "ac7cc75e1b2c590d57bf5e5c59b90dd264aa09760407410d9f2df84857ab4b9a",
+      "core/episodes.js": "326def178fb3e8833f433109dcedd05728fa735418e86d242c883436294dfa72",
+      "core/encoding.js": "c4747c375a99d469f130a4f1a7f84d58a9e82b2cccfe8043ae86797778207a75",
+      "core/continuity.js": "3727cec1c0e05457f05e6091debec38c974360e613d3d5522769f91ab547783b",
+      "core/types.js": "d34bba7125fd99ddd4b49ea7d41d601f07568be60bb4eb4e2398ae99b1e2e8ca",
+      "cli/index.js": "aa3edaee41a456757903a7c482a79821e94734494aaa51b09c38004957ed588d",
+      "cli/version.js": "025c43b0174cddba9eed71580899a21e527500cba7b5a82adb384c647d228a7e",
+      "core/parsers/presentmon2.js": "699f5de181f8bf8a3e6b5555d2318d6f8824c9bc4e34ef9f97cde47463a7a25a",
+      "core/parsers/generic.js": "60face284e218658251b0d678c8834a2e78184fbacb1bf66f2c4b0bd29d21029",
+      "core/parsers/ocat.js": "540a9e3f3e9970b045122de5dbe48b2c6979aff9916cfcf48286f39f170d0a8f",
+      "core/parsers/presentmon1.js": "b220e0406ebbd8d49e203f7dfb61f944b92140d449ec819bc6f726cb36c597fb",
+      "core/parsers/index.js": "ff42582427e4f3a1dd5cc3edf0f5514aa729b433916283e6799dff6abc4488bd",
+      "core/parsers/frameview.js": "6e8d4c55d4f2022ec6dd9c028d3c3a2e7b9d8447b9314c07b918bb0970952f2c",
+      "core/parsers/mangohud.js": "24057586b659e20559bd6e18d32935e0b4dc879711f3dc5f65b888894b2f3349",
+      "core/parsers/capframex.js": "a2c84980c2309c41be7c20ef6e127a9a0bc3ed1cf8918277eccd6186e2e54500"
+    }
+  },
+  "archive": {
+    "trackedFiles": 353,
+    "allBytesUnchanged": true
+  },
+  "scope": "local clean source, packed CLI and offline browser build; no registry release or deployment",
+  "checkCounts": {
+    "core": 343,
+    "coreGermanLocale": 343,
+    "browser": 76,
+    "encodingCasesPerInstalledRuntime": 23,
+    "publicCapturesUnchanged": 34
+  },
+  "replayFollowup": "The final runner additionally requires an Invalid UTF- error on rejection. Replaying baseline, source and both installed runtimes preserves every retained observation."
+}

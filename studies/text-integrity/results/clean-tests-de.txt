@@ -1,0 +1,16 @@
+npm notice run @antonsoloviev/stutterscope@0.2.5 test
+npm notice run vitest run --maxWorkers=1
+
+ RUN  v5.0.1 <clean archive>
+
+(node:3722961) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+ Test Files  25 passed (25)
+      Tests  343 passed (343)
+   Start at  23:37:06
+   Duration  10.34s (tests 87%, import 6%, transform 5%, worker 1%)
+
+    Isolate  25 workers spawned · ~88ms startup each (spawn + environment, per file)
+             at least ~2.10s faster with isolate: false — reuses workers across files instead of one per file
+

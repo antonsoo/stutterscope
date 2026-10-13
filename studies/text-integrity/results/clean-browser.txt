@@ -1,0 +1,119 @@
+npm notice run @antonsoloviev/stutterscope@0.2.5 test:browser
+npm notice run npm run build && playwright test
+npm notice run @antonsoloviev/stutterscope@0.2.5 build
+npm notice run tsc -p tsconfig.json --noEmit && vite build
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 29 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                         2.51 kB │ gzip:  0.99 kB
+dist/assets/jetbrains-mono-vietnamese-BehTv68k.woff2    5.88 kB
+dist/assets/jetbrains-mono-greek-D3oMJlXt.woff2         6.83 kB
+dist/assets/jetbrains-mono-cyrillic-Buze_B52.woff2      8.87 kB
+dist/assets/inter-vietnamese-CBcvBZtf.woff2            10.25 kB
+dist/assets/inter-greek-ext-DlzME5K_.woff2             11.23 kB
+dist/assets/jetbrains-mono-latin-ext-DIC32ArD.woff2    11.62 kB
+dist/assets/inter-cyrillic-DqGufNeO.woff2              18.74 kB
+dist/assets/inter-greek-CkhJZR-_.woff2                 18.99 kB
+dist/assets/inter-cyrillic-ext-BOeWTOD4.woff2          25.96 kB
+dist/assets/jetbrains-mono-latin-6fWv1k7M.woff2        31.43 kB
+dist/assets/inter-latin-Dx4kXJAl.woff2                 48.25 kB
+dist/assets/inter-latin-ext-DO1Apj_S.woff2             85.06 kB
+dist/assets/index-x_73MQio.css                         37.77 kB │ gzip:  7.04 kB
+dist/assets/index-BjCyV6TJ.js                         148.11 kB │ gzip: 52.09 kB │ map: 472.37 kB
+
+✓ built in 371ms
+[WebServer] npm notice run @antonsoloviev/stutterscope@0.2.5 preview
+[WebServer] npm notice run vite preview --host 127.0.0.1 --port 4193 --strictPort
+[WebServer] (node:3723458) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 76 tests using 2 workers
+
+(node:3723495) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3723496) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [chromium] › tests/browser/app.spec.js:125:1 › a newer import cancels its predecessor and exports only the selected capture (933ms)
+  ✓   3 [chromium] › tests/browser/app.spec.js:137:1 › cancelling the first import keeps the empty screen usable (429ms)
+  ✓   4 [chromium] › tests/browser/app.spec.js:149:1 › New session retires an in-flight comparison and resets applied settings (774ms)
+  ✓   5 [chromium] › tests/browser/app.spec.js:167:1 › removing comparison cancels an in-flight process switch (791ms)
+  ✓   1 [chromium] › tests/browser/app.spec.js:14:1 › partial telemetry keeps observed denominators through worker, interval, and downloaded reports (3.1s)
+  ✓   6 [chromium] › tests/browser/app.spec.js:184:3 › sample manifest-http errors are visible and can retry (563ms)
+  ✓   7 [chromium] › tests/browser/app.spec.js:184:3 › sample manifest-json errors are visible and can retry (563ms)
+  ✓   8 [chromium] › tests/browser/app.spec.js:184:3 › sample download-http errors are visible and can retry (545ms)
+  ✓   9 [chromium] › tests/browser/app.spec.js:200:1 › a delayed sample download cannot supersede a chosen local capture (435ms)
+  ✓  10 [chromium] › tests/browser/app.spec.js:218:1 › worker startup failure is actionable and Retry import creates a healthy worker offline (464ms)
+  ✓  11 [chromium] › tests/browser/app.spec.js:243:1 › settings validate without changing reports and apply on keyboard submission (799ms)
+  ✓  12 [chromium] › tests/browser/app.spec.js:263:1 › a failure updating B preserves both reports and retry restores its cached source (931ms)
+  ✓  13 [chromium] › tests/browser/app.spec.js:280:1 › mapping can be cancelled with Escape; exports retain mapping and skipped-row evidence (883ms)
+  ✓  15 [chromium] › tests/browser/app.spec.js:323:1 › New session cancels a pending settings calculation without resurrecting the report (584ms)
+  ✓  14 [chromium] › tests/browser/app.spec.js:305:1 › an in-flight settings result cannot overwrite a comparison loaded afterward (897ms)
+  ✓  17 [chromium] › tests/browser/app.spec.js:383:1 › loaded plots resize from desktop to phone and back without horizontal overflow (631ms)
+  ✓  16 [chromium] › tests/browser/app.spec.js:337:1 › redraw and reset release observers and global chart handlers (849ms)
+  ✓  18 [chromium] › tests/browser/app.spec.js:395:3 › production comparison is accessible at 1280px and exports a PNG (3.3s)
+  ✓  19 [chromium] › tests/browser/app.spec.js:395:3 › production comparison is accessible at 375px and exports a PNG (3.1s)
+  ✓  20 [chromium] › tests/browser/csv-integrity.spec.js:19:3 › presentmon2-duplicate: import refuses false metrics and a corrected capture can be exported (841ms)
+  ✓  21 [chromium] › tests/browser/csv-integrity.spec.js:19:3 › quote-in-number: import refuses false metrics and a corrected capture can be exported (811ms)
+  ✓  22 [chromium] › tests/browser/csv-integrity.spec.js:19:3 › generic-duplicate: import refuses false metrics and a corrected capture can be exported (577ms)
+  ✓  23 [chromium] › tests/browser/csv-integrity.spec.js:42:1 › a rejected replacement preserves the identity and export of the previous valid capture (646ms)
+  ✓  25 [chromium] › tests/browser/intervals.spec.js:58:1 › recorded experiment opens both scene intervals, preserves evidence, and exports both runs offline (1.4s)
+  ✓  24 [chromium] › tests/browser/frame-gaps.spec.js:11:1 › source-gap evidence survives offline import, worker recomputation and interval restoration (1.5s)
+  ✓  26 [chromium] › tests/browser/intervals.spec.js:85:1 › viewing an episode does not change statistics; Analyze visible trace applies the viewed interval (1.7s)
+  ✓  27 [chromium] › tests/browser/intervals.spec.js:104:1 › bad ranges and worker failures retain results; retry and settings preserve each interval (1.8s)
+  ✓  29 [chromium] › tests/browser/intervals.spec.js:152:1 › episode pages bound the table while filters retain complete downloadable evidence (1.1s)
+  ✓  28 [chromium] › tests/browser/intervals.spec.js:128:1 › cancel and a replacement source cannot receive an obsolete interval result (1.6s)
+  ✓  30 [chromium] › tests/browser/intervals.spec.js:171:3 › interval and source-evidence controls are accessible at 1440px (3.0s)
+  ✓  31 [chromium] › tests/browser/intervals.spec.js:171:3 › interval and source-evidence controls are accessible at 375px (3.0s)
+  ✓  33 [chromium] › tests/browser/intervals.spec.js:185:1 › periodic MangoHud logging cannot replace the current report with misleading frame metrics (1.2s)
+  ✓  32 [chromium] › tests/browser/intervals.spec.js:171:3 › interval and source-evidence controls are accessible at 320px (2.6s)
+  ✓  34 [chromium] › tests/browser/offline-import.spec.js:15:1 › first local import, comparison, replacement and exports work after disconnecting (1.5s)
+  ✓  35 [chromium] › tests/browser/stream-identity.spec.js:13:3 › application identity and missing cells survive offline worker selection at 1440px (1.5s)
+  ✓  36 [chromium] › tests/browser/stream-identity.spec.js:13:3 › application identity and missing cells survive offline worker selection at 375px (1.3s)
+  ✓  38 [chromium] › tests/browser/timestamp-gaps.spec.js:6:3 › missing timestamps remain missing in the worker and JSON export at 375px (704ms)
+  ✓  37 [chromium] › tests/browser/timestamp-gaps.spec.js:6:3 › missing timestamps remain missing in the worker and JSON export at 1440px (774ms)
+(node:3724692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3724686) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  39 [firefox] › tests/browser/app.spec.js:125:1 › a newer import cancels its predecessor and exports only the selected capture (1.8s)
+  ✓  41 [firefox] › tests/browser/app.spec.js:137:1 › cancelling the first import keeps the empty screen usable (830ms)
+  ✓  42 [firefox] › tests/browser/app.spec.js:149:1 › New session retires an in-flight comparison and resets applied settings (975ms)
+  ✓  43 [firefox] › tests/browser/app.spec.js:167:1 › removing comparison cancels an in-flight process switch (991ms)
+  ✓  40 [firefox] › tests/browser/app.spec.js:14:1 › partial telemetry keeps observed denominators through worker, interval, and downloaded reports (4.3s)
+  ✓  44 [firefox] › tests/browser/app.spec.js:184:3 › sample manifest-http errors are visible and can retry (892ms)
+  ✓  45 [firefox] › tests/browser/app.spec.js:184:3 › sample manifest-json errors are visible and can retry (911ms)
+  ✓  46 [firefox] › tests/browser/app.spec.js:184:3 › sample download-http errors are visible and can retry (886ms)
+  ✓  47 [firefox] › tests/browser/app.spec.js:200:1 › a delayed sample download cannot supersede a chosen local capture (783ms)
+  ✓  48 [firefox] › tests/browser/app.spec.js:218:1 › worker startup failure is actionable and Retry import creates a healthy worker offline (806ms)
+  ✓  49 [firefox] › tests/browser/app.spec.js:243:1 › settings validate without changing reports and apply on keyboard submission (1.0s)
+  ✓  50 [firefox] › tests/browser/app.spec.js:263:1 › a failure updating B preserves both reports and retry restores its cached source (1.2s)
+  ✓  51 [firefox] › tests/browser/app.spec.js:280:1 › mapping can be cancelled with Escape; exports retain mapping and skipped-row evidence (1.2s)
+  ✓  52 [firefox] › tests/browser/app.spec.js:305:1 › an in-flight settings result cannot overwrite a comparison loaded afterward (1.1s)
+  ✓  53 [firefox] › tests/browser/app.spec.js:323:1 › New session cancels a pending settings calculation without resurrecting the report (790ms)
+  ✓  55 [firefox] › tests/browser/app.spec.js:383:1 › loaded plots resize from desktop to phone and back without horizontal overflow (727ms)
+  ✓  54 [firefox] › tests/browser/app.spec.js:337:1 › redraw and reset release observers and global chart handlers (1.9s)
+  ✓  56 [firefox] › tests/browser/app.spec.js:395:3 › production comparison is accessible at 1280px and exports a PNG (3.2s)
+  ✓  58 [firefox] › tests/browser/csv-integrity.spec.js:19:3 › presentmon2-duplicate: import refuses false metrics and a corrected capture can be exported (713ms)
+  ✓  57 [firefox] › tests/browser/app.spec.js:395:3 › production comparison is accessible at 375px and exports a PNG (3.1s)
+  ✓  60 [firefox] › tests/browser/csv-integrity.spec.js:19:3 › generic-duplicate: import refuses false metrics and a corrected capture can be exported (706ms)
+  ✓  59 [firefox] › tests/browser/csv-integrity.spec.js:19:3 › quote-in-number: import refuses false metrics and a corrected capture can be exported (1.6s)
+  ✓  61 [firefox] › tests/browser/csv-integrity.spec.js:42:1 › a rejected replacement preserves the identity and export of the previous valid capture (707ms)
+  ✓  62 [firefox] › tests/browser/frame-gaps.spec.js:11:1 › source-gap evidence survives offline import, worker recomputation and interval restoration (1.2s)
+  ✓  63 [firefox] › tests/browser/intervals.spec.js:58:1 › recorded experiment opens both scene intervals, preserves evidence, and exports both runs offline (1.0s)
+  ✓  64 [firefox] › tests/browser/intervals.spec.js:104:1 › bad ranges and worker failures retain results; retry and settings preserve each interval (1.3s)
+  ✓  65 [firefox] › tests/browser/intervals.spec.js:85:1 › viewing an episode does not change statistics; Analyze visible trace applies the viewed interval (1.4s)
+  ✓  67 [firefox] › tests/browser/intervals.spec.js:152:1 › episode pages bound the table while filters retain complete downloadable evidence (845ms)
+  ✓  66 [firefox] › tests/browser/intervals.spec.js:128:1 › cancel and a replacement source cannot receive an obsolete interval result (1.4s)
+  ✓  68 [firefox] › tests/browser/intervals.spec.js:171:3 › interval and source-evidence controls are accessible at 1440px (2.8s)
+  ✓  69 [firefox] › tests/browser/intervals.spec.js:171:3 › interval and source-evidence controls are accessible at 375px (2.9s)
+  ✓  71 [firefox] › tests/browser/intervals.spec.js:185:1 › periodic MangoHud logging cannot replace the current report with misleading frame metrics (1.3s)
+  ✓  70 [firefox] › tests/browser/intervals.spec.js:171:3 › interval and source-evidence controls are accessible at 320px (2.4s)
+  ✓  72 [firefox] › tests/browser/offline-import.spec.js:15:1 › first local import, comparison, replacement and exports work after disconnecting (1.5s)
+  ✓  73 [firefox] › tests/browser/stream-identity.spec.js:13:3 › application identity and missing cells survive offline worker selection at 1440px (1.6s)
+  ✓  75 [firefox] › tests/browser/timestamp-gaps.spec.js:6:3 › missing timestamps remain missing in the worker and JSON export at 1440px (952ms)
+  ✓  74 [firefox] › tests/browser/stream-identity.spec.js:13:3 › application identity and missing cells survive offline worker selection at 375px (2.3s)
+  ✓  76 [firefox] › tests/browser/timestamp-gaps.spec.js:6:3 › missing timestamps remain missing in the worker and JSON export at 375px (941ms)
+
+  76 passed (55.2s)
