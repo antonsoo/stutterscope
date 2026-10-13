@@ -1,5 +1,5 @@
 import { LineScanner } from "./csv.ts";
-import { detectEncoding } from "./encoding.ts";
+import { decodeChunk, detectEncoding } from "./encoding.ts";
 import { ParseError, type ParseProgress, type ProgressCallback, type StreamingParser, type FrameSeries } from "./types.ts";
 
 /**
@@ -20,7 +20,7 @@ export async function parseFileStreaming(
 ): Promise<FrameSeries> {
   const totalBytes = file.size;
   // The encoding shows in the file's first two bytes, which may not be the first chunk's.
-  const decoder = new TextDecoder(detectEncoding(new Uint8Array(await file.slice(0, 2).arrayBuffer())));
+  const decoder = new TextDecoder(detectEncoding(new Uint8Array(await file.slice(0, 2).arrayBuffer())), { fatal: true });
   const reader = file.stream().getReader();
   const scanner = new LineScanner();
 
@@ -42,7 +42,7 @@ export async function parseFileStreaming(
       const { done, value } = await reader.read();
       if (done) break;
       bytesRead += value.byteLength;
-      const chunk = decoder.decode(value, { stream: true });
+      const chunk = decodeChunk(decoder, value, true);
       for (const line of scanner.feed(chunk)) {
         if (line.length > 0) {
           parser.pushLine(line, lineIndex);
@@ -52,7 +52,7 @@ export async function parseFileStreaming(
       }
       report(false);
     }
-    const tail = decoder.decode(); // flush any pending multi-byte sequence
+    const tail = decodeChunk(decoder); // flush and validate any pending multi-byte sequence
     if (tail.length > 0) {
       for (const line of scanner.feed(tail)) {
         if (line.length > 0) {

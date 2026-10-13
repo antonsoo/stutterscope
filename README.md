@@ -271,6 +271,12 @@ pre-built or committed.
 
 ## Accuracy and limitations
 
+Imports require valid UTF-8 or BOM-marked UTF-16. Invalid byte sequences are
+rejected, including damage beyond the browser's format preview. Replacing them
+with a placeholder could merge distinct application names and fabricate pacing
+metrics. [Byte-level counterexamples and unchanged public captures](studies/text-integrity/README.md)
+document this source correction; it has not been released to npm or the live demo.
+
 CSV imports reject duplicate named headers and malformed quotes before reporting
 metrics. A retained two-frame counterexample previously reported 100 FPS by
 silently choosing one of two `FrameTime` columns; it now identifies the ambiguity.

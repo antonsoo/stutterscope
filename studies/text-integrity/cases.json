@@ -1,0 +1,195 @@
+[
+  {
+    "id": "legacy-names",
+    "file": "fixtures/legacy-names.csv",
+    "sha256": "321d10df69de760775e808736091510dc4ec1c9041de06346244b8618d735b2a",
+    "bytes": 515,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf8-stray",
+    "file": "fixtures/utf8-stray.csv",
+    "sha256": "f48956d0534d4ef557c6255a7b80e7c4c2677c1dd4c47bc314190e6f5856e784",
+    "bytes": 49,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf8-continuation",
+    "file": "fixtures/utf8-continuation.csv",
+    "sha256": "e8cca13d2f13cf05e62c3c794e460fb994d0de71b153730433d71b60e30a4764",
+    "bytes": 51,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf8-overlong",
+    "file": "fixtures/utf8-overlong.csv",
+    "sha256": "dd3415fdd62fa588d861837c334fdb097365d58a380f7e5a277689a9659e2db2",
+    "bytes": 50,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf8-surrogate",
+    "file": "fixtures/utf8-surrogate.csv",
+    "sha256": "7d4f663e3d6a1dbeda90124feb91abb3d5b8a699de1b72dc81c399f8ee7be717",
+    "bytes": 51,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf8-out-of-range",
+    "file": "fixtures/utf8-out-of-range.csv",
+    "sha256": "a54256ed9748595b346e245d445d4da388ca855610d2b7c297db2887da215575",
+    "bytes": 52,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf8-truncated",
+    "file": "fixtures/utf8-truncated.csv",
+    "sha256": "a82697d03e404ead02881165ebfa9f3e0dbe92a185a20ead81ec8b80f1be4657",
+    "bytes": 49,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf8-late-damage",
+    "file": "fixtures/utf8-late-damage.csv",
+    "sha256": "ea68ae91030e09b8c486b45ba61cc61870fc234b1e4b9f546638b57206d41fae",
+    "bytes": 65542,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf8-complete-at-sample-limit",
+    "file": "fixtures/utf8-complete-at-sample-limit.csv",
+    "sha256": "38ffe1180c2e3d00b056fbbe129ac38beeb560c34383c50c818c2857a76f6f6e",
+    "bytes": 65536,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf16le-high-surrogate",
+    "file": "fixtures/utf16le-high-surrogate.csv",
+    "sha256": "cede7721a4884eeca53bdef69913f8680866f542af93d941edbd67ca03b8ed3c",
+    "bytes": 100,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf16le-low-surrogate",
+    "file": "fixtures/utf16le-low-surrogate.csv",
+    "sha256": "27cd23a8da4168460873bde4d1b1fa898dd08d2509ef34f976438e30c173dc9c",
+    "bytes": 100,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf16le-odd-tail",
+    "file": "fixtures/utf16le-odd-tail.csv",
+    "sha256": "5133232c82c1c47e966f4e08398f1703913adbb3bffb4c28ce29bbeabf4de823",
+    "bytes": 105,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf16be-high-surrogate",
+    "file": "fixtures/utf16be-high-surrogate.csv",
+    "sha256": "9635b1176a52d8d0f42db09158572b4864a9047f523b6d77a71e8cbd1519e940",
+    "bytes": 100,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf16be-low-surrogate",
+    "file": "fixtures/utf16be-low-surrogate.csv",
+    "sha256": "65906b3f0100e3e4806fc5d8340f66394a127457ee075d85ceb75c15b3d97c41",
+    "bytes": 100,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf16be-odd-tail",
+    "file": "fixtures/utf16be-odd-tail.csv",
+    "sha256": "444970274bb224aed4ef1ff42657da54ffb2e6df2a64e12607bc2d3107abe4e5",
+    "bytes": 105,
+    "expected": "rejected"
+  },
+  {
+    "id": "utf8-names",
+    "file": "fixtures/utf8-names.csv",
+    "sha256": "74ceae5fb4cd87a44d7be129facd79b409564ddb6a141f26d813207462d64610",
+    "bytes": 539,
+    "expected": "parsed",
+    "frames": 12,
+    "streams": 2,
+    "application": "gameé.exe",
+    "averageFps": 100
+  },
+  {
+    "id": "utf8-bom",
+    "file": "fixtures/utf8-bom.csv",
+    "sha256": "0e2b08e5cfd33a9817c955336f50ad3441bdf80aafb0127df492496c8d8b3526",
+    "bytes": 542,
+    "expected": "parsed",
+    "frames": 12,
+    "streams": 2,
+    "application": "gameé.exe",
+    "averageFps": 100
+  },
+  {
+    "id": "utf16le-names",
+    "file": "fixtures/utf16le-names.csv",
+    "sha256": "b8fb0771b62f4780dfb75654798c5237dfa331909b331c03fa5cd1e43b6fb457",
+    "bytes": 1032,
+    "expected": "parsed",
+    "frames": 12,
+    "streams": 2,
+    "application": "gameé.exe",
+    "averageFps": 100
+  },
+  {
+    "id": "utf16be-names",
+    "file": "fixtures/utf16be-names.csv",
+    "sha256": "47ded58ce8b40e23a517c490a4724bc4d92f4ba97034183efd324a94dceaa3d3",
+    "bytes": 1032,
+    "expected": "parsed",
+    "frames": 12,
+    "streams": 2,
+    "application": "gameé.exe",
+    "averageFps": 100
+  },
+  {
+    "id": "literal-replacement",
+    "file": "fixtures/literal-replacement.csv",
+    "sha256": "de105ea9292db47137dc72b8a3fd169b96159a32a95bb12633f2026f79c8d404",
+    "bytes": 80,
+    "expected": "parsed",
+    "frames": 1,
+    "streams": 1,
+    "application": "game�.exe",
+    "averageFps": 100
+  },
+  {
+    "id": "utf8-split-sample",
+    "file": "fixtures/utf8-split-sample.csv",
+    "sha256": "b0962c49afbcf0e3edb8cb2ef09a0cfa089ed80175d441b9728de6117c6d0318",
+    "bytes": 65540,
+    "expected": "parsed",
+    "frames": 1,
+    "streams": 1,
+    "application": "game.exe",
+    "averageFps": 100
+  },
+  {
+    "id": "utf16le-split-sample",
+    "file": "fixtures/utf16le-split-sample.csv",
+    "sha256": "74fd9356db543f4464dacdc144c318b81719cbb178c1c354924f354bca98ac57",
+    "bytes": 65540,
+    "expected": "parsed",
+    "frames": 1,
+    "streams": 1,
+    "application": "game.exe",
+    "averageFps": 100
+  },
+  {
+    "id": "utf16be-split-sample",
+    "file": "fixtures/utf16be-split-sample.csv",
+    "sha256": "50c96102ec28b2ffbd6ef940715025a6ecbba86927c65d6986c3068fc75ea112",
+    "bytes": 65540,
+    "expected": "parsed",
+    "frames": 1,
+    "streams": 1,
+    "application": "game.exe",
+    "averageFps": 100
+  }
+]

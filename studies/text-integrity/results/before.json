@@ -1,0 +1,681 @@
+{
+  "label": "before",
+  "node": "v26.7.0",
+  "compiledTreeSha256": "967bb34aa58da5c3041e32f169e222a905650b618d3f29b784d173d9a9a4dc88",
+  "count": 23,
+  "results": [
+    {
+      "id": "legacy-names",
+      "inputSha256": "321d10df69de760775e808736091510dc4ec1c9041de06346244b8618d735b2a",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 24,
+      "averageFps": 33.33333333333332,
+      "durationSec": 0.7200000000000002,
+      "hitchCount": 0,
+      "summarySha256": "60bc19056d711084fc284b7822ff907b1a5108fccd65facb68cf9fdb3e0b1cc4",
+      "warnings": [],
+      "application": "game\ufffd.exe",
+      "streams": [
+        {
+          "id": "game\ufffd.exe",
+          "application": "game\ufffd.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 24
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "a507b5be83ede2e7f9d33be1649bdeb29c2b53d31f1565f8ef5b88ee90888400",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf8-stray",
+      "inputSha256": "f48956d0534d4ef557c6255a7b80e7c4c2677c1dd4c47bc314190e6f5856e784",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "01eac1a9ddbe16d8180239307d6b2430bbeff17746c2d3005bbb83cd083f7cf1",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf8-continuation",
+      "inputSha256": "e8cca13d2f13cf05e62c3c794e460fb994d0de71b153730433d71b60e30a4764",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "f6a8ab6cac6b45eeb8e632a6cb3cc7fa2f3b50bb0f9332525e852b252fc585c6",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf8-overlong",
+      "inputSha256": "dd3415fdd62fa588d861837c334fdb097365d58a380f7e5a277689a9659e2db2",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "a4e22b8c6db1ee526b442a3f05a921577014a813257462d9af120e571acd9752",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf8-surrogate",
+      "inputSha256": "7d4f663e3d6a1dbeda90124feb91abb3d5b8a699de1b72dc81c399f8ee7be717",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "74ebd9c9080f7057b1007a09a92cb314dfd1ef9039ecdf6c9a3ef1c2af1cb118",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf8-out-of-range",
+      "inputSha256": "a54256ed9748595b346e245d445d4da388ca855610d2b7c297db2887da215575",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "0d3b03dcf105d70184da05797f8d0eebfadcef7c9d6525890419f9081d657e2f",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf8-truncated",
+      "inputSha256": "a82697d03e404ead02881165ebfa9f3e0dbe92a185a20ead81ec8b80f1be4657",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "d88978acefc13d7faec6cbdd187c17afddc37a9c1f59a2fa14a50b11e6cc601f",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf8-late-damage",
+      "inputSha256": "ea68ae91030e09b8c486b45ba61cc61870fc234b1e4b9f546638b57206d41fae",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "3a846434b52be71b55d827457df4121e7cfff90088fd45e2391fd5104fc75e4e",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf8-complete-at-sample-limit",
+      "inputSha256": "38ffe1180c2e3d00b056fbbe129ac38beeb560c34383c50c818c2857a76f6f6e",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "56b1e5f4f43b82580aadcf8740e513b45e0cdd18f2f976973960eebe8c3230de",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf16le-high-surrogate",
+      "inputSha256": "cede7721a4884eeca53bdef69913f8680866f542af93d941edbd67ca03b8ed3c",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "d02dcfe968d369daad04af7c060f4749d46a17fc68f8213f97a754503f1461d3",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf16le-low-surrogate",
+      "inputSha256": "27cd23a8da4168460873bde4d1b1fa898dd08d2509ef34f976438e30c173dc9c",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "fee73139772271517530b7e43817112e51d38fb144fd25dc84b15094c30e352c",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf16le-odd-tail",
+      "inputSha256": "5133232c82c1c47e966f4e08398f1703913adbb3bffb4c28ce29bbeabf4de823",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "5c3b8455b3e0450d9e0ca7edb6a79ca4548f84f6b9ef983a73e3ce8b42bad7ef",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf16be-high-surrogate",
+      "inputSha256": "9635b1176a52d8d0f42db09158572b4864a9047f523b6d77a71e8cbd1519e940",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "3f43ddadd001506d56bd3034b02d15be34038ad400a799fd73c5977963a304c1",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf16be-low-surrogate",
+      "inputSha256": "65906b3f0100e3e4806fc5d8340f66394a127457ee075d85ceb75c15b3d97c41",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "6928e87b8448e3ff7f306c33eb1dc7d733949ab9cec520e47ffb39a7e96b2e52",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf16be-odd-tail",
+      "inputSha256": "444970274bb224aed4ef1ff42657da54ffb2e6df2a64e12607bc2d3107abe4e5",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "c9222526a4d2b8e3d4864fd05bcc0392eda1f4e0959cb230ee9f48fe45780604",
+      "expected": "rejected",
+      "agrees": false
+    },
+    {
+      "id": "utf8-names",
+      "inputSha256": "74ceae5fb4cd87a44d7be129facd79b409564ddb6a141f26d813207462d64610",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 12,
+      "averageFps": 100.00000000000001,
+      "durationSec": 0.11999999999999998,
+      "hitchCount": 0,
+      "summarySha256": "574eb81a423d84133956c5ba5bb9b32b53782a6828ec1a400ec2566263486284",
+      "warnings": [],
+      "application": "game\u00e9.exe",
+      "streams": [
+        {
+          "id": "game\u00e9.exe",
+          "application": "game\u00e9.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 12
+        },
+        {
+          "id": "game\u00e8.exe",
+          "application": "game\u00e8.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 12
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "ea906414e8129161cb2074feb1fce826c362e967c08debc617083c60c6d29393",
+      "expected": "parsed",
+      "agrees": true
+    },
+    {
+      "id": "utf8-bom",
+      "inputSha256": "0e2b08e5cfd33a9817c955336f50ad3441bdf80aafb0127df492496c8d8b3526",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 12,
+      "averageFps": 100.00000000000001,
+      "durationSec": 0.11999999999999998,
+      "hitchCount": 0,
+      "summarySha256": "574eb81a423d84133956c5ba5bb9b32b53782a6828ec1a400ec2566263486284",
+      "warnings": [],
+      "application": "game\u00e9.exe",
+      "streams": [
+        {
+          "id": "game\u00e9.exe",
+          "application": "game\u00e9.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 12
+        },
+        {
+          "id": "game\u00e8.exe",
+          "application": "game\u00e8.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 12
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "90a9a6c08f2e79378dfb968ad94ec59ef607b0e50b9009f78642bdc660229ce0",
+      "expected": "parsed",
+      "agrees": true
+    },
+    {
+      "id": "utf16le-names",
+      "inputSha256": "b8fb0771b62f4780dfb75654798c5237dfa331909b331c03fa5cd1e43b6fb457",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 12,
+      "averageFps": 100.00000000000001,
+      "durationSec": 0.11999999999999998,
+      "hitchCount": 0,
+      "summarySha256": "574eb81a423d84133956c5ba5bb9b32b53782a6828ec1a400ec2566263486284",
+      "warnings": [],
+      "application": "game\u00e9.exe",
+      "streams": [
+        {
+          "id": "game\u00e9.exe",
+          "application": "game\u00e9.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 12
+        },
+        {
+          "id": "game\u00e8.exe",
+          "application": "game\u00e8.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 12
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "2cc7f1d1d7d9a8485af341a89b07295b7e14d7fb7aa8f64ba374d67c727888c7",
+      "expected": "parsed",
+      "agrees": true
+    },
+    {
+      "id": "utf16be-names",
+      "inputSha256": "47ded58ce8b40e23a517c490a4724bc4d92f4ba97034183efd324a94dceaa3d3",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 12,
+      "averageFps": 100.00000000000001,
+      "durationSec": 0.11999999999999998,
+      "hitchCount": 0,
+      "summarySha256": "574eb81a423d84133956c5ba5bb9b32b53782a6828ec1a400ec2566263486284",
+      "warnings": [],
+      "application": "game\u00e9.exe",
+      "streams": [
+        {
+          "id": "game\u00e9.exe",
+          "application": "game\u00e9.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 12
+        },
+        {
+          "id": "game\u00e8.exe",
+          "application": "game\u00e8.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 12
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "83105c63f316100f69b5f52092a8635e0b1ab2537721fe5da248f7a00fb5aec1",
+      "expected": "parsed",
+      "agrees": true
+    },
+    {
+      "id": "literal-replacement",
+      "inputSha256": "de105ea9292db47137dc72b8a3fd169b96159a32a95bb12633f2026f79c8d404",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game\ufffd.exe",
+      "streams": [
+        {
+          "id": "game\ufffd.exe",
+          "application": "game\ufffd.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "8bc83a76e9b694542b046338f9eaf3446c205cfbe2c702743516601329331371",
+      "expected": "parsed",
+      "agrees": true
+    },
+    {
+      "id": "utf8-split-sample",
+      "inputSha256": "b0962c49afbcf0e3edb8cb2ef09a0cfa089ed80175d441b9728de6117c6d0318",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "31167aadaeb2193d5aa56dfa57b82915896e38e431aae392319a776dac16b58f",
+      "expected": "parsed",
+      "agrees": true
+    },
+    {
+      "id": "utf16le-split-sample",
+      "inputSha256": "74fd9356db543f4464dacdc144c318b81719cbb178c1c354924f354bca98ac57",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "b4dc617ecfe4efa808ec2185c3f8f5b26c21d34b2d93ad9791766988815ab27a",
+      "expected": "parsed",
+      "agrees": true
+    },
+    {
+      "id": "utf16be-split-sample",
+      "inputSha256": "50c96102ec28b2ffbd6ef940715025a6ecbba86927c65d6986c3068fc75ea112",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 1,
+      "averageFps": 100,
+      "durationSec": 0.01,
+      "hitchCount": 0,
+      "summarySha256": "676b5ccc06f6a831dba3e99105107f20b17cd3e1dd552628beb6fd4076429d07",
+      "warnings": [],
+      "application": "game.exe",
+      "streams": [
+        {
+          "id": "game.exe",
+          "application": "game.exe",
+          "processId": "",
+          "swapChain": "",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "c657eb9b49642d5c6ee86f160c5450dd59796076b1542fac94acd510eaeb7972",
+      "expected": "parsed",
+      "agrees": true
+    }
+  ],
+  "disagreements": 15
+}

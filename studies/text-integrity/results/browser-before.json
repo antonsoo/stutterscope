@@ -1,0 +1,3943 @@
+{
+  "after": false,
+  "cases": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "observations": [
+        {
+          "id": "legacy-names",
+          "rejected": false,
+          "file": "legacy-names.csv",
+          "frames": 24,
+          "averageFps": 33.33333333333332,
+          "source": {
+            "fileName": "legacy-names.csv",
+            "format": "ocat",
+            "application": "game�.exe",
+            "stream": "game�.exe",
+            "streams": [
+              {
+                "id": "game�.exe",
+                "application": "game�.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 24
+              }
+            ],
+            "frameCount": 24,
+            "durationSec": 0.7200000000000001,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "b785d246b2dd8ae7534110dc9b2a06a7e188bf11ad7ecdbed9a75c77b878ee62"
+        },
+        {
+          "id": "utf8-stray",
+          "rejected": false,
+          "file": "utf8-stray.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-stray.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "9c025a1f58e80fddc56daab2acf9a4a6b5057f4f1cafb53c0e2a16f541f8a2e3"
+        },
+        {
+          "id": "utf8-continuation",
+          "rejected": false,
+          "file": "utf8-continuation.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-continuation.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "4c573a7e8663e696731bcddecaacee57912b6594112e999ffc18771ad3f40768"
+        },
+        {
+          "id": "utf8-overlong",
+          "rejected": false,
+          "file": "utf8-overlong.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-overlong.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "2bfe1b46103b968dab17f3c80ab4dcd3635fa583c52cae2fb36f2f6904a12e64"
+        },
+        {
+          "id": "utf8-surrogate",
+          "rejected": false,
+          "file": "utf8-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "1232ece57aad4df32c3e1f2df5ad9820fbde00ab27fa6f032fd1cf42b1140995"
+        },
+        {
+          "id": "utf8-out-of-range",
+          "rejected": false,
+          "file": "utf8-out-of-range.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-out-of-range.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "33db7fab0a7ddf3dc5adb8c3bb2cb333974fef911b0dc87093cffbf44902ef52"
+        },
+        {
+          "id": "utf8-truncated",
+          "rejected": false,
+          "file": "utf8-truncated.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-truncated.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "71ad78f84eeaeb9b789531aaecc01211695a2db36d40f3f297e4975924b6626e"
+        },
+        {
+          "id": "utf8-late-damage",
+          "rejected": false,
+          "file": "utf8-late-damage.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-late-damage.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "7b3bb6212ef3fed9b997a9eae4f117d90758cb8db42bb253282401e7b2f90448"
+        },
+        {
+          "id": "utf8-complete-at-sample-limit",
+          "rejected": false,
+          "file": "utf8-complete-at-sample-limit.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-complete-at-sample-limit.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "43a2e23a2bf53ea1e29afa14fc2eb8e11eaa8910028dad7b12b18f63342b5126"
+        },
+        {
+          "id": "utf16le-high-surrogate",
+          "rejected": false,
+          "file": "utf16le-high-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-high-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "cc92f65436d7f3dbf24eb201b43f3d00c40272d596c6effdea5fc95ef82e2eb1"
+        },
+        {
+          "id": "utf16le-low-surrogate",
+          "rejected": false,
+          "file": "utf16le-low-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-low-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "c494bb0669b94cc368aed3cb47f1c71568a946c457be30f56e003546186a6183"
+        },
+        {
+          "id": "utf16le-odd-tail",
+          "rejected": false,
+          "file": "utf16le-odd-tail.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-odd-tail.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "f622d637c998d23a24ce42095e1f51168d8e1ac4d430dbace893e1c1b91bd435"
+        },
+        {
+          "id": "utf16be-high-surrogate",
+          "rejected": false,
+          "file": "utf16be-high-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-high-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "1d232e6e8284f9d1d15dee7a499c3a09552c2e1d50b87f44590c078d28e614ac"
+        },
+        {
+          "id": "utf16be-low-surrogate",
+          "rejected": false,
+          "file": "utf16be-low-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-low-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "289b3b062c086edf952af22e85c9b48357f0e1198f9cf61444c20a9a7afb1d36"
+        },
+        {
+          "id": "utf16be-odd-tail",
+          "rejected": false,
+          "file": "utf16be-odd-tail.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-odd-tail.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "5a06211a03cbde888671a1dfb26850cdbf70e01e86a1ec2dbc2cf999df084c69"
+        },
+        {
+          "id": "utf8-names",
+          "rejected": false,
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-bom",
+          "rejected": false,
+          "file": "utf8-bom.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-bom.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "3f1fbbee5869993273d4332ffb5106d37893a5fbfecc02ff364dcf2e591ded16"
+        },
+        {
+          "id": "utf16le-names",
+          "rejected": false,
+          "file": "utf16le-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16le-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "fe5727b03527b25b78406f03548cf70edbfedbd6058f39e6f494a29660a2af1e"
+        },
+        {
+          "id": "utf16be-names",
+          "rejected": false,
+          "file": "utf16be-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16be-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "562abd3ab7dfd778d4ddcc01250b3b0425814782b909fa36e925dd58ad833068"
+        },
+        {
+          "id": "literal-replacement",
+          "rejected": false,
+          "file": "literal-replacement.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "literal-replacement.csv",
+            "format": "ocat",
+            "application": "game�.exe",
+            "stream": "game�.exe",
+            "streams": [
+              {
+                "id": "game�.exe",
+                "application": "game�.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "559de86813bec096fd83448e2f351d32da62d7634ed84ea627abf79e394db602"
+        },
+        {
+          "id": "utf8-split-sample",
+          "rejected": false,
+          "file": "utf8-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "ff6c35b48046117e5b7f241dcd7b817c3e4bbd203c223b2159df859bf8d0c433"
+        },
+        {
+          "id": "utf16le-split-sample",
+          "rejected": false,
+          "file": "utf16le-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "22d2e129893af46aa1e94a4ad9c22295c62689730f5111f853a6380dddb46ea3"
+        },
+        {
+          "id": "utf16be-split-sample",
+          "rejected": false,
+          "file": "utf16be-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "0573d879a590988d651b81af1492250b040b575f415702b979129c2a1f56b959"
+        }
+      ],
+      "control": {
+        "tool": "stutterscope",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "utf8-names.csv",
+          "format": "ocat",
+          "application": "gameé.exe",
+          "stream": "gameé.exe",
+          "streams": [
+            {
+              "id": "gameé.exe",
+              "application": "gameé.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            },
+            {
+              "id": "gameè.exe",
+              "application": "gameè.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            }
+          ],
+          "frameCount": 12,
+          "durationSec": 0.12,
+          "columns": [
+            "Application",
+            "MsBetweenPresents",
+            "Note"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 12,
+            "sourceDurationSec": 0.12,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 11,
+            "startSec": 0,
+            "endSec": 0.12,
+            "durationSec": 0.11999999999999998,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [],
+        "metrics": {
+          "frameCount": 12,
+          "durationSec": 0.11999999999999998,
+          "averageFps": 100.00000000000001,
+          "meanOfInstantaneousFps": 100,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 10,
+            "p95": 10,
+            "p99": 10,
+            "p999": 10
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 11,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "assets": {
+        "index.html": {
+          "bytes": 2516,
+          "sha256": "19fde05f31367ef6c39a982edc775b682b2ebe4d1b40b164e2ff9d85238a7eb7"
+        },
+        "assets/index-x_73MQio.css": {
+          "bytes": 37779,
+          "sha256": "f2dd2a21378d496b931b0546b7c31fdbcca39c59235d32baffcc7ab9683d9799"
+        },
+        "assets/index-MVY1MB7I.js": {
+          "bytes": 147821,
+          "sha256": "fb47b9d644e07667c37269226fb46d7c98deb54b4e7ab5f37162cfce4f62b6af"
+        },
+        "assets/jetbrains-mono-latin-6fWv1k7M.woff2": {
+          "bytes": 31432,
+          "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+        },
+        "assets/inter-latin-Dx4kXJAl.woff2": {
+          "bytes": 48256,
+          "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+        }
+      },
+      "pageErrors": [],
+      "externalRequests": [],
+      "lateRequests": [],
+      "axeViolations": [],
+      "overflow": false
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "observations": [
+        {
+          "id": "legacy-names",
+          "rejected": false,
+          "file": "legacy-names.csv",
+          "frames": 24,
+          "averageFps": 33.33333333333332,
+          "source": {
+            "fileName": "legacy-names.csv",
+            "format": "ocat",
+            "application": "game�.exe",
+            "stream": "game�.exe",
+            "streams": [
+              {
+                "id": "game�.exe",
+                "application": "game�.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 24
+              }
+            ],
+            "frameCount": 24,
+            "durationSec": 0.7200000000000001,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "b785d246b2dd8ae7534110dc9b2a06a7e188bf11ad7ecdbed9a75c77b878ee62"
+        },
+        {
+          "id": "utf8-stray",
+          "rejected": false,
+          "file": "utf8-stray.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-stray.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "9c025a1f58e80fddc56daab2acf9a4a6b5057f4f1cafb53c0e2a16f541f8a2e3"
+        },
+        {
+          "id": "utf8-continuation",
+          "rejected": false,
+          "file": "utf8-continuation.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-continuation.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "4c573a7e8663e696731bcddecaacee57912b6594112e999ffc18771ad3f40768"
+        },
+        {
+          "id": "utf8-overlong",
+          "rejected": false,
+          "file": "utf8-overlong.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-overlong.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "2bfe1b46103b968dab17f3c80ab4dcd3635fa583c52cae2fb36f2f6904a12e64"
+        },
+        {
+          "id": "utf8-surrogate",
+          "rejected": false,
+          "file": "utf8-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "1232ece57aad4df32c3e1f2df5ad9820fbde00ab27fa6f032fd1cf42b1140995"
+        },
+        {
+          "id": "utf8-out-of-range",
+          "rejected": false,
+          "file": "utf8-out-of-range.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-out-of-range.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "33db7fab0a7ddf3dc5adb8c3bb2cb333974fef911b0dc87093cffbf44902ef52"
+        },
+        {
+          "id": "utf8-truncated",
+          "rejected": false,
+          "file": "utf8-truncated.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-truncated.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "71ad78f84eeaeb9b789531aaecc01211695a2db36d40f3f297e4975924b6626e"
+        },
+        {
+          "id": "utf8-late-damage",
+          "rejected": false,
+          "file": "utf8-late-damage.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-late-damage.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "7b3bb6212ef3fed9b997a9eae4f117d90758cb8db42bb253282401e7b2f90448"
+        },
+        {
+          "id": "utf8-complete-at-sample-limit",
+          "rejected": false,
+          "file": "utf8-complete-at-sample-limit.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-complete-at-sample-limit.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "43a2e23a2bf53ea1e29afa14fc2eb8e11eaa8910028dad7b12b18f63342b5126"
+        },
+        {
+          "id": "utf16le-high-surrogate",
+          "rejected": false,
+          "file": "utf16le-high-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-high-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "cc92f65436d7f3dbf24eb201b43f3d00c40272d596c6effdea5fc95ef82e2eb1"
+        },
+        {
+          "id": "utf16le-low-surrogate",
+          "rejected": false,
+          "file": "utf16le-low-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-low-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "c494bb0669b94cc368aed3cb47f1c71568a946c457be30f56e003546186a6183"
+        },
+        {
+          "id": "utf16le-odd-tail",
+          "rejected": false,
+          "file": "utf16le-odd-tail.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-odd-tail.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "f622d637c998d23a24ce42095e1f51168d8e1ac4d430dbace893e1c1b91bd435"
+        },
+        {
+          "id": "utf16be-high-surrogate",
+          "rejected": false,
+          "file": "utf16be-high-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-high-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "1d232e6e8284f9d1d15dee7a499c3a09552c2e1d50b87f44590c078d28e614ac"
+        },
+        {
+          "id": "utf16be-low-surrogate",
+          "rejected": false,
+          "file": "utf16be-low-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-low-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "289b3b062c086edf952af22e85c9b48357f0e1198f9cf61444c20a9a7afb1d36"
+        },
+        {
+          "id": "utf16be-odd-tail",
+          "rejected": false,
+          "file": "utf16be-odd-tail.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-odd-tail.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "5a06211a03cbde888671a1dfb26850cdbf70e01e86a1ec2dbc2cf999df084c69"
+        },
+        {
+          "id": "utf8-names",
+          "rejected": false,
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-bom",
+          "rejected": false,
+          "file": "utf8-bom.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-bom.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "3f1fbbee5869993273d4332ffb5106d37893a5fbfecc02ff364dcf2e591ded16"
+        },
+        {
+          "id": "utf16le-names",
+          "rejected": false,
+          "file": "utf16le-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16le-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "fe5727b03527b25b78406f03548cf70edbfedbd6058f39e6f494a29660a2af1e"
+        },
+        {
+          "id": "utf16be-names",
+          "rejected": false,
+          "file": "utf16be-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16be-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "562abd3ab7dfd778d4ddcc01250b3b0425814782b909fa36e925dd58ad833068"
+        },
+        {
+          "id": "literal-replacement",
+          "rejected": false,
+          "file": "literal-replacement.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "literal-replacement.csv",
+            "format": "ocat",
+            "application": "game�.exe",
+            "stream": "game�.exe",
+            "streams": [
+              {
+                "id": "game�.exe",
+                "application": "game�.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "559de86813bec096fd83448e2f351d32da62d7634ed84ea627abf79e394db602"
+        },
+        {
+          "id": "utf8-split-sample",
+          "rejected": false,
+          "file": "utf8-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "ff6c35b48046117e5b7f241dcd7b817c3e4bbd203c223b2159df859bf8d0c433"
+        },
+        {
+          "id": "utf16le-split-sample",
+          "rejected": false,
+          "file": "utf16le-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "22d2e129893af46aa1e94a4ad9c22295c62689730f5111f853a6380dddb46ea3"
+        },
+        {
+          "id": "utf16be-split-sample",
+          "rejected": false,
+          "file": "utf16be-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "0573d879a590988d651b81af1492250b040b575f415702b979129c2a1f56b959"
+        }
+      ],
+      "control": {
+        "tool": "stutterscope",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "utf8-names.csv",
+          "format": "ocat",
+          "application": "gameé.exe",
+          "stream": "gameé.exe",
+          "streams": [
+            {
+              "id": "gameé.exe",
+              "application": "gameé.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            },
+            {
+              "id": "gameè.exe",
+              "application": "gameè.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            }
+          ],
+          "frameCount": 12,
+          "durationSec": 0.12,
+          "columns": [
+            "Application",
+            "MsBetweenPresents",
+            "Note"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 12,
+            "sourceDurationSec": 0.12,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 11,
+            "startSec": 0,
+            "endSec": 0.12,
+            "durationSec": 0.11999999999999998,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [],
+        "metrics": {
+          "frameCount": 12,
+          "durationSec": 0.11999999999999998,
+          "averageFps": 100.00000000000001,
+          "meanOfInstantaneousFps": 100,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 10,
+            "p95": 10,
+            "p99": 10,
+            "p999": 10
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 11,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "assets": {
+        "index.html": {
+          "bytes": 2516,
+          "sha256": "19fde05f31367ef6c39a982edc775b682b2ebe4d1b40b164e2ff9d85238a7eb7"
+        },
+        "assets/index-x_73MQio.css": {
+          "bytes": 37779,
+          "sha256": "f2dd2a21378d496b931b0546b7c31fdbcca39c59235d32baffcc7ab9683d9799"
+        },
+        "assets/index-MVY1MB7I.js": {
+          "bytes": 147821,
+          "sha256": "fb47b9d644e07667c37269226fb46d7c98deb54b4e7ab5f37162cfce4f62b6af"
+        },
+        "assets/jetbrains-mono-latin-6fWv1k7M.woff2": {
+          "bytes": 31432,
+          "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+        },
+        "assets/inter-latin-Dx4kXJAl.woff2": {
+          "bytes": 48256,
+          "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+        }
+      },
+      "pageErrors": [],
+      "externalRequests": [],
+      "lateRequests": [],
+      "axeViolations": [],
+      "overflow": false
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "observations": [
+        {
+          "id": "legacy-names",
+          "rejected": false,
+          "file": "legacy-names.csv",
+          "frames": 24,
+          "averageFps": 33.33333333333332,
+          "source": {
+            "fileName": "legacy-names.csv",
+            "format": "ocat",
+            "application": "game�.exe",
+            "stream": "game�.exe",
+            "streams": [
+              {
+                "id": "game�.exe",
+                "application": "game�.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 24
+              }
+            ],
+            "frameCount": 24,
+            "durationSec": 0.7200000000000001,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "b785d246b2dd8ae7534110dc9b2a06a7e188bf11ad7ecdbed9a75c77b878ee62"
+        },
+        {
+          "id": "utf8-stray",
+          "rejected": false,
+          "file": "utf8-stray.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-stray.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "9c025a1f58e80fddc56daab2acf9a4a6b5057f4f1cafb53c0e2a16f541f8a2e3"
+        },
+        {
+          "id": "utf8-continuation",
+          "rejected": false,
+          "file": "utf8-continuation.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-continuation.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "4c573a7e8663e696731bcddecaacee57912b6594112e999ffc18771ad3f40768"
+        },
+        {
+          "id": "utf8-overlong",
+          "rejected": false,
+          "file": "utf8-overlong.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-overlong.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "2bfe1b46103b968dab17f3c80ab4dcd3635fa583c52cae2fb36f2f6904a12e64"
+        },
+        {
+          "id": "utf8-surrogate",
+          "rejected": false,
+          "file": "utf8-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "1232ece57aad4df32c3e1f2df5ad9820fbde00ab27fa6f032fd1cf42b1140995"
+        },
+        {
+          "id": "utf8-out-of-range",
+          "rejected": false,
+          "file": "utf8-out-of-range.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-out-of-range.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "33db7fab0a7ddf3dc5adb8c3bb2cb333974fef911b0dc87093cffbf44902ef52"
+        },
+        {
+          "id": "utf8-truncated",
+          "rejected": false,
+          "file": "utf8-truncated.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-truncated.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "71ad78f84eeaeb9b789531aaecc01211695a2db36d40f3f297e4975924b6626e"
+        },
+        {
+          "id": "utf8-late-damage",
+          "rejected": false,
+          "file": "utf8-late-damage.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-late-damage.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "7b3bb6212ef3fed9b997a9eae4f117d90758cb8db42bb253282401e7b2f90448"
+        },
+        {
+          "id": "utf8-complete-at-sample-limit",
+          "rejected": false,
+          "file": "utf8-complete-at-sample-limit.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-complete-at-sample-limit.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "43a2e23a2bf53ea1e29afa14fc2eb8e11eaa8910028dad7b12b18f63342b5126"
+        },
+        {
+          "id": "utf16le-high-surrogate",
+          "rejected": false,
+          "file": "utf16le-high-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-high-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "cc92f65436d7f3dbf24eb201b43f3d00c40272d596c6effdea5fc95ef82e2eb1"
+        },
+        {
+          "id": "utf16le-low-surrogate",
+          "rejected": false,
+          "file": "utf16le-low-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-low-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "c494bb0669b94cc368aed3cb47f1c71568a946c457be30f56e003546186a6183"
+        },
+        {
+          "id": "utf16le-odd-tail",
+          "rejected": false,
+          "file": "utf16le-odd-tail.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-odd-tail.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "f622d637c998d23a24ce42095e1f51168d8e1ac4d430dbace893e1c1b91bd435"
+        },
+        {
+          "id": "utf16be-high-surrogate",
+          "rejected": false,
+          "file": "utf16be-high-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-high-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "1d232e6e8284f9d1d15dee7a499c3a09552c2e1d50b87f44590c078d28e614ac"
+        },
+        {
+          "id": "utf16be-low-surrogate",
+          "rejected": false,
+          "file": "utf16be-low-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-low-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "289b3b062c086edf952af22e85c9b48357f0e1198f9cf61444c20a9a7afb1d36"
+        },
+        {
+          "id": "utf16be-odd-tail",
+          "rejected": false,
+          "file": "utf16be-odd-tail.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-odd-tail.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "5a06211a03cbde888671a1dfb26850cdbf70e01e86a1ec2dbc2cf999df084c69"
+        },
+        {
+          "id": "utf8-names",
+          "rejected": false,
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-bom",
+          "rejected": false,
+          "file": "utf8-bom.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-bom.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "3f1fbbee5869993273d4332ffb5106d37893a5fbfecc02ff364dcf2e591ded16"
+        },
+        {
+          "id": "utf16le-names",
+          "rejected": false,
+          "file": "utf16le-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16le-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "fe5727b03527b25b78406f03548cf70edbfedbd6058f39e6f494a29660a2af1e"
+        },
+        {
+          "id": "utf16be-names",
+          "rejected": false,
+          "file": "utf16be-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16be-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "562abd3ab7dfd778d4ddcc01250b3b0425814782b909fa36e925dd58ad833068"
+        },
+        {
+          "id": "literal-replacement",
+          "rejected": false,
+          "file": "literal-replacement.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "literal-replacement.csv",
+            "format": "ocat",
+            "application": "game�.exe",
+            "stream": "game�.exe",
+            "streams": [
+              {
+                "id": "game�.exe",
+                "application": "game�.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "559de86813bec096fd83448e2f351d32da62d7634ed84ea627abf79e394db602"
+        },
+        {
+          "id": "utf8-split-sample",
+          "rejected": false,
+          "file": "utf8-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "ff6c35b48046117e5b7f241dcd7b817c3e4bbd203c223b2159df859bf8d0c433"
+        },
+        {
+          "id": "utf16le-split-sample",
+          "rejected": false,
+          "file": "utf16le-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "22d2e129893af46aa1e94a4ad9c22295c62689730f5111f853a6380dddb46ea3"
+        },
+        {
+          "id": "utf16be-split-sample",
+          "rejected": false,
+          "file": "utf16be-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "0573d879a590988d651b81af1492250b040b575f415702b979129c2a1f56b959"
+        }
+      ],
+      "control": {
+        "tool": "stutterscope",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "utf8-names.csv",
+          "format": "ocat",
+          "application": "gameé.exe",
+          "stream": "gameé.exe",
+          "streams": [
+            {
+              "id": "gameé.exe",
+              "application": "gameé.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            },
+            {
+              "id": "gameè.exe",
+              "application": "gameè.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            }
+          ],
+          "frameCount": 12,
+          "durationSec": 0.12,
+          "columns": [
+            "Application",
+            "MsBetweenPresents",
+            "Note"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 12,
+            "sourceDurationSec": 0.12,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 11,
+            "startSec": 0,
+            "endSec": 0.12,
+            "durationSec": 0.11999999999999998,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [],
+        "metrics": {
+          "frameCount": 12,
+          "durationSec": 0.11999999999999998,
+          "averageFps": 100.00000000000001,
+          "meanOfInstantaneousFps": 100,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 10,
+            "p95": 10,
+            "p99": 10,
+            "p999": 10
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 11,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "assets": {
+        "index.html": {
+          "bytes": 2516,
+          "sha256": "19fde05f31367ef6c39a982edc775b682b2ebe4d1b40b164e2ff9d85238a7eb7"
+        },
+        "assets/index-MVY1MB7I.js": {
+          "bytes": 147821,
+          "sha256": "fb47b9d644e07667c37269226fb46d7c98deb54b4e7ab5f37162cfce4f62b6af"
+        },
+        "assets/index-x_73MQio.css": {
+          "bytes": 37779,
+          "sha256": "f2dd2a21378d496b931b0546b7c31fdbcca39c59235d32baffcc7ab9683d9799"
+        },
+        "assets/inter-latin-Dx4kXJAl.woff2": {
+          "bytes": 48256,
+          "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+        },
+        "assets/jetbrains-mono-latin-6fWv1k7M.woff2": {
+          "bytes": 31432,
+          "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+        }
+      },
+      "pageErrors": [],
+      "externalRequests": [],
+      "lateRequests": [
+        {
+          "path": "/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+          "type": "font"
+        },
+        {
+          "path": "/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+          "type": "font"
+        }
+      ],
+      "axeViolations": [],
+      "overflow": false
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "observations": [
+        {
+          "id": "legacy-names",
+          "rejected": false,
+          "file": "legacy-names.csv",
+          "frames": 24,
+          "averageFps": 33.33333333333332,
+          "source": {
+            "fileName": "legacy-names.csv",
+            "format": "ocat",
+            "application": "game�.exe",
+            "stream": "game�.exe",
+            "streams": [
+              {
+                "id": "game�.exe",
+                "application": "game�.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 24
+              }
+            ],
+            "frameCount": 24,
+            "durationSec": 0.7200000000000001,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "b785d246b2dd8ae7534110dc9b2a06a7e188bf11ad7ecdbed9a75c77b878ee62"
+        },
+        {
+          "id": "utf8-stray",
+          "rejected": false,
+          "file": "utf8-stray.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-stray.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "9c025a1f58e80fddc56daab2acf9a4a6b5057f4f1cafb53c0e2a16f541f8a2e3"
+        },
+        {
+          "id": "utf8-continuation",
+          "rejected": false,
+          "file": "utf8-continuation.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-continuation.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "4c573a7e8663e696731bcddecaacee57912b6594112e999ffc18771ad3f40768"
+        },
+        {
+          "id": "utf8-overlong",
+          "rejected": false,
+          "file": "utf8-overlong.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-overlong.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "2bfe1b46103b968dab17f3c80ab4dcd3635fa583c52cae2fb36f2f6904a12e64"
+        },
+        {
+          "id": "utf8-surrogate",
+          "rejected": false,
+          "file": "utf8-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "1232ece57aad4df32c3e1f2df5ad9820fbde00ab27fa6f032fd1cf42b1140995"
+        },
+        {
+          "id": "utf8-out-of-range",
+          "rejected": false,
+          "file": "utf8-out-of-range.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-out-of-range.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "33db7fab0a7ddf3dc5adb8c3bb2cb333974fef911b0dc87093cffbf44902ef52"
+        },
+        {
+          "id": "utf8-truncated",
+          "rejected": false,
+          "file": "utf8-truncated.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-truncated.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "71ad78f84eeaeb9b789531aaecc01211695a2db36d40f3f297e4975924b6626e"
+        },
+        {
+          "id": "utf8-late-damage",
+          "rejected": false,
+          "file": "utf8-late-damage.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-late-damage.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "7b3bb6212ef3fed9b997a9eae4f117d90758cb8db42bb253282401e7b2f90448"
+        },
+        {
+          "id": "utf8-complete-at-sample-limit",
+          "rejected": false,
+          "file": "utf8-complete-at-sample-limit.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-complete-at-sample-limit.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "43a2e23a2bf53ea1e29afa14fc2eb8e11eaa8910028dad7b12b18f63342b5126"
+        },
+        {
+          "id": "utf16le-high-surrogate",
+          "rejected": false,
+          "file": "utf16le-high-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-high-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "cc92f65436d7f3dbf24eb201b43f3d00c40272d596c6effdea5fc95ef82e2eb1"
+        },
+        {
+          "id": "utf16le-low-surrogate",
+          "rejected": false,
+          "file": "utf16le-low-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-low-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "c494bb0669b94cc368aed3cb47f1c71568a946c457be30f56e003546186a6183"
+        },
+        {
+          "id": "utf16le-odd-tail",
+          "rejected": false,
+          "file": "utf16le-odd-tail.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-odd-tail.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "f622d637c998d23a24ce42095e1f51168d8e1ac4d430dbace893e1c1b91bd435"
+        },
+        {
+          "id": "utf16be-high-surrogate",
+          "rejected": false,
+          "file": "utf16be-high-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-high-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "1d232e6e8284f9d1d15dee7a499c3a09552c2e1d50b87f44590c078d28e614ac"
+        },
+        {
+          "id": "utf16be-low-surrogate",
+          "rejected": false,
+          "file": "utf16be-low-surrogate.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-low-surrogate.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "289b3b062c086edf952af22e85c9b48357f0e1198f9cf61444c20a9a7afb1d36"
+        },
+        {
+          "id": "utf16be-odd-tail",
+          "rejected": false,
+          "file": "utf16be-odd-tail.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-odd-tail.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "5a06211a03cbde888671a1dfb26850cdbf70e01e86a1ec2dbc2cf999df084c69"
+        },
+        {
+          "id": "utf8-names",
+          "rejected": false,
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-bom",
+          "rejected": false,
+          "file": "utf8-bom.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-bom.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "3f1fbbee5869993273d4332ffb5106d37893a5fbfecc02ff364dcf2e591ded16"
+        },
+        {
+          "id": "utf16le-names",
+          "rejected": false,
+          "file": "utf16le-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16le-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "fe5727b03527b25b78406f03548cf70edbfedbd6058f39e6f494a29660a2af1e"
+        },
+        {
+          "id": "utf16be-names",
+          "rejected": false,
+          "file": "utf16be-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16be-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "562abd3ab7dfd778d4ddcc01250b3b0425814782b909fa36e925dd58ad833068"
+        },
+        {
+          "id": "literal-replacement",
+          "rejected": false,
+          "file": "literal-replacement.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "literal-replacement.csv",
+            "format": "ocat",
+            "application": "game�.exe",
+            "stream": "game�.exe",
+            "streams": [
+              {
+                "id": "game�.exe",
+                "application": "game�.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "559de86813bec096fd83448e2f351d32da62d7634ed84ea627abf79e394db602"
+        },
+        {
+          "id": "utf8-split-sample",
+          "rejected": false,
+          "file": "utf8-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "ff6c35b48046117e5b7f241dcd7b817c3e4bbd203c223b2159df859bf8d0c433"
+        },
+        {
+          "id": "utf16le-split-sample",
+          "rejected": false,
+          "file": "utf16le-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "22d2e129893af46aa1e94a4ad9c22295c62689730f5111f853a6380dddb46ea3"
+        },
+        {
+          "id": "utf16be-split-sample",
+          "rejected": false,
+          "file": "utf16be-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "0573d879a590988d651b81af1492250b040b575f415702b979129c2a1f56b959"
+        }
+      ],
+      "control": {
+        "tool": "stutterscope",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "utf8-names.csv",
+          "format": "ocat",
+          "application": "gameé.exe",
+          "stream": "gameé.exe",
+          "streams": [
+            {
+              "id": "gameé.exe",
+              "application": "gameé.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            },
+            {
+              "id": "gameè.exe",
+              "application": "gameè.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            }
+          ],
+          "frameCount": 12,
+          "durationSec": 0.12,
+          "columns": [
+            "Application",
+            "MsBetweenPresents",
+            "Note"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 12,
+            "sourceDurationSec": 0.12,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 11,
+            "startSec": 0,
+            "endSec": 0.12,
+            "durationSec": 0.11999999999999998,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [],
+        "metrics": {
+          "frameCount": 12,
+          "durationSec": 0.11999999999999998,
+          "averageFps": 100.00000000000001,
+          "meanOfInstantaneousFps": 100,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 10,
+            "p95": 10,
+            "p99": 10,
+            "p999": 10
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 11,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "assets": {
+        "index.html": {
+          "bytes": 2516,
+          "sha256": "19fde05f31367ef6c39a982edc775b682b2ebe4d1b40b164e2ff9d85238a7eb7"
+        },
+        "assets/index-MVY1MB7I.js": {
+          "bytes": 147821,
+          "sha256": "fb47b9d644e07667c37269226fb46d7c98deb54b4e7ab5f37162cfce4f62b6af"
+        },
+        "assets/index-x_73MQio.css": {
+          "bytes": 37779,
+          "sha256": "f2dd2a21378d496b931b0546b7c31fdbcca39c59235d32baffcc7ab9683d9799"
+        },
+        "assets/inter-latin-Dx4kXJAl.woff2": {
+          "bytes": 48256,
+          "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+        },
+        "assets/jetbrains-mono-latin-6fWv1k7M.woff2": {
+          "bytes": 31432,
+          "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+        }
+      },
+      "pageErrors": [],
+      "externalRequests": [],
+      "lateRequests": [
+        {
+          "path": "/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+          "type": "font"
+        },
+        {
+          "path": "/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+          "type": "font"
+        }
+      ],
+      "axeViolations": [],
+      "overflow": false
+    }
+  ]
+}

@@ -1,0 +1,4423 @@
+{
+  "after": true,
+  "cases": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "observations": [
+        {
+          "id": "legacy-names",
+          "rejected": true,
+          "alert": "Could not parse legacy-names.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-stray",
+          "rejected": true,
+          "alert": "Could not parse utf8-stray.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-continuation",
+          "rejected": true,
+          "alert": "Could not parse utf8-continuation.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-overlong",
+          "rejected": true,
+          "alert": "Could not parse utf8-overlong.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf8-surrogate.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-out-of-range",
+          "rejected": true,
+          "alert": "Could not parse utf8-out-of-range.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-truncated",
+          "rejected": true,
+          "alert": "Could not parse utf8-truncated.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-late-damage",
+          "rejected": true,
+          "alert": "Could not parse utf8-late-damage.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-complete-at-sample-limit",
+          "rejected": true,
+          "alert": "Could not parse utf8-complete-at-sample-limit.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16le-high-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16le-high-surrogate.csv: Invalid UTF-16LE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16le-low-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16le-low-surrogate.csv: Invalid UTF-16LE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16le-odd-tail",
+          "rejected": true,
+          "alert": "Could not parse utf16le-odd-tail.csv: Invalid UTF-16LE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16be-high-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16be-high-surrogate.csv: Invalid UTF-16BE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16be-low-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16be-low-surrogate.csv: Invalid UTF-16BE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16be-odd-tail",
+          "rejected": true,
+          "alert": "Could not parse utf16be-odd-tail.csv: Invalid UTF-16BE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-names",
+          "rejected": false,
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-bom",
+          "rejected": false,
+          "file": "utf8-bom.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-bom.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "3f1fbbee5869993273d4332ffb5106d37893a5fbfecc02ff364dcf2e591ded16"
+        },
+        {
+          "id": "utf16le-names",
+          "rejected": false,
+          "file": "utf16le-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16le-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "fe5727b03527b25b78406f03548cf70edbfedbd6058f39e6f494a29660a2af1e"
+        },
+        {
+          "id": "utf16be-names",
+          "rejected": false,
+          "file": "utf16be-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16be-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "562abd3ab7dfd778d4ddcc01250b3b0425814782b909fa36e925dd58ad833068"
+        },
+        {
+          "id": "literal-replacement",
+          "rejected": false,
+          "file": "literal-replacement.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "literal-replacement.csv",
+            "format": "ocat",
+            "application": "game�.exe",
+            "stream": "game�.exe",
+            "streams": [
+              {
+                "id": "game�.exe",
+                "application": "game�.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "559de86813bec096fd83448e2f351d32da62d7634ed84ea627abf79e394db602"
+        },
+        {
+          "id": "utf8-split-sample",
+          "rejected": false,
+          "file": "utf8-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "ff6c35b48046117e5b7f241dcd7b817c3e4bbd203c223b2159df859bf8d0c433"
+        },
+        {
+          "id": "utf16le-split-sample",
+          "rejected": false,
+          "file": "utf16le-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "22d2e129893af46aa1e94a4ad9c22295c62689730f5111f853a6380dddb46ea3"
+        },
+        {
+          "id": "utf16be-split-sample",
+          "rejected": false,
+          "file": "utf16be-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "0573d879a590988d651b81af1492250b040b575f415702b979129c2a1f56b959"
+        }
+      ],
+      "control": {
+        "tool": "stutterscope",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "utf8-names.csv",
+          "format": "ocat",
+          "application": "gameé.exe",
+          "stream": "gameé.exe",
+          "streams": [
+            {
+              "id": "gameé.exe",
+              "application": "gameé.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            },
+            {
+              "id": "gameè.exe",
+              "application": "gameè.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            }
+          ],
+          "frameCount": 12,
+          "durationSec": 0.12,
+          "columns": [
+            "Application",
+            "MsBetweenPresents",
+            "Note"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 12,
+            "sourceDurationSec": 0.12,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 11,
+            "startSec": 0,
+            "endSec": 0.12,
+            "durationSec": 0.11999999999999998,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [],
+        "metrics": {
+          "frameCount": 12,
+          "durationSec": 0.11999999999999998,
+          "averageFps": 100.00000000000001,
+          "meanOfInstantaneousFps": 100,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 10,
+            "p95": 10,
+            "p99": 10,
+            "p999": 10
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 11,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "assets": {
+        "index.html": {
+          "bytes": 2516,
+          "sha256": "8043c5f1e9f24a443f33acdfe29f5fdd4e2ab91b0d9dfe279086dd6a9f87c7e9"
+        },
+        "assets/index-x_73MQio.css": {
+          "bytes": 37779,
+          "sha256": "f2dd2a21378d496b931b0546b7c31fdbcca39c59235d32baffcc7ab9683d9799"
+        },
+        "assets/index-BjCyV6TJ.js": {
+          "bytes": 148119,
+          "sha256": "43fcf9008f26839cafe5538524d67466f44c6332210a685ba9e1458aaaea1d87"
+        },
+        "assets/jetbrains-mono-latin-6fWv1k7M.woff2": {
+          "bytes": 31432,
+          "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+        },
+        "assets/inter-latin-Dx4kXJAl.woff2": {
+          "bytes": 48256,
+          "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+        }
+      },
+      "pageErrors": [],
+      "externalRequests": [],
+      "lateRequests": [],
+      "axeViolations": [],
+      "overflow": false
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "observations": [
+        {
+          "id": "legacy-names",
+          "rejected": true,
+          "alert": "Could not parse legacy-names.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-stray",
+          "rejected": true,
+          "alert": "Could not parse utf8-stray.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-continuation",
+          "rejected": true,
+          "alert": "Could not parse utf8-continuation.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-overlong",
+          "rejected": true,
+          "alert": "Could not parse utf8-overlong.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf8-surrogate.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-out-of-range",
+          "rejected": true,
+          "alert": "Could not parse utf8-out-of-range.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-truncated",
+          "rejected": true,
+          "alert": "Could not parse utf8-truncated.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-late-damage",
+          "rejected": true,
+          "alert": "Could not parse utf8-late-damage.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-complete-at-sample-limit",
+          "rejected": true,
+          "alert": "Could not parse utf8-complete-at-sample-limit.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16le-high-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16le-high-surrogate.csv: Invalid UTF-16LE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16le-low-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16le-low-surrogate.csv: Invalid UTF-16LE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16le-odd-tail",
+          "rejected": true,
+          "alert": "Could not parse utf16le-odd-tail.csv: Invalid UTF-16LE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16be-high-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16be-high-surrogate.csv: Invalid UTF-16BE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16be-low-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16be-low-surrogate.csv: Invalid UTF-16BE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16be-odd-tail",
+          "rejected": true,
+          "alert": "Could not parse utf16be-odd-tail.csv: Invalid UTF-16BE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-names",
+          "rejected": false,
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-bom",
+          "rejected": false,
+          "file": "utf8-bom.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-bom.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "3f1fbbee5869993273d4332ffb5106d37893a5fbfecc02ff364dcf2e591ded16"
+        },
+        {
+          "id": "utf16le-names",
+          "rejected": false,
+          "file": "utf16le-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16le-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "fe5727b03527b25b78406f03548cf70edbfedbd6058f39e6f494a29660a2af1e"
+        },
+        {
+          "id": "utf16be-names",
+          "rejected": false,
+          "file": "utf16be-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16be-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "562abd3ab7dfd778d4ddcc01250b3b0425814782b909fa36e925dd58ad833068"
+        },
+        {
+          "id": "literal-replacement",
+          "rejected": false,
+          "file": "literal-replacement.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "literal-replacement.csv",
+            "format": "ocat",
+            "application": "game�.exe",
+            "stream": "game�.exe",
+            "streams": [
+              {
+                "id": "game�.exe",
+                "application": "game�.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "559de86813bec096fd83448e2f351d32da62d7634ed84ea627abf79e394db602"
+        },
+        {
+          "id": "utf8-split-sample",
+          "rejected": false,
+          "file": "utf8-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "ff6c35b48046117e5b7f241dcd7b817c3e4bbd203c223b2159df859bf8d0c433"
+        },
+        {
+          "id": "utf16le-split-sample",
+          "rejected": false,
+          "file": "utf16le-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "22d2e129893af46aa1e94a4ad9c22295c62689730f5111f853a6380dddb46ea3"
+        },
+        {
+          "id": "utf16be-split-sample",
+          "rejected": false,
+          "file": "utf16be-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "0573d879a590988d651b81af1492250b040b575f415702b979129c2a1f56b959"
+        }
+      ],
+      "control": {
+        "tool": "stutterscope",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "utf8-names.csv",
+          "format": "ocat",
+          "application": "gameé.exe",
+          "stream": "gameé.exe",
+          "streams": [
+            {
+              "id": "gameé.exe",
+              "application": "gameé.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            },
+            {
+              "id": "gameè.exe",
+              "application": "gameè.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            }
+          ],
+          "frameCount": 12,
+          "durationSec": 0.12,
+          "columns": [
+            "Application",
+            "MsBetweenPresents",
+            "Note"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 12,
+            "sourceDurationSec": 0.12,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 11,
+            "startSec": 0,
+            "endSec": 0.12,
+            "durationSec": 0.11999999999999998,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [],
+        "metrics": {
+          "frameCount": 12,
+          "durationSec": 0.11999999999999998,
+          "averageFps": 100.00000000000001,
+          "meanOfInstantaneousFps": 100,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 10,
+            "p95": 10,
+            "p99": 10,
+            "p999": 10
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 11,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "assets": {
+        "index.html": {
+          "bytes": 2516,
+          "sha256": "8043c5f1e9f24a443f33acdfe29f5fdd4e2ab91b0d9dfe279086dd6a9f87c7e9"
+        },
+        "assets/index-x_73MQio.css": {
+          "bytes": 37779,
+          "sha256": "f2dd2a21378d496b931b0546b7c31fdbcca39c59235d32baffcc7ab9683d9799"
+        },
+        "assets/index-BjCyV6TJ.js": {
+          "bytes": 148119,
+          "sha256": "43fcf9008f26839cafe5538524d67466f44c6332210a685ba9e1458aaaea1d87"
+        },
+        "assets/jetbrains-mono-latin-6fWv1k7M.woff2": {
+          "bytes": 31432,
+          "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+        },
+        "assets/inter-latin-Dx4kXJAl.woff2": {
+          "bytes": 48256,
+          "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+        }
+      },
+      "pageErrors": [],
+      "externalRequests": [],
+      "lateRequests": [],
+      "axeViolations": [],
+      "overflow": false
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "observations": [
+        {
+          "id": "legacy-names",
+          "rejected": true,
+          "alert": "Could not parse legacy-names.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-stray",
+          "rejected": true,
+          "alert": "Could not parse utf8-stray.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-continuation",
+          "rejected": true,
+          "alert": "Could not parse utf8-continuation.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-overlong",
+          "rejected": true,
+          "alert": "Could not parse utf8-overlong.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf8-surrogate.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-out-of-range",
+          "rejected": true,
+          "alert": "Could not parse utf8-out-of-range.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-truncated",
+          "rejected": true,
+          "alert": "Could not parse utf8-truncated.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-late-damage",
+          "rejected": true,
+          "alert": "Could not parse utf8-late-damage.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-complete-at-sample-limit",
+          "rejected": true,
+          "alert": "Could not parse utf8-complete-at-sample-limit.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16le-high-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16le-high-surrogate.csv: Invalid UTF-16LE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16le-low-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16le-low-surrogate.csv: Invalid UTF-16LE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16le-odd-tail",
+          "rejected": true,
+          "alert": "Could not parse utf16le-odd-tail.csv: Invalid UTF-16LE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16be-high-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16be-high-surrogate.csv: Invalid UTF-16BE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16be-low-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16be-low-surrogate.csv: Invalid UTF-16BE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16be-odd-tail",
+          "rejected": true,
+          "alert": "Could not parse utf16be-odd-tail.csv: Invalid UTF-16BE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-names",
+          "rejected": false,
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-bom",
+          "rejected": false,
+          "file": "utf8-bom.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-bom.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "3f1fbbee5869993273d4332ffb5106d37893a5fbfecc02ff364dcf2e591ded16"
+        },
+        {
+          "id": "utf16le-names",
+          "rejected": false,
+          "file": "utf16le-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16le-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "fe5727b03527b25b78406f03548cf70edbfedbd6058f39e6f494a29660a2af1e"
+        },
+        {
+          "id": "utf16be-names",
+          "rejected": false,
+          "file": "utf16be-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16be-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "562abd3ab7dfd778d4ddcc01250b3b0425814782b909fa36e925dd58ad833068"
+        },
+        {
+          "id": "literal-replacement",
+          "rejected": false,
+          "file": "literal-replacement.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "literal-replacement.csv",
+            "format": "ocat",
+            "application": "game�.exe",
+            "stream": "game�.exe",
+            "streams": [
+              {
+                "id": "game�.exe",
+                "application": "game�.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "559de86813bec096fd83448e2f351d32da62d7634ed84ea627abf79e394db602"
+        },
+        {
+          "id": "utf8-split-sample",
+          "rejected": false,
+          "file": "utf8-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "ff6c35b48046117e5b7f241dcd7b817c3e4bbd203c223b2159df859bf8d0c433"
+        },
+        {
+          "id": "utf16le-split-sample",
+          "rejected": false,
+          "file": "utf16le-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "22d2e129893af46aa1e94a4ad9c22295c62689730f5111f853a6380dddb46ea3"
+        },
+        {
+          "id": "utf16be-split-sample",
+          "rejected": false,
+          "file": "utf16be-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "0573d879a590988d651b81af1492250b040b575f415702b979129c2a1f56b959"
+        }
+      ],
+      "control": {
+        "tool": "stutterscope",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "utf8-names.csv",
+          "format": "ocat",
+          "application": "gameé.exe",
+          "stream": "gameé.exe",
+          "streams": [
+            {
+              "id": "gameé.exe",
+              "application": "gameé.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            },
+            {
+              "id": "gameè.exe",
+              "application": "gameè.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            }
+          ],
+          "frameCount": 12,
+          "durationSec": 0.12,
+          "columns": [
+            "Application",
+            "MsBetweenPresents",
+            "Note"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 12,
+            "sourceDurationSec": 0.12,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 11,
+            "startSec": 0,
+            "endSec": 0.12,
+            "durationSec": 0.11999999999999998,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [],
+        "metrics": {
+          "frameCount": 12,
+          "durationSec": 0.11999999999999998,
+          "averageFps": 100.00000000000001,
+          "meanOfInstantaneousFps": 100,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 10,
+            "p95": 10,
+            "p99": 10,
+            "p999": 10
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 11,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "assets": {
+        "index.html": {
+          "bytes": 2516,
+          "sha256": "8043c5f1e9f24a443f33acdfe29f5fdd4e2ab91b0d9dfe279086dd6a9f87c7e9"
+        },
+        "assets/index-BjCyV6TJ.js": {
+          "bytes": 148119,
+          "sha256": "43fcf9008f26839cafe5538524d67466f44c6332210a685ba9e1458aaaea1d87"
+        },
+        "assets/index-x_73MQio.css": {
+          "bytes": 37779,
+          "sha256": "f2dd2a21378d496b931b0546b7c31fdbcca39c59235d32baffcc7ab9683d9799"
+        },
+        "assets/jetbrains-mono-latin-6fWv1k7M.woff2": {
+          "bytes": 31432,
+          "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+        },
+        "assets/inter-latin-Dx4kXJAl.woff2": {
+          "bytes": 48256,
+          "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+        }
+      },
+      "pageErrors": [],
+      "externalRequests": [],
+      "lateRequests": [
+        {
+          "path": "/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+          "type": "font"
+        },
+        {
+          "path": "/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+          "type": "font"
+        }
+      ],
+      "axeViolations": [],
+      "overflow": false
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "observations": [
+        {
+          "id": "legacy-names",
+          "rejected": true,
+          "alert": "Could not parse legacy-names.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-stray",
+          "rejected": true,
+          "alert": "Could not parse utf8-stray.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-continuation",
+          "rejected": true,
+          "alert": "Could not parse utf8-continuation.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-overlong",
+          "rejected": true,
+          "alert": "Could not parse utf8-overlong.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf8-surrogate.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-out-of-range",
+          "rejected": true,
+          "alert": "Could not parse utf8-out-of-range.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-truncated",
+          "rejected": true,
+          "alert": "Could not parse utf8-truncated.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-late-damage",
+          "rejected": true,
+          "alert": "Could not parse utf8-late-damage.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-complete-at-sample-limit",
+          "rejected": true,
+          "alert": "Could not parse utf8-complete-at-sample-limit.csv: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16le-high-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16le-high-surrogate.csv: Invalid UTF-16LE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16le-low-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16le-low-surrogate.csv: Invalid UTF-16LE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16le-odd-tail",
+          "rejected": true,
+          "alert": "Could not parse utf16le-odd-tail.csv: Invalid UTF-16LE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16be-high-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16be-high-surrogate.csv: Invalid UTF-16BE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16be-low-surrogate",
+          "rejected": true,
+          "alert": "Could not parse utf16be-low-surrogate.csv: Invalid UTF-16BE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf16be-odd-tail",
+          "rejected": true,
+          "alert": "Could not parse utf16be-odd-tail.csv: Invalid UTF-16BE text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed. Retry import",
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-names",
+          "rejected": false,
+          "file": "utf8-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "d8e26013ab6bebfa97dd3bbff5c70929b068d501aee7bcf2d2cb58e9eab9ba1c"
+        },
+        {
+          "id": "utf8-bom",
+          "rejected": false,
+          "file": "utf8-bom.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf8-bom.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "3f1fbbee5869993273d4332ffb5106d37893a5fbfecc02ff364dcf2e591ded16"
+        },
+        {
+          "id": "utf16le-names",
+          "rejected": false,
+          "file": "utf16le-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16le-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "fe5727b03527b25b78406f03548cf70edbfedbd6058f39e6f494a29660a2af1e"
+        },
+        {
+          "id": "utf16be-names",
+          "rejected": false,
+          "file": "utf16be-names.csv",
+          "frames": 12,
+          "averageFps": 100.00000000000001,
+          "source": {
+            "fileName": "utf16be-names.csv",
+            "format": "ocat",
+            "application": "gameé.exe",
+            "stream": "gameé.exe",
+            "streams": [
+              {
+                "id": "gameé.exe",
+                "application": "gameé.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              },
+              {
+                "id": "gameè.exe",
+                "application": "gameè.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 12
+              }
+            ],
+            "frameCount": 12,
+            "durationSec": 0.12,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "562abd3ab7dfd778d4ddcc01250b3b0425814782b909fa36e925dd58ad833068"
+        },
+        {
+          "id": "literal-replacement",
+          "rejected": false,
+          "file": "literal-replacement.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "literal-replacement.csv",
+            "format": "ocat",
+            "application": "game�.exe",
+            "stream": "game�.exe",
+            "streams": [
+              {
+                "id": "game�.exe",
+                "application": "game�.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "559de86813bec096fd83448e2f351d32da62d7634ed84ea627abf79e394db602"
+        },
+        {
+          "id": "utf8-split-sample",
+          "rejected": false,
+          "file": "utf8-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf8-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "ff6c35b48046117e5b7f241dcd7b817c3e4bbd203c223b2159df859bf8d0c433"
+        },
+        {
+          "id": "utf16le-split-sample",
+          "rejected": false,
+          "file": "utf16le-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16le-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "22d2e129893af46aa1e94a4ad9c22295c62689730f5111f853a6380dddb46ea3"
+        },
+        {
+          "id": "utf16be-split-sample",
+          "rejected": false,
+          "file": "utf16be-split-sample.csv",
+          "frames": 1,
+          "averageFps": 100,
+          "source": {
+            "fileName": "utf16be-split-sample.csv",
+            "format": "ocat",
+            "application": "game.exe",
+            "stream": "game.exe",
+            "streams": [
+              {
+                "id": "game.exe",
+                "application": "game.exe",
+                "processId": "",
+                "swapChain": "",
+                "frameCount": 1
+              }
+            ],
+            "frameCount": 1,
+            "durationSec": 0.01,
+            "columns": [
+              "Application",
+              "MsBetweenPresents",
+              "Note"
+            ],
+            "skippedRows": 0,
+            "warnings": [],
+            "omittedWarningDetails": 0,
+            "genericMapping": null,
+            "timingEvidence": null
+          },
+          "reportSha256": "0573d879a590988d651b81af1492250b040b575f415702b979129c2a1f56b959"
+        }
+      ],
+      "control": {
+        "tool": "stutterscope",
+        "schemaVersion": 5,
+        "source": {
+          "fileName": "utf8-names.csv",
+          "format": "ocat",
+          "application": "gameé.exe",
+          "stream": "gameé.exe",
+          "streams": [
+            {
+              "id": "gameé.exe",
+              "application": "gameé.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            },
+            {
+              "id": "gameè.exe",
+              "application": "gameè.exe",
+              "processId": "",
+              "swapChain": "",
+              "frameCount": 12
+            }
+          ],
+          "frameCount": 12,
+          "durationSec": 0.12,
+          "columns": [
+            "Application",
+            "MsBetweenPresents",
+            "Note"
+          ],
+          "skippedRows": 0,
+          "warnings": [],
+          "omittedWarningDetails": 0,
+          "genericMapping": null,
+          "timingEvidence": null
+        },
+        "analysis": {
+          "stutterOptions": {
+            "windowRadius": 10,
+            "kMultiplier": 2,
+            "hitchThresholdMs": 50
+          },
+          "selection": {
+            "requested": null,
+            "timeBasis": "accumulated-frame-time",
+            "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+            "detectionContext": "full-stream",
+            "sourceFrameCount": 12,
+            "sourceDurationSec": 0.12,
+            "firstFrameIndex": 0,
+            "lastFrameIndex": 11,
+            "startSec": 0,
+            "endSec": 0.12,
+            "durationSec": 0.11999999999999998,
+            "excludedBefore": 0,
+            "excludedAfter": 0
+          },
+          "stutterIndexBasis": "selected-series-zero-based",
+          "continuity": {
+            "basis": "source-row-evidence",
+            "frameNumberBasis": "source-selected-stream-one-based",
+            "gaps": []
+          }
+        },
+        "episodes": [],
+        "metrics": {
+          "frameCount": 12,
+          "durationSec": 0.11999999999999998,
+          "averageFps": 100.00000000000001,
+          "meanOfInstantaneousFps": 100,
+          "percentilesMs": {
+            "p50": 10,
+            "p90": 10,
+            "p95": 10,
+            "p99": 10,
+            "p999": 10
+          },
+          "onePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "pointOnePercentLow": {
+            "percentileMethodFps": 100,
+            "meanOfSlowestMethodFps": 100,
+            "timeWeightedFps": 100
+          },
+          "stutter": {
+            "stutterEventCount": 0,
+            "totalStutterTimeMs": 0,
+            "stutterTimeFraction": 0,
+            "hitchThresholdMs": 50,
+            "hitchCount": 0,
+            "totalHitchTimeMs": 0,
+            "hitchTimeFraction": 0,
+            "stutterFrameIndices": []
+          },
+          "masdMs": 0,
+          "pacingCoverage": {
+            "observedPairs": 11,
+            "gapBoundaries": 0
+          },
+          "dropped": null,
+          "boundShare": null,
+          "latency": null,
+          "telemetryCoverage": {
+            "dropped": null,
+            "cpuGpuBusy": null,
+            "displayLatency": null
+          }
+        }
+      },
+      "assets": {
+        "index.html": {
+          "bytes": 2516,
+          "sha256": "8043c5f1e9f24a443f33acdfe29f5fdd4e2ab91b0d9dfe279086dd6a9f87c7e9"
+        },
+        "assets/index-BjCyV6TJ.js": {
+          "bytes": 148119,
+          "sha256": "43fcf9008f26839cafe5538524d67466f44c6332210a685ba9e1458aaaea1d87"
+        },
+        "assets/index-x_73MQio.css": {
+          "bytes": 37779,
+          "sha256": "f2dd2a21378d496b931b0546b7c31fdbcca39c59235d32baffcc7ab9683d9799"
+        },
+        "assets/jetbrains-mono-latin-6fWv1k7M.woff2": {
+          "bytes": 31432,
+          "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"
+        },
+        "assets/inter-latin-Dx4kXJAl.woff2": {
+          "bytes": 48256,
+          "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+        }
+      },
+      "pageErrors": [],
+      "externalRequests": [],
+      "lateRequests": [
+        {
+          "path": "/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+          "type": "font"
+        },
+        {
+          "path": "/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+          "type": "font"
+        }
+      ],
+      "axeViolations": [],
+      "overflow": false
+    }
+  ]
+}

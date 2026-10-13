@@ -1,0 +1,14 @@
+[
+  {
+    "invalidSlot": "A",
+    "exit": 1,
+    "stdout": "",
+    "stderr": "stutterscope: Could not read <invalid capture>: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed."
+  },
+  {
+    "invalidSlot": "B",
+    "exit": 1,
+    "stdout": "",
+    "stderr": "stutterscope: Could not read <invalid capture>: Invalid UTF-8 text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed."
+  }
+]

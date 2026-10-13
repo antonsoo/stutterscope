@@ -15,9 +15,20 @@ export function detectEncoding(head: Uint8Array): TextEncoding {
   return "utf-8";
 }
 
-/** Decodes a whole file, or the sample of one that format detection reads. The byte-order mark is dropped. */
-export function decodeText(bytes: Uint8Array): string {
-  return new TextDecoder(detectEncoding(bytes)).decode(bytes);
+/** A decoder failure must not turn distinct stream identities into the same U+FFFD label. */
+export function decodeChunk(decoder: TextDecoder, bytes?: Uint8Array, partial = false): string {
+  try {
+    return decoder.decode(bytes, { stream: partial });
+  } catch (error) {
+    if (!(error instanceof TypeError)) throw error;
+    throw new ParseError(`Invalid ${decoder.encoding.toUpperCase()} text: malformed or truncated byte sequences. Re-export as UTF-8 or UTF-16 with a byte-order mark. This input was not analyzed.`);
+  }
+}
+
+/** The BOM is dropped. Only an explicitly partial sample may end mid-character;
+ * full imports must flush the decoder so truncated final sequences are rejected. */
+export function decodeText(bytes: Uint8Array, partial = false): string {
+  return decodeChunk(new TextDecoder(detectEncoding(bytes), { fatal: true }), bytes, partial);
 }
 
 /**

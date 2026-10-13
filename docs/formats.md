@@ -369,6 +369,16 @@ text". A file that starts with a UTF-16 byte-order mark (either byte order)
 is decoded as UTF-16. Without the mark it is read as UTF-8, where its NUL
 characters get it refused as "not a text file".
 
+**Invalid text.** UTF-8 and BOM-marked UTF-16 decoding is strict. Invalid bytes,
+unpaired surrogates and truncated final characters reject the entire input,
+including damage in an unused column. Permissive replacement could collapse
+different application names into the same stream. Legacy encodings such as
+Windows-1252 are not guessed; re-export them as UTF-8 or BOM-marked UTF-16.
+A correctly encoded literal replacement character is valid text. The browser's
+64 KiB format preview may end mid-character when more input remains, but the
+complete import must decode successfully. See the
+[retained before/after replay](../studies/text-integrity/README.md).
+
 **Line endings.** A line ends at LF, CRLF or a CR on its own. A line longer
 than 1,048,576 characters is refused: no capture has one, and a megabyte
 without a line break is a minified JSON file or a binary one.

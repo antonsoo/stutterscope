@@ -44,7 +44,8 @@ function chartTransferables(chart: ChartData): Transferable[] {
 async function handleParse(req: Extract<WorkerRequest, { type: "parse" }>): Promise<void> {
   const { requestId, slot, file, formatOverride, genericMapping, stream, stutterOptions } = req;
   try {
-    const sampleText = decodeText(new Uint8Array(await file.slice(0, 65536).arrayBuffer()));
+    const sample = new Uint8Array(await file.slice(0, 65536).arrayBuffer());
+    const sampleText = decodeText(sample, sample.byteLength < file.size);
     requireText(sampleText);
     let format: SourceFormat;
     if (formatOverride) {

@@ -1,0 +1,1367 @@
+{
+  "label": "after",
+  "node": "v26.7.0",
+  "compiledTreeSha256": "bd70aa1f301e35810b93fed8c1365bf967b8d9d4309d1e460e17bf467d69ccc1",
+  "count": 34,
+  "results": [
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_0.csv",
+      "inputSha256": "0036a3c35caa7fc06b13604484fcd1758bf1912ee53aa8416812b020f95d8993",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 18,
+      "averageFps": 69.43064938872098,
+      "durationSec": 0.2592515,
+      "hitchCount": 0,
+      "summarySha256": "b2529ec334f66e1f99e6d0761b77b1b61293d6efcb9ad6f2da117ef949451fb4",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "1268:0x224B280A1C0",
+          "application": "dwm.exe",
+          "processId": "1268",
+          "swapChain": "0x224B280A1C0",
+          "frameCount": 197
+        },
+        {
+          "id": "10792:0x20979A6D5F8",
+          "application": "Presenter.exe",
+          "processId": "10792",
+          "swapChain": "0x20979A6D5F8",
+          "frameCount": 18
+        },
+        {
+          "id": "8320:0x15EFD8424E0",
+          "application": "Presenter.exe",
+          "processId": "8320",
+          "swapChain": "0x15EFD8424E0",
+          "frameCount": 18
+        },
+        {
+          "id": "11648:0x1B95496E4B0",
+          "application": "Presenter.exe",
+          "processId": "11648",
+          "swapChain": "0x1B95496E4B0",
+          "frameCount": 18
+        },
+        {
+          "id": "3976:0x0",
+          "application": "Presenter.exe",
+          "processId": "3976",
+          "swapChain": "0x0",
+          "frameCount": 18
+        },
+        {
+          "id": "2032:0x29A5884FF18",
+          "application": "Presenter.exe",
+          "processId": "2032",
+          "swapChain": "0x29A5884FF18",
+          "frameCount": 18
+        },
+        {
+          "id": "5988:0x224CBFFD9D8",
+          "application": "Presenter.exe",
+          "processId": "5988",
+          "swapChain": "0x224CBFFD9D8",
+          "frameCount": 18
+        },
+        {
+          "id": "12268:0x20DBB4358B0",
+          "application": "Presenter.exe",
+          "processId": "12268",
+          "swapChain": "0x20DBB4358B0",
+          "frameCount": 18
+        },
+        {
+          "id": "11112:0x0",
+          "application": "Presenter.exe",
+          "processId": "11112",
+          "swapChain": "0x0",
+          "frameCount": 17
+        },
+        {
+          "id": "11100:0x0",
+          "application": "Presenter.exe",
+          "processId": "11100",
+          "swapChain": "0x0",
+          "frameCount": 17
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "9e4199c601f81701730e5d20dfb49d6bad71426fecf3126c2df6fd56340ff7d7"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_0_v1.csv",
+      "inputSha256": "c44407ee31bf829f241a8e64d5e8f5e5209d042b312c46f2da0bd26e330a979f",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "presentmon1",
+      "frames": 19,
+      "averageFps": 68.8827579206108,
+      "durationSec": 0.27583100000000005,
+      "hitchCount": 0,
+      "summarySha256": "18549b600a86865271eb091eaefc7de81a133bca3b732c0b93db7831f81f2c4e",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "1268:0x00000224B280A1C0",
+          "application": "dwm.exe",
+          "processId": "1268",
+          "swapChain": "0x00000224B280A1C0",
+          "frameCount": 199
+        },
+        {
+          "id": "10792:0x0000020979A6D5F8",
+          "application": "Presenter.exe",
+          "processId": "10792",
+          "swapChain": "0x0000020979A6D5F8",
+          "frameCount": 19
+        },
+        {
+          "id": "8320:0x0000015EFD8424E0",
+          "application": "Presenter.exe",
+          "processId": "8320",
+          "swapChain": "0x0000015EFD8424E0",
+          "frameCount": 19
+        },
+        {
+          "id": "11648:0x000001B95496E4B0",
+          "application": "Presenter.exe",
+          "processId": "11648",
+          "swapChain": "0x000001B95496E4B0",
+          "frameCount": 19
+        },
+        {
+          "id": "3976:0x0000000000000000",
+          "application": "Presenter.exe",
+          "processId": "3976",
+          "swapChain": "0x0000000000000000",
+          "frameCount": 19
+        },
+        {
+          "id": "2032:0x0000029A5884FF18",
+          "application": "Presenter.exe",
+          "processId": "2032",
+          "swapChain": "0x0000029A5884FF18",
+          "frameCount": 19
+        },
+        {
+          "id": "5988:0x00000224CBFFD9D8",
+          "application": "Presenter.exe",
+          "processId": "5988",
+          "swapChain": "0x00000224CBFFD9D8",
+          "frameCount": 19
+        },
+        {
+          "id": "12268:0x0000020DBB4358B0",
+          "application": "Presenter.exe",
+          "processId": "12268",
+          "swapChain": "0x0000020DBB4358B0",
+          "frameCount": 19
+        },
+        {
+          "id": "11112:0x0000000000000000",
+          "application": "Presenter.exe",
+          "processId": "11112",
+          "swapChain": "0x0000000000000000",
+          "frameCount": 18
+        },
+        {
+          "id": "11100:0x0000000000000000",
+          "application": "Presenter.exe",
+          "processId": "11100",
+          "swapChain": "0x0000000000000000",
+          "frameCount": 18
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "aced95c7a2c356fe06c52f8eb5cd94cab49a58ab5c3baff1b14955157fa7b093"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_0_v2.csv",
+      "inputSha256": "46a596f04065f76364f37eaf9b5edc064132a71daa8e7650c29cf2ef537041af",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "presentmon2",
+      "frames": 18,
+      "averageFps": 65.78355893439405,
+      "durationSec": 0.2736246,
+      "hitchCount": 0,
+      "summarySha256": "f3148b1757c7713b86ad35ab5bffe0bb6a4fd59463aefc0cc07655a315e73c37",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "1268:0x224B280A1C0",
+          "application": "dwm.exe",
+          "processId": "1268",
+          "swapChain": "0x224B280A1C0",
+          "frameCount": 197
+        },
+        {
+          "id": "10792:0x20979A6D5F8",
+          "application": "Presenter.exe",
+          "processId": "10792",
+          "swapChain": "0x20979A6D5F8",
+          "frameCount": 18
+        },
+        {
+          "id": "8320:0x15EFD8424E0",
+          "application": "Presenter.exe",
+          "processId": "8320",
+          "swapChain": "0x15EFD8424E0",
+          "frameCount": 18
+        },
+        {
+          "id": "11648:0x1B95496E4B0",
+          "application": "Presenter.exe",
+          "processId": "11648",
+          "swapChain": "0x1B95496E4B0",
+          "frameCount": 18
+        },
+        {
+          "id": "3976:0x0",
+          "application": "Presenter.exe",
+          "processId": "3976",
+          "swapChain": "0x0",
+          "frameCount": 18
+        },
+        {
+          "id": "2032:0x29A5884FF18",
+          "application": "Presenter.exe",
+          "processId": "2032",
+          "swapChain": "0x29A5884FF18",
+          "frameCount": 18
+        },
+        {
+          "id": "5988:0x224CBFFD9D8",
+          "application": "Presenter.exe",
+          "processId": "5988",
+          "swapChain": "0x224CBFFD9D8",
+          "frameCount": 18
+        },
+        {
+          "id": "12268:0x20DBB4358B0",
+          "application": "Presenter.exe",
+          "processId": "12268",
+          "swapChain": "0x20DBB4358B0",
+          "frameCount": 18
+        },
+        {
+          "id": "11112:0x0",
+          "application": "Presenter.exe",
+          "processId": "11112",
+          "swapChain": "0x0",
+          "frameCount": 17
+        },
+        {
+          "id": "11100:0x0",
+          "application": "Presenter.exe",
+          "processId": "11100",
+          "swapChain": "0x0",
+          "frameCount": 17
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "5dd3cb0dc18b330452804d21c538ce7c3a5daf4ff63b31619d54040f5d493e15"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_1.csv",
+      "inputSha256": "56e149cacfd10a280a3e3dffc99aed38ccff7a440da1cc681844311e1945316b",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 7,
+      "averageFps": 104.49429983594392,
+      "durationSec": 0.06698930000000002,
+      "hitchCount": 0,
+      "summarySha256": "10bec6a4d40d200e5751344f905a2ad73901ee26c57e5d2f2ab45fbabe39ca4d",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "1564:0x2408E0B7CA0",
+          "application": "dwm.exe",
+          "processId": "1564",
+          "swapChain": "0x2408E0B7CA0",
+          "frameCount": 25
+        },
+        {
+          "id": "1564:0x240A8D570F0",
+          "application": "dwm.exe",
+          "processId": "1564",
+          "swapChain": "0x240A8D570F0",
+          "frameCount": 15
+        },
+        {
+          "id": "24560:0x2019D7777C0",
+          "application": "Presenter.exe",
+          "processId": "24560",
+          "swapChain": "0x2019D7777C0",
+          "frameCount": 7
+        },
+        {
+          "id": "24944:0x1E25CF20",
+          "application": "devenv.exe",
+          "processId": "24944",
+          "swapChain": "0x1E25CF20",
+          "frameCount": 3
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "952f1b3b945c0bc933a8f6f0bb7d0bf77cf45b9c96145781cf4974c938622e99"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_1_v1.csv",
+      "inputSha256": "847c8ce11556d6308278aab665fd706fa730afe4e6d6fdd7fd4edfbe0b625e8b",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "presentmon1",
+      "frames": 8,
+      "averageFps": 105.2698065140956,
+      "durationSec": 0.07599520000000001,
+      "hitchCount": 0,
+      "summarySha256": "b66619a52ca9866766637c9ef623d65dba97fac30fb2b9fbd8d6824b74ac0cc3",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "1564:0x000002408E0B7CA0",
+          "application": "dwm.exe",
+          "processId": "1564",
+          "swapChain": "0x000002408E0B7CA0",
+          "frameCount": 26
+        },
+        {
+          "id": "1564:0x00000240A8D570F0",
+          "application": "dwm.exe",
+          "processId": "1564",
+          "swapChain": "0x00000240A8D570F0",
+          "frameCount": 16
+        },
+        {
+          "id": "24560:0x000002019D7777C0",
+          "application": "Presenter.exe",
+          "processId": "24560",
+          "swapChain": "0x000002019D7777C0",
+          "frameCount": 8
+        },
+        {
+          "id": "24944:0x000000001E25CF20",
+          "application": "devenv.exe",
+          "processId": "24944",
+          "swapChain": "0x000000001E25CF20",
+          "frameCount": 4
+        },
+        {
+          "id": "11024:0x0000027943F86F20",
+          "application": "chrome.exe",
+          "processId": "11024",
+          "swapChain": "0x0000027943F86F20",
+          "frameCount": 1
+        },
+        {
+          "id": "1564:0x0000000000000000",
+          "application": "dwm.exe",
+          "processId": "1564",
+          "swapChain": "0x0000000000000000",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "b87e59a2f60f4f4405fe6769c5d3d28c79eec45b8c325966670762962ec63163"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_1_v2.csv",
+      "inputSha256": "744bb42853b8821f6c97ef6a7b5bd588617bf2fb1ab47ef955dba90c9c7a28d8",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "presentmon2",
+      "frames": 7,
+      "averageFps": 105.92723404319712,
+      "durationSec": 0.0660831,
+      "hitchCount": 0,
+      "summarySha256": "c17e4b16e3b19c463ef22e488f8d6e80b364616cb4709cdef5434da2fe530930",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "1564:0x2408E0B7CA0",
+          "application": "dwm.exe",
+          "processId": "1564",
+          "swapChain": "0x2408E0B7CA0",
+          "frameCount": 25
+        },
+        {
+          "id": "1564:0x240A8D570F0",
+          "application": "dwm.exe",
+          "processId": "1564",
+          "swapChain": "0x240A8D570F0",
+          "frameCount": 15
+        },
+        {
+          "id": "24560:0x2019D7777C0",
+          "application": "Presenter.exe",
+          "processId": "24560",
+          "swapChain": "0x2019D7777C0",
+          "frameCount": 7
+        },
+        {
+          "id": "24944:0x1E25CF20",
+          "application": "devenv.exe",
+          "processId": "24944",
+          "swapChain": "0x1E25CF20",
+          "frameCount": 3
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "8676ae059e6456a2af2df97842992cb4ce8bdf5fa6bb5c80c7075a7e9ce78f91"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_2.csv",
+      "inputSha256": "4c1c2a92c8d2cd234d0f1d44b6bbe17b56d936947d2874a9217228a0347c6d5c",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 18,
+      "averageFps": 69.21639351826929,
+      "durationSec": 0.260054,
+      "hitchCount": 0,
+      "summarySha256": "676af3f888e064dfec68f9ce321e99e59e7b6dd7e4100c45daabb7831d03fd6c",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "1300:0x296989CD030",
+          "application": "dwm.exe",
+          "processId": "1300",
+          "swapChain": "0x296989CD030",
+          "frameCount": 56
+        },
+        {
+          "id": "10016:0x1BA6DC82C58",
+          "application": "Presenter.exe",
+          "processId": "10016",
+          "swapChain": "0x1BA6DC82C58",
+          "frameCount": 18
+        },
+        {
+          "id": "5348:0x28F99FCFD50",
+          "application": "Presenter.exe",
+          "processId": "5348",
+          "swapChain": "0x28F99FCFD50",
+          "frameCount": 18
+        },
+        {
+          "id": "5220:0x13B8AF7D830",
+          "application": "Presenter.exe",
+          "processId": "5220",
+          "swapChain": "0x13B8AF7D830",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "dbabe3cc3c154daf52a71403f55af23ab4cbe031dde9cf2442bd633f6db9e27c"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_2_v1.csv",
+      "inputSha256": "1c454ac79f69ff9229c7ab4410ae1a15ae984ce0cd9ee6b74099a0ec8b1cd825",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "presentmon1",
+      "frames": 19,
+      "averageFps": 68.68409941408848,
+      "durationSec": 0.2766288,
+      "hitchCount": 0,
+      "summarySha256": "0ddd8170185dbb9265ab01234d733d851dcbcfbb8cea231d4361c491044b9dd2",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "1300:0x00000296989CD030",
+          "application": "dwm.exe",
+          "processId": "1300",
+          "swapChain": "0x00000296989CD030",
+          "frameCount": 57
+        },
+        {
+          "id": "10016:0x000001BA6DC82C58",
+          "application": "Presenter.exe",
+          "processId": "10016",
+          "swapChain": "0x000001BA6DC82C58",
+          "frameCount": 19
+        },
+        {
+          "id": "5348:0x0000028F99FCFD50",
+          "application": "Presenter.exe",
+          "processId": "5348",
+          "swapChain": "0x0000028F99FCFD50",
+          "frameCount": 19
+        },
+        {
+          "id": "5220:0x0000013B8AF7D830",
+          "application": "Presenter.exe",
+          "processId": "5220",
+          "swapChain": "0x0000013B8AF7D830",
+          "frameCount": 2
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "d1512508fd259b718d9b27f200155adfdf36de0624dc177b3da1791ca207cd68"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_2_v2.csv",
+      "inputSha256": "c59ee6459dd3977b10b3e096a0c9598649dd1f1029758027f2df4e03d0d4d7e9",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "presentmon2",
+      "frames": 18,
+      "averageFps": 66.72308474165376,
+      "durationSec": 0.26977170000000006,
+      "hitchCount": 0,
+      "summarySha256": "27435b23ba8f7c712f1e1462ae78395136f86f61283b56d633008fcdf46a72dd",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "1300:0x296989CD030",
+          "application": "dwm.exe",
+          "processId": "1300",
+          "swapChain": "0x296989CD030",
+          "frameCount": 56
+        },
+        {
+          "id": "10016:0x1BA6DC82C58",
+          "application": "Presenter.exe",
+          "processId": "10016",
+          "swapChain": "0x1BA6DC82C58",
+          "frameCount": 18
+        },
+        {
+          "id": "5348:0x28F99FCFD50",
+          "application": "Presenter.exe",
+          "processId": "5348",
+          "swapChain": "0x28F99FCFD50",
+          "frameCount": 18
+        },
+        {
+          "id": "5220:0x13B8AF7D830",
+          "application": "Presenter.exe",
+          "processId": "5220",
+          "swapChain": "0x13B8AF7D830",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "36bd99f0f87e96fb1e4eaa71c9aa3ba935376bf119268fedfe3aed75e92bf9d7"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_3.csv",
+      "inputSha256": "fe00d7cdba06dbfbd31797e24bbe08df8f3ee402e3ce53e2777cc333e1ab87d0",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 18,
+      "averageFps": 66.95711173802808,
+      "durationSec": 0.2688288,
+      "hitchCount": 0,
+      "summarySha256": "117706e7a73a3aa899aeebfab2f2170667907589a8e3e40dd6b71465bb7d9b72",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "1252:0x22E6AFA2560",
+          "application": "dwm.exe",
+          "processId": "1252",
+          "swapChain": "0x22E6AFA2560",
+          "frameCount": 61
+        },
+        {
+          "id": "5892:0x1F0FF310E98",
+          "application": "Presenter.exe",
+          "processId": "5892",
+          "swapChain": "0x1F0FF310E98",
+          "frameCount": 18
+        },
+        {
+          "id": "10112:0x1ED7B93C580",
+          "application": "Presenter.exe",
+          "processId": "10112",
+          "swapChain": "0x1ED7B93C580",
+          "frameCount": 18
+        },
+        {
+          "id": "12980:0x2C6BEB300A0",
+          "application": "Presenter.exe",
+          "processId": "12980",
+          "swapChain": "0x2C6BEB300A0",
+          "frameCount": 18
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "28e7987146c6c3346877c06d5ffb0ad35d2aea0e539d8b2bb8ce0fd9c82a1878"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_3_v1.csv",
+      "inputSha256": "f26570a25f7234076d8c80181e6b6bf40d7183d363e8f94569524c07d211c2d4",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "presentmon1",
+      "frames": 19,
+      "averageFps": 66.55961078742122,
+      "durationSec": 0.2854584,
+      "hitchCount": 0,
+      "summarySha256": "3d9f3d212bfddf3d1b010b80b9c8820332bc80131e2701cdcf54e412bf57bab0",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "1252:0x0000022E6AFA2560",
+          "application": "dwm.exe",
+          "processId": "1252",
+          "swapChain": "0x0000022E6AFA2560",
+          "frameCount": 62
+        },
+        {
+          "id": "5892:0x000001F0FF310E98",
+          "application": "Presenter.exe",
+          "processId": "5892",
+          "swapChain": "0x000001F0FF310E98",
+          "frameCount": 19
+        },
+        {
+          "id": "10112:0x000001ED7B93C580",
+          "application": "Presenter.exe",
+          "processId": "10112",
+          "swapChain": "0x000001ED7B93C580",
+          "frameCount": 19
+        },
+        {
+          "id": "12980:0x000002C6BEB300A0",
+          "application": "Presenter.exe",
+          "processId": "12980",
+          "swapChain": "0x000002C6BEB300A0",
+          "frameCount": 19
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "85b56413b5cba50926d0df57c45efaa0618c87b8d07d0edbcb00f2d9a199e775"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_3_v2.csv",
+      "inputSha256": "d955fa9762ac4bf44f1274886f4c418fe7b036f0f8dcb38e671c6d1b25fccb73",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "presentmon2",
+      "frames": 18,
+      "averageFps": 63.91355478669917,
+      "durationSec": 0.28163039999999995,
+      "hitchCount": 0,
+      "summarySha256": "cdf795954a51542fa1424ee2c5a84735257c941b5003ca62cff26173d0abe1d0",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "1252:0x22E6AFA2560",
+          "application": "dwm.exe",
+          "processId": "1252",
+          "swapChain": "0x22E6AFA2560",
+          "frameCount": 61
+        },
+        {
+          "id": "5892:0x1F0FF310E98",
+          "application": "Presenter.exe",
+          "processId": "5892",
+          "swapChain": "0x1F0FF310E98",
+          "frameCount": 18
+        },
+        {
+          "id": "10112:0x1ED7B93C580",
+          "application": "Presenter.exe",
+          "processId": "10112",
+          "swapChain": "0x1ED7B93C580",
+          "frameCount": 18
+        },
+        {
+          "id": "12980:0x2C6BEB300A0",
+          "application": "Presenter.exe",
+          "processId": "12980",
+          "swapChain": "0x2C6BEB300A0",
+          "frameCount": 18
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "56ab3f9660d03d201fd3c605b412fb62bfcf2652f27a17a9f2ce0ed1c7cc29d1"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_4.csv",
+      "inputSha256": "064c9dc9eb99907b12b03cbff4f9e02e6538305b556fa4fde9946dd1c4ace365",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 18,
+      "averageFps": 62.2337777286054,
+      "durationSec": 0.28923200000000004,
+      "hitchCount": 0,
+      "summarySha256": "fded5e10e8f20bd4b94fd9a3bc40943ec152fe5ba56db09f41dd8bd1682ffa83",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "10376:0x1BF098B1ED0",
+          "application": "dwm.exe",
+          "processId": "10376",
+          "swapChain": "0x1BF098B1ED0",
+          "frameCount": 114
+        },
+        {
+          "id": "9620:0x19E52815138",
+          "application": "Presenter.exe",
+          "processId": "9620",
+          "swapChain": "0x19E52815138",
+          "frameCount": 18
+        },
+        {
+          "id": "8536:0x197B10BAB70",
+          "application": "Presenter.exe",
+          "processId": "8536",
+          "swapChain": "0x197B10BAB70",
+          "frameCount": 18
+        },
+        {
+          "id": "5236:0x285B4C0D1B0",
+          "application": "Presenter.exe",
+          "processId": "5236",
+          "swapChain": "0x285B4C0D1B0",
+          "frameCount": 18
+        },
+        {
+          "id": "5192:0x0",
+          "application": "Presenter.exe",
+          "processId": "5192",
+          "swapChain": "0x0",
+          "frameCount": 18
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "8536c87513c3f5561ea45f788b90e1a9c3cde0f239190eb606f6eb76e9d42f79"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_4_v1.csv",
+      "inputSha256": "1bf9b3dcc4fcab50e7962372b58a68f3a1d947e868917a97e494e0f7eb741da8",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "presentmon1",
+      "frames": 19,
+      "averageFps": 62.102340735278624,
+      "durationSec": 0.30594660000000007,
+      "hitchCount": 0,
+      "summarySha256": "677936f9d550bf37bc1e4365eb448f5cc92999183c70eaaaefedd699074976e7",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "10376:0x000001BF098B1ED0",
+          "application": "dwm.exe",
+          "processId": "10376",
+          "swapChain": "0x000001BF098B1ED0",
+          "frameCount": 116
+        },
+        {
+          "id": "9620:0x0000019E52815138",
+          "application": "Presenter.exe",
+          "processId": "9620",
+          "swapChain": "0x0000019E52815138",
+          "frameCount": 19
+        },
+        {
+          "id": "8536:0x00000197B10BAB70",
+          "application": "Presenter.exe",
+          "processId": "8536",
+          "swapChain": "0x00000197B10BAB70",
+          "frameCount": 19
+        },
+        {
+          "id": "5236:0x00000285B4C0D1B0",
+          "application": "Presenter.exe",
+          "processId": "5236",
+          "swapChain": "0x00000285B4C0D1B0",
+          "frameCount": 19
+        },
+        {
+          "id": "5192:0x0000000000000000",
+          "application": "Presenter.exe",
+          "processId": "5192",
+          "swapChain": "0x0000000000000000",
+          "frameCount": 19
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "979bccdd3acb3dc1345a2fea993cd2d73f610529b596f1eebf8b343773e5ea1f"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_4_v2.csv",
+      "inputSha256": "be5823b2a0b7dbb1a06111bf0abcc9f5bb10e0359e528277604960cf69f57cf5",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "presentmon2",
+      "frames": 18,
+      "averageFps": 59.861181919129535,
+      "durationSec": 0.3006957,
+      "hitchCount": 0,
+      "summarySha256": "ee186f0cf064ad59c11145cd482346f45ca1d0a6636991fe4860afe446c3aaf2",
+      "warnings": [],
+      "application": "Presenter.exe",
+      "streams": [
+        {
+          "id": "10376:0x1BF098B1ED0",
+          "application": "dwm.exe",
+          "processId": "10376",
+          "swapChain": "0x1BF098B1ED0",
+          "frameCount": 114
+        },
+        {
+          "id": "9620:0x19E52815138",
+          "application": "Presenter.exe",
+          "processId": "9620",
+          "swapChain": "0x19E52815138",
+          "frameCount": 18
+        },
+        {
+          "id": "8536:0x197B10BAB70",
+          "application": "Presenter.exe",
+          "processId": "8536",
+          "swapChain": "0x197B10BAB70",
+          "frameCount": 18
+        },
+        {
+          "id": "5236:0x285B4C0D1B0",
+          "application": "Presenter.exe",
+          "processId": "5236",
+          "swapChain": "0x285B4C0D1B0",
+          "frameCount": 18
+        },
+        {
+          "id": "5192:0x0",
+          "application": "Presenter.exe",
+          "processId": "5192",
+          "swapChain": "0x0",
+          "frameCount": 18
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "340cf261de5de5d2b4f25c23a661e77bc33f77baa13ed4c223f43d56cb463435"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_5.csv",
+      "inputSha256": "0ecd9ac4ab37d53a65ba3dd36cedf5a0a5d758789c0101a20f516b354f1163ab",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 258,
+      "averageFps": 88.88590611980835,
+      "durationSec": 2.902597400000002,
+      "hitchCount": 0,
+      "summarySha256": "8f5b87a2399f69a03bead9b4467c4067f48a4e5d3996aa8caac07ade3b12c297",
+      "warnings": [],
+      "application": "PresentBench.exe",
+      "streams": [
+        {
+          "id": "24892:0x2A70D2CAC00",
+          "application": "PresentBench.exe",
+          "processId": "24892",
+          "swapChain": "0x2A70D2CAC00",
+          "frameCount": 258
+        },
+        {
+          "id": "2656:0x19D7EF5E390",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x19D7EF5E390",
+          "frameCount": 174
+        },
+        {
+          "id": "2656:0x19D7F1BA8F0",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x19D7F1BA8F0",
+          "frameCount": 174
+        },
+        {
+          "id": "3980:0x21C48E8A710",
+          "application": "steamwebhelper.exe",
+          "processId": "3980",
+          "swapChain": "0x21C48E8A710",
+          "frameCount": 24
+        },
+        {
+          "id": "24892:0x0",
+          "application": "PresentBench.exe",
+          "processId": "24892",
+          "swapChain": "0x0",
+          "frameCount": 7
+        },
+        {
+          "id": "2656:0x0",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x0",
+          "frameCount": 5
+        },
+        {
+          "id": "2656:0x100000000",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x100000000",
+          "frameCount": 5
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "c49255cfe9e3a2a4b6b9125696cbeff8c713d49c626f467b6979acdf4957639c"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_5_v1.csv",
+      "inputSha256": "cdd209120d092989384533150e2a83fc00a7a685ee81d4c07906c724964f8eaa",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "presentmon1",
+      "frames": 259,
+      "averageFps": 88.89337970158451,
+      "durationSec": 2.9136028000000023,
+      "hitchCount": 0,
+      "summarySha256": "210d5ead11bfd2d92231be9ce9c16aae74fd0ef55326c4629d8ea476fb110c8c",
+      "warnings": [],
+      "application": "PresentBench.exe",
+      "streams": [
+        {
+          "id": "24892:0x000002A70D2CAC00",
+          "application": "PresentBench.exe",
+          "processId": "24892",
+          "swapChain": "0x000002A70D2CAC00",
+          "frameCount": 259
+        },
+        {
+          "id": "2656:0x0000019D7EF5E390",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x0000019D7EF5E390",
+          "frameCount": 175
+        },
+        {
+          "id": "2656:0x0000019D7F1BA8F0",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x0000019D7F1BA8F0",
+          "frameCount": 175
+        },
+        {
+          "id": "3980:0x0000021C48E8A710",
+          "application": "steamwebhelper.exe",
+          "processId": "3980",
+          "swapChain": "0x0000021C48E8A710",
+          "frameCount": 25
+        },
+        {
+          "id": "24892:0x0000000000000000",
+          "application": "PresentBench.exe",
+          "processId": "24892",
+          "swapChain": "0x0000000000000000",
+          "frameCount": 8
+        },
+        {
+          "id": "2656:0x0000000000000000",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x0000000000000000",
+          "frameCount": 6
+        },
+        {
+          "id": "2656:0x0000000100000000",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x0000000100000000",
+          "frameCount": 6
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "36aff32ee0be214b7554492a617cd293ae1d271cd0899a4554bfa85908a00202"
+    },
+    {
+      "id": "GameTechDev/PresentMon:Tests/Gold/test_case_5_v2.csv",
+      "inputSha256": "569536581907592bd3b428d453e996a1dce689e6178429c7e66a143470319f4e",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "presentmon2",
+      "frames": 258,
+      "averageFps": 88.88612048051968,
+      "durationSec": 2.902590400000002,
+      "hitchCount": 0,
+      "summarySha256": "66ff27cb846a386d167528c8e95dedb9d59542a3854708b293c3308fdd0cf2e4",
+      "warnings": [],
+      "application": "PresentBench.exe",
+      "streams": [
+        {
+          "id": "24892:0x2A70D2CAC00",
+          "application": "PresentBench.exe",
+          "processId": "24892",
+          "swapChain": "0x2A70D2CAC00",
+          "frameCount": 258
+        },
+        {
+          "id": "2656:0x19D7EF5E390",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x19D7EF5E390",
+          "frameCount": 174
+        },
+        {
+          "id": "2656:0x19D7F1BA8F0",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x19D7F1BA8F0",
+          "frameCount": 174
+        },
+        {
+          "id": "3980:0x21C48E8A710",
+          "application": "steamwebhelper.exe",
+          "processId": "3980",
+          "swapChain": "0x21C48E8A710",
+          "frameCount": 24
+        },
+        {
+          "id": "24892:0x0",
+          "application": "PresentBench.exe",
+          "processId": "24892",
+          "swapChain": "0x0",
+          "frameCount": 7
+        },
+        {
+          "id": "2656:0x0",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x0",
+          "frameCount": 5
+        },
+        {
+          "id": "2656:0x100000000",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x100000000",
+          "frameCount": 5
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "4fbf6d05aefcd7652aa10b22f17d80a8168d302381bbbb6ca5e49f889320369e"
+    },
+    {
+      "id": "Reason7322/mangohudlogs:Witchfire-Win64-Shipping_2026-08-12_14-16-42.csv",
+      "inputSha256": "f80aee599f38847c804cc2c06bbac26bf7fa21ac4a29c4813bce02ca1363aba6",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "mangohud",
+      "frames": 117569,
+      "averageFps": 135.26992872516146,
+      "durationSec": 869.1436530500002,
+      "hitchCount": 13,
+      "summarySha256": "3f24c56cc4900eac60054e755e54533a333d8ba4a6e33fe0484fa4a6eba94670",
+      "warnings": [],
+      "application": null,
+      "streams": null,
+      "skippedRows": 0,
+      "reportSha256": "edba1ca2f35f04bb7c1a0c6902e36898b717720b6fe020913cbc07b9026e80dc"
+    },
+    {
+      "id": "xD3I/Benchmarks:examples/mangohud.csv",
+      "inputSha256": "00ba3e9713e12acee8bbecaa1c0fa33f8769737633e30c988e207f355f148a13",
+      "exit": 1,
+      "stderr": "Could not parse <capture>: MangoHud logging intervals do not match frame durations: 369.588318 s of elapsed intervals versus 24.063798 s of frame durations across 3693 adjacent records. This may be periodic logging or missing frames. Recapture with log_interval=0; snapshots cannot reconstruct a per-frame stutter report.",
+      "status": "rejected",
+      "stdout": ""
+    },
+    {
+      "id": "xD3I/Benchmarks:examples/frameview-1-6.csv",
+      "inputSha256": "b2d5f951273be8acb69af3c7635168001a6baa5a26093a87896b6079493f54b7",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "frameview",
+      "frames": 112316,
+      "averageFps": 204.9491553254011,
+      "durationSec": 548.018848000003,
+      "hitchCount": 0,
+      "summarySha256": "f7d36f70b1bf125bc9f8741478f317ce956d94d8a3d24a3e2cada8e64a78422f",
+      "warnings": [],
+      "application": "re4.exe",
+      "streams": [
+        {
+          "id": "25784:0x0000000132CF7570",
+          "application": "re4.exe",
+          "processId": "25784",
+          "swapChain": "0x0000000132CF7570",
+          "frameCount": 112316
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "b10d3d9db92ddcff989490896e310c4402a2e4459703556d0cb26f5d0d82861b"
+    },
+    {
+      "id": "erkexzcx/flightlesssomething:testdata/afterburner/GOD.OF.WAR_Windows.csv",
+      "inputSha256": "f34324d33065564e76a807c795e62d19ee55fa0c33566cb82b1bd219dc8bca16",
+      "exit": 1,
+      "stderr": "This isn't a capture format stutterscope knows, and no single column says it holds frame times. Columns: 0, 24-10-2025 15:41:23, Hardware monitoring log v1.6, , , , , , , , , , and 1 more. Pick one with --generic-column <name> --generic-kind <frametime_ms | frametime_us | frametime_s | fps | timestamp_s_cumulative | timestamp_ms_cumulative>.",
+      "status": "rejected",
+      "stdout": ""
+    },
+    {
+      "id": "erkexzcx/flightlesssomething:testdata/afterburner/RE3_Windows.csv",
+      "inputSha256": "26c422b533718cacf91100c638bdeeaf3ae899ce68d35d1ebcc0568fbdaaec8d",
+      "exit": 1,
+      "stderr": "This isn't a capture format stutterscope knows, and no single column says it holds frame times. Columns: 0, 24-10-2025 16:56:05, Hardware monitoring log v1.6, , , , , , , , , , and 1 more. Pick one with --generic-column <name> --generic-kind <frametime_ms | frametime_us | frametime_s | fps | timestamp_s_cumulative | timestamp_ms_cumulative>.",
+      "status": "rejected",
+      "stdout": ""
+    },
+    {
+      "id": "erkexzcx/flightlesssomething:testdata/afterburner/u4_Windows.csv",
+      "inputSha256": "5315fea47e2e17a20dfd0199365a92b87ac97250c0d2897d2ad047277e69262c",
+      "exit": 1,
+      "stderr": "This isn't a capture format stutterscope knows, and no single column says it holds frame times. Columns: 0, 24-10-2025 18:04:41, Hardware monitoring log v1.6, , , , , , , , , , and 1 more. Pick one with --generic-column <name> --generic-kind <frametime_ms | frametime_us | frametime_s | fps | timestamp_s_cumulative | timestamp_ms_cumulative>.",
+      "status": "rejected",
+      "stdout": ""
+    },
+    {
+      "id": "erkexzcx/flightlesssomething:testdata/mangohud/run1.csv",
+      "inputSha256": "307792b81f66febe7c91f0b04d1814deb903474256e44d70e9368eeb082fb2da",
+      "exit": 1,
+      "stderr": "Could not parse <capture>: MangoHud logging intervals do not match frame durations: 29.721116 s of elapsed intervals versus 1.231299 s of frame durations across 297 adjacent records. This may be periodic logging or missing frames. Recapture with log_interval=0; snapshots cannot reconstruct a per-frame stutter report.",
+      "status": "rejected",
+      "stdout": ""
+    },
+    {
+      "id": "erkexzcx/flightlesssomething:testdata/mangohud/run2.csv",
+      "inputSha256": "b0f9b53e690316d9d4e8fb58c6c6f6842127968737f229b5646b55f7977f3441",
+      "exit": 1,
+      "stderr": "Could not parse <capture>: MangoHud logging intervals do not match frame durations: 29.720533 s of elapsed intervals versus 1.228895 s of frame durations across 297 adjacent records. This may be periodic logging or missing frames. Recapture with log_interval=0; snapshots cannot reconstruct a per-frame stutter report.",
+      "status": "rejected",
+      "stdout": ""
+    },
+    {
+      "id": "erkexzcx/flightlesssomething:testdata/mangohud/run3.csv",
+      "inputSha256": "804ad195ced5c15a327c1b33bc18eea80f0bdd8b0a487acb8cb44d31bbf02659",
+      "exit": 1,
+      "stderr": "Could not parse <capture>: MangoHud logging intervals do not match frame durations: 29.520381 s of elapsed intervals versus 1.228533 s of frame durations across 295 adjacent records. This may be periodic logging or missing frames. Recapture with log_interval=0; snapshots cannot reconstruct a per-frame stutter report.",
+      "status": "rejected",
+      "stdout": ""
+    },
+    {
+      "id": "cosmiclf/Intel_PresentMon_Performance_Analysis:Logs/pmcap-r5apex_dx12.exe-250709-222018.csv",
+      "inputSha256": "68ea6ae2da9e3277f40741f1b0f3b1e18a8079a2549baaa7ea7971497c3ca5c7",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 10652,
+      "averageFps": 153.95619924162565,
+      "durationSec": 69.1885098000002,
+      "hitchCount": 0,
+      "summarySha256": "148ec7c3988c5e386db10356174068694bdd11112c8e4eace4f378d76d380a77",
+      "warnings": [],
+      "application": "r5apex_dx12.exe",
+      "streams": [
+        {
+          "id": "18660:0x1F741139B80",
+          "application": "r5apex_dx12.exe",
+          "processId": "18660",
+          "swapChain": "0x1F741139B80",
+          "frameCount": 10652
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "11b93866a8c0b7ff0af97d6c924dc8577289de33d9587c02f4b30ebc23464f60"
+    },
+    {
+      "id": "cosmiclf/Intel_PresentMon_Performance_Analysis:Logs/pmcap-r5apex_dx12.exe-250709-222519.csv",
+      "inputSha256": "e037cb6bb23dca584410932bad2b3af519aa9a1ea1c211f91e2fa7b6dfec2845",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 8020,
+      "averageFps": 130.84528383118828,
+      "durationSec": 61.29376440000013,
+      "hitchCount": 0,
+      "summarySha256": "82785ac5a99d330e967dc1236b3944031b1414503400059c06bd065f0da06903",
+      "warnings": [],
+      "application": "r5apex_dx12.exe",
+      "streams": [
+        {
+          "id": "18660:0x1F741139B80",
+          "application": "r5apex_dx12.exe",
+          "processId": "18660",
+          "swapChain": "0x1F741139B80",
+          "frameCount": 8020
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "5627aaa98ebe543241eb143dda7b01ebe5c636c47628f5106b4d481424035aa3"
+    },
+    {
+      "id": "cosmiclf/Intel_PresentMon_Performance_Analysis:Logs/pmcap-superposition.exe-250719-215451.csv",
+      "inputSha256": "b71ab808920c3aaba41fa8e9d0090f7b342bf43e0c8e69e36864e1457447b66b",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 13143,
+      "averageFps": 68.79217061666346,
+      "durationSec": 191.05371850000014,
+      "hitchCount": 46,
+      "summarySha256": "22e07178e087b4f8619665eefacd53605939fefae4914cb524936d6de08515ad",
+      "warnings": [],
+      "application": "superposition.exe",
+      "streams": [
+        {
+          "id": "14952:0x2A78FAA5940",
+          "application": "superposition.exe",
+          "processId": "14952",
+          "swapChain": "0x2A78FAA5940",
+          "frameCount": 13143
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "b0ef2aec1d15a281c0a1b65ab07ceab4a33614dd153b778c558d03a675729871"
+    },
+    {
+      "id": "cosmiclf/Intel_PresentMon_Performance_Analysis:Logs/pmcap-superposition.exe-250719-220716.csv",
+      "inputSha256": "6ca4bf3e1482976e74acb365f31788a08a29983f4bef1c835c80bb59cb046a13",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "ocat",
+      "frames": 12431,
+      "averageFps": 71.1595891302684,
+      "durationSec": 174.69184619999945,
+      "hitchCount": 1,
+      "summarySha256": "ddfec9eafaa02fa150cf0f698a43696cc6242f8fd42ed51b9ba671f69d73bd29",
+      "warnings": [],
+      "application": "superposition.exe",
+      "streams": [
+        {
+          "id": "1148:0x1843739CC00",
+          "application": "superposition.exe",
+          "processId": "1148",
+          "swapChain": "0x1843739CC00",
+          "frameCount": 12431
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "7b2d454d34a6f1f44c1ab99ec23dca3cccdb538119f0ac107dd555f68f951bff"
+    },
+    {
+      "id": "Pavelioso/Frameviewer:assets/witcher_3.csv",
+      "inputSha256": "b8e5e5d998bd68331a03e035ccf37356075b04012e319810d4700843b8ebba27",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "frameview",
+      "frames": 1146,
+      "averageFps": 42.555489052804624,
+      "durationSec": 26.929546000000034,
+      "hitchCount": 7,
+      "summarySha256": "b973a0b2657c85fc1a8dd59bea265f6811e9d2ce48a24bc8bdd5a6b1e52d31cf",
+      "warnings": [],
+      "application": "witcher3.exe",
+      "streams": [
+        {
+          "id": "1832:0x000002900C071B50",
+          "application": "witcher3.exe",
+          "processId": "1832",
+          "swapChain": "0x000002900C071B50",
+          "frameCount": 1146
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "aa262ebaa0a0f364dcbe12e900b321b1aa0eefdbf425de76921b69e8a968d4fd"
+    },
+    {
+      "id": "Pavelioso/Frameviewer:assets/witcher_3_gdrive.csv",
+      "inputSha256": "97817910caed86d19df599ea6bf98becd5d5407eae7e70b1a24660f31b20a3c5",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "frameview",
+      "frames": 907,
+      "averageFps": 44.84282096842392,
+      "durationSec": 20.226203000000027,
+      "hitchCount": 9,
+      "summarySha256": "f83a0d07552e4b761bdfc400051cc9b87e7f8079ac511c527320c47c9a8436e9",
+      "warnings": [],
+      "application": "witcher3.exe",
+      "streams": [
+        {
+          "id": "7820:0x000001D01D577200",
+          "application": "witcher3.exe",
+          "processId": "7820",
+          "swapChain": "0x000001D01D577200",
+          "frameCount": 907
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "a2bd79c6541405165a5e13b8e04428c09a8f29f69c75b68bc52a06082dfb4889"
+    },
+    {
+      "id": "Pavelioso/Frameviewer:assets/witcher_3_test.csv",
+      "inputSha256": "42cdd54631db2fc0f3e4934287185763a9f93c18226e25ac5a2810460442a3e8",
+      "exit": 0,
+      "stderr": "",
+      "status": "parsed",
+      "format": "frameview",
+      "frames": 906,
+      "averageFps": 32.350107864043466,
+      "durationSec": 28.006088999999964,
+      "hitchCount": 10,
+      "summarySha256": "f26ef89dd8f15f5e4d5b7056c07b1297a22c36059c32cab76474541dc21f18e5",
+      "warnings": [],
+      "application": "witcher3.exe",
+      "streams": [
+        {
+          "id": "7820:0x000001D01D577200",
+          "application": "witcher3.exe",
+          "processId": "7820",
+          "swapChain": "0x000001D01D577200",
+          "frameCount": 906
+        },
+        {
+          "id": "73:83",
+          "application": "witcher3.exe",
+          "processId": "73",
+          "swapChain": "83",
+          "frameCount": 1
+        }
+      ],
+      "skippedRows": 0,
+      "reportSha256": "3c30c8195e1190d4eb41e4709d9a885313fd7cfcf990c60814252d619480524b"
+    }
+  ]
+}

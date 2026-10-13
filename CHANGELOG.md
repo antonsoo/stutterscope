@@ -8,6 +8,16 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 Changes below are in source and have not been released as an npm package.
 
+### Text decoding correction (source only)
+
+- Reject malformed UTF-8 and BOM-marked UTF-16 in both CLI and browser imports.
+  Replacement characters from permissive decoding could collapse distinct
+  application names into one stream and produce misleading FPS and pacing.
+- Permit a format preview to end mid-character only when more input remains;
+  validate the entire stream and its final bytes before accepting a capture.
+  Failed replacement or comparison imports preserve the previous valid report.
+  See the [byte-level replay and public-capture controls](studies/text-integrity/README.md).
+
 ### Stream identity correction (source only)
 
 - Preserve application identity alongside the swap chain when `ProcessID` is
