@@ -1,0 +1,115 @@
+{
+  "runtime_files_matching_build": [
+    {
+      "file": "cli/index.js",
+      "bytes": 23443,
+      "sha256": "aa3edaee41a456757903a7c482a79821e94734494aaa51b09c38004957ed588d"
+    },
+    {
+      "file": "cli/version.js",
+      "bytes": 119,
+      "sha256": "025c43b0174cddba9eed71580899a21e527500cba7b5a82adb384c647d228a7e"
+    },
+    {
+      "file": "core/analysis.js",
+      "bytes": 4154,
+      "sha256": "cb8a916ef1b5155034344f38bc44e18442988b261e3b08eb74704aa10bfe0de4"
+    },
+    {
+      "file": "core/buffer.js",
+      "bytes": 1534,
+      "sha256": "e873af844bc1c061472297ea7e56fd5fd074048a9062f65e21fffe5ad593fa1c"
+    },
+    {
+      "file": "core/continuity.js",
+      "bytes": 908,
+      "sha256": "3727cec1c0e05457f05e6091debec38c974360e613d3d5522769f91ab547783b"
+    },
+    {
+      "file": "core/csv.js",
+      "bytes": 9996,
+      "sha256": "8affd0a4e075ddf2f62e3a1341d0a7085645d58a5cc9015e371eead9e851ef14"
+    },
+    {
+      "file": "core/encoding.js",
+      "bytes": 2171,
+      "sha256": "c4747c375a99d469f130a4f1a7f84d58a9e82b2cccfe8043ae86797778207a75"
+    },
+    {
+      "file": "core/episodes.js",
+      "bytes": 1840,
+      "sha256": "326def178fb3e8833f433109dcedd05728fa735418e86d242c883436294dfa72"
+    },
+    {
+      "file": "core/index.js",
+      "bytes": 310,
+      "sha256": "da269c2a188596acaef3a1371494578d3b121cf2a9a958fbe958faf8ced0d485"
+    },
+    {
+      "file": "core/metrics.js",
+      "bytes": 19148,
+      "sha256": "e08b13c47d60d156a13593d331ddd4ef02a40805991d54c4d3d60d09eb70a524"
+    },
+    {
+      "file": "core/parsers/capframex.js",
+      "bytes": 3060,
+      "sha256": "a2c84980c2309c41be7c20ef6e127a9a0bc3ed1cf8918277eccd6186e2e54500"
+    },
+    {
+      "file": "core/parsers/frameview.js",
+      "bytes": 5379,
+      "sha256": "51f29352bfe429f08b0a01979d9e78f3ec24f7f88a5ae335209cda732edc2afd"
+    },
+    {
+      "file": "core/parsers/generic.js",
+      "bytes": 14905,
+      "sha256": "5c19d724513a955779d6b708cbd5820b63af0c55827d264c780a1234aec5602e"
+    },
+    {
+      "file": "core/parsers/index.js",
+      "bytes": 1893,
+      "sha256": "ff42582427e4f3a1dd5cc3edf0f5514aa729b433916283e6799dff6abc4488bd"
+    },
+    {
+      "file": "core/parsers/mangohud.js",
+      "bytes": 8016,
+      "sha256": "cbec48d66ff80b9705eb02292199ca719c8bdfa8378f810ed26e03c21b7e5c53"
+    },
+    {
+      "file": "core/parsers/ocat.js",
+      "bytes": 5018,
+      "sha256": "9c0be74bf45aece26002d49ed060ec3936ec4649a421adcfa191558d4d79b856"
+    },
+    {
+      "file": "core/parsers/presentmon1.js",
+      "bytes": 5543,
+      "sha256": "09737016418ea75c42c5d7f69b69689f50128e8721c40f472b927355bc00d1b0"
+    },
+    {
+      "file": "core/parsers/presentmon2.js",
+      "bytes": 6099,
+      "sha256": "d62121e07cfa896a9314c9d24400be19720f4270cba8f52be4968cb00006813a"
+    },
+    {
+      "file": "core/report.js",
+      "bytes": 2087,
+      "sha256": "ac7cc75e1b2c590d57bf5e5c59b90dd264aa09760407410d9f2df84857ab4b9a"
+    },
+    {
+      "file": "core/stream.js",
+      "bytes": 4261,
+      "sha256": "b175271390b1b1ce51c0e22951adae63d2f133aa287c6ce8f6191637275bb249"
+    },
+    {
+      "file": "core/streams.js",
+      "bytes": 9150,
+      "sha256": "6999cbbe343698748d78ed5dbf0ba2c560c6d5f3a6794cb885f22cba190d24ad"
+    },
+    {
+      "file": "core/types.js",
+      "bytes": 1485,
+      "sha256": "d34bba7125fd99ddd4b49ea7d41d601f07568be60bb4eb4e2398ae99b1e2e8ca"
+    }
+  ],
+  "no_install_scripts_executed": true
+}

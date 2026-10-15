@@ -76,3 +76,6 @@ The last command reuses the existing hash-checked corpus runner. The controlled
 runner also accepts the separately installed package's CLI path and `--node`.
 It launches actual CLI commands and compares their JSON to independently
 specified frame counts, durations, hitches and adjacency boundaries.
+
+The [clean archive and installed-package verification](../../docs/verification-csv-width-2026-10-15.md)
+records production-browser exports, source parity and inspected screenshots.

@@ -1,0 +1,48 @@
+{
+  "baseline_commit": "996b4421d2d9ab6f56731ecadd0b12d9c96d6043",
+  "tested_commit": "89fd38239f953e2a8f86ac14ffe1bb066ebb5521",
+  "git_archive_sha256": "352981aaa91dc1992c51fda480f3ecb468a2456b24d7122915236dc9362598ee",
+  "clean_node": "24.21.0",
+  "clean_install": "npm ci --no-audit --no-fund",
+  "lint": "passed",
+  "typecheck": "passed",
+  "tests": {
+    "default_locale": 354,
+    "de_DE_locale": 354
+  },
+  "web_build": "passed",
+  "cli_build": "passed",
+  "production_browser_checks": 80,
+  "new_offline_contexts": 4,
+  "json_downloads_in_new_workflows": 16,
+  "screenshots_inspected": 4,
+  "browser_exports_equal_cli": 12,
+  "network_limit": "Firefox retries same-origin fonts while offline; no analysis code, capture data or external-origin requests.",
+  "packed_artifact": {
+    "file": "antonsoloviev-stutterscope-0.2.5.tgz",
+    "sha256": "b777ea822fd3e341d9434d78d1ee12670f3649697511bba00bd67659d4718306",
+    "bytes": 46715
+  },
+  "installed": {
+    "scripts_disabled": true,
+    "runtime_js_files_equal_build": 22,
+    "node_versions": [
+      "22.6.0",
+      "24.21.0"
+    ],
+    "controlled_cli_cases_each": 9,
+    "public_capture_replay_equal_source": 34,
+    "quickstarts": [
+      "summary presentmon2-synthetic-demo.csv",
+      "summary generic-synthetic-demo.csv",
+      "compare controlled-a.csv controlled-b.csv with per-run intervals"
+    ]
+  },
+  "build_files_equal_node24_node26": 30,
+  "public_captures": {
+    "hash_checked": 34,
+    "unchanged_complete_reports": 33,
+    "changed_damaged_test_assets": 1
+  },
+  "publication_at_execution": "Local source, clean build and installed package; no npm release or manual deployment."
+}

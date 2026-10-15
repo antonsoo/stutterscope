@@ -1,0 +1,62 @@
+[
+  {
+    "context": "chromium-1440",
+    "case": "presentmon2",
+    "metrics_source_and_episodes_equal_cli": true
+  },
+  {
+    "context": "chromium-1440",
+    "case": "unknown-stream",
+    "metrics_source_and_episodes_equal_cli": true
+  },
+  {
+    "context": "chromium-1440",
+    "case": "generic",
+    "metrics_source_and_episodes_equal_cli": true
+  },
+  {
+    "context": "chromium-375",
+    "case": "presentmon2",
+    "metrics_source_and_episodes_equal_cli": true
+  },
+  {
+    "context": "chromium-375",
+    "case": "unknown-stream",
+    "metrics_source_and_episodes_equal_cli": true
+  },
+  {
+    "context": "chromium-375",
+    "case": "generic",
+    "metrics_source_and_episodes_equal_cli": true
+  },
+  {
+    "context": "firefox-1440",
+    "case": "presentmon2",
+    "metrics_source_and_episodes_equal_cli": true
+  },
+  {
+    "context": "firefox-1440",
+    "case": "unknown-stream",
+    "metrics_source_and_episodes_equal_cli": true
+  },
+  {
+    "context": "firefox-1440",
+    "case": "generic",
+    "metrics_source_and_episodes_equal_cli": true
+  },
+  {
+    "context": "firefox-375",
+    "case": "presentmon2",
+    "metrics_source_and_episodes_equal_cli": true
+  },
+  {
+    "context": "firefox-375",
+    "case": "unknown-stream",
+    "metrics_source_and_episodes_equal_cli": true
+  },
+  {
+    "context": "firefox-375",
+    "case": "generic",
+    "metrics_source_and_episodes_equal_cli": true
+  }
+]
