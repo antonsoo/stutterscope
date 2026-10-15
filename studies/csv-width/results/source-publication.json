@@ -1,0 +1,78 @@
+{
+  "checked_at_utc": "2026-10-15T18:10:18.169097+00:00",
+  "clean_source_commit": "f4ce8ad8881c263e81a631037c9349553cdf610f",
+  "remote_main": "f4ce8ad8881c263e81a631037c9349553cdf610f",
+  "files": [
+    {
+      "file": "src/core/csv.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/f4ce8ad8881c263e81a631037c9349553cdf610f/src/core/csv.ts",
+      "bytes": 9734,
+      "sha256": "8902fca9a15b7ab34dc4ea267963393c41a3ff452e0f5ae808349cd3aaeed11d",
+      "matches_clean_source": true
+    },
+    {
+      "file": "src/core/streams.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/f4ce8ad8881c263e81a631037c9349553cdf610f/src/core/streams.ts",
+      "bytes": 9649,
+      "sha256": "80ef01dd9a669a3a2527e4ea6a7f7ec0d1b6eac4c7bd148baf98e388d29df4d5",
+      "matches_clean_source": true
+    },
+    {
+      "file": "src/core/parsers/presentmon2.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/f4ce8ad8881c263e81a631037c9349553cdf610f/src/core/parsers/presentmon2.ts",
+      "bytes": 6228,
+      "sha256": "5b1f7cf4646a13eea4d35d5858b6ea56bd3c3bb11fdc7ff4312b0ffc30bc1bea",
+      "matches_clean_source": true
+    },
+    {
+      "file": "src/core/parsers/generic.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/f4ce8ad8881c263e81a631037c9349553cdf610f/src/core/parsers/generic.ts",
+      "bytes": 15473,
+      "sha256": "65ec174146701825294d9fb695f40b48c71a24bd3647c23ab28a461a61fcb515",
+      "matches_clean_source": true
+    },
+    {
+      "file": "tests/core/csv-width.test.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/f4ce8ad8881c263e81a631037c9349553cdf610f/tests/core/csv-width.test.ts",
+      "bytes": 3103,
+      "sha256": "73452069146667505e79f0429d9071240746cbc99c48cf843f6b89e092f37139",
+      "matches_clean_source": true
+    },
+    {
+      "file": "tests/browser/csv-width.spec.js",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/f4ce8ad8881c263e81a631037c9349553cdf610f/tests/browser/csv-width.spec.js",
+      "bytes": 3787,
+      "sha256": "de63b575a5c65dd33a2432d5c5380c223a58a1f4ec757c7f9b695048089b0889",
+      "matches_clean_source": true
+    },
+    {
+      "file": "studies/csv-width/results/before.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/f4ce8ad8881c263e81a631037c9349553cdf610f/studies/csv-width/results/before.json",
+      "bytes": 41426,
+      "sha256": "feca61660f6f75980a08df4ac038286bf6230aa0d54f73fea24988fc0e9ebc96",
+      "matches_clean_source": true
+    },
+    {
+      "file": "studies/csv-width/results/after.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/f4ce8ad8881c263e81a631037c9349553cdf610f/studies/csv-width/results/after.json",
+      "bytes": 37958,
+      "sha256": "4371046b8ba515cae823843b5efebab2d1cbee19ac056c2f7651202d28d7e6bb",
+      "matches_clean_source": true
+    },
+    {
+      "file": "studies/csv-width/results/verification.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/f4ce8ad8881c263e81a631037c9349553cdf610f/studies/csv-width/results/verification.json",
+      "bytes": 1661,
+      "sha256": "c74d9ff03cc3ce6808ad9df9cf918a32190291f27adceb39df879fc40a299aec",
+      "matches_clean_source": true
+    },
+    {
+      "file": "docs/verification-csv-width-2026-10-15.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/f4ce8ad8881c263e81a631037c9349553cdf610f/docs/verification-csv-width-2026-10-15.md",
+      "bytes": 4528,
+      "sha256": "2f1d0d8b34d5bd6a4700b139edb73187553cb0e914c7e19e7befc46ac3c59b4a",
+      "matches_clean_source": true
+    }
+  ],
+  "scope": "Public source only; no npm release or manual deployment."
+}

@@ -11,6 +11,12 @@ The [verification receipt](../studies/csv-width/results/verification.json)
 records the clean `89fd382` source archive and locally packed npm artifact.
 This change does not release npm or update the hosted demo.
 
+Source was subsequently pushed with the owner's authorization. The
+[public-source receipt](../studies/csv-width/results/source-publication.json)
+records clean source and GitHub `main` equality at `f4ce8ad`, plus ten
+byte-identical files fetched at immutable public URLs. This verifies source
+publication; no package release or manual deployment was performed.
+
 | Workflow | Result |
 | --- | --- |
 | Clean Node 24.21.0 archive, fresh npm install | Lint, typecheck, 354 tests, web and CLI builds pass |
