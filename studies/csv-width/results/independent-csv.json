@@ -1,0 +1,101 @@
+[
+  {
+    "case": "presentmon1",
+    "bytes": 218,
+    "sha256": "bf6c8c071ea765e9076138d70b234f83a1545e02690ce522e45cd818fbc3c2e9",
+    "header_fields": 7,
+    "data_field_counts": {
+      "7": 4,
+      "8": 1
+    },
+    "overwide_records": 1
+  },
+  {
+    "case": "presentmon2",
+    "bytes": 185,
+    "sha256": "820a98fc9bd9846613e1735bcc3c770b1afad3c955d88dac94151057d241e1bc",
+    "header_fields": 6,
+    "data_field_counts": {
+      "6": 4,
+      "7": 1
+    },
+    "overwide_records": 1
+  },
+  {
+    "case": "ocat",
+    "bytes": 193,
+    "sha256": "306cffd9a32b002956d7f540011a8af0d5152d45ebb103202bd2f539fd932cf4",
+    "header_fields": 6,
+    "data_field_counts": {
+      "6": 4,
+      "7": 1
+    },
+    "overwide_records": 1
+  },
+  {
+    "case": "capframex",
+    "bytes": 215,
+    "sha256": "b2f593b115d2822b94dbd7adce6fa99360da13cec3e8fe397396dbdd589172c2",
+    "header_fields": 6,
+    "data_field_counts": {
+      "6": 4,
+      "7": 1
+    },
+    "overwide_records": 1
+  },
+  {
+    "case": "frameview",
+    "bytes": 215,
+    "sha256": "9a1335703af164f370b7236bd7f4dcc4b8c788a968a9bd6f96e7a1f3ad8c4e8d",
+    "header_fields": 7,
+    "data_field_counts": {
+      "7": 4,
+      "8": 1
+    },
+    "overwide_records": 1
+  },
+  {
+    "case": "mangohud",
+    "bytes": 76,
+    "sha256": "b473fd460a5b3a560505c89226409599c72f9ba16e4c7d5f76863bc850533c05",
+    "header_fields": 3,
+    "data_field_counts": {
+      "3": 4,
+      "4": 1
+    },
+    "overwide_records": 1
+  },
+  {
+    "case": "generic",
+    "bytes": 52,
+    "sha256": "c6dc1fdbcd5435cc6b50806c39713506fcb79d0ce03645384b0e5e641bf3f01f",
+    "header_fields": 2,
+    "data_field_counts": {
+      "2": 4,
+      "3": 1
+    },
+    "overwide_records": 1
+  },
+  {
+    "case": "timestamp",
+    "bytes": 28,
+    "sha256": "299fd0adf4da661463feb0ec21a18b1d46ebecb2cea2765f04649862df29ad19",
+    "header_fields": 1,
+    "data_field_counts": {
+      "1": 4,
+      "2": 1
+    },
+    "overwide_records": 1
+  },
+  {
+    "case": "unknown-stream",
+    "bytes": 193,
+    "sha256": "cca56d375c0fae7318579b2df1f7ed2593f605495b28901eb59673f9d42ee295",
+    "header_fields": 6,
+    "data_field_counts": {
+      "6": 4,
+      "7": 1
+    },
+    "overwide_records": 1
+  }
+]

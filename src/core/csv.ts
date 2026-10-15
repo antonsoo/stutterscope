@@ -67,6 +67,14 @@ export function splitCsvLine(line: string, lineNumber?: number): string[] {
   return fields;
 }
 
+/** An extra cell makes every column assignment uncertain: its insertion point is unknown.
+ * Short telemetry tails occur in native OCAT exports and are handled by column lookup. */
+export function extraFieldsReason(fields: string[], columns: string[]): string | undefined {
+  return fields.length > columns.length
+    ? `too many CSV fields: ${fields.length} cells for ${columns.length} header columns; column alignment is unknown`
+    : undefined;
+}
+
 /** A line ends at LF, CRLF, or a CR on its own (the classic Mac ending some spreadsheet exports still write). */
 export const LINE_BREAK = /\r\n|\n|\r/;
 

@@ -398,6 +398,13 @@ toward the average. The web app and the CLI report how many rows were
 skipped. The parser keeps a message with the line number for the first 50
 (`meta.warnings`), and the web app lists the first 20 of those.
 
+The source reader also skips a row with more cells than the header declares.
+Its insertion point and stream identity are unknown, so no measurement is read
+and every existing stream loses adjacency across it. Cumulative timestamps
+restart at the next valid anchor. Shorter rows remain supported for native
+OCAT hardware tails; this check cannot detect every equal-width or shortened
+misalignment. [Controlled cases and a damaged upstream asset](../studies/csv-width/README.md).
+
 **Files that are refused.** With the reason, in the web app's error box and
 on the CLI's stderr with exit code 1: an empty file, a binary one, a header
 with no data rows, and a capture none of whose rows has a usable frame

@@ -26,7 +26,7 @@ import { cumulativeSeconds } from "../streams.ts";
  * that metric.
  */
 import { Float64Builder } from "../buffer.ts";
-import { indexHeader, LINE_BREAK, parseFloatOrNull, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
+import { extraFieldsReason, indexHeader, LINE_BREAK, parseFloatOrNull, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
 import { ParseError, type FrameSeries, type SniffResult, type StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
 
@@ -78,6 +78,13 @@ class MangoHudParser implements StreamingParser {
       if (!looksLikeFrameHeader(fields)) return; // skip version/system-info preamble
       this.header = indexHeader(fields, lineIndex + 1);
       this.columns = fields.map((f) => f.trim());
+      return;
+    }
+    const widthProblem = extraFieldsReason(fields, this.columns);
+    if (widthProblem) {
+      this.continuity.skip();
+      this.previousElapsed = null;
+      this.skipped.add(lineIndex, widthProblem);
       return;
     }
     const idx = this.header.get("frametime");

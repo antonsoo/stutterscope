@@ -1,0 +1,6 @@
+Application,ProcessID,SwapChainAddress,msBetweenPresents,CPUBusy,GPUBusy,msInPresentAPI
+game.exe,42,0x1,10,4,5,1
+game.exe,42,0x1,10,4,5,1
+game.exe,42,0x1,1000,10,4,5,1
+game.exe,42,0x1,10,4,5,1
+game.exe,42,0x1,10,4,5,1

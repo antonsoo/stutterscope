@@ -83,6 +83,12 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
 
 ## Features
 
+- **Shifted CSV records (source only):** a row with more cells than its header
+  cannot establish column alignment. It is now skipped with a source-line warning
+  and a continuity gap, including clock-anchor reset for cumulative timestamps.
+  In a retained public FrameView test asset, the old reader treated a process ID
+  as a 7,820 ms frame. [Reproduction and compatibility limits](studies/csv-width/README.md)
+  include OCAT's valid shortened telemetry tails. This is not yet in npm or the live demo.
 - **Correct grouping after removing process IDs (source only):** application
   names and swap-chain addresses stay together. A controlled five-row export
   previously labeled two applications as one game at 45.5 FPS with two false

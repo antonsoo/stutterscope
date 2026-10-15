@@ -6,7 +6,7 @@ import { cumulativeSeconds } from "../streams.ts";
  * per-row value and what it means, and we derive frame times from that.
  */
 import { Float64Builder, Uint8Builder } from "../buffer.ts";
-import { indexHeader, LINE_BREAK, parseDroppedOrUnknown, parseFloatOrNull, parseWarnings, SkippedRows, splitCsvLine, stripBom } from "../csv.ts";
+import { extraFieldsReason, indexHeader, LINE_BREAK, parseDroppedOrUnknown, parseFloatOrNull, parseWarnings, SkippedRows, splitCsvLine, stripBom } from "../csv.ts";
 import type { FrameSeries, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync, parseFileStreaming } from "../stream.ts";
 import type { ProgressCallback } from "../types.ts";
@@ -270,6 +270,16 @@ class GenericParser implements StreamingParser {
       this.header = indexHeader(fields, lineIndex + 1);
       this.columns = fields.map((f) => f.trim());
       this.hasDropped = this.mapping.droppedColumn !== undefined && this.header.has(this.mapping.droppedColumn);
+      return;
+    }
+    const widthProblem = extraFieldsReason(fields, this.columns);
+    if (widthProblem) {
+      this.continuity.skip();
+      if (isCumulative(this.mapping.valueKind)) {
+        this.previousTimestamp = null;
+        this.timestampGap = true;
+      }
+      this.skipped.add(lineIndex, widthProblem);
       return;
     }
     const h = this.header;

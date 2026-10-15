@@ -1,0 +1,15 @@
+{
+  "url": "https://raw.githubusercontent.com/Pavelioso/Frameviewer/084d4cb69e35839fd4ae2738119429f5cddd2ee6/assets/witcher_3_test.csv",
+  "sha256": "42cdd54631db2fc0f3e4934287185763a9f93c18226e25ac5a2810460442a3e8",
+  "bytes": 469185,
+  "fresh_public_bytes_match_retained_cache": true,
+  "header_fields": 110,
+  "overwide_records": [
+    {
+      "line": 18,
+      "fields": 142,
+      "value_at_frame_time_column": "7820"
+    }
+  ],
+  "limit": "The shorter malformed record remains outside the extra-field guard; matching width alone does not establish alignment."
+}

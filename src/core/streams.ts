@@ -106,6 +106,11 @@ export class StreamTracker {
     if (index !== undefined) this.continuity.skip(index);
   }
 
+  /** A shifted record cannot identify its stream, even when its leading cells look valid. */
+  skipUnidentified(): void {
+    this.continuity.skip();
+  }
+
   private identityProblem(application: string, processId: string, swapChain: string): string | undefined {
     // An absent column establishes a capture-wide fallback. A blank cell in a
     // declared identity column does not establish which known stream owns it.

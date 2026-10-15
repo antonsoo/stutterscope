@@ -17,7 +17,7 @@
  * channel); the telemetry columns are ignored.
  */
 import { Float64Builder, Uint8Builder } from "../buffer.ts";
-import { indexHeader, LINE_BREAK, parseDroppedOrUnknown, parseFloatOrNull, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
+import { extraFieldsReason, indexHeader, LINE_BREAK, parseDroppedOrUnknown, parseFloatOrNull, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
 import type { FrameSeries, ParserOptions, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
 import { cumulativeSeconds, StreamTracker } from "../streams.ts";
@@ -59,6 +59,12 @@ class FrameViewParser implements StreamingParser {
       this.hasDropped = this.header.has("Dropped");
       this.hasLatency = this.header.has("MsPCLatency");
       this.streams.setHeader(this.header);
+      return;
+    }
+    const widthProblem = extraFieldsReason(fields, this.columns);
+    if (widthProblem) {
+      this.streams.skipUnidentified();
+      this.skipped.add(lineIndex, widthProblem);
       return;
     }
     const h = this.header;

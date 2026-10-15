@@ -1,0 +1,154 @@
+[
+  {
+    "name": "presentmon1",
+    "file": "fixtures/presentmon1.csv",
+    "options": [
+      "--format",
+      "presentmon1"
+    ],
+    "expected": {
+      "frames": 4,
+      "averageFps": 100,
+      "skipped": 1,
+      "hitches": 0,
+      "gaps": 1,
+      "pairs": 2
+    }
+  },
+  {
+    "name": "presentmon2",
+    "file": "fixtures/presentmon2.csv",
+    "options": [
+      "--format",
+      "presentmon2"
+    ],
+    "expected": {
+      "frames": 4,
+      "averageFps": 100,
+      "skipped": 1,
+      "hitches": 0,
+      "gaps": 1,
+      "pairs": 2
+    }
+  },
+  {
+    "name": "ocat",
+    "file": "fixtures/ocat.csv",
+    "options": [
+      "--format",
+      "ocat"
+    ],
+    "expected": {
+      "frames": 4,
+      "averageFps": 100,
+      "skipped": 1,
+      "hitches": 0,
+      "gaps": 1,
+      "pairs": 2
+    }
+  },
+  {
+    "name": "capframex",
+    "file": "fixtures/capframex.csv",
+    "options": [
+      "--format",
+      "capframex"
+    ],
+    "expected": {
+      "frames": 4,
+      "averageFps": 100,
+      "skipped": 1,
+      "hitches": 0,
+      "gaps": 1,
+      "pairs": 2
+    }
+  },
+  {
+    "name": "frameview",
+    "file": "fixtures/frameview.csv",
+    "options": [
+      "--format",
+      "frameview"
+    ],
+    "expected": {
+      "frames": 4,
+      "averageFps": 100,
+      "skipped": 1,
+      "hitches": 0,
+      "gaps": 1,
+      "pairs": 2
+    }
+  },
+  {
+    "name": "mangohud",
+    "file": "fixtures/mangohud.csv",
+    "options": [
+      "--format",
+      "mangohud"
+    ],
+    "expected": {
+      "frames": 4,
+      "averageFps": 100,
+      "skipped": 1,
+      "hitches": 0,
+      "gaps": 1,
+      "pairs": 2
+    }
+  },
+  {
+    "name": "generic",
+    "file": "fixtures/generic.csv",
+    "options": [
+      "--format",
+      "generic",
+      "--generic-column",
+      "frame_time_ms",
+      "--generic-kind",
+      "frametime_ms"
+    ],
+    "expected": {
+      "frames": 4,
+      "averageFps": 100,
+      "skipped": 1,
+      "hitches": 0,
+      "gaps": 1,
+      "pairs": 2
+    }
+  },
+  {
+    "name": "timestamp",
+    "file": "fixtures/timestamp.csv",
+    "options": [
+      "--format",
+      "generic",
+      "--generic-column",
+      "clock_ms",
+      "--generic-kind",
+      "timestamp_ms_cumulative"
+    ],
+    "expected": {
+      "frames": 2,
+      "averageFps": 100,
+      "skipped": 2,
+      "hitches": 0,
+      "gaps": 1,
+      "pairs": 0
+    }
+  },
+  {
+    "name": "unknown-stream",
+    "file": "fixtures/unknown-stream.csv",
+    "options": [
+      "--format",
+      "presentmon2"
+    ],
+    "expected": {
+      "frames": 2,
+      "averageFps": 11.11111111111111,
+      "skipped": 1,
+      "hitches": 2,
+      "gaps": 1,
+      "pairs": 0
+    }
+  }
+]

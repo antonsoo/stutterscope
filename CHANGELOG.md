@@ -8,6 +8,15 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 Changes below are in source and have not been released as an npm package.
 
+### CSV column alignment correction (source only)
+
+- Skip records with more cells than the header before assigning measurements
+  or stream identity. An inserted cell could become a false long frame; retain
+  a line-specific warning and interrupt every stream it could belong to.
+- Reset generic cumulative-timestamp and MangoHud elapsed comparisons across
+  these records. Preserve quoted commas and native OCAT's shorter hardware tails.
+  See the [controlled and pinned-public replay](studies/csv-width/README.md).
+
 ### Text decoding correction (source only)
 
 - Reject malformed UTF-8 and BOM-marked UTF-16 in both CLI and browser imports.
