@@ -18,6 +18,10 @@ Changes below are in source and have not been released as an npm package.
   Record clock-supported boundaries separately from rejected CSV rows; do not
   invent missing frames, durations or causes. JSON, Markdown, report cards and
   browser notes retain that distinction.
+- Retain five bounded clock witnesses per stream, with physical CSV lines,
+  elapsed/native frame durations, rounding allowances and an explicit omitted
+  count. Validate them against original cells. Human reports keep tiny positive
+  allowances in scientific notation instead of rounding them to zero.
 - Add an attributed, directly loadable Intel filtered-capture example. An
   untouched public FrameView excerpt, ordinal-based oracle on six Intel traces,
   and replay of 34 pinned capture files are in `studies/present-clock/`.

@@ -441,6 +441,11 @@ documented `-exclude_dropped` option deliberately removes presents. The optional
 the full selected source stream. It can overlap boundaries already supported
 by skipped rows; do not add those counters to infer missing frames. Interval
 pacing coverage and the listed original-source gap positions remain separate.
+`source.presentClockEvidence` retains the first five witnesses (physical CSV
+line pair, elapsed/native duration, allowed rounding/roundoff, and interval/reversal
+kind) with `omittedWitnesses` for the remaining details. All gap coordinates
+remain in the report. Human tables preserve tiny positive allowances in
+scientific notation; they are not estimates of the physical clock's accuracy.
 [Native records, independent ordinal oracle and an untouched public excerpt](../studies/present-clock/README.md).
 
 Pacing pairs, rolling-median neighborhoods, episodes and trace lines stop at

@@ -131,3 +131,28 @@ compatibility cases are explicitly labelled in the manifest.
 
 This correction is not an npm release. Source, installed-package and public-demo
 verification are recorded separately as they are completed.
+
+The [clean-artifact receipt](results/verification.json) pins source
+`a7f9489be44b68900b531c33a49d21234801d13d`: fresh install, lint, typecheck,
+362 core checks, build and 86 production browser checks passed. The separately
+installed local tarball matches all 21 reports on Node 22.6.0 and 24.21.0;
+both real executables also reproduce the native capture and untouched excerpt.
+Only the CLI's top-level file argument is normalized to its basename in retained
+comparisons. The receipt compares 75 source inputs, 26 installed files and all
+33 locally served build files.
+
+The [browser receipt](results/browser.json) retains 24 complete baseline exports
+and 40 corrected exports across Chromium/Firefox at 1440px and 375px. It checks
+first imports after disconnecting, worker recomputation, interval restoration,
+stream selection, original-source clock witnesses, Markdown/PNG downloads,
+coarse-clock recovery, keyboard example loading and the direct example URL.
+Recorded font attempts are distinct from non-font HTTP requests, which remain
+zero after disconnecting. Page errors, accessibility violations and page overflow
+were not observed. Screenshots and the downloaded report card were inspected.
+
+The [public registry receipt](results/registry.json) independently installs npm
+`0.2.5` (latest when checked 2026-10-16, published 2026-10-03), verifies its
+tarball SHA-512 and reproduces MASD 0.346529 ms on the filtered Intel control.
+The corrected source reports 0.335459 ms with only 91 observed pairs. The registry
+artifact does not contain the new clock evidence; the locally packed artifact
+is a separate build despite sharing the unreleased version number.

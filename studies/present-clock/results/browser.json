@@ -1,0 +1,650 @@
+{
+  "before": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "test_case_5_v1-exclude-dropped",
+          "options": [],
+          "file": "chromium-1440-test_case_5_v1-exclude-dropped-0.json",
+          "sha256": "3981a9f29273bf3555b1620bb4c382418b0348c85fedcd498b389e6e3774360d",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "frameview-native-excerpt",
+          "options": [],
+          "file": "chromium-1440-frameview-native-excerpt-1.json",
+          "sha256": "62a65eb9390680269500ee37f051d1df663c5acd65ff3bff30957ccbe38cc929",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [],
+          "file": "chromium-1440-presentmon1-hitches-2.json",
+          "sha256": "f38eb23ab8dc9e8e3a9a49c09de67efb88be65324803a37b4a01aaae9e227c92",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-game",
+          "options": [],
+          "file": "chromium-1440-interleaved-game-3.json",
+          "sha256": "d8c565a9f05479be555c9c81d2e7912a58a91f17f68e83eb995d02879cdb5e3b",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-overlay",
+          "options": [],
+          "file": "chromium-1440-interleaved-overlay-4.json",
+          "sha256": "507309a57294f5d4766d1bf607a77e307655bc82a4ac4c6f0568ea950874c834",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "coarse-clock",
+          "options": [],
+          "file": "chromium-1440-coarse-clock-5.json",
+          "sha256": "86a986d6b3d7fa3407ca8c3d592deede65f42db8fdae173f87148c7dd632aeef",
+          "matchesCompleteCliReport": true
+        }
+      ],
+      "recomputationAndIntervals": false,
+      "streamSelection": true,
+      "coarseRecovery": true,
+      "axeViolations": [],
+      "noPageOverflow": true,
+      "errors": [],
+      "httpRequestsAfterDisconnect": [],
+      "nonFontHttpRequestsAfterDisconnect": [],
+      "externalRequests": []
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "flows": [
+        {
+          "name": "test_case_5_v1-exclude-dropped",
+          "options": [],
+          "file": "chromium-375-test_case_5_v1-exclude-dropped-0.json",
+          "sha256": "7b0e8f91ee98813a6b50aa028b706ba88ac23dc1ede0b543a6b3915fbb4bef80",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "frameview-native-excerpt",
+          "options": [],
+          "file": "chromium-375-frameview-native-excerpt-1.json",
+          "sha256": "f1c949beebe6d2897edf4df63f511805029fd500fffff6976212f6b707b2517a",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [],
+          "file": "chromium-375-presentmon1-hitches-2.json",
+          "sha256": "f8d0f109f75bcc88fefe4e2eecca8b4a27721c67451040f587253974710d7b89",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-game",
+          "options": [],
+          "file": "chromium-375-interleaved-game-3.json",
+          "sha256": "759384b290558bcd1e552e76d84d426e094f2fa5a75e6242c06a79b1169a5710",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-overlay",
+          "options": [],
+          "file": "chromium-375-interleaved-overlay-4.json",
+          "sha256": "453e06680b0f2b4073a8ca3e1c5bb7006690ceadc661ff21e17b572526db37c3",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "coarse-clock",
+          "options": [],
+          "file": "chromium-375-coarse-clock-5.json",
+          "sha256": "badb2fe04a64166549508e07b0f594fbd4b1620dadee09e38a2b0c3674bd01f4",
+          "matchesCompleteCliReport": true
+        }
+      ],
+      "recomputationAndIntervals": false,
+      "streamSelection": true,
+      "coarseRecovery": true,
+      "axeViolations": [],
+      "noPageOverflow": true,
+      "errors": [],
+      "httpRequestsAfterDisconnect": [],
+      "nonFontHttpRequestsAfterDisconnect": [],
+      "externalRequests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "test_case_5_v1-exclude-dropped",
+          "options": [],
+          "file": "firefox-1440-test_case_5_v1-exclude-dropped-0.json",
+          "sha256": "b65252275b11fd3d73c08c72f01891313695941d4395f09b399d64b5cd890cc0",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "frameview-native-excerpt",
+          "options": [],
+          "file": "firefox-1440-frameview-native-excerpt-1.json",
+          "sha256": "b26bcde5c425cc61e6d4f6af227e0a6a235c20d8b0eacc4aa8bb2ad007e1ddde",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [],
+          "file": "firefox-1440-presentmon1-hitches-2.json",
+          "sha256": "0604d7008aea0a509a7f02e1b77681c581b06793842136197f2fa233c9437a8a",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-game",
+          "options": [],
+          "file": "firefox-1440-interleaved-game-3.json",
+          "sha256": "14a34386396e5c598104b529552da00e33e3a11c0f6ea2d3dfaed1d09309bf23",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-overlay",
+          "options": [],
+          "file": "firefox-1440-interleaved-overlay-4.json",
+          "sha256": "9f86aa7785a2ffe7d95b67a5f2889e1737588f95172f8806b459d30a384e7636",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "coarse-clock",
+          "options": [],
+          "file": "firefox-1440-coarse-clock-5.json",
+          "sha256": "5e803ce04970bfc0ce892212cb203dc3716b66c3a3d6201faaacfeb883b9ba95",
+          "matchesCompleteCliReport": true
+        }
+      ],
+      "recomputationAndIntervals": false,
+      "streamSelection": true,
+      "coarseRecovery": true,
+      "axeViolations": [],
+      "noPageOverflow": true,
+      "errors": [],
+      "httpRequestsAfterDisconnect": [
+        "http://127.0.0.1:4343/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+        "http://127.0.0.1:4343/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+        "http://127.0.0.1:4343/stutterscope/assets/inter-latin-Dx4kXJAl.woff2"
+      ],
+      "nonFontHttpRequestsAfterDisconnect": [],
+      "externalRequests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "flows": [
+        {
+          "name": "test_case_5_v1-exclude-dropped",
+          "options": [],
+          "file": "firefox-375-test_case_5_v1-exclude-dropped-0.json",
+          "sha256": "eea5ffc842e72b59f2a013c585c418efa21837bad5f66e10cde868e7022d2ee8",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "frameview-native-excerpt",
+          "options": [],
+          "file": "firefox-375-frameview-native-excerpt-1.json",
+          "sha256": "3db81bf23f18993e639a21e585d71d74764cfea2e487c9a05ca70a274234c448",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [],
+          "file": "firefox-375-presentmon1-hitches-2.json",
+          "sha256": "f6af87a0bbf2c68067d92959dc2194af7f4cce02c7c49191f4879bdc1676cef8",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-game",
+          "options": [],
+          "file": "firefox-375-interleaved-game-3.json",
+          "sha256": "17624213dc9e0763b8702212881af881e5ac29ba328a6072b67b2a874d57facd",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-overlay",
+          "options": [],
+          "file": "firefox-375-interleaved-overlay-4.json",
+          "sha256": "1850eb5d0c525f0e40c6168aa0fb8bd61efa198a6c0a98a4a1a8500cf2881ca7",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "coarse-clock",
+          "options": [],
+          "file": "firefox-375-coarse-clock-5.json",
+          "sha256": "8f1937130b64d77dfab026339eb3ae7ffba80208a4807aae156f7a91d5dfab73",
+          "matchesCompleteCliReport": true
+        }
+      ],
+      "recomputationAndIntervals": false,
+      "streamSelection": true,
+      "coarseRecovery": true,
+      "axeViolations": [],
+      "noPageOverflow": true,
+      "errors": [],
+      "httpRequestsAfterDisconnect": [
+        "http://127.0.0.1:4343/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+        "http://127.0.0.1:4343/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+        "http://127.0.0.1:4343/stutterscope/assets/inter-latin-Dx4kXJAl.woff2"
+      ],
+      "nonFontHttpRequestsAfterDisconnect": [],
+      "externalRequests": []
+    }
+  ],
+  "after": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "test_case_5_v1-exclude-dropped",
+          "options": [],
+          "file": "chromium-1440-test_case_5_v1-exclude-dropped-0.json",
+          "sha256": "bfadc961f7c112879429eddb085929c47c7f6442bb941ca4fcc9b9cb2065984f",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "frameview-native-excerpt",
+          "options": [],
+          "file": "chromium-1440-frameview-native-excerpt-1.json",
+          "sha256": "6b6196ee5e422d7a0438ad1857439ce077707437fb061af78c5fb3f5a7373d0d",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [],
+          "file": "chromium-1440-presentmon1-hitches-2.json",
+          "sha256": "53eedcb45434346b6bbb5e4be345ee839f66a54c1bc7efa1edb62240f209ef28",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [
+            "--hitch-ms",
+            "100"
+          ],
+          "file": "chromium-1440-presentmon1-hitches-3.json",
+          "sha256": "463fb8a3d35504a453d416933730bf89f11d9b4f4439bd72053a5810a333f7dd",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [
+            "--hitch-ms",
+            "100",
+            "--start",
+            ".06"
+          ],
+          "file": "chromium-1440-presentmon1-hitches-4.json",
+          "sha256": "e98637adde4b0233d765170ed53d59e86bf22c9bc32cedc866ec179016d66d54",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [
+            "--hitch-ms",
+            "100"
+          ],
+          "file": "chromium-1440-presentmon1-hitches-5.json",
+          "sha256": "a723e5f993603de160befd92379c688f69f26b940765b6054e4eda10db08029a",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-game",
+          "options": [],
+          "file": "chromium-1440-interleaved-game-6.json",
+          "sha256": "f54c8579bfc64b3a0f80760e6126d84d587c896f1f04579910ba0c2ff8121b0c",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-overlay",
+          "options": [],
+          "file": "chromium-1440-interleaved-overlay-7.json",
+          "sha256": "58cab2678df9ea2b71683d5d6953d2d9de458f074030a75b5e3991a0f4a9f195",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "coarse-clock",
+          "options": [],
+          "file": "chromium-1440-coarse-clock-8.json",
+          "sha256": "4f265be931280cfc73e9e208b9efe124c56b7fdbfe0311fd872fa235dec6503a",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "test_case_5_v1-exclude-dropped",
+          "options": [],
+          "bundledAlias": "filtered-presents.csv",
+          "file": "chromium-1440-test_case_5_v1-exclude-dropped-9.json",
+          "sha256": "a5c2ac92de049a8d5e6122fdfb60ea90f52a7c1d4149f101fffb231a47864a78",
+          "matchesCompleteCliReport": true
+        }
+      ],
+      "recomputationAndIntervals": true,
+      "streamSelection": true,
+      "coarseRecovery": true,
+      "builtinExample": true,
+      "axeViolations": [],
+      "noPageOverflow": true,
+      "errors": [],
+      "httpRequestsAfterDisconnect": [],
+      "nonFontHttpRequestsAfterDisconnect": [],
+      "externalRequests": []
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "flows": [
+        {
+          "name": "test_case_5_v1-exclude-dropped",
+          "options": [],
+          "file": "chromium-375-test_case_5_v1-exclude-dropped-0.json",
+          "sha256": "f892a5c1992726821ac28710c7cc56895af1c658f8d90cb2083c7befbef5e2e9",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "frameview-native-excerpt",
+          "options": [],
+          "file": "chromium-375-frameview-native-excerpt-1.json",
+          "sha256": "7e1e62d1f8b4b080c51998a68b740da99d679ff4ab3e332b298e56883be270f3",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [],
+          "file": "chromium-375-presentmon1-hitches-2.json",
+          "sha256": "14a1875e2b9edfefcfab9843e681fb8d1343c8db340503e00fb8776f3c738bdf",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [
+            "--hitch-ms",
+            "100"
+          ],
+          "file": "chromium-375-presentmon1-hitches-3.json",
+          "sha256": "71f07ef8623d21f84dcfb84c7d9e61ecd8f1662356dd50c1ab7ca260d60bd9d9",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [
+            "--hitch-ms",
+            "100",
+            "--start",
+            ".06"
+          ],
+          "file": "chromium-375-presentmon1-hitches-4.json",
+          "sha256": "4a163e6a914b8102a319b7e7ebeab8a5815426a6c4399a4434cacd31bc98e067",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [
+            "--hitch-ms",
+            "100"
+          ],
+          "file": "chromium-375-presentmon1-hitches-5.json",
+          "sha256": "9e70805bbd04c74aa6bb28639a03551223f9d456abfcde903db90d796fa78309",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-game",
+          "options": [],
+          "file": "chromium-375-interleaved-game-6.json",
+          "sha256": "cdde02f2027d40b3513e3d1f7d3c8a714f5ae1d38497a2268a014b8bded4f49f",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-overlay",
+          "options": [],
+          "file": "chromium-375-interleaved-overlay-7.json",
+          "sha256": "f9f5158689b285165ab81a56b68b9f7acb95e9e2be629c5f52561c0f2c6ea1f5",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "coarse-clock",
+          "options": [],
+          "file": "chromium-375-coarse-clock-8.json",
+          "sha256": "9191167e74bf3e5b132518bd71e1e80223c477f14300fe5f25bbd7d90298bb08",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "test_case_5_v1-exclude-dropped",
+          "options": [],
+          "bundledAlias": "filtered-presents.csv",
+          "file": "chromium-375-test_case_5_v1-exclude-dropped-9.json",
+          "sha256": "a66ae3195531cad869dd1cd2982c722eaba2578d805fdd93d7a5467a6b9eb985",
+          "matchesCompleteCliReport": true
+        }
+      ],
+      "recomputationAndIntervals": true,
+      "streamSelection": true,
+      "coarseRecovery": true,
+      "builtinExample": true,
+      "axeViolations": [],
+      "noPageOverflow": true,
+      "errors": [],
+      "httpRequestsAfterDisconnect": [],
+      "nonFontHttpRequestsAfterDisconnect": [],
+      "externalRequests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "flows": [
+        {
+          "name": "test_case_5_v1-exclude-dropped",
+          "options": [],
+          "file": "firefox-1440-test_case_5_v1-exclude-dropped-0.json",
+          "sha256": "c6032419f41c765c0cf60312bcf1350eecb1c79fd842ee9acb298c0cce25e016",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "frameview-native-excerpt",
+          "options": [],
+          "file": "firefox-1440-frameview-native-excerpt-1.json",
+          "sha256": "983c13253c3f1017928617007709ec5950cb67fc024dd079a7793bb7d921ad63",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [],
+          "file": "firefox-1440-presentmon1-hitches-2.json",
+          "sha256": "c416e61376bce5dd234e7de653f15debbd3f5b22c7eb76d6ebe3338148d68176",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [
+            "--hitch-ms",
+            "100"
+          ],
+          "file": "firefox-1440-presentmon1-hitches-3.json",
+          "sha256": "4401a324aabe94e7fb1988ba2b210570476d484d5ab373a1a0ee0978fd1fc56e",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [
+            "--hitch-ms",
+            "100",
+            "--start",
+            ".06"
+          ],
+          "file": "firefox-1440-presentmon1-hitches-4.json",
+          "sha256": "22bd3a1e0d3ffbd72e7b7a47760008f0d193fdb6d43cad9842409403b3305c32",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [
+            "--hitch-ms",
+            "100"
+          ],
+          "file": "firefox-1440-presentmon1-hitches-5.json",
+          "sha256": "9b4b57351e6b5e402cf337deb7e2b6efaa1c1cdda72fdda6dc5da53920c8c186",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-game",
+          "options": [],
+          "file": "firefox-1440-interleaved-game-6.json",
+          "sha256": "400eca29bbf170808234ebf7bc3d430542dca48cb2a4a7c2a366893bc2b34fdc",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-overlay",
+          "options": [],
+          "file": "firefox-1440-interleaved-overlay-7.json",
+          "sha256": "ccb1c9002980dc9526dd58e8f5682fbc43f2a0db59bdda483dbea05002ac0448",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "coarse-clock",
+          "options": [],
+          "file": "firefox-1440-coarse-clock-8.json",
+          "sha256": "5c3ba3e6c5afde801b930a4858960fda8f1106abe065f827ab6b9874406638df",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "test_case_5_v1-exclude-dropped",
+          "options": [],
+          "bundledAlias": "filtered-presents.csv",
+          "file": "firefox-1440-test_case_5_v1-exclude-dropped-9.json",
+          "sha256": "671e745a47850dadedcd4338da44c1097cc9984f937c998a9eb94b27be72de6a",
+          "matchesCompleteCliReport": true
+        }
+      ],
+      "recomputationAndIntervals": true,
+      "streamSelection": true,
+      "coarseRecovery": true,
+      "builtinExample": true,
+      "axeViolations": [],
+      "noPageOverflow": true,
+      "errors": [],
+      "httpRequestsAfterDisconnect": [
+        "http://127.0.0.1:4345/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+        "http://127.0.0.1:4345/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+        "http://127.0.0.1:4345/stutterscope/assets/inter-latin-Dx4kXJAl.woff2"
+      ],
+      "nonFontHttpRequestsAfterDisconnect": [],
+      "externalRequests": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "flows": [
+        {
+          "name": "test_case_5_v1-exclude-dropped",
+          "options": [],
+          "file": "firefox-375-test_case_5_v1-exclude-dropped-0.json",
+          "sha256": "069b9df6ab9973df90fcec4efb46f56a33890712573ea8a1a5f043e9cdb7346c",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "frameview-native-excerpt",
+          "options": [],
+          "file": "firefox-375-frameview-native-excerpt-1.json",
+          "sha256": "d147ada2d3e01b37f0a7e0317aa3474cccebf236d053d26cf66e0c0464e80bda",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [],
+          "file": "firefox-375-presentmon1-hitches-2.json",
+          "sha256": "50cb6b8fd1bb9d78124ad561631a12c6b8c2a2f49b9354e40e6019451895016b",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [
+            "--hitch-ms",
+            "100"
+          ],
+          "file": "firefox-375-presentmon1-hitches-3.json",
+          "sha256": "ff029ad0dd5fddcb479da9017d3119744894a40ffbcf73445e7c55dff5831c66",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [
+            "--hitch-ms",
+            "100",
+            "--start",
+            ".06"
+          ],
+          "file": "firefox-375-presentmon1-hitches-4.json",
+          "sha256": "6bd87b0e4a680a5fd75dc15b07431eebda7469376eb80ffa55bebaca4254156e",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "presentmon1-hitches",
+          "options": [
+            "--hitch-ms",
+            "100"
+          ],
+          "file": "firefox-375-presentmon1-hitches-5.json",
+          "sha256": "6578df7e5eafd59c057d2f68ad49a0f13e3316deb02e95aeac0d79eeb2dce6d9",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-game",
+          "options": [],
+          "file": "firefox-375-interleaved-game-6.json",
+          "sha256": "b90bc3ac0bb569b241c5176895bceb0915965281119c1fe2fc4b3d1165705a49",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "interleaved-overlay",
+          "options": [],
+          "file": "firefox-375-interleaved-overlay-7.json",
+          "sha256": "d39209ff43a3985a4fc35e819125e518fc74f531250b3ee30a3cdd5602d73b46",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "coarse-clock",
+          "options": [],
+          "file": "firefox-375-coarse-clock-8.json",
+          "sha256": "8d1133a7a20d81024226ce444f5c8cbba569d885dab08b0460b0d62dd44256b7",
+          "matchesCompleteCliReport": true
+        },
+        {
+          "name": "test_case_5_v1-exclude-dropped",
+          "options": [],
+          "bundledAlias": "filtered-presents.csv",
+          "file": "firefox-375-test_case_5_v1-exclude-dropped-9.json",
+          "sha256": "73e71cbf35a0596590b4c32a5e5d1fe5057332d8e0cc609c93ffca2ef4549ef0",
+          "matchesCompleteCliReport": true
+        }
+      ],
+      "recomputationAndIntervals": true,
+      "streamSelection": true,
+      "coarseRecovery": true,
+      "builtinExample": true,
+      "axeViolations": [],
+      "noPageOverflow": true,
+      "errors": [],
+      "httpRequestsAfterDisconnect": [
+        "http://127.0.0.1:4345/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+        "http://127.0.0.1:4345/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+        "http://127.0.0.1:4345/stutterscope/assets/inter-latin-Dx4kXJAl.woff2"
+      ],
+      "nonFontHttpRequestsAfterDisconnect": [],
+      "externalRequests": []
+    }
+  ]
+}
