@@ -83,25 +83,25 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
 
 ## Features
 
-- **Native clock continuity (source):** filtered presents can leave valid CSV
+- **Native clock continuity (source and demo):** filtered presents can leave valid CSV
   rows that are no longer adjacent observations. Compare their native clocks,
   split pacing/rolling context and keep unknown durations unknown. The built-in
-  **Inspect filtered presents** example uses attributed Intel test data; a separate
+  **[Inspect filtered presents](https://antonsoo.github.io/stutterscope/?example=filtered-presents)** example uses attributed Intel test data; a separate
   untouched public FrameView capture exposes the same issue.
   [Concrete counterexamples and limits](studies/present-clock/README.md).
-- **Shifted CSV records (source only):** a row with more cells than its header
+- **Shifted CSV records (source and demo):** a row with more cells than its header
   cannot establish column alignment. It is now skipped with a source-line warning
   and a continuity gap, including clock-anchor reset for cumulative timestamps.
   In a retained public FrameView test asset, the old reader treated a process ID
   as a 7,820 ms frame. [Reproduction and compatibility limits](studies/csv-width/README.md)
-  include OCAT's valid shortened telemetry tails. This is not yet in npm or the live demo.
-- **Correct grouping after removing process IDs (source only):** application
+  include OCAT's valid shortened telemetry tails. This is included in the demo; npm 0.2.5 predates the correction.
+- **Correct grouping after removing process IDs (source and demo):** application
   names and swap-chain addresses stay together. A controlled five-row export
   previously labeled two applications as one game at 45.5 FPS with two false
   stutters; the game alone now reports its actual 100 FPS and no stutter.
   Blank declared identity cells produce skipped-row warnings and continuity
   breaks. [Reproduction, public-capture controls and limits](studies/stream-identity/README.md).
-  This correction is not yet in the npm package or live demo.
+  This correction is included in the demo; the npm package predates it.
 - **Interval analysis and slow-frame inspection (source checkout)**: independently
   select the part of A and B to measure, keep original frame/CSV-line references,
   and inspect the neighboring evidence around each slow-frame episode. Detection
@@ -287,7 +287,7 @@ Imports require valid UTF-8 or BOM-marked UTF-16. Invalid byte sequences are
 rejected, including damage beyond the browser's format preview. Replacing them
 with a placeholder could merge distinct application names and fabricate pacing
 metrics. [Byte-level counterexamples and unchanged public captures](studies/text-integrity/README.md)
-document this source correction; it has not been released to npm or the live demo.
+document this source/demo correction; it has not been released to npm.
 
 CSV imports reject duplicate named headers and malformed quotes before reporting
 metrics. A retained two-frame counterexample previously reported 100 FPS by

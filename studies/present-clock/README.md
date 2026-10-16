@@ -145,7 +145,8 @@ The [browser receipt](results/browser.json) retains 24 complete baseline exports
 and 40 corrected exports across Chromium/Firefox at 1440px and 375px. It checks
 first imports after disconnecting, worker recomputation, interval restoration,
 stream selection, original-source clock witnesses, Markdown/PNG downloads,
-coarse-clock recovery, keyboard example loading and the direct example URL.
+coarse-clock recovery, keyboard example loading and keyboard example loading. The clean production browser suite separately
+checks retry and the direct example URL.
 Recorded font attempts are distinct from non-font HTTP requests, which remain
 zero after disconnecting. Page errors, accessibility violations and page overflow
 were not observed. Screenshots and the downloaded report card were inspected.
@@ -156,3 +157,5 @@ tarball SHA-512 and reproduces MASD 0.346529 ms on the filtered Intel control.
 The corrected source reports 0.335459 ms with only 91 observed pairs. The registry
 artifact does not contain the new clock evidence; the locally packed artifact
 is a separate build despite sharing the unreleased version number.
+
+The [public HTTP receipt](results/hosting.json) matches all 33 canonical production files to that clean build without cache-busting queries. The [hosted browser receipt](results/hosted-browser.json) retains 40 complete export workflows across both engines/widths, including the bundled example and clock witnesses. Source and the demo are published; no npm version was released.

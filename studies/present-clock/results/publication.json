@@ -1,0 +1,107 @@
+{
+  "revision": "a66f2cbe27fd410fc41d0900c4d62cd89e46c298",
+  "checkedAt": "2026-10-16T20:10:54.388834+00:00",
+  "scope": "Pinned public source bytes; registry and hosted checks are separate.",
+  "files": {
+    "src/core/present-clock.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/src/core/present-clock.ts",
+      "bytes": 3410,
+      "sha256": "786525e0f54209157df134b876890ccdf3e51a1c3803c4402ca3ef404b8e7597"
+    },
+    "src/core/streams.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/src/core/streams.ts",
+      "bytes": 10483,
+      "sha256": "2366df64cbdc59cee04cf280fdbc57fc0417a7b90b6ed521374ce2b939eb1bf2"
+    },
+    "src/core/types.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/src/core/types.ts",
+      "bytes": 5809,
+      "sha256": "8283f286798ca63764cbe3b08efbe2666161b92c5c21385d119876c7747496eb"
+    },
+    "src/core/report.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/src/core/report.ts",
+      "bytes": 2609,
+      "sha256": "50f5ea120431bf8f8b31c3faf1ddbc753fa6a3658c1786f1d6c889bcad8d6ced"
+    },
+    "src/core/parsers/presentmon1.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/src/core/parsers/presentmon1.ts",
+      "bytes": 5878,
+      "sha256": "aeba7a32cf48de0d64659bdbddbc1044d5d05859e656250a63df47f1179bff2b"
+    },
+    "src/core/parsers/ocat.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/src/core/parsers/ocat.ts",
+      "bytes": 5445,
+      "sha256": "04baa93308e6258a8a5e17a37d8ca3528e34db2372a39580281f7398863976d0"
+    },
+    "src/core/parsers/frameview.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/src/core/parsers/frameview.ts",
+      "bytes": 5712,
+      "sha256": "af64821153a33c2f4ef77a2b84453a008aefeb2af543845d7cff11394b4b5660"
+    },
+    "src/ui/main.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/src/ui/main.ts",
+      "bytes": 45405,
+      "sha256": "0c00c83b14bc0dd5ec473c0fd41b048dbdda92411b71544770fc02d43edbf839"
+    },
+    "src/ui/share.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/src/ui/share.ts",
+      "bytes": 13509,
+      "sha256": "c221ba8573023f841dc08fe4a1777d38c9ed9c1eebf6c29cd908ff8fdbfbec38"
+    },
+    "src/cli/index.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/src/cli/index.ts",
+      "bytes": 23748,
+      "sha256": "dabca4853c67dcc1e02bb0c4e65a1038d877a845f73fc47f19ca81eb2557da92"
+    },
+    "tests/core/present-clock.test.ts": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/tests/core/present-clock.test.ts",
+      "bytes": 4385,
+      "sha256": "05ed579eb16d632fa16da428a95c6fa1ad392465ac72d6157fd97d47e3362c6b"
+    },
+    "tests/browser/present-clock.spec.js": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/tests/browser/present-clock.spec.js",
+      "bytes": 4004,
+      "sha256": "321a4be7ce89c350bb45ec5250ed43bf54e165e814cc28f83fcc176741d180d1"
+    },
+    "examples/native-filtering/filtered-presents.csv": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/examples/native-filtering/filtered-presents.csv",
+      "bytes": 155803,
+      "sha256": "6c5373b1e1dd9187c9e84662be78b1f69f357a7002c8d2079db428287b7d18ab"
+    },
+    "examples/native-filtering/LICENSE.txt": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/examples/native-filtering/LICENSE.txt",
+      "bytes": 1067,
+      "sha256": "4c949341b1893c8c6ad82f7fb4eedf622cd1fd9c22a9af8f19b2dac19d1947b6"
+    },
+    "studies/present-clock/cases.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/studies/present-clock/cases.json",
+      "bytes": 24611,
+      "sha256": "8bc63e9a768b4cbbd5029fedba4d249273e7582c5b028db578d53a017f6b198b"
+    },
+    "studies/present-clock/results/before.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/studies/present-clock/results/before.json",
+      "bytes": 137228,
+      "sha256": "dec92b8ba1d48a4d958733a943ef4e864d9770d8978382d8411f641ee4af3ba4"
+    },
+    "studies/present-clock/results/after.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/studies/present-clock/results/after.json",
+      "bytes": 154620,
+      "sha256": "f5ceccde82df8cef5beec6a5a0201a16a657a3ecce5694f1af291b05d4378e4e"
+    },
+    "studies/present-clock/results/corpus.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/studies/present-clock/results/corpus.json",
+      "bytes": 153375,
+      "sha256": "b432d0fba4d7f814e1fd4b660f8c5389fe2ccba208e5b7e8516a5babb9e6ecf8"
+    },
+    "studies/present-clock/results/verification.json": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/studies/present-clock/results/verification.json",
+      "bytes": 24310,
+      "sha256": "9f67b9aff0edc0d01293200e394782ca5831e7be112c4711cf087b856623543c"
+    },
+    "studies/present-clock/README.md": {
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/a66f2cbe27fd410fc41d0900c4d62cd89e46c298/studies/present-clock/README.md",
+      "bytes": 9593,
+      "sha256": "d1afb07f8e5f78137dba3cf419e7edc718dd1e6e9f8cf2caeb3ca94b7b4f340c"
+    }
+  }
+}

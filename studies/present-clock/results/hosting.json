@@ -1,0 +1,174 @@
+{
+  "testedSource": "a7f9489be44b68900b531c33a49d21234801d13d",
+  "deployment": "5f84d91",
+  "checkedAt": "2026-10-16T20:11:52.238224+00:00",
+  "baseUrl": "https://antonsoo.github.io/stutterscope/",
+  "cacheBusting": false,
+  "files": {
+    "assets/index-DlQgLyuZ.js": {
+      "bytes": 154720,
+      "sha256": "59bdbc524252c2dcced7126203b76c6beab39d882ffa156809619b1820a58b8e",
+      "status": 200
+    },
+    "assets/index-DlQgLyuZ.js.map": {
+      "bytes": 481075,
+      "sha256": "1e0f171681028863c4ddb6aa9c53a5e36e60826d26ca0b7bf55b0ccda58a2954",
+      "status": 200
+    },
+    "assets/index-x_73MQio.css": {
+      "bytes": 37779,
+      "sha256": "f2dd2a21378d496b931b0546b7c31fdbcca39c59235d32baffcc7ab9683d9799",
+      "status": 200
+    },
+    "assets/inter-cyrillic-DqGufNeO.woff2": {
+      "bytes": 18748,
+      "sha256": "71d5ee93cc1e9f1d520a3a8b66456de18c7879d8df09d57fcd2eaff75fef0075",
+      "status": 200
+    },
+    "assets/inter-cyrillic-ext-BOeWTOD4.woff2": {
+      "bytes": 25960,
+      "sha256": "ca157063339ac4ad418f214f3abfed119b0798ab4d377386ce5c9e5a7a435ebd",
+      "status": 200
+    },
+    "assets/inter-greek-CkhJZR-_.woff2": {
+      "bytes": 18996,
+      "sha256": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6",
+      "status": 200
+    },
+    "assets/inter-greek-ext-DlzME5K_.woff2": {
+      "bytes": 11232,
+      "sha256": "6e9e020a25f9b56d418f2c085b1d3c09725a4da23fe693a5b463064606732190",
+      "status": 200
+    },
+    "assets/inter-latin-Dx4kXJAl.woff2": {
+      "bytes": 48256,
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+      "status": 200
+    },
+    "assets/inter-latin-ext-DO1Apj_S.woff2": {
+      "bytes": 85068,
+      "sha256": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956",
+      "status": 200
+    },
+    "assets/inter-vietnamese-CBcvBZtf.woff2": {
+      "bytes": 10252,
+      "sha256": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2",
+      "status": 200
+    },
+    "assets/jetbrains-mono-cyrillic-Buze_B52.woff2": {
+      "bytes": 8872,
+      "sha256": "e17cfd15fb96909d64095015f958207063a0c07191da3512df7d560a781aebdf",
+      "status": 200
+    },
+    "assets/jetbrains-mono-greek-D3oMJlXt.woff2": {
+      "bytes": 6836,
+      "sha256": "0a557721b1f8b36d3f3f84442689a71ca4a744300abcb46a1953f51bfc663b66",
+      "status": 200
+    },
+    "assets/jetbrains-mono-latin-6fWv1k7M.woff2": {
+      "bytes": 31432,
+      "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be",
+      "status": 200
+    },
+    "assets/jetbrains-mono-latin-ext-DIC32ArD.woff2": {
+      "bytes": 11624,
+      "sha256": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52",
+      "status": 200
+    },
+    "assets/jetbrains-mono-vietnamese-BehTv68k.woff2": {
+      "bytes": 5888,
+      "sha256": "c89b9cc0bc6262bd4f8d8494b6961601f3aefa829d08c2e3635f4d501d3a47c2",
+      "status": 200
+    },
+    "assets/parse.worker-DNXGqh-d.js.map": {
+      "bytes": 170515,
+      "sha256": "32fa02b4cbe9f036ac016be76f517576b5dfc1db20992b5be66fc27c4788480d",
+      "status": 200
+    },
+    "controlled-browser/README.md": {
+      "bytes": 2650,
+      "sha256": "b5deb6728d2a802392e57672e42a5887d799786d4158a24197a9d0facea340f1",
+      "status": 200
+    },
+    "controlled-browser/capture.json": {
+      "bytes": 2700,
+      "sha256": "1d8faa03441c4b208c151f98affa213f43c5ae9a54db11b69e1a131bd8aef854",
+      "status": 200
+    },
+    "controlled-browser/controlled-a.csv": {
+      "bytes": 20518,
+      "sha256": "8b4afb5a19745287d1b9779a06e47694b3089d6b127c7bac281afe7d69acbda4",
+      "status": 200
+    },
+    "controlled-browser/controlled-b.csv": {
+      "bytes": 21427,
+      "sha256": "3034ff1dc1db38567396acbb8ae9ad763a018b6e63baf27401d0b6305a1bd405",
+      "status": 200
+    },
+    "index.html": {
+      "bytes": 2516,
+      "sha256": "81d5cb905d3bb7a07662867163d0a4da740fb0d13bcf173c33601b0c288ccf0e",
+      "status": 200
+    },
+    "native-filtering/LICENSE.txt": {
+      "bytes": 1067,
+      "sha256": "4c949341b1893c8c6ad82f7fb4eedf622cd1fd9c22a9af8f19b2dac19d1947b6",
+      "status": 200
+    },
+    "native-filtering/README.md": {
+      "bytes": 984,
+      "sha256": "26ca57d6f28c52316c552dcfe0d6f32d21390e7f2073866462b6635b88eecc72",
+      "status": 200
+    },
+    "native-filtering/filtered-presents.csv": {
+      "bytes": 155803,
+      "sha256": "6c5373b1e1dd9187c9e84662be78b1f69f357a7002c8d2079db428287b7d18ab",
+      "status": 200
+    },
+    "samples/capframex-synthetic-demo.csv": {
+      "bytes": 1054953,
+      "sha256": "a51fa824f31df997997491da14429a58fc20cb4160312e804e50ed5f9c022c34",
+      "status": 200
+    },
+    "samples/frameview-synthetic-demo.csv": {
+      "bytes": 1863110,
+      "sha256": "14506dfd27f6df3bf65cef74bea3e0cf1e5bd8cf71fe8b5b0a6366d33811d094",
+      "status": 200
+    },
+    "samples/generic-synthetic-demo.csv": {
+      "bytes": 222267,
+      "sha256": "3bc8f650fbbe12410248dca64439866acefcbe6ce40c07f8d228bb94cee0081b",
+      "status": 200
+    },
+    "samples/mangohud-synthetic-demo.csv": {
+      "bytes": 630106,
+      "sha256": "914efc0329f0180f4d5765bb4a936829819335a1f9f385239fe4b1cc518c0902",
+      "status": 200
+    },
+    "samples/manifest.json": {
+      "bytes": 3158,
+      "sha256": "8fad4687b513b6622c1f9a971926241ea0ac45445c235bf30130c86f54195e65",
+      "status": 200
+    },
+    "samples/ocat-synthetic-demo.csv": {
+      "bytes": 1054715,
+      "sha256": "966125eef3db46eb973d40e15d63097bae33ad9f79211cc126bdddc0df595dba",
+      "status": 200
+    },
+    "samples/presentmon1-synthetic-demo.csv": {
+      "bytes": 1342527,
+      "sha256": "2a79f4ac252ef248111cf0f5b8f9c3167c41af78cdbad21b54dc124081967fa8",
+      "status": 200
+    },
+    "samples/presentmon2-synthetic-demo.csv": {
+      "bytes": 1565513,
+      "sha256": "69826838214e56ebe770a6630fbdcbfd671b23b737493512aeffa9ec1209b900",
+      "status": 200
+    },
+    "telemetry/controlled-partial-presentmon2.csv": {
+      "bytes": 226,
+      "sha256": "91dedf895e23ca9a32736adeb70e654cbd11ad392846ad30afc13b00b2c926a8",
+      "status": 200
+    }
+  }
+}
