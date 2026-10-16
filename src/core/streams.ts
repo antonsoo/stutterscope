@@ -11,7 +11,8 @@
  */
 import { Uint32Builder } from "./buffer.ts";
 import { FrameContinuity } from "./continuity.ts";
-import { ParseError, type OptionalChannels, type PresentStream } from "./types.ts";
+import { PresentClock } from "./present-clock.ts";
+import { ParseError, type OptionalChannels, type PresentStream, type PresentClockEvidence } from "./types.ts";
 
 /** Presents that are never the thing being measured, so they lose the default pick even when busier. */
 const COMPOSITORS = new Set(["dwm.exe"]);
@@ -24,6 +25,8 @@ export interface SeriesColumns {
 }
 
 export interface StreamSelection extends SeriesColumns {
+  clockGaps?: number;
+  clockEvidence?: PresentClockEvidence;
   /** Every stream seen, busiest first; empty when the format has no stream columns. */
   streams: PresentStream[];
   /** The analysed stream, when the capture records streams. */
@@ -34,6 +37,9 @@ export class StreamTracker {
   private appIdx = -1;
   private pidIdx = -1;
   private swapIdx = -1;
+  private timeIdx = -1;
+  private frameIdx = -1;
+  private readonly clock = new PresentClock();
   private readonly indexById = new Map<string, number>();
   private readonly list: PresentStream[] = [];
   private readonly rowStream = new Uint32Builder(4096);
@@ -46,10 +52,12 @@ export class StreamTracker {
   private lastSwap: string | undefined;
 
   /** Reads the header once; formats without these columns simply aren't tracked. */
-  setHeader(header: Map<string, number>): void {
+  setHeader(header: Map<string, number>, nativeFrameColumn?: "msBetweenPresents" | "MsBetweenPresents"): void {
     this.appIdx = header.get("Application") ?? -1;
     this.pidIdx = header.get("ProcessID") ?? -1;
     this.swapIdx = header.get("SwapChainAddress") ?? -1;
+    this.timeIdx = header.get("TimeInSeconds") ?? -1;
+    this.frameIdx = nativeFrameColumn === undefined ? -1 : header.get(nativeFrameColumn) ?? -1;
   }
 
   private get enabled(): boolean {
@@ -58,7 +66,7 @@ export class StreamTracker {
 
   /** Records a row, or interrupts continuity and returns why its identity is unusable.
    * Call before appending the row's measurements; an error means none may be kept. */
-  track(fields: string[]): string | undefined {
+  track(fields: string[], sourceLine?: number): string | undefined {
     if (!this.enabled) { this.continuity.keep(); return; }
     const app = this.appIdx >= 0 ? fields[this.appIdx] : undefined;
     const pid = this.pidIdx >= 0 ? fields[this.pidIdx] : undefined;
@@ -89,6 +97,8 @@ export class StreamTracker {
     }
     this.list[index]!.frameCount++;
     this.rowStream.push(index);
+    if (this.timeIdx >= 0 && this.frameIdx >= 0
+      && this.clock.keep(index, fields[this.timeIdx], fields[this.frameIdx], sourceLine)) this.continuity.skip(index);
     this.continuity.keep(index);
   }
 
@@ -144,9 +154,12 @@ export class StreamTracker {
         `no stream in this capture matches "${selector}". Streams: ${streams.map(describeStream).join("; ")}`,
       );
     }
-    if (streams.length === 1) return { ...columns, streams, selected };
     const keep = this.indexById.get(selected.id)!;
-    return { ...filterRows(columns, this.rowStream.toArray(), keep), streams, selected };
+    const clockGaps = this.clock.count(keep);
+    const clockEvidence = this.clock.evidence(keep);
+    const evidence = clockEvidence ? { clockGaps, clockEvidence } : {};
+    if (streams.length === 1) return { ...columns, streams, selected, ...evidence };
+    return { ...filterRows(columns, this.rowStream.toArray(), keep), streams, selected, ...evidence };
   }
 }
 

@@ -83,6 +83,12 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
 
 ## Features
 
+- **Native clock continuity (source):** filtered presents can leave valid CSV
+  rows that are no longer adjacent observations. Compare their native clocks,
+  split pacing/rolling context and keep unknown durations unknown. The built-in
+  **Inspect filtered presents** example uses attributed Intel test data; a separate
+  untouched public FrameView capture exposes the same issue.
+  [Concrete counterexamples and limits](studies/present-clock/README.md).
 - **Shifted CSV records (source only):** a row with more cells than its header
   cannot establish column alignment. It is now skipped with a source-line warning
   and a continuity gap, including clock-anchor reset for cumulative timestamps.
@@ -294,6 +300,12 @@ silently choosing one of two `FrameTime` columns; it now identifies the ambiguit
   refuses large contradictions, and preserves the assumption in reports. A
   compatible clock does not prove complete coverage; short or incomplete clocks
   remain unverified. See the [upstream evidence and check limits](docs/formats.md#mangohud).
+- **Native clock checks cannot prove complete recording.** PresentMon 1.x,
+  OCAT/CapFrameX and FrameView clocks can expose discontinuities, allowing for
+  their written precision. Coarse/missing clocks, tiny gaps and unsupported clock
+  columns can conceal missing observations. Frame counts, FPS and distributions
+  still describe retained durations; missing frame counts, duration and cause
+  are not reconstructed. [Evidence contract](studies/present-clock/README.md).
 - **Format verification is source/sample-based, not device-tested.**
   Parsers are checked against upstream source code, official docs, or a
   real captured file from each project's own repository (all cited in

@@ -45,7 +45,7 @@ export function mountEpisodes(container: HTMLElement, analysis: CaptureAnalysis,
     const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
     page = Math.min(page, pages - 1);
     container.innerHTML = `<div class="episode-heading"><h2>Slow-frame episodes</h2><span>${fmtInt(episodes.length)} in the analyzed interval</span></div>
-      <p class="hint">Consecutive observed frames flagged as a stutter or hitch, split at unusable source rows. These locate the slowdown; they do not identify its cause. JSON exports include every episode.</p>
+      <p class="hint">Consecutive observed frames flagged as a stutter or hitch, split at source discontinuities. These locate the slowdown; they do not identify its cause. JSON exports include every episode.</p>
       <div class="episode-controls">
         <label for="episode-filter">Show <select id="episode-filter"><option value="all">All slow frames</option><option value="hitches">Hitches only</option></select></label>
         <label for="episode-order">Order <select id="episode-order"><option value="time">Capture order</option><option value="worst">Longest frame first</option></select></label>

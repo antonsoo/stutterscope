@@ -78,7 +78,7 @@ export function buildTiles(summary: MetricsSummary): TileSet {
     },
     {
       label: "PACING · MASD",
-      title: "Mean absolute successive difference over observed adjacent pairs. Unusable rows break continuity; no observed pairs means unavailable.",
+      title: "Mean absolute successive difference over observed adjacent pairs. Unusable rows and native clock gaps break continuity; no observed pairs means unavailable.",
       value: fmtMs(summary.masdMs),
       unit: summary.pacingCoverage.observedPairs > 0 ? "ms" : undefined,
       sub: summary.pacingCoverage.observedPairs > 0 ? `${fmtInt(summary.pacingCoverage.observedPairs)} observed pairs` : "No observed pairs",

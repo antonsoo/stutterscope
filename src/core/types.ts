@@ -62,6 +62,22 @@ export interface PresentStream {
   frameCount: number;
 }
 
+export interface PresentClockWitness {
+  /** One-based physical CSV lines, within the full selected source stream. */
+  fromSourceLine: number;
+  toSourceLine: number;
+  elapsedMs: number;
+  frameTimeMs: number;
+  allowanceMs: number;
+  kind: "unaccounted_interval" | "reversed_clock";
+}
+
+export interface PresentClockEvidence {
+  witnesses: PresentClockWitness[];
+  /** Bound retention, without losing the full gap-coordinate list. */
+  omittedWitnesses: number;
+}
+
 export interface FrameSeriesMeta {
   format: SourceFormat;
   sourceFileName: string;
@@ -81,6 +97,9 @@ export interface FrameSeriesMeta {
   streams?: PresentStream[];
   /** The id of the stream the series holds, when `streams` is set. */
   selectedStream?: string;
+  /** Native TimeInSeconds contradicts uninterrupted retained presents. */
+  presentClockGaps?: number;
+  presentClockEvidence?: PresentClockEvidence;
   /** A clock cross-check is evidence, not proof that every frame was recorded. */
   timingEvidence?: {
     kind: "mangohud-elapsed";
@@ -99,7 +118,7 @@ export interface FrameSeries {
   timeSec: Float64Array;
   /** One-based physical CSV line per frame. Absent for caller-created series. */
   sourceLine?: Float64Array;
-  /** 1 before a retained frame separated from its predecessor by unusable source rows.
+  /** 1 before a retained frame separated by unusable rows or native clock evidence.
    * Per selected stream; does not estimate missing frame counts or durations.
    * Absent for caller-created series that assume uninterrupted observations. */
   gapBefore?: Uint8Array;

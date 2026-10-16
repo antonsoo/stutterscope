@@ -58,7 +58,7 @@ export class PresentFamilyParser implements StreamingParser {
       this.header = indexHeader(fields, lineIndex + 1);
       this.columns = fields.map((f) => f.trim());
       this.hasDropped = this.header.has("Dropped");
-      this.streams.setHeader(this.header);
+      this.streams.setHeader(this.header, "MsBetweenPresents");
       return;
     }
     const widthProblem = extraFieldsReason(fields, this.columns);
@@ -78,7 +78,7 @@ export class PresentFamilyParser implements StreamingParser {
       this.skipped.add(lineIndex, "missing/invalid MsBetweenPresents");
       return;
     }
-    const identityProblem = this.streams.track(fields);
+    const identityProblem = this.streams.track(fields, lineIndex + 1);
     if (identityProblem) {
       this.skipped.add(lineIndex, identityProblem);
       return;
@@ -90,7 +90,7 @@ export class PresentFamilyParser implements StreamingParser {
   }
 
   finish(sourceFileName: string): FrameSeries {
-    const { frameTimeMs, sourceLine, gapBefore, channels, streams, selected } = this.streams.select(
+    const { frameTimeMs, sourceLine, gapBefore, channels, streams, selected, clockGaps, clockEvidence } = this.streams.select(
       { frameTimeMs: this.frameTimeMs.toArray(), sourceLine: this.sourceLine.toArray(), channels: { dropped: this.hasDropped ? this.dropped.toArray() : undefined } },
       this.options.stream,
     );
@@ -104,6 +104,8 @@ export class PresentFamilyParser implements StreamingParser {
         columns: this.columns,
         streams,
         selectedStream: selected?.id,
+        ...(clockGaps ? { presentClockGaps: clockGaps } : {}),
+        ...(clockEvidence ? { presentClockEvidence: clockEvidence } : {}),
       },
       frameCount: frameTimeMs.length,
       frameTimeMs,

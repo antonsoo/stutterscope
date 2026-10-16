@@ -9,3 +9,5 @@ coverage/
 test-results/
 playwright-report/
 /studies/*/cache/
+__pycache__/
+*.py[cod]

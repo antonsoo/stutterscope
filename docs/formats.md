@@ -426,6 +426,23 @@ break the selected stream. If a bad row lacks any identity component required
 by its header, all previously observed streams are conservatively interrupted.
 Missing optional telemetry alone does not break frame-time continuity.
 
+PresentMon 1.x and the OCAT/CapFrameX/FrameView present family also compare
+`TimeInSeconds` with the current row's native `msBetweenPresents` or
+`MsBetweenPresents`, within each tracked stream. A clock interval longer than
+that frame accounts for, or a reversed clock, interrupts adjacency. The bound
+includes half a unit of each cell's written decimal precision and floating-point
+roundoff; coarsely written clocks cannot establish tiny gaps. Missing, malformed
+or unrecognized clocks supply no comparison. PresentMon 2's QPC/start-time fields
+are not substituted into this rule.
+
+These boundaries can exist with zero malformed/skipped CSV rows: PresentMon's
+documented `-exclude_dropped` option deliberately removes presents. The optional
+`source.presentClockGaps` JSON field counts clock-supported discontinuities in
+the full selected source stream. It can overlap boundaries already supported
+by skipped rows; do not add those counters to infer missing frames. Interval
+pacing coverage and the listed original-source gap positions remain separate.
+[Native records, independent ordinal oracle and an untouched public excerpt](../studies/present-clock/README.md).
+
 Pacing pairs, rolling-median neighborhoods, episodes and trace lines stop at
 these boundaries. No missing duration or frame count is imputed; accumulated
 time still sums only usable durations. Leading/trailing skipped rows have no

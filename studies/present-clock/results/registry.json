@@ -1,0 +1,107 @@
+{
+  "name": "@antonsoloviev/stutterscope",
+  "latest": "0.2.5",
+  "publishedAt": "2026-10-03T03:14:04.501Z",
+  "checkedAt": "2026-10-16T19:50:11.079695+00:00",
+  "url": "https://registry.npmjs.org/@antonsoloviev/stutterscope/-/stutterscope-0.2.5.tgz",
+  "integrity": "sha512-+Doh6WsdWCnmcccLZXF08fMCikpv9GM14FAnwigelcycbAqLCfiWtmekRoK4VOkGAm3RKttJ4yqf/DMxEA+13Q==",
+  "bytes": 33193,
+  "sha256": "2780ff0763d7c3d3dca09b7a9d50caec59394ee9b763e7f415ae59f0f39137a2",
+  "sha512Verified": true,
+  "scope": "Public registry artifact, installed independently of the locally packed repair; not a new registry release.",
+  "report": {
+    "file": "filtered-presents.csv",
+    "format": "presentmon1",
+    "streams": [
+      {
+        "id": "2656:0x0000019D7EF5E390",
+        "application": "dwm.exe",
+        "processId": "2656",
+        "swapChain": "0x0000019D7EF5E390",
+        "frameCount": 175
+      },
+      {
+        "id": "2656:0x0000019D7F1BA8F0",
+        "application": "dwm.exe",
+        "processId": "2656",
+        "swapChain": "0x0000019D7F1BA8F0",
+        "frameCount": 175
+      },
+      {
+        "id": "24892:0x000002A70D2CAC00",
+        "application": "PresentBench.exe",
+        "processId": "24892",
+        "swapChain": "0x000002A70D2CAC00",
+        "frameCount": 175
+      },
+      {
+        "id": "3980:0x0000021C48E8A710",
+        "application": "steamwebhelper.exe",
+        "processId": "3980",
+        "swapChain": "0x0000021C48E8A710",
+        "frameCount": 25
+      },
+      {
+        "id": "2656:0x0000000000000000",
+        "application": "dwm.exe",
+        "processId": "2656",
+        "swapChain": "0x0000000000000000",
+        "frameCount": 6
+      },
+      {
+        "id": "24892:0x0000000000000000",
+        "application": "PresentBench.exe",
+        "processId": "24892",
+        "swapChain": "0x0000000000000000",
+        "frameCount": 6
+      },
+      {
+        "id": "2656:0x0000000100000000",
+        "application": "dwm.exe",
+        "processId": "2656",
+        "swapChain": "0x0000000100000000",
+        "frameCount": 6
+      }
+    ],
+    "selectedStream": "24892:0x000002A70D2CAC00",
+    "summary": {
+      "frameCount": 175,
+      "durationSec": 1.9769661999999992,
+      "averageFps": 88.51946988269201,
+      "meanOfInstantaneousFps": 88.65021290995787,
+      "percentilesMs": {
+        "p50": 11.0607,
+        "p90": 12.02876,
+        "p95": 12.05471,
+        "p99": 12.0922,
+        "p999": 12.1359926
+      },
+      "onePercentLow": {
+        "percentileMethodFps": 82.69793751343842,
+        "meanOfSlowestMethodFps": 82.47728781686743
+      },
+      "pointOnePercentLow": {
+        "percentileMethodFps": 82.3995228869866,
+        "meanOfSlowestMethodFps": 82.35807644476657
+      },
+      "stutter": {
+        "stutterEventCount": 0,
+        "totalStutterTimeMs": 0,
+        "stutterTimeFraction": 0,
+        "hitchThresholdMs": 50,
+        "hitchCount": 0,
+        "totalHitchTimeMs": 0,
+        "hitchTimeFraction": 0,
+        "stutterFrameIndices": []
+      },
+      "masdMs": 0.34652931034482753,
+      "dropped": {
+        "droppedCount": 0,
+        "droppedFraction": 0
+      },
+      "boundShare": null,
+      "latency": null
+    }
+  },
+  "normalization": "Only the CLI file argument is replaced with its basename; registry counter fields are not synthesized."
+}

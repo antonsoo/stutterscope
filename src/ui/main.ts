@@ -104,6 +104,11 @@ function renderDropzone(): void {
         <button class="btn small" id="captured-example-btn" type="button">Open recorded comparison</button>
         <span>Controlled local capture, not a game or GPU benchmark.</span>
       </div>
+      <div class="captured-example"><strong>Filtered native presents</strong>
+        <p>Intel PresentMon gold data with dropped presents removed. Inspect the clock gaps between 175 retained frames, even though every CSV row is valid.</p>
+        <button class="btn small" id="native-example-btn" type="button">Inspect filtered presents</button>
+        <span>Test capture, not a game benchmark. <a href="https://github.com/antonsoo/stutterscope/tree/main/studies/present-clock">Source and transformation</a>.</span>
+      </div>
     </div>
     <div id="status-area"></div>
   `;
@@ -146,6 +151,7 @@ function renderDropzone(): void {
     void loadCapturedExample("a");
     void loadCapturedExample("b");
   });
+  document.getElementById("native-example-btn")!.addEventListener("click", () => { void loadNativeExample(); });
   document.getElementById("status-area")!.addEventListener("click", (event) => {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>("button[data-slot]");
     if (!button) return;
@@ -188,6 +194,20 @@ async function loadCapturedExample(slot: Slot): Promise<void> {
       { valueColumn: "frame_time_ms", valueKind: "frametime_ms" }, undefined, request, { startSec: 1.5, endSec: 8.5 });
   } catch (error) {
     if (isCurrent(request)) showImportError(slot, `Could not load recorded Run ${slot.toUpperCase()}: ${errorMessage(error)}`, () => void loadCapturedExample(slot));
+  } finally { finishImport(request); }
+}
+
+async function loadNativeExample(): Promise<void> {
+  const request = beginImport("a");
+  setStatus(`<div class="status-line" role="status">Loading filtered native presents… ${cancelButton("a")}</div>`);
+  try {
+    const response = await fetch(`${import.meta.env.BASE_URL}native-filtering/filtered-presents.csv`, { signal: request.controller.signal });
+    if (!response.ok) throw new Error(`Capture download returned HTTP ${response.status}.`);
+    const blob = await response.blob();
+    if (!isCurrent(request)) return;
+    await loadFile("a", new File([blob], "filtered-presents.csv", { type: "text/csv" }), undefined, undefined, undefined, request);
+  } catch (error) {
+    if (isCurrent(request)) showImportError("a", `Could not load filtered presents: ${errorMessage(error)}`, () => void loadNativeExample());
   } finally { finishImport(request); }
 }
 
@@ -510,9 +530,17 @@ function warningsNote(run: RunState, label = "Run A"): string {
 }
 
 function timingNote(run: RunState, label: string): string {
+  const clockGaps = run.response.series.meta.presentClockGaps;
+  const witnesses = run.response.series.meta.presentClockEvidence;
+  const witnessTable = witnesses?.witnesses.length ? `<div class="episode-table-scroll" tabindex="0" role="region" aria-label="${label} native clock witnesses">
+    <table class="delta-table"><caption>Retained clock witnesses (milliseconds)</caption><thead><tr><th scope="col">CSV lines</th><th scope="col">clock</th><th scope="col">frame</th><th scope="col">allowance</th></tr></thead><tbody>
+      ${witnesses.witnesses.map(w => `<tr><td>${fmtInt(w.fromSourceLine)} - ${fmtInt(w.toSourceLine)}</td><td class="num">${fmtMs(w.elapsedMs, 3)}</td><td class="num">${fmtMs(w.frameTimeMs, 3)}</td><td class="num">${w.allowanceMs > 0 && w.allowanceMs < 1e-6 ? w.allowanceMs.toExponential(2) : fmtMs(w.allowanceMs, 6)}</td></tr>`).join("")}
+    </tbody></table></div>${witnesses.omittedWitnesses ? `<p>${fmtInt(witnesses.omittedWitnesses)} further witness details were not retained. JSON still lists every detected gap coordinate.</p>` : ""}` : "";
+  const native = clockGaps ? `<details class="notes timing-note"><summary>${label}: ${fmtInt(clockGaps)} native clock ${clockGaps === 1 ? "discontinuity" : "discontinuities"}</summary>
+    <p>The count covers the full source stream. TimeInSeconds contradicts adjacent retained presents, after allowing for written decimal precision. Filtered or missing presents and reversed clocks break pacing pairs, rolling context and trace lines. Missing frame counts and durations are unknown; the chart still sums retained frame durations. This check does not establish complete recording.</p>${witnessTable}</details>` : "";
   const evidence = run.response.series.meta.timingEvidence;
-  if (!evidence) return "";
-  return `<details class="notes timing-note"><summary>${label}: MangoHud metrics assume per-frame logging</summary>
+  if (!evidence) return native;
+  return native + `<details class="notes timing-note"><summary>${label}: MangoHud metrics assume per-frame logging</summary>
     <p>${escapeHtml(evidence.note)}</p><p>Compared intervals: ${fmtInt(evidence.comparedIntervals)}.
     Elapsed span: ${evidence.observedSpanSec === null ? "unavailable" : fmtMs(evidence.observedSpanSec, 6) + " s"}.
     Recorded frame span: ${evidence.recordedFrameSpanSec === null ? "unavailable" : fmtMs(evidence.recordedFrameSpanSec, 6) + " s"}.</p></details>`;
@@ -791,3 +819,4 @@ function chartSummary(summary: MetricsSummary): string {
 }
 
 renderDropzone();
+if (new URLSearchParams(window.location.search).get("example") === "filtered-presents") void loadNativeExample();

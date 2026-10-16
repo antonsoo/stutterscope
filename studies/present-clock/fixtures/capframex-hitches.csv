@@ -1,0 +1,4 @@
+//GameName=Controlled
+Application,ProcessID,SwapChainAddress,TimeInSeconds,MsBetweenPresents
+game.exe,42,0x1,1.000000,60.0000
+game.exe,42,0x1,1.200000,120.0000

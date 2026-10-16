@@ -1,0 +1,73 @@
+{
+  "scope": "Five alternating fresh CLI processes per build on one unchanged cached public FrameView capture. Includes startup, file decoding, parsing, metrics and JSON. Not general performance evidence.",
+  "machine": {
+    "platform": "WSL2 Linux",
+    "logicalCpus": 14,
+    "node": "v24.21.0"
+  },
+  "input": {
+    "url": "https://raw.githubusercontent.com/xD3I/Benchmarks/6dc50486ac5289c10c99704234ec3fe38d5b4421/examples/frameview-1-6.csv",
+    "bytes": 57432330,
+    "sha256": "b2d5f951273be8acb69af3c7635168001a6baa5a26093a87896b6079493f54b7"
+  },
+  "runs": {
+    "before": [
+      {
+        "elapsedMs": 535.5905069736764,
+        "maxRssKiB": 164124
+      },
+      {
+        "elapsedMs": 605.1731160259806,
+        "maxRssKiB": 163952
+      },
+      {
+        "elapsedMs": 594.894380948972,
+        "maxRssKiB": 163980
+      },
+      {
+        "elapsedMs": 533.5716480039991,
+        "maxRssKiB": 164000
+      },
+      {
+        "elapsedMs": 611.9804210029542,
+        "maxRssKiB": 163960
+      }
+    ],
+    "after": [
+      {
+        "elapsedMs": 681.9269979605451,
+        "maxRssKiB": 164380
+      },
+      {
+        "elapsedMs": 660.3668610332534,
+        "maxRssKiB": 164380
+      },
+      {
+        "elapsedMs": 605.4798359982669,
+        "maxRssKiB": 163832
+      },
+      {
+        "elapsedMs": 657.4437349918298,
+        "maxRssKiB": 164344
+      },
+      {
+        "elapsedMs": 649.4371279841289,
+        "maxRssKiB": 164508
+      }
+    ]
+  },
+  "medians": {
+    "before": {
+      "elapsedMs": 594.894380948972,
+      "maxRssKiB": 163980
+    },
+    "after": {
+      "elapsedMs": 657.4437349918298,
+      "maxRssKiB": 164380
+    }
+  },
+  "implementation": {
+    "before": "aa3edaee41a456757903a7c482a79821e94734494aaa51b09c38004957ed588d",
+    "after": "c922ca642f49871603cde7247b0d5be116e0d31016269aa061f6646f84777624"
+  }
+}

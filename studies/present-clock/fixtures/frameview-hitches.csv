@@ -1,0 +1,3 @@
+Application,ProcessID,SwapChainAddress,TimeInSeconds,MsBetweenPresents,GPU0Util(%)
+game.exe,42,0x1,1.000000,60.0000,1
+game.exe,42,0x1,1.200000,120.0000,1

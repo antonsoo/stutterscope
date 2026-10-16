@@ -1,0 +1,4 @@
+Application,ProcessID,SwapChainAddress,TimeInSeconds,msBetweenPresents,msInPresentAPI
+game.exe,42,0x1,0.00,16.7000,1
+game.exe,42,0x1,0.02,16.7000,1
+game.exe,42,0x1,0.03,16.7000,1

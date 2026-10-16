@@ -142,7 +142,8 @@ capture that alternates between two frame times (the classic vsync-mismatch
 sawtooth — see the synthetic samples) has a high MASD even if its average
 FPS looks fine, which is exactly the case average FPS hides.
 
-A source gap separates frames when the parser skipped an unusable timing row.
+A source gap separates frames when the parser skipped an unusable timing row
+or native present-clock evidence contradicts adjacency.
 A bad row with a known process/swap-chain identity interrupts only that stream;
 a bad row with incomplete identity conservatively interrupts every previously
 observed stream. Normal interleaving, blank lines and missing optional telemetry

@@ -24,6 +24,10 @@ export function buildJsonReport(series: FrameSeries, summary: MetricsSummary, op
       durationSec: selection.sourceDurationSec,
       columns: [...series.meta.columns],
       skippedRows: series.meta.skippedRows,
+      ...(series.meta.presentClockGaps ? { presentClockGaps: series.meta.presentClockGaps } : {}),
+      ...(series.meta.presentClockEvidence ? { presentClockEvidence: {
+        ...series.meta.presentClockEvidence, witnesses: series.meta.presentClockEvidence.witnesses.map(w => ({ ...w })),
+      } } : {}),
       warnings: [...series.meta.warnings],
       omittedWarningDetails: Math.max(0, series.meta.skippedRows - series.meta.warnings.length),
       genericMapping: mapping ? { ...mapping } : null,

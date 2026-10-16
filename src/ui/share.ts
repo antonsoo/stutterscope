@@ -69,6 +69,14 @@ export function buildMarkdownTable(series: FrameSeries, summary: MetricsSummary,
     ...(series.meta.selectedStream ? [`Selected stream: ${escapeMd(series.meta.selectedStream)} (${escapeMd(series.meta.application ?? "application not recorded")}). Other streams are excluded.`] : []),
     ...(mapping ? [`Column: ${escapeMd(mapping.valueColumn)}. Interpretation: ${mapping.valueKind}.`] : []),
     `Skipped rows: ${fmtInt(series.meta.skippedRows)}. Retained warning details: ${fmtInt(series.meta.warnings.length)}.`,
+    ...(series.meta.presentClockGaps ? [`Native TimeInSeconds: ${fmtInt(series.meta.presentClockGaps)} clock discontinuities; missing frame counts and durations unknown. Counts describe the full source stream; interval gaps are listed separately.`] : []),
+    ...(series.meta.presentClockEvidence?.witnesses.length ? [
+      "Retained clock witnesses (milliseconds; physical CSV lines in the full source stream):",
+      "| CSV lines | Clock interval | Native frame | Allowed rounding/roundoff |",
+      "| --- | ---: | ---: | ---: |",
+      ...series.meta.presentClockEvidence.witnesses.map(w => `| ${w.fromSourceLine}-${w.toSourceLine} | ${w.elapsedMs.toFixed(6)} | ${w.frameTimeMs.toFixed(6)} | ${w.allowanceMs > 0 && w.allowanceMs < 1e-6 ? w.allowanceMs.toExponential(2) : w.allowanceMs.toFixed(6)} |`),
+      `${series.meta.presentClockEvidence.omittedWitnesses} further witness details were not retained; JSON lists every detected gap coordinate.`,
+    ] : []),
     ...series.meta.warnings.map((warning) => `- ${escapeMd(warning)}`),
     ...(series.meta.skippedRows > series.meta.warnings.length ? [`${fmtInt(series.meta.skippedRows - series.meta.warnings.length)} additional skipped rows have no retained warning detail.`] : []),
   ];
@@ -174,7 +182,7 @@ export function renderReportCardCanvas(series: FrameSeries, summary: MetricsSumm
   ctx.fillStyle = "#7fa393";
   ctx.font = "400 14px 'JetBrains Mono', monospace";
   ctx.fillText(`Detection: k = ${options.kMultiplier}, radius = ${options.windowRadius}, hitch > ${options.hitchThresholdMs} ms`, 60, 492);
-  ctx.fillText(`${fmtInt(series.frameCount)} frames analyzed; ${fmtInt(series.meta.skippedRows)} rows skipped. Warning details in JSON / Markdown.`, 60, 516);
+  ctx.fillText(`${fmtInt(series.frameCount)} frames analyzed; ${fmtInt(series.meta.skippedRows)} rows skipped${series.meta.presentClockGaps ? `; ${fmtInt(series.meta.presentClockGaps)} source clock gaps` : ""}. Details in JSON / Markdown.`, 60, 516);
   if (series.meta.selectedStream) ctx.fillText(truncate(`Selected stream: ${series.meta.selectedStream} (${series.meta.application ?? "application not recorded"})`, 105), 60, 540);
 
   ctx.fillText(truncate(selectionText(selection), 115), 60, 564);

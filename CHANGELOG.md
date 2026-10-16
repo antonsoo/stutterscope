@@ -8,6 +8,20 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 Changes below are in source and have not been released as an npm package.
 
+### Native present-clock continuity
+
+- Recognize discontinuities in native `TimeInSeconds` against the current
+  `msBetweenPresents`/`MsBetweenPresents`, within each present stream and allowing
+  for written decimal precision. Filtered presents and reversed clocks cannot
+  establish adjacent pacing pairs, rolling context, trace connections or episodes.
+- Preserve retained durations, distribution metrics and observed dropped outcomes.
+  Record clock-supported boundaries separately from rejected CSV rows; do not
+  invent missing frames, durations or causes. JSON, Markdown, report cards and
+  browser notes retain that distinction.
+- Add an attributed, directly loadable Intel filtered-capture example. An
+  untouched public FrameView excerpt, ordinal-based oracle on six Intel traces,
+  and replay of 34 pinned capture files are in `studies/present-clock/`.
+
 ### CSV column alignment correction (source only)
 
 - Skip records with more cells than the header before assigning measurements

@@ -1,0 +1,860 @@
+{
+  "baseline": "8728c17f2fae45774c1b1597c0b2ab66413d42be",
+  "oracle": "Per-stream native record ordinals before filtering, independent of clock arithmetic. Constructed controls have explicit source boundaries.",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_0_v1.csv",
+      "commit": "38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76",
+      "licence": "MIT",
+      "bytes": 101313,
+      "sha256": "c44407ee31bf829f241a8e64d5e8f5e5209d042b312c46f2da0bd26e330a979f"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_1_v1.csv",
+      "commit": "38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76",
+      "licence": "MIT",
+      "bytes": 15624,
+      "sha256": "847c8ce11556d6308278aab665fd706fa730afe4e6d6fdd7fd4edfbe0b625e8b"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_2_v1.csv",
+      "commit": "38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76",
+      "licence": "MIT",
+      "bytes": 26918,
+      "sha256": "1c454ac79f69ff9229c7ab4410ae1a15ae984ce0cd9ee6b74099a0ec8b1cd825"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_3_v1.csv",
+      "commit": "38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76",
+      "licence": "MIT",
+      "bytes": 33374,
+      "sha256": "f26570a25f7234076d8c80181e6b6bf40d7183d363e8f94569524c07d211c2d4"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_4_v1.csv",
+      "commit": "38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76",
+      "licence": "MIT",
+      "bytes": 53330,
+      "sha256": "1bf9b3dcc4fcab50e7962372b58a68f3a1d947e868917a97e494e0f7eb741da8"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_5_v1.csv",
+      "commit": "38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76",
+      "licence": "MIT",
+      "bytes": 179365,
+      "sha256": "cdd209120d092989384533150e2a83fc00a7a685ee81d4c07906c724964f8eaa"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/xD3I/Benchmarks/6dc50486ac5289c10c99704234ec3fe38d5b4421/examples/frameview-1-6.csv",
+      "commit": "6dc50486ac5289c10c99704234ec3fe38d5b4421",
+      "licence": "Unlicense",
+      "bytes": 57432330,
+      "sha256": "b2d5f951273be8acb69af3c7635168001a6baa5a26093a87896b6079493f54b7"
+    }
+  ],
+  "cases": [
+    {
+      "name": "test_case_0_v1-original",
+      "file": "fixtures/test_case_0_v1-original.csv",
+      "options": [],
+      "provenance": "Native Intel gold capture; unfiltered control",
+      "source": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_0_v1.csv",
+      "input": {
+        "bytes": 101313,
+        "sha256": "c44407ee31bf829f241a8e64d5e8f5e5209d042b312c46f2da0bd26e330a979f"
+      },
+      "expected": {
+        "frames": 19,
+        "averageFps": 68.8827579206108,
+        "gaps": [],
+        "observedPairs": 18,
+        "masdMs": 2.6864,
+        "stream": "10792:0x0000020979A6D5F8"
+      },
+      "unchanged": true
+    },
+    {
+      "name": "test_case_0_v1-exclude-dropped",
+      "file": "fixtures/test_case_0_v1-exclude-dropped.csv",
+      "options": [],
+      "provenance": "Native Intel gold capture; removed Dropped=1 rows",
+      "source": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_0_v1.csv",
+      "input": {
+        "bytes": 98845,
+        "sha256": "2234425825b940ddee2d5172ae5347f21b039c041375fd314f16d0458b1dd858"
+      },
+      "expected": {
+        "frames": 19,
+        "averageFps": 65.95108581520574,
+        "gaps": [],
+        "observedPairs": 18,
+        "masdMs": 1.0322555555555548,
+        "stream": "2032:0x0000029A5884FF18"
+      },
+      "unchanged": false
+    },
+    {
+      "name": "test_case_1_v1-original",
+      "file": "fixtures/test_case_1_v1-original.csv",
+      "options": [],
+      "provenance": "Native Intel gold capture; unfiltered control",
+      "source": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_1_v1.csv",
+      "input": {
+        "bytes": 15624,
+        "sha256": "847c8ce11556d6308278aab665fd706fa730afe4e6d6fdd7fd4edfbe0b625e8b"
+      },
+      "expected": {
+        "frames": 8,
+        "averageFps": 105.26980651409563,
+        "gaps": [],
+        "observedPairs": 7,
+        "masdMs": 0.43460000000000015,
+        "stream": "24560:0x000002019D7777C0"
+      },
+      "unchanged": true
+    },
+    {
+      "name": "test_case_1_v1-exclude-dropped",
+      "file": "fixtures/test_case_1_v1-exclude-dropped.csv",
+      "options": [],
+      "provenance": "Native Intel gold capture; removed Dropped=1 rows",
+      "source": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_1_v1.csv",
+      "input": {
+        "bytes": 14817,
+        "sha256": "ed45356fc8841250c80e49ae02865f5a9eac0bc9d8f1dd476fb3170342c81291"
+      },
+      "expected": {
+        "frames": 5,
+        "averageFps": 104.16601562906898,
+        "gaps": [
+          {
+            "beforeFrame": 2,
+            "sourceLine": 11
+          },
+          {
+            "beforeFrame": 4,
+            "sourceLine": 17
+          },
+          {
+            "beforeFrame": 5,
+            "sourceLine": 20
+          }
+        ],
+        "observedPairs": 1,
+        "masdMs": 0.01180000000000092,
+        "stream": "24560:0x000002019D7777C0"
+      },
+      "unchanged": false
+    },
+    {
+      "name": "test_case_2_v1-original",
+      "file": "fixtures/test_case_2_v1-original.csv",
+      "options": [],
+      "provenance": "Native Intel gold capture; unfiltered control",
+      "source": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_2_v1.csv",
+      "input": {
+        "bytes": 26918,
+        "sha256": "1c454ac79f69ff9229c7ab4410ae1a15ae984ce0cd9ee6b74099a0ec8b1cd825"
+      },
+      "expected": {
+        "frames": 19,
+        "averageFps": 68.68409941408848,
+        "gaps": [],
+        "observedPairs": 18,
+        "masdMs": 3.1057444444444444,
+        "stream": "10016:0x000001BA6DC82C58"
+      },
+      "unchanged": true
+    },
+    {
+      "name": "test_case_2_v1-exclude-dropped",
+      "file": "fixtures/test_case_2_v1-exclude-dropped.csv",
+      "options": [],
+      "provenance": "Native Intel gold capture; removed Dropped=1 rows",
+      "source": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_2_v1.csv",
+      "input": {
+        "bytes": 26367,
+        "sha256": "1f3777fb2cd37e90f07606ea499039796939fa1c9b345306b89c8a26926fb900"
+      },
+      "expected": {
+        "frames": 19,
+        "averageFps": 48.62854700460947,
+        "gaps": [],
+        "observedPairs": 18,
+        "masdMs": 10.460455555555555,
+        "stream": "5348:0x0000028F99FCFD50"
+      },
+      "unchanged": false
+    },
+    {
+      "name": "test_case_3_v1-original",
+      "file": "fixtures/test_case_3_v1-original.csv",
+      "options": [],
+      "provenance": "Native Intel gold capture; unfiltered control",
+      "source": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_3_v1.csv",
+      "input": {
+        "bytes": 33374,
+        "sha256": "f26570a25f7234076d8c80181e6b6bf40d7183d363e8f94569524c07d211c2d4"
+      },
+      "expected": {
+        "frames": 19,
+        "averageFps": 66.55961078742122,
+        "gaps": [],
+        "observedPairs": 18,
+        "masdMs": 2.6793944444444446,
+        "stream": "5892:0x000001F0FF310E98"
+      },
+      "unchanged": true
+    },
+    {
+      "name": "test_case_3_v1-exclude-dropped",
+      "file": "fixtures/test_case_3_v1-exclude-dropped.csv",
+      "options": [],
+      "provenance": "Native Intel gold capture; removed Dropped=1 rows",
+      "source": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_3_v1.csv",
+      "input": {
+        "bytes": 32572,
+        "sha256": "405aa142ecf4fa76ec245ad3091f9f85e789bb606f497617576ca188e51907ec"
+      },
+      "expected": {
+        "frames": 19,
+        "averageFps": 64.02559945652375,
+        "gaps": [],
+        "observedPairs": 18,
+        "masdMs": 0.030872222222222117,
+        "stream": "12980:0x000002C6BEB300A0"
+      },
+      "unchanged": false
+    },
+    {
+      "name": "test_case_4_v1-original",
+      "file": "fixtures/test_case_4_v1-original.csv",
+      "options": [],
+      "provenance": "Native Intel gold capture; unfiltered control",
+      "source": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_4_v1.csv",
+      "input": {
+        "bytes": 53330,
+        "sha256": "1bf9b3dcc4fcab50e7962372b58a68f3a1d947e868917a97e494e0f7eb741da8"
+      },
+      "expected": {
+        "frames": 19,
+        "averageFps": 62.102340735278645,
+        "gaps": [],
+        "observedPairs": 18,
+        "masdMs": 1.1088944444444437,
+        "stream": "9620:0x0000019E52815138"
+      },
+      "unchanged": true
+    },
+    {
+      "name": "test_case_4_v1-exclude-dropped",
+      "file": "fixtures/test_case_4_v1-exclude-dropped.csv",
+      "options": [],
+      "provenance": "Native Intel gold capture; removed Dropped=1 rows",
+      "source": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_4_v1.csv",
+      "input": {
+        "bytes": 52553,
+        "sha256": "bd68742cd5de3266452c2fbfc92556b00069916d583048991070df28480c9bb6"
+      },
+      "expected": {
+        "frames": 19,
+        "averageFps": 62.102340735278645,
+        "gaps": [],
+        "observedPairs": 18,
+        "masdMs": 1.1088944444444437,
+        "stream": "9620:0x0000019E52815138"
+      },
+      "unchanged": false
+    },
+    {
+      "name": "test_case_5_v1-original",
+      "file": "fixtures/test_case_5_v1-original.csv",
+      "options": [],
+      "provenance": "Native Intel gold capture; unfiltered control",
+      "source": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_5_v1.csv",
+      "input": {
+        "bytes": 179365,
+        "sha256": "cdd209120d092989384533150e2a83fc00a7a685ee81d4c07906c724964f8eaa"
+      },
+      "expected": {
+        "frames": 259,
+        "averageFps": 88.89337970158458,
+        "gaps": [],
+        "observedPairs": 258,
+        "masdMs": 0.3279527131782946,
+        "stream": "24892:0x000002A70D2CAC00"
+      },
+      "unchanged": true
+    },
+    {
+      "name": "test_case_5_v1-exclude-dropped",
+      "file": "fixtures/test_case_5_v1-exclude-dropped.csv",
+      "options": [],
+      "provenance": "Native Intel gold capture; removed Dropped=1 rows",
+      "source": "https://raw.githubusercontent.com/GameTechDev/PresentMon/38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76/Tests/Gold/test_case_5_v1.csv",
+      "input": {
+        "bytes": 155803,
+        "sha256": "6c5373b1e1dd9187c9e84662be78b1f69f357a7002c8d2079db428287b7d18ab"
+      },
+      "expected": {
+        "frames": 175,
+        "averageFps": 88.51946988269198,
+        "gaps": [
+          {
+            "beforeFrame": 3,
+            "sourceLine": 11
+          },
+          {
+            "beforeFrame": 5,
+            "sourceLine": 17
+          },
+          {
+            "beforeFrame": 7,
+            "sourceLine": 23
+          },
+          {
+            "beforeFrame": 10,
+            "sourceLine": 32
+          },
+          {
+            "beforeFrame": 12,
+            "sourceLine": 38
+          },
+          {
+            "beforeFrame": 14,
+            "sourceLine": 44
+          },
+          {
+            "beforeFrame": 16,
+            "sourceLine": 50
+          },
+          {
+            "beforeFrame": 18,
+            "sourceLine": 56
+          },
+          {
+            "beforeFrame": 20,
+            "sourceLine": 62
+          },
+          {
+            "beforeFrame": 23,
+            "sourceLine": 71
+          },
+          {
+            "beforeFrame": 25,
+            "sourceLine": 77
+          },
+          {
+            "beforeFrame": 27,
+            "sourceLine": 83
+          },
+          {
+            "beforeFrame": 29,
+            "sourceLine": 89
+          },
+          {
+            "beforeFrame": 31,
+            "sourceLine": 95
+          },
+          {
+            "beforeFrame": 33,
+            "sourceLine": 101
+          },
+          {
+            "beforeFrame": 35,
+            "sourceLine": 107
+          },
+          {
+            "beforeFrame": 37,
+            "sourceLine": 113
+          },
+          {
+            "beforeFrame": 39,
+            "sourceLine": 119
+          },
+          {
+            "beforeFrame": 41,
+            "sourceLine": 125
+          },
+          {
+            "beforeFrame": 44,
+            "sourceLine": 134
+          },
+          {
+            "beforeFrame": 46,
+            "sourceLine": 140
+          },
+          {
+            "beforeFrame": 48,
+            "sourceLine": 147
+          },
+          {
+            "beforeFrame": 50,
+            "sourceLine": 155
+          },
+          {
+            "beforeFrame": 52,
+            "sourceLine": 163
+          },
+          {
+            "beforeFrame": 55,
+            "sourceLine": 175
+          },
+          {
+            "beforeFrame": 57,
+            "sourceLine": 183
+          },
+          {
+            "beforeFrame": 59,
+            "sourceLine": 191
+          },
+          {
+            "beforeFrame": 62,
+            "sourceLine": 203
+          },
+          {
+            "beforeFrame": 64,
+            "sourceLine": 211
+          },
+          {
+            "beforeFrame": 66,
+            "sourceLine": 219
+          },
+          {
+            "beforeFrame": 68,
+            "sourceLine": 227
+          },
+          {
+            "beforeFrame": 70,
+            "sourceLine": 235
+          },
+          {
+            "beforeFrame": 72,
+            "sourceLine": 242
+          },
+          {
+            "beforeFrame": 74,
+            "sourceLine": 249
+          },
+          {
+            "beforeFrame": 76,
+            "sourceLine": 255
+          },
+          {
+            "beforeFrame": 78,
+            "sourceLine": 261
+          },
+          {
+            "beforeFrame": 80,
+            "sourceLine": 267
+          },
+          {
+            "beforeFrame": 82,
+            "sourceLine": 273
+          },
+          {
+            "beforeFrame": 84,
+            "sourceLine": 279
+          },
+          {
+            "beforeFrame": 86,
+            "sourceLine": 285
+          },
+          {
+            "beforeFrame": 88,
+            "sourceLine": 291
+          },
+          {
+            "beforeFrame": 90,
+            "sourceLine": 297
+          },
+          {
+            "beforeFrame": 92,
+            "sourceLine": 303
+          },
+          {
+            "beforeFrame": 94,
+            "sourceLine": 309
+          },
+          {
+            "beforeFrame": 96,
+            "sourceLine": 315
+          },
+          {
+            "beforeFrame": 99,
+            "sourceLine": 324
+          },
+          {
+            "beforeFrame": 101,
+            "sourceLine": 330
+          },
+          {
+            "beforeFrame": 103,
+            "sourceLine": 336
+          },
+          {
+            "beforeFrame": 105,
+            "sourceLine": 342
+          },
+          {
+            "beforeFrame": 108,
+            "sourceLine": 351
+          },
+          {
+            "beforeFrame": 110,
+            "sourceLine": 357
+          },
+          {
+            "beforeFrame": 112,
+            "sourceLine": 363
+          },
+          {
+            "beforeFrame": 114,
+            "sourceLine": 369
+          },
+          {
+            "beforeFrame": 116,
+            "sourceLine": 375
+          },
+          {
+            "beforeFrame": 118,
+            "sourceLine": 381
+          },
+          {
+            "beforeFrame": 121,
+            "sourceLine": 390
+          },
+          {
+            "beforeFrame": 123,
+            "sourceLine": 396
+          },
+          {
+            "beforeFrame": 125,
+            "sourceLine": 402
+          },
+          {
+            "beforeFrame": 127,
+            "sourceLine": 408
+          },
+          {
+            "beforeFrame": 129,
+            "sourceLine": 414
+          },
+          {
+            "beforeFrame": 131,
+            "sourceLine": 420
+          },
+          {
+            "beforeFrame": 133,
+            "sourceLine": 426
+          },
+          {
+            "beforeFrame": 135,
+            "sourceLine": 432
+          },
+          {
+            "beforeFrame": 137,
+            "sourceLine": 438
+          },
+          {
+            "beforeFrame": 139,
+            "sourceLine": 444
+          },
+          {
+            "beforeFrame": 140,
+            "sourceLine": 447
+          },
+          {
+            "beforeFrame": 142,
+            "sourceLine": 453
+          },
+          {
+            "beforeFrame": 144,
+            "sourceLine": 459
+          },
+          {
+            "beforeFrame": 146,
+            "sourceLine": 465
+          },
+          {
+            "beforeFrame": 148,
+            "sourceLine": 471
+          },
+          {
+            "beforeFrame": 150,
+            "sourceLine": 477
+          },
+          {
+            "beforeFrame": 152,
+            "sourceLine": 483
+          },
+          {
+            "beforeFrame": 154,
+            "sourceLine": 489
+          },
+          {
+            "beforeFrame": 156,
+            "sourceLine": 495
+          },
+          {
+            "beforeFrame": 158,
+            "sourceLine": 501
+          },
+          {
+            "beforeFrame": 160,
+            "sourceLine": 507
+          },
+          {
+            "beforeFrame": 162,
+            "sourceLine": 513
+          },
+          {
+            "beforeFrame": 164,
+            "sourceLine": 519
+          },
+          {
+            "beforeFrame": 166,
+            "sourceLine": 525
+          },
+          {
+            "beforeFrame": 168,
+            "sourceLine": 531
+          },
+          {
+            "beforeFrame": 170,
+            "sourceLine": 537
+          },
+          {
+            "beforeFrame": 172,
+            "sourceLine": 543
+          },
+          {
+            "beforeFrame": 174,
+            "sourceLine": 549
+          }
+        ],
+        "observedPairs": 91,
+        "masdMs": 0.3354593406593406,
+        "stream": "24892:0x000002A70D2CAC00"
+      },
+      "unchanged": false
+    },
+    {
+      "name": "presentmon1-hitches",
+      "file": "fixtures/presentmon1-hitches.csv",
+      "options": [
+        "--format",
+        "presentmon1"
+      ],
+      "provenance": "Constructed compatibility/control sequence; not a game benchmark",
+      "input": {
+        "bytes": 157,
+        "sha256": "d23ef7964f6b15270a652489c070fbe6f2c2822557e21ca263663192e5c4cce4"
+      },
+      "expected": {
+        "frames": 2,
+        "gaps": [
+          {
+            "beforeFrame": 2,
+            "sourceLine": 3
+          }
+        ],
+        "observedPairs": 0,
+        "masdMs": null,
+        "episodes": 2,
+        "hitches": 2
+      }
+    },
+    {
+      "name": "ocat-hitches",
+      "file": "fixtures/ocat-hitches.csv",
+      "options": [
+        "--format",
+        "ocat"
+      ],
+      "provenance": "Constructed compatibility/control sequence; not a game benchmark",
+      "input": {
+        "bytes": 138,
+        "sha256": "261f60fb983214401827c75729f081256e04ddad1a173e85ac645a9168ae82da"
+      },
+      "expected": {
+        "frames": 2,
+        "gaps": [
+          {
+            "beforeFrame": 2,
+            "sourceLine": 3
+          }
+        ],
+        "observedPairs": 0,
+        "masdMs": null,
+        "episodes": 2,
+        "hitches": 2
+      }
+    },
+    {
+      "name": "capframex-hitches",
+      "file": "fixtures/capframex-hitches.csv",
+      "options": [
+        "--format",
+        "capframex"
+      ],
+      "provenance": "Constructed compatibility/control sequence; not a game benchmark",
+      "input": {
+        "bytes": 160,
+        "sha256": "dc12b5fb56eec737c6ccff55ced5da36dab8431915d88bc60c1fc18698aed96c"
+      },
+      "expected": {
+        "frames": 2,
+        "gaps": [
+          {
+            "beforeFrame": 2,
+            "sourceLine": 4
+          }
+        ],
+        "observedPairs": 0,
+        "masdMs": null,
+        "episodes": 2,
+        "hitches": 2
+      }
+    },
+    {
+      "name": "frameview-hitches",
+      "file": "fixtures/frameview-hitches.csv",
+      "options": [
+        "--format",
+        "frameview"
+      ],
+      "provenance": "Constructed compatibility/control sequence; not a game benchmark",
+      "input": {
+        "bytes": 154,
+        "sha256": "fafa778153e000014248478ab68af85ecb3351d233549116195158cbd423de67"
+      },
+      "expected": {
+        "frames": 2,
+        "gaps": [
+          {
+            "beforeFrame": 2,
+            "sourceLine": 3
+          }
+        ],
+        "observedPairs": 0,
+        "masdMs": null,
+        "episodes": 2,
+        "hitches": 2
+      }
+    },
+    {
+      "name": "coarse-clock",
+      "file": "fixtures/coarse-clock.csv",
+      "options": [],
+      "provenance": "Constructed compatibility/control sequence; not a game benchmark",
+      "input": {
+        "bytes": 179,
+        "sha256": "ef7f708ef7a1dfd2d505cff10d09a870364246e059e1f4c9e2c2563087f46b70"
+      },
+      "expected": {
+        "frames": 3,
+        "gaps": [],
+        "observedPairs": 2,
+        "masdMs": 0
+      }
+    },
+    {
+      "name": "reversed-clock",
+      "file": "fixtures/reversed-clock.csv",
+      "options": [],
+      "provenance": "Constructed compatibility/control sequence; not a game benchmark",
+      "input": {
+        "bytes": 157,
+        "sha256": "cd67090906c3497d0d1c0237db47bf7d083a8eee8233e8b2cf9d6b400224bce9"
+      },
+      "expected": {
+        "frames": 2,
+        "gaps": [
+          {
+            "beforeFrame": 2,
+            "sourceLine": 3
+          }
+        ],
+        "observedPairs": 0,
+        "masdMs": null,
+        "episodes": 2,
+        "hitches": 2
+      }
+    },
+    {
+      "name": "interleaved-game",
+      "file": "fixtures/interleaved-game.csv",
+      "options": [],
+      "provenance": "Constructed compatibility/control sequence; not a game benchmark",
+      "input": {
+        "bytes": 267,
+        "sha256": "09f917e22dfd68a8f566919d2f9259110f2b4a78a53caecae4714b8e834a36eb"
+      },
+      "expected": {
+        "frames": 3,
+        "gaps": [],
+        "observedPairs": 2,
+        "masdMs": 0
+      }
+    },
+    {
+      "name": "interleaved-overlay",
+      "file": "fixtures/interleaved-game.csv",
+      "options": [
+        "--stream",
+        "overlay.exe"
+      ],
+      "provenance": "Constructed compatibility/control sequence; not a game benchmark",
+      "input": {
+        "bytes": 267,
+        "sha256": "09f917e22dfd68a8f566919d2f9259110f2b4a78a53caecae4714b8e834a36eb"
+      },
+      "expected": {
+        "frames": 2,
+        "gaps": [
+          {
+            "beforeFrame": 2,
+            "sourceLine": 5
+          }
+        ],
+        "observedPairs": 0,
+        "masdMs": null
+      }
+    },
+    {
+      "name": "frameview-native-excerpt",
+      "file": "fixtures/frameview-native-excerpt.csv",
+      "options": [],
+      "provenance": "Five unchanged per-frame rows from a public Resident Evil 4 FrameView 1.6 example; no cause of the discontinuity inferred.",
+      "input": {
+        "bytes": 4431,
+        "sha256": "ca07896f158e193d7709bfd3e662df1c3c063bd96c68389bf7087c2dc09ed3b5"
+      },
+      "expected": {
+        "frames": 5,
+        "gaps": [
+          {
+            "beforeFrame": 3,
+            "sourceLine": 4
+          }
+        ],
+        "observedPairs": 3,
+        "masdMs": 0.15833333333333333
+      },
+      "source": "https://raw.githubusercontent.com/xD3I/Benchmarks/6dc50486ac5289c10c99704234ec3fe38d5b4421/examples/frameview-1-6.csv",
+      "originalPhysicalLines": [
+        49059,
+        49060,
+        49061,
+        49062,
+        49063
+      ],
+      "clockEvidence": {
+        "elapsedMs": "9.249000",
+        "recordedFrameMs": "4.439",
+        "expectedGapBeforeFrame": 3
+      }
+    }
+  ]
+}

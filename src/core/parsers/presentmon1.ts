@@ -63,7 +63,7 @@ class PresentMon1Parser implements StreamingParser {
       this.columns = fields.map((f) => f.trim());
       this.hasDropped = this.header.has("Dropped");
       this.hasGpuColumn = this.header.has("msGPUActive");
-      this.streams.setHeader(this.header);
+      this.streams.setHeader(this.header, "msBetweenPresents");
       return;
     }
     const widthProblem = extraFieldsReason(fields, this.columns);
@@ -83,7 +83,7 @@ class PresentMon1Parser implements StreamingParser {
       this.skipped.add(lineIndex, "missing/invalid msBetweenPresents");
       return;
     }
-    const identityProblem = this.streams.track(fields);
+    const identityProblem = this.streams.track(fields, lineIndex + 1);
     if (identityProblem) {
       this.skipped.add(lineIndex, identityProblem);
       return;
@@ -100,7 +100,7 @@ class PresentMon1Parser implements StreamingParser {
   }
 
   finish(sourceFileName: string): FrameSeries {
-    const { frameTimeMs, sourceLine, gapBefore, channels, streams, selected } = this.streams.select(
+    const { frameTimeMs, sourceLine, gapBefore, channels, streams, selected, clockGaps, clockEvidence } = this.streams.select(
       {
         frameTimeMs: this.frameTimeMs.toArray(), sourceLine: this.sourceLine.toArray(),
         channels: {
@@ -120,6 +120,8 @@ class PresentMon1Parser implements StreamingParser {
         columns: this.columns,
         streams,
         selectedStream: selected?.id,
+        ...(clockGaps ? { presentClockGaps: clockGaps } : {}),
+        ...(clockEvidence ? { presentClockEvidence: clockEvidence } : {}),
       },
       frameCount: frameTimeMs.length,
       frameTimeMs,

@@ -58,7 +58,7 @@ class FrameViewParser implements StreamingParser {
       this.columns = fields.map((f) => f.trim());
       this.hasDropped = this.header.has("Dropped");
       this.hasLatency = this.header.has("MsPCLatency");
-      this.streams.setHeader(this.header);
+      this.streams.setHeader(this.header, "MsBetweenPresents");
       return;
     }
     const widthProblem = extraFieldsReason(fields, this.columns);
@@ -78,7 +78,7 @@ class FrameViewParser implements StreamingParser {
       this.skipped.add(lineIndex, "missing/invalid MsBetweenPresents");
       return;
     }
-    const identityProblem = this.streams.track(fields);
+    const identityProblem = this.streams.track(fields, lineIndex + 1);
     if (identityProblem) {
       this.skipped.add(lineIndex, identityProblem);
       return;
@@ -91,7 +91,7 @@ class FrameViewParser implements StreamingParser {
   }
 
   finish(sourceFileName: string): FrameSeries {
-    const { frameTimeMs, sourceLine, gapBefore, channels, streams, selected } = this.streams.select(
+    const { frameTimeMs, sourceLine, gapBefore, channels, streams, selected, clockGaps, clockEvidence } = this.streams.select(
       {
         frameTimeMs: this.frameTimeMs.toArray(), sourceLine: this.sourceLine.toArray(),
         channels: {
@@ -111,6 +111,8 @@ class FrameViewParser implements StreamingParser {
         columns: this.columns,
         streams,
         selectedStream: selected?.id,
+        ...(clockGaps ? { presentClockGaps: clockGaps } : {}),
+        ...(clockEvidence ? { presentClockEvidence: clockEvidence } : {}),
       },
       frameCount: frameTimeMs.length,
       frameTimeMs,
