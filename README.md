@@ -6,40 +6,11 @@ Frame-time analysis for PC gamers and hardware reviewers. Drop in a capture, see
 [![License: MIT](https://img.shields.io/badge/license-MIT-7cffb2.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/demo-antonsoo.github.io%2Fstutterscope-7cffb2)](https://antonsoo.github.io/stutterscope/)
 
-**Missing telemetry is not a measured outcome (source and live demo).** A blank
-`DisplayedTime` cell no longer counts as a dropped frame; a missing `Dropped`
-column no longer means zero drops. Optional metrics show how many frames
-actually supplied an observation, including after selecting a process or time
-interval. A four-frame control with one displayed, one explicitly not displayed
-and two unknown outcomes now reports **1 drop / 2 observed**, with two unknowns.
-Six unmodified upstream capture files also stop reporting an invented zero.
-[Rules, pinned-capture replay and actual exports](studies/telemetry-evidence/README.md).
-These source changes have not been released to npm.
-
-**In the source checkout and live demo:** measure a selected interval in each run, inspect
-slow-frame episodes back to their original CSV lines or native JSON sample indices, and export both runs together.
-The app's **Open recorded comparison** loads a controlled browser capture with four
-measured scene hitches in A and none in B. This is a local animation experiment,
-not a game benchmark. [Walkthrough and exact selection rules](docs/interval-analysis.md).
-These additions have not been released to npm. The
-[public deployment verification](studies/publication/README.md) retains fresh
-worker imports, downloads, recovery checks and served-file hashes.
-
 ![Stutterscope compares selected intervals from two recorded browser captures, retaining original frame numbers and measured slow-frame counts](docs/assets/interval-comparison.png)
 
-**What "1% low" means in other tools, measured on public captures (source checkout).**
-On 8 public captures of 907 to 117,569 frames, four implementations of the
-percentile "1% low" (MangoHud, mangoplot, CapFrameX, stutterscope) agree to a
-median 0.13% and at most 3.7%, while the mean-of-slowest and time-weighted
-definitions sit a median 17% and 10% lower, and on a capture with a 5-second
-stall up to 85% and 99.7% lower. stutterscope matched MangoHud's own summary of a
-117,569-frame log to 0.03% (1% low) and 0.21% (0.1% low). Against two real
-FrameView summaries, release 0.2.5 was 1.9% to 28.6% low on the slowest-mean
-figure because it rounded the bucket size instead of rounding up; fixed in the
-checkout, which also adds the time-weighted figure. 34 files were found, with
-no systematic search, and 18 of them are PresentMon test fixtures: this is not
-a census.
-[Study, sources and numbers](studies/real-captures/README.md).
+The app's **Open recorded comparison** loads two controlled browser captures
+with four measured scene hitches in A and none in B. This is a local animation
+experiment, not a game benchmark. [Walkthrough and selection rules](docs/interval-analysis.md).
 
 ## Why this exists
 
@@ -90,26 +61,7 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
   [Reproduction, source schema and limits](studies/native-json/README.md).
   The npm 0.2.5 release predates this feature.
 
-- **Native clock continuity (source and demo):** filtered presents can leave valid CSV
-  rows that are no longer adjacent observations. Compare their native clocks,
-  split pacing/rolling context and keep unknown durations unknown. The built-in
-  **[Inspect filtered presents](https://antonsoo.github.io/stutterscope/?example=filtered-presents)** example uses attributed Intel test data; a separate
-  untouched public FrameView capture exposes the same issue.
-  [Concrete counterexamples and limits](studies/present-clock/README.md).
-- **Shifted CSV records (source and demo):** a row with more cells than its header
-  cannot establish column alignment. It is now skipped with a source-line warning
-  and a continuity gap, including clock-anchor reset for cumulative timestamps.
-  In a retained public FrameView test asset, the old reader treated a process ID
-  as a 7,820 ms frame. [Reproduction and compatibility limits](studies/csv-width/README.md)
-  include OCAT's valid shortened telemetry tails. This is included in the demo; npm 0.2.5 predates the correction.
-- **Correct grouping after removing process IDs (source and demo):** application
-  names and swap-chain addresses stay together. A controlled five-row export
-  previously labeled two applications as one game at 45.5 FPS with two false
-  stutters; the game alone now reports its actual 100 FPS and no stutter.
-  Blank declared identity cells produce skipped-row warnings and continuity
-  breaks. [Reproduction, public-capture controls and limits](studies/stream-identity/README.md).
-  This correction is included in the demo; the npm package predates it.
-- **Interval analysis and slow-frame inspection (source checkout)**: independently
+- **Interval analysis and slow-frame inspection (source and demo)**: independently
   select the part of A and B to measure, keep original frame/CSV-line references,
   and inspect the neighboring evidence around each slow-frame episode. Detection
   retains full-stream context across interval boundaries. Browser comparison
@@ -171,6 +123,52 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
   `node_modules`, where Node's native TypeScript support refuses to run —
   so the published package ships plain JS, compiled by a `prepare` script;
   see [How it works](#how-it-works).
+
+## Capture studies
+
+**Missing telemetry is not a measured outcome (source and live demo).** A blank
+`DisplayedTime` cell no longer counts as a dropped frame; a missing `Dropped`
+column no longer means zero drops. Optional metrics show how many frames
+actually supplied an observation, including after selecting a process or time
+interval. A four-frame control with one displayed, one explicitly not displayed
+and two unknown outcomes now reports **1 drop / 2 observed**, with two unknowns.
+Six unmodified upstream capture files also stop reporting an invented zero.
+[Rules, pinned-capture replay and actual exports](studies/telemetry-evidence/README.md).
+These source changes have not been released to npm.
+
+- **Native clock continuity (source and demo):** filtered presents can leave valid CSV
+  rows that are no longer adjacent observations. Compare their native clocks,
+  split pacing/rolling context and keep unknown durations unknown. The built-in
+  **[Inspect filtered presents](https://antonsoo.github.io/stutterscope/?example=filtered-presents)** example uses attributed Intel test data; a separate
+  untouched public FrameView capture exposes the same issue.
+  [Concrete counterexamples and limits](studies/present-clock/README.md).
+- **Shifted CSV records (source and demo):** a row with more cells than its header
+  cannot establish column alignment. It is now skipped with a source-line warning
+  and a continuity gap, including clock-anchor reset for cumulative timestamps.
+  In a retained public FrameView test asset, the old reader treated a process ID
+  as a 7,820 ms frame. [Reproduction and compatibility limits](studies/csv-width/README.md)
+  include OCAT's valid shortened telemetry tails. This is included in the demo; npm 0.2.5 predates the correction.
+- **Correct grouping after removing process IDs (source and demo):** application
+  names and swap-chain addresses stay together. A controlled five-row export
+  previously labeled two applications as one game at 45.5 FPS with two false
+  stutters; the game alone now reports its actual 100 FPS and no stutter.
+  Blank declared identity cells produce skipped-row warnings and continuity
+  breaks. [Reproduction, public-capture controls and limits](studies/stream-identity/README.md).
+  This correction is included in the demo; the npm package predates it.
+
+**What "1% low" means in other tools, measured on public captures (source checkout).**
+On 8 public captures of 907 to 117,569 frames, four implementations of the
+percentile "1% low" (MangoHud, mangoplot, CapFrameX, stutterscope) agree to a
+median 0.13% and at most 3.7%, while the mean-of-slowest and time-weighted
+definitions sit a median 17% and 10% lower, and on a capture with a 5-second
+stall up to 85% and 99.7% lower. stutterscope matched MangoHud's own summary of a
+117,569-frame log to 0.03% (1% low) and 0.21% (0.1% low). Against two real
+FrameView summaries, release 0.2.5 was 1.9% to 28.6% low on the slowest-mean
+figure because it rounded the bucket size instead of rounding up; fixed in the
+checkout, which also adds the time-weighted figure. 34 files were found, with
+no systematic search, and 18 of them are PresentMon test fixtures: this is not
+a census.
+[Study, sources and numbers](studies/real-captures/README.md).
 
 ## Usage
 
