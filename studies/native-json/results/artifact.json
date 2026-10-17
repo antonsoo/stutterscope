@@ -57,5 +57,11 @@
       "completeSourceParity": true
     }
   ],
-  "installedBinPairedSelection": true
+  "installedBinPairedSelection": true,
+  "pinnedPublicGitInstall": {
+    "commit": "0fe8a4349fc1441ff0ec649fcabd8144f294b235",
+    "all24CompiledFilesMatch": true,
+    "installedBinNativeComparison": true,
+    "registryRelease": false
+  }
 }

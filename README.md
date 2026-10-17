@@ -83,7 +83,7 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
 
 ## Features
 
-- **Native CapFrameX JSON (source checkout):** open saved recordings directly,
+- **Native CapFrameX JSON (source and demo):** open saved recordings directly,
   select one run without concatenating captures, and follow slow frames to their
   original array indices. Five unchanged public game captures now import with
   independent metric checks; JSON/Markdown exports retain the selected recording.

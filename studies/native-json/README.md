@@ -160,3 +160,25 @@ UTF-8/BOM-marked UTF-16, and unsupported envelopes/Linux schemas. Saved
 so it does not supply the CSV native-clock cross-check. Missing durations and
 frames are not reconstructed. A saved zero-filled channel cannot establish
 whether its original capture measured those values.
+
+## Public source and demo
+
+Source and evidence were pushed at `28011a458cb735231a06cbc678accfd3d6a6be34`;
+the runtime is the clean-archive implementation `0fe8a4349fc1441ff0ec649fcabd8144f294b235`.
+The [live demo](https://antonsoo.github.io/stutterscope/) now serves deployment
+`b85a00737f8af143f12db236cc783309f7fb8132`. All **33 canonical files**, including
+the index and worker-containing app bundle, match the tested archive byte for
+byte. [Canonical served-file receipt](results/hosted-bytes.json).
+
+The [actual public replay](results/browser-public.json) opens all five original
+recordings after disconnecting in both engines at desktop and 375 px: **20
+native-file imports**. Every downloaded report matches the installed public-Git
+CLI completely. There are no page errors, data requests after disconnect,
+external requests, accessibility violations or horizontal page overflow in those
+sessions. [Public screenshot/card hashes](results/public-images.json) are
+compared with the completed-animation images opened during local review.
+
+A clean Node 24 install from the pinned public Git commit reproduces all 24
+compiled files and selects the two controlled native recordings through the
+installed executable. This source/demo publication does not release a new npm
+version; registry 0.2.5 remains older.

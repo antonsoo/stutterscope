@@ -1,0 +1,320 @@
+[
+  {
+    "base": "https://antonsoo.github.io/stutterscope/",
+    "before": false,
+    "engine": "chromium",
+    "browserVersion": "153.0.8010.12",
+    "width": 1440,
+    "appAssets": [
+      "https://antonsoo.github.io/stutterscope/assets/index-B6PksO72.js",
+      "https://antonsoo.github.io/stutterscope/assets/index-DbfNOVmX.css"
+    ],
+    "flows": [
+      {
+        "file": "CapFrameX-ACValhalla.exe-1.json",
+        "sha256": "cb21d1729e4d59bb2dea67e8b8e8cd20dfe643c473bf6641422b5c0a37f9127d",
+        "imported": true,
+        "importMs": 248,
+        "completeCliParity": true,
+        "frames": 58521,
+        "averageFps": 97.53359315919693,
+        "report": "chromium-1440-CapFrameX-ACValhalla.exe-1-report.json",
+        "reportSha256": "9bb20c15fb21a09090d8955d86329d019f8c9ffce2bdd7a17929b2429c3e7b8a"
+      },
+      {
+        "file": "CapFrameX-Cyberpunk2077.exe.json",
+        "sha256": "b3bd9c932a44708801ef636688627c00dea220a9180c4886496673a589d995b9",
+        "imported": true,
+        "importMs": 140,
+        "completeCliParity": true,
+        "frames": 25294,
+        "averageFps": 42.15530747416549,
+        "report": "chromium-1440-CapFrameX-Cyberpunk2077.exe-report.json",
+        "reportSha256": "f4c1d499d1d40fa37035012f62ed0ef9ebe161a1658218b21419d8141211d890",
+        "screenshot": "chromium-1440-CapFrameX-Cyberpunk2077.exe.png",
+        "card": "chromium-1440-CapFrameX-Cyberpunk2077.exe-card.png"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-1.json",
+        "sha256": "47c7e32c62d4aa5c312a5e47719ed35db9e810048b58c785bdde6021eb234e3d",
+        "imported": true,
+        "importMs": 382,
+        "completeCliParity": true,
+        "frames": 161992,
+        "averageFps": 89.99504670856187,
+        "report": "chromium-1440-CapFrameX-DOOMEternalx64vk.exe-1-report.json",
+        "reportSha256": "886fa583b6638d8cb35da9d901516296fbabed5362439b42b2bad6d61d4b8daa"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-2.json",
+        "sha256": "7d53914bbc04d5d3fc6c22d77a3796874b1694651ae69e3fd2d0441708d2e562",
+        "imported": true,
+        "importMs": 806,
+        "completeCliParity": true,
+        "frames": 382323,
+        "averageFps": 212.40071568966164,
+        "report": "chromium-1440-CapFrameX-DOOMEternalx64vk.exe-2-report.json",
+        "reportSha256": "d39f6dacd431b9f6966385f9fe71b5a5b1ff8e5ef169de2be9a7903e0555dea2",
+        "screenshot": "chromium-1440-CapFrameX-DOOMEternalx64vk.exe-2.png",
+        "card": "chromium-1440-CapFrameX-DOOMEternalx64vk.exe-2-card.png"
+      },
+      {
+        "file": "CapFrameX-ROLLERDROME.exe-1.json",
+        "sha256": "3a3f9456aa3ecfd0ed7af2008d142c6d513ea38f5cccf815aaf602d08a4a55b8",
+        "imported": true,
+        "importMs": 413,
+        "completeCliParity": true,
+        "frames": 150650,
+        "averageFps": 375.82269071328795,
+        "report": "chromium-1440-CapFrameX-ROLLERDROME.exe-1-report.json",
+        "reportSha256": "ad5fd2faa4f5ebf866e339f7c9f78075cc17ae3cdef3e447ceea2808393982a8"
+      }
+    ],
+    "errors": [],
+    "httpAfterDisconnect": [],
+    "dataRequestsAfterDisconnect": [],
+    "externalRequests": [],
+    "axeViolations": [],
+    "noPageOverflow": true
+  },
+  {
+    "base": "https://antonsoo.github.io/stutterscope/",
+    "before": false,
+    "engine": "chromium",
+    "browserVersion": "153.0.8010.12",
+    "width": 375,
+    "appAssets": [
+      "https://antonsoo.github.io/stutterscope/assets/index-B6PksO72.js",
+      "https://antonsoo.github.io/stutterscope/assets/index-DbfNOVmX.css"
+    ],
+    "flows": [
+      {
+        "file": "CapFrameX-ACValhalla.exe-1.json",
+        "sha256": "cb21d1729e4d59bb2dea67e8b8e8cd20dfe643c473bf6641422b5c0a37f9127d",
+        "imported": true,
+        "importMs": 269,
+        "completeCliParity": true,
+        "frames": 58521,
+        "averageFps": 97.53359315919693,
+        "report": "chromium-375-CapFrameX-ACValhalla.exe-1-report.json",
+        "reportSha256": "93282347ba5480265b7ef17a571324473df7d422b3371f2eea1f89679ccf088b"
+      },
+      {
+        "file": "CapFrameX-Cyberpunk2077.exe.json",
+        "sha256": "b3bd9c932a44708801ef636688627c00dea220a9180c4886496673a589d995b9",
+        "imported": true,
+        "importMs": 148,
+        "completeCliParity": true,
+        "frames": 25294,
+        "averageFps": 42.15530747416549,
+        "report": "chromium-375-CapFrameX-Cyberpunk2077.exe-report.json",
+        "reportSha256": "001c4a0f27923df080c4bda909cac7a8a7927e4c3a296d57716e18dea797922a",
+        "screenshot": "chromium-375-CapFrameX-Cyberpunk2077.exe.png",
+        "card": "chromium-375-CapFrameX-Cyberpunk2077.exe-card.png"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-1.json",
+        "sha256": "47c7e32c62d4aa5c312a5e47719ed35db9e810048b58c785bdde6021eb234e3d",
+        "imported": true,
+        "importMs": 431,
+        "completeCliParity": true,
+        "frames": 161992,
+        "averageFps": 89.99504670856187,
+        "report": "chromium-375-CapFrameX-DOOMEternalx64vk.exe-1-report.json",
+        "reportSha256": "9eabe4fa5656cfec7127d528ddb15785a7eb696840917714462fcbeb02ea3c98"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-2.json",
+        "sha256": "7d53914bbc04d5d3fc6c22d77a3796874b1694651ae69e3fd2d0441708d2e562",
+        "imported": true,
+        "importMs": 999,
+        "completeCliParity": true,
+        "frames": 382323,
+        "averageFps": 212.40071568966164,
+        "report": "chromium-375-CapFrameX-DOOMEternalx64vk.exe-2-report.json",
+        "reportSha256": "8e557560836c58e0c7388249fa6e623f633f39c66fc0f7dc557238ea9eafdf3e",
+        "screenshot": "chromium-375-CapFrameX-DOOMEternalx64vk.exe-2.png",
+        "card": "chromium-375-CapFrameX-DOOMEternalx64vk.exe-2-card.png"
+      },
+      {
+        "file": "CapFrameX-ROLLERDROME.exe-1.json",
+        "sha256": "3a3f9456aa3ecfd0ed7af2008d142c6d513ea38f5cccf815aaf602d08a4a55b8",
+        "imported": true,
+        "importMs": 794,
+        "completeCliParity": true,
+        "frames": 150650,
+        "averageFps": 375.82269071328795,
+        "report": "chromium-375-CapFrameX-ROLLERDROME.exe-1-report.json",
+        "reportSha256": "eeaf0e0427e778afcc45875346fe2b7d92fd7c87fc844837c3750b63d03a53d8"
+      }
+    ],
+    "errors": [],
+    "httpAfterDisconnect": [],
+    "dataRequestsAfterDisconnect": [],
+    "externalRequests": [],
+    "axeViolations": [],
+    "noPageOverflow": true
+  },
+  {
+    "base": "https://antonsoo.github.io/stutterscope/",
+    "before": false,
+    "engine": "firefox",
+    "browserVersion": "155.0",
+    "width": 1440,
+    "appAssets": [
+      "https://antonsoo.github.io/stutterscope/assets/index-B6PksO72.js",
+      "https://antonsoo.github.io/stutterscope/assets/index-DbfNOVmX.css"
+    ],
+    "flows": [
+      {
+        "file": "CapFrameX-ACValhalla.exe-1.json",
+        "sha256": "cb21d1729e4d59bb2dea67e8b8e8cd20dfe643c473bf6641422b5c0a37f9127d",
+        "imported": true,
+        "importMs": 461,
+        "completeCliParity": true,
+        "frames": 58521,
+        "averageFps": 97.53359315919693,
+        "report": "firefox-1440-CapFrameX-ACValhalla.exe-1-report.json",
+        "reportSha256": "76353b310e54d2c7c11c06e60f055aca3991414207046372bac3e73b2f61b8be"
+      },
+      {
+        "file": "CapFrameX-Cyberpunk2077.exe.json",
+        "sha256": "b3bd9c932a44708801ef636688627c00dea220a9180c4886496673a589d995b9",
+        "imported": true,
+        "importMs": 223,
+        "completeCliParity": true,
+        "frames": 25294,
+        "averageFps": 42.15530747416549,
+        "report": "firefox-1440-CapFrameX-Cyberpunk2077.exe-report.json",
+        "reportSha256": "fb5500d5f98edbef25536033b3ef1b0888ff948b0b1d9579433d832f5741500d",
+        "screenshot": "firefox-1440-CapFrameX-Cyberpunk2077.exe.png",
+        "card": "firefox-1440-CapFrameX-Cyberpunk2077.exe-card.png"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-1.json",
+        "sha256": "47c7e32c62d4aa5c312a5e47719ed35db9e810048b58c785bdde6021eb234e3d",
+        "imported": true,
+        "importMs": 742,
+        "completeCliParity": true,
+        "frames": 161992,
+        "averageFps": 89.99504670856187,
+        "report": "firefox-1440-CapFrameX-DOOMEternalx64vk.exe-1-report.json",
+        "reportSha256": "13fa076d78bdea9fc48ab7637579472e06e4a898aa9407c2d493328c0545812c"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-2.json",
+        "sha256": "7d53914bbc04d5d3fc6c22d77a3796874b1694651ae69e3fd2d0441708d2e562",
+        "imported": true,
+        "importMs": 1596,
+        "completeCliParity": true,
+        "frames": 382323,
+        "averageFps": 212.40071568966164,
+        "report": "firefox-1440-CapFrameX-DOOMEternalx64vk.exe-2-report.json",
+        "reportSha256": "1e6865c5808f845aae340270fd6161f53f55ec2a744b6ee2eaf468e516bcd18d",
+        "screenshot": "firefox-1440-CapFrameX-DOOMEternalx64vk.exe-2.png",
+        "card": "firefox-1440-CapFrameX-DOOMEternalx64vk.exe-2-card.png"
+      },
+      {
+        "file": "CapFrameX-ROLLERDROME.exe-1.json",
+        "sha256": "3a3f9456aa3ecfd0ed7af2008d142c6d513ea38f5cccf815aaf602d08a4a55b8",
+        "imported": true,
+        "importMs": 699,
+        "completeCliParity": true,
+        "frames": 150650,
+        "averageFps": 375.82269071328795,
+        "report": "firefox-1440-CapFrameX-ROLLERDROME.exe-1-report.json",
+        "reportSha256": "b5c8ef4facda06c83e97cd246c8bf748857d0ad55564763efe246d1768053d17"
+      }
+    ],
+    "errors": [],
+    "httpAfterDisconnect": [
+      "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+      "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2"
+    ],
+    "dataRequestsAfterDisconnect": [],
+    "externalRequests": [],
+    "axeViolations": [],
+    "noPageOverflow": true
+  },
+  {
+    "base": "https://antonsoo.github.io/stutterscope/",
+    "before": false,
+    "engine": "firefox",
+    "browserVersion": "155.0",
+    "width": 375,
+    "appAssets": [
+      "https://antonsoo.github.io/stutterscope/assets/index-B6PksO72.js",
+      "https://antonsoo.github.io/stutterscope/assets/index-DbfNOVmX.css"
+    ],
+    "flows": [
+      {
+        "file": "CapFrameX-ACValhalla.exe-1.json",
+        "sha256": "cb21d1729e4d59bb2dea67e8b8e8cd20dfe643c473bf6641422b5c0a37f9127d",
+        "imported": true,
+        "importMs": 281,
+        "completeCliParity": true,
+        "frames": 58521,
+        "averageFps": 97.53359315919693,
+        "report": "firefox-375-CapFrameX-ACValhalla.exe-1-report.json",
+        "reportSha256": "205e708d21b842fbc4187e2fa1bd106e701cfe4477eb0486c08cd0f0e6a04fe0"
+      },
+      {
+        "file": "CapFrameX-Cyberpunk2077.exe.json",
+        "sha256": "b3bd9c932a44708801ef636688627c00dea220a9180c4886496673a589d995b9",
+        "imported": true,
+        "importMs": 144,
+        "completeCliParity": true,
+        "frames": 25294,
+        "averageFps": 42.15530747416549,
+        "report": "firefox-375-CapFrameX-Cyberpunk2077.exe-report.json",
+        "reportSha256": "776305b3f420e620f9c9ea8e64bb5379f3b79669da43c1753fd8b4fff58c79ea",
+        "screenshot": "firefox-375-CapFrameX-Cyberpunk2077.exe.png",
+        "card": "firefox-375-CapFrameX-Cyberpunk2077.exe-card.png"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-1.json",
+        "sha256": "47c7e32c62d4aa5c312a5e47719ed35db9e810048b58c785bdde6021eb234e3d",
+        "imported": true,
+        "importMs": 489,
+        "completeCliParity": true,
+        "frames": 161992,
+        "averageFps": 89.99504670856187,
+        "report": "firefox-375-CapFrameX-DOOMEternalx64vk.exe-1-report.json",
+        "reportSha256": "04276d607fb8efad477aa3914ca2201e316dc6e0b732bddcc3d7a5b207dffd57"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-2.json",
+        "sha256": "7d53914bbc04d5d3fc6c22d77a3796874b1694651ae69e3fd2d0441708d2e562",
+        "imported": true,
+        "importMs": 1030,
+        "completeCliParity": true,
+        "frames": 382323,
+        "averageFps": 212.40071568966164,
+        "report": "firefox-375-CapFrameX-DOOMEternalx64vk.exe-2-report.json",
+        "reportSha256": "9e7cacaa0be001941722f595bc259a9bf0101a14d1dfeeb506e2abfd375516e2",
+        "screenshot": "firefox-375-CapFrameX-DOOMEternalx64vk.exe-2.png",
+        "card": "firefox-375-CapFrameX-DOOMEternalx64vk.exe-2-card.png"
+      },
+      {
+        "file": "CapFrameX-ROLLERDROME.exe-1.json",
+        "sha256": "3a3f9456aa3ecfd0ed7af2008d142c6d513ea38f5cccf815aaf602d08a4a55b8",
+        "imported": true,
+        "importMs": 393,
+        "completeCliParity": true,
+        "frames": 150650,
+        "averageFps": 375.82269071328795,
+        "report": "firefox-375-CapFrameX-ROLLERDROME.exe-1-report.json",
+        "reportSha256": "c6c24efe7e9114ac1c06e0ac8bba703ceade0a1e0be153ed9be8ef6c59eef8fe"
+      }
+    ],
+    "errors": [],
+    "httpAfterDisconnect": [
+      "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+      "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2"
+    ],
+    "dataRequestsAfterDisconnect": [],
+    "externalRequests": [],
+    "axeViolations": [],
+    "noPageOverflow": true
+  }
+]
