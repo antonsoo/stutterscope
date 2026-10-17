@@ -79,5 +79,15 @@ episodes, downloads JSON and Markdown, and recomputes with a new hitch threshold
 Source-line evidence and continuity survive each operation. Verification receipts
 are in `verification.json`; reviewed screenshots are in `screenshots/`.
 
+The fresh archive passed `npm ci`, lint, strict type checking, 384 unit checks,
+the web and CLI builds, and 98 browser workflows under Node 24.21.0. Its built
+web and CLI files match the working checkout byte for byte. A packed local
+installation passes all five oracle cases on Node 22.6.0 and 24.21.0; the receipt
+records the tarball hash. The documented dev server command also serves the app.
+Four screenshot workflows were repeated with the existing trace-reveal animation
+finished: all four final image files match between the working and clean builds.
+The screenshots show the two episodes and physical-line gap evidence without
+horizontal page overflow at either width. This changes no UI layout.
+
 This is local source and built-artifact evidence. The hosted demo and npm 0.2.5
 have not been updated by this repair.

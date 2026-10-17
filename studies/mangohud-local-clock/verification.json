@@ -1,0 +1,185 @@
+{
+  "sourceCommit": "f151bf23c5139c60f106a805eb9ee9c413093ad5",
+  "cleanArchiveNode": "v24.21.0",
+  "checks": [
+    {
+      "command": [
+        "node",
+        "--version"
+      ],
+      "exitCode": 0,
+      "seconds": 0.078,
+      "logSha256": "f2ec568164f99546161909b0189b57bb5be3e80f8e2ccd8a51a4aed8c4055a04"
+    },
+    {
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "exitCode": 0,
+      "seconds": 4.169,
+      "logSha256": "19367a1f863cef6cdbecd6c1345428d6aababf75dfb4da41049db5705dd9e85b"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "seconds": 5.7,
+      "logSha256": "079bea9ae795dc7a39ef1c3f5946c3d8c4c0662d08ea6825984fcef0f07034f7"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 2.297,
+      "logSha256": "b9173518218fc76de527b1847868d768947e63398adf63b99a8e433f937390a6"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 3.916,
+      "logSha256": "49608c5bb56c2c892c45b5ef91c80bd3cff6082eaf049ba025384319b59a82a8"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 3.081,
+      "logSha256": "010b30ff739a343b9b0a305ec319291e3ae8041613e48968cc1abe1628d1a232"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build:cli"
+      ],
+      "exitCode": 0,
+      "seconds": 1.239,
+      "logSha256": "1e782dca1b2d4c07eff268c0fc619c9a79595dfcf5ed7c4db05b187346c6b9dc"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:browser"
+      ],
+      "exitCode": 0,
+      "seconds": 79.358,
+      "logSha256": "b64112c4c156fe0e1554eb690c435c15d6009ef2f38e4e0a10e41ca453fc841e"
+    },
+    {
+      "command": [
+        "npm",
+        "pack",
+        "--json"
+      ],
+      "exitCode": 0,
+      "seconds": 1.883,
+      "logSha256": "f28eea3d7da6a22f787f400fb5f076d33062ceb50aee87366bb1bb043eb2f4a8"
+    }
+  ],
+  "unitTests": 384,
+  "browserWorkflows": 98,
+  "browserCoverage": [
+    "Chromium",
+    "Firefox",
+    "desktop",
+    "375px",
+    "offline local imports",
+    "JSON and Markdown downloads",
+    "worker recomputation"
+  ],
+  "publicControls": 34,
+  "oracleCases": 5,
+  "oracleDiscrepancies": 0,
+  "devServer": {
+    "command": "npm run dev -- --host 127.0.0.1 --port 4199 --strictPort",
+    "status": 200,
+    "applicationEntrypointPresent": true
+  },
+  "builds": {
+    "web": {
+      "command": "npm run build",
+      "output": "dist/",
+      "files": 33
+    },
+    "cli": {
+      "command": "npm run build:cli",
+      "output": "dist-cli/",
+      "files": 24
+    },
+    "workingAndCleanBytesIdentical": true
+  },
+  "package": {
+    "name": "@antonsoloviev/stutterscope",
+    "version": "0.2.5",
+    "sha256": "fefda92976478ffbdbb35d2a5e8829df96b48b6e4a1596901313c02897fddf24",
+    "bytes": 52629,
+    "compiledCliBytesMatch": true,
+    "installedChecks": [
+      {
+        "node": "v22.6.0",
+        "replay": "{\"cases\": 5, \"discrepancies\": 0}",
+        "cliVersion": "stutterscope 0.2.5"
+      },
+      {
+        "node": "v24.21.0",
+        "replay": "{\"cases\": 5, \"discrepancies\": 0}",
+        "cliVersion": "stutterscope 0.2.5"
+      }
+    ]
+  },
+  "screenshotsReviewed": [
+    "chromium-mangohud-1440.png",
+    "chromium-mangohud-375.png",
+    "firefox-mangohud-1440.png",
+    "firefox-mangohud-375.png"
+  ],
+  "publication": {
+    "source": "local commit only",
+    "hostedDemo": "not deployed",
+    "npm": "not released",
+    "tag": "not created"
+  },
+  "screenshotVerification": {
+    "capture": "Playwright screenshot with animations disabled to finish the existing trace reveal animation",
+    "workflowReruns": 4,
+    "applicationBytesChanged": false,
+    "followupTestFileSha256": "11bccca25c9deef4d73ca2b161475749f5c77fa617e6b629663aad13927f2698",
+    "images": [
+      {
+        "file": "chromium-mangohud-1440.png",
+        "sha256": "894ab760ab56ff160669683ce5ee79210f9c0c79d9c25cc2854907fdd62c6547",
+        "sameCleanCaptureBytes": true
+      },
+      {
+        "file": "chromium-mangohud-375.png",
+        "sha256": "1b9e6a438d7ee7084d55a1d829d44324cc58c38ad40742feecb0cb214bc58bc1",
+        "sameCleanCaptureBytes": true
+      },
+      {
+        "file": "firefox-mangohud-1440.png",
+        "sha256": "2a429c5fa662d6df9ef93d3d72c45b8c762c240655e7d1459c3c0f93e7cc86cd",
+        "sameCleanCaptureBytes": true
+      },
+      {
+        "file": "firefox-mangohud-375.png",
+        "sha256": "6ff3d50ee28b2af2ec402e962bcf069fe6a276776d56dafc4710f7f815971060",
+        "sameCleanCaptureBytes": true
+      }
+    ],
+    "review": "Completed trace, separate episodes and gap evidence visible; no page overflow at desktop or 375px."
+  }
+}

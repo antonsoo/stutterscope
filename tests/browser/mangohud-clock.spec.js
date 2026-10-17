@@ -34,7 +34,7 @@ for (const width of [1440, 375]) test(`local MangoHud clock gaps survive offline
   const markdown = await download(page, "#export-md-btn");
   expect(markdown).toContain("1 local elapsed/frame-duration disagreement");
   expect(markdown).toContain("24 adjacent pairs; 1 gaps between analyzed frames");
-  await page.screenshot({ path: testInfo.outputPath(`mangohud-${width}.png`), fullPage: true });
+  await page.screenshot({ path: testInfo.outputPath(`mangohud-${width}.png`), fullPage: true, animations: "disabled" });
   await page.locator("#hitch-input").fill("100");
   await page.locator("#apply-settings-btn").click();
   await expect(page.locator("#settings-status")).toContainText("hitch > 100");
