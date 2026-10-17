@@ -27,10 +27,19 @@ import { cumulativeSeconds } from "../streams.ts";
  */
 import { Float64Builder } from "../buffer.ts";
 import { extraFieldsReason, indexHeader, LINE_BREAK, parseFloatOrNull, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
-import { ParseError, type FrameSeries, type SniffResult, type StreamingParser } from "../types.ts";
+import { ParseError, type FrameSeries, type MangoHudClockWitness, type SniffResult, type StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
 
 const FRAME_HEADER_MARKERS = ["fps", "frametime", "cpu_load"];
+const MAX_CLOCK_WITNESSES = 5;
+
+/** MangoHud samples a logging clock separately from the present duration.
+ * Require a large absolute AND relative disagreement, both locally and over
+ * the full capture. This is an interruption heuristic, not a missing-frame count.
+ */
+function clockDisagrees(elapsedSec: number, frameSec: number): boolean {
+  return Math.abs(elapsedSec - frameSec) > 0.01 && (elapsedSec > frameSec * 2 || frameSec > elapsedSec * 2);
+}
 
 function looksLikeFrameHeader(fields: string[]): boolean {
   return FRAME_HEADER_MARKERS.every((name, i) => fields[i]?.trim() === name);
@@ -60,11 +69,14 @@ class MangoHudParser implements StreamingParser {
   private readonly sourceLine = new Float64Builder(4096);
   private columns: string[] = [];
   private previousElapsed: number | null = null;
+  private previousElapsedLine = 0;
   private observedSpanSec = 0;
   private recordedFrameSpanSec = 0;
   private comparedIntervals = 0;
   private missingElapsed = 0;
   private reversedElapsed = false;
+  private discontinuousIntervals = 0;
+  private readonly clockWitnesses: MangoHudClockWitness[] = [];
 
   pushLine(line: string, lineIndex: number): void {
     let fields: string[];
@@ -108,9 +120,21 @@ class MangoHudParser implements StreamingParser {
           this.observedSpanSec += interval;
           this.recordedFrameSpanSec += ft / 1000;
           this.comparedIntervals++;
+          // A missing block can be tiny relative to a long capture, and long
+          // and short intervals can cancel. Whole-file sums cannot establish
+          // local continuity for pacing, rolling detection or episode grouping.
+          if (clockDisagrees(interval, ft / 1000)) {
+            this.continuity.skip();
+            this.discontinuousIntervals++;
+            if (this.clockWitnesses.length < MAX_CLOCK_WITNESSES) {
+              this.clockWitnesses.push({ fromSourceLine: this.previousElapsedLine,
+                toSourceLine: lineIndex + 1, elapsedMs: interval * 1000, frameTimeMs: ft });
+            }
+          }
         }
       }
       this.previousElapsed = elapsed;
+      this.previousElapsedLine = lineIndex + 1;
     }
     this.frameTimeMs.push(ft);
     this.continuity.keep();
@@ -148,16 +172,20 @@ class MangoHudParser implements StreamingParser {
     // Only reject a large contradiction; compatibility is deliberately not a
     // certification of per-frame capture or a way to infer missing frames.
     const enough = this.comparedIntervals >= 3;
-    if (enough && Math.abs(observed - recorded) > 0.01 && (observed > recorded * 2 || recorded > observed * 2)) {
+    if (enough && clockDisagrees(observed, recorded)) {
       throw new ParseError(`MangoHud logging intervals do not match frame durations: ${observed.toFixed(6)} s of elapsed intervals versus ${recorded.toFixed(6)} s of frame durations across ${this.comparedIntervals} adjacent records. This may be periodic logging or missing frames. Recapture with log_interval=0; snapshots cannot reconstruct a per-frame stutter report.`);
     }
-    const compatible = enough && observed > 0 && recorded > 0 && this.missingElapsed === 0 && this.skipped.count === 0;
+    const compatible = enough && observed > 0 && recorded > 0 && this.missingElapsed === 0 && this.skipped.count === 0 && this.discontinuousIntervals === 0;
+    const interruption = this.discontinuousIntervals ? `${this.discontinuousIntervals} local elapsed/frame-duration disagreement${this.discontinuousIntervals === 1 ? " interrupts" : "s interrupt"} pacing, rolling context and episode continuity. Missing frame counts, durations and causes are unknown. ` : "";
     return {
       kind: "mangohud-elapsed", status: compatible ? "compatible" : "unverified",
       comparedIntervals: this.comparedIntervals,
       observedSpanSec: this.comparedIntervals > 0 ? observed : null,
       recordedFrameSpanSec: this.comparedIntervals > 0 ? recorded : null,
-      note: `${compatible ? "No large elapsed/frame-duration contradiction found. " : "Clock coverage is missing, too short, or interrupted; per-frame coverage is unverified. "}${assumption}`,
+      discontinuousIntervals: this.discontinuousIntervals,
+      witnesses: this.clockWitnesses.map(w => ({ ...w })),
+      omittedWitnesses: this.discontinuousIntervals - this.clockWitnesses.length,
+      note: `${interruption}${compatible ? "No large elapsed/frame-duration contradiction found. " : "Clock coverage is missing, too short, or interrupted; per-frame coverage is unverified. "}${assumption}`,
     };
   }
 }

@@ -1,0 +1,278 @@
+{
+  "baseline": "7f620a0",
+  "controls": [
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_0.csv",
+      "sha256": "0036a3c35caa7fc06b13604484fcd1758bf1912ee53aa8416812b020f95d8993",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.1515,
+      "repairedSeconds": 0.1176
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_0_v1.csv",
+      "sha256": "c44407ee31bf829f241a8e64d5e8f5e5209d042b312c46f2da0bd26e330a979f",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.1445,
+      "repairedSeconds": 0.4933
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_0_v2.csv",
+      "sha256": "46a596f04065f76364f37eaf9b5edc064132a71daa8e7650c29cf2ef537041af",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.2205,
+      "repairedSeconds": 0.1687
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_1.csv",
+      "sha256": "56e149cacfd10a280a3e3dffc99aed38ccff7a440da1cc681844311e1945316b",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.2023,
+      "repairedSeconds": 0.1868
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_1_v1.csv",
+      "sha256": "847c8ce11556d6308278aab665fd706fa730afe4e6d6fdd7fd4edfbe0b625e8b",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.1775,
+      "repairedSeconds": 0.2007
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_1_v2.csv",
+      "sha256": "744bb42853b8821f6c97ef6a7b5bd588617bf2fb1ab47ef955dba90c9c7a28d8",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.1478,
+      "repairedSeconds": 0.1617
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_2.csv",
+      "sha256": "4c1c2a92c8d2cd234d0f1d44b6bbe17b56d936947d2874a9217228a0347c6d5c",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.1398,
+      "repairedSeconds": 0.1437
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_2_v1.csv",
+      "sha256": "1c454ac79f69ff9229c7ab4410ae1a15ae984ce0cd9ee6b74099a0ec8b1cd825",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.162,
+      "repairedSeconds": 0.1998
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_2_v2.csv",
+      "sha256": "c59ee6459dd3977b10b3e096a0c9598649dd1f1029758027f2df4e03d0d4d7e9",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.1772,
+      "repairedSeconds": 0.1736
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_3.csv",
+      "sha256": "fe00d7cdba06dbfbd31797e24bbe08df8f3ee402e3ce53e2777cc333e1ab87d0",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.149,
+      "repairedSeconds": 0.1262
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_3_v1.csv",
+      "sha256": "f26570a25f7234076d8c80181e6b6bf40d7183d363e8f94569524c07d211c2d4",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.1464,
+      "repairedSeconds": 0.1454
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_3_v2.csv",
+      "sha256": "d955fa9762ac4bf44f1274886f4c418fe7b036f0f8dcb38e671c6d1b25fccb73",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.146,
+      "repairedSeconds": 0.1284
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_4.csv",
+      "sha256": "064c9dc9eb99907b12b03cbff4f9e02e6538305b556fa4fde9946dd1c4ace365",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.1372,
+      "repairedSeconds": 0.1336
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_4_v1.csv",
+      "sha256": "1bf9b3dcc4fcab50e7962372b58a68f3a1d947e868917a97e494e0f7eb741da8",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.1411,
+      "repairedSeconds": 0.1576
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_4_v2.csv",
+      "sha256": "be5823b2a0b7dbb1a06111bf0abcc9f5bb10e0359e528277604960cf69f57cf5",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.1605,
+      "repairedSeconds": 0.1669
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_5.csv",
+      "sha256": "0ecd9ac4ab37d53a65ba3dd36cedf5a0a5d758789c0101a20f516b354f1163ab",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.2065,
+      "repairedSeconds": 0.1651
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_5_v1.csv",
+      "sha256": "cdd209120d092989384533150e2a83fc00a7a685ee81d4c07906c724964f8eaa",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.1479,
+      "repairedSeconds": 0.1527
+    },
+    {
+      "repo": "GameTechDev/PresentMon",
+      "path": "Tests/Gold/test_case_5_v2.csv",
+      "sha256": "569536581907592bd3b428d453e996a1dce689e6178429c7e66a143470319f4e",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.1635,
+      "repairedSeconds": 0.1541
+    },
+    {
+      "repo": "Reason7322/mangohudlogs",
+      "path": "Witchfire-Win64-Shipping_2026-08-12_14-16-42.csv",
+      "sha256": "f80aee599f38847c804cc2c06bbac26bf7fa21ac4a29c4813bce02ca1363aba6",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.4876,
+      "repairedSeconds": 0.4926
+    },
+    {
+      "repo": "xD3I/Benchmarks",
+      "path": "examples/mangohud.csv",
+      "sha256": "00ba3e9713e12acee8bbecaa1c0fa33f8769737633e30c988e207f355f148a13",
+      "result": "same refusal",
+      "baselineSeconds": 0.1547,
+      "repairedSeconds": 0.1952
+    },
+    {
+      "repo": "xD3I/Benchmarks",
+      "path": "examples/frameview-1-6.csv",
+      "sha256": "b2d5f951273be8acb69af3c7635168001a6baa5a26093a87896b6079493f54b7",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 1.4312,
+      "repairedSeconds": 1.2867
+    },
+    {
+      "repo": "erkexzcx/flightlesssomething",
+      "path": "testdata/afterburner/GOD.OF.WAR_Windows.csv",
+      "sha256": "f34324d33065564e76a807c795e62d19ee55fa0c33566cb82b1bd219dc8bca16",
+      "result": "same refusal",
+      "baselineSeconds": 0.1881,
+      "repairedSeconds": 0.2163
+    },
+    {
+      "repo": "erkexzcx/flightlesssomething",
+      "path": "testdata/afterburner/RE3_Windows.csv",
+      "sha256": "26c422b533718cacf91100c638bdeeaf3ae899ce68d35d1ebcc0568fbdaaec8d",
+      "result": "same refusal",
+      "baselineSeconds": 0.1992,
+      "repairedSeconds": 0.2425
+    },
+    {
+      "repo": "erkexzcx/flightlesssomething",
+      "path": "testdata/afterburner/u4_Windows.csv",
+      "sha256": "5315fea47e2e17a20dfd0199365a92b87ac97250c0d2897d2ad047277e69262c",
+      "result": "same refusal",
+      "baselineSeconds": 0.3523,
+      "repairedSeconds": 0.2437
+    },
+    {
+      "repo": "erkexzcx/flightlesssomething",
+      "path": "testdata/mangohud/run1.csv",
+      "sha256": "307792b81f66febe7c91f0b04d1814deb903474256e44d70e9368eeb082fb2da",
+      "result": "same refusal",
+      "baselineSeconds": 0.1778,
+      "repairedSeconds": 0.1981
+    },
+    {
+      "repo": "erkexzcx/flightlesssomething",
+      "path": "testdata/mangohud/run2.csv",
+      "sha256": "b0f9b53e690316d9d4e8fb58c6c6f6842127968737f229b5646b55f7977f3441",
+      "result": "same refusal",
+      "baselineSeconds": 0.1899,
+      "repairedSeconds": 0.2785
+    },
+    {
+      "repo": "erkexzcx/flightlesssomething",
+      "path": "testdata/mangohud/run3.csv",
+      "sha256": "804ad195ced5c15a327c1b33bc18eea80f0bdd8b0a487acb8cb44d31bbf02659",
+      "result": "same refusal",
+      "baselineSeconds": 0.2781,
+      "repairedSeconds": 0.2317
+    },
+    {
+      "repo": "cosmiclf/Intel_PresentMon_Performance_Analysis",
+      "path": "Logs/pmcap-r5apex_dx12.exe-250709-222018.csv",
+      "sha256": "68ea6ae2da9e3277f40741f1b0f3b1e18a8079a2549baaa7ea7971497c3ca5c7",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.5061,
+      "repairedSeconds": 0.3253
+    },
+    {
+      "repo": "cosmiclf/Intel_PresentMon_Performance_Analysis",
+      "path": "Logs/pmcap-r5apex_dx12.exe-250709-222519.csv",
+      "sha256": "e037cb6bb23dca584410932bad2b3af519aa9a1ea1c211f91e2fa7b6dfec2845",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.6349,
+      "repairedSeconds": 0.1835
+    },
+    {
+      "repo": "cosmiclf/Intel_PresentMon_Performance_Analysis",
+      "path": "Logs/pmcap-superposition.exe-250719-215451.csv",
+      "sha256": "b71ab808920c3aaba41fa8e9d0090f7b342bf43e0c8e69e36864e1457447b66b",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.7303,
+      "repairedSeconds": 0.2202
+    },
+    {
+      "repo": "cosmiclf/Intel_PresentMon_Performance_Analysis",
+      "path": "Logs/pmcap-superposition.exe-250719-220716.csv",
+      "sha256": "6ca4bf3e1482976e74acb365f31788a08a29983f4bef1c835c80bb59cb046a13",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.8059,
+      "repairedSeconds": 1.802
+    },
+    {
+      "repo": "Pavelioso/Frameviewer",
+      "path": "assets/witcher_3.csv",
+      "sha256": "b8e5e5d998bd68331a03e035ccf37356075b04012e319810d4700843b8ebba27",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.1569,
+      "repairedSeconds": 0.2119
+    },
+    {
+      "repo": "Pavelioso/Frameviewer",
+      "path": "assets/witcher_3_gdrive.csv",
+      "sha256": "97817910caed86d19df599ea6bf98becd5d5407eae7e70b1a24660f31b20a3c5",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.2087,
+      "repairedSeconds": 0.2083
+    },
+    {
+      "repo": "Pavelioso/Frameviewer",
+      "path": "assets/witcher_3_test.csv",
+      "sha256": "42cdd54631db2fc0f3e4934287185763a9f93c18226e25ac5a2810460442a3e8",
+      "result": "all metrics, episodes, and analysis unchanged",
+      "baselineSeconds": 0.205,
+      "repairedSeconds": 0.1829
+    }
+  ],
+  "unchanged": 34
+}

@@ -126,6 +126,15 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
 
 ## Capture studies
 
+**Local MangoHud clock gaps (source checkout only).** Removing whole records
+could leave a long capture's clock totals close enough to pass, while pacing
+and episode grouping joined frames across the omitted interval. The source now
+interrupts those connections at large local clock disagreements, retaining
+source-line witnesses and the recorded frame durations. In the controlled
+case, two separated slow-frame episodes no longer become one.
+[Reproduction, intact public control and limits](studies/mangohud-local-clock/README.md).
+This correction has not been deployed to the demo or released to npm.
+
 **Missing telemetry is not a measured outcome (source and live demo).** A blank
 `DisplayedTime` cell no longer counts as a dropped frame; a missing `Dropped`
 column no longer means zero drops. Optional metrics show how many frames

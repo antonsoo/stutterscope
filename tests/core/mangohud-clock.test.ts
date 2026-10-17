@@ -3,6 +3,8 @@ import { parse, sniff } from "../../src/core/parsers/mangohud.ts";
 import { analyzeCapture } from "../../src/core/analysis.ts";
 import { buildJsonReport } from "../../src/core/report.ts";
 import { DEFAULT_STUTTER_OPTIONS } from "../../src/core/metrics.ts";
+import { slowEpisodes } from "../../src/core/episodes.ts";
+import { readFileSync } from "node:fs";
 
 const header = "fps,frametime,cpu_load,elapsed\n";
 
@@ -43,4 +45,61 @@ it("keeps insufficient or missing clock coverage explicitly unverified", () => {
 
 it("does not accept a joined or reversed logging clock as continuous evidence", () => {
   expect(() => parse(header + "100,10,40,100000000\n100,10,40,50000000\n")).toThrow(/goes backwards/);
+});
+
+it("does not let a missing block disappear in whole-capture totals", () => {
+  const text = readFileSync("studies/mangohud-local-clock/fixtures/removed-block.csv", "utf8");
+  const series = parse(text);
+  const analysis = analyzeCapture(series);
+  expect(analysis.summary.pacingCoverage).toEqual({ observedPairs: 24, gapBoundaries: 1 });
+  expect(analysis.summary.masdMs).toBe(0);
+  expect(analysis.summary.durationSec).toBeCloseTo(2.52, 12);
+  expect(slowEpisodes(analysis).map(e => [e.frameCount, e.startsAfterGap, e.endsBeforeGap])).toEqual([
+    [10, false, true], [16, true, false],
+  ]);
+  const evidence = series.meta.timingEvidence!;
+  expect(evidence).toMatchObject({ status: "unverified", comparedIntervals: 25,
+    discontinuousIntervals: 1, omittedWitnesses: 0,
+    witnesses: [{ fromSourceLine: 11, toSourceLine: 12, elapsedMs: 480, frameTimeMs: 120 }] });
+  // The aggregate discrepancy is only 17%, well within the retained refusal threshold.
+  expect(evidence.observedSpanSec! / evidence.recordedFrameSpanSec!).toBeLessThan(1.2);
+  const exported = buildJsonReport(analysis.series, analysis.summary, DEFAULT_STUTTER_OPTIONS, undefined, analysis.selection);
+  expect(exported.analysis.continuity.gaps).toEqual([{ beforeFrame: 11, sourceLine: 12 }]);
+  exported.source.timingEvidence!.witnesses[0]!.elapsedMs = -1;
+  expect(evidence.witnesses[0]!.elapsedMs).toBe(480);
+});
+
+it("splits long and short clock contradictions even when their totals exactly cancel", () => {
+  const text = header + "100,10,40,0\n100,10,40,100000000\n10,100,40,110000000\n100,10,40,120000000\n";
+  const series = parse(text);
+  expect([...series.gapBefore!]).toEqual([0, 1, 1, 0]);
+  expect(series.meta.timingEvidence).toMatchObject({ status: "unverified", discontinuousIntervals: 2 });
+  expect(series.meta.timingEvidence!.observedSpanSec).toBeCloseTo(series.meta.timingEvidence!.recordedFrameSpanSec!, 12);
+  expect(analyzeCapture(series).summary.pacingCoverage).toEqual({ observedPairs: 1, gapBoundaries: 2 });
+});
+
+it("requires both the absolute and relative thresholds and still checks short captures", () => {
+  const pair = (ms: number, elapsedMs: number) => parse(header + `100,${ms},40,0\n100,${ms},40,${elapsedMs * 1e6}\n`);
+  for (const [ms, elapsed] of [[10, 19], [1, 10], [100, 150], [10, 20]]) {
+    expect(pair(ms!, elapsed!).meta.timingEvidence!.discontinuousIntervals).toBe(0);
+  }
+  expect(pair(10, 21).meta.timingEvidence!.discontinuousIntervals).toBe(1);
+  expect(pair(100, 10).meta.timingEvidence!.discontinuousIntervals).toBe(1);
+});
+
+it("does not compare clocks across absent clocks or rejected records", () => {
+  for (const middle of ["100,10,40,NA", "100,bad,40,100000000", "shifted,100,10,40,100000000"]) {
+    const series = parse(header + `100,10,40,0\n${middle}\n100,10,40,200000000\n100,10,40,210000000\n`);
+    expect(series.meta.timingEvidence!.discontinuousIntervals).toBe(0);
+    expect(series.meta.timingEvidence!.witnesses).toEqual([]);
+  }
+});
+
+it("bounds witness retention without dropping gap coordinates or their total", () => {
+  const rows = Array.from({ length: 21 }, (_, i) => i % 2 === 0
+    ? `10,100,40,${i * 55e6}` : `100,10,40,${(i - 1) * 55e6 + 100e6}`);
+  const series = parse(header + rows.join("\n"));
+  expect(series.meta.timingEvidence).toMatchObject({ discontinuousIntervals: 20, omittedWitnesses: 15 });
+  expect(series.meta.timingEvidence!.witnesses).toHaveLength(5);
+  expect([...series.gapBefore!].filter(Boolean)).toHaveLength(20);
 });

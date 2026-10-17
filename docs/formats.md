@@ -296,11 +296,24 @@ and a factor of two refuses the report and asks for a `log_interval=0` capture.
 An elapsed clock that moves backwards also refuses analysis. Invalid frame or
 elapsed values break adjacency rather than making up a duration across the gap.
 
+The source also checks each adjacent logged interval with the same 10 ms and
+factor-of-two thresholds. A local contradiction interrupts pacing pairs,
+rolling context, chart connections and episode grouping. Long and short
+contradictions cannot cancel, and a missing block cannot disappear into a long
+capture's totals. Retained frame durations still determine FPS and percentiles.
+`timingEvidence.discontinuousIntervals` counts these interruptions; `witnesses`
+keeps up to five physical CSV line pairs with the elapsed interval and the
+current frame duration, with an explicit `omittedWitnesses` count.
+
 Accepted captures carry `source.timingEvidence` in JSON and a visible assumption
 in the browser, Markdown, PNG, and terminal. `compatible` means no large
 contradiction was found; it is not proof that every frame was logged. Missing,
-short, or interrupted clock coverage is `unverified`. The loose threshold allows
-logging overhead and short excerpts; modest sampling gaps can escape it. The
+short, or interrupted clock coverage is `unverified`, including local clock
+contradictions. The loose threshold allows logging overhead and short excerpts;
+modest sampling gaps can escape it. The logging clock is sampled separately from
+the present duration, so a disagreement does not identify missing frames or
+their cause. [Controlled record removal and an intact public capture](../studies/mangohud-local-clock/README.md)
+exercise this boundary. The
 check never estimates missing frame durations, and metrics still use the
 recorded per-frame durations, conditional on the logging assumption.
 

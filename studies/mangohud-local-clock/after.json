@@ -1,0 +1,264 @@
+{
+  "node": "v26.7.0",
+  "source": {
+    "url": "https://raw.githubusercontent.com/Reason7322/mangohudlogs/72a3bfac974b776581e382b3e2bbe2218e40c667/Witchfire-Win64-Shipping_2026-08-12_14-16-42.csv",
+    "sha256": "f80aee599f38847c804cc2c06bbac26bf7fa21ac4a29c4813bce02ca1363aba6",
+    "license": "none stated; capture bytes not redistributed"
+  },
+  "oracle": "Unchanged source-record ordinals determine contiguous retained pairs; Python calculates MASD only across those pairs.",
+  "cases": [
+    {
+      "name": "controlled-complete",
+      "inputSha256": "f4b5ee88be9b1febdd695016f8a6acc2de5f33def1f99a82f422fa7133e24e9a",
+      "sourceRecords": 32,
+      "expected": {
+        "gaps": 0,
+        "pairs": 31,
+        "masdMs": 1.935483870967742
+      },
+      "observed": {
+        "gaps": 0,
+        "pairs": 31,
+        "masdMs": 1.935483870967742
+      },
+      "differences": [],
+      "durationSec": 2.880000000000002,
+      "averageFps": 11.111111111111104,
+      "hitches": 32,
+      "episodes": 1,
+      "timingEvidence": {
+        "kind": "mangohud-elapsed",
+        "status": "compatible",
+        "comparedIntervals": 31,
+        "observedSpanSec": 2.820000000000002,
+        "recordedFrameSpanSec": 2.820000000000002,
+        "discontinuousIntervals": 0,
+        "witnesses": [],
+        "omittedWitnesses": 0,
+        "note": "No large elapsed/frame-duration contradiction found. MangoHud frame metrics require log_interval=0. The CSV does not record this setting; matching clock spans do not prove every frame was logged."
+      },
+      "gaps": []
+    },
+    {
+      "name": "controlled-removed-block",
+      "inputSha256": "00debaf4cde7fbc32acdd5dc1d2b614072dd90865a83b6db346d50ac6119db76",
+      "sourceRecords": 26,
+      "expected": {
+        "gaps": 1,
+        "pairs": 24,
+        "masdMs": 0.0
+      },
+      "observed": {
+        "gaps": 1,
+        "pairs": 24,
+        "masdMs": 0
+      },
+      "differences": [],
+      "durationSec": 2.5200000000000014,
+      "averageFps": 10.317460317460313,
+      "hitches": 26,
+      "episodes": 2,
+      "timingEvidence": {
+        "kind": "mangohud-elapsed",
+        "status": "unverified",
+        "comparedIntervals": 25,
+        "observedSpanSec": 2.8200000000000016,
+        "recordedFrameSpanSec": 2.4600000000000013,
+        "discontinuousIntervals": 1,
+        "witnesses": [
+          {
+            "fromSourceLine": 11,
+            "toSourceLine": 12,
+            "elapsedMs": 480,
+            "frameTimeMs": 120
+          }
+        ],
+        "omittedWitnesses": 0,
+        "note": "1 local elapsed/frame-duration disagreement interrupts pacing, rolling context and episode continuity. Missing frame counts, durations and causes are unknown. Clock coverage is missing, too short, or interrupted; per-frame coverage is unverified. MangoHud frame metrics require log_interval=0. The CSV does not record this setting; matching clock spans do not prove every frame was logged."
+      },
+      "gaps": [
+        {
+          "beforeFrame": 11,
+          "sourceLine": 12
+        }
+      ]
+    },
+    {
+      "name": "public-original",
+      "inputSha256": "f80aee599f38847c804cc2c06bbac26bf7fa21ac4a29c4813bce02ca1363aba6",
+      "sourceRecords": 117569,
+      "expected": {
+        "gaps": 0,
+        "pairs": 117568,
+        "masdMs": 0.7575825235608329
+      },
+      "observed": {
+        "gaps": 0,
+        "pairs": 117568,
+        "masdMs": 0.7575825235608334
+      },
+      "differences": [],
+      "durationSec": 869.1436530500002,
+      "averageFps": 135.26992872516146,
+      "hitches": 13,
+      "episodes": 248,
+      "timingEvidence": {
+        "kind": "mangohud-elapsed",
+        "status": "compatible",
+        "comparedIntervals": 117568,
+        "observedSpanSec": 869.2063093509953,
+        "recordedFrameSpanSec": 869.1378240600002,
+        "discontinuousIntervals": 0,
+        "witnesses": [],
+        "omittedWitnesses": 0,
+        "note": "No large elapsed/frame-duration contradiction found. MangoHud frame metrics require log_interval=0. The CSV does not record this setting; matching clock spans do not prove every frame was logged."
+      },
+      "gaps": []
+    },
+    {
+      "name": "public-removed-block",
+      "inputSha256": "a4f00b72a63c26f379cd20723ca43687f9a5c50d96f035b956ae9920827922fe",
+      "sourceRecords": 117269,
+      "expected": {
+        "gaps": 1,
+        "pairs": 117267,
+        "masdMs": 0.7594346633750331
+      },
+      "observed": {
+        "gaps": 1,
+        "pairs": 117267,
+        "masdMs": 0.7594346633750333
+      },
+      "differences": [],
+      "durationSec": 867.3845072600011,
+      "averageFps": 135.19840280574468,
+      "hitches": 13,
+      "episodes": 248,
+      "timingEvidence": {
+        "kind": "mangohud-elapsed",
+        "status": "unverified",
+        "comparedIntervals": 117268,
+        "observedSpanSec": 869.2063093509953,
+        "recordedFrameSpanSec": 867.378678270001,
+        "discontinuousIntervals": 1,
+        "witnesses": [
+          {
+            "fromSourceLine": 1007,
+            "toSourceLine": 1008,
+            "elapsedMs": 1765.099821,
+            "frameTimeMs": 5.84847
+          }
+        ],
+        "omittedWitnesses": 0,
+        "note": "1 local elapsed/frame-duration disagreement interrupts pacing, rolling context and episode continuity. Missing frame counts, durations and causes are unknown. Clock coverage is missing, too short, or interrupted; per-frame coverage is unverified. MangoHud frame metrics require log_interval=0. The CSV does not record this setting; matching clock spans do not prove every frame was logged."
+      },
+      "gaps": [
+        {
+          "beforeFrame": 1001,
+          "sourceLine": 1008
+        }
+      ]
+    },
+    {
+      "name": "public-separated-blocks",
+      "inputSha256": "ccd7a3d02fd6e24608f413ecae9ef076fe78398da0026de07d991d92d9c490e7",
+      "sourceRecords": 117479,
+      "expected": {
+        "gaps": 9,
+        "pairs": 117469,
+        "masdMs": 0.7580150245596711
+      },
+      "observed": {
+        "gaps": 9,
+        "pairs": 117469,
+        "masdMs": 0.7580150245596708
+      },
+      "differences": [],
+      "durationSec": 868.6054271400005,
+      "averageFps": 135.25013352359,
+      "hitches": 13,
+      "episodes": 247,
+      "timingEvidence": {
+        "kind": "mangohud-elapsed",
+        "status": "unverified",
+        "comparedIntervals": 117478,
+        "observedSpanSec": 869.2063093509953,
+        "recordedFrameSpanSec": 868.5995981500005,
+        "discontinuousIntervals": 9,
+        "witnesses": [
+          {
+            "fromSourceLine": 1007,
+            "toSourceLine": 1008,
+            "elapsedMs": 64.329943,
+            "frameTimeMs": 5.84817
+          },
+          {
+            "fromSourceLine": 1997,
+            "toSourceLine": 1998,
+            "elapsedMs": 64.329422,
+            "frameTimeMs": 5.84778
+          },
+          {
+            "fromSourceLine": 2987,
+            "toSourceLine": 2988,
+            "elapsedMs": 65.230063,
+            "frameTimeMs": 5.87092
+          },
+          {
+            "fromSourceLine": 3977,
+            "toSourceLine": 3978,
+            "elapsedMs": 72.800015,
+            "frameTimeMs": 6.08148
+          },
+          {
+            "fromSourceLine": 4967,
+            "toSourceLine": 4968,
+            "elapsedMs": 64.333962,
+            "frameTimeMs": 5.85057
+          }
+        ],
+        "omittedWitnesses": 4,
+        "note": "9 local elapsed/frame-duration disagreements interrupt pacing, rolling context and episode continuity. Missing frame counts, durations and causes are unknown. Clock coverage is missing, too short, or interrupted; per-frame coverage is unverified. MangoHud frame metrics require log_interval=0. The CSV does not record this setting; matching clock spans do not prove every frame was logged."
+      },
+      "gaps": [
+        {
+          "beforeFrame": 1001,
+          "sourceLine": 1008
+        },
+        {
+          "beforeFrame": 1991,
+          "sourceLine": 1998
+        },
+        {
+          "beforeFrame": 2981,
+          "sourceLine": 2988
+        },
+        {
+          "beforeFrame": 3971,
+          "sourceLine": 3978
+        },
+        {
+          "beforeFrame": 4961,
+          "sourceLine": 4968
+        },
+        {
+          "beforeFrame": 5951,
+          "sourceLine": 5958
+        },
+        {
+          "beforeFrame": 6941,
+          "sourceLine": 6948
+        },
+        {
+          "beforeFrame": 7931,
+          "sourceLine": 7938
+        },
+        {
+          "beforeFrame": 8921,
+          "sourceLine": 8928
+        }
+      ]
+    }
+  ],
+  "discrepancies": 0
+}

@@ -80,6 +80,14 @@ export interface PresentClockEvidence {
   omittedWitnesses: number;
 }
 
+export interface MangoHudClockWitness {
+  /** One-based physical CSV lines; clocks describe logging, not missing frames. */
+  fromSourceLine: number;
+  toSourceLine: number;
+  elapsedMs: number;
+  frameTimeMs: number;
+}
+
 export interface FrameSeriesMeta {
   format: SourceFormat;
   sourceFileName: string;
@@ -117,6 +125,10 @@ export interface FrameSeriesMeta {
     comparedIntervals: number;
     observedSpanSec: number | null;
     recordedFrameSpanSec: number | null;
+    /** Local disagreements can be diluted or cancel in the full-capture sums. */
+    discontinuousIntervals: number;
+    witnesses: MangoHudClockWitness[];
+    omittedWitnesses: number;
     note: string;
   };
 }
