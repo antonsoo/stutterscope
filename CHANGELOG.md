@@ -8,7 +8,7 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 Changes below are in source and have not been released as an npm package.
 
-### Local MangoHud clock continuity (source only)
+### Local MangoHud clock continuity (source and demo)
 
 - Interrupt pacing, rolling stutter context, traces and slow-frame episodes at
   large local elapsed/frame-duration disagreements. Whole-capture sums could
@@ -16,7 +16,8 @@ Changes below are in source and have not been released as an npm package.
 - Preserve retained durations and distribution metrics, mark clock coverage
   unverified, and retain bounded physical-line witnesses in JSON exports. The
   [record-removal replay](studies/mangohud-local-clock/README.md) includes an
-  unchanged 117,569-frame public control. This has not been deployed or released.
+  unchanged 117,569-frame public control. The demo includes the correction;
+  the npm package has not been updated.
 
 ### Native CapFrameX saved sessions
 

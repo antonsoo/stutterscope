@@ -1,0 +1,90 @@
+{
+  "sourceRevision": "7c0ba5dc12e8828fdfc16a4bb70d3da972716849",
+  "deploymentRevision": "9ab3133",
+  "sourceFiles": [
+    {
+      "file": "src/core/parsers/mangohud.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/7c0ba5dc12e8828fdfc16a4bb70d3da972716849/src/core/parsers/mangohud.ts",
+      "bytes": 9621,
+      "sha256": "d1d27bfad7f3fafded34f47cfc0395d79cdc692cf967d37bea5aed554c5f8985"
+    },
+    {
+      "file": "src/core/types.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/7c0ba5dc12e8828fdfc16a4bb70d3da972716849/src/core/types.ts",
+      "bytes": 7023,
+      "sha256": "09542dc0a8a06e9a1bf1ecaf117fc760c7330c5c0edc09e5462ddcc41b7f33b9"
+    },
+    {
+      "file": "src/core/report.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/7c0ba5dc12e8828fdfc16a4bb70d3da972716849/src/core/report.ts",
+      "bytes": 3220,
+      "sha256": "78b981d8cb424042c0947e7d9c0f777af16dcbae687bd88c1da339c8df8124fe"
+    },
+    {
+      "file": "tests/core/mangohud-clock.test.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/7c0ba5dc12e8828fdfc16a4bb70d3da972716849/tests/core/mangohud-clock.test.ts",
+      "bytes": 6302,
+      "sha256": "53a99d715fa6192a6d229232fdbb9c635a8257b36f2ae4b82205f58ab2c341a3"
+    },
+    {
+      "file": "tests/browser/mangohud-clock.spec.js",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/7c0ba5dc12e8828fdfc16a4bb70d3da972716849/tests/browser/mangohud-clock.spec.js",
+      "bytes": 2993,
+      "sha256": "11bccca25c9deef4d73ca2b161475749f5c77fa617e6b629663aad13927f2698"
+    },
+    {
+      "file": "package.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/7c0ba5dc12e8828fdfc16a4bb70d3da972716849/package.json",
+      "bytes": 1579,
+      "sha256": "6f38e327f380c80f0e7be14ea911cce2aad555ca3b5c067ebfa48febefdca1a9"
+    },
+    {
+      "file": "package-lock.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/stutterscope/7c0ba5dc12e8828fdfc16a4bb70d3da972716849/package-lock.json",
+      "bytes": 85419,
+      "sha256": "bf3d11ea1ddf58f410e4aa9db2a77f8f6af5eef86b65d164450e9907101146bf"
+    }
+  ],
+  "canonicalFiles": 33,
+  "allCanonicalFilesMatch": true,
+  "browserContexts": 4,
+  "jsonDownloadsMatchingInstalledCli": 16,
+  "markdownDownloads": 4,
+  "pngDownloads": 4,
+  "fontRequestsAfterDisconnect": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "requests": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "requests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "requests": [
+        "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+        "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+        "https://antonsoo.github.io/stutterscope/assets/inter-latin-Dx4kXJAl.woff2"
+      ]
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "requests": [
+        "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+        "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+        "https://antonsoo.github.io/stutterscope/assets/inter-latin-Dx4kXJAl.woff2"
+      ]
+    }
+  ],
+  "nonFontRequestsAfterDisconnect": 0,
+  "pageErrors": 0,
+  "sourcePushed": true,
+  "demoDeployed": true,
+  "npmReleased": false,
+  "tagCreated": false
+}

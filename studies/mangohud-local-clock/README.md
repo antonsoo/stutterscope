@@ -89,5 +89,18 @@ finished: all four final image files match between the working and clean builds.
 The screenshots show the two episodes and physical-line gap evidence without
 horizontal page overflow at either width. This changes no UI layout.
 
-This is local source and built-artifact evidence. The hosted demo and npm 0.2.5
-have not been updated by this repair.
+## Publication
+
+After the local verification above, source revision `7c0ba5d` was pushed and
+the tested build was deployed as `9ab3133`. All 33 canonical hosted files match
+the tested build. Chromium and Firefox at 1440px and 375px import the captures
+after disconnecting, preserve separate observed episodes and source-line
+evidence, and download 16 complete JSON reports matching the installed CLI.
+The four contexts also download Markdown and PNG reports and recompute settings
+and selected intervals. Hosted screenshots and actual downloads are in `hosted/`;
+`publication.json` and `hosted-bytes.json` retain their checks.
+
+The cold offline workflow can attempt local font downloads after the first
+import; these are recorded separately. No additional code or capture-data
+download is needed, and there are no page errors or off-origin requests.
+The npm 0.2.5 release and release tags remain unchanged.

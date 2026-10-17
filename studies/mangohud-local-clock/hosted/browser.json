@@ -1,0 +1,238 @@
+[
+  {
+    "engine": "chromium",
+    "browserVersion": "153.0.8010.12",
+    "width": 1440,
+    "base": "https://antonsoo.github.io/stutterscope/",
+    "flows": [
+      {
+        "name": "complete.csv",
+        "flags": [],
+        "file": "chromium-1440-0.json",
+        "sha256": "eed38f6bd70cb2b3b101473fd136ad896e03377b599f4e081e48600f58a39bfa",
+        "matchesInstalledCli": true
+      },
+      {
+        "name": "removed-block.csv",
+        "flags": [],
+        "file": "chromium-1440-1.json",
+        "sha256": "c6e768e1a621157b1373abe178d5625c1de0af621f719764994eef593c70e1e3",
+        "matchesInstalledCli": true
+      },
+      {
+        "name": "removed-block.csv",
+        "flags": [
+          "--hitch-ms",
+          "100"
+        ],
+        "file": "chromium-1440-2.json",
+        "sha256": "9343866e6698dc2b467b06dfea1bc8abe61290964ca7876c7f0c8ea5cf93e0f7",
+        "matchesInstalledCli": true
+      },
+      {
+        "name": "removed-block.csv",
+        "flags": [
+          "--hitch-ms",
+          "100",
+          "--start",
+          "0.6"
+        ],
+        "file": "chromium-1440-3.json",
+        "sha256": "7182de5ae3765b6cd7977ff70e95785de58984eec8a324c8f5d3abaf9ecee11e",
+        "matchesInstalledCli": true
+      }
+    ],
+    "markdown": {
+      "bytes": 1239,
+      "sha256": "ead9b466b8934fe1a86f12e0c807fc1b274fb8e0f98e894b84f3540c7b2a4649"
+    },
+    "png": {
+      "bytes": 62391,
+      "sha256": "cd6de1688aabe8d17878d1c1933263ce0c89ee014724580f1466ed62f9aa205e"
+    },
+    "noPageOverflow": true,
+    "pageErrors": [],
+    "externalRequests": [],
+    "httpRequestsAfterDisconnect": [],
+    "nonFontHttpRequestsAfterDisconnect": []
+  },
+  {
+    "engine": "chromium",
+    "browserVersion": "153.0.8010.12",
+    "width": 375,
+    "base": "https://antonsoo.github.io/stutterscope/",
+    "flows": [
+      {
+        "name": "complete.csv",
+        "flags": [],
+        "file": "chromium-375-0.json",
+        "sha256": "51893efac3a240e3f71a144054db76f94a17577ba09118b5ad379aa4c222bc7e",
+        "matchesInstalledCli": true
+      },
+      {
+        "name": "removed-block.csv",
+        "flags": [],
+        "file": "chromium-375-1.json",
+        "sha256": "f1e5e86c6e573d785d1a65f3fdbaaa7b7914684df144e9521e682e28acfcb76b",
+        "matchesInstalledCli": true
+      },
+      {
+        "name": "removed-block.csv",
+        "flags": [
+          "--hitch-ms",
+          "100"
+        ],
+        "file": "chromium-375-2.json",
+        "sha256": "a57dd8f5149d2a153c1cc1fecea1428a5ed8717f321f6f066f0457b62811ca3e",
+        "matchesInstalledCli": true
+      },
+      {
+        "name": "removed-block.csv",
+        "flags": [
+          "--hitch-ms",
+          "100",
+          "--start",
+          "0.6"
+        ],
+        "file": "chromium-375-3.json",
+        "sha256": "30005247e8266bcc4a7ce04e93659cd775295cb1947f263803ba80a4d4dfe1f1",
+        "matchesInstalledCli": true
+      }
+    ],
+    "markdown": {
+      "bytes": 1239,
+      "sha256": "ead9b466b8934fe1a86f12e0c807fc1b274fb8e0f98e894b84f3540c7b2a4649"
+    },
+    "png": {
+      "bytes": 62391,
+      "sha256": "cd6de1688aabe8d17878d1c1933263ce0c89ee014724580f1466ed62f9aa205e"
+    },
+    "noPageOverflow": true,
+    "pageErrors": [],
+    "externalRequests": [],
+    "httpRequestsAfterDisconnect": [],
+    "nonFontHttpRequestsAfterDisconnect": []
+  },
+  {
+    "engine": "firefox",
+    "browserVersion": "155.0",
+    "width": 1440,
+    "base": "https://antonsoo.github.io/stutterscope/",
+    "flows": [
+      {
+        "name": "complete.csv",
+        "flags": [],
+        "file": "firefox-1440-0.json",
+        "sha256": "a6e0515e6066bfa13b8c66df73a2da390a6de8df5dc998e58503d0d7874192d4",
+        "matchesInstalledCli": true
+      },
+      {
+        "name": "removed-block.csv",
+        "flags": [],
+        "file": "firefox-1440-1.json",
+        "sha256": "aac6b3e900dd033bb8d4afa867a4e1aca718ebf217de7663ebac444c0d1b687c",
+        "matchesInstalledCli": true
+      },
+      {
+        "name": "removed-block.csv",
+        "flags": [
+          "--hitch-ms",
+          "100"
+        ],
+        "file": "firefox-1440-2.json",
+        "sha256": "0955f6028c056f9a9a2565c51ebabb4aa6343fc53ede3679b492947737d59907",
+        "matchesInstalledCli": true
+      },
+      {
+        "name": "removed-block.csv",
+        "flags": [
+          "--hitch-ms",
+          "100",
+          "--start",
+          "0.6"
+        ],
+        "file": "firefox-1440-3.json",
+        "sha256": "c91f5ec2ffb4a9afd13bfafce38eba68edc31566465affa6b3a37b72381e3eed",
+        "matchesInstalledCli": true
+      }
+    ],
+    "markdown": {
+      "bytes": 1239,
+      "sha256": "ead9b466b8934fe1a86f12e0c807fc1b274fb8e0f98e894b84f3540c7b2a4649"
+    },
+    "png": {
+      "bytes": 58691,
+      "sha256": "71abdee7ee477262a14c2e3db09172c1c326389e0a59d43b375bde85be5152d4"
+    },
+    "noPageOverflow": true,
+    "pageErrors": [],
+    "externalRequests": [],
+    "httpRequestsAfterDisconnect": [
+      "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+      "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+      "https://antonsoo.github.io/stutterscope/assets/inter-latin-Dx4kXJAl.woff2"
+    ],
+    "nonFontHttpRequestsAfterDisconnect": []
+  },
+  {
+    "engine": "firefox",
+    "browserVersion": "155.0",
+    "width": 375,
+    "base": "https://antonsoo.github.io/stutterscope/",
+    "flows": [
+      {
+        "name": "complete.csv",
+        "flags": [],
+        "file": "firefox-375-0.json",
+        "sha256": "49beae4c6e4de3b2030cc57f9d4530049331cb40bd209cbe4276b53803d13ace",
+        "matchesInstalledCli": true
+      },
+      {
+        "name": "removed-block.csv",
+        "flags": [],
+        "file": "firefox-375-1.json",
+        "sha256": "1e63b250cfce43170578904d81d434a7c59b42a4bb7358c4641e9e0e42da0db2",
+        "matchesInstalledCli": true
+      },
+      {
+        "name": "removed-block.csv",
+        "flags": [
+          "--hitch-ms",
+          "100"
+        ],
+        "file": "firefox-375-2.json",
+        "sha256": "31711504ccef5abbc5e838f89a798eb9aeaa51b10312c1bd04f2cf6b6d477767",
+        "matchesInstalledCli": true
+      },
+      {
+        "name": "removed-block.csv",
+        "flags": [
+          "--hitch-ms",
+          "100",
+          "--start",
+          "0.6"
+        ],
+        "file": "firefox-375-3.json",
+        "sha256": "9e63e8a6dc3ddc96170a6c759865372394a95951223d7c83568524bd0b485e3f",
+        "matchesInstalledCli": true
+      }
+    ],
+    "markdown": {
+      "bytes": 1239,
+      "sha256": "ead9b466b8934fe1a86f12e0c807fc1b274fb8e0f98e894b84f3540c7b2a4649"
+    },
+    "png": {
+      "bytes": 58691,
+      "sha256": "318689f0182cdd2e190dabddb7f3348d4a3c0bcf4333fd7130875c457c629401"
+    },
+    "noPageOverflow": true,
+    "pageErrors": [],
+    "externalRequests": [],
+    "httpRequestsAfterDisconnect": [
+      "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+      "https://antonsoo.github.io/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+      "https://antonsoo.github.io/stutterscope/assets/inter-latin-Dx4kXJAl.woff2"
+    ],
+    "nonFontHttpRequestsAfterDisconnect": []
+  }
+]

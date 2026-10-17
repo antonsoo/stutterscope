@@ -1,0 +1,127 @@
+{
+  "tool": "stutterscope",
+  "schemaVersion": 5,
+  "generatedAt": "2026-10-17T21:20:48.393Z",
+  "source": {
+    "fileName": "complete.csv",
+    "format": "mangohud",
+    "application": null,
+    "frameCount": 32,
+    "durationSec": 2.88,
+    "columns": [
+      "fps",
+      "frametime",
+      "cpu_load",
+      "elapsed"
+    ],
+    "skippedRows": 0,
+    "warnings": [],
+    "omittedWarningDetails": 0,
+    "genericMapping": null,
+    "timingEvidence": {
+      "kind": "mangohud-elapsed",
+      "status": "compatible",
+      "comparedIntervals": 31,
+      "observedSpanSec": 2.820000000000002,
+      "recordedFrameSpanSec": 2.820000000000002,
+      "discontinuousIntervals": 0,
+      "witnesses": [],
+      "omittedWitnesses": 0,
+      "note": "No large elapsed/frame-duration contradiction found. MangoHud frame metrics require log_interval=0. The CSV does not record this setting; matching clock spans do not prove every frame was logged."
+    }
+  },
+  "analysis": {
+    "stutterOptions": {
+      "windowRadius": 10,
+      "kMultiplier": 2,
+      "hitchThresholdMs": 50
+    },
+    "selection": {
+      "requested": null,
+      "timeBasis": "accumulated-frame-time",
+      "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+      "detectionContext": "full-stream",
+      "sourceFrameCount": 32,
+      "sourceDurationSec": 2.88,
+      "firstFrameIndex": 0,
+      "lastFrameIndex": 31,
+      "startSec": 0,
+      "endSec": 2.88,
+      "durationSec": 2.880000000000002,
+      "excludedBefore": 0,
+      "excludedAfter": 0
+    },
+    "stutterIndexBasis": "selected-series-zero-based",
+    "continuity": {
+      "basis": "source-row-evidence",
+      "frameNumberBasis": "source-selected-stream-one-based",
+      "gaps": []
+    }
+  },
+  "episodes": [
+    {
+      "firstFrame": 1,
+      "lastFrame": 32,
+      "startSec": 0,
+      "endSec": 2.88,
+      "frameCount": 32,
+      "stutterFrames": 0,
+      "hitchFrames": 32,
+      "totalTimeMs": 2880,
+      "longestFrameMs": 120,
+      "longestFrame": 17,
+      "firstSourceLine": 2,
+      "lastSourceLine": 33,
+      "touchesSelectionStart": false,
+      "touchesSelectionEnd": false,
+      "startsAfterGap": false,
+      "endsBeforeGap": false
+    }
+  ],
+  "metrics": {
+    "frameCount": 32,
+    "durationSec": 2.880000000000002,
+    "averageFps": 11.111111111111104,
+    "meanOfInstantaneousFps": 12.49999999999999,
+    "percentilesMs": {
+      "p50": 90,
+      "p90": 120,
+      "p95": 120,
+      "p99": 120,
+      "p999": 120
+    },
+    "onePercentLow": {
+      "percentileMethodFps": 8.333333333333334,
+      "meanOfSlowestMethodFps": 8.333333333333334,
+      "timeWeightedFps": 8.333333333333334
+    },
+    "pointOnePercentLow": {
+      "percentileMethodFps": 8.333333333333334,
+      "meanOfSlowestMethodFps": 8.333333333333334,
+      "timeWeightedFps": 8.333333333333334
+    },
+    "stutter": {
+      "stutterEventCount": 0,
+      "totalStutterTimeMs": 0,
+      "stutterTimeFraction": 0,
+      "hitchThresholdMs": 50,
+      "hitchCount": 32,
+      "totalHitchTimeMs": 2880,
+      "hitchTimeFraction": 1,
+      "stutterFrameIndices": []
+    },
+    "masdMs": 1.935483870967742,
+    "pacingCoverage": {
+      "observedPairs": 31,
+      "gapBoundaries": 0
+    },
+    "dropped": null,
+    "boundShare": null,
+    "latency": null,
+    "telemetryCoverage": {
+      "dropped": null,
+      "cpuGpuBusy": null,
+      "displayLatency": null
+    }
+  }
+}
