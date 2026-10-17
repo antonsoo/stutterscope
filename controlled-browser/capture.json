@@ -1,0 +1,93 @@
+{
+  "kind": "controlled-browser-capture",
+  "version": 1,
+  "description": "Actual requestAnimationFrame intervals in a headless Chromium animation. Both runs have deliberate warmup and tail blocking; A also has four deliberate 120 ms blocks during the scene. This measures this local browser experiment, not hardware gains or game presentation.",
+  "browser": "153.0.8010.12",
+  "headless": true,
+  "node": "v26.7.0",
+  "system": {
+    "platform": "linux",
+    "release": "6.18.40.1-microsoft-standard-WSL2",
+    "architecture": "x64",
+    "logicalCpus": 14
+  },
+  "scriptSha256": "1c02f760485cc3e39dc378b757a9b3ff3c7fa12994368b2716bc0d6c8b66dff9",
+  "suggestedInterval": {
+    "startSec": 1.5,
+    "endSec": 8.5
+  },
+  "captures": [
+    {
+      "file": "controlled-a.csv",
+      "sha256": "8b4afb5a19745287d1b9779a06e47694b3089d6b127c7bac281afe7d69acbda4",
+      "startedAt": "2026-10-07T22:38:08.376Z",
+      "frames": 543,
+      "blocks": [
+        {
+          "scheduledAtMs": 250,
+          "targetBlockingMs": 350,
+          "observedBlockingMs": 350.10000002384186,
+          "phase": "warmup",
+          "afterFrame": 15
+        },
+        {
+          "scheduledAtMs": 2200,
+          "targetBlockingMs": 120,
+          "observedBlockingMs": 120.19999998807907,
+          "phase": "scene",
+          "afterFrame": 113
+        },
+        {
+          "scheduledAtMs": 4000,
+          "targetBlockingMs": 120,
+          "observedBlockingMs": 120.09999999403954,
+          "phase": "scene",
+          "afterFrame": 215
+        },
+        {
+          "scheduledAtMs": 5800,
+          "targetBlockingMs": 120,
+          "observedBlockingMs": 120,
+          "phase": "scene",
+          "afterFrame": 317
+        },
+        {
+          "scheduledAtMs": 7600,
+          "targetBlockingMs": 120,
+          "observedBlockingMs": 120,
+          "phase": "scene",
+          "afterFrame": 419
+        },
+        {
+          "scheduledAtMs": 9300,
+          "targetBlockingMs": 250,
+          "observedBlockingMs": 250,
+          "phase": "tail",
+          "afterFrame": 515
+        }
+      ]
+    },
+    {
+      "file": "controlled-b.csv",
+      "sha256": "3034ff1dc1db38567396acbb8ae9ad763a018b6e63baf27401d0b6305a1bd405",
+      "startedAt": "2026-10-07T22:38:19.662Z",
+      "frames": 567,
+      "blocks": [
+        {
+          "scheduledAtMs": 250,
+          "targetBlockingMs": 350,
+          "observedBlockingMs": 350,
+          "phase": "warmup",
+          "afterFrame": 15
+        },
+        {
+          "scheduledAtMs": 9300,
+          "targetBlockingMs": 250,
+          "observedBlockingMs": 250.09999999403954,
+          "phase": "tail",
+          "afterFrame": 539
+        }
+      ]
+    }
+  ]
+}

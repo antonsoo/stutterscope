@@ -1,0 +1,5 @@
+Application,ProcessID,SwapChainAddress,FrameTime,CPUBusy,GPUBusy,DisplayedTime,DisplayLatency
+synthetic-game,1,0x1,16,2,8,16,10
+synthetic-game,1,0x1,16,NA,NA,NA,NA
+synthetic-game,1,0x1,16,,,broken,
+synthetic-game,1,0x1,16,,,,
