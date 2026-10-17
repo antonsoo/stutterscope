@@ -1,0 +1,49 @@
+{
+  "files": [
+    {
+      "file": "CapFrameX-ACValhalla.exe-1.json",
+      "repository": "retowyss/pc-benchmarking-r-griddb",
+      "commit": "4db96bed6b590539fad0ddfa477ce39e7be712dc",
+      "url": "https://raw.githubusercontent.com/retowyss/pc-benchmarking-r-griddb/4db96bed6b590539fad0ddfa477ce39e7be712dc/data/CapFrameX-ACValhalla.exe-1.json",
+      "bytes": 4939358,
+      "sha256": "cb21d1729e4d59bb2dea67e8b8e8cd20dfe643c473bf6641422b5c0a37f9127d",
+      "license": "No repository license found; fetch original bytes for local verification only"
+    },
+    {
+      "file": "CapFrameX-Cyberpunk2077.exe.json",
+      "repository": "retowyss/pc-benchmarking-r-griddb",
+      "commit": "4db96bed6b590539fad0ddfa477ce39e7be712dc",
+      "url": "https://raw.githubusercontent.com/retowyss/pc-benchmarking-r-griddb/4db96bed6b590539fad0ddfa477ce39e7be712dc/data/CapFrameX-Cyberpunk2077.exe.json",
+      "bytes": 2473990,
+      "sha256": "b3bd9c932a44708801ef636688627c00dea220a9180c4886496673a589d995b9",
+      "license": "No repository license found; fetch original bytes for local verification only"
+    },
+    {
+      "file": "CapFrameX-DOOMEternalx64vk.exe-1.json",
+      "repository": "retowyss/pc-benchmarking-r-griddb",
+      "commit": "4db96bed6b590539fad0ddfa477ce39e7be712dc",
+      "url": "https://raw.githubusercontent.com/retowyss/pc-benchmarking-r-griddb/4db96bed6b590539fad0ddfa477ce39e7be712dc/data/CapFrameX-DOOMEternalx64vk.exe-1.json",
+      "bytes": 13341377,
+      "sha256": "47c7e32c62d4aa5c312a5e47719ed35db9e810048b58c785bdde6021eb234e3d",
+      "license": "No repository license found; fetch original bytes for local verification only"
+    },
+    {
+      "file": "CapFrameX-DOOMEternalx64vk.exe-2.json",
+      "repository": "retowyss/pc-benchmarking-r-griddb",
+      "commit": "4db96bed6b590539fad0ddfa477ce39e7be712dc",
+      "url": "https://raw.githubusercontent.com/retowyss/pc-benchmarking-r-griddb/4db96bed6b590539fad0ddfa477ce39e7be712dc/data/CapFrameX-DOOMEternalx64vk.exe-2.json",
+      "bytes": 28028668,
+      "sha256": "7d53914bbc04d5d3fc6c22d77a3796874b1694651ae69e3fd2d0441708d2e562",
+      "license": "No repository license found; fetch original bytes for local verification only"
+    },
+    {
+      "file": "CapFrameX-ROLLERDROME.exe-1.json",
+      "repository": "retowyss/pc-benchmarking-r-griddb",
+      "commit": "4db96bed6b590539fad0ddfa477ce39e7be712dc",
+      "url": "https://raw.githubusercontent.com/retowyss/pc-benchmarking-r-griddb/4db96bed6b590539fad0ddfa477ce39e7be712dc/data/CapFrameX-ROLLERDROME.exe-1.json",
+      "bytes": 11788599,
+      "sha256": "3a3f9456aa3ecfd0ed7af2008d142c6d513ea38f5cccf815aaf602d08a4a55b8",
+      "license": "No repository license found; fetch original bytes for local verification only"
+    }
+  ]
+}

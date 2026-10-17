@@ -64,6 +64,7 @@ export function buildMarkdownTable(series: FrameSeries, summary: MetricsSummary,
   const context = [
     `Source format: ${series.meta.format}. Analyzed frames: ${fmtInt(series.frameCount)} of ${fmtInt(selection.sourceFrameCount)}.`,
     selectionText(selection),
+    ...(series.meta.nativeCapture ? [`Native recording: ${series.meta.nativeCapture.selectedRun} of ${series.meta.nativeCapture.runs.length}. Sample path: ${escapeMd(series.meta.nativeCapture.frameTimePath)}; indices are zero-based.`, escapeMd(series.meta.nativeCapture.note)] : []),
     ...(series.meta.timingEvidence ? [escapeMd(series.meta.timingEvidence.note)] : []),
     `Detection: k = ${options.kMultiplier}, window radius = ${options.windowRadius}, hitch threshold > ${options.hitchThresholdMs} ms. Rolling context and episodes stop at source gaps; missing durations are unknown.`,
     ...(series.meta.selectedStream ? [`Selected stream: ${escapeMd(series.meta.selectedStream)} (${escapeMd(series.meta.application ?? "application not recorded")}). Other streams are excluded.`] : []),
@@ -182,7 +183,8 @@ export function renderReportCardCanvas(series: FrameSeries, summary: MetricsSumm
   ctx.fillStyle = "#7fa393";
   ctx.font = "400 14px 'JetBrains Mono', monospace";
   ctx.fillText(`Detection: k = ${options.kMultiplier}, radius = ${options.windowRadius}, hitch > ${options.hitchThresholdMs} ms`, 60, 492);
-  ctx.fillText(`${fmtInt(series.frameCount)} frames analyzed; ${fmtInt(series.meta.skippedRows)} rows skipped${series.meta.presentClockGaps ? `; ${fmtInt(series.meta.presentClockGaps)} source clock gaps` : ""}. Details in JSON / Markdown.`, 60, 516);
+  ctx.fillText(`${fmtInt(series.frameCount)} frames analyzed; ${fmtInt(series.meta.skippedRows)} ${series.meta.nativeCapture ? "samples" : "rows"} skipped${series.meta.presentClockGaps ? `; ${fmtInt(series.meta.presentClockGaps)} source clock gaps` : ""}. Details in JSON / Markdown.`, 60, 516);
+  if (series.meta.nativeCapture) ctx.fillText(`Native CapFrameX recording ${series.meta.nativeCapture.selectedRun} of ${series.meta.nativeCapture.runs.length}.${series.meta.nativeCapture.runs.length > 1 ? " Other recordings excluded." : ""}`, 60, 540);
   if (series.meta.selectedStream) ctx.fillText(truncate(`Selected stream: ${series.meta.selectedStream} (${series.meta.application ?? "application not recorded"})`, 105), 60, 540);
 
   ctx.fillText(truncate(selectionText(selection), 115), 60, 564);

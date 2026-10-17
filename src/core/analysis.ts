@@ -65,6 +65,7 @@ export function selectFrames(source: FrameSeries, range: AnalysisRange | null = 
       frameTimeMs: source.frameTimeMs.slice(start, end),
       timeSec: source.timeSec.slice(start, end),
       sourceLine: source.sourceLine?.slice(start, end),
+      sourceSample: source.sourceSample?.slice(start, end),
       gapBefore: source.gapBefore?.slice(start, end),
       channels,
     };

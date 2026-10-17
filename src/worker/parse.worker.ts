@@ -5,6 +5,7 @@
  * typed arrays are sent back as transferables (zero-copy) rather than
  * structured-cloned.
  */
+import { requireNativeJsonSize } from "../core/parsers/capframex-json.ts";
 import { detectFormat, createParserFor } from "../core/parsers/index.ts";
 import { guessMapping, readHeader as readGenericHeader } from "../core/parsers/generic.ts";
 import { decodeText, requireText } from "../core/encoding.ts";
@@ -62,7 +63,8 @@ async function handleParse(req: Extract<WorkerRequest, { type: "parse" }>): Prom
       }
     }
 
-    const parser = createParserFor(format, genericMapping, { stream });
+    if (format === "capframex-json") requireNativeJsonSize(file.size);
+    const parser = createParserFor(format, genericMapping, { stream, captureRun: req.captureRun });
     const series = requireFrames(
       await parseFileStreaming(file, parser, file.name, (progress) => {
         const response: WorkerResponse = { type: "progress", requestId, slot, progress };

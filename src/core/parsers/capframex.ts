@@ -1,9 +1,6 @@
 /**
  * CapFrameX capture CSV export (github.com/CXWorld/CapFrameX). CapFrameX's
- * native save format is JSON, but its structure is not documented anywhere
- * we could verify against an authoritative source, so — per the brief — we
- * parse its CSV export instead, which the app itself describes as giving
- * "a better view on the raw PresentMon data".
+ * native save format is handled separately by capframex-json.ts.
  *
  * Verified against real CapFrameX test fixtures at
  * `source/CapFrameX.Test/TestRecordFiles/` in the CapFrameX repo:

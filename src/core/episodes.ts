@@ -13,6 +13,9 @@ export interface SlowEpisode {
   totalTimeMs: number;
   longestFrameMs: number;
   longestFrame: number;
+  /** Zero-based native array indices, when the source is CapFrameX JSON. */
+  firstSourceSample?: number;
+  lastSourceSample?: number;
   firstSourceLine: number | null;
   lastSourceLine: number | null;
   /** Whether the selected interval cut a possible continuation; not an inferred episode boundary. */
@@ -39,6 +42,7 @@ export function slowEpisodes({ series, summary, selection }: CaptureAnalysis): S
         endSec: series.timeSec[i]!, frameCount: 0, stutterFrames: 0, hitchFrames: 0,
         totalTimeMs: 0, longestFrameMs: ms, longestFrame: frame,
         firstSourceLine: series.sourceLine?.[i] ?? null, lastSourceLine: null,
+        ...(series.sourceSample ? { firstSourceSample: series.sourceSample[i]!, lastSourceSample: series.sourceSample[i]! } : {}),
         touchesSelectionStart: i === 0 && selection.excludedBefore > 0, touchesSelectionEnd: false,
         startsAfterGap: series.gapBefore?.[i] === 1, endsBeforeGap: false,
       };
@@ -52,6 +56,7 @@ export function slowEpisodes({ series, summary, selection }: CaptureAnalysis): S
     active.totalTimeMs += ms;
     if (ms > active.longestFrameMs) { active.longestFrameMs = ms; active.longestFrame = frame; }
     active.lastSourceLine = series.sourceLine?.[i] ?? null;
+    if (series.sourceSample) active.lastSourceSample = series.sourceSample[i]!;
     active.touchesSelectionEnd = i === series.frameCount - 1 && selection.excludedAfter > 0;
     active.endsBeforeGap = series.gapBefore?.[i + 1] === 1;
   }

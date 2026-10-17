@@ -1,0 +1,10 @@
+{
+  "upstreamCommit": "1b5f53da907f0a1de6fde2b75ff8267c79b08b2b",
+  "sourceFiles": 19,
+  "sdk": "10.0.402",
+  "newtonsoftJson": "13.0.3",
+  "bytes": 2394,
+  "sha256": "301dfc9fcfa6f42d6796473273260abf9479e8573284ad30125571448562f47d",
+  "byteIdenticalToRetainedFixture": true,
+  "inputKind": "controlled synthetic data serialized by upstream classes; no Windows client or game recording"
+}

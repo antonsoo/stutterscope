@@ -130,10 +130,8 @@ and
 plus `FileRecordInfo.cs` (`HEADER_MARKER = "//"`) for the metadata-block
 format.
 
-CapFrameX's native save format is JSON, but its structure isn't documented
-anywhere we could verify against an authoritative source, so — per the
-brief for this project — we parse its **CSV export** instead, which the app
-itself describes as giving "a better view on the raw PresentMon data."
+This section describes the **CSV export**. Native saved sessions are supported
+separately as `capframex-json`, with one saved recording selected at a time.
 
 A CapFrameX CSV optionally starts with a `//Key=Value` metadata block, one
 line per field:
@@ -161,6 +159,63 @@ CapFrameX's "without comment" export option is used, its CSV is
 byte-for-byte the same schema as an OCAT CSV. There is no reliable way to
 tell the two apart from content alone in that case; we detect CapFrameX by
 the `//` metadata block and fall back to OCAT otherwise.
+
+## CapFrameX native JSON
+
+Native Windows saved sessions use `Info` and `Runs[]`; each run has a
+`CaptureData` object containing parallel sample arrays. The parser follows
+CapFrameX's own [Session](https://github.com/CXWorld/CapFrameX/blob/1b5f53da907f0a1de6fde2b75ff8267c79b08b2b/source/CapFrameX.Data.Session/Classes/Session.cs),
+[SessionRun](https://github.com/CXWorld/CapFrameX/blob/1b5f53da907f0a1de6fde2b75ff8267c79b08b2b/source/CapFrameX.Data.Session/Classes/SessionRun.cs),
+[SessionCaptureData](https://github.com/CXWorld/CapFrameX/blob/1b5f53da907f0a1de6fde2b75ff8267c79b08b2b/source/CapFrameX.Data.Session/Classes/SessionCaptureData.cs)
+and [RecordManager writer/normalizer](https://github.com/CXWorld/CapFrameX/blob/1b5f53da907f0a1de6fde2b75ff8267c79b08b2b/source/CapFrameX.Data/RecordManager.cs).
+The [recording study](../studies/native-json/README.md) checks five unmodified
+public 1.7.0.4 game captures against independently calculated results. The
+newer writer's structure is source-verified; these older recordings do not
+establish compatibility with every later client or Linux capture format.
+
+| Saved field | Interpretation |
+| --- | --- |
+| `CaptureData.MsBetweenPresents` | Present frame duration in milliseconds; required |
+| `CaptureData.Dropped` | Only JSON `true` / `false` establish a saved outcome; other entries are unknown |
+| `CaptureData.CpuActive`, `GpuActive` | Optional CPU/GPU busy durations, milliseconds |
+| `CaptureData.MsUntilDisplayed` | Optional display latency, milliseconds |
+| `Info.ProcessName`, `Info.AppVersion` | Application and saved version labels |
+| `CaptureData.TimeInSeconds` | Alignment checked when populated; not used as native clock evidence |
+
+Run selection is one-based: the first saved recording is the default;
+`--capture-run 2` or the browser's saved-recording picker selects another.
+`compare` accepts `--a-capture-run` / `--b-capture-run`. Recordings are never
+concatenated, and `--stream` does not apply to a saved session. The selected
+recording starts its accumulated-duration axis at zero, even when CapFrameX's
+stored times have an aggregation offset.
+
+Only finite, non-negative JSON numbers are frame durations. Numeric strings,
+`null`, booleans, negative numbers and strings such as `"NaN"` are skipped
+without shifting parallel telemetry; the next retained sample begins a source
+gap. Optional durations use the same number rule, with invalid entries kept as
+unknown observations. Null, missing and empty optional arrays mean no channel.
+Every populated consumed array must match `MsBetweenPresents` in length;
+misalignment stops import. These are saved values: a zero-filled native array
+cannot reveal whether the original capture actually measured that channel.
+
+Original coordinates use the selected run's full path, for example
+`Runs[1].CaptureData.MsBetweenPresents[17]`. Array indices are **zero-based**;
+they are separate from one-based retained frame numbers and CSV line numbers.
+Intervals retain original array indices. JSON reports retain the selected run,
+all saved-run sample counts, selected sample range, gap coordinates and episode
+indices; the frame inspector exposes the same evidence. JSON objects must have
+unique member names, including escaped aliases; ambiguous documents stop import.
+
+Native JSON is buffered and parsed in the existing cancellable worker, limited
+to **64 MiB of input bytes** and 128 nesting levels. It bypasses the CSV line
+limit so a real minified native file can open. CSV keeps its streaming parser.
+UTF-8 and BOM-marked UTF-16 remain supported. No arbitrary JSON column mapping,
+compressed archive, cloud-session envelope or Linux-native schema is implied.
+Sensor/RTSS arrays, PC-latency and display-change durations are not substituted
+for present frame times. Saved `TimeInSeconds` may be synthesized when runs are
+cut or aggregated, so the CSV native-clock cross-check is not applied here.
+Adjacent retained array indices support pacing within the selected run; skipped
+entries split it. Missing frames, elapsed gaps and hardware causes stay unknown.
 
 ## OCAT
 

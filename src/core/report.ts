@@ -5,9 +5,9 @@ import { selectFrames } from "./analysis.ts";
 import { slowEpisodes } from "./episodes.ts";
 
 export function buildJsonReport(series: FrameSeries, summary: MetricsSummary, options: StutterOptions, mapping?: GenericMapping, selection = selectFrames(series).selection) {
-  const gaps: Array<{ beforeFrame: number; sourceLine: number | null }> = [];
+  const gaps: Array<{ beforeFrame: number; sourceLine: number | null; sourceSample?: number }> = [];
   for (let i = 0; i < series.frameCount; i++) {
-    if (series.gapBefore?.[i] === 1) gaps.push({ beforeFrame: selection.firstFrameIndex + i + 1, sourceLine: series.sourceLine?.[i] ?? null });
+    if (series.gapBefore?.[i] === 1) gaps.push({ beforeFrame: selection.firstFrameIndex + i + 1, sourceLine: series.sourceLine?.[i] ?? null, ...(series.sourceSample ? { sourceSample: series.sourceSample[i]! } : {}) });
   }
   return {
     tool: "stutterscope",
@@ -17,6 +17,7 @@ export function buildJsonReport(series: FrameSeries, summary: MetricsSummary, op
       fileName: series.meta.sourceFileName,
       format: series.meta.format,
       application: series.meta.application ?? null,
+      ...(series.meta.nativeCapture ? { nativeCapture: { ...series.meta.nativeCapture, runs: series.meta.nativeCapture.runs.map(run => ({ ...run })) } } : {}),
       ...(series.meta.streams
         ? { stream: series.meta.selectedStream, streams: series.meta.streams.map((stream) => ({ ...stream })) }
         : {}),
@@ -33,8 +34,8 @@ export function buildJsonReport(series: FrameSeries, summary: MetricsSummary, op
       genericMapping: mapping ? { ...mapping } : null,
       timingEvidence: series.meta.timingEvidence ? { ...series.meta.timingEvidence } : null,
     },
-    analysis: { stutterOptions: { ...options }, selection: { ...selection, requested: selection.requested ? { ...selection.requested } : null }, stutterIndexBasis: "selected-series-zero-based",
-      continuity: { basis: "source-row-evidence", frameNumberBasis: "source-selected-stream-one-based", gaps } },
+    analysis: { ...(series.sourceSample ? { sourceSampleRange: { first: series.sourceSample[0]!, last: series.sourceSample[series.frameCount - 1]! } } : {}), stutterOptions: { ...options }, selection: { ...selection, requested: selection.requested ? { ...selection.requested } : null }, stutterIndexBasis: "selected-series-zero-based",
+      continuity: { basis: series.sourceSample ? "source-sample-evidence" : "source-row-evidence", frameNumberBasis: series.sourceSample ? "selected-native-recording-retained-frame-one-based" : "source-selected-stream-one-based", gaps } },
     episodes: slowEpisodes({ series, summary, selection }),
     metrics: summaryForJson(summary),
   };

@@ -31,6 +31,8 @@ const PAGE_SIZE = 20;
 
 export function mountEpisodes(container: HTMLElement, analysis: CaptureAnalysis, onZoom: (start: number, end: number) => void): void {
   const episodes = slowEpisodes(analysis);
+  const native = analysis.series.meta.nativeCapture;
+  const coordinateLabel = native ? "JSON indices (zero-based)" : "CSV lines";
   let page = 0;
   let selected: number | null = null;
   let order = "time";
@@ -51,11 +53,11 @@ export function mountEpisodes(container: HTMLElement, analysis: CaptureAnalysis,
         <label for="episode-order">Order <select id="episode-order"><option value="time">Capture order</option><option value="worst">Longest frame first</option></select></label>
       </div>
       ${filtered.length ? `<div class="episode-table-scroll" tabindex="0" role="region" aria-label="Slow-frame episodes"><table class="delta-table episode-table">
-        <thead><tr><th scope="col">Time (s)</th><th scope="col">Frames</th><th scope="col">Longest</th><th scope="col">Flags</th><th scope="col">CSV lines</th><th scope="col">Evidence</th></tr></thead>
+        <thead><tr><th scope="col">Time (s)</th><th scope="col">Frames</th><th scope="col">Longest</th><th scope="col">Flags</th><th scope="col">${coordinateLabel}</th><th scope="col">Evidence</th></tr></thead>
         <tbody>${filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE).map(({ episode: e, index }) => `<tr${selected === index ? ' class="selected-episode"' : ""}>
           <td class="num"><span>${fmtMs(e.startSec, 4)}</span><span>–${fmtMs(e.endSec, 4)}</span></td><td class="num">${fmtInt(e.firstFrame)}–${fmtInt(e.lastFrame)}</td>
           <td class="num">${fmtMs(e.longestFrameMs, 2)} ms</td><td>${e.stutterFrames ? `${fmtInt(e.stutterFrames)} stutter` : ""}${e.stutterFrames && e.hitchFrames ? " / " : ""}${e.hitchFrames ? `${fmtInt(e.hitchFrames)} hitch` : ""}</td>
-          <td class="num">${e.firstSourceLine === null ? "Unavailable" : `${fmtInt(e.firstSourceLine)}–${fmtInt(e.lastSourceLine!)}`}</td>
+          <td class="num">${e.firstSourceSample !== undefined ? `${fmtInt(e.firstSourceSample)}–${fmtInt(e.lastSourceSample!)}` : e.firstSourceLine === null ? "Unavailable" : `${fmtInt(e.firstSourceLine)}–${fmtInt(e.lastSourceLine!)}`}</td>
           <td><button type="button" class="btn small" id="inspect-episode-${index}" data-episode="${index}" aria-controls="episode-detail" aria-expanded="${selected === index}" aria-label="Inspect frames ${e.firstFrame} to ${e.lastFrame}">Inspect</button></td>
         </tr>`).join("")}</tbody></table></div>` : `<p class="episode-empty">${episodes.length ? "No hitches exceed the applied threshold in this interval." : "No frames meet the applied stutter or hitch thresholds in this interval."}</p>`}
       <div class="episode-paging"><button class="btn small" type="button" id="episodes-previous" ${page === 0 ? "disabled" : ""}>Previous episodes</button>
@@ -88,15 +90,15 @@ export function mountEpisodes(container: HTMLElement, analysis: CaptureAnalysis,
     const detail = container.querySelector<HTMLElement>("#episode-detail")!;
     detail.innerHTML = `<div class="episode-detail"><h3>Evidence around frame ${fmtInt(episode.longestFrame)}</h3>
       <p>Longest frame: <strong>${fmtMs(episode.longestFrameMs, 3)} ms</strong>. Episode covers ${fmtMs(episode.totalTimeMs, 3)} ms across ${fmtInt(episode.frameCount)} flagged ${episode.frameCount === 1 ? "frame" : "frames"}.</p>
-      <p>Source frames ${fmtInt(episode.firstFrame)}–${fmtInt(episode.lastFrame)}${episode.firstSourceLine === null ? "; CSV lines unavailable" : `; CSV lines ${fmtInt(episode.firstSourceLine)}–${fmtInt(episode.lastSourceLine!)}`}.</p>
+      <p>Source frames ${fmtInt(episode.firstFrame)}–${fmtInt(episode.lastFrame)}${episode.firstSourceSample !== undefined ? `; native JSON indices ${episode.firstSourceSample}–${episode.lastSourceSample} (zero-based)` : episode.firstSourceLine === null ? "; CSV lines unavailable" : `; CSV lines ${fmtInt(episode.firstSourceLine)}–${fmtInt(episode.lastSourceLine!)}`}.</p>
       ${episode.startsAfterGap || episode.endsBeforeGap ? '<p class="hint">A source gap interrupts this episode. Missing frame counts and durations are unknown.</p>' : ""}
       ${episode.touchesSelectionStart || episode.touchesSelectionEnd ? '<p class="hint">This episode touches a selection boundary and may continue outside the interval.</p>' : ""}
-      <p class="hint">Up to five neighboring frames on each side, within the analyzed interval. Line numbers refer to the original file; intervening lines may belong to another process or be skipped.</p>
+      <p class="hint">Up to five neighboring frames on each side, within the analyzed interval. ${native ? `Indices refer to ${escapeText(native.frameTimePath)} in the saved file; skipped entries are not renumbered.` : "Line numbers refer to the original file; intervening lines may belong to another process or be skipped."}</p>
       <button class="btn small" type="button" id="zoom-episode">Show episode on trace</button>
       <div class="episode-table-scroll" tabindex="0" role="region" aria-label="Frame evidence around longest frame"><table class="delta-table frame-evidence"><thead><tr>
-        <th scope="col">Frame</th><th scope="col">CSV line</th><th scope="col">End (s)</th><th scope="col">Time (ms)</th><th scope="col">Flags</th>${channels.map(({ label }) => `<th scope="col">${label}</th>`).join("")}</tr></thead>
+        <th scope="col">Frame</th><th scope="col">${native ? "JSON index" : "CSV line"}</th><th scope="col">End (s)</th><th scope="col">Time (ms)</th><th scope="col">Flags</th>${channels.map(({ label }) => `<th scope="col">${label}</th>`).join("")}</tr></thead>
         <tbody>${Array.from({ length: end - from }, (_, n) => n + from).map((i) => `<tr${i === worstIndex ? ' class="selected-episode"' : ""}>
-          <th scope="row">${fmtInt(selection.firstFrameIndex + i + 1)}</th><td>${series.sourceLine?.[i] ?? "Unavailable"}</td><td>${fmtMs(series.timeSec[i]!, 6)}</td><td>${fmtMs(series.frameTimeMs[i]!, 3)}</td>
+          <th scope="row">${fmtInt(selection.firstFrameIndex + i + 1)}</th><td>${series.sourceSample?.[i] ?? series.sourceLine?.[i] ?? "Unavailable"}</td><td>${fmtMs(series.timeSec[i]!, 6)}</td><td>${fmtMs(series.frameTimeMs[i]!, 3)}</td>
           <td>${[series.gapBefore?.[i] === 1 ? "Gap before" : "", summary.stutter.isStutter[i] === 1 ? "Stutter" : "", series.frameTimeMs[i]! > summary.stutter.hitchThresholdMs ? "Hitch" : ""].filter(Boolean).join(" / ") || "—"}</td>
           ${channels.map(({ key }) => `<td>${value(series.channels[key], i)}</td>`).join("")}</tr>`).join("")}</tbody></table></div></div>`;
     detail.querySelector("#zoom-episode")!.addEventListener("click", () => {

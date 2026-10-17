@@ -4,12 +4,15 @@ import { ParseError, type ParseProgress, type ProgressCallback, type StreamingPa
 
 /**
  * Drives a `StreamingParser` from a `Blob`/`File` without ever materializing
- * the whole file as an array of lines: chunks come off `file.stream()`,
+ * the whole CSV as an array of lines: chunks come off `file.stream()`,
  * get decoded, and are split into lines on the fly by `LineScanner`. Peak
  * extra memory is one chunk plus whatever the parser itself accumulates
  * (its typed-array channel buffers), not a copy of the file as strings.
  *
- * This is what makes a 30-minute / 430k-row capture tractable in a Web
+ * Bounded whole-document parsers (native JSON) receive raw decoded chunks
+ * instead of CSV lines and materialize the document at EOF.
+ *
+ * Streaming CSV is what makes a 30-minute / 430k-row capture tractable in a Web
  * Worker: the only thing held in full is the final numeric output.
  */
 export async function parseFileStreaming(
@@ -31,7 +34,7 @@ export async function parseFileStreaming(
 
   const report = (force: boolean) => {
     if (!onProgress) return;
-    if (!force && rowsParsed - lastReportedRows < 5000) return;
+    if (!force && !parser.pushChunk && rowsParsed - lastReportedRows < 5000) return;
     lastReportedRows = rowsParsed;
     const progress: ParseProgress = { rowsParsed, bytesRead, totalBytes };
     onProgress(progress);
@@ -43,7 +46,8 @@ export async function parseFileStreaming(
       if (done) break;
       bytesRead += value.byteLength;
       const chunk = decodeChunk(decoder, value, true);
-      for (const line of scanner.feed(chunk)) {
+      if (parser.pushChunk) parser.pushChunk(chunk);
+      else for (const line of scanner.feed(chunk)) {
         if (line.length > 0) {
           parser.pushLine(line, lineIndex);
           rowsParsed++;
@@ -53,7 +57,8 @@ export async function parseFileStreaming(
       report(false);
     }
     const tail = decodeChunk(decoder); // flush and validate any pending multi-byte sequence
-    if (tail.length > 0) {
+    if (tail.length > 0 && parser.pushChunk) parser.pushChunk(tail);
+    else if (tail.length > 0) {
       for (const line of scanner.feed(tail)) {
         if (line.length > 0) {
           parser.pushLine(line, lineIndex);
@@ -62,7 +67,7 @@ export async function parseFileStreaming(
         lineIndex++;
       }
     }
-    for (const line of scanner.finish()) {
+    if (!parser.pushChunk) for (const line of scanner.finish()) {
       if (line.length > 0) {
         parser.pushLine(line, lineIndex);
         rowsParsed++;
@@ -101,6 +106,7 @@ export function requireFrames(series: FrameSeries): FrameSeries {
 
 /** Synchronous variant over an in-memory string, used by tests and the CLI. */
 export function parseTextSync(text: string, parser: StreamingParser, fileName: string): FrameSeries {
+  if (parser.pushChunk) { parser.pushChunk(text); return parser.finish(fileName); }
   const scanner = new LineScanner();
   let lineIndex = 0;
   for (const line of scanner.feed(text)) {

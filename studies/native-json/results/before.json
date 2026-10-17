@@ -1,0 +1,102 @@
+{
+  "sourceCommit": "336993f5ac07bbdb9f650488676977e497374205",
+  "sourceDirty": false,
+  "oracle": "Python standard-library JSON arrays, math.fsum, independent type-7 percentiles and adjacent differences; no analyzer imports",
+  "files": [
+    {
+      "file": "CapFrameX-ACValhalla.exe-1.json",
+      "sha256": "cb21d1729e4d59bb2dea67e8b8e8cd20dfe643c473bf6641422b5c0a37f9127d",
+      "bytes": 4939358,
+      "appVersion": "1.7.0.4",
+      "expected": {
+        "frameCount": 58521,
+        "durationSec": 600.0086544999999,
+        "averageFps": 97.53359315919668,
+        "p99": 15.370360000000014,
+        "p999": 20.036900000000102,
+        "masdMs": 0.8254155775803145,
+        "droppedCount": 0
+      },
+      "exitCode": 1,
+      "cliSeconds": 0.1545891389832832,
+      "error": "Could not parse CapFrameX-ACValhalla.exe-1.json: line 1: CSV field 1: unexpected quote in an unquoted field; quote the entire field and double any literal quotes",
+      "matches": false
+    },
+    {
+      "file": "CapFrameX-Cyberpunk2077.exe.json",
+      "sha256": "b3bd9c932a44708801ef636688627c00dea220a9180c4886496673a589d995b9",
+      "bytes": 2473990,
+      "appVersion": "1.7.0.4",
+      "expected": {
+        "frameCount": 25294,
+        "durationSec": 600.0193455000001,
+        "averageFps": 42.155307474165426,
+        "p99": 29.179419,
+        "p999": 31.98787110000008,
+        "masdMs": 1.4613664334005456,
+        "droppedCount": 0
+      },
+      "exitCode": 1,
+      "cliSeconds": 0.16674067702842876,
+      "error": "Could not parse CapFrameX-Cyberpunk2077.exe.json: line 1: CSV field 1: unexpected quote in an unquoted field; quote the entire field and double any literal quotes",
+      "matches": false
+    },
+    {
+      "file": "CapFrameX-DOOMEternalx64vk.exe-1.json",
+      "sha256": "47c7e32c62d4aa5c312a5e47719ed35db9e810048b58c785bdde6021eb234e3d",
+      "bytes": 13341377,
+      "appVersion": "1.7.0.4",
+      "expected": {
+        "frameCount": 161992,
+        "durationSec": 1800.0101775,
+        "averageFps": 89.99504670856228,
+        "p99": 17.038135999999998,
+        "p999": 33.87121889999997,
+        "masdMs": 0.7037667740800415,
+        "droppedCount": 54741
+      },
+      "exitCode": 1,
+      "cliSeconds": 0.156913748010993,
+      "error": "Could not parse CapFrameX-DOOMEternalx64vk.exe-1.json: line 1: CSV field 1: unexpected quote in an unquoted field; quote the entire field and double any literal quotes",
+      "matches": false
+    },
+    {
+      "file": "CapFrameX-DOOMEternalx64vk.exe-2.json",
+      "sha256": "7d53914bbc04d5d3fc6c22d77a3796874b1694651ae69e3fd2d0441708d2e562",
+      "bytes": 28028668,
+      "appVersion": "1.7.0.4",
+      "expected": {
+        "frameCount": 382323,
+        "durationSec": 1800.0080590999999,
+        "averageFps": 212.40071568966232,
+        "p99": 8.697078000000003,
+        "p999": 10.454942400000057,
+        "masdMs": 0.8378366915845805,
+        "droppedCount": 274864
+      },
+      "exitCode": 1,
+      "cliSeconds": 0.22675804694881663,
+      "error": "Could not parse CapFrameX-DOOMEternalx64vk.exe-2.json: line 1: CSV field 1: unexpected quote in an unquoted field; quote the entire field and double any literal quotes",
+      "matches": false
+    },
+    {
+      "file": "CapFrameX-ROLLERDROME.exe-1.json",
+      "sha256": "3a3f9456aa3ecfd0ed7af2008d142c6d513ea38f5cccf815aaf602d08a4a55b8",
+      "bytes": 11788599,
+      "appVersion": "1.7.0.4",
+      "expected": {
+        "frameCount": 150650,
+        "durationSec": 400.8539232,
+        "averageFps": 375.82269071328375,
+        "p99": 4.355151000000001,
+        "p999": 5.899321900000167,
+        "masdMs": 0.5514909425220214,
+        "droppedCount": 0
+      },
+      "exitCode": 1,
+      "cliSeconds": 0.16531501896679401,
+      "error": "Could not parse CapFrameX-ROLLERDROME.exe-1.json: line 1: CSV field 1: unexpected quote in an unquoted field; quote the entire field and double any literal quotes",
+      "matches": false
+    }
+  ]
+}

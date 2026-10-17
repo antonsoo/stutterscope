@@ -84,7 +84,7 @@ function renderDropzone(): void {
     <div class="bracket-panel dropzone" id="dropzone">
       <span class="bracket-tl"></span><span class="bracket-tr"></span>
       <h1>Drop in a capture. See the stutter.</h1>
-      <p>PresentMon, FrameView, CapFrameX, MangoHud, and OCAT CSVs are auto-detected. Everything runs locally — nothing leaves your browser.</p>
+      <p>PresentMon, FrameView, CapFrameX, MangoHud, and OCAT CSVs, plus native CapFrameX JSON recordings, are auto-detected. Everything runs locally — nothing leaves your browser.</p>
       <div class="formats">
         ${SOURCE_FORMATS.filter((f) => f !== "generic")
           .map((f) => `<span class="format-chip">${FORMAT_LABELS[f]}</span>`)
@@ -93,11 +93,11 @@ function renderDropzone(): void {
       </div>
       <div class="dropzone-cta">
         <button class="btn primary" type="button" id="choose-file-btn">Choose file&hellip;</button>
-        <input type="file" id="file-input" accept=".csv,.txt" />
+        <input type="file" id="file-input" accept=".csv,.txt,.json" />
       </div>
       <div class="samples-row">
         or load a synthetic sample:
-        ${SOURCE_FORMATS.map((f) => `<button class="sample-link" data-format="${f}" type="button">${FORMAT_LABELS[f]}</button>`).join(" ")}
+        ${SOURCE_FORMATS.filter(f => f !== "capframex-json").map((f) => `<button class="sample-link" data-format="${f}" type="button">${FORMAT_LABELS[f]}</button>`).join(" ")}
       </div>
       <div class="captured-example"><strong>Recorded browser experiment</strong>
         <p>Two measured animation runs with known blocking work. Inspect the scene separately from startup and follow a hitch to its CSV line.</p>
@@ -281,6 +281,7 @@ async function loadFile(
   stream?: string,
   request = beginImport(slot),
   range: AnalysisRange | null = null,
+  captureRun?: number,
 ): Promise<void> {
   if (!isCurrent(request)) return;
   const options = { ...stutterOptions };
@@ -296,7 +297,7 @@ async function loadFile(
     const outcome = await client.parse(slot, file, {
       formatOverride,
       genericMapping,
-      stream,
+      stream, captureRun,
       stutterOptions: options, range,
       onProgress: (p: ParseProgress) => {
         if (!isCurrent(request)) return;
@@ -319,11 +320,16 @@ async function loadFile(
     setStatus("", slot);
     runs[slot] = {
       response: outcome.response, file, stutterOptions: options, rangeDraft: { start: String(range?.startSec ?? 0), end: range?.endSec == null ? "" : String(range.endSec) },
-      source: { file, formatOverride: outcome.response.series.meta.format, genericMapping, stream: outcome.response.series.meta.selectedStream ?? stream },
+      source: { file, formatOverride: outcome.response.series.meta.format, genericMapping, stream: outcome.response.series.meta.selectedStream ?? stream, captureRun: outcome.response.series.meta.nativeCapture?.selectedRun ?? captureRun },
     };
     renderWorkspace();
   } catch (err) {
-    if (isCurrent(request)) showImportError(slot, `Could not parse ${file.name}: ${errorMessage(err)}`, () => void loadFile(slot, file, formatOverride, genericMapping, stream, undefined, range));
+    if (isCurrent(request)) {
+      const retainedRun = runs[slot]?.response.series.meta.nativeCapture?.selectedRun;
+      const select = document.getElementById(`capture-run-${slot}`) as HTMLSelectElement | null;
+      if (select && retainedRun !== undefined) select.value = String(retainedRun);
+      showImportError(slot, `Could not parse ${file.name}: ${errorMessage(err)}`, () => void loadFile(slot, file, formatOverride, genericMapping, stream, undefined, range, captureRun));
+    }
   } finally { finishImport(request); }
 }
 
@@ -402,6 +408,8 @@ function renderWorkspace(): void {
       ${warningsNote(a)}
       ${timingNote(a, "Run A")}
       ${runs.b ? timingNote(runs.b, "Run B") : ""}
+      ${nativeCaptureNote("a", a)}
+      ${runs.b ? nativeCaptureNote("b", runs.b) : ""}
       ${streamNote("a", a)}
       ${hasB && runs.b ? streamNote("b", runs.b) : ""}
       ${hasB && runs.b ? warningsNote(runs.b, "Run B") : ""}
@@ -525,7 +533,8 @@ function warningsNote(run: RunState, label = "Run A"): string {
   // The parser describes the first skipped rows and counts the rest.
   const listed = warnings.slice(0, MAX_LISTED_WARNINGS);
   const more = skippedRows > listed.length ? `\n… and ${fmtInt(skippedRows - listed.length)} more` : "";
-  const rows = skippedRows === 1 ? "1 row was skipped" : `${fmtInt(skippedRows)} rows were skipped`;
+  const noun = run.response.series.sourceSample ? "sample" : "row";
+  const rows = skippedRows === 1 ? `1 ${noun} was skipped` : `${fmtInt(skippedRows)} ${noun}s were skipped`;
   return `<details class="notes warn-note"><summary>${label}: ${rows}: bad or missing frame time</summary><pre>${listed.map(escapeHtml).join("\n")}${more}</pre></details>`;
 }
 
@@ -544,6 +553,19 @@ function timingNote(run: RunState, label: string): string {
     <p>${escapeHtml(evidence.note)}</p><p>Compared intervals: ${fmtInt(evidence.comparedIntervals)}.
     Elapsed span: ${evidence.observedSpanSec === null ? "unavailable" : fmtMs(evidence.observedSpanSec, 6) + " s"}.
     Recorded frame span: ${evidence.recordedFrameSpanSec === null ? "unavailable" : fmtMs(evidence.recordedFrameSpanSec, 6) + " s"}.</p></details>`;
+}
+
+/** Saved recordings are distinct from process/swap-chain present streams. */
+function nativeCaptureNote(slot: "a" | "b", run: RunState): string {
+  const native = run.response.series.meta.nativeCapture;
+  if (!native) return "";
+  return `<div class="notes stream-note">
+    <label for="capture-run-${slot}">Run ${slot.toUpperCase()}: saved CapFrameX recording</label>
+    <select id="capture-run-${slot}" class="capture-run-select" data-slot="${slot}">
+      ${native.runs.map(r => `<option value="${r.run}"${r.run === native.selectedRun ? " selected" : ""}>Recording ${r.run} of ${native.runs.length}: ${fmtInt(r.sampleCount)} source samples</option>`).join("")}
+    </select>
+    <span class="stream-why">${escapeHtml(native.note)} Sample indices in the inspector and JSON reports are zero-based.</span>
+  </div>`;
 }
 
 /** A present-hook capture may hold multiple streams; say which is analyzed. */
@@ -671,7 +693,7 @@ function wireWorkspaceControls(): void {
   document.getElementById("add-compare-btn")?.addEventListener("click", () => {
     const input = document.createElement("input");
     input.type = "file";
-    input.accept = ".csv,.txt";
+    input.accept = ".csv,.txt,.json";
     input.addEventListener("change", () => {
       const file = input.files?.[0];
       if (file) void loadFile("b", file);
@@ -687,6 +709,14 @@ function wireWorkspaceControls(): void {
     runs.b = undefined;
     renderWorkspace();
   });
+
+  for (const select of document.querySelectorAll<HTMLSelectElement>(".capture-run-select")) {
+    select.addEventListener("change", () => {
+      const slot = select.dataset.slot === "b" ? "b" : "a";
+      const run = runs[slot];
+      if (run) void loadFile(slot, run.file, run.source.formatOverride, undefined, undefined, undefined, null, Number(select.value));
+    });
+  }
 
   for (const select of document.querySelectorAll<HTMLSelectElement>(".stream-select")) {
     select.addEventListener("change", () => {

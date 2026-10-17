@@ -737,7 +737,8 @@ dialog .dialog-actions {
   background: var(--bg-panel);
   color: var(--text-dim);
 }
-.stream-select {
+.stream-select,
+.capture-run-select {
   max-width: 100%;
   background: var(--bg-panel-raised);
   border: 1px solid var(--border-bright);

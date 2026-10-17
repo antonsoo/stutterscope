@@ -12,6 +12,7 @@ export interface ParseRequest {
   genericMapping?: GenericMapping;
   /** Which present stream to analyse; see `matchStream` in core/streams.ts. */
   stream?: string;
+  captureRun?: number;
   stutterOptions?: StutterOptions;
   range?: AnalysisRange | null;
 }

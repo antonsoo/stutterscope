@@ -1,0 +1,26 @@
+{
+  "Hash": "synthetic-stutterscope-session",
+  "Info": {"AppVersion": "1.9.1.5", "ProcessName": "synthetic-scene.exe", "Comment": "Synthetic format fixture, not a recorded game benchmark"},
+  "Runs": [
+    {
+      "Hash": "synthetic-first-recording",
+      "CaptureData": {
+        "TimeInSeconds": [0, 0.01, 0.11, 0.13, 0.23, 0.33],
+        "MsBetweenPresents": [10, 100, "NaN", 100, 100, 10],
+        "Dropped": [false, true, false, "unknown", false, null],
+        "CpuActive": [2, 3, 5, "NaN", 8, 4],
+        "GpuActive": [4, 5, 3, 7, 4, 6],
+        "MsUntilDisplayed": [8, 0, 6, null, 15, 9]
+      },
+      "SensorData": null,
+      "SensorData2": null,
+      "RTSSFrameTimes": [999, 999, 999]
+    },
+    {
+      "Hash": "synthetic-second-recording",
+      "CaptureData": {"TimeInSeconds": [0, 0.02, 0.04, 0.06], "MsBetweenPresents": [20, 20, 20, 20], "Dropped": [], "CpuActive": null},
+      "SensorData": null,
+      "SensorData2": null
+    }
+  ]
+}

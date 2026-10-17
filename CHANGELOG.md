@@ -8,6 +8,17 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 Changes below are in source and have not been released as an npm package.
 
+### Native CapFrameX saved sessions
+
+- Import Windows native JSON without requiring CSV conversion. Keep recordings
+  separate, with browser selection and CLI `--capture-run` / per-comparison flags.
+- Retain original sample indices through skipped durations, intervals, source gaps,
+  episode inspection and downloaded evidence. Validate parallel array alignment
+  and duplicate JSON members before analysis; preserve unknown telemetry.
+- Buffer JSON in the cancellable parser worker with a 64 MiB input limit. CSV
+  keeps its streaming path. Five pinned game recordings and a separately compiled
+  upstream C# serializer exercise are documented in `studies/native-json/`.
+
 ### Native present-clock continuity
 
 - Recognize discontinuities in native `TimeInSeconds` against the current

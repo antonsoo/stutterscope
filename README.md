@@ -17,7 +17,7 @@ Six unmodified upstream capture files also stop reporting an invented zero.
 These source changes have not been released to npm.
 
 **In the source checkout and live demo:** measure a selected interval in each run, inspect
-slow-frame episodes back to their original CSV lines, and export both runs together.
+slow-frame episodes back to their original CSV lines or native JSON sample indices, and export both runs together.
 The app's **Open recorded comparison** loads a controlled browser capture with four
 measured scene hitches in A and none in B. This is a local animation experiment,
 not a game benchmark. [Walkthrough and exact selection rules](docs/interval-analysis.md).
@@ -54,8 +54,8 @@ already record frame timings when configured for per-frame capture. The gap is i
 the analysis: it's mostly Windows desktop apps, "1% low" means two different things depending which
 tool computed it and nobody tells you which, and there's no fast way to
 drop two runs side by side and see what actually changed. stutterscope is a
-single-page, in-browser analyzer that reads six real capture formats plus
-any CSV, computes stutter/1%-low/pacing metrics with documented formulas,
+single-page, in-browser analyzer that reads six capture-tool CSV formats, native
+CapFrameX JSON sessions and generic CSV, computes stutter/1%-low/pacing metrics with documented formulas,
 and never uploads the file anywhere. Parsing and metrics run in a Web Worker;
 charts render locally in your browser.
 
@@ -82,6 +82,13 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
 ```
 
 ## Features
+
+- **Native CapFrameX JSON (source checkout):** open saved recordings directly,
+  select one run without concatenating captures, and follow slow frames to their
+  original array indices. Five unchanged public game captures now import with
+  independent metric checks; JSON/Markdown exports retain the selected recording.
+  [Reproduction, source schema and limits](studies/native-json/README.md).
+  The npm 0.2.5 release predates this feature.
 
 - **Native clock continuity (source and demo):** filtered presents can leave valid CSV
   rows that are no longer adjacent observations. Compare their native clocks,
@@ -154,7 +161,7 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
   details omitted by the parser's retention limit. Nothing is
   uploaded at any point, and the page's Content-Security-Policy
   (`connect-src 'self'`) has the browser enforce that.
-- **Fast on real-sized captures**: parsing streams off the file in a Web
+- **Fast on real-sized CSV captures**: parsing streams off the file in a Web
   Worker with a hand-rolled incremental line scanner (no `split()` on a
   430k-line file, no per-row object allocation) — see
   [How it works](#how-it-works).
@@ -169,7 +176,17 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
 
 Imports show progress and can be cancelled. Choosing another file or starting
 a new session stops the previous import; errors offer a retry. Run A and run B
-keep independent captures and process selections.
+keep independent captures and process selections. Native CapFrameX JSON shows a
+saved-recording picker for each slot. Its first recording is selected by default;
+changing it resets that slot's interval. JSON is limited to 64 MiB and recordings
+stay separate. From a source checkout, the built CLI supports:
+
+```bash
+node dist-cli/cli/index.js summary saved-capture.json --capture-run 2 --events
+node dist-cli/cli/index.js compare saved-capture.json saved-capture.json --a-capture-run 1 --b-capture-run 2 --json
+```
+
+`npm ci` builds that CLI. The npm registry release predates native JSON support.
 
 Edit the detection controls, then choose **Apply settings** (or press Enter).
 Both loaded reports update together after successful calculation. Invalid
@@ -221,7 +238,7 @@ compares the CLI and browser exports with adjacent-row arithmetic.
 `src/core/parsers/`. Detection reads the first chunk of the file and scores
 every format by header fingerprint (`src/core/parsers/index.ts`); the
 highest-confidence match wins, and generic CSV is the always-available
-fallback. Parsing itself never materializes the file as an array of line
+fallback. CSV parsing never materializes the file as an array of line
 strings: `src/core/stream.ts` reads the `File` in chunks via
 `file.stream()`, decodes incrementally, and a small `LineScanner`
 (`src/core/csv.ts`) buffers partial lines across chunk boundaries. Each
@@ -234,6 +251,11 @@ One 2026-10-07 measurement on Node 24.21.0 (14 vCPU WSL2 Linux, about
 CSV generation and browser rendering; timings vary with machine load. The
 [verification record](docs/verification-intervals-2026-10-07.md) gives the command
 and a second, busier observation (`tests/core/performance.test.ts`).
+
+Native CapFrameX JSON uses the same file decoder and worker, but buffers the
+complete document with a 64 MiB input limit. It validates parallel sample arrays
+and retains one saved recording; CSV remains streamed. See
+[the format contract](docs/formats.md#capframex-native-json).
 
 **Off the main thread.** `src/worker/parse.worker.ts` owns parsing and
 metrics; the UI (`src/ui/`) only ever talks to it through a small
@@ -301,7 +323,7 @@ silently choosing one of two `FrameTime` columns; it now identifies the ambiguit
   compatible clock does not prove complete coverage; short or incomplete clocks
   remain unverified. See the [upstream evidence and check limits](docs/formats.md#mangohud).
 - **Native clock checks cannot prove complete recording.** PresentMon 1.x,
-  OCAT/CapFrameX and FrameView clocks can expose discontinuities, allowing for
+  OCAT/CapFrameX CSV and FrameView clocks can expose discontinuities, allowing for
   their written precision. Coarse/missing clocks, tiny gaps and unsupported clock
   columns can conceal missing observations. Frame counts, FPS and distributions
   still describe retained durations; missing frame counts, duration and cause

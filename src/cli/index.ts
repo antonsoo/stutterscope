@@ -6,6 +6,7 @@
  */
 import { readFileSync } from "node:fs";
 import { basename } from "node:path";
+import { requireNativeJsonSize } from "../core/parsers/capframex-json.ts";
 import { detectFormat, createParserFor } from "../core/parsers/index.ts";
 import { decodeText, requireText } from "../core/encoding.ts";
 import { parseTextSync, requireFrames } from "../core/stream.ts";
@@ -76,6 +77,7 @@ interface Args {
   end?: number;
   aStart?: number; aEnd?: number; bStart?: number; bEnd?: number;
   aStream?: string; bStream?: string;
+  captureRun?: number; aCaptureRun?: number; bCaptureRun?: number;
   format?: SourceFormat;
   genericColumn?: string;
   genericKind?: GenericValueKind;
@@ -122,6 +124,9 @@ function parseArgs(argv: string[], comparison = false): Args {
     else if (comparison && a === "--b-end") args.bEnd = number(++i, a, 0);
     else if (comparison && a === "--a-stream") args.aStream = value(++i, a);
     else if (comparison && a === "--b-stream") args.bStream = value(++i, a);
+    else if (a === "--capture-run") args.captureRun = number(++i, a, 1, true);
+    else if (comparison && a === "--a-capture-run") args.aCaptureRun = number(++i, a, 1, true);
+    else if (comparison && a === "--b-capture-run") args.bCaptureRun = number(++i, a, 1, true);
     else if (a === "--format") {
       const f = value(++i, a);
       if (!isFormat(f)) throw new UsageError(`unknown format "${f}"; one of: ${SOURCE_FORMATS.join(", ")}`);
@@ -189,8 +194,8 @@ function printHelp(): void {
   console.log(`${color("stutterscope", BOLD)} — frame-time analysis from the terminal
 
 Usage:
-  stutterscope summary <file.csv> [options]
-  stutterscope compare <a.csv> <b.csv> [options]
+  stutterscope summary <file.csv|capture.json> [options]
+  stutterscope compare <a.csv|json> <b.csv|json> [options]
   stutterscope --version
 
 Options:
@@ -210,21 +215,27 @@ Options:
   --end <seconds>          include frames ending at or before this point (default: capture end)
                            bounds use accumulated usable frame time, not source wall-clock time;
                            whole frames are kept, with full-stream stutter-detection context
-  --events                 list slow-frame episodes with original frame numbers and CSV lines
+  --capture-run <n>        native CapFrameX JSON recording, one-based (default: 1); runs stay separate
+  --events                 list slow-frame episodes with CSV lines or native JSON sample indices
 
 Comparison overrides (otherwise the shared --start, --end and --stream apply to both):
   --a-start / --a-end <s>   Run A interval bounds
   --b-start / --b-end <s>   Run B interval bounds
   --a-stream <sel>         Run A present stream
   --b-stream <sel>         Run B present stream
+  --a-capture-run <n>      native JSON recording for A
+  --b-capture-run <n>      native JSON recording for B
   --json                   include both reports, intervals, settings and every slow-frame episode
 `);
 }
 
 function readCapture(file: string, args: Args) {
   let text: string;
+  let sourceBytes: number;
   try {
-    text = decodeText(readFileSync(file));
+    const bytes = readFileSync(file);
+    sourceBytes = bytes.byteLength;
+    text = decodeText(bytes);
   } catch (err) {
     throw new Error(`Could not read ${file}: ${err instanceof Error ? err.message : String(err)}`, { cause: err });
   }
@@ -245,8 +256,9 @@ function readCapture(file: string, args: Args) {
       mapping = resolved.mapping;
       guessed = resolved.guessed;
     }
+    if (format === "capframex-json") requireNativeJsonSize(sourceBytes);
     series = requireFrames(
-      parseTextSync(text, createParserFor(format, mapping, { stream: args.stream }), basename(file)),
+      parseTextSync(text, createParserFor(format, mapping, { stream: args.stream, captureRun: args.captureRun }), basename(file)),
     );
   } catch (err) {
     if (!(err instanceof ParseError)) throw err;
@@ -270,8 +282,8 @@ function compareFiles(argv: string[]): void {
     if (!aFile || !bFile || aFile.startsWith("-") || bFile.startsWith("-")) throw new UsageError("compare needs two files followed by options");
     const args = parseArgs(flags, true);
     if (args.file) throw new UsageError("compare takes exactly two files");
-    const a = readCapture(aFile, { ...args, start: args.aStart ?? args.start, end: args.aEnd ?? args.end, stream: args.aStream ?? args.stream });
-    const b = readCapture(bFile, { ...args, start: args.bStart ?? args.start, end: args.bEnd ?? args.end, stream: args.bStream ?? args.stream });
+    const a = readCapture(aFile, { ...args, start: args.aStart ?? args.start, end: args.aEnd ?? args.end, stream: args.aStream ?? args.stream, captureRun: args.aCaptureRun ?? args.captureRun });
+    const b = readCapture(bFile, { ...args, start: args.bStart ?? args.start, end: args.bEnd ?? args.end, stream: args.bStream ?? args.stream, captureRun: args.bCaptureRun ?? args.captureRun });
     const reportFor = (run: typeof a) => buildJsonReport(run.analysis.series, run.analysis.summary, args.stutterOptions, run.mapping, run.analysis.selection);
     if (args.json) { console.log(JSON.stringify(buildComparisonReport(reportFor(a), reportFor(b)), null, 2)); return; }
     console.log(color(`A: ${basename(aFile)}   B: ${basename(bFile)}`, BOLD));
@@ -423,17 +435,23 @@ function main(): void {
     line("Display latency P99", summary.latency ? `${fmt(summary.latency.p99, 2)} ms` : "Unavailable");
     observations("Latency observations", coverage.displayLatency);
   }
+  if (series.meta.nativeCapture) {
+    const native = series.meta.nativeCapture;
+    console.log(color(`Native recording ${native.selectedRun} of ${native.runs.length}; sample path ${native.frameTimePath} (zero-based indices).`, AMBER));
+    console.log(color(native.note, DIM));
+  }
   if (args.events) printEpisodes(analysis);
 }
 
 function printEpisodes(analysis: CaptureAnalysis, label = ""): void {
     const episodes = slowEpisodes(analysis);
     console.log(`\n${label ? label + " " : ""}Slow-frame episodes: ${episodes.length} (consecutive observed stutter/hitch frames; split at source gaps; no cause inferred)`);
-    console.log("  Frames          Time (s)                Worst (ms)  CSV lines");
+    const native = analysis.series.meta.nativeCapture;
+    console.log(`  Frames          Time (s)                Worst (ms)  ${native ? "JSON sample indices (zero-based)" : "CSV lines"}`);
     for (const event of episodes.slice(0, 20)) {
       const frames = `${event.firstFrame}-${event.lastFrame}`.padEnd(15);
       const time = `${fmt(event.startSec, 4)}-${fmt(event.endSec, 4)}`.padEnd(24);
-      const lines = event.firstSourceLine === null ? "unavailable" : `${event.firstSourceLine}-${event.lastSourceLine}`;
+      const lines = event.firstSourceSample !== undefined ? `${event.firstSourceSample}-${event.lastSourceSample}` : event.firstSourceLine === null ? "unavailable" : `${event.firstSourceLine}-${event.lastSourceLine}`;
       console.log(`  ${frames} ${time}${fmt(event.longestFrameMs, 3).padEnd(12)}${lines}${event.touchesSelectionStart || event.touchesSelectionEnd ? " (selection boundary)" : ""}${event.startsAfterGap || event.endsBeforeGap ? " (source gap)" : ""}`);
     }
     if (episodes.length > 20) console.log(`  Showing 20 of ${episodes.length}. --events --json retains every episode.`);

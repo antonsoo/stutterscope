@@ -19,6 +19,7 @@ export const SOURCE_FORMATS = [
   "presentmon2",
   "frameview",
   "capframex",
+  "capframex-json",
   "mangohud",
   "ocat",
   "generic",
@@ -30,7 +31,8 @@ export const FORMAT_LABELS: Record<SourceFormat, string> = {
   presentmon1: "PresentMon 1.x",
   presentmon2: "PresentMon 2.x",
   frameview: "NVIDIA FrameView",
-  capframex: "CapFrameX",
+  capframex: "CapFrameX CSV",
+  "capframex-json": "CapFrameX JSON",
   mangohud: "MangoHud",
   ocat: "OCAT",
   generic: "Generic CSV",
@@ -99,6 +101,14 @@ export interface FrameSeriesMeta {
   selectedStream?: string;
   /** Native TimeInSeconds contradicts uninterrupted retained presents. */
   presentClockGaps?: number;
+  /** Native saved sessions: one selected recording, never concatenated runs. */
+  nativeCapture?: {
+    selectedRun: number; // one-based, matching --capture-run
+    runs: Array<{ run: number; sampleCount: number }>;
+    appVersion: string | null;
+    frameTimePath: string;
+    note: string;
+  };
   presentClockEvidence?: PresentClockEvidence;
   /** A clock cross-check is evidence, not proof that every frame was recorded. */
   timingEvidence?: {
@@ -118,6 +128,8 @@ export interface FrameSeries {
   timeSec: Float64Array;
   /** One-based physical CSV line per frame. Absent for caller-created series. */
   sourceLine?: Float64Array;
+  /** Zero-based index into native CaptureData.MsBetweenPresents; never a CSV line. */
+  sourceSample?: Float64Array;
   /** 1 before a retained frame separated by unusable rows or native clock evidence.
    * Per selected stream; does not estimate missing frame counts or durations.
    * Absent for caller-created series that assume uninterrupted observations. */
@@ -129,6 +141,8 @@ export interface FrameSeries {
 export interface ParserOptions {
   /** Which present stream to analyse (see `matchStream`); by default the busiest non-compositor one. */
   stream?: string;
+  /** One-based recording in a native CapFrameX saved session; defaults to the first. */
+  captureRun?: number;
 }
 
 /** A parser's guess at whether a text blob matches its format. */
@@ -153,11 +167,14 @@ export interface ParseResult {
 }
 
 /**
- * A format's incremental parser state machine. `pushLine` is called once per
+ * A format's input state machine. CSV drivers call `pushLine` once per
  * CSV record (including the header) in file order; `finish` is called once
- * at EOF to produce the normalized `FrameSeries`.
+ * at EOF to produce the normalized `FrameSeries`. Bounded document parsers
+ * provide `pushChunk` instead and retain the complete decoded document.
  */
 export interface StreamingParser {
+  /** Bounded whole-document formats receive decoded chunks without CSV line limits. */
+  pushChunk?(chunk: string): void;
   pushLine(line: string, lineIndex: number): void;
   finish(sourceFileName: string): FrameSeries;
 }

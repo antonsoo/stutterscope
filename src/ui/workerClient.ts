@@ -15,6 +15,7 @@ export interface ParseSource {
   formatOverride?: SourceFormat;
   genericMapping?: GenericMapping;
   stream?: string;
+  captureRun?: number;
 }
 
 interface Pending {
@@ -101,7 +102,7 @@ export class ParseClient {
     return this.send(slot, session, {
       type: "parse", requestId: this.nextRequestId++, slot, file,
       formatOverride: opts.formatOverride, genericMapping: opts.genericMapping,
-      stream: opts.stream, stutterOptions: opts.stutterOptions, range: opts.range,
+      stream: opts.stream, captureRun: opts.captureRun, stutterOptions: opts.stutterOptions, range: opts.range,
     }, opts.onProgress);
   }
 

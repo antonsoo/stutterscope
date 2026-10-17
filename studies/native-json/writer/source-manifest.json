@@ -1,0 +1,103 @@
+{
+  "repository": "CXWorld/CapFrameX",
+  "commit": "1b5f53da907f0a1de6fde2b75ff8267c79b08b2b",
+  "license": "MIT; fetched upstream sources are retained only in ignored cache",
+  "newtonsoftJson": "13.0.3",
+  "files": [
+    {
+      "path": "source/CapFrameX.Data.Session/Classes/EPresentMode.cs",
+      "sha256": "67b1e88d36f5266d1039dec9fc62fc9499f2aa44dec62bb0b40c2fc1c14e2049",
+      "bytes": 877
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Classes/Session.cs",
+      "sha256": "ee3ec729df18917e3859599c3ff414d319f580e39996ad39dc2b8430d3c39236",
+      "bytes": 750
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Classes/SessionCaptureData.cs",
+      "sha256": "0f61f7960432a6ef256529d6d58468f672e2c47b84fa157177e8b40c0caa363f",
+      "bytes": 4521
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Classes/SessionInfo.cs",
+      "sha256": "6004bff01eaf068d88e75df38963f9334adb8f0433acd3f1ec0957c14b7fd782",
+      "bytes": 1671
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Classes/SessionRun.cs",
+      "sha256": "6dc886d831abd3b719ede59b50a7e092d71e9f462c4728c9425107001e556429",
+      "bytes": 1177
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Classes/SessionSensorData.cs",
+      "sha256": "4e6a5305258c56d4f13116a815493455fb385960a6300e9b2993babcd8a6100b",
+      "bytes": 2210
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Classes/SessionSensorData2.cs",
+      "sha256": "cced97206465b2d089436228811be44f8b9a9951b3d84570090805489058b7ec",
+      "bytes": 5370
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Contracts/ISession.cs",
+      "sha256": "c179d24ee0fe475bc53d834db1804cc267ca7b55f516028727bc5ddceb358034",
+      "bytes": 219
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Contracts/ISessionCaptureData.cs",
+      "sha256": "9c22e8a67040c1459bab2718f20ad62c2ac997231aa19adb2faf772557f135a8",
+      "bytes": 756
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Contracts/ISessionInfo.cs",
+      "sha256": "043d4524b69a21f24792777f94a409bc7b2d834ef1839137e23705f58af79fcc",
+      "bytes": 951
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Contracts/ISessionRun.cs",
+      "sha256": "bef258b4249f42e0356fe4bf72855f729df10031189f2ab3d1bfa811e711dd5c",
+      "bytes": 504
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Contracts/ISessionSensorData.cs",
+      "sha256": "52f8a9231b3301967167631d29c7771290de483a0e9524f60c34781c266b5705",
+      "bytes": 1395
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Contracts/ISessionSensorData2.cs",
+      "sha256": "3ce34588dc2279e166d66a79efd814453304e8490cf3fd34499695b33dae727d",
+      "bytes": 310
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Contracts/ISessionSensorEntry.cs",
+      "sha256": "eb06711dafbb3d3bd5e615362cfaadb91bf0331c4f2e500274efb0e03d85fa0d",
+      "bytes": 313
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Converters/BoolToZeroOrOneConverter.cs",
+      "sha256": "50f0c81461a2c147861e01a3a22c99208fb30daf9a540c0961cc872b1f87a9da",
+      "bytes": 911
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Converters/ConcreteTypeConverter.cs",
+      "sha256": "0375253d2ce5ef8e0bf6cf9bcc4cdc72fc28991a69ff5712fe31439ffffb6190",
+      "bytes": 668
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Converters/SessionSensorData2TypeConverter.cs",
+      "sha256": "9a1c719e40f01fc6fad045df583e506af9320ffc9afab726d4d80846500fe8cc",
+      "bytes": 1120
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Converters/SessionSensorDataConverter.cs",
+      "sha256": "9b9fc9b328c97cc25cf02e1775f5688e456533de4ea307bb1b96aa2462a3cb50",
+      "bytes": 2867
+    },
+    {
+      "path": "source/CapFrameX.Data.Session/Converters/VersionConverter.cs",
+      "sha256": "4b6a96e3334bf978e1a457a159f40cbfeecb03f92decd608647703fd5588abaf",
+      "bytes": 482
+    }
+  ]
+}

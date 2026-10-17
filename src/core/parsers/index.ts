@@ -1,8 +1,10 @@
+import { ParseError } from "../types.ts";
 import type { ParserOptions, SniffResult, SourceFormat, StreamingParser } from "../types.ts";
 import * as presentmon1 from "./presentmon1.ts";
 import * as presentmon2 from "./presentmon2.ts";
 import * as frameview from "./frameview.ts";
 import * as capframex from "./capframex.ts";
+import * as capframexJson from "./capframex-json.ts";
 import * as mangohud from "./mangohud.ts";
 import * as ocat from "./ocat.ts";
 import * as generic from "./generic.ts";
@@ -15,6 +17,7 @@ import type { GenericMapping } from "./generic.ts";
  * last since it matches (weakly) everything.
  */
 const SNIFFERS: Array<(sample: string) => SniffResult> = [
+  capframexJson.sniff,
   presentmon2.sniff,
   frameview.sniff,
   presentmon1.sniff,
@@ -41,6 +44,7 @@ export function createParserFor(
   genericMapping?: GenericMapping,
   options: ParserOptions = {},
 ): StreamingParser {
+  if (options.captureRun !== undefined && format !== "capframex-json") throw new ParseError("--capture-run applies only to native CapFrameX JSON");
   switch (format) {
     case "presentmon1":
       return presentmon1.createParser(options);
@@ -48,6 +52,8 @@ export function createParserFor(
       return presentmon2.createParser(options);
     case "frameview":
       return frameview.createParser(options);
+    case "capframex-json":
+      return capframexJson.createParser(options);
     case "capframex":
       return capframex.createParser(options);
     case "ocat":
@@ -62,5 +68,5 @@ export function createParserFor(
   }
 }
 
-export { presentmon1, presentmon2, frameview, capframex, mangohud, ocat, generic };
+export { presentmon1, presentmon2, frameview, capframex, capframexJson, mangohud, ocat, generic };
 export type { GenericMapping, GenericValueKind } from "./generic.ts";
