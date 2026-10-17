@@ -44,7 +44,7 @@ for (const [engine, type] of [["chromium", chromium], ["firefox", firefox]]) {
         assert.equal(await page.locator("#workspace-section").isVisible(), false);
         const error = await page.locator("#status-area").innerText();
         assert.match(error, /CSV field|line is longer/);
-        if (/Cyberpunk|exe-2/.test(item.file)) await page.locator("#dropzone-section").screenshot({ path: resolve(output, stem + ".png") });
+        if (/Cyberpunk|exe-2/.test(item.file)) await page.locator("#dropzone-section").screenshot({ path: resolve(output, stem + ".png"), animations: "disabled" });
         flows.push({ file: item.file, sha256: item.sha256, imported: false, error });
       } else {
         await page.waitForFunction(filename => document.querySelector(".run-meta strong")?.textContent === filename && !document.querySelector("#apply-settings-btn")?.disabled, item.file, { timeout: 60_000 });
@@ -62,7 +62,7 @@ for (const [engine, type] of [["chromium", chromium], ["firefox", firefox]]) {
         let screenshot, card;
         if (/Cyberpunk|exe-2/.test(item.file)) {
           screenshot = stem + ".png";
-          await page.locator("#workspace-section").screenshot({ path: resolve(output, screenshot) });
+          await page.locator("#workspace-section").screenshot({ path: resolve(output, screenshot), animations: "disabled" });
           const pendingCard = page.waitForEvent("download"); await page.locator("#export-png-btn").click();
           card = stem + "-card.png"; await (await pendingCard).saveAs(resolve(output, card));
         }

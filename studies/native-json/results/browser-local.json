@@ -1,0 +1,320 @@
+[
+  {
+    "base": "http://127.0.0.1:4194/stutterscope/",
+    "before": false,
+    "engine": "chromium",
+    "browserVersion": "153.0.8010.12",
+    "width": 1440,
+    "appAssets": [
+      "http://127.0.0.1:4194/stutterscope/assets/index-B6PksO72.js",
+      "http://127.0.0.1:4194/stutterscope/assets/index-DbfNOVmX.css"
+    ],
+    "flows": [
+      {
+        "file": "CapFrameX-ACValhalla.exe-1.json",
+        "sha256": "cb21d1729e4d59bb2dea67e8b8e8cd20dfe643c473bf6641422b5c0a37f9127d",
+        "imported": true,
+        "importMs": 569,
+        "completeCliParity": true,
+        "frames": 58521,
+        "averageFps": 97.53359315919693,
+        "report": "chromium-1440-CapFrameX-ACValhalla.exe-1-report.json",
+        "reportSha256": "0e9c1bc643c4bbd5dd97992070fd70d901b5e212b79db872d05bc2676b0865ac"
+      },
+      {
+        "file": "CapFrameX-Cyberpunk2077.exe.json",
+        "sha256": "b3bd9c932a44708801ef636688627c00dea220a9180c4886496673a589d995b9",
+        "imported": true,
+        "importMs": 134,
+        "completeCliParity": true,
+        "frames": 25294,
+        "averageFps": 42.15530747416549,
+        "report": "chromium-1440-CapFrameX-Cyberpunk2077.exe-report.json",
+        "reportSha256": "06d7225270d05280edca3459fe596959e379d6da2485143b7c6539bcbff4416e",
+        "screenshot": "chromium-1440-CapFrameX-Cyberpunk2077.exe.png",
+        "card": "chromium-1440-CapFrameX-Cyberpunk2077.exe-card.png"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-1.json",
+        "sha256": "47c7e32c62d4aa5c312a5e47719ed35db9e810048b58c785bdde6021eb234e3d",
+        "imported": true,
+        "importMs": 448,
+        "completeCliParity": true,
+        "frames": 161992,
+        "averageFps": 89.99504670856187,
+        "report": "chromium-1440-CapFrameX-DOOMEternalx64vk.exe-1-report.json",
+        "reportSha256": "ba6851aea33d8f623bff00904eb8111336501d023889202bd5abff297ab74c24"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-2.json",
+        "sha256": "7d53914bbc04d5d3fc6c22d77a3796874b1694651ae69e3fd2d0441708d2e562",
+        "imported": true,
+        "importMs": 766,
+        "completeCliParity": true,
+        "frames": 382323,
+        "averageFps": 212.40071568966164,
+        "report": "chromium-1440-CapFrameX-DOOMEternalx64vk.exe-2-report.json",
+        "reportSha256": "deab9291b1cbbeb9d2cc8d754bf73103764997f67ce2771d33a3dbaa44dc94d3",
+        "screenshot": "chromium-1440-CapFrameX-DOOMEternalx64vk.exe-2.png",
+        "card": "chromium-1440-CapFrameX-DOOMEternalx64vk.exe-2-card.png"
+      },
+      {
+        "file": "CapFrameX-ROLLERDROME.exe-1.json",
+        "sha256": "3a3f9456aa3ecfd0ed7af2008d142c6d513ea38f5cccf815aaf602d08a4a55b8",
+        "imported": true,
+        "importMs": 379,
+        "completeCliParity": true,
+        "frames": 150650,
+        "averageFps": 375.82269071328795,
+        "report": "chromium-1440-CapFrameX-ROLLERDROME.exe-1-report.json",
+        "reportSha256": "33ea7db3a503159ae410bbb9fa2af4c64a8cf612c7d17a3ef5943a2e3fd21f07"
+      }
+    ],
+    "errors": [],
+    "httpAfterDisconnect": [],
+    "dataRequestsAfterDisconnect": [],
+    "externalRequests": [],
+    "axeViolations": [],
+    "noPageOverflow": true
+  },
+  {
+    "base": "http://127.0.0.1:4194/stutterscope/",
+    "before": false,
+    "engine": "chromium",
+    "browserVersion": "153.0.8010.12",
+    "width": 375,
+    "appAssets": [
+      "http://127.0.0.1:4194/stutterscope/assets/index-B6PksO72.js",
+      "http://127.0.0.1:4194/stutterscope/assets/index-DbfNOVmX.css"
+    ],
+    "flows": [
+      {
+        "file": "CapFrameX-ACValhalla.exe-1.json",
+        "sha256": "cb21d1729e4d59bb2dea67e8b8e8cd20dfe643c473bf6641422b5c0a37f9127d",
+        "imported": true,
+        "importMs": 239,
+        "completeCliParity": true,
+        "frames": 58521,
+        "averageFps": 97.53359315919693,
+        "report": "chromium-375-CapFrameX-ACValhalla.exe-1-report.json",
+        "reportSha256": "d942ffba54cf9abe320cfdcf197f94e542b435248a48ab878efbf8c6836176d0"
+      },
+      {
+        "file": "CapFrameX-Cyberpunk2077.exe.json",
+        "sha256": "b3bd9c932a44708801ef636688627c00dea220a9180c4886496673a589d995b9",
+        "imported": true,
+        "importMs": 106,
+        "completeCliParity": true,
+        "frames": 25294,
+        "averageFps": 42.15530747416549,
+        "report": "chromium-375-CapFrameX-Cyberpunk2077.exe-report.json",
+        "reportSha256": "48b676e9c6c7dace8d9fa0dec48ee231ae6b711c4f66003bd9c487005aaf5e79",
+        "screenshot": "chromium-375-CapFrameX-Cyberpunk2077.exe.png",
+        "card": "chromium-375-CapFrameX-Cyberpunk2077.exe-card.png"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-1.json",
+        "sha256": "47c7e32c62d4aa5c312a5e47719ed35db9e810048b58c785bdde6021eb234e3d",
+        "imported": true,
+        "importMs": 339,
+        "completeCliParity": true,
+        "frames": 161992,
+        "averageFps": 89.99504670856187,
+        "report": "chromium-375-CapFrameX-DOOMEternalx64vk.exe-1-report.json",
+        "reportSha256": "c70a8dbe8f62af8066125470c52cbb546d0fd1acab2f82936f297a6d1f311ff1"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-2.json",
+        "sha256": "7d53914bbc04d5d3fc6c22d77a3796874b1694651ae69e3fd2d0441708d2e562",
+        "imported": true,
+        "importMs": 695,
+        "completeCliParity": true,
+        "frames": 382323,
+        "averageFps": 212.40071568966164,
+        "report": "chromium-375-CapFrameX-DOOMEternalx64vk.exe-2-report.json",
+        "reportSha256": "cf0cd8660044f1ce29dfd69ad05c9e282c154c75fe4557f1b8fc159339f26b86",
+        "screenshot": "chromium-375-CapFrameX-DOOMEternalx64vk.exe-2.png",
+        "card": "chromium-375-CapFrameX-DOOMEternalx64vk.exe-2-card.png"
+      },
+      {
+        "file": "CapFrameX-ROLLERDROME.exe-1.json",
+        "sha256": "3a3f9456aa3ecfd0ed7af2008d142c6d513ea38f5cccf815aaf602d08a4a55b8",
+        "imported": true,
+        "importMs": 328,
+        "completeCliParity": true,
+        "frames": 150650,
+        "averageFps": 375.82269071328795,
+        "report": "chromium-375-CapFrameX-ROLLERDROME.exe-1-report.json",
+        "reportSha256": "bcdd49fa06b9f04da28d4763adc3e9f80acd2b21713af636c6675005cd3c71d1"
+      }
+    ],
+    "errors": [],
+    "httpAfterDisconnect": [],
+    "dataRequestsAfterDisconnect": [],
+    "externalRequests": [],
+    "axeViolations": [],
+    "noPageOverflow": true
+  },
+  {
+    "base": "http://127.0.0.1:4194/stutterscope/",
+    "before": false,
+    "engine": "firefox",
+    "browserVersion": "155.0",
+    "width": 1440,
+    "appAssets": [
+      "http://127.0.0.1:4194/stutterscope/assets/index-B6PksO72.js",
+      "http://127.0.0.1:4194/stutterscope/assets/index-DbfNOVmX.css"
+    ],
+    "flows": [
+      {
+        "file": "CapFrameX-ACValhalla.exe-1.json",
+        "sha256": "cb21d1729e4d59bb2dea67e8b8e8cd20dfe643c473bf6641422b5c0a37f9127d",
+        "imported": true,
+        "importMs": 347,
+        "completeCliParity": true,
+        "frames": 58521,
+        "averageFps": 97.53359315919693,
+        "report": "firefox-1440-CapFrameX-ACValhalla.exe-1-report.json",
+        "reportSha256": "5fd3a10f7e61b7f98aabe4e5c8b7e027fbd678a6ec1e09232eaafe4f688c1cc6"
+      },
+      {
+        "file": "CapFrameX-Cyberpunk2077.exe.json",
+        "sha256": "b3bd9c932a44708801ef636688627c00dea220a9180c4886496673a589d995b9",
+        "imported": true,
+        "importMs": 126,
+        "completeCliParity": true,
+        "frames": 25294,
+        "averageFps": 42.15530747416549,
+        "report": "firefox-1440-CapFrameX-Cyberpunk2077.exe-report.json",
+        "reportSha256": "04204f2799f452f766622b530385cc45976e16eba7ee075fe4531baf6ea6a358",
+        "screenshot": "firefox-1440-CapFrameX-Cyberpunk2077.exe.png",
+        "card": "firefox-1440-CapFrameX-Cyberpunk2077.exe-card.png"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-1.json",
+        "sha256": "47c7e32c62d4aa5c312a5e47719ed35db9e810048b58c785bdde6021eb234e3d",
+        "imported": true,
+        "importMs": 370,
+        "completeCliParity": true,
+        "frames": 161992,
+        "averageFps": 89.99504670856187,
+        "report": "firefox-1440-CapFrameX-DOOMEternalx64vk.exe-1-report.json",
+        "reportSha256": "d79d5fa9fec4ad1df1dc744ea46ae7a889d4207816f08fafae7958f4d447a455"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-2.json",
+        "sha256": "7d53914bbc04d5d3fc6c22d77a3796874b1694651ae69e3fd2d0441708d2e562",
+        "imported": true,
+        "importMs": 770,
+        "completeCliParity": true,
+        "frames": 382323,
+        "averageFps": 212.40071568966164,
+        "report": "firefox-1440-CapFrameX-DOOMEternalx64vk.exe-2-report.json",
+        "reportSha256": "c8e2eea462348a1fdf1a0499090c9bafd19bcc88ece532442c7872eba916a59d",
+        "screenshot": "firefox-1440-CapFrameX-DOOMEternalx64vk.exe-2.png",
+        "card": "firefox-1440-CapFrameX-DOOMEternalx64vk.exe-2-card.png"
+      },
+      {
+        "file": "CapFrameX-ROLLERDROME.exe-1.json",
+        "sha256": "3a3f9456aa3ecfd0ed7af2008d142c6d513ea38f5cccf815aaf602d08a4a55b8",
+        "imported": true,
+        "importMs": 366,
+        "completeCliParity": true,
+        "frames": 150650,
+        "averageFps": 375.82269071328795,
+        "report": "firefox-1440-CapFrameX-ROLLERDROME.exe-1-report.json",
+        "reportSha256": "79f1c79a851208b6f60122f03f73cc8b071dd5d36e84520deec7940b1022dec3"
+      }
+    ],
+    "errors": [],
+    "httpAfterDisconnect": [
+      "http://127.0.0.1:4194/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+      "http://127.0.0.1:4194/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2"
+    ],
+    "dataRequestsAfterDisconnect": [],
+    "externalRequests": [],
+    "axeViolations": [],
+    "noPageOverflow": true
+  },
+  {
+    "base": "http://127.0.0.1:4194/stutterscope/",
+    "before": false,
+    "engine": "firefox",
+    "browserVersion": "155.0",
+    "width": 375,
+    "appAssets": [
+      "http://127.0.0.1:4194/stutterscope/assets/index-B6PksO72.js",
+      "http://127.0.0.1:4194/stutterscope/assets/index-DbfNOVmX.css"
+    ],
+    "flows": [
+      {
+        "file": "CapFrameX-ACValhalla.exe-1.json",
+        "sha256": "cb21d1729e4d59bb2dea67e8b8e8cd20dfe643c473bf6641422b5c0a37f9127d",
+        "imported": true,
+        "importMs": 236,
+        "completeCliParity": true,
+        "frames": 58521,
+        "averageFps": 97.53359315919693,
+        "report": "firefox-375-CapFrameX-ACValhalla.exe-1-report.json",
+        "reportSha256": "64df4d4dc99ead11ed9bc40603a16e638104d819f57c5a6a96db4d3363deec19"
+      },
+      {
+        "file": "CapFrameX-Cyberpunk2077.exe.json",
+        "sha256": "b3bd9c932a44708801ef636688627c00dea220a9180c4886496673a589d995b9",
+        "imported": true,
+        "importMs": 123,
+        "completeCliParity": true,
+        "frames": 25294,
+        "averageFps": 42.15530747416549,
+        "report": "firefox-375-CapFrameX-Cyberpunk2077.exe-report.json",
+        "reportSha256": "ebc8d40a28d730810b4b80d1e3043646556317925513e2bde4b16ff76fe3b671",
+        "screenshot": "firefox-375-CapFrameX-Cyberpunk2077.exe.png",
+        "card": "firefox-375-CapFrameX-Cyberpunk2077.exe-card.png"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-1.json",
+        "sha256": "47c7e32c62d4aa5c312a5e47719ed35db9e810048b58c785bdde6021eb234e3d",
+        "imported": true,
+        "importMs": 379,
+        "completeCliParity": true,
+        "frames": 161992,
+        "averageFps": 89.99504670856187,
+        "report": "firefox-375-CapFrameX-DOOMEternalx64vk.exe-1-report.json",
+        "reportSha256": "f6158489eb1d6d99d67c50fb1cda41aab93519668545ec4fc0107453819e531b"
+      },
+      {
+        "file": "CapFrameX-DOOMEternalx64vk.exe-2.json",
+        "sha256": "7d53914bbc04d5d3fc6c22d77a3796874b1694651ae69e3fd2d0441708d2e562",
+        "imported": true,
+        "importMs": 799,
+        "completeCliParity": true,
+        "frames": 382323,
+        "averageFps": 212.40071568966164,
+        "report": "firefox-375-CapFrameX-DOOMEternalx64vk.exe-2-report.json",
+        "reportSha256": "cfaab70e1abfe6c3a43bc007f13c67ae248d84667f94aab50955363ab3d4d81f",
+        "screenshot": "firefox-375-CapFrameX-DOOMEternalx64vk.exe-2.png",
+        "card": "firefox-375-CapFrameX-DOOMEternalx64vk.exe-2-card.png"
+      },
+      {
+        "file": "CapFrameX-ROLLERDROME.exe-1.json",
+        "sha256": "3a3f9456aa3ecfd0ed7af2008d142c6d513ea38f5cccf815aaf602d08a4a55b8",
+        "imported": true,
+        "importMs": 382,
+        "completeCliParity": true,
+        "frames": 150650,
+        "averageFps": 375.82269071328795,
+        "report": "firefox-375-CapFrameX-ROLLERDROME.exe-1-report.json",
+        "reportSha256": "f417b8c90685127534cdfe6ffd34fc8b4ce1739bc3de1d59cb1593b606b525f0"
+      }
+    ],
+    "errors": [],
+    "httpAfterDisconnect": [
+      "http://127.0.0.1:4194/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2",
+      "http://127.0.0.1:4194/stutterscope/assets/jetbrains-mono-latin-6fWv1k7M.woff2"
+    ],
+    "dataRequestsAfterDisconnect": [],
+    "externalRequests": [],
+    "axeViolations": [],
+    "noPageOverflow": true
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "sourceCommit": "0fe8a4349fc1441ff0ec649fcabd8144f294b235",
+  "input": "git archive of the committed tree; npm ci in the archive with no inherited node_modules",
+  "node": "v24.21.0",
+  "lint": true,
+  "typecheck": true,
+  "unitTests": 379,
+  "commaDecimalLocaleTests": 379,
+  "chromiumFirefoxBrowserWorkflows": 94,
+  "productionBuild": true,
+  "cliBuild": true,
+  "registryPublished": false,
+  "compiledMinimumNode": "v22.6.0"
+}

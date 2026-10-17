@@ -1,0 +1,173 @@
+{
+  "note": "Every before image and every distinct completed-animation after workspace/card image was opened; two additional mobile cards were byte-identical to inspected desktop cards. Selected images are retained in docs/assets/native-json. The helper reproduces the remaining images.",
+  "images": [
+    {
+      "phase": "public-before",
+      "file": "chromium-1440-CapFrameX-Cyberpunk2077.exe.png",
+      "bytes": 71354,
+      "sha256": "4de1b2f4ed22f754b38ed3a35c69741e6f9842ac63cebca1b6c88b936c895e0f",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "public-before",
+      "file": "chromium-1440-CapFrameX-DOOMEternalx64vk.exe-2.png",
+      "bytes": 71849,
+      "sha256": "2a33bb27a01a61c4db2a272af73428c67cefb8db77dc15f7e1a545200c314afe",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "public-before",
+      "file": "chromium-375-CapFrameX-Cyberpunk2077.exe.png",
+      "bytes": 88573,
+      "sha256": "1e7d497d63c3e3de847fa2009114d8e4bad03ac1dc12a7f8e9526c7419c5e2c6",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "public-before",
+      "file": "chromium-375-CapFrameX-DOOMEternalx64vk.exe-2.png",
+      "bytes": 89142,
+      "sha256": "84bc7ffda8ef78729cd0ebb480fe675a763a7d79a51ae3ea797a3e3b4ea62ed8",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "public-before",
+      "file": "firefox-1440-CapFrameX-Cyberpunk2077.exe.png",
+      "bytes": 103311,
+      "sha256": "0f9beccdb245405383c1bc9c40f91b103e845c57f77ba6317479099a252f03b2",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "public-before",
+      "file": "firefox-1440-CapFrameX-DOOMEternalx64vk.exe-2.png",
+      "bytes": 103330,
+      "sha256": "f4c48b179938921aff5a7b11601f29709a286e4d51e98896c4dd367713a0ec1e",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "public-before",
+      "file": "firefox-375-CapFrameX-Cyberpunk2077.exe.png",
+      "bytes": 97524,
+      "sha256": "0441de35debec8eecef3725107dc136329069c9b55c52ec003849365e43861bf",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "public-before",
+      "file": "firefox-375-CapFrameX-DOOMEternalx64vk.exe-2.png",
+      "bytes": 97748,
+      "sha256": "cb5889c93d029559f9154b3aa710259974769b86065fd8fbe23011ae7ec4e3a0",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "chromium-1440-CapFrameX-Cyberpunk2077.exe-card.png",
+      "bytes": 87585,
+      "sha256": "aa0ae18c6338429e10686936b7d97e5f5739a5e61f00c492398654fda6b1d214",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "chromium-1440-CapFrameX-Cyberpunk2077.exe.png",
+      "bytes": 318479,
+      "sha256": "8360e7d9fb5fcf44d30e192410d6868494c24f5acab2ecf273f61402436c70b9",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "chromium-1440-CapFrameX-DOOMEternalx64vk.exe-2-card.png",
+      "bytes": 102837,
+      "sha256": "2670d8fddad44857de4e11b04b48a93d24e5ffeb63f19a3ea752b8d839fae2f6",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "chromium-1440-CapFrameX-DOOMEternalx64vk.exe-2.png",
+      "bytes": 400061,
+      "sha256": "f8d740bdc2650d4627408eb39f83b6490ad1799115d099231285fc7cb24293bb",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "chromium-375-CapFrameX-Cyberpunk2077.exe-card.png",
+      "bytes": 87585,
+      "sha256": "aa0ae18c6338429e10686936b7d97e5f5739a5e61f00c492398654fda6b1d214",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "chromium-375-CapFrameX-Cyberpunk2077.exe.png",
+      "bytes": 262577,
+      "sha256": "82072049b69801764c47ec4befe6dd1e8204b26258288c491c68806c5cb0df44",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "chromium-375-CapFrameX-DOOMEternalx64vk.exe-2-card.png",
+      "bytes": 102837,
+      "sha256": "2670d8fddad44857de4e11b04b48a93d24e5ffeb63f19a3ea752b8d839fae2f6",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "chromium-375-CapFrameX-DOOMEternalx64vk.exe-2.png",
+      "bytes": 311976,
+      "sha256": "f04a6cb4f0f1cdbbcf764d00e66135ed00c430a520139c972675d4e637542faa",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "firefox-1440-CapFrameX-Cyberpunk2077.exe-card.png",
+      "bytes": 80826,
+      "sha256": "f835b524b44d2e2f089ae1d13b8b4fb29acee8dc360aa654cf41b9a203e399cc",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "firefox-1440-CapFrameX-Cyberpunk2077.exe.png",
+      "bytes": 391963,
+      "sha256": "3198a34e705fed835d250c7da7223c1ad0690d93d86131fa00966164f03d212e",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "firefox-1440-CapFrameX-DOOMEternalx64vk.exe-2-card.png",
+      "bytes": 105723,
+      "sha256": "8536b565aa235adbb3020238d037cb0cc9d4f4a811e27b3bc24a474942b9b749",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "firefox-1440-CapFrameX-DOOMEternalx64vk.exe-2.png",
+      "bytes": 504728,
+      "sha256": "03a7e6b5a5540a5d1dcf8314a0fa89e5959ad6f5c43fbb2ac919f2ee6137c439",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "firefox-375-CapFrameX-Cyberpunk2077.exe-card.png",
+      "bytes": 80826,
+      "sha256": "f6ede665c4ff610a4f38b4ee0bc7f762cc04af81ef085d0beb8e0b2870d90cb0",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "firefox-375-CapFrameX-Cyberpunk2077.exe.png",
+      "bytes": 306749,
+      "sha256": "75db189c68620d24aca61a757af45f92f845873a5a9ba36ea1d6e2fc8f620482",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "firefox-375-CapFrameX-DOOMEternalx64vk.exe-2-card.png",
+      "bytes": 105723,
+      "sha256": "f095267e806907f34f122d5ad8b6d292029a14367344637beebfe8ac0d40777b",
+      "visuallyReviewed": true
+    },
+    {
+      "phase": "reviewed-local",
+      "file": "firefox-375-CapFrameX-DOOMEternalx64vk.exe-2.png",
+      "bytes": 368774,
+      "sha256": "accc90f340876f3554c03126cc5768b9326d411a2f348a31eec5a9bfb901f6b6",
+      "visuallyReviewed": true
+    }
+  ]
+}

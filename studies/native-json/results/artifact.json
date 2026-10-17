@@ -1,0 +1,61 @@
+{
+  "sourceCommit": "0fe8a4349fc1441ff0ec649fcabd8144f294b235",
+  "packedVersion": "0.2.5",
+  "registryPublished": false,
+  "allCompiledFilesMatch": 24,
+  "sourceAndArchiveBuildFilesMatch": 33,
+  "tarballSha256": "a68246f17fa04ac1aefec23b5216dd5ab6e2e55bc8c55d36ba8f8a2cd6b7dd24",
+  "nativeFileChecks": [
+    {
+      "file": "CapFrameX-ACValhalla.exe-1.json",
+      "runtime": "v24.21.0",
+      "completeSourceParity": true
+    },
+    {
+      "file": "CapFrameX-ACValhalla.exe-1.json",
+      "runtime": "v22.6.0",
+      "completeSourceParity": true
+    },
+    {
+      "file": "CapFrameX-Cyberpunk2077.exe.json",
+      "runtime": "v24.21.0",
+      "completeSourceParity": true
+    },
+    {
+      "file": "CapFrameX-Cyberpunk2077.exe.json",
+      "runtime": "v22.6.0",
+      "completeSourceParity": true
+    },
+    {
+      "file": "CapFrameX-DOOMEternalx64vk.exe-1.json",
+      "runtime": "v24.21.0",
+      "completeSourceParity": true
+    },
+    {
+      "file": "CapFrameX-DOOMEternalx64vk.exe-1.json",
+      "runtime": "v22.6.0",
+      "completeSourceParity": true
+    },
+    {
+      "file": "CapFrameX-DOOMEternalx64vk.exe-2.json",
+      "runtime": "v24.21.0",
+      "completeSourceParity": true
+    },
+    {
+      "file": "CapFrameX-DOOMEternalx64vk.exe-2.json",
+      "runtime": "v22.6.0",
+      "completeSourceParity": true
+    },
+    {
+      "file": "CapFrameX-ROLLERDROME.exe-1.json",
+      "runtime": "v24.21.0",
+      "completeSourceParity": true
+    },
+    {
+      "file": "CapFrameX-ROLLERDROME.exe-1.json",
+      "runtime": "v22.6.0",
+      "completeSourceParity": true
+    }
+  ],
+  "installedBinPairedSelection": true
+}

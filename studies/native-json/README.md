@@ -8,6 +8,17 @@ The new importer accepts native Windows saved sessions, selects one recording,
 and retains original array indices through slow-frame inspection and exports.
 It does not concatenate recordings into an invented continuous capture.
 
+Before, the public demo rejects an unchanged Cyberpunk recording:
+
+![Public baseline refuses the saved recording as malformed CSV](../../docs/assets/native-json/before-1440.png)
+
+After, the same file opens with its original sample coordinates:
+
+![The unchanged native file opens with 25294 frames and original array indices](../../docs/assets/native-json/after-1440.png)
+
+[Phone before](../../docs/assets/native-json/before-375.png) /
+[phone after](../../docs/assets/native-json/after-375.png).
+
 ## Recorded inputs and independent checks
 
 Five unmodified public game recordings are pinned to
@@ -32,7 +43,7 @@ arrays. Every exported episode's indices and longest duration are checked agains
 its original array. The oracle imports no analyzer code. It checks arithmetic
 and coordinates, not the accuracy or completeness of the original capture.
 
-[Before results](results/before.json) retain the actual CLI failures at source
+[Before results](results/before.json) and [after results](results/after.json) retain the actual CLI failures at source
 `336993f5ac07bbdb9f650488676977e497374205`. The reproduction commands are:
 
 ```bash
@@ -57,6 +68,30 @@ cards for Cyberpunk and the 382,323-frame Doom recording. Separate synthetic
 browser workflows exercise recording selection, intervals, paired exports,
 recomputation, failed replacement and a damaged second recording. They run after
 disconnecting too; a failed selection retains and labels the previous report.
+
+## Artifact and compatibility verification
+
+A fresh archive of runtime source `0fe8a4349fc1441ff0ec649fcabd8144f294b235`
+installed with Node 24.21.0, passed lint/typechecking, 379 checks in each of the
+default and German locales, and 94 Chromium/Firefox browser workflows. Both
+production and compiled CLI builds succeeded. [Archive receipt](results/clean-archive.json).
+
+The installed tarball contains 24 compiled JavaScript files, all byte-identical
+to the archive's build. All five complete native CLI reports match source on
+Node 24.21.0 and minimum Node 22.6.0; the installed executable also compares two
+recordings correctly. This is an **unreleased local package artifact**, not a
+new npm release. [Artifact receipt](results/artifact.json).
+
+The [34-file existing CSV replay](results/csv-controls.json) retains exactly
+identical complete metadata, aligned-array hashes and metrics: 27 parsed and
+seven refused, unchanged. This does not establish support for unseen formats.
+
+[Public browser baseline](results/browser-before.json),
+[corrected local browser sessions](results/browser-local.json),
+[their complete downloaded reports](results/browser-local), and
+[visual review hashes](results/visual-review.json) keep the observed scopes
+separate. The helper finishes the existing trace-reveal animation before
+capturing evidence; an intermediate animation is not a complete chart.
 
 ## Current native writer, separately exercised
 
