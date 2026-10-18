@@ -143,6 +143,20 @@ download workflows passed against that public URL in Chromium and Firefox at
 the cases, runtimes and source/deployment revisions. These hosted checks do not
 change the installed-package evidence above; no npm release was made.
 
+A subsequent [cache-continuity repair](results/cache-continuity.json) restores
+three prior immutable asset URLs in deployment
+[`adf55fb`](https://github.com/antonsoo/stutterscope/commit/adf55fb). They returned
+404 after the first deployment; all three now return their original bytes.
+The [current canonical build](results/hosted-bytes-after-cache-repair.json) still
+matches all 33 files. Two [stale-entry browser controls](results/cached-entry-browser.json)
+load the exact earlier entry HTML with real public assets, then import a native
+complete capture and download its JSON offline. That older bundle retains its
+original analysis behavior; this only checks that cached entry pages remain usable.
+
+```sh
+node studies/presentmon2-clock/cached-entry.mjs /tmp/cached-entry-browser.json
+```
+
 ## Limits
 
 - Raw `CPUStartQPC` ticks have no frequency in the CSV. Local

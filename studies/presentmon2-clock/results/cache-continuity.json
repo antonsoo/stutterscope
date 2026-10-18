@@ -1,0 +1,63 @@
+{
+  "scope": "Prior immutable asset URLs remain available for an older cached entry document. This does not establish new feature behavior in an old bundle.",
+  "priorDeployment": "9ab31330afeff1055aeb8086ca26a1421a078641",
+  "deployment": "adf55fb14e43b214d00381dde9b958a5e4b984a6",
+  "before": {
+    "checkedAtUtc": "2026-10-18T09:13:35.592Z",
+    "parent": "9ab31330afeff1055aeb8086ca26a1421a078641",
+    "paths": [
+      "assets/index-Ds7-16Zz.js",
+      "assets/index-Ds7-16Zz.js.map",
+      "assets/parse.worker-Dw-b2RGt.js.map"
+    ],
+    "before": [
+      {
+        "path": "assets/index-Ds7-16Zz.js",
+        "httpStatus": 404,
+        "bytes": 9379
+      },
+      {
+        "path": "assets/index-Ds7-16Zz.js.map",
+        "httpStatus": 404,
+        "bytes": 9379
+      },
+      {
+        "path": "assets/parse.worker-Dw-b2RGt.js.map",
+        "httpStatus": 404,
+        "bytes": 9379
+      }
+    ]
+  },
+  "after": {
+    "checkedAtUtc": "2026-10-18T09:18:03.002Z",
+    "files": [
+      {
+        "path": "assets/index-Ds7-16Zz.js",
+        "httpStatus": 200,
+        "bytes": 162963,
+        "expectedBytes": 162963,
+        "sha256": "aa7799d5b200aa2f13f9940c3d3f92d13a92d1de21bbb230b5c4bfd667a9d348",
+        "expectedSha256": "aa7799d5b200aa2f13f9940c3d3f92d13a92d1de21bbb230b5c4bfd667a9d348",
+        "verified": true
+      },
+      {
+        "path": "assets/index-Ds7-16Zz.js.map",
+        "httpStatus": 200,
+        "bytes": 488685,
+        "expectedBytes": 488685,
+        "sha256": "bdc690041985a3c9e70cc0387d2da0769ce529b50e2c2ddab7a17a7dffc9debd",
+        "expectedSha256": "bdc690041985a3c9e70cc0387d2da0769ce529b50e2c2ddab7a17a7dffc9debd",
+        "verified": true
+      },
+      {
+        "path": "assets/parse.worker-Dw-b2RGt.js.map",
+        "httpStatus": 200,
+        "bytes": 188070,
+        "expectedBytes": 188070,
+        "sha256": "e32ae7cc35cc513a5ac7e1fa6ee0a11b3aa806bf979c1de6ca8ded6c3fd97a45",
+        "expectedSha256": "e32ae7cc35cc513a5ac7e1fa6ee0a11b3aa806bf979c1de6ca8ded6c3fd97a45",
+        "verified": true
+      }
+    ]
+  }
+}
