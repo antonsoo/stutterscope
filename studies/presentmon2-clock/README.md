@@ -89,7 +89,7 @@ replay. ETLs come from the pinned upstream `Tests/Gold` directory; license:
 On Windows via WSL, rerun the actual executable with offline `--etl_file` inputs:
 
 ```sh
-python studies/presentmon2-clock/capture.py --cache /tmp/claude-1000/presentmon2-native --out /tmp/presentmon2-native.json
+python studies/presentmon2-clock/capture.py --cache /tmp/stutterscope-presentmon2-native --out /tmp/presentmon2-native.json
 ```
 
 The script writes a receipt and exits 2 if any output bytes differ. It never
