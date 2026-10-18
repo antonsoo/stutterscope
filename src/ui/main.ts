@@ -109,6 +109,11 @@ function renderDropzone(): void {
         <button class="btn small" id="native-example-btn" type="button">Inspect filtered presents</button>
         <span>Test capture, not a game benchmark. <a href="https://github.com/antonsoo/stutterscope/tree/main/studies/present-clock">Source and transformation</a>.</span>
       </div>
+      <div class="captured-example"><strong>Native PresentMon 2.6 telemetry</strong>
+        <p>The official producer replayed an Intel ETL with filtered presents. Inspect CPU/GPU busy time, display latency and 83 clock gaps across 174 retained frames.</p>
+        <button class="btn small" id="native-default-example-btn" type="button">Open native PresentMon 2.6</button>
+        <span>Offline ETL replay, not a game or hardware benchmark. <a href="https://github.com/antonsoo/stutterscope/tree/main/studies/presentmon-default">Producer, input hashes and limits</a>.</span>
+      </div>
     </div>
     <div id="status-area"></div>
   `;
@@ -152,6 +157,7 @@ function renderDropzone(): void {
     void loadCapturedExample("b");
   });
   document.getElementById("native-example-btn")!.addEventListener("click", () => { void loadNativeExample(); });
+  document.getElementById("native-default-example-btn")!.addEventListener("click", () => { void loadNativeExample("presentmon-default"); });
   document.getElementById("status-area")!.addEventListener("click", (event) => {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>("button[data-slot]");
     if (!button) return;
@@ -197,17 +203,20 @@ async function loadCapturedExample(slot: Slot): Promise<void> {
   } finally { finishImport(request); }
 }
 
-async function loadNativeExample(): Promise<void> {
+async function loadNativeExample(kind: "filtered-presents" | "presentmon-default" = "filtered-presents"): Promise<void> {
+  const capture = kind === "presentmon-default"
+    ? { path: "native-presentmon-default/trace5-filtered.csv", name: "trace5-filtered.csv" }
+    : { path: "native-filtering/filtered-presents.csv", name: "filtered-presents.csv" };
   const request = beginImport("a");
   setStatus(`<div class="status-line" role="status">Loading filtered native presents… ${cancelButton("a")}</div>`);
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}native-filtering/filtered-presents.csv`, { signal: request.controller.signal });
+    const response = await fetch(`${import.meta.env.BASE_URL}${capture.path}`, { signal: request.controller.signal });
     if (!response.ok) throw new Error(`Capture download returned HTTP ${response.status}.`);
     const blob = await response.blob();
     if (!isCurrent(request)) return;
-    await loadFile("a", new File([blob], "filtered-presents.csv", { type: "text/csv" }), undefined, undefined, undefined, request);
+    await loadFile("a", new File([blob], capture.name, { type: "text/csv" }), undefined, undefined, undefined, request);
   } catch (error) {
-    if (isCurrent(request)) showImportError("a", `Could not load filtered presents: ${errorMessage(error)}`, () => void loadNativeExample());
+    if (isCurrent(request)) showImportError("a", `Could not load ${capture.name}: ${errorMessage(error)}`, () => void loadNativeExample(kind));
   } finally { finishImport(request); }
 }
 
@@ -851,4 +860,5 @@ function chartSummary(summary: MetricsSummary): string {
 }
 
 renderDropzone();
-if (new URLSearchParams(window.location.search).get("example") === "filtered-presents") void loadNativeExample();
+const nativeExample = new URLSearchParams(window.location.search).get("example");
+if (nativeExample === "filtered-presents" || nativeExample === "presentmon-default") void loadNativeExample(nativeExample);

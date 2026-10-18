@@ -61,7 +61,10 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
   confusing present intervals with CPU-start intervals. An official executable
   replay and an independent record-order oracle check 16 inputs.
   [Before/after evidence and format boundaries](studies/presentmon-default/README.md).
-  This change has not been deployed or released to npm.
+  [Open the native 2.6 replay](https://antonsoo.github.io/stutterscope/?example=presentmon-default)
+  from a direct link or the landing page. The original 175-frame gold example
+  remains separate from this 174-frame executable replay. [Publication checks](studies/presentmon-default/publication.md)
+  distinguish the public parser from the unchanged npm release.
 
 - **Native CapFrameX JSON (source and demo):** open saved recordings directly,
   select one run without concatenating captures, and follow slow frames to their

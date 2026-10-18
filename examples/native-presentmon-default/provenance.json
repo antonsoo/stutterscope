@@ -1,0 +1,26 @@
+{
+  "scope": "Actual offline ETL replay through the official PresentMon 2.6.0 Windows executable. Not a game or hardware benchmark. No CSV transformation. This differs from the older native-filtering gold CSV.",
+  "capture": {
+    "file": "trace5-filtered.csv",
+    "trace": "test_case_5.etl",
+    "flags": [
+      "--exclude_dropped"
+    ],
+    "exitCode": 0,
+    "bytes": 136239,
+    "sha256": "bde56900213bf9f9cc04af75200abe8af47d6643321a280a5c2ec0d981f78056"
+  },
+  "executable": {
+    "url": "https://github.com/GameTechDev/PresentMon/releases/download/v2.6.0/PresentMon-2.6.0-x64.exe",
+    "bytes": 980320,
+    "sha256": "b2a706bc6ad475749e3b7e3409263aa1e6906d45bdcf993f6dbc0f660188f1af"
+  },
+  "input": {
+    "file": "test_case_5.etl",
+    "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/8170aab2b770556b0c4a190602c4448b0cda4a47/Tests/Gold/test_case_5.etl",
+    "bytes": 14932057,
+    "sha256": "001a0e76bde26a189e723b30a89187b596999a3c850d204ce5129e9a1d861744"
+  },
+  "study": "https://github.com/antonsoo/stutterscope/tree/main/studies/presentmon-default",
+  "license": "UPSTREAM-LICENSE.txt"
+}

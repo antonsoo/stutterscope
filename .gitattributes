@@ -1,2 +1,3 @@
 # Preserve checksum-pinned native producer bytes across checkout platforms.
 studies/presentmon-default/fixtures/*.csv -text whitespace=cr-at-eol
+examples/native-presentmon-default/*.csv -text whitespace=cr-at-eol

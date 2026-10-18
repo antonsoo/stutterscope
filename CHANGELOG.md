@@ -10,6 +10,10 @@ Changes below are in source and have not been released as an npm package.
 
 ### PresentMon 2.6.0 default CSV (source and demo)
 
+- Open an attributed native producer replay directly with `?example=presentmon-default`
+  or the landing-page action. Keep its exact CSV and licence beside a provenance
+  receipt. Preserve the older gold example and its distinct frame population.
+
 - Recognize the default Ms-prefixed metrics independently from `--v2_metrics`.
   Read native CPU/GPU busy and present-to-display latency with per-frame coverage.
 - Check `TimeInMs` against the current `MsBetweenPresents`, or explicit CPU
