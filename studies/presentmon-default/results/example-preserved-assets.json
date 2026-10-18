@@ -1,0 +1,28 @@
+{
+  "sourceRevision": "22c9690f8193d592b2a724246b4089536743d22b",
+  "scope": "Every immutable asset from the preceding 4bf9546 deployment remains byte-identical. New files are copied without deleting older assets.",
+  "assets": {
+    "assets/index-Ds7-16Zz.js.map": "bdc690041985a3c9e70cc0387d2da0769ce529b50e2c2ddab7a17a7dffc9debd",
+    "assets/index-DbfNOVmX.css": "1d5ec6108d6256aa090e52af7b20936b64b2a90cd0e37d8e18347d38b1a7fa70",
+    "assets/jetbrains-mono-cyrillic-Buze_B52.woff2": "e17cfd15fb96909d64095015f958207063a0c07191da3512df7d560a781aebdf",
+    "assets/index-BJPum_yq.js": "a9cf679ef55ed766ca31bc0115b33366066d3fb4c551050cef1fe92d94ed720a",
+    "assets/inter-vietnamese-CBcvBZtf.woff2": "5c66f9e07e90c6d4ac4922cc68d60de26c17b1858e677fb5e603fce3952b3ff2",
+    "assets/jetbrains-mono-latin-ext-DIC32ArD.woff2": "db5ff4db83e580426280e9337a58dc57d3a83784a1b03ad80914651594441d52",
+    "assets/inter-greek-CkhJZR-_.woff2": "1be3448e292fbf05ffe176fe1e43f135013d50b1e7d324ad1a558f623d3bb6f6",
+    "assets/index-Ds7-16Zz.js": "aa7799d5b200aa2f13f9940c3d3f92d13a92d1de21bbb230b5c4bfd667a9d348",
+    "assets/inter-cyrillic-ext-BOeWTOD4.woff2": "ca157063339ac4ad418f214f3abfed119b0798ab4d377386ce5c9e5a7a435ebd",
+    "assets/inter-latin-Dx4kXJAl.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "assets/inter-greek-ext-DlzME5K_.woff2": "6e9e020a25f9b56d418f2c085b1d3c09725a4da23fe693a5b463064606732190",
+    "assets/jetbrains-mono-greek-D3oMJlXt.woff2": "0a557721b1f8b36d3f3f84442689a71ca4a744300abcb46a1953f51bfc663b66",
+    "assets/parse.worker-C65yDKB3.js.map": "d395ad810db01873336a3d761db9d2fe605fcb2010fc8a15621aa124fd92f328",
+    "assets/jetbrains-mono-vietnamese-BehTv68k.woff2": "c89b9cc0bc6262bd4f8d8494b6961601f3aefa829d08c2e3635f4d501d3a47c2",
+    "assets/index-DW4w-A4q.js": "ffe0bb6bc03ff85127b9cef9785df6dff1a0995a506fbdd4b06c9f8f8b9fef4b",
+    "assets/inter-cyrillic-DqGufNeO.woff2": "71d5ee93cc1e9f1d520a3a8b66456de18c7879d8df09d57fcd2eaff75fef0075",
+    "assets/index-DW4w-A4q.js.map": "f7e38eb90661cc671b9ddc15a40fbe8ed68df816dbdfbbf2f69ce2132dd2b2d6",
+    "assets/index-BJPum_yq.js.map": "0c57f8e033139fe0bb9330d5a4a2530af16bb7669c228165891b60dc2bd2089e",
+    "assets/parse.worker-BG7821zC.js.map": "4f9fd4439dd2ac5486777f065a85f9613544cf88c2947ebed50e36fc72ef0023",
+    "assets/parse.worker-Dw-b2RGt.js.map": "e32ae7cc35cc513a5ac7e1fa6ee0a11b3aa806bf979c1de6ca8ded6c3fd97a45",
+    "assets/jetbrains-mono-latin-6fWv1k7M.woff2": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be",
+    "assets/inter-latin-ext-DO1Apj_S.woff2": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956"
+  }
+}

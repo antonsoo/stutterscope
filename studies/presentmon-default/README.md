@@ -7,6 +7,8 @@ capture therefore connected records that were not adjacent in its original
 stream. The correction is now in public source and the live demo; the npm registry
 release is separate. [Publication evidence](publication.md) records the build,
 canonical public bytes and hosted workflows.
+The [direct native example](example.md) now opens this producer replay from a
+shareable URL or the landing page, alongside the distinct older gold capture.
 
 ## Evidence from the actual producer
 

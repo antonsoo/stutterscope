@@ -1,0 +1,108 @@
+{
+  "sourceRevision": "22c9690f8193d592b2a724246b4089536743d22b",
+  "deploymentRevision": "dbfbf1c9512c6046372d9684ea64dd62e9e7ff4a",
+  "scope": "Native default example route and landing-page action, original native bytes, unchanged predecessor capture, fresh checkout and actual public browser workflows. No registry publication.",
+  "clean": {
+    "node": "26.7.0",
+    "unitChecks": 402,
+    "browserScenarios": 112,
+    "browserFirstPass": 112,
+    "install": "npm ci",
+    "checks": [
+      "npm run lint",
+      "npm run typecheck",
+      "npm test",
+      "npm run build",
+      "npx playwright test"
+    ]
+  },
+  "hostedScenarios": [
+    {
+      "file": "docs/assets/presentmon-default/example-hosted/chromium-1440.json",
+      "sha256": "bec350196fd1196936bf856d82376e5922c1e50e17635e38209d07f6a2028ce4",
+      "url": "https://antonsoo.github.io/stutterscope/?example=presentmon-default",
+      "frameCount": 174,
+      "pacing": {
+        "observedPairs": 90,
+        "gapBoundaries": 83
+      },
+      "cpuGpu": {
+        "observedFrames": 174,
+        "unknownFrames": 0
+      },
+      "latency": {
+        "observedFrames": 174,
+        "unknownFrames": 0
+      },
+      "errors": [],
+      "offlineRequests": []
+    },
+    {
+      "file": "docs/assets/presentmon-default/example-hosted/chromium-375.json",
+      "sha256": "e589c9107ef36e2d7a899cb2ff2de16329af1d0ba33e4e52449f3b5e8124abf9",
+      "url": "https://antonsoo.github.io/stutterscope/?example=presentmon-default",
+      "frameCount": 174,
+      "pacing": {
+        "observedPairs": 90,
+        "gapBoundaries": 83
+      },
+      "cpuGpu": {
+        "observedFrames": 174,
+        "unknownFrames": 0
+      },
+      "latency": {
+        "observedFrames": 174,
+        "unknownFrames": 0
+      },
+      "errors": [],
+      "offlineRequests": []
+    },
+    {
+      "file": "docs/assets/presentmon-default/example-hosted/firefox-1440.json",
+      "sha256": "5d89c21dcbe00b7396d0cb33748567c10fcf61b2859f7295f953d58dd3504dcb",
+      "url": "https://antonsoo.github.io/stutterscope/?example=presentmon-default",
+      "frameCount": 174,
+      "pacing": {
+        "observedPairs": 90,
+        "gapBoundaries": 83
+      },
+      "cpuGpu": {
+        "observedFrames": 174,
+        "unknownFrames": 0
+      },
+      "latency": {
+        "observedFrames": 174,
+        "unknownFrames": 0
+      },
+      "errors": [],
+      "offlineRequests": []
+    },
+    {
+      "file": "docs/assets/presentmon-default/example-hosted/firefox-375.json",
+      "sha256": "2a7c02c51b8b2bc2065c1b34d6a2d3693a0dd55dacb5a43ca8188b23209a28e2",
+      "url": "https://antonsoo.github.io/stutterscope/?example=presentmon-default",
+      "frameCount": 174,
+      "pacing": {
+        "observedPairs": 90,
+        "gapBoundaries": 83
+      },
+      "cpuGpu": {
+        "observedFrames": 174,
+        "unknownFrames": 0
+      },
+      "latency": {
+        "observedFrames": 174,
+        "unknownFrames": 0
+      },
+      "errors": [],
+      "offlineRequests": []
+    }
+  ],
+  "predecessorCaptureControl": {
+    "file": "filtered-presents.csv",
+    "frames": 175,
+    "observedPairs": 91,
+    "gapBoundaries": 83,
+    "scope": "Each new public workflow also reopens the prior route and checks its separate original population."
+  }
+}

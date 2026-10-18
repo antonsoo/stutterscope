@@ -1,0 +1,579 @@
+{
+  "url": "https://antonsoo.github.io/stutterscope/?example=presentmon-default",
+  "report": {
+    "tool": "stutterscope",
+    "schemaVersion": 5,
+    "generatedAt": "2026-10-18T14:51:09.602Z",
+    "source": {
+      "fileName": "trace5-filtered.csv",
+      "format": "presentmon",
+      "application": "PresentBench.exe",
+      "stream": "24892:0x2A70D2CAC00",
+      "streams": [
+        {
+          "id": "2656:0x19D7EF5E390",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x19D7EF5E390",
+          "frameCount": 174
+        },
+        {
+          "id": "2656:0x19D7F1BA8F0",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x19D7F1BA8F0",
+          "frameCount": 174
+        },
+        {
+          "id": "24892:0x2A70D2CAC00",
+          "application": "PresentBench.exe",
+          "processId": "24892",
+          "swapChain": "0x2A70D2CAC00",
+          "frameCount": 174
+        },
+        {
+          "id": "3980:0x21C48E8A710",
+          "application": "steamwebhelper.exe",
+          "processId": "3980",
+          "swapChain": "0x21C48E8A710",
+          "frameCount": 24
+        },
+        {
+          "id": "2656:0x0",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x0",
+          "frameCount": 5
+        },
+        {
+          "id": "24892:0x0",
+          "application": "PresentBench.exe",
+          "processId": "24892",
+          "swapChain": "0x0",
+          "frameCount": 5
+        },
+        {
+          "id": "2656:0x100000000",
+          "application": "dwm.exe",
+          "processId": "2656",
+          "swapChain": "0x100000000",
+          "frameCount": 5
+        }
+      ],
+      "frameCount": 174,
+      "durationSec": 1.9659608,
+      "columns": [
+        "Application",
+        "ProcessID",
+        "SwapChainAddress",
+        "PresentRuntime",
+        "SyncInterval",
+        "PresentFlags",
+        "AllowsTearing",
+        "PresentMode",
+        "TimeInMs",
+        "MsBetweenSimulationStart",
+        "MsBetweenPresents",
+        "MsBetweenDisplayChange",
+        "MsInPresentAPI",
+        "MsRenderPresentLatency",
+        "MsUntilDisplayed",
+        "CPUStartTimeInMs",
+        "MsBetweenAppStart",
+        "MsCPUBusy",
+        "MsCPUWait",
+        "MsGPULatency",
+        "MsGPUTime",
+        "MsGPUBusy",
+        "MsGPUWait",
+        "MsAnimationError",
+        "AnimationTime",
+        "MsFlipDelay",
+        "MsAllInputToPhotonLatency",
+        "MsClickToPhotonLatency"
+      ],
+      "skippedRows": 0,
+      "presentClockGaps": 83,
+      "presentClockEvidence": {
+        "witnesses": [
+          {
+            "fromSourceLine": 8,
+            "toSourceLine": 11,
+            "elapsedMs": 22.053699999999935,
+            "frameTimeMs": 10.9996,
+            "allowanceMs": 0.00010000000710168432,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 14,
+            "toSourceLine": 17,
+            "elapsedMs": 22.01929999999993,
+            "frameTimeMs": 11.0751,
+            "allowanceMs": 0.00010000000721902246,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 20,
+            "toSourceLine": 23,
+            "elapsedMs": 23.04850000000033,
+            "frameTimeMs": 11.9489,
+            "allowanceMs": 0.00010000000734033376,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 29,
+            "toSourceLine": 32,
+            "elapsedMs": 22.991199999999935,
+            "frameTimeMs": 11.9582,
+            "allowanceMs": 0.00010000000750283382,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 35,
+            "toSourceLine": 38,
+            "elapsedMs": 21.97569999999996,
+            "frameTimeMs": 10.974,
+            "allowanceMs": 0.00010000000762013963,
+            "kind": "unaccounted_interval"
+          }
+        ],
+        "omittedWitnesses": 78,
+        "clockColumn": "TimeInMs",
+        "frameTimeReference": "toSourceLine"
+      },
+      "warnings": [],
+      "omittedWarningDetails": 0,
+      "genericMapping": null,
+      "timingEvidence": null
+    },
+    "analysis": {
+      "stutterOptions": {
+        "windowRadius": 10,
+        "kMultiplier": 2,
+        "hitchThresholdMs": 50
+      },
+      "selection": {
+        "requested": null,
+        "timeBasis": "accumulated-frame-time",
+        "boundaryRule": "frame-end-in-(start,end];include-zero-at-origin",
+        "detectionContext": "full-stream",
+        "sourceFrameCount": 174,
+        "sourceDurationSec": 1.9659608,
+        "firstFrameIndex": 0,
+        "lastFrameIndex": 173,
+        "startSec": 0,
+        "endSec": 1.9659608,
+        "durationSec": 1.9659607999999993,
+        "excludedBefore": 0,
+        "excludedAfter": 0
+      },
+      "stutterIndexBasis": "selected-series-zero-based",
+      "continuity": {
+        "basis": "source-row-evidence",
+        "frameNumberBasis": "source-selected-stream-one-based",
+        "gaps": [
+          {
+            "beforeFrame": 3,
+            "sourceLine": 11
+          },
+          {
+            "beforeFrame": 5,
+            "sourceLine": 17
+          },
+          {
+            "beforeFrame": 7,
+            "sourceLine": 23
+          },
+          {
+            "beforeFrame": 10,
+            "sourceLine": 32
+          },
+          {
+            "beforeFrame": 12,
+            "sourceLine": 38
+          },
+          {
+            "beforeFrame": 14,
+            "sourceLine": 44
+          },
+          {
+            "beforeFrame": 16,
+            "sourceLine": 50
+          },
+          {
+            "beforeFrame": 18,
+            "sourceLine": 56
+          },
+          {
+            "beforeFrame": 20,
+            "sourceLine": 62
+          },
+          {
+            "beforeFrame": 23,
+            "sourceLine": 71
+          },
+          {
+            "beforeFrame": 25,
+            "sourceLine": 77
+          },
+          {
+            "beforeFrame": 27,
+            "sourceLine": 83
+          },
+          {
+            "beforeFrame": 29,
+            "sourceLine": 89
+          },
+          {
+            "beforeFrame": 31,
+            "sourceLine": 95
+          },
+          {
+            "beforeFrame": 33,
+            "sourceLine": 101
+          },
+          {
+            "beforeFrame": 35,
+            "sourceLine": 107
+          },
+          {
+            "beforeFrame": 37,
+            "sourceLine": 113
+          },
+          {
+            "beforeFrame": 39,
+            "sourceLine": 119
+          },
+          {
+            "beforeFrame": 41,
+            "sourceLine": 125
+          },
+          {
+            "beforeFrame": 44,
+            "sourceLine": 134
+          },
+          {
+            "beforeFrame": 46,
+            "sourceLine": 140
+          },
+          {
+            "beforeFrame": 48,
+            "sourceLine": 147
+          },
+          {
+            "beforeFrame": 50,
+            "sourceLine": 155
+          },
+          {
+            "beforeFrame": 52,
+            "sourceLine": 163
+          },
+          {
+            "beforeFrame": 55,
+            "sourceLine": 175
+          },
+          {
+            "beforeFrame": 57,
+            "sourceLine": 183
+          },
+          {
+            "beforeFrame": 59,
+            "sourceLine": 191
+          },
+          {
+            "beforeFrame": 62,
+            "sourceLine": 203
+          },
+          {
+            "beforeFrame": 64,
+            "sourceLine": 211
+          },
+          {
+            "beforeFrame": 66,
+            "sourceLine": 219
+          },
+          {
+            "beforeFrame": 68,
+            "sourceLine": 227
+          },
+          {
+            "beforeFrame": 70,
+            "sourceLine": 235
+          },
+          {
+            "beforeFrame": 72,
+            "sourceLine": 242
+          },
+          {
+            "beforeFrame": 74,
+            "sourceLine": 248
+          },
+          {
+            "beforeFrame": 76,
+            "sourceLine": 254
+          },
+          {
+            "beforeFrame": 78,
+            "sourceLine": 260
+          },
+          {
+            "beforeFrame": 80,
+            "sourceLine": 266
+          },
+          {
+            "beforeFrame": 82,
+            "sourceLine": 272
+          },
+          {
+            "beforeFrame": 84,
+            "sourceLine": 278
+          },
+          {
+            "beforeFrame": 86,
+            "sourceLine": 284
+          },
+          {
+            "beforeFrame": 88,
+            "sourceLine": 290
+          },
+          {
+            "beforeFrame": 90,
+            "sourceLine": 296
+          },
+          {
+            "beforeFrame": 92,
+            "sourceLine": 302
+          },
+          {
+            "beforeFrame": 94,
+            "sourceLine": 308
+          },
+          {
+            "beforeFrame": 96,
+            "sourceLine": 314
+          },
+          {
+            "beforeFrame": 99,
+            "sourceLine": 323
+          },
+          {
+            "beforeFrame": 101,
+            "sourceLine": 329
+          },
+          {
+            "beforeFrame": 103,
+            "sourceLine": 335
+          },
+          {
+            "beforeFrame": 105,
+            "sourceLine": 341
+          },
+          {
+            "beforeFrame": 108,
+            "sourceLine": 350
+          },
+          {
+            "beforeFrame": 110,
+            "sourceLine": 356
+          },
+          {
+            "beforeFrame": 112,
+            "sourceLine": 362
+          },
+          {
+            "beforeFrame": 114,
+            "sourceLine": 368
+          },
+          {
+            "beforeFrame": 116,
+            "sourceLine": 374
+          },
+          {
+            "beforeFrame": 118,
+            "sourceLine": 380
+          },
+          {
+            "beforeFrame": 121,
+            "sourceLine": 389
+          },
+          {
+            "beforeFrame": 123,
+            "sourceLine": 395
+          },
+          {
+            "beforeFrame": 125,
+            "sourceLine": 401
+          },
+          {
+            "beforeFrame": 127,
+            "sourceLine": 407
+          },
+          {
+            "beforeFrame": 129,
+            "sourceLine": 413
+          },
+          {
+            "beforeFrame": 131,
+            "sourceLine": 419
+          },
+          {
+            "beforeFrame": 133,
+            "sourceLine": 425
+          },
+          {
+            "beforeFrame": 135,
+            "sourceLine": 431
+          },
+          {
+            "beforeFrame": 137,
+            "sourceLine": 437
+          },
+          {
+            "beforeFrame": 139,
+            "sourceLine": 443
+          },
+          {
+            "beforeFrame": 140,
+            "sourceLine": 446
+          },
+          {
+            "beforeFrame": 142,
+            "sourceLine": 452
+          },
+          {
+            "beforeFrame": 144,
+            "sourceLine": 458
+          },
+          {
+            "beforeFrame": 146,
+            "sourceLine": 464
+          },
+          {
+            "beforeFrame": 148,
+            "sourceLine": 470
+          },
+          {
+            "beforeFrame": 150,
+            "sourceLine": 476
+          },
+          {
+            "beforeFrame": 152,
+            "sourceLine": 482
+          },
+          {
+            "beforeFrame": 154,
+            "sourceLine": 488
+          },
+          {
+            "beforeFrame": 156,
+            "sourceLine": 494
+          },
+          {
+            "beforeFrame": 158,
+            "sourceLine": 500
+          },
+          {
+            "beforeFrame": 160,
+            "sourceLine": 506
+          },
+          {
+            "beforeFrame": 162,
+            "sourceLine": 512
+          },
+          {
+            "beforeFrame": 164,
+            "sourceLine": 518
+          },
+          {
+            "beforeFrame": 166,
+            "sourceLine": 524
+          },
+          {
+            "beforeFrame": 168,
+            "sourceLine": 530
+          },
+          {
+            "beforeFrame": 170,
+            "sourceLine": 536
+          },
+          {
+            "beforeFrame": 172,
+            "sourceLine": 542
+          },
+          {
+            "beforeFrame": 174,
+            "sourceLine": 547
+          }
+        ]
+      }
+    },
+    "episodes": [],
+    "metrics": {
+      "frameCount": 174,
+      "durationSec": 1.9659607999999993,
+      "averageFps": 88.50634254762356,
+      "meanOfInstantaneousFps": 88.63748720997197,
+      "percentilesMs": {
+        "p50": 11.062899999999999,
+        "p90": 12.02882,
+        "p95": 12.054895,
+        "p99": 12.0924,
+        "p999": 12.1360277
+      },
+      "onePercentLow": {
+        "percentileMethodFps": 82.69656974628693,
+        "meanOfSlowestMethodFps": 82.47728781686743,
+        "timeWeightedFps": 82.59684480052863
+      },
+      "pointOnePercentLow": {
+        "percentileMethodFps": 82.39928456985972,
+        "meanOfSlowestMethodFps": 82.35807644476657,
+        "timeWeightedFps": 82.35807644476657
+      },
+      "stutter": {
+        "stutterEventCount": 0,
+        "totalStutterTimeMs": 0,
+        "stutterTimeFraction": 0,
+        "hitchThresholdMs": 50,
+        "hitchCount": 0,
+        "totalHitchTimeMs": 0,
+        "hitchTimeFraction": 0,
+        "stutterFrameIndices": []
+      },
+      "masdMs": 0.3386311111111108,
+      "pacingCoverage": {
+        "observedPairs": 90,
+        "gapBoundaries": 83
+      },
+      "dropped": null,
+      "boundShare": {
+        "cpuBoundFrames": 174,
+        "gpuBoundFrames": 0,
+        "cpuBoundFraction": 1,
+        "gpuBoundFraction": 0
+      },
+      "latency": {
+        "observedFrames": 174,
+        "meanMs": 22.654643103448276,
+        "p50": 22.72685,
+        "p90": 27.054570000000002,
+        "p99": 28.194526000000003
+      },
+      "telemetryCoverage": {
+        "dropped": null,
+        "cpuGpuBusy": {
+          "observedFrames": 174,
+          "unknownFrames": 0
+        },
+        "displayLatency": {
+          "observedFrames": 174,
+          "unknownFrames": 0
+        }
+      }
+    }
+  },
+  "markdown": "| Metric | trace5-filtered.csv |\n| --- | --- |\n| Average FPS | 88.5 |\n| 1% Low \\(percentile\\) | 82.7 |\n| 1% Low \\(slowest-mean\\) | 82.5 |\n| 1% Low \\(time-weighted\\) | 82.6 |\n| 0.1% Low \\(percentile\\) | 82.4 |\n| 0.1% Low \\(slowest-mean\\) | 82.4 |\n| 0.1% Low \\(time-weighted\\) | 82.4 |\n| P99 frame time \\(ms\\) | 12.09 |\n| P99.9 frame time \\(ms\\) | 12.14 |\n| Stutter events | 0 |\n| Hitches \\(&gt;50ms\\) | 0 |\n| Pacing \\(MASD, ms\\) | 0.34 |\n| Pacing observations | 90 adjacent pairs; 83 gaps between analyzed frames |\n| CPU-bound frames | 100.0% |\n| GPU-bound frames | 0.0% |\n| CPU/GPU observations | 174/174 frames observed; busy-time heuristic |\n| Display latency P99 \\(ms\\) | 28.19 |\n| Latency observations | 174/174 frames observed |\n\nSource format: presentmon. Analyzed frames: 174 of 174.\n\nEntire capture; frames 1-174; 1.965961 s of frame time. Detection uses full-stream neighbors.\n\nDetection: k = 2, window radius = 10, hitch threshold > 50 ms. Rolling context and episodes stop at source gaps; missing durations are unknown.\n\nSelected stream: 24892:0x2A70D2CAC00 (PresentBench.exe). Other streams are excluded.\n\nSkipped rows: 0. Retained warning details: 0.\n\nNative TimeInMs: 83 clock discontinuities; missing frame counts and durations unknown. Counts describe the full source stream; interval gaps are listed separately.\n\nRetained clock witnesses (milliseconds; physical CSV lines in the full source stream):\n\n| CSV lines | Clock interval | Native frame | Allowed rounding/roundoff |\n\n| --- | ---: | ---: | ---: |\n\n| 8-11 | 22.053700 | 10.999600 | 0.000100 |\n\n| 14-17 | 22.019300 | 11.075100 | 0.000100 |\n\n| 20-23 | 23.048500 | 11.948900 | 0.000100 |\n\n| 29-32 | 22.991200 | 11.958200 | 0.000100 |\n\n| 35-38 | 21.975700 | 10.974000 | 0.000100 |\n\n78 further witness details were not retained; JSON lists every detected gap coordinate.\n",
+  "errors": [],
+  "offlineRequests": [],
+  "csp": []
+}

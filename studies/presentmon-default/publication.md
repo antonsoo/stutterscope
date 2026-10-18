@@ -39,3 +39,8 @@ does not claim that the old bundle contains the new parser correction. The
 separate GitHub Pages build-status API returned 404 during inspection; public
 byte equality and actual browser workflows, rather than that unavailable API,
 establish the deployment checks above.
+
+The later [direct-example publication](example.md) adds the unchanged native CSV
+to the public sample assets and landing actions. Its separate source/deployment,
+37-file HTTP check and four public workflows retain the new route's evidence;
+the earlier checks above keep their original scope.
