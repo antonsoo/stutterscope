@@ -87,9 +87,14 @@ npm run test:browser -- tests/browser/presentmon-default.spec.js
 ```
 
 The replay accepts `--cli PATH` for a built or packed-and-installed CLI, and
+`--node PATH` to select a verified runtime. It accepts
 `--baseline studies/presentmon-default/results/before.json` to additionally
 require unchanged v2 metric summaries. The website build is `npm run build`,
 with output in `dist/`; `npm run build:cli` produces `dist-cli/`.
+
+[Clean install, package, minimum-runtime and browser verification](verification.md)
+records the separate checks, including one existing Firefox scenario that
+required an isolated rerun.
 
 Recapture native CSVs on Windows via WSL:
 
