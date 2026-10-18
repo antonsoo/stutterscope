@@ -542,7 +542,7 @@ function timingNote(run: RunState, label: string): string {
   const clockGaps = run.response.series.meta.presentClockGaps;
   const witnesses = run.response.series.meta.presentClockEvidence;
   const clockName = witnesses?.clockColumn ?? "TimeInSeconds";
-  const durationBasis = witnesses?.frameTimeReference === "fromSourceLine" ? " The earlier row's FrameTime spans the two CPU starts." : "";
+  const durationBasis = witnesses?.frameTimeReference === "fromSourceLine" ? ` The earlier row's ${witnesses.frameTimeColumn ?? "FrameTime"} spans the two CPU starts.` : "";
   const witnessTable = witnesses?.witnesses.length ? `<div class="episode-table-scroll" tabindex="0" role="region" aria-label="${label} native clock witnesses">
     <table class="delta-table"><caption>Retained clock witnesses (milliseconds)</caption><thead><tr><th scope="col">CSV lines</th><th scope="col">clock</th><th scope="col">frame</th><th scope="col">allowance</th></tr></thead><tbody>
       ${witnesses.witnesses.map(w => `<tr><td>${fmtInt(w.fromSourceLine)} - ${fmtInt(w.toSourceLine)}</td><td class="num">${fmtMs(w.elapsedMs, 3)}</td><td class="num">${fmtMs(w.frameTimeMs, 3)}</td><td class="num">${w.allowanceMs > 0 && w.allowanceMs < 1e-6 ? w.allowanceMs.toExponential(2) : fmtMs(w.allowanceMs, 6)}</td></tr>`).join("")}

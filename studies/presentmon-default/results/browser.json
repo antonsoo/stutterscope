@@ -1,0 +1,1035 @@
+{
+  "batches": [
+    {
+      "batch": "browser-chromium-native",
+      "startTime": "2026-10-18T12:19:37.911Z",
+      "duration": 37717.473,
+      "expected": 26,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    {
+      "batch": "browser-chromium-ui",
+      "startTime": "2026-10-18T12:18:29.694Z",
+      "duration": 34806.605,
+      "expected": 28,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    {
+      "batch": "browser-firefox-native-retry",
+      "startTime": "2026-10-18T12:23:32.419Z",
+      "duration": 12409.264,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    {
+      "batch": "browser-firefox-native",
+      "startTime": "2026-10-18T12:22:09.579Z",
+      "duration": 62351.454,
+      "expected": 25,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    {
+      "batch": "browser-firefox-ui",
+      "startTime": "2026-10-18T12:20:40.973Z",
+      "duration": 59246.728,
+      "expected": 28,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  ],
+  "uniqueScenarios": 108,
+  "passedEventually": 108,
+  "initialFailures": 1,
+  "cases": [
+    {
+      "file": "csv-integrity.spec.js",
+      "title": "presentmon2-duplicate: import refuses false metrics and a corrected capture can be exported",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "csv-integrity.spec.js",
+      "title": "quote-in-number: import refuses false metrics and a corrected capture can be exported",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "csv-integrity.spec.js",
+      "title": "generic-duplicate: import refuses false metrics and a corrected capture can be exported",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "csv-integrity.spec.js",
+      "title": "a rejected replacement preserves the identity and export of the previous valid capture",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "csv-width.spec.js",
+      "title": "shifted CSV cells remain warnings and unknown boundaries offline at 1440px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "csv-width.spec.js",
+      "title": "shifted CSV cells remain warnings and unknown boundaries offline at 375px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "frame-gaps.spec.js",
+      "title": "source-gap evidence survives offline import, worker recomputation and interval restoration",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "mangohud-clock.spec.js",
+      "title": "local MangoHud clock gaps survive offline analysis and downloads at 1440px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "mangohud-clock.spec.js",
+      "title": "local MangoHud clock gaps survive offline analysis and downloads at 375px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "native-json.spec.js",
+      "title": "native JSON recordings, indices, intervals and paired reports work offline at 1440px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "native-json.spec.js",
+      "title": "native JSON recordings, indices, intervals and paired reports work offline at 375px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "native-json.spec.js",
+      "title": "an ambiguous native replacement retains the last completed report and can recover offline",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "native-json.spec.js",
+      "title": "a damaged second recording cannot relabel the retained first recording",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "offline-import.spec.js",
+      "title": "first local import, comparison, replacement and exports work after disconnecting",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "present-clock.spec.js",
+      "title": "native clock gaps survive offline imports, recomputation and exports at 1440px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "present-clock.spec.js",
+      "title": "native clock gaps survive offline imports, recomputation and exports at 375px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "present-clock.spec.js",
+      "title": "the attributed native example is keyboard reachable, retries a failed download and recomputes offline",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "presentmon-default.spec.js",
+      "title": "PresentMon default native telemetry and both clocks survive offline exports at 1440px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "presentmon-default.spec.js",
+      "title": "PresentMon default native telemetry and both clocks survive offline exports at 375px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "presentmon-default.spec.js",
+      "title": "the new format's sample link loads a labelled synthetic capture",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "presentmon2-clock.spec.js",
+      "title": "native PresentMon 2.x clocks and CPU-only streams survive offline exports at 1440px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "presentmon2-clock.spec.js",
+      "title": "native PresentMon 2.x clocks and CPU-only streams survive offline exports at 375px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "stream-identity.spec.js",
+      "title": "application identity and missing cells survive offline worker selection at 1440px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "stream-identity.spec.js",
+      "title": "application identity and missing cells survive offline worker selection at 375px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "timestamp-gaps.spec.js",
+      "title": "missing timestamps remain missing in the worker and JSON export at 1440px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "timestamp-gaps.spec.js",
+      "title": "missing timestamps remain missing in the worker and JSON export at 375px",
+      "project": "chromium",
+      "batch": "browser-chromium-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "partial telemetry keeps observed denominators through worker, interval, and downloaded reports",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "a newer import cancels its predecessor and exports only the selected capture",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "cancelling the first import keeps the empty screen usable",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "New session retires an in-flight comparison and resets applied settings",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "removing comparison cancels an in-flight process switch",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "sample manifest-http errors are visible and can retry",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "sample manifest-json errors are visible and can retry",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "sample download-http errors are visible and can retry",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "a delayed sample download cannot supersede a chosen local capture",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "worker startup failure is actionable and Retry import creates a healthy worker offline",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "settings validate without changing reports and apply on keyboard submission",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "a failure updating B preserves both reports and retry restores its cached source",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "mapping can be cancelled with Escape; exports retain mapping and skipped-row evidence",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "an in-flight settings result cannot overwrite a comparison loaded afterward",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "New session cancels a pending settings calculation without resurrecting the report",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "redraw and reset release observers and global chart handlers",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "loaded plots resize from desktop to phone and back without horizontal overflow",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "production comparison is accessible at 1280px and exports a PNG",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "production comparison is accessible at 375px and exports a PNG",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "recorded experiment opens both scene intervals, preserves evidence, and exports both runs offline",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "viewing an episode does not change statistics; Analyze visible trace applies the viewed interval",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "bad ranges and worker failures retain results; retry and settings preserve each interval",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "cancel and a replacement source cannot receive an obsolete interval result",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "episode pages bound the table while filters retain complete downloadable evidence",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "interval and source-evidence controls are accessible at 1440px",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "interval and source-evidence controls are accessible at 375px",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "interval and source-evidence controls are accessible at 320px",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "periodic MangoHud logging cannot replace the current report with misleading frame metrics",
+      "project": "chromium",
+      "batch": "browser-chromium-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "presentmon2-clock.spec.js",
+      "title": "native PresentMon 2.x clocks and CPU-only streams survive offline exports at 375px",
+      "project": "firefox",
+      "batch": "browser-firefox-native-retry",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "csv-integrity.spec.js",
+      "title": "presentmon2-duplicate: import refuses false metrics and a corrected capture can be exported",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "csv-integrity.spec.js",
+      "title": "quote-in-number: import refuses false metrics and a corrected capture can be exported",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "csv-integrity.spec.js",
+      "title": "generic-duplicate: import refuses false metrics and a corrected capture can be exported",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "csv-integrity.spec.js",
+      "title": "a rejected replacement preserves the identity and export of the previous valid capture",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "csv-width.spec.js",
+      "title": "shifted CSV cells remain warnings and unknown boundaries offline at 1440px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "csv-width.spec.js",
+      "title": "shifted CSV cells remain warnings and unknown boundaries offline at 375px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "frame-gaps.spec.js",
+      "title": "source-gap evidence survives offline import, worker recomputation and interval restoration",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "mangohud-clock.spec.js",
+      "title": "local MangoHud clock gaps survive offline analysis and downloads at 1440px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "mangohud-clock.spec.js",
+      "title": "local MangoHud clock gaps survive offline analysis and downloads at 375px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "native-json.spec.js",
+      "title": "native JSON recordings, indices, intervals and paired reports work offline at 1440px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "native-json.spec.js",
+      "title": "native JSON recordings, indices, intervals and paired reports work offline at 375px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "native-json.spec.js",
+      "title": "an ambiguous native replacement retains the last completed report and can recover offline",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "native-json.spec.js",
+      "title": "a damaged second recording cannot relabel the retained first recording",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "offline-import.spec.js",
+      "title": "first local import, comparison, replacement and exports work after disconnecting",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "present-clock.spec.js",
+      "title": "native clock gaps survive offline imports, recomputation and exports at 1440px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "present-clock.spec.js",
+      "title": "native clock gaps survive offline imports, recomputation and exports at 375px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "present-clock.spec.js",
+      "title": "the attributed native example is keyboard reachable, retries a failed download and recomputes offline",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "presentmon-default.spec.js",
+      "title": "PresentMon default native telemetry and both clocks survive offline exports at 1440px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "presentmon-default.spec.js",
+      "title": "PresentMon default native telemetry and both clocks survive offline exports at 375px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "presentmon-default.spec.js",
+      "title": "the new format's sample link loads a labelled synthetic capture",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "presentmon2-clock.spec.js",
+      "title": "native PresentMon 2.x clocks and CPU-only streams survive offline exports at 1440px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "presentmon2-clock.spec.js",
+      "title": "native PresentMon 2.x clocks and CPU-only streams survive offline exports at 375px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "failed"
+      ]
+    },
+    {
+      "file": "stream-identity.spec.js",
+      "title": "application identity and missing cells survive offline worker selection at 1440px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "stream-identity.spec.js",
+      "title": "application identity and missing cells survive offline worker selection at 375px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "timestamp-gaps.spec.js",
+      "title": "missing timestamps remain missing in the worker and JSON export at 1440px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "timestamp-gaps.spec.js",
+      "title": "missing timestamps remain missing in the worker and JSON export at 375px",
+      "project": "firefox",
+      "batch": "browser-firefox-native",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "partial telemetry keeps observed denominators through worker, interval, and downloaded reports",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "a newer import cancels its predecessor and exports only the selected capture",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "cancelling the first import keeps the empty screen usable",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "New session retires an in-flight comparison and resets applied settings",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "removing comparison cancels an in-flight process switch",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "sample manifest-http errors are visible and can retry",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "sample manifest-json errors are visible and can retry",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "sample download-http errors are visible and can retry",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "a delayed sample download cannot supersede a chosen local capture",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "worker startup failure is actionable and Retry import creates a healthy worker offline",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "settings validate without changing reports and apply on keyboard submission",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "a failure updating B preserves both reports and retry restores its cached source",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "mapping can be cancelled with Escape; exports retain mapping and skipped-row evidence",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "an in-flight settings result cannot overwrite a comparison loaded afterward",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "New session cancels a pending settings calculation without resurrecting the report",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "redraw and reset release observers and global chart handlers",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "loaded plots resize from desktop to phone and back without horizontal overflow",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "production comparison is accessible at 1280px and exports a PNG",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "app.spec.js",
+      "title": "production comparison is accessible at 375px and exports a PNG",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "recorded experiment opens both scene intervals, preserves evidence, and exports both runs offline",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "viewing an episode does not change statistics; Analyze visible trace applies the viewed interval",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "bad ranges and worker failures retain results; retry and settings preserve each interval",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "cancel and a replacement source cannot receive an obsolete interval result",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "episode pages bound the table while filters retain complete downloadable evidence",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "interval and source-evidence controls are accessible at 1440px",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "interval and source-evidence controls are accessible at 375px",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "interval and source-evidence controls are accessible at 320px",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    },
+    {
+      "file": "intervals.spec.js",
+      "title": "periodic MangoHud logging cannot replace the current report with misleading frame metrics",
+      "project": "firefox",
+      "batch": "browser-firefox-ui",
+      "statuses": [
+        "passed"
+      ]
+    }
+  ]
+}

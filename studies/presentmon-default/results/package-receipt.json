@@ -1,0 +1,19 @@
+{
+  "package": "antonsoloviev-stutterscope-0.2.5.tgz",
+  "sha256": "435dec486343e82233d1aaca5bb6a33f6b848cd85fce9c02560967be998348ff",
+  "bytes": 54446,
+  "files": 28,
+  "installedFilesMatch": true,
+  "published": false,
+  "minimumNodeRuntime": {
+    "node": "v22.6.0",
+    "archive": "node-v22.6.0-linux-x64.tar.xz",
+    "sha256": "acbbe539edc33209bb3e1b25f7545b5ca5d70e6256ed8318e1ec1e41e7b35703",
+    "origin": "https://nodejs.org/dist/v22.6.0/"
+  },
+  "minimumNodeReplay": {
+    "cases": 16,
+    "discrepancies": 0,
+    "receipt": "installed-node22.json"
+  }
+}

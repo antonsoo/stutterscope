@@ -418,7 +418,7 @@ function main(): void {
   line("Pacing (MASD)", Number.isFinite(summary.masdMs) ? `${fmt(summary.masdMs, 2)} ms` : "Unavailable");
   line("Pacing observations", `${summary.pacingCoverage.observedPairs} adjacent pairs; ${summary.pacingCoverage.gapBoundaries} gaps between analyzed frames`);
   if (series.meta.presentClockGaps) line("Native clock evidence", `${series.meta.presentClockGaps} discontinuities in ${series.meta.presentClockEvidence?.clockColumn ?? "TimeInSeconds"}; missing frame counts and durations unknown`);
-  if (series.meta.presentClockEvidence?.frameTimeReference === "fromSourceLine") line("Clock duration basis", "Earlier CSV row's FrameTime spans the two CPU starts");
+  if (series.meta.presentClockEvidence?.frameTimeReference === "fromSourceLine") line("Clock duration basis", `Earlier CSV row's ${series.meta.presentClockEvidence.frameTimeColumn ?? "FrameTime"} spans the two CPU starts`);
   const witness = series.meta.presentClockEvidence?.witnesses[0];
   if (witness) line("First clock witness", `CSV lines ${witness.fromSourceLine}-${witness.toSourceLine}: clock ${fmt(witness.elapsedMs, 6)} ms; frame ${fmt(witness.frameTimeMs, 6)} ms; allowance ${witness.allowanceMs > 0 && witness.allowanceMs < 1e-6 ? witness.allowanceMs.toExponential(2) : fmt(witness.allowanceMs, 6)} ms`);
   const coverage = summary.telemetryCoverage;

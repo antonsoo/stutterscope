@@ -71,7 +71,7 @@ export function buildMarkdownTable(series: FrameSeries, summary: MetricsSummary,
     ...(mapping ? [`Column: ${escapeMd(mapping.valueColumn)}. Interpretation: ${mapping.valueKind}.`] : []),
     `Skipped rows: ${fmtInt(series.meta.skippedRows)}. Retained warning details: ${fmtInt(series.meta.warnings.length)}.`,
     ...(series.meta.presentClockGaps ? [`Native ${series.meta.presentClockEvidence?.clockColumn ?? "TimeInSeconds"}: ${fmtInt(series.meta.presentClockGaps)} clock discontinuities; missing frame counts and durations unknown. Counts describe the full source stream; interval gaps are listed separately.`] : []),
-    ...(series.meta.presentClockEvidence?.frameTimeReference === "fromSourceLine" ? ["The earlier CSV row's FrameTime spans the two CPU starts; clock witnesses use that duration."] : []),
+    ...(series.meta.presentClockEvidence?.frameTimeReference === "fromSourceLine" ? [`The earlier CSV row's ${series.meta.presentClockEvidence.frameTimeColumn ?? "FrameTime"} spans the two CPU starts; clock witnesses use that duration.`] : []),
     ...(series.meta.presentClockEvidence?.witnesses.length ? [
       "Retained clock witnesses (milliseconds; physical CSV lines in the full source stream):",
       "| CSV lines | Clock interval | Native frame | Allowed rounding/roundoff |",

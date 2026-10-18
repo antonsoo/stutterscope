@@ -51,9 +51,49 @@ We read `msBetweenPresents` as frame time, `Dropped` as the dropped-frame
 flag, and `msGPUActive` as GPU busy time when present. The lower-case `ms`
 prefix (vs. `Ms` elsewhere) is the format's fingerprint.
 
-## PresentMon 2.x
+## PresentMon default metrics (source checkout)
 
-The current console app/service, default metrics set.
+Verified with the official **2.6.0 console executable**, using two upstream
+offline ETW traces. This is a different schema from `--v2_metrics`, although
+the executable's release number still begins with 2. Detection requires exact
+`MsBetweenPresents`, `MsCPUBusy` and `MsCPUWait` header fields and takes precedence
+over OCAT. `--format presentmon` selects it explicitly.
+
+**Source:** checksum-pinned executable outputs and two untouched upstream CSVs
+in the [native replay](../studies/presentmon-default/README.md), plus
+[`WriteCsvHeader` / `WriteCsvRow`](https://github.com/GameTechDev/PresentMon/blob/e13fce6acdb55a808fd8318175a56863e532d95f/PresentMon/CsvOutput.cpp).
+
+| Native column | Analysis meaning |
+| --- | --- |
+| `MsBetweenPresents` | Primary frame duration, ending at the current present |
+| `MsCPUBusy`, `MsGPUBusy` | Optional CPU/GPU busy pair, both in milliseconds |
+| `MsUntilDisplayed` | Optional present-to-display latency, in milliseconds |
+| `TimeInMs` | Present clock; compare with the current row's `MsBetweenPresents` |
+| `CPUStartTimeInMs`, `CPUStartQPCTimeInMs` | Alternate CPU clock; compare with the earlier row's `MsBetweenAppStart` |
+| `MsBetweenAppStart` | CPU-start interval; never substituted for `MsBetweenPresents` |
+
+Busy and latency arrays retain unknown cells at their original frame positions.
+`NA` latency stays unavailable. It does not become a categorical drop outcome:
+default native output has neither `Dropped` nor `DisplayedTime`. CPU-only output
+retains CPU readings while GPU, latency and dropped-frame metrics remain absent.
+Reported CPU/GPU shares use the same busy-time heuristic as the v2 parser.
+
+Prefer `TimeInMs` when declared without a conflicting `TimeInSeconds`. Otherwise,
+one supported explicit CPU clock plus `MsBetweenAppStart` can establish a
+comparison. In 2.6.0, `--qpc_time_ms` produces millisecond present timestamps under
+a `TimeInSeconds` header: treating that header as seconds invents a gap at every
+pair. This parser does not use it. Raw QPC and local date strings also do not
+establish a usable clock unit. No unit is guessed from numeric magnitudes.
+
+Clock witnesses name `TimeInMs` with `frameTimeReference: "toSourceLine"`, or
+the CPU clock with `frameTimeReference: "fromSourceLine"` and
+`frameTimeColumn: "MsBetweenAppStart"`. Skipped rows, stream isolation, bounded
+witnesses and interval exports follow the existing continuity contract.
+Checking a clock does not prove capture completeness or estimate missing frames.
+
+## PresentMon v2 metrics
+
+The 2.3.0 default layout and the newer console's `--v2_metrics` layout.
 
 **Source:** [`README-ConsoleApplication.md#csv-columns`](https://github.com/GameTechDev/PresentMon/blob/v2.3.0/README-ConsoleApplication.md#csv-columns)
 (tag `v2.3.0`) for column definitions, and

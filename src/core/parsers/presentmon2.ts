@@ -1,6 +1,6 @@
 /**
- * PresentMon 2.x CSV (the current `GameTechDev/PresentMon` console app and
- * service, default metrics set).
+ * PresentMon's v2 CSV metrics (`--v2_metrics` in newer console releases;
+ * the default in the verified 2.3.0 release).
  *
  * Column set verified against `Tests/Gold/test_case_0_v2.csv` and
  * `README-ConsoleApplication.md` (tag v2.3.0) at

@@ -17,6 +17,7 @@
 export const SOURCE_FORMATS = [
   "presentmon1",
   "presentmon2",
+  "presentmon",
   "frameview",
   "capframex",
   "capframex-json",
@@ -30,6 +31,7 @@ export type SourceFormat = (typeof SOURCE_FORMATS)[number];
 export const FORMAT_LABELS: Record<SourceFormat, string> = {
   presentmon1: "PresentMon 1.x",
   presentmon2: "PresentMon 2.x",
+  presentmon: "PresentMon default",
   frameview: "NVIDIA FrameView",
   capframex: "CapFrameX CSV",
   "capframex-json": "CapFrameX JSON",
@@ -76,8 +78,10 @@ export interface PresentClockWitness {
 
 export interface PresentClockEvidence {
   /** Absent in older reports: TimeInSeconds, with duration on toSourceLine. */
-  clockColumn?: "CPUStartTime" | "CPUStartQPCTime";
-  frameTimeReference?: "fromSourceLine";
+  clockColumn?: "CPUStartTime" | "CPUStartQPCTime" | "TimeInMs" | "CPUStartTimeInMs" | "CPUStartQPCTimeInMs";
+  frameTimeReference?: "fromSourceLine" | "toSourceLine";
+  /** The default PresentMon schema's CPU interval differs from MsBetweenPresents. */
+  frameTimeColumn?: "MsBetweenAppStart";
   witnesses: PresentClockWitness[];
   /** Bound retention, without losing the full gap-coordinate list. */
   omittedWitnesses: number;

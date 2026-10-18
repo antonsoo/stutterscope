@@ -1,0 +1,199 @@
+{
+  "captures": [
+    {
+      "file": "trace1-default.csv",
+      "exitCode": 1,
+      "expected": {
+        "bytes": 12299,
+        "sha256": "1ec1b8de9d4755f501448a718cd4741d73b0b27e914411ab6eca6cf51043a3d8"
+      },
+      "actual": null,
+      "stderr": "<3>WSL (737596 - ) ERROR: UtilAcceptVsock:281: accept4 failed 110",
+      "matches": false
+    },
+    {
+      "file": "trace1-filtered.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 11690,
+        "sha256": "409fcce79464fdab92d6a6f5b57fdb3e5a7e0d8c7f4d38689f8ed3ad6c8b713e"
+      },
+      "actual": {
+        "bytes": 11690,
+        "sha256": "409fcce79464fdab92d6a6f5b57fdb3e5a7e0d8c7f4d38689f8ed3ad6c8b713e"
+      },
+      "stderr": "",
+      "matches": true
+    },
+    {
+      "file": "trace1-qpc-ms.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 12600,
+        "sha256": "9a1312de1966e1e00c87dd9efb407882523588f7371ed82c02aa9e5c4332df02"
+      },
+      "actual": {
+        "bytes": 12600,
+        "sha256": "9a1312de1966e1e00c87dd9efb407882523588f7371ed82c02aa9e5c4332df02"
+      },
+      "stderr": "",
+      "matches": true
+    },
+    {
+      "file": "trace1-qpc-ms-filtered.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 11973,
+        "sha256": "aab463fcd3d48a00893d377971123e1e2be81dd0ce393a0bfd4c2a609ac621a7"
+      },
+      "actual": {
+        "bytes": 11973,
+        "sha256": "aab463fcd3d48a00893d377971123e1e2be81dd0ce393a0bfd4c2a609ac621a7"
+      },
+      "stderr": "",
+      "matches": true
+    },
+    {
+      "file": "trace1-qpc.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 12778,
+        "sha256": "62b78f4a2305b15c35298e4e12ddd14e87c313ad538a24335322f5e76468bdc7"
+      },
+      "actual": {
+        "bytes": 12778,
+        "sha256": "62b78f4a2305b15c35298e4e12ddd14e87c313ad538a24335322f5e76468bdc7"
+      },
+      "stderr": "",
+      "matches": true
+    },
+    {
+      "file": "trace1-cpu-only.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 9794,
+        "sha256": "f99fab026bb91841b3a2f40d7e7535b864b680d531ae74d5db2bf566b654c640"
+      },
+      "actual": {
+        "bytes": 9794,
+        "sha256": "f99fab026bb91841b3a2f40d7e7535b864b680d531ae74d5db2bf566b654c640"
+      },
+      "stderr": "",
+      "matches": true
+    },
+    {
+      "file": "trace1-v2.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 8518,
+        "sha256": "f1b9f436cdc270170740db60c8465d97d8adeae5dad83f125dca9eda5d6de625"
+      },
+      "actual": {
+        "bytes": 8518,
+        "sha256": "f1b9f436cdc270170740db60c8465d97d8adeae5dad83f125dca9eda5d6de625"
+      },
+      "stderr": "",
+      "matches": true
+    },
+    {
+      "file": "trace5-default.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 154519,
+        "sha256": "d84eedfce8cb1b3eccfafd82760e8db42e8663b5628e18d84167cf21dd4e0603"
+      },
+      "actual": {
+        "bytes": 154519,
+        "sha256": "d84eedfce8cb1b3eccfafd82760e8db42e8663b5628e18d84167cf21dd4e0603"
+      },
+      "stderr": "",
+      "matches": true
+    },
+    {
+      "file": "trace5-filtered.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 136239,
+        "sha256": "bde56900213bf9f9cc04af75200abe8af47d6643321a280a5c2ec0d981f78056"
+      },
+      "actual": {
+        "bytes": 136239,
+        "sha256": "bde56900213bf9f9cc04af75200abe8af47d6643321a280a5c2ec0d981f78056"
+      },
+      "stderr": "",
+      "matches": true
+    },
+    {
+      "file": "trace5-qpc-ms.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 157762,
+        "sha256": "186cba271c80b34fc3918d46161b0d4aa92963f539cb6331d31de10c7be9bd60"
+      },
+      "actual": {
+        "bytes": 157762,
+        "sha256": "186cba271c80b34fc3918d46161b0d4aa92963f539cb6331d31de10c7be9bd60"
+      },
+      "stderr": "",
+      "matches": true
+    },
+    {
+      "file": "trace5-qpc-ms-filtered.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 139052,
+        "sha256": "aba964cfe3db03e77a5607cbbc760a90d0882d229028d72f499c397c1c6b4266"
+      },
+      "actual": {
+        "bytes": 139052,
+        "sha256": "aba964cfe3db03e77a5607cbbc760a90d0882d229028d72f499c397c1c6b4266"
+      },
+      "stderr": "",
+      "matches": true
+    },
+    {
+      "file": "trace5-qpc.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 159691,
+        "sha256": "5e5e76a28333d226b1ea2875300490c2567135dd6c48ce35fe66022b6cc8e39b"
+      },
+      "actual": {
+        "bytes": 159691,
+        "sha256": "5e5e76a28333d226b1ea2875300490c2567135dd6c48ce35fe66022b6cc8e39b"
+      },
+      "stderr": "",
+      "matches": true
+    },
+    {
+      "file": "trace5-cpu-only.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 127518,
+        "sha256": "5401b1108d478ac943dc47d6562436ab789f2191a7d3e4b0b702ff61ec6a6967"
+      },
+      "actual": {
+        "bytes": 127518,
+        "sha256": "5401b1108d478ac943dc47d6562436ab789f2191a7d3e4b0b702ff61ec6a6967"
+      },
+      "stderr": "",
+      "matches": true
+    },
+    {
+      "file": "trace5-v2.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 106739,
+        "sha256": "4a1262a19497b756c448daf34626ae5a541ab7164faa4e9539a02ad673622fd7"
+      },
+      "actual": {
+        "bytes": 106739,
+        "sha256": "4a1262a19497b756c448daf34626ae5a541ab7164faa4e9539a02ad673622fd7"
+      },
+      "stderr": "",
+      "matches": true
+    }
+  ],
+  "total": 14,
+  "matches": 13
+}

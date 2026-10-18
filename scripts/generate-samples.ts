@@ -240,6 +240,22 @@ function writePresentMon2(frames: SyntheticFrame[]): string {
   return lines.join("\n") + "\n";
 }
 
+function writePresentMon(frames: SyntheticFrame[]): string {
+  const lines = [header(["Application", "ProcessID", "SwapChainAddress", "PresentRuntime",
+    "TimeInMs", "MsBetweenPresents", "MsInPresentAPI", "MsRenderPresentLatency",
+    "MsUntilDisplayed", "MsCPUBusy", "MsCPUWait", "MsGPUBusy"])];
+  let time = 0;
+  for (const f of frames) {
+    const duration = Number(f.frameTimeMs.toFixed(4));
+    time += duration;
+    lines.push([APP_NAME, 4242, "0x000001", "DXGI", time.toFixed(4), duration.toFixed(4),
+      "0.0000", f.gpuBusyMs.toFixed(4), f.dropped ? "NA" : f.displayLatencyMs.toFixed(4),
+      f.cpuBusyMs.toFixed(4), (f.frameTimeMs - f.cpuBusyMs).toFixed(4),
+      f.gpuBusyMs.toFixed(4)].join(","));
+  }
+  return lines.join("\n") + "\n";
+}
+
 function writeOcatLike(frames: SyntheticFrame[], withMetadataComment: boolean): string {
   const dataHeader = header([
     "Application",
@@ -434,6 +450,12 @@ function main(): void {
       format: "presentmon2",
       label: "PresentMon 2.x",
       contents: writePresentMon2(frames),
+    },
+    {
+      name: "presentmon-synthetic-demo.csv",
+      format: "presentmon",
+      label: "PresentMon default",
+      contents: writePresentMon(frames),
     },
     {
       name: "frameview-synthetic-demo.csv",

@@ -18,7 +18,7 @@
  * which only appear once and are ignored here.
  */
 import { Float64Builder, Uint8Builder } from "../buffer.ts";
-import { extraFieldsReason, indexHeader, LINE_BREAK, parseDroppedOrUnknown, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
+import { extraFieldsReason, indexHeader, LINE_BREAK, parseDroppedOrUnknown, parseFloatOrNull, parseFrameTimeOrNull, parseWarnings, SkippedRows, splitCsvLine } from "../csv.ts";
 import type { FrameSeries, ParserOptions, SniffResult, StreamingParser } from "../types.ts";
 import { parseTextSync } from "../stream.ts";
 import { cumulativeSeconds, StreamTracker } from "../streams.ts";
@@ -33,7 +33,9 @@ export function sniff(sampleText: string): SniffResult {
   return { format: "ocat", confidence: 0, reason: "header does not match OCAT" };
 }
 
-/** Shared by ocat.ts and capframex.ts, which write the same data-row schema. */
+/** Present-to-present durations shared by OCAT, CapFrameX and current PresentMon.
+ * Only the current PresentMon schema reads the Ms-prefixed busy/latency channels.
+ */
 export class PresentFamilyParser implements StreamingParser {
   protected header: Map<string, number> | null = null;
   protected application: string | undefined;
@@ -42,12 +44,18 @@ export class PresentFamilyParser implements StreamingParser {
   protected readonly sourceLine = new Float64Builder(4096);
   protected readonly dropped = new Uint8Builder(4096);
   private hasDropped = false;
+  private readonly cpuBusyMs = new Float64Builder(4096);
+  private readonly gpuBusyMs = new Float64Builder(4096);
+  private readonly displayLatencyMs = new Float64Builder(4096);
+  private hasCpuBusy = false;
+  private hasGpuBusy = false;
+  private hasDisplayLatency = false;
   protected columns: string[] = [];
-  private readonly format: "ocat" | "capframex";
+  private readonly format: "ocat" | "capframex" | "presentmon";
   private readonly streams = new StreamTracker();
   private readonly options: ParserOptions;
 
-  constructor(format: "ocat" | "capframex", options: ParserOptions = {}) {
+  constructor(format: "ocat" | "capframex" | "presentmon", options: ParserOptions = {}) {
     this.format = format;
     this.options = options;
   }
@@ -58,7 +66,12 @@ export class PresentFamilyParser implements StreamingParser {
       this.header = indexHeader(fields, lineIndex + 1);
       this.columns = fields.map((f) => f.trim());
       this.hasDropped = this.header.has("Dropped");
-      this.streams.setHeader(this.header, "MsBetweenPresents");
+      if (this.format === "presentmon") {
+        this.hasCpuBusy = this.header.has("MsCPUBusy");
+        this.hasGpuBusy = this.header.has("MsGPUBusy");
+        this.hasDisplayLatency = this.header.has("MsUntilDisplayed");
+      }
+      this.streams.setHeader(this.header, "MsBetweenPresents", this.format === "presentmon");
       return;
     }
     const widthProblem = extraFieldsReason(fields, this.columns);
@@ -86,12 +99,20 @@ export class PresentFamilyParser implements StreamingParser {
     this.frameTimeMs.push(ft);
     this.sourceLine.push(lineIndex + 1);
     if (this.hasDropped) this.dropped.push(parseDroppedOrUnknown(get("Dropped")));
+    if (this.hasCpuBusy) this.cpuBusyMs.push(parseFloatOrNull(get("MsCPUBusy")) ?? NaN);
+    if (this.hasGpuBusy) this.gpuBusyMs.push(parseFloatOrNull(get("MsGPUBusy")) ?? NaN);
+    if (this.hasDisplayLatency) this.displayLatencyMs.push(parseFloatOrNull(get("MsUntilDisplayed")) ?? NaN);
     if (this.application === undefined) this.application = get("Application");
   }
 
   finish(sourceFileName: string): FrameSeries {
     const { frameTimeMs, sourceLine, gapBefore, channels, streams, selected, clockGaps, clockEvidence } = this.streams.select(
-      { frameTimeMs: this.frameTimeMs.toArray(), sourceLine: this.sourceLine.toArray(), channels: { dropped: this.hasDropped ? this.dropped.toArray() : undefined } },
+      { frameTimeMs: this.frameTimeMs.toArray(), sourceLine: this.sourceLine.toArray(), channels: {
+        dropped: this.hasDropped ? this.dropped.toArray() : undefined,
+        cpuBusyMs: this.hasCpuBusy ? this.cpuBusyMs.toArray() : undefined,
+        gpuBusyMs: this.hasGpuBusy ? this.gpuBusyMs.toArray() : undefined,
+        displayLatencyMs: this.hasDisplayLatency ? this.displayLatencyMs.toArray() : undefined,
+      } },
       this.options.stream,
     );
     return {

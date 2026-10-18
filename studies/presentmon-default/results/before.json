@@ -1,0 +1,4002 @@
+{
+  "cases": [
+    {
+      "file": "trace1-default.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 7,
+        "averageFps": 104.49429983594395,
+        "gaps": [],
+        "observedPairs": 6,
+        "masdMs": 0.5059166666666667,
+        "cpuBoundFrames": 7,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 4,
+        "latencyMeanMs": 21.72985
+      },
+      "observed": {
+        "format": "ocat",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 7,
+        "averageFps": 104.49429983594392,
+        "gaps": [],
+        "observedPairs": 6,
+        "masdMs": 0.5059166666666668,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "differences": [
+        "format",
+        "cpuBoundFrames",
+        "gpuBoundFrames",
+        "latencyFrames",
+        "latencyMeanMs"
+      ],
+      "summary": {
+        "frameCount": 7,
+        "durationSec": 0.06698930000000002,
+        "averageFps": 104.49429983594392,
+        "meanOfInstantaneousFps": 105.57453996818273,
+        "percentilesMs": {
+          "p50": 9.0017,
+          "p90": 10.79748,
+          "p95": 11.400089999999999,
+          "p99": 11.882178,
+          "p999": 11.990647800000001
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 84.15965490501826,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 83.39832982167985,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.5059166666666668,
+        "pacingCoverage": {
+          "observedPairs": 6,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      },
+      "clockEvidence": null
+    },
+    {
+      "file": "trace1-filtered.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 4,
+        "averageFps": 102.57883183226309,
+        "gaps": [
+          {
+            "beforeFrame": 2,
+            "sourceLine": 11
+          },
+          {
+            "beforeFrame": 4,
+            "sourceLine": 17
+          }
+        ],
+        "observedPairs": 1,
+        "masdMs": 0.0118,
+        "cpuBoundFrames": 4,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 4,
+        "latencyMeanMs": 21.72985
+      },
+      "observed": {
+        "format": "ocat",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 4,
+        "averageFps": 102.57883183226309,
+        "gaps": [],
+        "observedPairs": 3,
+        "masdMs": 1.0042666666666669,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "differences": [
+        "format",
+        "gaps",
+        "observedPairs",
+        "masdMs",
+        "cpuBoundFrames",
+        "gpuBoundFrames",
+        "latencyFrames",
+        "latencyMeanMs"
+      ],
+      "summary": {
+        "frameCount": 4,
+        "durationSec": 0.0389944,
+        "averageFps": 102.57883183226309,
+        "meanOfInstantaneousFps": 104.187656950744,
+        "percentilesMs": {
+          "p50": 9.0009,
+          "p90": 11.103930000000002,
+          "p95": 11.553315,
+          "p99": 11.912823,
+          "p999": 11.993712300000002
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 83.94315940058877,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 83.37702080781109,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 1.0042666666666669,
+        "pacingCoverage": {
+          "observedPairs": 3,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      },
+      "clockEvidence": null
+    },
+    {
+      "file": "trace1-qpc-ms.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 7,
+        "averageFps": 104.49429983594395,
+        "gaps": [],
+        "observedPairs": 6,
+        "masdMs": 0.5059166666666667,
+        "cpuBoundFrames": 7,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 4,
+        "latencyMeanMs": 21.72985
+      },
+      "observed": {
+        "format": "ocat",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 7,
+        "averageFps": 104.49429983594392,
+        "gaps": [
+          {
+            "beforeFrame": 2,
+            "sourceLine": 9
+          },
+          {
+            "beforeFrame": 3,
+            "sourceLine": 12
+          },
+          {
+            "beforeFrame": 4,
+            "sourceLine": 15
+          },
+          {
+            "beforeFrame": 5,
+            "sourceLine": 16
+          },
+          {
+            "beforeFrame": 6,
+            "sourceLine": 19
+          },
+          {
+            "beforeFrame": 7,
+            "sourceLine": 20
+          }
+        ],
+        "observedPairs": 0,
+        "masdMs": null,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "differences": [
+        "format",
+        "gaps",
+        "observedPairs",
+        "masdMs",
+        "cpuBoundFrames",
+        "gpuBoundFrames",
+        "latencyFrames",
+        "latencyMeanMs"
+      ],
+      "summary": {
+        "frameCount": 7,
+        "durationSec": 0.06698930000000002,
+        "averageFps": 104.49429983594392,
+        "meanOfInstantaneousFps": 105.57453996818273,
+        "percentilesMs": {
+          "p50": 9.0017,
+          "p90": 10.79748,
+          "p95": 11.400089999999999,
+          "p99": 11.882178,
+          "p999": 11.990647800000001
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 84.15965490501826,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 83.39832982167985,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 6
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      },
+      "clockEvidence": {
+        "witnesses": [
+          {
+            "fromSourceLine": 8,
+            "toSourceLine": 9,
+            "elapsedMs": 9994,
+            "frameTimeMs": 9.994,
+            "allowanceMs": 0.1000000025733762,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 9,
+            "toSourceLine": 12,
+            "elapsedMs": 9006.800000000047,
+            "frameTimeMs": 9.0068,
+            "allowanceMs": 0.10000000260712665,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 12,
+            "toSourceLine": 15,
+            "elapsedMs": 8995,
+            "frameTimeMs": 8.995,
+            "allowanceMs": 0.10000000263910423,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 15,
+            "toSourceLine": 16,
+            "elapsedMs": 9001.699999999953,
+            "frameTimeMs": 9.0017,
+            "allowanceMs": 0.10000000267107281,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 16,
+            "toSourceLine": 19,
+            "elapsedMs": 8989.900000000023,
+            "frameTimeMs": 8.9899,
+            "allowanceMs": 0.1000000027030323,
+            "kind": "unaccounted_interval"
+          }
+        ],
+        "omittedWitnesses": 1
+      }
+    },
+    {
+      "file": "trace1-qpc-ms-filtered.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 4,
+        "averageFps": 102.57883183226309,
+        "gaps": [
+          {
+            "beforeFrame": 2,
+            "sourceLine": 11
+          },
+          {
+            "beforeFrame": 4,
+            "sourceLine": 17
+          }
+        ],
+        "observedPairs": 1,
+        "masdMs": 0.0118,
+        "cpuBoundFrames": 4,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 4,
+        "latencyMeanMs": 21.72985
+      },
+      "observed": {
+        "format": "ocat",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 4,
+        "averageFps": 102.57883183226309,
+        "gaps": [
+          {
+            "beforeFrame": 2,
+            "sourceLine": 11
+          },
+          {
+            "beforeFrame": 3,
+            "sourceLine": 14
+          },
+          {
+            "beforeFrame": 4,
+            "sourceLine": 17
+          }
+        ],
+        "observedPairs": 0,
+        "masdMs": null,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "differences": [
+        "format",
+        "gaps",
+        "observedPairs",
+        "masdMs",
+        "cpuBoundFrames",
+        "gpuBoundFrames",
+        "latencyFrames",
+        "latencyMeanMs"
+      ],
+      "summary": {
+        "frameCount": 4,
+        "durationSec": 0.0389944,
+        "averageFps": 102.57883183226309,
+        "meanOfInstantaneousFps": 104.187656950744,
+        "percentilesMs": {
+          "p50": 9.0009,
+          "p90": 11.103930000000002,
+          "p95": 11.553315,
+          "p99": 11.912823,
+          "p999": 11.993712300000002
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 83.94315940058877,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 83.37702080781109,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 3
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      },
+      "clockEvidence": {
+        "witnesses": [
+          {
+            "fromSourceLine": 8,
+            "toSourceLine": 11,
+            "elapsedMs": 19000.800000000047,
+            "frameTimeMs": 9.0068,
+            "allowanceMs": 0.10000000258937373,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 11,
+            "toSourceLine": 14,
+            "elapsedMs": 8995,
+            "frameTimeMs": 8.995,
+            "allowanceMs": 0.10000000263910423,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 14,
+            "toSourceLine": 17,
+            "elapsedMs": 17991.599999999977,
+            "frameTimeMs": 8.9899,
+            "allowanceMs": 0.10000000268704207,
+            "kind": "unaccounted_interval"
+          }
+        ],
+        "omittedWitnesses": 0
+      }
+    },
+    {
+      "file": "trace1-qpc.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 7,
+        "averageFps": 104.49429983594395,
+        "gaps": [],
+        "observedPairs": 6,
+        "masdMs": 0.5059166666666667,
+        "cpuBoundFrames": 7,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 4,
+        "latencyMeanMs": 21.72985
+      },
+      "observed": {
+        "format": "ocat",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 7,
+        "averageFps": 104.49429983594392,
+        "gaps": [],
+        "observedPairs": 6,
+        "masdMs": 0.5059166666666668,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "differences": [
+        "format",
+        "cpuBoundFrames",
+        "gpuBoundFrames",
+        "latencyFrames",
+        "latencyMeanMs"
+      ],
+      "summary": {
+        "frameCount": 7,
+        "durationSec": 0.06698930000000002,
+        "averageFps": 104.49429983594392,
+        "meanOfInstantaneousFps": 105.57453996818273,
+        "percentilesMs": {
+          "p50": 9.0017,
+          "p90": 10.79748,
+          "p95": 11.400089999999999,
+          "p99": 11.882178,
+          "p999": 11.990647800000001
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 84.15965490501826,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 83.39832982167985,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.5059166666666668,
+        "pacingCoverage": {
+          "observedPairs": 6,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      },
+      "clockEvidence": null
+    },
+    {
+      "file": "trace1-cpu-only.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 9,
+        "averageFps": 105.89306682793789,
+        "gaps": [],
+        "observedPairs": 8,
+        "masdMs": 0.3814875,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "observed": {
+        "format": "ocat",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 9,
+        "averageFps": 105.89306682793787,
+        "gaps": [],
+        "observedPairs": 8,
+        "masdMs": 0.3814875000000002,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "differences": [
+        "format"
+      ],
+      "summary": {
+        "frameCount": 9,
+        "durationSec": 0.08499140000000001,
+        "averageFps": 105.89306682793787,
+        "meanOfInstantaneousFps": 106.80201595655097,
+        "percentilesMs": {
+          "p50": 9.0017,
+          "p90": 10.39574,
+          "p95": 11.19922,
+          "p99": 11.842004000000001,
+          "p999": 11.986630400000003
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 84.44516654444635,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 83.42628133424384,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.3814875000000002,
+        "pacingCoverage": {
+          "observedPairs": 8,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      },
+      "clockEvidence": null
+    },
+    {
+      "file": "trace1-v2.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon2",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 7,
+        "averageFps": 105.92723404319713,
+        "gaps": [],
+        "observedPairs": 6,
+        "masdMs": 0.47078333333333333,
+        "cpuBoundFrames": 7,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 4,
+        "latencyMeanMs": 30.964525
+      },
+      "observed": {
+        "format": "presentmon2",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 7,
+        "averageFps": 105.92723404319712,
+        "gaps": [],
+        "observedPairs": 6,
+        "masdMs": 0.47078333333333333,
+        "cpuBoundFrames": 7,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 4,
+        "latencyMeanMs": 30.964525
+      },
+      "differences": [],
+      "summary": {
+        "frameCount": 7,
+        "durationSec": 0.0660831,
+        "averageFps": 105.92723404319712,
+        "meanOfInstantaneousFps": 106.68477774055957,
+        "percentilesMs": {
+          "p50": 9.0375,
+          "p90": 10.4596,
+          "p95": 10.920399999999999,
+          "p99": 11.28904,
+          "p999": 11.371984000000001
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 88.58149142885489,
+          "meanOfSlowestMethodFps": 87.86419709696693,
+          "timeWeightedFps": 87.86419709696693
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 87.93540335617777,
+          "meanOfSlowestMethodFps": 87.86419709696693,
+          "timeWeightedFps": 87.86419709696693
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.47078333333333333,
+        "pacingCoverage": {
+          "observedPairs": 6,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 3,
+          "observedFrames": 7,
+          "droppedFraction": 0.42857142857142855
+        },
+        "boundShare": {
+          "cpuBoundFrames": 7,
+          "gpuBoundFrames": 0,
+          "cpuBoundFraction": 1,
+          "gpuBoundFraction": 0
+        },
+        "latency": {
+          "observedFrames": 4,
+          "meanMs": 30.964525,
+          "p50": 31.7879,
+          "p90": 33.57135,
+          "p99": 33.913575
+        },
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 7,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": {
+            "observedFrames": 7,
+            "unknownFrames": 0
+          },
+          "displayLatency": {
+            "observedFrames": 4,
+            "unknownFrames": 3
+          }
+        }
+      },
+      "clockEvidence": null
+    },
+    {
+      "file": "trace5-default.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 258,
+        "averageFps": 88.88590611980841,
+        "gaps": [],
+        "observedPairs": 257,
+        "masdMs": 0.3290342412451362,
+        "cpuBoundFrames": 258,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 174,
+        "latencyMeanMs": 22.654643103448276
+      },
+      "observed": {
+        "format": "ocat",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 258,
+        "averageFps": 88.88590611980835,
+        "gaps": [],
+        "observedPairs": 257,
+        "masdMs": 0.3290342412451365,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "differences": [
+        "format",
+        "cpuBoundFrames",
+        "gpuBoundFrames",
+        "latencyFrames",
+        "latencyMeanMs"
+      ],
+      "summary": {
+        "frameCount": 258,
+        "durationSec": 2.902597400000002,
+        "averageFps": 88.88590611980835,
+        "meanOfInstantaneousFps": 88.99884794910382,
+        "percentilesMs": {
+          "p50": 11.0512,
+          "p90": 12.01623,
+          "p95": 12.042535,
+          "p99": 12.117664,
+          "p999": 12.1400183
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 82.52415647108222,
+          "meanOfSlowestMethodFps": 82.3996989664331,
+          "timeWeightedFps": 82.4279991427488
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 82.37219873054063,
+          "meanOfSlowestMethodFps": 82.35807644476657,
+          "timeWeightedFps": 82.35807644476657
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.3290342412451365,
+        "pacingCoverage": {
+          "observedPairs": 257,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      },
+      "clockEvidence": null
+    },
+    {
+      "file": "trace5-filtered.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 174,
+        "averageFps": 88.50634254762353,
+        "gaps": [
+          {
+            "beforeFrame": 3,
+            "sourceLine": 11
+          },
+          {
+            "beforeFrame": 5,
+            "sourceLine": 17
+          },
+          {
+            "beforeFrame": 7,
+            "sourceLine": 23
+          },
+          {
+            "beforeFrame": 10,
+            "sourceLine": 32
+          },
+          {
+            "beforeFrame": 12,
+            "sourceLine": 38
+          },
+          {
+            "beforeFrame": 14,
+            "sourceLine": 44
+          },
+          {
+            "beforeFrame": 16,
+            "sourceLine": 50
+          },
+          {
+            "beforeFrame": 18,
+            "sourceLine": 56
+          },
+          {
+            "beforeFrame": 20,
+            "sourceLine": 62
+          },
+          {
+            "beforeFrame": 23,
+            "sourceLine": 71
+          },
+          {
+            "beforeFrame": 25,
+            "sourceLine": 77
+          },
+          {
+            "beforeFrame": 27,
+            "sourceLine": 83
+          },
+          {
+            "beforeFrame": 29,
+            "sourceLine": 89
+          },
+          {
+            "beforeFrame": 31,
+            "sourceLine": 95
+          },
+          {
+            "beforeFrame": 33,
+            "sourceLine": 101
+          },
+          {
+            "beforeFrame": 35,
+            "sourceLine": 107
+          },
+          {
+            "beforeFrame": 37,
+            "sourceLine": 113
+          },
+          {
+            "beforeFrame": 39,
+            "sourceLine": 119
+          },
+          {
+            "beforeFrame": 41,
+            "sourceLine": 125
+          },
+          {
+            "beforeFrame": 44,
+            "sourceLine": 134
+          },
+          {
+            "beforeFrame": 46,
+            "sourceLine": 140
+          },
+          {
+            "beforeFrame": 48,
+            "sourceLine": 147
+          },
+          {
+            "beforeFrame": 50,
+            "sourceLine": 155
+          },
+          {
+            "beforeFrame": 52,
+            "sourceLine": 163
+          },
+          {
+            "beforeFrame": 55,
+            "sourceLine": 175
+          },
+          {
+            "beforeFrame": 57,
+            "sourceLine": 183
+          },
+          {
+            "beforeFrame": 59,
+            "sourceLine": 191
+          },
+          {
+            "beforeFrame": 62,
+            "sourceLine": 203
+          },
+          {
+            "beforeFrame": 64,
+            "sourceLine": 211
+          },
+          {
+            "beforeFrame": 66,
+            "sourceLine": 219
+          },
+          {
+            "beforeFrame": 68,
+            "sourceLine": 227
+          },
+          {
+            "beforeFrame": 70,
+            "sourceLine": 235
+          },
+          {
+            "beforeFrame": 72,
+            "sourceLine": 242
+          },
+          {
+            "beforeFrame": 74,
+            "sourceLine": 248
+          },
+          {
+            "beforeFrame": 76,
+            "sourceLine": 254
+          },
+          {
+            "beforeFrame": 78,
+            "sourceLine": 260
+          },
+          {
+            "beforeFrame": 80,
+            "sourceLine": 266
+          },
+          {
+            "beforeFrame": 82,
+            "sourceLine": 272
+          },
+          {
+            "beforeFrame": 84,
+            "sourceLine": 278
+          },
+          {
+            "beforeFrame": 86,
+            "sourceLine": 284
+          },
+          {
+            "beforeFrame": 88,
+            "sourceLine": 290
+          },
+          {
+            "beforeFrame": 90,
+            "sourceLine": 296
+          },
+          {
+            "beforeFrame": 92,
+            "sourceLine": 302
+          },
+          {
+            "beforeFrame": 94,
+            "sourceLine": 308
+          },
+          {
+            "beforeFrame": 96,
+            "sourceLine": 314
+          },
+          {
+            "beforeFrame": 99,
+            "sourceLine": 323
+          },
+          {
+            "beforeFrame": 101,
+            "sourceLine": 329
+          },
+          {
+            "beforeFrame": 103,
+            "sourceLine": 335
+          },
+          {
+            "beforeFrame": 105,
+            "sourceLine": 341
+          },
+          {
+            "beforeFrame": 108,
+            "sourceLine": 350
+          },
+          {
+            "beforeFrame": 110,
+            "sourceLine": 356
+          },
+          {
+            "beforeFrame": 112,
+            "sourceLine": 362
+          },
+          {
+            "beforeFrame": 114,
+            "sourceLine": 368
+          },
+          {
+            "beforeFrame": 116,
+            "sourceLine": 374
+          },
+          {
+            "beforeFrame": 118,
+            "sourceLine": 380
+          },
+          {
+            "beforeFrame": 121,
+            "sourceLine": 389
+          },
+          {
+            "beforeFrame": 123,
+            "sourceLine": 395
+          },
+          {
+            "beforeFrame": 125,
+            "sourceLine": 401
+          },
+          {
+            "beforeFrame": 127,
+            "sourceLine": 407
+          },
+          {
+            "beforeFrame": 129,
+            "sourceLine": 413
+          },
+          {
+            "beforeFrame": 131,
+            "sourceLine": 419
+          },
+          {
+            "beforeFrame": 133,
+            "sourceLine": 425
+          },
+          {
+            "beforeFrame": 135,
+            "sourceLine": 431
+          },
+          {
+            "beforeFrame": 137,
+            "sourceLine": 437
+          },
+          {
+            "beforeFrame": 139,
+            "sourceLine": 443
+          },
+          {
+            "beforeFrame": 140,
+            "sourceLine": 446
+          },
+          {
+            "beforeFrame": 142,
+            "sourceLine": 452
+          },
+          {
+            "beforeFrame": 144,
+            "sourceLine": 458
+          },
+          {
+            "beforeFrame": 146,
+            "sourceLine": 464
+          },
+          {
+            "beforeFrame": 148,
+            "sourceLine": 470
+          },
+          {
+            "beforeFrame": 150,
+            "sourceLine": 476
+          },
+          {
+            "beforeFrame": 152,
+            "sourceLine": 482
+          },
+          {
+            "beforeFrame": 154,
+            "sourceLine": 488
+          },
+          {
+            "beforeFrame": 156,
+            "sourceLine": 494
+          },
+          {
+            "beforeFrame": 158,
+            "sourceLine": 500
+          },
+          {
+            "beforeFrame": 160,
+            "sourceLine": 506
+          },
+          {
+            "beforeFrame": 162,
+            "sourceLine": 512
+          },
+          {
+            "beforeFrame": 164,
+            "sourceLine": 518
+          },
+          {
+            "beforeFrame": 166,
+            "sourceLine": 524
+          },
+          {
+            "beforeFrame": 168,
+            "sourceLine": 530
+          },
+          {
+            "beforeFrame": 170,
+            "sourceLine": 536
+          },
+          {
+            "beforeFrame": 172,
+            "sourceLine": 542
+          },
+          {
+            "beforeFrame": 174,
+            "sourceLine": 547
+          }
+        ],
+        "observedPairs": 90,
+        "masdMs": 0.3386311111111111,
+        "cpuBoundFrames": 174,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 174,
+        "latencyMeanMs": 22.654643103448276
+      },
+      "observed": {
+        "format": "ocat",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 174,
+        "averageFps": 88.50634254762356,
+        "gaps": [],
+        "observedPairs": 173,
+        "masdMs": 0.3482433526011561,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "differences": [
+        "format",
+        "gaps",
+        "observedPairs",
+        "masdMs",
+        "cpuBoundFrames",
+        "gpuBoundFrames",
+        "latencyFrames",
+        "latencyMeanMs"
+      ],
+      "summary": {
+        "frameCount": 174,
+        "durationSec": 1.9659607999999993,
+        "averageFps": 88.50634254762356,
+        "meanOfInstantaneousFps": 88.63748720997197,
+        "percentilesMs": {
+          "p50": 11.062899999999999,
+          "p90": 12.02882,
+          "p95": 12.054895,
+          "p99": 12.0924,
+          "p999": 12.1360277
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 82.69656974628693,
+          "meanOfSlowestMethodFps": 82.47728781686743,
+          "timeWeightedFps": 82.59684480052863
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 82.39928456985972,
+          "meanOfSlowestMethodFps": 82.35807644476657,
+          "timeWeightedFps": 82.35807644476657
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.3482433526011561,
+        "pacingCoverage": {
+          "observedPairs": 173,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      },
+      "clockEvidence": null
+    },
+    {
+      "file": "trace5-qpc-ms.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 258,
+        "averageFps": 88.88590611980841,
+        "gaps": [],
+        "observedPairs": 257,
+        "masdMs": 0.3290342412451362,
+        "cpuBoundFrames": 258,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 174,
+        "latencyMeanMs": 22.654643103448276
+      },
+      "observed": {
+        "format": "ocat",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 258,
+        "averageFps": 88.88590611980835,
+        "gaps": [
+          {
+            "beforeFrame": 2,
+            "sourceLine": 6
+          },
+          {
+            "beforeFrame": 3,
+            "sourceLine": 9
+          },
+          {
+            "beforeFrame": 4,
+            "sourceLine": 10
+          },
+          {
+            "beforeFrame": 5,
+            "sourceLine": 13
+          },
+          {
+            "beforeFrame": 6,
+            "sourceLine": 16
+          },
+          {
+            "beforeFrame": 7,
+            "sourceLine": 17
+          },
+          {
+            "beforeFrame": 8,
+            "sourceLine": 20
+          },
+          {
+            "beforeFrame": 9,
+            "sourceLine": 23
+          },
+          {
+            "beforeFrame": 10,
+            "sourceLine": 24
+          },
+          {
+            "beforeFrame": 11,
+            "sourceLine": 27
+          },
+          {
+            "beforeFrame": 12,
+            "sourceLine": 30
+          },
+          {
+            "beforeFrame": 13,
+            "sourceLine": 33
+          },
+          {
+            "beforeFrame": 14,
+            "sourceLine": 34
+          },
+          {
+            "beforeFrame": 15,
+            "sourceLine": 37
+          },
+          {
+            "beforeFrame": 16,
+            "sourceLine": 40
+          },
+          {
+            "beforeFrame": 17,
+            "sourceLine": 41
+          },
+          {
+            "beforeFrame": 18,
+            "sourceLine": 44
+          },
+          {
+            "beforeFrame": 19,
+            "sourceLine": 47
+          },
+          {
+            "beforeFrame": 20,
+            "sourceLine": 48
+          },
+          {
+            "beforeFrame": 21,
+            "sourceLine": 51
+          },
+          {
+            "beforeFrame": 22,
+            "sourceLine": 54
+          },
+          {
+            "beforeFrame": 23,
+            "sourceLine": 55
+          },
+          {
+            "beforeFrame": 24,
+            "sourceLine": 58
+          },
+          {
+            "beforeFrame": 25,
+            "sourceLine": 61
+          },
+          {
+            "beforeFrame": 26,
+            "sourceLine": 62
+          },
+          {
+            "beforeFrame": 27,
+            "sourceLine": 65
+          },
+          {
+            "beforeFrame": 28,
+            "sourceLine": 68
+          },
+          {
+            "beforeFrame": 29,
+            "sourceLine": 69
+          },
+          {
+            "beforeFrame": 30,
+            "sourceLine": 72
+          },
+          {
+            "beforeFrame": 31,
+            "sourceLine": 75
+          },
+          {
+            "beforeFrame": 32,
+            "sourceLine": 78
+          },
+          {
+            "beforeFrame": 33,
+            "sourceLine": 79
+          },
+          {
+            "beforeFrame": 34,
+            "sourceLine": 82
+          },
+          {
+            "beforeFrame": 35,
+            "sourceLine": 85
+          },
+          {
+            "beforeFrame": 36,
+            "sourceLine": 86
+          },
+          {
+            "beforeFrame": 37,
+            "sourceLine": 89
+          },
+          {
+            "beforeFrame": 38,
+            "sourceLine": 92
+          },
+          {
+            "beforeFrame": 39,
+            "sourceLine": 93
+          },
+          {
+            "beforeFrame": 40,
+            "sourceLine": 96
+          },
+          {
+            "beforeFrame": 41,
+            "sourceLine": 99
+          },
+          {
+            "beforeFrame": 42,
+            "sourceLine": 100
+          },
+          {
+            "beforeFrame": 43,
+            "sourceLine": 103
+          },
+          {
+            "beforeFrame": 44,
+            "sourceLine": 106
+          },
+          {
+            "beforeFrame": 45,
+            "sourceLine": 107
+          },
+          {
+            "beforeFrame": 46,
+            "sourceLine": 110
+          },
+          {
+            "beforeFrame": 47,
+            "sourceLine": 113
+          },
+          {
+            "beforeFrame": 48,
+            "sourceLine": 114
+          },
+          {
+            "beforeFrame": 49,
+            "sourceLine": 117
+          },
+          {
+            "beforeFrame": 50,
+            "sourceLine": 120
+          },
+          {
+            "beforeFrame": 51,
+            "sourceLine": 121
+          },
+          {
+            "beforeFrame": 52,
+            "sourceLine": 124
+          },
+          {
+            "beforeFrame": 53,
+            "sourceLine": 127
+          },
+          {
+            "beforeFrame": 54,
+            "sourceLine": 128
+          },
+          {
+            "beforeFrame": 55,
+            "sourceLine": 131
+          },
+          {
+            "beforeFrame": 56,
+            "sourceLine": 134
+          },
+          {
+            "beforeFrame": 57,
+            "sourceLine": 135
+          },
+          {
+            "beforeFrame": 58,
+            "sourceLine": 138
+          },
+          {
+            "beforeFrame": 59,
+            "sourceLine": 141
+          },
+          {
+            "beforeFrame": 60,
+            "sourceLine": 142
+          },
+          {
+            "beforeFrame": 61,
+            "sourceLine": 145
+          },
+          {
+            "beforeFrame": 62,
+            "sourceLine": 148
+          },
+          {
+            "beforeFrame": 63,
+            "sourceLine": 151
+          },
+          {
+            "beforeFrame": 64,
+            "sourceLine": 152
+          },
+          {
+            "beforeFrame": 65,
+            "sourceLine": 155
+          },
+          {
+            "beforeFrame": 66,
+            "sourceLine": 158
+          },
+          {
+            "beforeFrame": 67,
+            "sourceLine": 159
+          },
+          {
+            "beforeFrame": 68,
+            "sourceLine": 162
+          },
+          {
+            "beforeFrame": 69,
+            "sourceLine": 165
+          },
+          {
+            "beforeFrame": 70,
+            "sourceLine": 166
+          },
+          {
+            "beforeFrame": 71,
+            "sourceLine": 170
+          },
+          {
+            "beforeFrame": 72,
+            "sourceLine": 174
+          },
+          {
+            "beforeFrame": 73,
+            "sourceLine": 175
+          },
+          {
+            "beforeFrame": 74,
+            "sourceLine": 179
+          },
+          {
+            "beforeFrame": 75,
+            "sourceLine": 183
+          },
+          {
+            "beforeFrame": 76,
+            "sourceLine": 184
+          },
+          {
+            "beforeFrame": 77,
+            "sourceLine": 188
+          },
+          {
+            "beforeFrame": 78,
+            "sourceLine": 192
+          },
+          {
+            "beforeFrame": 79,
+            "sourceLine": 196
+          },
+          {
+            "beforeFrame": 80,
+            "sourceLine": 197
+          },
+          {
+            "beforeFrame": 81,
+            "sourceLine": 201
+          },
+          {
+            "beforeFrame": 82,
+            "sourceLine": 205
+          },
+          {
+            "beforeFrame": 83,
+            "sourceLine": 206
+          },
+          {
+            "beforeFrame": 84,
+            "sourceLine": 210
+          },
+          {
+            "beforeFrame": 85,
+            "sourceLine": 214
+          },
+          {
+            "beforeFrame": 86,
+            "sourceLine": 215
+          },
+          {
+            "beforeFrame": 87,
+            "sourceLine": 219
+          },
+          {
+            "beforeFrame": 88,
+            "sourceLine": 223
+          },
+          {
+            "beforeFrame": 89,
+            "sourceLine": 227
+          },
+          {
+            "beforeFrame": 90,
+            "sourceLine": 228
+          },
+          {
+            "beforeFrame": 91,
+            "sourceLine": 232
+          },
+          {
+            "beforeFrame": 92,
+            "sourceLine": 236
+          },
+          {
+            "beforeFrame": 93,
+            "sourceLine": 237
+          },
+          {
+            "beforeFrame": 94,
+            "sourceLine": 241
+          },
+          {
+            "beforeFrame": 95,
+            "sourceLine": 245
+          },
+          {
+            "beforeFrame": 96,
+            "sourceLine": 246
+          },
+          {
+            "beforeFrame": 97,
+            "sourceLine": 250
+          },
+          {
+            "beforeFrame": 98,
+            "sourceLine": 254
+          },
+          {
+            "beforeFrame": 99,
+            "sourceLine": 255
+          },
+          {
+            "beforeFrame": 100,
+            "sourceLine": 259
+          },
+          {
+            "beforeFrame": 101,
+            "sourceLine": 263
+          },
+          {
+            "beforeFrame": 102,
+            "sourceLine": 264
+          },
+          {
+            "beforeFrame": 103,
+            "sourceLine": 268
+          },
+          {
+            "beforeFrame": 104,
+            "sourceLine": 271
+          },
+          {
+            "beforeFrame": 105,
+            "sourceLine": 272
+          },
+          {
+            "beforeFrame": 106,
+            "sourceLine": 276
+          },
+          {
+            "beforeFrame": 107,
+            "sourceLine": 279
+          },
+          {
+            "beforeFrame": 108,
+            "sourceLine": 280
+          },
+          {
+            "beforeFrame": 109,
+            "sourceLine": 283
+          },
+          {
+            "beforeFrame": 110,
+            "sourceLine": 286
+          },
+          {
+            "beforeFrame": 111,
+            "sourceLine": 287
+          },
+          {
+            "beforeFrame": 112,
+            "sourceLine": 290
+          },
+          {
+            "beforeFrame": 113,
+            "sourceLine": 293
+          },
+          {
+            "beforeFrame": 114,
+            "sourceLine": 294
+          },
+          {
+            "beforeFrame": 115,
+            "sourceLine": 297
+          },
+          {
+            "beforeFrame": 116,
+            "sourceLine": 300
+          },
+          {
+            "beforeFrame": 117,
+            "sourceLine": 301
+          },
+          {
+            "beforeFrame": 118,
+            "sourceLine": 304
+          },
+          {
+            "beforeFrame": 119,
+            "sourceLine": 307
+          },
+          {
+            "beforeFrame": 120,
+            "sourceLine": 308
+          },
+          {
+            "beforeFrame": 121,
+            "sourceLine": 311
+          },
+          {
+            "beforeFrame": 122,
+            "sourceLine": 314
+          },
+          {
+            "beforeFrame": 123,
+            "sourceLine": 315
+          },
+          {
+            "beforeFrame": 124,
+            "sourceLine": 318
+          },
+          {
+            "beforeFrame": 125,
+            "sourceLine": 321
+          },
+          {
+            "beforeFrame": 126,
+            "sourceLine": 322
+          },
+          {
+            "beforeFrame": 127,
+            "sourceLine": 325
+          },
+          {
+            "beforeFrame": 128,
+            "sourceLine": 328
+          },
+          {
+            "beforeFrame": 129,
+            "sourceLine": 329
+          },
+          {
+            "beforeFrame": 130,
+            "sourceLine": 332
+          },
+          {
+            "beforeFrame": 131,
+            "sourceLine": 335
+          },
+          {
+            "beforeFrame": 132,
+            "sourceLine": 336
+          },
+          {
+            "beforeFrame": 133,
+            "sourceLine": 339
+          },
+          {
+            "beforeFrame": 134,
+            "sourceLine": 342
+          },
+          {
+            "beforeFrame": 135,
+            "sourceLine": 343
+          },
+          {
+            "beforeFrame": 136,
+            "sourceLine": 346
+          },
+          {
+            "beforeFrame": 137,
+            "sourceLine": 349
+          },
+          {
+            "beforeFrame": 138,
+            "sourceLine": 350
+          },
+          {
+            "beforeFrame": 139,
+            "sourceLine": 353
+          },
+          {
+            "beforeFrame": 140,
+            "sourceLine": 356
+          },
+          {
+            "beforeFrame": 141,
+            "sourceLine": 357
+          },
+          {
+            "beforeFrame": 142,
+            "sourceLine": 360
+          },
+          {
+            "beforeFrame": 143,
+            "sourceLine": 363
+          },
+          {
+            "beforeFrame": 144,
+            "sourceLine": 366
+          },
+          {
+            "beforeFrame": 145,
+            "sourceLine": 367
+          },
+          {
+            "beforeFrame": 146,
+            "sourceLine": 370
+          },
+          {
+            "beforeFrame": 147,
+            "sourceLine": 373
+          },
+          {
+            "beforeFrame": 148,
+            "sourceLine": 374
+          },
+          {
+            "beforeFrame": 149,
+            "sourceLine": 377
+          },
+          {
+            "beforeFrame": 150,
+            "sourceLine": 380
+          },
+          {
+            "beforeFrame": 151,
+            "sourceLine": 381
+          },
+          {
+            "beforeFrame": 152,
+            "sourceLine": 384
+          },
+          {
+            "beforeFrame": 153,
+            "sourceLine": 387
+          },
+          {
+            "beforeFrame": 154,
+            "sourceLine": 388
+          },
+          {
+            "beforeFrame": 155,
+            "sourceLine": 391
+          },
+          {
+            "beforeFrame": 156,
+            "sourceLine": 394
+          },
+          {
+            "beforeFrame": 157,
+            "sourceLine": 397
+          },
+          {
+            "beforeFrame": 158,
+            "sourceLine": 398
+          },
+          {
+            "beforeFrame": 159,
+            "sourceLine": 401
+          },
+          {
+            "beforeFrame": 160,
+            "sourceLine": 404
+          },
+          {
+            "beforeFrame": 161,
+            "sourceLine": 405
+          },
+          {
+            "beforeFrame": 162,
+            "sourceLine": 408
+          },
+          {
+            "beforeFrame": 163,
+            "sourceLine": 411
+          },
+          {
+            "beforeFrame": 164,
+            "sourceLine": 412
+          },
+          {
+            "beforeFrame": 165,
+            "sourceLine": 415
+          },
+          {
+            "beforeFrame": 166,
+            "sourceLine": 418
+          },
+          {
+            "beforeFrame": 167,
+            "sourceLine": 419
+          },
+          {
+            "beforeFrame": 168,
+            "sourceLine": 422
+          },
+          {
+            "beforeFrame": 169,
+            "sourceLine": 425
+          },
+          {
+            "beforeFrame": 170,
+            "sourceLine": 426
+          },
+          {
+            "beforeFrame": 171,
+            "sourceLine": 429
+          },
+          {
+            "beforeFrame": 172,
+            "sourceLine": 432
+          },
+          {
+            "beforeFrame": 173,
+            "sourceLine": 433
+          },
+          {
+            "beforeFrame": 174,
+            "sourceLine": 436
+          },
+          {
+            "beforeFrame": 175,
+            "sourceLine": 439
+          },
+          {
+            "beforeFrame": 176,
+            "sourceLine": 442
+          },
+          {
+            "beforeFrame": 177,
+            "sourceLine": 443
+          },
+          {
+            "beforeFrame": 178,
+            "sourceLine": 446
+          },
+          {
+            "beforeFrame": 179,
+            "sourceLine": 449
+          },
+          {
+            "beforeFrame": 180,
+            "sourceLine": 450
+          },
+          {
+            "beforeFrame": 181,
+            "sourceLine": 453
+          },
+          {
+            "beforeFrame": 182,
+            "sourceLine": 456
+          },
+          {
+            "beforeFrame": 183,
+            "sourceLine": 457
+          },
+          {
+            "beforeFrame": 184,
+            "sourceLine": 460
+          },
+          {
+            "beforeFrame": 185,
+            "sourceLine": 463
+          },
+          {
+            "beforeFrame": 186,
+            "sourceLine": 464
+          },
+          {
+            "beforeFrame": 187,
+            "sourceLine": 467
+          },
+          {
+            "beforeFrame": 188,
+            "sourceLine": 470
+          },
+          {
+            "beforeFrame": 189,
+            "sourceLine": 471
+          },
+          {
+            "beforeFrame": 190,
+            "sourceLine": 474
+          },
+          {
+            "beforeFrame": 191,
+            "sourceLine": 477
+          },
+          {
+            "beforeFrame": 192,
+            "sourceLine": 478
+          },
+          {
+            "beforeFrame": 193,
+            "sourceLine": 481
+          },
+          {
+            "beforeFrame": 194,
+            "sourceLine": 484
+          },
+          {
+            "beforeFrame": 195,
+            "sourceLine": 485
+          },
+          {
+            "beforeFrame": 196,
+            "sourceLine": 488
+          },
+          {
+            "beforeFrame": 197,
+            "sourceLine": 491
+          },
+          {
+            "beforeFrame": 198,
+            "sourceLine": 492
+          },
+          {
+            "beforeFrame": 199,
+            "sourceLine": 495
+          },
+          {
+            "beforeFrame": 200,
+            "sourceLine": 498
+          },
+          {
+            "beforeFrame": 201,
+            "sourceLine": 499
+          },
+          {
+            "beforeFrame": 202,
+            "sourceLine": 502
+          },
+          {
+            "beforeFrame": 203,
+            "sourceLine": 505
+          },
+          {
+            "beforeFrame": 204,
+            "sourceLine": 506
+          },
+          {
+            "beforeFrame": 205,
+            "sourceLine": 509
+          },
+          {
+            "beforeFrame": 206,
+            "sourceLine": 510
+          },
+          {
+            "beforeFrame": 207,
+            "sourceLine": 513
+          },
+          {
+            "beforeFrame": 208,
+            "sourceLine": 516
+          },
+          {
+            "beforeFrame": 209,
+            "sourceLine": 517
+          },
+          {
+            "beforeFrame": 210,
+            "sourceLine": 520
+          },
+          {
+            "beforeFrame": 211,
+            "sourceLine": 523
+          },
+          {
+            "beforeFrame": 212,
+            "sourceLine": 524
+          },
+          {
+            "beforeFrame": 213,
+            "sourceLine": 527
+          },
+          {
+            "beforeFrame": 214,
+            "sourceLine": 530
+          },
+          {
+            "beforeFrame": 215,
+            "sourceLine": 531
+          },
+          {
+            "beforeFrame": 216,
+            "sourceLine": 534
+          },
+          {
+            "beforeFrame": 217,
+            "sourceLine": 537
+          },
+          {
+            "beforeFrame": 218,
+            "sourceLine": 538
+          },
+          {
+            "beforeFrame": 219,
+            "sourceLine": 541
+          },
+          {
+            "beforeFrame": 220,
+            "sourceLine": 544
+          },
+          {
+            "beforeFrame": 221,
+            "sourceLine": 545
+          },
+          {
+            "beforeFrame": 222,
+            "sourceLine": 548
+          },
+          {
+            "beforeFrame": 223,
+            "sourceLine": 551
+          },
+          {
+            "beforeFrame": 224,
+            "sourceLine": 552
+          },
+          {
+            "beforeFrame": 225,
+            "sourceLine": 555
+          },
+          {
+            "beforeFrame": 226,
+            "sourceLine": 558
+          },
+          {
+            "beforeFrame": 227,
+            "sourceLine": 559
+          },
+          {
+            "beforeFrame": 228,
+            "sourceLine": 562
+          },
+          {
+            "beforeFrame": 229,
+            "sourceLine": 565
+          },
+          {
+            "beforeFrame": 230,
+            "sourceLine": 566
+          },
+          {
+            "beforeFrame": 231,
+            "sourceLine": 569
+          },
+          {
+            "beforeFrame": 232,
+            "sourceLine": 572
+          },
+          {
+            "beforeFrame": 233,
+            "sourceLine": 573
+          },
+          {
+            "beforeFrame": 234,
+            "sourceLine": 576
+          },
+          {
+            "beforeFrame": 235,
+            "sourceLine": 579
+          },
+          {
+            "beforeFrame": 236,
+            "sourceLine": 580
+          },
+          {
+            "beforeFrame": 237,
+            "sourceLine": 583
+          },
+          {
+            "beforeFrame": 238,
+            "sourceLine": 586
+          },
+          {
+            "beforeFrame": 239,
+            "sourceLine": 587
+          },
+          {
+            "beforeFrame": 240,
+            "sourceLine": 590
+          },
+          {
+            "beforeFrame": 241,
+            "sourceLine": 593
+          },
+          {
+            "beforeFrame": 242,
+            "sourceLine": 594
+          },
+          {
+            "beforeFrame": 243,
+            "sourceLine": 597
+          },
+          {
+            "beforeFrame": 244,
+            "sourceLine": 600
+          },
+          {
+            "beforeFrame": 245,
+            "sourceLine": 601
+          },
+          {
+            "beforeFrame": 246,
+            "sourceLine": 604
+          },
+          {
+            "beforeFrame": 247,
+            "sourceLine": 607
+          },
+          {
+            "beforeFrame": 248,
+            "sourceLine": 608
+          },
+          {
+            "beforeFrame": 249,
+            "sourceLine": 611
+          },
+          {
+            "beforeFrame": 250,
+            "sourceLine": 614
+          },
+          {
+            "beforeFrame": 251,
+            "sourceLine": 615
+          },
+          {
+            "beforeFrame": 252,
+            "sourceLine": 618
+          },
+          {
+            "beforeFrame": 253,
+            "sourceLine": 621
+          },
+          {
+            "beforeFrame": 254,
+            "sourceLine": 622
+          },
+          {
+            "beforeFrame": 255,
+            "sourceLine": 625
+          },
+          {
+            "beforeFrame": 256,
+            "sourceLine": 628
+          },
+          {
+            "beforeFrame": 257,
+            "sourceLine": 629
+          },
+          {
+            "beforeFrame": 258,
+            "sourceLine": 631
+          }
+        ],
+        "observedPairs": 0,
+        "masdMs": null,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "differences": [
+        "format",
+        "gaps",
+        "observedPairs",
+        "masdMs",
+        "cpuBoundFrames",
+        "gpuBoundFrames",
+        "latencyFrames",
+        "latencyMeanMs"
+      ],
+      "summary": {
+        "frameCount": 258,
+        "durationSec": 2.902597400000002,
+        "averageFps": 88.88590611980835,
+        "meanOfInstantaneousFps": 88.99884794910382,
+        "percentilesMs": {
+          "p50": 11.0512,
+          "p90": 12.01623,
+          "p95": 12.042535,
+          "p99": 12.117664,
+          "p999": 12.1400183
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 82.52415647108222,
+          "meanOfSlowestMethodFps": 82.3996989664331,
+          "timeWeightedFps": 82.4279991427488
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 82.37219873054063,
+          "meanOfSlowestMethodFps": 82.35807644476657,
+          "timeWeightedFps": 82.35807644476657
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 257
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      },
+      "clockEvidence": {
+        "witnesses": [
+          {
+            "fromSourceLine": 3,
+            "toSourceLine": 6,
+            "elapsedMs": 11008.300000000047,
+            "frameTimeMs": 11.0083,
+            "allowanceMs": 0.10000000697938902,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 6,
+            "toSourceLine": 9,
+            "elapsedMs": 10991.800000000047,
+            "frameTimeMs": 10.9918,
+            "allowanceMs": 0.10000000701846902,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 9,
+            "toSourceLine": 10,
+            "elapsedMs": 11054.09999999986,
+            "frameTimeMs": 11.0541,
+            "allowanceMs": 0.10000000705763051,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 10,
+            "toSourceLine": 13,
+            "elapsedMs": 10999.600000000093,
+            "frameTimeMs": 10.9996,
+            "allowanceMs": 0.10000000709680566,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 13,
+            "toSourceLine": 16,
+            "elapsedMs": 10953.5,
+            "frameTimeMs": 10.9535,
+            "allowanceMs": 0.10000000713580212,
+            "kind": "unaccounted_interval"
+          }
+        ],
+        "omittedWitnesses": 252
+      }
+    },
+    {
+      "file": "trace5-qpc-ms-filtered.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 174,
+        "averageFps": 88.50634254762353,
+        "gaps": [
+          {
+            "beforeFrame": 3,
+            "sourceLine": 11
+          },
+          {
+            "beforeFrame": 5,
+            "sourceLine": 17
+          },
+          {
+            "beforeFrame": 7,
+            "sourceLine": 23
+          },
+          {
+            "beforeFrame": 10,
+            "sourceLine": 32
+          },
+          {
+            "beforeFrame": 12,
+            "sourceLine": 38
+          },
+          {
+            "beforeFrame": 14,
+            "sourceLine": 44
+          },
+          {
+            "beforeFrame": 16,
+            "sourceLine": 50
+          },
+          {
+            "beforeFrame": 18,
+            "sourceLine": 56
+          },
+          {
+            "beforeFrame": 20,
+            "sourceLine": 62
+          },
+          {
+            "beforeFrame": 23,
+            "sourceLine": 71
+          },
+          {
+            "beforeFrame": 25,
+            "sourceLine": 77
+          },
+          {
+            "beforeFrame": 27,
+            "sourceLine": 83
+          },
+          {
+            "beforeFrame": 29,
+            "sourceLine": 89
+          },
+          {
+            "beforeFrame": 31,
+            "sourceLine": 95
+          },
+          {
+            "beforeFrame": 33,
+            "sourceLine": 101
+          },
+          {
+            "beforeFrame": 35,
+            "sourceLine": 107
+          },
+          {
+            "beforeFrame": 37,
+            "sourceLine": 113
+          },
+          {
+            "beforeFrame": 39,
+            "sourceLine": 119
+          },
+          {
+            "beforeFrame": 41,
+            "sourceLine": 125
+          },
+          {
+            "beforeFrame": 44,
+            "sourceLine": 134
+          },
+          {
+            "beforeFrame": 46,
+            "sourceLine": 140
+          },
+          {
+            "beforeFrame": 48,
+            "sourceLine": 147
+          },
+          {
+            "beforeFrame": 50,
+            "sourceLine": 155
+          },
+          {
+            "beforeFrame": 52,
+            "sourceLine": 163
+          },
+          {
+            "beforeFrame": 55,
+            "sourceLine": 175
+          },
+          {
+            "beforeFrame": 57,
+            "sourceLine": 183
+          },
+          {
+            "beforeFrame": 59,
+            "sourceLine": 191
+          },
+          {
+            "beforeFrame": 62,
+            "sourceLine": 203
+          },
+          {
+            "beforeFrame": 64,
+            "sourceLine": 211
+          },
+          {
+            "beforeFrame": 66,
+            "sourceLine": 219
+          },
+          {
+            "beforeFrame": 68,
+            "sourceLine": 227
+          },
+          {
+            "beforeFrame": 70,
+            "sourceLine": 235
+          },
+          {
+            "beforeFrame": 72,
+            "sourceLine": 242
+          },
+          {
+            "beforeFrame": 74,
+            "sourceLine": 248
+          },
+          {
+            "beforeFrame": 76,
+            "sourceLine": 254
+          },
+          {
+            "beforeFrame": 78,
+            "sourceLine": 260
+          },
+          {
+            "beforeFrame": 80,
+            "sourceLine": 266
+          },
+          {
+            "beforeFrame": 82,
+            "sourceLine": 272
+          },
+          {
+            "beforeFrame": 84,
+            "sourceLine": 278
+          },
+          {
+            "beforeFrame": 86,
+            "sourceLine": 284
+          },
+          {
+            "beforeFrame": 88,
+            "sourceLine": 290
+          },
+          {
+            "beforeFrame": 90,
+            "sourceLine": 296
+          },
+          {
+            "beforeFrame": 92,
+            "sourceLine": 302
+          },
+          {
+            "beforeFrame": 94,
+            "sourceLine": 308
+          },
+          {
+            "beforeFrame": 96,
+            "sourceLine": 314
+          },
+          {
+            "beforeFrame": 99,
+            "sourceLine": 323
+          },
+          {
+            "beforeFrame": 101,
+            "sourceLine": 329
+          },
+          {
+            "beforeFrame": 103,
+            "sourceLine": 335
+          },
+          {
+            "beforeFrame": 105,
+            "sourceLine": 341
+          },
+          {
+            "beforeFrame": 108,
+            "sourceLine": 350
+          },
+          {
+            "beforeFrame": 110,
+            "sourceLine": 356
+          },
+          {
+            "beforeFrame": 112,
+            "sourceLine": 362
+          },
+          {
+            "beforeFrame": 114,
+            "sourceLine": 368
+          },
+          {
+            "beforeFrame": 116,
+            "sourceLine": 374
+          },
+          {
+            "beforeFrame": 118,
+            "sourceLine": 380
+          },
+          {
+            "beforeFrame": 121,
+            "sourceLine": 389
+          },
+          {
+            "beforeFrame": 123,
+            "sourceLine": 395
+          },
+          {
+            "beforeFrame": 125,
+            "sourceLine": 401
+          },
+          {
+            "beforeFrame": 127,
+            "sourceLine": 407
+          },
+          {
+            "beforeFrame": 129,
+            "sourceLine": 413
+          },
+          {
+            "beforeFrame": 131,
+            "sourceLine": 419
+          },
+          {
+            "beforeFrame": 133,
+            "sourceLine": 425
+          },
+          {
+            "beforeFrame": 135,
+            "sourceLine": 431
+          },
+          {
+            "beforeFrame": 137,
+            "sourceLine": 437
+          },
+          {
+            "beforeFrame": 139,
+            "sourceLine": 443
+          },
+          {
+            "beforeFrame": 140,
+            "sourceLine": 446
+          },
+          {
+            "beforeFrame": 142,
+            "sourceLine": 452
+          },
+          {
+            "beforeFrame": 144,
+            "sourceLine": 458
+          },
+          {
+            "beforeFrame": 146,
+            "sourceLine": 464
+          },
+          {
+            "beforeFrame": 148,
+            "sourceLine": 470
+          },
+          {
+            "beforeFrame": 150,
+            "sourceLine": 476
+          },
+          {
+            "beforeFrame": 152,
+            "sourceLine": 482
+          },
+          {
+            "beforeFrame": 154,
+            "sourceLine": 488
+          },
+          {
+            "beforeFrame": 156,
+            "sourceLine": 494
+          },
+          {
+            "beforeFrame": 158,
+            "sourceLine": 500
+          },
+          {
+            "beforeFrame": 160,
+            "sourceLine": 506
+          },
+          {
+            "beforeFrame": 162,
+            "sourceLine": 512
+          },
+          {
+            "beforeFrame": 164,
+            "sourceLine": 518
+          },
+          {
+            "beforeFrame": 166,
+            "sourceLine": 524
+          },
+          {
+            "beforeFrame": 168,
+            "sourceLine": 530
+          },
+          {
+            "beforeFrame": 170,
+            "sourceLine": 536
+          },
+          {
+            "beforeFrame": 172,
+            "sourceLine": 542
+          },
+          {
+            "beforeFrame": 174,
+            "sourceLine": 547
+          }
+        ],
+        "observedPairs": 90,
+        "masdMs": 0.3386311111111111,
+        "cpuBoundFrames": 174,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 174,
+        "latencyMeanMs": 22.654643103448276
+      },
+      "observed": {
+        "format": "ocat",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 174,
+        "averageFps": 88.50634254762356,
+        "gaps": [
+          {
+            "beforeFrame": 2,
+            "sourceLine": 8
+          },
+          {
+            "beforeFrame": 3,
+            "sourceLine": 11
+          },
+          {
+            "beforeFrame": 4,
+            "sourceLine": 14
+          },
+          {
+            "beforeFrame": 5,
+            "sourceLine": 17
+          },
+          {
+            "beforeFrame": 6,
+            "sourceLine": 20
+          },
+          {
+            "beforeFrame": 7,
+            "sourceLine": 23
+          },
+          {
+            "beforeFrame": 8,
+            "sourceLine": 26
+          },
+          {
+            "beforeFrame": 9,
+            "sourceLine": 29
+          },
+          {
+            "beforeFrame": 10,
+            "sourceLine": 32
+          },
+          {
+            "beforeFrame": 11,
+            "sourceLine": 35
+          },
+          {
+            "beforeFrame": 12,
+            "sourceLine": 38
+          },
+          {
+            "beforeFrame": 13,
+            "sourceLine": 41
+          },
+          {
+            "beforeFrame": 14,
+            "sourceLine": 44
+          },
+          {
+            "beforeFrame": 15,
+            "sourceLine": 47
+          },
+          {
+            "beforeFrame": 16,
+            "sourceLine": 50
+          },
+          {
+            "beforeFrame": 17,
+            "sourceLine": 53
+          },
+          {
+            "beforeFrame": 18,
+            "sourceLine": 56
+          },
+          {
+            "beforeFrame": 19,
+            "sourceLine": 59
+          },
+          {
+            "beforeFrame": 20,
+            "sourceLine": 62
+          },
+          {
+            "beforeFrame": 21,
+            "sourceLine": 65
+          },
+          {
+            "beforeFrame": 22,
+            "sourceLine": 68
+          },
+          {
+            "beforeFrame": 23,
+            "sourceLine": 71
+          },
+          {
+            "beforeFrame": 24,
+            "sourceLine": 74
+          },
+          {
+            "beforeFrame": 25,
+            "sourceLine": 77
+          },
+          {
+            "beforeFrame": 26,
+            "sourceLine": 80
+          },
+          {
+            "beforeFrame": 27,
+            "sourceLine": 83
+          },
+          {
+            "beforeFrame": 28,
+            "sourceLine": 86
+          },
+          {
+            "beforeFrame": 29,
+            "sourceLine": 89
+          },
+          {
+            "beforeFrame": 30,
+            "sourceLine": 92
+          },
+          {
+            "beforeFrame": 31,
+            "sourceLine": 95
+          },
+          {
+            "beforeFrame": 32,
+            "sourceLine": 98
+          },
+          {
+            "beforeFrame": 33,
+            "sourceLine": 101
+          },
+          {
+            "beforeFrame": 34,
+            "sourceLine": 104
+          },
+          {
+            "beforeFrame": 35,
+            "sourceLine": 107
+          },
+          {
+            "beforeFrame": 36,
+            "sourceLine": 110
+          },
+          {
+            "beforeFrame": 37,
+            "sourceLine": 113
+          },
+          {
+            "beforeFrame": 38,
+            "sourceLine": 116
+          },
+          {
+            "beforeFrame": 39,
+            "sourceLine": 119
+          },
+          {
+            "beforeFrame": 40,
+            "sourceLine": 122
+          },
+          {
+            "beforeFrame": 41,
+            "sourceLine": 125
+          },
+          {
+            "beforeFrame": 42,
+            "sourceLine": 128
+          },
+          {
+            "beforeFrame": 43,
+            "sourceLine": 131
+          },
+          {
+            "beforeFrame": 44,
+            "sourceLine": 134
+          },
+          {
+            "beforeFrame": 45,
+            "sourceLine": 137
+          },
+          {
+            "beforeFrame": 46,
+            "sourceLine": 140
+          },
+          {
+            "beforeFrame": 47,
+            "sourceLine": 143
+          },
+          {
+            "beforeFrame": 48,
+            "sourceLine": 147
+          },
+          {
+            "beforeFrame": 49,
+            "sourceLine": 151
+          },
+          {
+            "beforeFrame": 50,
+            "sourceLine": 155
+          },
+          {
+            "beforeFrame": 51,
+            "sourceLine": 159
+          },
+          {
+            "beforeFrame": 52,
+            "sourceLine": 163
+          },
+          {
+            "beforeFrame": 53,
+            "sourceLine": 167
+          },
+          {
+            "beforeFrame": 54,
+            "sourceLine": 171
+          },
+          {
+            "beforeFrame": 55,
+            "sourceLine": 175
+          },
+          {
+            "beforeFrame": 56,
+            "sourceLine": 179
+          },
+          {
+            "beforeFrame": 57,
+            "sourceLine": 183
+          },
+          {
+            "beforeFrame": 58,
+            "sourceLine": 187
+          },
+          {
+            "beforeFrame": 59,
+            "sourceLine": 191
+          },
+          {
+            "beforeFrame": 60,
+            "sourceLine": 195
+          },
+          {
+            "beforeFrame": 61,
+            "sourceLine": 199
+          },
+          {
+            "beforeFrame": 62,
+            "sourceLine": 203
+          },
+          {
+            "beforeFrame": 63,
+            "sourceLine": 207
+          },
+          {
+            "beforeFrame": 64,
+            "sourceLine": 211
+          },
+          {
+            "beforeFrame": 65,
+            "sourceLine": 215
+          },
+          {
+            "beforeFrame": 66,
+            "sourceLine": 219
+          },
+          {
+            "beforeFrame": 67,
+            "sourceLine": 223
+          },
+          {
+            "beforeFrame": 68,
+            "sourceLine": 227
+          },
+          {
+            "beforeFrame": 69,
+            "sourceLine": 231
+          },
+          {
+            "beforeFrame": 70,
+            "sourceLine": 235
+          },
+          {
+            "beforeFrame": 71,
+            "sourceLine": 238
+          },
+          {
+            "beforeFrame": 72,
+            "sourceLine": 242
+          },
+          {
+            "beforeFrame": 73,
+            "sourceLine": 245
+          },
+          {
+            "beforeFrame": 74,
+            "sourceLine": 248
+          },
+          {
+            "beforeFrame": 75,
+            "sourceLine": 251
+          },
+          {
+            "beforeFrame": 76,
+            "sourceLine": 254
+          },
+          {
+            "beforeFrame": 77,
+            "sourceLine": 257
+          },
+          {
+            "beforeFrame": 78,
+            "sourceLine": 260
+          },
+          {
+            "beforeFrame": 79,
+            "sourceLine": 263
+          },
+          {
+            "beforeFrame": 80,
+            "sourceLine": 266
+          },
+          {
+            "beforeFrame": 81,
+            "sourceLine": 269
+          },
+          {
+            "beforeFrame": 82,
+            "sourceLine": 272
+          },
+          {
+            "beforeFrame": 83,
+            "sourceLine": 275
+          },
+          {
+            "beforeFrame": 84,
+            "sourceLine": 278
+          },
+          {
+            "beforeFrame": 85,
+            "sourceLine": 281
+          },
+          {
+            "beforeFrame": 86,
+            "sourceLine": 284
+          },
+          {
+            "beforeFrame": 87,
+            "sourceLine": 287
+          },
+          {
+            "beforeFrame": 88,
+            "sourceLine": 290
+          },
+          {
+            "beforeFrame": 89,
+            "sourceLine": 293
+          },
+          {
+            "beforeFrame": 90,
+            "sourceLine": 296
+          },
+          {
+            "beforeFrame": 91,
+            "sourceLine": 299
+          },
+          {
+            "beforeFrame": 92,
+            "sourceLine": 302
+          },
+          {
+            "beforeFrame": 93,
+            "sourceLine": 305
+          },
+          {
+            "beforeFrame": 94,
+            "sourceLine": 308
+          },
+          {
+            "beforeFrame": 95,
+            "sourceLine": 311
+          },
+          {
+            "beforeFrame": 96,
+            "sourceLine": 314
+          },
+          {
+            "beforeFrame": 97,
+            "sourceLine": 317
+          },
+          {
+            "beforeFrame": 98,
+            "sourceLine": 320
+          },
+          {
+            "beforeFrame": 99,
+            "sourceLine": 323
+          },
+          {
+            "beforeFrame": 100,
+            "sourceLine": 326
+          },
+          {
+            "beforeFrame": 101,
+            "sourceLine": 329
+          },
+          {
+            "beforeFrame": 102,
+            "sourceLine": 332
+          },
+          {
+            "beforeFrame": 103,
+            "sourceLine": 335
+          },
+          {
+            "beforeFrame": 104,
+            "sourceLine": 338
+          },
+          {
+            "beforeFrame": 105,
+            "sourceLine": 341
+          },
+          {
+            "beforeFrame": 106,
+            "sourceLine": 344
+          },
+          {
+            "beforeFrame": 107,
+            "sourceLine": 347
+          },
+          {
+            "beforeFrame": 108,
+            "sourceLine": 350
+          },
+          {
+            "beforeFrame": 109,
+            "sourceLine": 353
+          },
+          {
+            "beforeFrame": 110,
+            "sourceLine": 356
+          },
+          {
+            "beforeFrame": 111,
+            "sourceLine": 359
+          },
+          {
+            "beforeFrame": 112,
+            "sourceLine": 362
+          },
+          {
+            "beforeFrame": 113,
+            "sourceLine": 365
+          },
+          {
+            "beforeFrame": 114,
+            "sourceLine": 368
+          },
+          {
+            "beforeFrame": 115,
+            "sourceLine": 371
+          },
+          {
+            "beforeFrame": 116,
+            "sourceLine": 374
+          },
+          {
+            "beforeFrame": 117,
+            "sourceLine": 377
+          },
+          {
+            "beforeFrame": 118,
+            "sourceLine": 380
+          },
+          {
+            "beforeFrame": 119,
+            "sourceLine": 383
+          },
+          {
+            "beforeFrame": 120,
+            "sourceLine": 386
+          },
+          {
+            "beforeFrame": 121,
+            "sourceLine": 389
+          },
+          {
+            "beforeFrame": 122,
+            "sourceLine": 392
+          },
+          {
+            "beforeFrame": 123,
+            "sourceLine": 395
+          },
+          {
+            "beforeFrame": 124,
+            "sourceLine": 398
+          },
+          {
+            "beforeFrame": 125,
+            "sourceLine": 401
+          },
+          {
+            "beforeFrame": 126,
+            "sourceLine": 404
+          },
+          {
+            "beforeFrame": 127,
+            "sourceLine": 407
+          },
+          {
+            "beforeFrame": 128,
+            "sourceLine": 410
+          },
+          {
+            "beforeFrame": 129,
+            "sourceLine": 413
+          },
+          {
+            "beforeFrame": 130,
+            "sourceLine": 416
+          },
+          {
+            "beforeFrame": 131,
+            "sourceLine": 419
+          },
+          {
+            "beforeFrame": 132,
+            "sourceLine": 422
+          },
+          {
+            "beforeFrame": 133,
+            "sourceLine": 425
+          },
+          {
+            "beforeFrame": 134,
+            "sourceLine": 428
+          },
+          {
+            "beforeFrame": 135,
+            "sourceLine": 431
+          },
+          {
+            "beforeFrame": 136,
+            "sourceLine": 434
+          },
+          {
+            "beforeFrame": 137,
+            "sourceLine": 437
+          },
+          {
+            "beforeFrame": 138,
+            "sourceLine": 440
+          },
+          {
+            "beforeFrame": 139,
+            "sourceLine": 443
+          },
+          {
+            "beforeFrame": 140,
+            "sourceLine": 446
+          },
+          {
+            "beforeFrame": 141,
+            "sourceLine": 449
+          },
+          {
+            "beforeFrame": 142,
+            "sourceLine": 452
+          },
+          {
+            "beforeFrame": 143,
+            "sourceLine": 455
+          },
+          {
+            "beforeFrame": 144,
+            "sourceLine": 458
+          },
+          {
+            "beforeFrame": 145,
+            "sourceLine": 461
+          },
+          {
+            "beforeFrame": 146,
+            "sourceLine": 464
+          },
+          {
+            "beforeFrame": 147,
+            "sourceLine": 467
+          },
+          {
+            "beforeFrame": 148,
+            "sourceLine": 470
+          },
+          {
+            "beforeFrame": 149,
+            "sourceLine": 473
+          },
+          {
+            "beforeFrame": 150,
+            "sourceLine": 476
+          },
+          {
+            "beforeFrame": 151,
+            "sourceLine": 479
+          },
+          {
+            "beforeFrame": 152,
+            "sourceLine": 482
+          },
+          {
+            "beforeFrame": 153,
+            "sourceLine": 485
+          },
+          {
+            "beforeFrame": 154,
+            "sourceLine": 488
+          },
+          {
+            "beforeFrame": 155,
+            "sourceLine": 491
+          },
+          {
+            "beforeFrame": 156,
+            "sourceLine": 494
+          },
+          {
+            "beforeFrame": 157,
+            "sourceLine": 497
+          },
+          {
+            "beforeFrame": 158,
+            "sourceLine": 500
+          },
+          {
+            "beforeFrame": 159,
+            "sourceLine": 503
+          },
+          {
+            "beforeFrame": 160,
+            "sourceLine": 506
+          },
+          {
+            "beforeFrame": 161,
+            "sourceLine": 509
+          },
+          {
+            "beforeFrame": 162,
+            "sourceLine": 512
+          },
+          {
+            "beforeFrame": 163,
+            "sourceLine": 515
+          },
+          {
+            "beforeFrame": 164,
+            "sourceLine": 518
+          },
+          {
+            "beforeFrame": 165,
+            "sourceLine": 521
+          },
+          {
+            "beforeFrame": 166,
+            "sourceLine": 524
+          },
+          {
+            "beforeFrame": 167,
+            "sourceLine": 527
+          },
+          {
+            "beforeFrame": 168,
+            "sourceLine": 530
+          },
+          {
+            "beforeFrame": 169,
+            "sourceLine": 533
+          },
+          {
+            "beforeFrame": 170,
+            "sourceLine": 536
+          },
+          {
+            "beforeFrame": 171,
+            "sourceLine": 539
+          },
+          {
+            "beforeFrame": 172,
+            "sourceLine": 542
+          },
+          {
+            "beforeFrame": 173,
+            "sourceLine": 545
+          },
+          {
+            "beforeFrame": 174,
+            "sourceLine": 547
+          }
+        ],
+        "observedPairs": 0,
+        "masdMs": null,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "differences": [
+        "format",
+        "gaps",
+        "observedPairs",
+        "masdMs",
+        "cpuBoundFrames",
+        "gpuBoundFrames",
+        "latencyFrames",
+        "latencyMeanMs"
+      ],
+      "summary": {
+        "frameCount": 174,
+        "durationSec": 1.9659607999999993,
+        "averageFps": 88.50634254762356,
+        "meanOfInstantaneousFps": 88.63748720997197,
+        "percentilesMs": {
+          "p50": 11.062899999999999,
+          "p90": 12.02882,
+          "p95": 12.054895,
+          "p99": 12.0924,
+          "p999": 12.1360277
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 82.69656974628693,
+          "meanOfSlowestMethodFps": 82.47728781686743,
+          "timeWeightedFps": 82.59684480052863
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 82.39928456985972,
+          "meanOfSlowestMethodFps": 82.35807644476657,
+          "timeWeightedFps": 82.35807644476657
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": null,
+        "pacingCoverage": {
+          "observedPairs": 0,
+          "gapBoundaries": 173
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      },
+      "clockEvidence": {
+        "witnesses": [
+          {
+            "fromSourceLine": 5,
+            "toSourceLine": 8,
+            "elapsedMs": 10991.800000000047,
+            "frameTimeMs": 10.9918,
+            "allowanceMs": 0.10000000701846902,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 8,
+            "toSourceLine": 11,
+            "elapsedMs": 22053.699999999953,
+            "frameTimeMs": 10.9996,
+            "allowanceMs": 0.10000000707716963,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 11,
+            "toSourceLine": 14,
+            "elapsedMs": 10953.5,
+            "frameTimeMs": 10.9535,
+            "allowanceMs": 0.10000000713580212,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 14,
+            "toSourceLine": 17,
+            "elapsedMs": 22019.299999999814,
+            "frameTimeMs": 11.0751,
+            "allowanceMs": 0.1000000071943738,
+            "kind": "unaccounted_interval"
+          },
+          {
+            "fromSourceLine": 17,
+            "toSourceLine": 20,
+            "elapsedMs": 11175.300000000047,
+            "frameTimeMs": 11.1753,
+            "allowanceMs": 0.10000000725333942,
+            "kind": "unaccounted_interval"
+          }
+        ],
+        "omittedWitnesses": 168
+      }
+    },
+    {
+      "file": "trace5-qpc.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 258,
+        "averageFps": 88.88590611980841,
+        "gaps": [],
+        "observedPairs": 257,
+        "masdMs": 0.3290342412451362,
+        "cpuBoundFrames": 258,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 174,
+        "latencyMeanMs": 22.654643103448276
+      },
+      "observed": {
+        "format": "ocat",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 258,
+        "averageFps": 88.88590611980835,
+        "gaps": [],
+        "observedPairs": 257,
+        "masdMs": 0.3290342412451365,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "differences": [
+        "format",
+        "cpuBoundFrames",
+        "gpuBoundFrames",
+        "latencyFrames",
+        "latencyMeanMs"
+      ],
+      "summary": {
+        "frameCount": 258,
+        "durationSec": 2.902597400000002,
+        "averageFps": 88.88590611980835,
+        "meanOfInstantaneousFps": 88.99884794910382,
+        "percentilesMs": {
+          "p50": 11.0512,
+          "p90": 12.01623,
+          "p95": 12.042535,
+          "p99": 12.117664,
+          "p999": 12.1400183
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 82.52415647108222,
+          "meanOfSlowestMethodFps": 82.3996989664331,
+          "timeWeightedFps": 82.4279991427488
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 82.37219873054063,
+          "meanOfSlowestMethodFps": 82.35807644476657,
+          "timeWeightedFps": 82.35807644476657
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.3290342412451365,
+        "pacingCoverage": {
+          "observedPairs": 257,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      },
+      "clockEvidence": null
+    },
+    {
+      "file": "trace5-cpu-only.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 379,
+        "averageFps": 87.31644740754128,
+        "gaps": [],
+        "observedPairs": 378,
+        "masdMs": 0.7669907407407408,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "observed": {
+        "format": "ocat",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 379,
+        "averageFps": 87.31644740754122,
+        "gaps": [],
+        "observedPairs": 378,
+        "masdMs": 0.7669907407407414,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "differences": [
+        "format"
+      ],
+      "summary": {
+        "frameCount": 379,
+        "durationSec": 4.340533900000002,
+        "averageFps": 87.31644740754122,
+        "meanOfInstantaneousFps": 88.9434759739061,
+        "percentilesMs": {
+          "p50": 11.03,
+          "p90": 11.98922,
+          "p95": 12.03745,
+          "p99": 12.112455999999998,
+          "p999": 63.93181040000118
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 82.55963943233314,
+          "meanOfSlowestMethodFps": 30.345974454758704,
+          "timeWeightedFps": 10.481597982502018
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 15.641665608142727,
+          "meanOfSlowestMethodFps": 10.481597982502018,
+          "timeWeightedFps": 10.481597982502018
+        },
+        "stutter": {
+          "stutterEventCount": 1,
+          "totalStutterTimeMs": 95.40530000000001,
+          "stutterTimeFraction": 0.021980084062930626,
+          "hitchThresholdMs": 50,
+          "hitchCount": 1,
+          "totalHitchTimeMs": 95.40530000000001,
+          "hitchTimeFraction": 0.021980084062930626,
+          "stutterFrameIndices": [
+            30
+          ]
+        },
+        "masdMs": 0.7669907407407414,
+        "pacingCoverage": {
+          "observedPairs": 378,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      },
+      "clockEvidence": null
+    },
+    {
+      "file": "trace5-v2.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon2",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 258,
+        "averageFps": 88.88612048051975,
+        "gaps": [],
+        "observedPairs": 257,
+        "masdMs": 0.29866887159533073,
+        "cpuBoundFrames": 258,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 174,
+        "latencyMeanMs": 33.38186724137931
+      },
+      "observed": {
+        "format": "presentmon2",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 258,
+        "averageFps": 88.88612048051968,
+        "gaps": [],
+        "observedPairs": 257,
+        "masdMs": 0.298668871595331,
+        "cpuBoundFrames": 258,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 174,
+        "latencyMeanMs": 33.38186724137929
+      },
+      "differences": [],
+      "summary": {
+        "frameCount": 258,
+        "durationSec": 2.902590400000002,
+        "averageFps": 88.88612048051968,
+        "meanOfInstantaneousFps": 88.98444066299301,
+        "percentilesMs": {
+          "p50": 11.06575,
+          "p90": 11.93942,
+          "p95": 11.994805,
+          "p99": 12.071892,
+          "p999": 12.146553000000003
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 82.83705652767603,
+          "meanOfSlowestMethodFps": 82.53072206128732,
+          "timeWeightedFps": 82.70272505479056
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 82.32788347443096,
+          "meanOfSlowestMethodFps": 82.20439300276207,
+          "timeWeightedFps": 82.20439300276207
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.298668871595331,
+        "pacingCoverage": {
+          "observedPairs": 257,
+          "gapBoundaries": 0
+        },
+        "dropped": {
+          "droppedCount": 84,
+          "observedFrames": 258,
+          "droppedFraction": 0.32558139534883723
+        },
+        "boundShare": {
+          "cpuBoundFrames": 258,
+          "gpuBoundFrames": 0,
+          "cpuBoundFraction": 1,
+          "gpuBoundFraction": 0
+        },
+        "latency": {
+          "observedFrames": 174,
+          "meanMs": 33.38186724137929,
+          "p50": 33.6041,
+          "p90": 37.86596,
+          "p99": 39.172802
+        },
+        "telemetryCoverage": {
+          "dropped": {
+            "observedFrames": 258,
+            "unknownFrames": 0
+          },
+          "cpuGpuBusy": {
+            "observedFrames": 258,
+            "unknownFrames": 0
+          },
+          "displayLatency": {
+            "observedFrames": 174,
+            "unknownFrames": 84
+          }
+        }
+      },
+      "clockEvidence": null
+    },
+    {
+      "file": "upstream-trace1.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 7,
+        "averageFps": 104.49429983594395,
+        "gaps": [],
+        "observedPairs": 6,
+        "masdMs": 0.5059166666666667,
+        "cpuBoundFrames": 7,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 4,
+        "latencyMeanMs": 21.72985
+      },
+      "observed": {
+        "format": "ocat",
+        "stream": "24560:0x2019D7777C0",
+        "frames": 7,
+        "averageFps": 104.49429983594392,
+        "gaps": [],
+        "observedPairs": 6,
+        "masdMs": 0.5059166666666668,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "differences": [
+        "format",
+        "cpuBoundFrames",
+        "gpuBoundFrames",
+        "latencyFrames",
+        "latencyMeanMs"
+      ],
+      "summary": {
+        "frameCount": 7,
+        "durationSec": 0.06698930000000002,
+        "averageFps": 104.49429983594392,
+        "meanOfInstantaneousFps": 105.57453996818273,
+        "percentilesMs": {
+          "p50": 9.0017,
+          "p90": 10.79748,
+          "p95": 11.400089999999999,
+          "p99": 11.882178,
+          "p999": 11.990647800000001
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 84.15965490501826,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 83.39832982167985,
+          "meanOfSlowestMethodFps": 83.31458755113432,
+          "timeWeightedFps": 83.31458755113432
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.5059166666666668,
+        "pacingCoverage": {
+          "observedPairs": 6,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      },
+      "clockEvidence": null
+    },
+    {
+      "file": "upstream-trace5.csv",
+      "exitCode": 0,
+      "expected": {
+        "format": "presentmon",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 258,
+        "averageFps": 88.88590611980841,
+        "gaps": [],
+        "observedPairs": 257,
+        "masdMs": 0.3290342412451362,
+        "cpuBoundFrames": 258,
+        "gpuBoundFrames": 0,
+        "latencyFrames": 174,
+        "latencyMeanMs": 22.654643103448276
+      },
+      "observed": {
+        "format": "ocat",
+        "stream": "24892:0x2A70D2CAC00",
+        "frames": 258,
+        "averageFps": 88.88590611980835,
+        "gaps": [],
+        "observedPairs": 257,
+        "masdMs": 0.3290342412451365,
+        "cpuBoundFrames": null,
+        "gpuBoundFrames": null,
+        "latencyFrames": null,
+        "latencyMeanMs": null
+      },
+      "differences": [
+        "format",
+        "cpuBoundFrames",
+        "gpuBoundFrames",
+        "latencyFrames",
+        "latencyMeanMs"
+      ],
+      "summary": {
+        "frameCount": 258,
+        "durationSec": 2.902597400000002,
+        "averageFps": 88.88590611980835,
+        "meanOfInstantaneousFps": 88.99884794910382,
+        "percentilesMs": {
+          "p50": 11.0512,
+          "p90": 12.01623,
+          "p95": 12.042535,
+          "p99": 12.117664,
+          "p999": 12.1400183
+        },
+        "onePercentLow": {
+          "percentileMethodFps": 82.52415647108222,
+          "meanOfSlowestMethodFps": 82.3996989664331,
+          "timeWeightedFps": 82.4279991427488
+        },
+        "pointOnePercentLow": {
+          "percentileMethodFps": 82.37219873054063,
+          "meanOfSlowestMethodFps": 82.35807644476657,
+          "timeWeightedFps": 82.35807644476657
+        },
+        "stutter": {
+          "stutterEventCount": 0,
+          "totalStutterTimeMs": 0,
+          "stutterTimeFraction": 0,
+          "hitchThresholdMs": 50,
+          "hitchCount": 0,
+          "totalHitchTimeMs": 0,
+          "hitchTimeFraction": 0,
+          "stutterFrameIndices": []
+        },
+        "masdMs": 0.3290342412451365,
+        "pacingCoverage": {
+          "observedPairs": 257,
+          "gapBoundaries": 0
+        },
+        "dropped": null,
+        "boundShare": null,
+        "latency": null,
+        "telemetryCoverage": {
+          "dropped": null,
+          "cpuGpuBusy": null,
+          "displayLatency": null
+        }
+      },
+      "clockEvidence": null
+    }
+  ],
+  "total": 16,
+  "discrepancies": 14
+}

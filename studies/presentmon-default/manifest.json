@@ -1,0 +1,179 @@
+{
+  "baseline": "d7732240bf98b2cc1dcc713980e99d67a43ad583",
+  "upstreamCommit": "e13fce6acdb55a808fd8318175a56863e532d95f",
+  "executable": {
+    "url": "https://github.com/GameTechDev/PresentMon/releases/download/v2.6.0/PresentMon-2.6.0-x64.exe",
+    "bytes": 980320,
+    "sha256": "b2a706bc6ad475749e3b7e3409263aa1e6906d45bdcf993f6dbc0f660188f1af"
+  },
+  "traces": [
+    {
+      "file": "test_case_1.etl",
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/8170aab2b770556b0c4a190602c4448b0cda4a47/Tests/Gold/test_case_1.etl",
+      "bytes": 9099819,
+      "sha256": "5a200b1d03eb2ee9f29a22ca9b0dee05d189087eaaabf80df43f3627804c4517"
+    },
+    {
+      "file": "test_case_5.etl",
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/8170aab2b770556b0c4a190602c4448b0cda4a47/Tests/Gold/test_case_5.etl",
+      "bytes": 14932057,
+      "sha256": "001a0e76bde26a189e723b30a89187b596999a3c850d204ce5129e9a1d861744"
+    }
+  ],
+  "captures": [
+    {
+      "file": "trace1-default.csv",
+      "trace": "test_case_1.etl",
+      "flags": [],
+      "exitCode": 0,
+      "bytes": 12299,
+      "sha256": "1ec1b8de9d4755f501448a718cd4741d73b0b27e914411ab6eca6cf51043a3d8"
+    },
+    {
+      "file": "trace1-filtered.csv",
+      "trace": "test_case_1.etl",
+      "flags": [
+        "--exclude_dropped"
+      ],
+      "exitCode": 0,
+      "bytes": 11690,
+      "sha256": "409fcce79464fdab92d6a6f5b57fdb3e5a7e0d8c7f4d38689f8ed3ad6c8b713e"
+    },
+    {
+      "file": "trace1-qpc-ms.csv",
+      "trace": "test_case_1.etl",
+      "flags": [
+        "--qpc_time_ms"
+      ],
+      "exitCode": 0,
+      "bytes": 12600,
+      "sha256": "9a1312de1966e1e00c87dd9efb407882523588f7371ed82c02aa9e5c4332df02"
+    },
+    {
+      "file": "trace1-qpc-ms-filtered.csv",
+      "trace": "test_case_1.etl",
+      "flags": [
+        "--qpc_time_ms",
+        "--exclude_dropped"
+      ],
+      "exitCode": 0,
+      "bytes": 11973,
+      "sha256": "aab463fcd3d48a00893d377971123e1e2be81dd0ce393a0bfd4c2a609ac621a7"
+    },
+    {
+      "file": "trace1-qpc.csv",
+      "trace": "test_case_1.etl",
+      "flags": [
+        "--qpc_time"
+      ],
+      "exitCode": 0,
+      "bytes": 12778,
+      "sha256": "62b78f4a2305b15c35298e4e12ddd14e87c313ad538a24335322f5e76468bdc7"
+    },
+    {
+      "file": "trace1-cpu-only.csv",
+      "trace": "test_case_1.etl",
+      "flags": [
+        "--no_track_gpu",
+        "--no_track_display",
+        "--no_track_input"
+      ],
+      "exitCode": 0,
+      "bytes": 9794,
+      "sha256": "f99fab026bb91841b3a2f40d7e7535b864b680d531ae74d5db2bf566b654c640"
+    },
+    {
+      "file": "trace1-v2.csv",
+      "trace": "test_case_1.etl",
+      "flags": [
+        "--v2_metrics"
+      ],
+      "exitCode": 0,
+      "bytes": 8518,
+      "sha256": "f1b9f436cdc270170740db60c8465d97d8adeae5dad83f125dca9eda5d6de625"
+    },
+    {
+      "file": "trace5-default.csv",
+      "trace": "test_case_5.etl",
+      "flags": [],
+      "exitCode": 0,
+      "bytes": 154519,
+      "sha256": "d84eedfce8cb1b3eccfafd82760e8db42e8663b5628e18d84167cf21dd4e0603"
+    },
+    {
+      "file": "trace5-filtered.csv",
+      "trace": "test_case_5.etl",
+      "flags": [
+        "--exclude_dropped"
+      ],
+      "exitCode": 0,
+      "bytes": 136239,
+      "sha256": "bde56900213bf9f9cc04af75200abe8af47d6643321a280a5c2ec0d981f78056"
+    },
+    {
+      "file": "trace5-qpc-ms.csv",
+      "trace": "test_case_5.etl",
+      "flags": [
+        "--qpc_time_ms"
+      ],
+      "exitCode": 0,
+      "bytes": 157762,
+      "sha256": "186cba271c80b34fc3918d46161b0d4aa92963f539cb6331d31de10c7be9bd60"
+    },
+    {
+      "file": "trace5-qpc-ms-filtered.csv",
+      "trace": "test_case_5.etl",
+      "flags": [
+        "--qpc_time_ms",
+        "--exclude_dropped"
+      ],
+      "exitCode": 0,
+      "bytes": 139052,
+      "sha256": "aba964cfe3db03e77a5607cbbc760a90d0882d229028d72f499c397c1c6b4266"
+    },
+    {
+      "file": "trace5-qpc.csv",
+      "trace": "test_case_5.etl",
+      "flags": [
+        "--qpc_time"
+      ],
+      "exitCode": 0,
+      "bytes": 159691,
+      "sha256": "5e5e76a28333d226b1ea2875300490c2567135dd6c48ce35fe66022b6cc8e39b"
+    },
+    {
+      "file": "trace5-cpu-only.csv",
+      "trace": "test_case_5.etl",
+      "flags": [
+        "--no_track_gpu",
+        "--no_track_display",
+        "--no_track_input"
+      ],
+      "exitCode": 0,
+      "bytes": 127518,
+      "sha256": "5401b1108d478ac943dc47d6562436ab789f2191a7d3e4b0b702ff61ec6a6967"
+    },
+    {
+      "file": "trace5-v2.csv",
+      "trace": "test_case_5.etl",
+      "flags": [
+        "--v2_metrics"
+      ],
+      "exitCode": 0,
+      "bytes": 106739,
+      "sha256": "4a1262a19497b756c448daf34626ae5a541ab7164faa4e9539a02ad673622fd7"
+    },
+    {
+      "file": "upstream-trace1.csv",
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/e13fce6acdb55a808fd8318175a56863e532d95f/Tests/Gold/test_case_1.csv",
+      "bytes": 14033,
+      "sha256": "56e149cacfd10a280a3e3dffc99aed38ccff7a440da1cc681844311e1945316b"
+    },
+    {
+      "file": "upstream-trace5.csv",
+      "url": "https://raw.githubusercontent.com/GameTechDev/PresentMon/e13fce6acdb55a808fd8318175a56863e532d95f/Tests/Gold/test_case_5.csv",
+      "bytes": 175274,
+      "sha256": "0ecd9ac4ab37d53a65ba3dd36cedf5a0a5d758789c0101a20f516b354f1163ab"
+    }
+  ]
+}

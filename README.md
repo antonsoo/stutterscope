@@ -25,7 +25,7 @@ already record frame timings when configured for per-frame capture. The gap is i
 the analysis: it's mostly Windows desktop apps, "1% low" means two different things depending which
 tool computed it and nobody tells you which, and there's no fast way to
 drop two runs side by side and see what actually changed. stutterscope is a
-single-page, in-browser analyzer that reads six capture-tool CSV formats, native
+single-page, in-browser analyzer that reads capture-tool CSV formats, native
 CapFrameX JSON sessions and generic CSV, computes stutter/1%-low/pacing metrics with documented formulas,
 and never uploads the file anywhere. Parsing and metrics run in a Web Worker;
 charts render locally in your browser.
@@ -55,6 +55,14 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
 
 ## Features
 
+- **PresentMon 2.6.0 default CSV (source checkout):** recover CPU/GPU busy
+  readings and present-to-display latency that previously disappeared under
+  OCAT detection. Native millisecond clocks expose filtered-frame gaps without
+  confusing present intervals with CPU-start intervals. An official executable
+  replay and an independent record-order oracle check 16 inputs.
+  [Before/after evidence and format boundaries](studies/presentmon-default/README.md).
+  This change has not been deployed or released to npm.
+
 - **Native CapFrameX JSON (source and demo):** open saved recordings directly,
   select one run without concatenating captures, and follow slow frames to their
   original array indices. Five unchanged public game captures now import with
@@ -69,7 +77,7 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
   exports include both runs and their applied intervals; the source CLI adds
   `compare`, `--start` / `--end`, and per-run bounds. See the
   [captured experiment and walkthrough](docs/interval-analysis.md).
-- **Parsers** for PresentMon 1.x and 2.x, NVIDIA FrameView, CapFrameX,
+- **Parsers** for PresentMon's current default and legacy v1/v2 layouts, NVIDIA FrameView, CapFrameX,
   MangoHud, and OCAT CSVs, auto-detected from the file's header. Any other
   CSV (an engine's frame log, a FRAPS-style `frametimes.csv`, a
   spreadsheet) is read by the column its header points to (`frame_time_ms`,
@@ -209,7 +217,7 @@ values or a worker failure leave the last applied results and exports intact.
 Changing the viewport resizes the charts; on phones, the comparison table
 scrolls horizontally within its own keyboard-accessible region.
 
-Drop a file on the page (or click one of the seven "load a synthetic
+Drop a file on the page (or click one of the "load a synthetic
 sample" links to try it with no file of your own) and you get a tile grid
 plus four charts. Load a second run to compare:
 
@@ -234,14 +242,13 @@ presentmon2-synthetic-demo.csv  PresentMon 2.x
 ```
 
 That output is real, from the synthetic PresentMon 2.x sample committed in
-`examples/samples/`. All seven sample files (one per format) encode the
+`examples/samples/`. The source checkout's eight CSV sample files encode the
 *same* underlying scenario — a vsync-locked menu, a shader-compile hitch, a
 VRR-style traversal section with periodic streaming stutter, a bigger
 hitch, a CPU-bound section, a stutter cluster, and a GPU-bound vsync
-sawtooth — so the numbers above should come out identical regardless of
-which format you point the CLI or the web app at (they do: it's how this
-project's cross-format tests catch a parser silently reading the wrong
-column).
+sawtooth. Shared frame-time metrics agree within each format's written
+precision. Optional telemetry varies: MangoHud has no busy-time pair, and
+the current PresentMon default does not provide a categorical drop outcome.
 
 Missing cumulative timestamps now break frame adjacency instead of creating a
 false hitch. The [retained capture replay](studies/timestamp-gaps/README.md)
@@ -341,7 +348,9 @@ silently choosing one of two `FrameTime` columns; it now identifies the ambiguit
   OCAT/CapFrameX CSV and FrameView clocks can expose discontinuities, allowing for
   their written precision. The source checkout also checks PresentMon 2.x
   `CPUStartTime` and `CPUStartQPCTime` (milliseconds), using the earlier row's
-  duration. Raw `CPUStartQPC` ticks and `CPUStartDateTime` remain unsupported
+  duration. The current default's explicit millisecond clocks use their
+  matching present or CPU interval; see the [native format contract](docs/formats.md#presentmon-default-metrics-source-checkout).
+  Raw `CPUStartQPC` ticks and `CPUStartDateTime` remain unsupported
   for this check. Coarse/missing clocks, tiny gaps and unsupported clock
   columns can conceal missing observations. Frame counts, FPS and distributions
   still describe retained durations; missing frame counts, duration and cause

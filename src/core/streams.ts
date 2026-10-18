@@ -52,12 +52,34 @@ export class StreamTracker {
   private lastSwap: string | undefined;
 
   /** Reads the header once; formats without these columns simply aren't tracked. */
-  setHeader(header: Map<string, number>, nativeFrameColumn?: "msBetweenPresents" | "MsBetweenPresents" | "FrameTime"): void {
+  setHeader(header: Map<string, number>, nativeFrameColumn?: "msBetweenPresents" | "MsBetweenPresents" | "FrameTime", currentPresentMon = false): void {
     this.appIdx = header.get("Application") ?? -1;
     this.pidIdx = header.get("ProcessID") ?? -1;
     this.swapIdx = header.get("SwapChainAddress") ?? -1;
-    this.timeIdx = header.get("TimeInSeconds") ?? -1;
-    if (nativeFrameColumn === "FrameTime") {
+    const presentClocks = (["TimeInSeconds", "TimeInMs"] as const).filter(name => header.has(name));
+    this.timeIdx = presentClocks.length === 1 ? header.get(presentClocks[0]!)! : -1;
+    if (presentClocks.length === 1 && presentClocks[0] === "TimeInMs") {
+      this.clock = new PresentClock({ clockColumn: "TimeInMs" });
+    }
+    this.frameIdx = nativeFrameColumn === undefined ? -1 : header.get(nativeFrameColumn) ?? -1;
+    if (currentPresentMon) {
+      // 2.6.0 --qpc_time_ms writes milliseconds under TimeInSeconds. That
+      // ambiguous header is unusable here. Prefer the explicit present clock,
+      // otherwise compare explicit CPU milliseconds to their own forward span.
+      this.timeIdx = -1;
+      if (header.has("TimeInMs") && !header.has("TimeInSeconds")) {
+        this.timeIdx = header.get("TimeInMs")!;
+        this.clock = new PresentClock({ clockColumn: "TimeInMs" });
+      } else {
+        const clocks = (["CPUStartTimeInMs", "CPUStartQPCTimeInMs"] as const).filter(name => header.has(name));
+        const column = clocks.length === 1 ? clocks[0] : undefined;
+        if (column && header.has("MsBetweenAppStart")) {
+          this.timeIdx = header.get(column)!;
+          this.frameIdx = header.get("MsBetweenAppStart")!;
+          this.clock = new PresentClock({ clockColumn: column, frameTimeColumn: "MsBetweenAppStart" });
+        }
+      }
+    } else if (nativeFrameColumn === "FrameTime") {
       const clocks = (["CPUStartTime", "CPUStartQPCTime"] as const).filter(name => header.has(name));
       // Raw QPC ticks lack a frequency, and local date strings are not monotonic
       // clocks. Conflicting declared clock columns do not establish one basis.
@@ -65,7 +87,6 @@ export class StreamTracker {
       this.timeIdx = column ? header.get(column)! : -1;
       this.clock = new PresentClock(column ? { clockColumn: column } : {});
     }
-    this.frameIdx = nativeFrameColumn === undefined ? -1 : header.get(nativeFrameColumn) ?? -1;
   }
 
   private get enabled(): boolean {
@@ -75,7 +96,12 @@ export class StreamTracker {
   /** Records a row, or interrupts continuity and returns why its identity is unusable.
    * Call before appending the row's measurements; an error means none may be kept. */
   track(fields: string[], sourceLine?: number): string | undefined {
-    if (!this.enabled) { this.continuity.keep(); return; }
+    if (!this.enabled) {
+      if (this.timeIdx >= 0 && this.frameIdx >= 0
+        && this.clock.keep(0, fields[this.timeIdx], fields[this.frameIdx], sourceLine)) this.continuity.skip();
+      this.continuity.keep();
+      return;
+    }
     const app = this.appIdx >= 0 ? fields[this.appIdx] : undefined;
     const pid = this.pidIdx >= 0 ? fields[this.pidIdx] : undefined;
     const swap = this.swapIdx >= 0 ? fields[this.swapIdx] : undefined;
@@ -155,7 +181,11 @@ export class StreamTracker {
   select(columns: SeriesColumns, selector?: string): StreamSelection {
     columns = { ...columns, gapBefore: this.continuity.toArray() };
     const streams = [...this.list].sort((a, b) => b.frameCount - a.frameCount);
-    if (streams.length === 0) return { ...columns, streams };
+    if (streams.length === 0) {
+      if (selector !== undefined) throw new ParseError(`cannot select stream "${selector}": this capture has no present-stream identities`);
+      const clockEvidence = this.clock.evidence(0);
+      return { ...columns, streams, ...(clockEvidence ? { clockGaps: this.clock.count(0), clockEvidence } : {}) };
+    }
     const selected = selector === undefined ? defaultStream(streams) : matchStream(streams, selector);
     if (!selected) {
       throw new ParseError(

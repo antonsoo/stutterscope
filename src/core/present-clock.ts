@@ -3,8 +3,9 @@ import type { PresentClockEvidence, PresentClockWitness } from "./types.ts";
 interface Clock { ms: number; errorMs: number }
 interface Anchor extends Clock { sourceLine: number | undefined; frame: Clock | undefined }
 interface ClockOptions {
-  /** Native 2.x CPU-start columns are milliseconds and lead their FrameTime. */
-  clockColumn?: "CPUStartTime" | "CPUStartQPCTime";
+  /** CPU-start clocks lead FrameTime; TimeInMs ends MsBetweenPresents. */
+  clockColumn?: PresentClockEvidence["clockColumn"];
+  frameTimeColumn?: PresentClockEvidence["frameTimeColumn"];
 }
 export const MAX_CLOCK_WITNESSES = 5;
 const DECIMAL_READING = /^[+-]?(?:\d+(?:\.(\d*))?|\.(\d+))(?:[eE]([+-]?\d+))?$/;
@@ -38,7 +39,8 @@ export class PresentClock {
     const previous = this.previous.get(stream);
     // PresentMon 1.x measures back from the current present. In 2.x,
     // FrameTime runs forward from CPUStartTime to the next CPU start.
-    const frame = this.options.clockColumn ? previous?.frame : currentFrame;
+    const forward = this.options.clockColumn !== undefined && this.options.clockColumn !== "TimeInMs";
+    const frame = forward ? previous?.frame : currentFrame;
     const line = sourceLine !== undefined && Number.isSafeInteger(sourceLine) && sourceLine > 0 ? sourceLine : undefined;
     if (clock) this.previous.set(stream, { ...clock, sourceLine: line, frame: currentFrame });
     else this.previous.delete(stream);
@@ -72,6 +74,8 @@ export class PresentClock {
     if (!count) return;
     const witnesses = this.witnesses.get(stream) ?? [];
     return { witnesses: witnesses.map(w => ({ ...w })), omittedWitnesses: count - witnesses.length,
-      ...(this.options.clockColumn ? { clockColumn: this.options.clockColumn, frameTimeReference: "fromSourceLine" as const } : {}) };
+      ...(this.options.clockColumn ? { clockColumn: this.options.clockColumn,
+        frameTimeReference: this.options.clockColumn === "TimeInMs" ? "toSourceLine" as const : "fromSourceLine" as const } : {}),
+      ...(this.options.frameTimeColumn ? { frameTimeColumn: this.options.frameTimeColumn } : {}) };
   }
 }

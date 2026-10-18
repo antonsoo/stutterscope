@@ -8,6 +8,19 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 Changes below are in source and have not been released as an npm package.
 
+### PresentMon 2.6.0 default CSV (source checkout)
+
+- Recognize the default Ms-prefixed metrics independently from `--v2_metrics`.
+  Read native CPU/GPU busy and present-to-display latency with per-frame coverage.
+- Check `TimeInMs` against the current `MsBetweenPresents`, or explicit CPU
+  milliseconds against the earlier `MsBetweenAppStart`. The 2.6.0 QPC-ms
+  `TimeInSeconds` header has an ambiguous unit and is not trusted.
+- Apply native clocks to identity-free single-series exports too; an explicit
+  stream selector now refuses those inputs instead of silently returning all rows.
+- Retain native executable captures, untouched upstream controls, source-order
+  oracle results and browser downloads in [the study](studies/presentmon-default/README.md).
+  Hosted demo and npm artifacts have not been updated for this change.
+
 ### PresentMon 2.x CPU-start clocks and CPU-only captures (source and demo)
 
 - Split pacing, rolling context, chart connections and episodes at supported

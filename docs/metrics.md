@@ -179,8 +179,9 @@ exports. Generic CSVs can supply an explicitly mapped dropped column.
 
 ## CPU-/GPU-bound share
 
-Only available when both `CPUBusy` and `GPUBusy` channels are present
-(PresentMon 2.x). Each frame is classified by whichever engine was busier:
+Only available when both CPU and GPU busy channels are present (`CPUBusy` /
+`GPUBusy` in v2 metrics, or `MsCPUBusy` / `MsGPUBusy` in the current default
+PresentMon CSV). Each frame is classified by whichever engine was busier:
 
 ```
 frame is CPU-bound if CPUBusy[i] >= GPUBusy[i], else GPU-bound
@@ -202,8 +203,9 @@ PresentMon 2.x already reports.
 
 ## Display latency
 
-Reported when the source format has a latency channel (PresentMon 2.x's
-`DisplayLatency`, FrameView's `MsPCLatency`): mean, P50, P90, P99. `null`
+Reported when the source format has a latency channel (PresentMon v2's
+`DisplayLatency`, its current default's `MsUntilDisplayed`, or FrameView's
+`MsPCLatency`): mean, P50, P90, P99. `null`
 otherwise. What exactly each tool measures as "latency" differs (see
 `docs/formats.md`) — this is not a normalized cross-tool latency number.
 

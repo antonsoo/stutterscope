@@ -7,6 +7,14 @@ import * as frameview from "../../src/core/parsers/frameview.ts";
 import { computeMetricsSummary } from "../../src/core/metrics.ts";
 
 describe("native clock evidence after present filtering", () => {
+  it("checks the capture clock even when an edited native file has no stream columns", () => {
+    const series = ocat.parse("TimeInSeconds,MsBetweenPresents\n1.000000,10\n1.030000,10\n");
+    expect([...series.gapBefore!]).toEqual([0, 1]);
+    expect(series.meta.presentClockGaps).toBe(1);
+    expect(series.meta.presentClockEvidence?.witnesses[0]).toMatchObject({ fromSourceLine: 2, toSourceLine: 3 });
+    expect(() => ocat.parse("TimeInSeconds,MsBetweenPresents\n1.0,10\n", "capture.csv", { stream: "42" }))
+      .toThrow(/no present-stream identities/);
+  });
   it("breaks adjacency on a missing present and a reversed clock, without a duration guess", () => {
     const clock = new PresentClock();
     expect(clock.keep(0, "1.000000", "10.0000")).toBe(false);
