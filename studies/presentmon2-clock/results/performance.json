@@ -1,0 +1,39 @@
+{
+  "scope": "Cached CSV parsing only; one 104814-byte, 647-row native capture, 258 selected frames; excludes I/O, analysis and browser. Concurrent browser verification was running; these are local observations, not a performance guarantee.",
+  "node": "v26.7.0",
+  "platform": "linux",
+  "arch": "x64",
+  "logicalCpus": 14,
+  "ramBytes": 50516529152,
+  "warmupParses": 20,
+  "samples": 7,
+  "parsesPerSample": 100,
+  "results": [
+    {
+      "label": "baseline",
+      "msPerCapture": [
+        3.6065123,
+        4.27603996,
+        2.884206509999999,
+        3.7569331799999985,
+        4.510659609999998,
+        4.869110110000001,
+        4.59030996
+      ],
+      "medianMsPerCapture": 4.27603996
+    },
+    {
+      "label": "corrected",
+      "msPerCapture": [
+        7.829599579999999,
+        4.8777476799999935,
+        3.80721939,
+        3.6283520599999974,
+        3.675043969999997,
+        4.510901240000003,
+        4.685342510000001
+      ],
+      "medianMsPerCapture": 4.510901240000003
+    }
+  ]
+}

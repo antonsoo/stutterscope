@@ -1,0 +1,71 @@
+{
+  "scope": "Source Node 26.7.0 vs locally packed CLI Node 22.6.0; only rounding-allowance last bits differ. All metrics, coordinates and statuses are identical.",
+  "differences": [
+    {
+      "path": "/cases/1/source/presentClockEvidence/witnesses/0/allowanceMs",
+      "source": 0.00015000000257475143,
+      "installedNode22": 0.0001500000025747514,
+      "differenceMs": 2.710505431213761e-20
+    },
+    {
+      "path": "/cases/1/source/presentClockEvidence/witnesses/1/allowanceMs",
+      "source": 0.00015000000267202882,
+      "installedNode22": 0.0001500000026720288,
+      "differenceMs": 2.710505431213761e-20
+    },
+    {
+      "path": "/cases/3/source/presentClockEvidence/witnesses/0/allowanceMs",
+      "source": 0.00015066005922858495,
+      "installedNode22": 0.00015066005922858492,
+      "differenceMs": 2.710505431213761e-20
+    },
+    {
+      "path": "/cases/3/source/presentClockEvidence/witnesses/1/allowanceMs",
+      "source": 0.00015066005932586234,
+      "installedNode22": 0.0001506600593258623,
+      "differenceMs": 2.710505431213761e-20
+    },
+    {
+      "path": "/cases/6/source/presentClockEvidence/witnesses/0/allowanceMs",
+      "source": 0.00015000000705953182,
+      "installedNode22": 0.0001500000070595318,
+      "differenceMs": 2.710505431213761e-20
+    },
+    {
+      "path": "/cases/6/source/presentClockEvidence/witnesses/1/allowanceMs",
+      "source": 0.00015000000717675785,
+      "installedNode22": 0.00015000000717675782,
+      "differenceMs": 2.710505431213761e-20
+    },
+    {
+      "path": "/cases/6/source/presentClockEvidence/witnesses/2/allowanceMs",
+      "source": 0.00015000000729507761,
+      "installedNode22": 0.0001500000072950776,
+      "differenceMs": 2.710505431213761e-20
+    },
+    {
+      "path": "/cases/6/source/presentClockEvidence/witnesses/3/allowanceMs",
+      "source": 0.00015000000745746432,
+      "installedNode22": 0.0001500000074574643,
+      "differenceMs": 2.710505431213761e-20
+    },
+    {
+      "path": "/cases/6/source/presentClockEvidence/witnesses/4/allowanceMs",
+      "source": 0.00015000000757807916,
+      "installedNode22": 0.00015000000757807913,
+      "differenceMs": 2.710505431213761e-20
+    },
+    {
+      "path": "/cases/8/source/presentClockEvidence/witnesses/3/allowanceMs",
+      "source": 0.0001508764413293136,
+      "installedNode22": 0.00015087644132931357,
+      "differenceMs": 2.710505431213761e-20
+    },
+    {
+      "path": "/cases/8/source/presentClockEvidence/witnesses/4/allowanceMs",
+      "source": 0.0001508764414499284,
+      "installedNode22": 0.00015087644144992838,
+      "differenceMs": 2.710505431213761e-20
+    }
+  ]
+}

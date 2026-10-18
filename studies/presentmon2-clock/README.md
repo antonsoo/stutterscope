@@ -66,7 +66,7 @@ They were inspected for overflow and readable source/clock context.
 
 ## Reproduce
 
-From the repository root, with Node.js and Python available:
+From the repository root, with Node.js 24 or later and Python available:
 
 ```sh
 npm ci
@@ -99,6 +99,34 @@ matches all twelve CSVs. One earlier CPU-only repeat produced extra records
 matched. The differing full output was not retained, and its cause is unknown.
 This does not establish deterministic native output. WSL executable startup
 also failed transiently once; an unavailable invocation is not a successful capture.
+
+## Clean install and artifact verification
+
+The [verification receipt](results/verification.json) identifies implementation
+commit `a28b4c4`, build-file hashes and the local tarball's integrity hash.
+
+| Check | Result |
+| --- | --- |
+| Fresh archive, `npm ci`, lint, strict typecheck, unit tests, web/CLI builds | Passed; 394 tests on Node 26.7.0 |
+| Unit suite on Node 24.21.0 | 394 passed |
+| Complete production browser suite, Chromium and Firefox | 102 passed |
+| Twelve native cases through a locally packed, freshly installed CLI on Node 22.6.0 | No discrepancies |
+| Earlier native-clock replay | 21 workflows, no discrepancies |
+| Pinned public CSV corpus before/after comparison | 34 unchanged outputs: 27 parsed, 7 equal refusals |
+
+The installed CLI's metrics and gap coordinates match the source run. Eleven
+witness rounding allowances differ only in their last bits across Node engines,
+by at most `2.71e-20` ms; the [exact differences](results/runtime-roundoff.json)
+remain inspectable. The tarball keeps version metadata `0.2.5`; it is a local
+artifact containing unreleased code, not the registry's existing release.
+
+A [small cached-parse measurement](results/performance.json) recorded medians
+of 4.28 ms before and 4.51 ms after on the 104,814-byte native trace 5 control
+(647 CSV rows, 258 selected frames). It excludes I/O and analysis and ran
+alongside browser checks; it is not a general throughput benchmark.
+
+`npm run build` produces `dist/` with the `/stutterscope/` base.
+`npm run build:cli` produces `dist-cli/`. No hosted publication was performed.
 
 ## Limits
 
