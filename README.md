@@ -40,9 +40,10 @@ npm install && npm run dev
 
 Open the printed local URL, click one of the "load a synthetic sample"
 links, and you're looking at a real (synthetic, clearly labelled) capture.
-The [live demo](https://antonsoo.github.io/stutterscope/) includes the current
-source corrections and interval analysis. The npm CLI still predates those
-changes. Both process captures locally; no capture is uploaded.
+The [live demo](https://antonsoo.github.io/stutterscope/) provides browser
+interval analysis. Changes available only in the source checkout are identified
+below. The npm CLI predates the recent source corrections. Both process
+captures locally; no capture is uploaded.
 
 Prefer the terminal? `npx` runs the published CLI
 ([`@antonsoloviev/stutterscope`](https://www.npmjs.com/package/@antonsoloviev/stutterscope)
@@ -151,6 +152,13 @@ These source changes have not been released to npm.
   **[Inspect filtered presents](https://antonsoo.github.io/stutterscope/?example=filtered-presents)** example uses attributed Intel test data; a separate
   untouched public FrameView capture exposes the same issue.
   [Concrete counterexamples and limits](studies/present-clock/README.md).
+- **PresentMon 2.x CPU-start continuity (source checkout):** use millisecond
+  CPU-start clocks with the earlier row's forward-looking `FrameTime`. A native
+  filtered stream previously reported 173 adjacent pairs; the original records
+  establish 90 pairs and 83 interruptions. CPU-only captures are also recognized
+  when GPU tracking is disabled, preserving process/swap-chain selection instead
+  of combining unrelated processes. [Native executable replay and limits](studies/presentmon2-clock/README.md).
+  These changes have not been deployed or released to npm.
 - **Shifted CSV records (source and demo):** a row with more cells than its header
   cannot establish column alignment. It is now skipped with a source-line warning
   and a continuity gap, including clock-anchor reset for cumulative timestamps.
@@ -331,7 +339,10 @@ silently choosing one of two `FrameTime` columns; it now identifies the ambiguit
   remain unverified. See the [upstream evidence and check limits](docs/formats.md#mangohud).
 - **Native clock checks cannot prove complete recording.** PresentMon 1.x,
   OCAT/CapFrameX CSV and FrameView clocks can expose discontinuities, allowing for
-  their written precision. Coarse/missing clocks, tiny gaps and unsupported clock
+  their written precision. The source checkout also checks PresentMon 2.x
+  `CPUStartTime` and `CPUStartQPCTime` (milliseconds), using the earlier row's
+  duration. Raw `CPUStartQPC` ticks and `CPUStartDateTime` remain unsupported
+  for this check. Coarse/missing clocks, tiny gaps and unsupported clock
   columns can conceal missing observations. Frame counts, FPS and distributions
   still describe retained durations; missing frame counts, duration and cause
   are not reconstructed. [Evidence contract](studies/present-clock/README.md).

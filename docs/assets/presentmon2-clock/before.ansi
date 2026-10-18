@@ -1,0 +1,17 @@
+test_case_5-no-gpu.csv  Generic CSV
+1,824 frames, 13.9s
+column "FrameTime" read as: Frame time (milliseconds). A guess (named like a frame time; values around 10.9); --generic-column and --generic-kind set it.
+
+  Average FPS              131.1
+  1% low (percentile)      56.8 fps
+  1% low (slowest-mean)    31.5 fps
+  1% low (time-weighted)   10.8 fps
+  0.1% low (percentile)    10.8 fps
+  0.1% low (slowest-mean)  10.6 fps
+  0.1% low (time-weighted) 10.5 fps
+  P99 frame time           17.60 ms
+  P99.9 frame time         92.39 ms
+  Stutter events           15  (3.76% of capture time)
+  Hitches (>50ms)          3
+  Pacing (MASD)            14.16 ms
+  Pacing observations      1823 adjacent pairs; 0 gaps between analyzed frames

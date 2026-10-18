@@ -541,12 +541,14 @@ function warningsNote(run: RunState, label = "Run A"): string {
 function timingNote(run: RunState, label: string): string {
   const clockGaps = run.response.series.meta.presentClockGaps;
   const witnesses = run.response.series.meta.presentClockEvidence;
+  const clockName = witnesses?.clockColumn ?? "TimeInSeconds";
+  const durationBasis = witnesses?.frameTimeReference === "fromSourceLine" ? " The earlier row's FrameTime spans the two CPU starts." : "";
   const witnessTable = witnesses?.witnesses.length ? `<div class="episode-table-scroll" tabindex="0" role="region" aria-label="${label} native clock witnesses">
     <table class="delta-table"><caption>Retained clock witnesses (milliseconds)</caption><thead><tr><th scope="col">CSV lines</th><th scope="col">clock</th><th scope="col">frame</th><th scope="col">allowance</th></tr></thead><tbody>
       ${witnesses.witnesses.map(w => `<tr><td>${fmtInt(w.fromSourceLine)} - ${fmtInt(w.toSourceLine)}</td><td class="num">${fmtMs(w.elapsedMs, 3)}</td><td class="num">${fmtMs(w.frameTimeMs, 3)}</td><td class="num">${w.allowanceMs > 0 && w.allowanceMs < 1e-6 ? w.allowanceMs.toExponential(2) : fmtMs(w.allowanceMs, 6)}</td></tr>`).join("")}
     </tbody></table></div>${witnesses.omittedWitnesses ? `<p>${fmtInt(witnesses.omittedWitnesses)} further witness details were not retained. JSON still lists every detected gap coordinate.</p>` : ""}` : "";
   const native = clockGaps ? `<details class="notes timing-note"><summary>${label}: ${fmtInt(clockGaps)} native clock ${clockGaps === 1 ? "discontinuity" : "discontinuities"}</summary>
-    <p>The count covers the full source stream. TimeInSeconds contradicts adjacent retained presents, after allowing for written decimal precision. Filtered or missing presents and reversed clocks break pacing pairs, rolling context and trace lines. Missing frame counts and durations are unknown; the chart still sums retained frame durations. This check does not establish complete recording.</p>${witnessTable}</details>` : "";
+    <p>The count covers the full source stream. ${clockName} contradicts adjacent retained frames, after allowing for written decimal precision.${durationBasis} Filtered or missing frames and reversed clocks break pacing pairs, rolling context and trace lines. Missing frame counts and durations are unknown; the chart still sums retained frame durations. This check does not establish complete recording.</p>${witnessTable}</details>` : "";
   const evidence = run.response.series.meta.timingEvidence;
   if (!evidence) return native;
   return native + `<details class="notes timing-note"><summary>${label}: MangoHud metrics assume per-frame logging</summary>

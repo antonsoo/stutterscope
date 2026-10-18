@@ -14,7 +14,8 @@
  *   AllInputToPhotonLatency,ClickToPhotonLatency,InstrumentedLatency
  *
  * `CPUStartQPC` is renamed to `CPUStartTime`/`CPUStartQPCTime`/
- * `CPUStartDateTime` depending on command-line flags; we don't depend on it.
+ * `CPUStartDateTime` depending on command-line flags. Millisecond CPU-start
+ * clocks can expose filtered records; the earlier row's FrameTime spans starts.
  * There is no `Dropped` column in 2.x — instead we treat a frame whose
  * `DisplayedTime` is `NA` (not displayed) as the 2.x equivalent, which is
  * called out explicitly in `docs/metrics.md` since it isn't the same
@@ -29,9 +30,10 @@ import { cumulativeSeconds, StreamTracker } from "../streams.ts";
 export function sniff(sampleText: string): SniffResult {
   const firstLine = sampleText.split(LINE_BREAK, 1)[0] ?? "";
   const hasV2Markers =
-    firstLine.includes("FrameTime") && firstLine.includes("CPUBusy") && firstLine.includes("GPUBusy");
+    firstLine.includes("FrameTime") && firstLine.includes("CPUBusy") &&
+    (firstLine.includes("GPUBusy") || firstLine.includes("CPUWait"));
   if (hasV2Markers) {
-    return { format: "presentmon2", confidence: 0.98, reason: "header has FrameTime/CPUBusy/GPUBusy" };
+    return { format: "presentmon2", confidence: 0.98, reason: "header has FrameTime/CPUBusy and GPUBusy or CPUWait" };
   }
   return { format: "presentmon2", confidence: 0, reason: "header does not match PresentMon 2.x" };
 }
@@ -67,7 +69,7 @@ class PresentMon2Parser implements StreamingParser {
       this.hasGpuBusy = this.header.has("GPUBusy");
       this.hasDisplayLatency = this.header.has("DisplayLatency");
       this.hasDisplayedTime = this.header.has("DisplayedTime");
-      this.streams.setHeader(this.header);
+      this.streams.setHeader(this.header, "FrameTime");
       return;
     }
     const widthProblem = extraFieldsReason(fields, this.columns);
@@ -87,7 +89,7 @@ class PresentMon2Parser implements StreamingParser {
       this.skipped.add(lineIndex, "missing/invalid FrameTime");
       return;
     }
-    const identityProblem = this.streams.track(fields);
+    const identityProblem = this.streams.track(fields, lineIndex + 1);
     if (identityProblem) {
       this.skipped.add(lineIndex, identityProblem);
       return;
@@ -108,7 +110,7 @@ class PresentMon2Parser implements StreamingParser {
   }
 
   finish(sourceFileName: string): FrameSeries {
-    const { frameTimeMs, sourceLine, gapBefore, channels, streams, selected } = this.streams.select(
+    const { frameTimeMs, sourceLine, gapBefore, channels, streams, selected, clockGaps, clockEvidence } = this.streams.select(
       {
         frameTimeMs: this.frameTimeMs.toArray(), sourceLine: this.sourceLine.toArray(),
         channels: {
@@ -130,6 +132,8 @@ class PresentMon2Parser implements StreamingParser {
         columns: this.columns,
         streams,
         selectedStream: selected?.id,
+        ...(clockGaps ? { presentClockGaps: clockGaps } : {}),
+        ...(clockEvidence ? { presentClockEvidence: clockEvidence } : {}),
       },
       frameCount: frameTimeMs.length,
       frameTimeMs,

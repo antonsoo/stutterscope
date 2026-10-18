@@ -144,6 +144,9 @@ FPS looks fine, which is exactly the case average FPS hides.
 
 A source gap separates frames when the parser skipped an unusable timing row
 or native present-clock evidence contradicts adjacency.
+For PresentMon 2.x millisecond CPU-start clocks, the elapsed interval uses the
+earlier row's `FrameTime`; for 1.x present clocks it uses the current row's
+`msBetweenPresents`. These are different native interval conventions.
 A bad row with a known process/swap-chain identity interrupts only that stream;
 a bad row with incomplete identity conservatively interrupts every previously
 observed stream. Normal interleaving, blank lines and missing optional telemetry

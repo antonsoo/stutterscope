@@ -3,9 +3,9 @@
  * representation every parser produces and every metric consumes.
  *
  * Convention: `frameTimeMs[i]` is the duration attributed to frame `i` (the
- * time between this present and the previous one, in milliseconds — the
- * quantity every supported tool calls "frame time" under one name or
- * another). `timeSec[i]` is the cumulative capture time up to and including
+ * native frame interval in milliseconds. PresentMon 1.x durations end at
+ * the current present; 2.x FrameTime starts at the current CPU start and
+ * ends at the next CPU start). `timeSec[i]` is the cumulative capture time up to and including
  * frame `i`, derived as a running sum of `frameTimeMs`, so it is internally
  * consistent even for formats whose own absolute-time column has coarser
  * precision than their frame-time column. An interval view keeps these
@@ -75,6 +75,9 @@ export interface PresentClockWitness {
 }
 
 export interface PresentClockEvidence {
+  /** Absent in older reports: TimeInSeconds, with duration on toSourceLine. */
+  clockColumn?: "CPUStartTime" | "CPUStartQPCTime";
+  frameTimeReference?: "fromSourceLine";
   witnesses: PresentClockWitness[];
   /** Bound retention, without losing the full gap-coordinate list. */
   omittedWitnesses: number;
@@ -107,7 +110,7 @@ export interface FrameSeriesMeta {
   streams?: PresentStream[];
   /** The id of the stream the series holds, when `streams` is set. */
   selectedStream?: string;
-  /** Native TimeInSeconds contradicts uninterrupted retained presents. */
+  /** A supported native clock contradicts uninterrupted retained frames. */
   presentClockGaps?: number;
   /** Native saved sessions: one selected recording, never concatenated runs. */
   nativeCapture?: {

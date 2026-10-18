@@ -1,0 +1,175 @@
+{
+  "captures": [
+    {
+      "file": "test_case_1-default.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 8372,
+        "sha256": "ddb3b68e8a81bffe3c72df53306ea9712b4668d91672ab8c465845cbaa96729a"
+      },
+      "actual": {
+        "bytes": 8372,
+        "sha256": "ddb3b68e8a81bffe3c72df53306ea9712b4668d91672ab8c465845cbaa96729a"
+      },
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "file": "test_case_1-filtered.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 7961,
+        "sha256": "fa9c009ef0c4d555467f9093bfc05243620be0df1285cbe05f82bdbe3a18e9ce"
+      },
+      "actual": {
+        "bytes": 7961,
+        "sha256": "fa9c009ef0c4d555467f9093bfc05243620be0df1285cbe05f82bdbe3a18e9ce"
+      },
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "file": "test_case_1-qpc-ms.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 8668,
+        "sha256": "58c19ab3bf5bc5346ace853b8c9ce3f543056abc54261c90554236aec4651fb0"
+      },
+      "actual": {
+        "bytes": 8668,
+        "sha256": "58c19ab3bf5bc5346ace853b8c9ce3f543056abc54261c90554236aec4651fb0"
+      },
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "file": "test_case_1-qpc-ms-filtered.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 8239,
+        "sha256": "bb101dc4471030c7676dd82f1833dd26a07e147fa93f3aeb5d123b7f6e4e5e96"
+      },
+      "actual": {
+        "bytes": 8239,
+        "sha256": "bb101dc4471030c7676dd82f1833dd26a07e147fa93f3aeb5d123b7f6e4e5e96"
+      },
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "file": "test_case_1-qpc.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 8614,
+        "sha256": "db56e8f5e35a30169a84764c7c455da0333c01137500ed64439c0acc9ebd4c70"
+      },
+      "actual": {
+        "bytes": 8614,
+        "sha256": "db56e8f5e35a30169a84764c7c455da0333c01137500ed64439c0acc9ebd4c70"
+      },
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "file": "test_case_5-default.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 104814,
+        "sha256": "2468ac5a9bd534bee15815b7d205b643d1ca77eccc052b23d7a9120514c97638"
+      },
+      "actual": {
+        "bytes": 104814,
+        "sha256": "2468ac5a9bd534bee15815b7d205b643d1ca77eccc052b23d7a9120514c97638"
+      },
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "file": "test_case_5-filtered.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 92382,
+        "sha256": "3b52bc6776364f57771172e462644171f4d414aa97d5a40ca6f60582f5890b87"
+      },
+      "actual": {
+        "bytes": 92382,
+        "sha256": "3b52bc6776364f57771172e462644171f4d414aa97d5a40ca6f60582f5890b87"
+      },
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "file": "test_case_5-qpc-ms.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 108052,
+        "sha256": "caffe4114565f8dc289b9e4238251eb0810ed22acce6bc74b1f32611183d4cb2"
+      },
+      "actual": {
+        "bytes": 108052,
+        "sha256": "caffe4114565f8dc289b9e4238251eb0810ed22acce6bc74b1f32611183d4cb2"
+      },
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "file": "test_case_5-qpc-ms-filtered.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 95190,
+        "sha256": "7fc437726e8227bb6051274760dd02ca8d841d4c76cc1ba33327c11bc11a47e8"
+      },
+      "actual": {
+        "bytes": 95190,
+        "sha256": "7fc437726e8227bb6051274760dd02ca8d841d4c76cc1ba33327c11bc11a47e8"
+      },
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "file": "test_case_5-qpc.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 107401,
+        "sha256": "59d4b1808fbbb8d3845d94d3c7395747d497edffabcea9d72451b80df6e35fe2"
+      },
+      "actual": {
+        "bytes": 107401,
+        "sha256": "59d4b1808fbbb8d3845d94d3c7395747d497edffabcea9d72451b80df6e35fe2"
+      },
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "file": "test_case_1-no-gpu.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 9136,
+        "sha256": "30342c4fbcaa76973ae9f52c3fbed969a84f6ed0b35bfbb4978fb7c925d3fea1"
+      },
+      "actual": {
+        "bytes": 9136,
+        "sha256": "30342c4fbcaa76973ae9f52c3fbed969a84f6ed0b35bfbb4978fb7c925d3fea1"
+      },
+      "matches": true,
+      "stderr": ""
+    },
+    {
+      "file": "test_case_5-no-gpu.csv",
+      "exitCode": 0,
+      "expected": {
+        "bytes": 133927,
+        "sha256": "8e745bfdfab42d4171f81f7e5d7eb699e695369679e3197fe32709d49d4fa172"
+      },
+      "actual": {
+        "bytes": 133927,
+        "sha256": "8e745bfdfab42d4171f81f7e5d7eb699e695369679e3197fe32709d49d4fa172"
+      },
+      "matches": true,
+      "stderr": ""
+    }
+  ],
+  "matches": 12,
+  "total": 12,
+  "note": "Byte differences remain differences; fixtures are not replaced."
+}

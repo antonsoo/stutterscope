@@ -84,9 +84,26 @@ inferred drop. `N/A` is also unknown: the cited format specifies `NA`.
 Across the explicit-flag formats, only numeric `0` and `1` establish an outcome;
 other cells are unknown. Without the column, the metric is unavailable.
 
-`CPUStartQPC` is renamed `CPUStartTime`/`CPUStartQPCTime`/`CPUStartDateTime`
-depending on `--qpc_time`/`--qpc_time_ms`/`--date_time`; we don't read it, so
-this doesn't affect parsing.
+The source checkout checks native `CPUStartTime` and `CPUStartQPCTime` clocks
+in **milliseconds**. `FrameTime` runs from this row's CPU start to the next
+start, so elapsed starts must be compared with the **earlier** row's duration.
+This differs from the current-row `msBetweenPresents` check in 1.x. A longer
+elapsed interval, or a reversed clock, breaks adjacency within that process and
+swap chain after allowing for written precision. JSON witnesses identify the
+clock column and use `frameTimeReference: "fromSourceLine"`. Counts cover the
+full selected stream; interval exports retain the selected gap coordinates.
+
+`CPUStartQPC` contains raw ticks with no frequency in the CSV, and
+`CPUStartDateTime` is a local date string. Neither is converted or used for this
+check. Multiple supported clock columns also leave the clock basis unavailable.
+Retained frame durations still load. Missing clocks and zero detected gaps do
+not establish complete recording. [Native executable capture and ordinal oracle](../studies/presentmon2-clock/README.md).
+
+GPU columns are optional: `--no_track_gpu --no_track_display --no_track_input`
+produces valid CPU-only CSV. Detection accepts `FrameTime`/`CPUBusy` with
+`CPUWait`, retaining compatibility with older edited exports that have
+`GPUBusy` instead. GPU, display and drop metrics stay unavailable when absent;
+process/swap-chain selection still applies.
 
 ## NVIDIA FrameView
 

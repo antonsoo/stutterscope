@@ -1,7 +1,11 @@
 import type { PresentClockEvidence, PresentClockWitness } from "./types.ts";
 
 interface Clock { ms: number; errorMs: number }
-interface Anchor extends Clock { sourceLine: number | undefined }
+interface Anchor extends Clock { sourceLine: number | undefined; frame: Clock | undefined }
+interface ClockOptions {
+  /** Native 2.x CPU-start columns are milliseconds and lead their FrameTime. */
+  clockColumn?: "CPUStartTime" | "CPUStartQPCTime";
+}
 export const MAX_CLOCK_WITNESSES = 5;
 const DECIMAL_READING = /^[+-]?(?:\d+(?:\.(\d*))?|\.(\d+))(?:[eE]([+-]?\d+))?$/;
 
@@ -24,20 +28,26 @@ export class PresentClock {
   private readonly previous = new Map<number, Anchor>();
   private readonly gaps = new Map<number, number>();
   private readonly witnesses = new Map<number, PresentClockWitness[]>();
+  private readonly options: ClockOptions;
 
-  keep(stream: number, rawTimeSec: string | undefined, rawFrameMs: string | undefined, sourceLine?: number): boolean {
-    const clock = reading(rawTimeSec, 1000);
-    const frame = reading(rawFrameMs, 1);
+  constructor(options: ClockOptions = {}) { this.options = options; }
+
+  keep(stream: number, rawTime: string | undefined, rawFrameMs: string | undefined, sourceLine?: number): boolean {
+    const clock = reading(rawTime, this.options.clockColumn ? 1 : 1000);
+    const currentFrame = reading(rawFrameMs, 1);
     const previous = this.previous.get(stream);
+    // PresentMon 1.x measures back from the current present. In 2.x,
+    // FrameTime runs forward from CPUStartTime to the next CPU start.
+    const frame = this.options.clockColumn ? previous?.frame : currentFrame;
     const line = sourceLine !== undefined && Number.isSafeInteger(sourceLine) && sourceLine > 0 ? sourceLine : undefined;
-    if (clock) this.previous.set(stream, { ...clock, sourceLine: line });
+    if (clock) this.previous.set(stream, { ...clock, sourceLine: line, frame: currentFrame });
     else this.previous.delete(stream);
     if (!clock || !frame || !previous) return false;
     const elapsed = clock.ms - previous.ms;
     const clockTolerance = previous.errorMs + clock.errorMs
       + 8 * Number.EPSILON * (Math.abs(previous.ms) + Math.abs(clock.ms));
     const durationTolerance = clockTolerance + frame.errorMs + 8 * Number.EPSILON * Math.abs(frame.ms);
-    // A longer interval than this row's native msBetweenPresents cannot be
+    // A longer interval than the corresponding native frame duration cannot be
     // attributed to this one retained present. Reversed clocks also cannot
     // establish adjacency. Shorter positive intervals are not a missing-row claim.
     const reversed = elapsed < -clockTolerance;
@@ -61,6 +71,7 @@ export class PresentClock {
     const count = this.count(stream);
     if (!count) return;
     const witnesses = this.witnesses.get(stream) ?? [];
-    return { witnesses: witnesses.map(w => ({ ...w })), omittedWitnesses: count - witnesses.length };
+    return { witnesses: witnesses.map(w => ({ ...w })), omittedWitnesses: count - witnesses.length,
+      ...(this.options.clockColumn ? { clockColumn: this.options.clockColumn, frameTimeReference: "fromSourceLine" as const } : {}) };
   }
 }

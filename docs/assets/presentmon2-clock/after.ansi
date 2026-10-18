@@ -1,0 +1,20 @@
+test_case_5-no-gpu.csv  PresentMon 2.x
+757 frames, 4.6s
+4 present streams in this capture; analysing PresentBench.exe (pid 24892, swap chain 0x2A70D2CAC00): 757 frames
+  also: dwm.exe (pid 2656, swap chain 0x19D7F1BA8F0): 509 frames   (--stream 2656:0x19D7F1BA8F0)
+  also: dwm.exe (pid 2656, swap chain 0x19D7EF5E390): 509 frames   (--stream 2656:0x19D7EF5E390)
+  also: steamwebhelper.exe (pid 3980, swap chain 0x21C48E8A710): 49 frames   (--stream 3980:0x21C48E8A710)
+
+  Average FPS              166.3
+  1% low (percentile)      83.1 fps
+  1% low (slowest-mean)    44.4 fps
+  1% low (time-weighted)   10.5 fps
+  0.1% low (percentile)    30.7 fps
+  0.1% low (slowest-mean)  10.5 fps
+  0.1% low (time-weighted) 10.5 fps
+  P99 frame time           12.03 ms
+  P99.9 frame time         32.53 ms
+  Stutter events           1  (2.10% of capture time)
+  Hitches (>50ms)          1
+  Pacing (MASD)            10.90 ms
+  Pacing observations      756 adjacent pairs; 0 gaps between analyzed frames

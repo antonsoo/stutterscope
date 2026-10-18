@@ -39,7 +39,7 @@ export class StreamTracker {
   private swapIdx = -1;
   private timeIdx = -1;
   private frameIdx = -1;
-  private readonly clock = new PresentClock();
+  private clock = new PresentClock();
   private readonly indexById = new Map<string, number>();
   private readonly list: PresentStream[] = [];
   private readonly rowStream = new Uint32Builder(4096);
@@ -52,11 +52,19 @@ export class StreamTracker {
   private lastSwap: string | undefined;
 
   /** Reads the header once; formats without these columns simply aren't tracked. */
-  setHeader(header: Map<string, number>, nativeFrameColumn?: "msBetweenPresents" | "MsBetweenPresents"): void {
+  setHeader(header: Map<string, number>, nativeFrameColumn?: "msBetweenPresents" | "MsBetweenPresents" | "FrameTime"): void {
     this.appIdx = header.get("Application") ?? -1;
     this.pidIdx = header.get("ProcessID") ?? -1;
     this.swapIdx = header.get("SwapChainAddress") ?? -1;
     this.timeIdx = header.get("TimeInSeconds") ?? -1;
+    if (nativeFrameColumn === "FrameTime") {
+      const clocks = (["CPUStartTime", "CPUStartQPCTime"] as const).filter(name => header.has(name));
+      // Raw QPC ticks lack a frequency, and local date strings are not monotonic
+      // clocks. Conflicting declared clock columns do not establish one basis.
+      const column = clocks.length === 1 ? clocks[0] : undefined;
+      this.timeIdx = column ? header.get(column)! : -1;
+      this.clock = new PresentClock(column ? { clockColumn: column } : {});
+    }
     this.frameIdx = nativeFrameColumn === undefined ? -1 : header.get(nativeFrameColumn) ?? -1;
   }
 
