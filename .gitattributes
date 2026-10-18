@@ -1,0 +1,2 @@
+# Preserve the exact CRLF bytes of the attributed native capture.
+native-presentmon-default/*.csv -text whitespace=cr-at-eol
