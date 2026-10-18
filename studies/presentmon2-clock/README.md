@@ -2,8 +2,8 @@
 
 Two defects reproduced on source baseline `0702bd4`, using the official
 PresentMon 2.3.0 Windows executable to process upstream ETW trace files.
-No live game or hardware benchmark was run. These corrections are local source
-changes; the hosted demo and npm 0.2.5 have not been updated by this work.
+No live game or hardware benchmark was run. These corrections are published in
+source and the hosted demo. The npm registry release remains unchanged.
 
 ## What changed
 
@@ -126,7 +126,22 @@ of 4.28 ms before and 4.51 ms after on the 104,814-byte native trace 5 control
 alongside browser checks; it is not a general throughput benchmark.
 
 `npm run build` produces `dist/` with the `/stutterscope/` base.
-`npm run build:cli` produces `dist-cli/`. No hosted publication was performed.
+`npm run build:cli` produces `dist-cli/`.
+
+## Public source and demo
+
+The [source revision `38f8d6f`](https://github.com/antonsoo/stutterscope/commit/38f8d6f)
+was built from a fresh archive on Node 24.21.0 and deployed as
+[`7382642`](https://github.com/antonsoo/stutterscope/commit/7382642). The
+[canonical HTTP receipt](results/hosted-bytes.json) matched all 33 build files
+on [the public demo](https://antonsoo.github.io/stutterscope/), including the
+root document before and after fetching the assets.
+
+The same four import, offline recomputation, stream-selection and JSON/Markdown
+download workflows passed against that public URL in Chromium and Firefox at
+1440px and 375px. The [browser receipt](results/hosted-browser.json) records
+the cases, runtimes and source/deployment revisions. These hosted checks do not
+change the installed-package evidence above; no npm release was made.
 
 ## Limits
 
@@ -140,4 +155,4 @@ alongside browser checks; it is not a general throughput benchmark.
 - This verifies two retained ETW traces and explicit constructed controls,
   not every PresentMon release, driver, frame-generation mode or device.
 - Optional telemetry stays unavailable when its native column is absent.
-- These changes have not been published, deployed or released to a registry.
+- The npm registry package does not contain these corrections.

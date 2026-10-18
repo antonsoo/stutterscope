@@ -152,13 +152,13 @@ These source changes have not been released to npm.
   **[Inspect filtered presents](https://antonsoo.github.io/stutterscope/?example=filtered-presents)** example uses attributed Intel test data; a separate
   untouched public FrameView capture exposes the same issue.
   [Concrete counterexamples and limits](studies/present-clock/README.md).
-- **PresentMon 2.x CPU-start continuity (source checkout):** use millisecond
+- **PresentMon 2.x CPU-start continuity (source and demo):** use millisecond
   CPU-start clocks with the earlier row's forward-looking `FrameTime`. A native
   filtered stream previously reported 173 adjacent pairs; the original records
   establish 90 pairs and 83 interruptions. CPU-only captures are also recognized
   when GPU tracking is disabled, preserving process/swap-chain selection instead
   of combining unrelated processes. [Native executable replay and limits](studies/presentmon2-clock/README.md).
-  These changes have not been deployed or released to npm.
+  These changes are in the public demo; they have not been released to npm.
 - **Shifted CSV records (source and demo):** a row with more cells than its header
   cannot establish column alignment. It is now skipped with a source-line warning
   and a continuity gap, including clock-anchor reset for cumulative timestamps.

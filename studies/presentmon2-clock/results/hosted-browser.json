@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "url": "https://antonsoo.github.io/stutterscope/",
+  "sourceRevision": "38f8d6f",
+  "deploymentRevision": "7382642",
+  "test": "tests/browser/presentmon2-clock.spec.js",
+  "stats": {
+    "startTime": "2026-10-18T08:08:39.983Z",
+    "duration": 10103.78,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "title": "native PresentMon 2.x clocks and CPU-only streams survive offline exports at 1440px",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 4927,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "native PresentMon 2.x clocks and CPU-only streams survive offline exports at 375px",
+      "project": "chromium",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 2825,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "native PresentMon 2.x clocks and CPU-only streams survive offline exports at 1440px",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 4188,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "native PresentMon 2.x clocks and CPU-only streams survive offline exports at 375px",
+      "project": "firefox",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 3296,
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "scope": "The four retained workflow cases passed against the public HTTPS site. Browser screenshots remain with the earlier clean-build verification; downloaded reports are validated by the cases, not retained in this receipt."
+}

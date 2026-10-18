@@ -8,7 +8,7 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 Changes below are in source and have not been released as an npm package.
 
-### PresentMon 2.x CPU-start clocks and CPU-only captures (source checkout)
+### PresentMon 2.x CPU-start clocks and CPU-only captures (source and demo)
 
 - Split pacing, rolling context, chart connections and episodes at supported
   millisecond CPU-start clock contradictions. Use the earlier row's `FrameTime`,
@@ -17,8 +17,8 @@ Changes below are in source and have not been released as an npm package.
   keep processes and swap chains separate and missing telemetry unavailable.
 - Retain official Windows executable replays of two upstream ETW traces, an
   independent original-record-order oracle, and browser/CLI exports in
-  [the native replay](studies/presentmon2-clock/README.md). No deployment or npm
-  release accompanies this source correction.
+  [the native replay](studies/presentmon2-clock/README.md). The public demo includes
+  the correction; the npm registry release does not.
 
 ### Local MangoHud clock continuity (source and demo)
 
