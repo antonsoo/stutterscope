@@ -63,7 +63,7 @@ retained frame durations, rather than inserting wall-clock gaps.
 From the repository after `npm ci`, with Python 3 and Node 24 or later:
 
 ```sh
-python studies/mangohud-local-clock/replay.py --out /tmp/claude-1000/mangohud-after.json --verify
+python studies/mangohud-local-clock/replay.py --out /tmp/stutterscope-evidence/mangohud-after.json --verify
 npm test
 npm run test:browser
 ```

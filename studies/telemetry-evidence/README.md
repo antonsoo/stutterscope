@@ -135,13 +135,13 @@ with `python studies/real-captures/fetch.py` (network required; pinned inputs).
 The replay itself makes no network requests:
 
 ```bash
-mkdir -p /tmp/claude-1000/stutterscope-telemetry/before
-git archive 4997beb src | tar -x -C /tmp/claude-1000/stutterscope-telemetry/before
+mkdir -p /tmp/stutterscope-evidence/stutterscope-telemetry/before
+git archive 4997beb src | tar -x -C /tmp/stutterscope-evidence/stutterscope-telemetry/before
 python studies/telemetry-evidence/run.py \
-  --src /tmp/claude-1000/stutterscope-telemetry/before/src \
-  --out /tmp/claude-1000/stutterscope-telemetry/baseline --observe-only
+  --src /tmp/stutterscope-evidence/stutterscope-telemetry/before/src \
+  --out /tmp/stutterscope-evidence/stutterscope-telemetry/baseline --observe-only
 python studies/telemetry-evidence/run.py --src src \
-  --out /tmp/claude-1000/stutterscope-telemetry/current
+  --out /tmp/stutterscope-evidence/stutterscope-telemetry/current
 npm run build:cli
 node dist-cli/cli/index.js summary examples/telemetry/controlled-partial-presentmon2.csv
 node dist-cli/cli/index.js summary examples/telemetry/controlled-partial-presentmon2.csv --start 0.032
