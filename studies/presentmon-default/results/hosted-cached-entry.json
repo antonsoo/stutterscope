@@ -1,0 +1,38 @@
+{
+  "checkedAtUtc": "2026-10-18T12:35:53.479Z",
+  "scope": "Prior entry document substituted locally; actual canonical public asset requests, native complete-capture import and JSON download after disconnection. The old bundle retains its original analysis behavior.",
+  "priorDeployment": "9ab31330afeff1055aeb8086ca26a1421a078641",
+  "htmlSha256": "7a9053c6d1ed5050ff5bbac23ad8e3a0ff8cf1c2bbb548f8988223d5fa9c4e62",
+  "results": [
+    {
+      "engine": "chromium",
+      "browserVersion": "153.0.8010.12",
+      "offlineImport": true,
+      "format": "presentmon2",
+      "frames": 7,
+      "downloadSha256": "e4865ec04a8c0fb779cbb277b0a0714fa38d5673791d382ba66ad74394627c25",
+      "scripts": [
+        {
+          "url": "https://antonsoo.github.io/stutterscope/assets/index-Ds7-16Zz.js",
+          "status": 200
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "browserVersion": "155.0",
+      "offlineImport": true,
+      "format": "presentmon2",
+      "frames": 7,
+      "downloadSha256": "4af85e06b362acdb90bcb08e9f554f9f76754afd8c9ef310972829e6cde9c00e",
+      "scripts": [
+        {
+          "url": "https://antonsoo.github.io/stutterscope/assets/index-Ds7-16Zz.js",
+          "status": 200
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

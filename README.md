@@ -55,7 +55,7 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
 
 ## Features
 
-- **PresentMon 2.6.0 default CSV (source checkout):** recover CPU/GPU busy
+- **PresentMon 2.6.0 default CSV (source and demo):** recover CPU/GPU busy
   readings and present-to-display latency that previously disappeared under
   OCAT detection. Native millisecond clocks expose filtered-frame gaps without
   confusing present intervals with CPU-start intervals. An official executable

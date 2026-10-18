@@ -1,0 +1,92 @@
+{
+  "checkedAtUtc": "2026-10-18T12:36:57.067Z",
+  "baseUrl": "https://antonsoo.github.io/stutterscope/",
+  "sourceRevision": "76051eb",
+  "deploymentRevision": "4bf9546",
+  "config": "studies/presentmon-default/hosted.config.mjs",
+  "testFile": "tests/browser/presentmon-default.spec.js",
+  "stats": {
+    "startTime": "2026-10-18T12:36:57.067Z",
+    "duration": 23662.956,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases": [
+    {
+      "title": "PresentMon default native telemetry and both clocks survive offline exports at 1440px",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 6732,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "PresentMon default native telemetry and both clocks survive offline exports at 375px",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 5842,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "the new format's sample link loads a labelled synthetic capture",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1495,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "PresentMon default native telemetry and both clocks survive offline exports at 1440px",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 13356,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "PresentMon default native telemetry and both clocks survive offline exports at 375px",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 11702,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "the new format's sample link loads a labelled synthetic capture",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1119,
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "downloadsAndScreenshots": "docs/assets/presentmon-default/hosted",
+  "scope": "Unmodified canonical hosted application; native file imports, stream selection, offline JSON/Markdown downloads, intervals and settings; four engine/width workflows and two synthetic-sample workflows. Retained screenshots visually reviewed."
+}

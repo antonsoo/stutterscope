@@ -4,8 +4,9 @@ Source baseline `d773224` recognized default PresentMon 2.6.0 output as OCAT.
 It retained present durations and stream selection, but discarded CPU/GPU busy
 readings and latency, and ignored the default millisecond clock. A filtered
 capture therefore connected records that were not adjacent in its original
-stream. This study concerns source and locally built artifacts; no hosted or
-npm update is implied.
+stream. The correction is now in public source and the live demo; the npm registry
+release is separate. [Publication evidence](publication.md) records the build,
+canonical public bytes and hosted workflows.
 
 ## Evidence from the actual producer
 

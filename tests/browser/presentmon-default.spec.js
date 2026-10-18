@@ -2,6 +2,8 @@ import { test, expect } from "@playwright/test";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import AxeBuilder from "@axe-core/playwright";
 
+const evidenceDir = process.env.PRESENTMON_DEFAULT_EVIDENCE_DIR ?? "docs/assets/presentmon-default";
+
 async function download(page, selector, json = false) {
   const pending = page.waitForEvent("download");
   await page.locator(selector).click();
@@ -60,8 +62,8 @@ for (const width of [1440, 375]) test(`PresentMon default native telemetry and b
         const audit = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
         expect(audit.violations).toEqual([]);
         if (process.env.UPDATE_PRESENTMON_DEFAULT_EVIDENCE) {
-          await mkdir("docs/assets/presentmon-default", { recursive: true });
-          await page.screenshot({ path: `docs/assets/presentmon-default/${browserName}-${width}.png`, fullPage: true, animations: "disabled" });
+          await mkdir(evidenceDir, { recursive: true });
+          await page.screenshot({ path: `${evidenceDir}/${browserName}-${width}.png`, fullPage: true, animations: "disabled" });
         }
       }
       receipts.push({ variant, report, markdown });
@@ -103,8 +105,13 @@ for (const width of [1440, 375]) test(`PresentMon default native telemetry and b
   expect(errors).toEqual([]);
   // Firefox can request another weight of the same local font after import.
   // No data/API request or external origin is allowed while working offline.
-  expect(requests.every(url => /^http:\/\/127\.0\.0\.1:4193\/stutterscope\/assets\/[^/]+\.woff2$/.test(url))).toBe(true);
-  if (process.env.UPDATE_PRESENTMON_DEFAULT_EVIDENCE) await writeFile(`docs/assets/presentmon-default/${browserName}-${width}.json`, JSON.stringify({ receipts, errors, requests, csp }, null, 2) + "\n");
+  const assets = new URL("assets/", page.url());
+  expect(requests.every(url => {
+    const request = new URL(url);
+    return request.origin === assets.origin && request.pathname.startsWith(assets.pathname)
+      && /^[^/]+\.woff2$/.test(request.pathname.slice(assets.pathname.length));
+  })).toBe(true);
+  if (process.env.UPDATE_PRESENTMON_DEFAULT_EVIDENCE) await writeFile(`${evidenceDir}/${browserName}-${width}.json`, JSON.stringify({ receipts, errors, requests, csp }, null, 2) + "\n");
 });
 
 test("the new format's sample link loads a labelled synthetic capture", async ({ page }) => {

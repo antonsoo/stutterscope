@@ -8,7 +8,7 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 Changes below are in source and have not been released as an npm package.
 
-### PresentMon 2.6.0 default CSV (source checkout)
+### PresentMon 2.6.0 default CSV (source and demo)
 
 - Recognize the default Ms-prefixed metrics independently from `--v2_metrics`.
   Read native CPU/GPU busy and present-to-display latency with per-frame coverage.
@@ -19,7 +19,8 @@ Changes below are in source and have not been released as an npm package.
   stream selector now refuses those inputs instead of silently returning all rows.
 - Retain native executable captures, untouched upstream controls, source-order
   oracle results and browser downloads in [the study](studies/presentmon-default/README.md).
-  Hosted demo and npm artifacts have not been updated for this change.
+  [Verified public source and demo workflows](studies/presentmon-default/publication.md)
+  include cached-entry compatibility; the npm registry release is separate.
 
 ### PresentMon 2.x CPU-start clocks and CPU-only captures (source and demo)
 
