@@ -2,7 +2,7 @@
   "name": "@antonsoloviev/stutterscope",
   "version": "0.2.5",
   "description": "Frame-time analysis for PC gamers and hardware reviewers. Drop in a capture, see the stutter.",
-  "author": "Anton Soloviev",
+  "author": "Anthony Mercer",
   "license": "MIT",
   "type": "module",
   "homepage": "https://antonsoo.github.io/stutterscope/",
