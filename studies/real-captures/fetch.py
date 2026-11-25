@@ -6,7 +6,7 @@ import hashlib, json, os, time, urllib.request, urllib.parse
 from concurrent.futures import ThreadPoolExecutor
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-UA = "stutterscope-study/0.1 (research; anton@praviel.com)"
+UA = "stutterscope-study/0.1 (research; anthony@praviel.com)"
 
 PM = ("GameTechDev/PresentMon", "38ec4a7e2998a7c4eea2c3c7dd4772f29ef32f76", "MIT",
       "Gold-file regression fixtures rendered from Intel's own ETL traces")
