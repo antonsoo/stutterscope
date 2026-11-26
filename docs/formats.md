@@ -51,7 +51,7 @@ We read `msBetweenPresents` as frame time, `Dropped` as the dropped-frame
 flag, and `msGPUActive` as GPU busy time when present. The lower-case `ms`
 prefix (vs. `Ms` elsewhere) is the format's fingerprint.
 
-## PresentMon default metrics (source checkout)
+## PresentMon default metrics
 
 Verified with the official **2.6.0 console executable**, using two upstream
 offline ETW traces. This is a different schema from `--v2_metrics`, although
@@ -117,14 +117,14 @@ whose `DisplayedTime` is `NA` (never made it to screen), which we use as the
 dropped-frame channel. This is a different definition from 1.x's `Dropped`
 flag (see [`docs/metrics.md`](metrics.md)), and we say so in the UI.
 
-In the source checkout, only the explicit `NA` marker establishes that a frame
+Only the explicit `NA` marker establishes that a frame
 was not displayed. A finite non-negative duration establishes a displayed
 outcome. A blank, missing, negative or malformed cell is **unknown**, not an
 inferred drop. `N/A` is also unknown: the cited format specifies `NA`.
 Across the explicit-flag formats, only numeric `0` and `1` establish an outcome;
 other cells are unknown. Without the column, the metric is unavailable.
 
-The source checkout checks native `CPUStartTime` and `CPUStartQPCTime` clocks
+stutterscope checks native `CPUStartTime` and `CPUStartQPCTime` clocks
 in **milliseconds**. `FrameTime` runs from this row's CPU start to the next
 start, so elapsed starts must be compared with the **earlier** row's duration.
 This differs from the current-row `msBetweenPresents` check in 1.x. A longer
@@ -345,7 +345,7 @@ nanoseconds since logging started. `cpu_load`/`gpu_load` are utilization
 metric; MangoHud captures simply don't carry that metric here. MangoHud also
 has no dropped-frame column.
 
-**Clock cross-check (source checkout).** For adjacent usable records, compare
+**Clock cross-check.** For adjacent usable records, compare
 changes in `elapsed` with the current record's frame duration. The first frame
 precedes the first elapsed timestamp and is excluded from this comparison.
 With at least three adjacent intervals, a disagreement greater than both 10 ms
@@ -441,7 +441,7 @@ So those parsers group rows into streams by process id and swap chain
   that selects each.
 
 A capture with complete identities keeps its existing stream IDs. For an
-edited export with no `ProcessID` column, the source checkout groups by
+edited export with no `ProcessID` column, stutterscope groups by
 application **and** swap chain. The full fallback ID is
 `app:["game.exe","0x1"]`; `--stream game.exe` selects that application's
 busiest chain. If both PID and swap-chain columns are absent, the application
@@ -536,7 +536,7 @@ with no data rows, and a capture none of whose rows has a usable frame
 time (the message quotes the first skipped row, which is usually enough to
 see that the wrong column or format was picked).
 
-**Source lines (source checkout).** Every parser now retains each kept frame's
+**Source lines.** Every parser now retains each kept frame's
 one-based physical CSV line. These references survive process filtering and
 interval selection, including blank lines, format preambles and skipped rows.
 For a cumulative-timestamp mapping, the reference names the ending sample whose
@@ -544,7 +544,7 @@ value is differenced from the preceding timestamp observation. Both must
 be valid; missing records are not bridged. Derived frame times
 that overflow milliseconds are skipped with a warning.
 
-**Continuity (source checkout).** Every reader retains a `gapBefore` marker when
+**Continuity.** Every reader retains a `gapBefore` marker when
 unusable timing rows separate two retained frames. Present-hook readers track
 this per process/swap chain: unrelated presents and unrelated bad rows do not
 break the selected stream. If a bad row lacks any identity component required

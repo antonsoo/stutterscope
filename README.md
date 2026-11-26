@@ -2,7 +2,7 @@
 
 Frame-time analysis for PC gamers and hardware reviewers. Drop in a capture, see the stutter.
 
-[![npm](https://img.shields.io/npm/v/@antonsoloviev/stutterscope)](https://www.npmjs.com/package/@antonsoloviev/stutterscope)
+[![npm](https://img.shields.io/npm/v/@anthonymercer/stutterscope)](https://www.npmjs.com/package/@anthonymercer/stutterscope)
 [![License: MIT](https://img.shields.io/badge/license-MIT-7cffb2.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/demo-antonsoo.github.io%2Fstutterscope-7cffb2)](https://antonsoo.github.io/stutterscope/)
 
@@ -41,21 +41,20 @@ npm install && npm run dev
 Open the printed local URL, click one of the "load a synthetic sample"
 links, and you're looking at a real (synthetic, clearly labelled) capture.
 The [live demo](https://antonsoo.github.io/stutterscope/) provides browser
-interval analysis. Changes available only in the source checkout are identified
-below. The npm CLI predates the recent source corrections. Both process
+interval analysis. Both process
 captures locally; no capture is uploaded.
 
 Prefer the terminal? `npx` runs the published CLI
-([`@antonsoloviev/stutterscope`](https://www.npmjs.com/package/@antonsoloviev/stutterscope)
+([`@anthonymercer/stutterscope`](https://www.npmjs.com/package/@anthonymercer/stutterscope)
 on npm; the command it installs is `stutterscope`), with no separate install:
 
 ```bash
-npx @antonsoloviev/stutterscope summary your-capture.csv
+npx @anthonymercer/stutterscope summary your-capture.csv
 ```
 
 ## Features
 
-- **PresentMon 2.6.0 default CSV (source and demo):** recover CPU/GPU busy
+- **PresentMon 2.6.0 default CSV:** recover CPU/GPU busy
   readings and present-to-display latency that previously disappeared under
   OCAT detection. Native millisecond clocks expose filtered-frame gaps without
   confusing present intervals with CPU-start intervals. An official executable
@@ -64,16 +63,15 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
   [Open the native 2.6 replay](https://antonsoo.github.io/stutterscope/?example=presentmon-default)
   from a direct link or the landing page. The original 175-frame gold example
   remains separate from this 174-frame executable replay. [Publication checks](studies/presentmon-default/publication.md)
-  distinguish the public parser from the unchanged npm release.
+  are retained.
 
-- **Native CapFrameX JSON (source and demo):** open saved recordings directly,
+- **Native CapFrameX JSON:** open saved recordings directly,
   select one run without concatenating captures, and follow slow frames to their
   original array indices. Five unchanged public game captures now import with
   independent metric checks; JSON/Markdown exports retain the selected recording.
   [Reproduction, source schema and limits](studies/native-json/README.md).
-  The npm 0.2.5 release predates this feature.
 
-- **Interval analysis and slow-frame inspection (source and demo)**: independently
+- **Interval analysis and slow-frame inspection**: independently
   select the part of A and B to measure, keep original frame/CSV-line references,
   and inspect the neighboring evidence around each slow-frame episode. Detection
   retains full-stream context across interval boundaries. Browser comparison
@@ -99,7 +97,7 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
   [`docs/metrics.md`](docs/metrics.md): average FPS computed correctly
   (frames ÷ total time, not a mean of per-frame FPS), frame-time
   percentiles (P50/P90/P95/P99/P99.9), 1% and 0.1% lows under two
-  common definitions (three in the source checkout), configurable stutter-event and hitch detection,
+  common definitions (three since 0.3.0), configurable stutter-event and hitch detection,
   frame-pacing variability (MASD), dropped frames, CPU-/GPU-bound share and
   display latency where the format supports it.
 - **Visuals**: a frame-time trace with stutter markers (drag to zoom,
@@ -138,14 +136,13 @@ npx @antonsoloviev/stutterscope summary your-capture.csv
 
 ## Capture studies
 
-**Local MangoHud clock gaps (source and demo).** Removing whole records
+**Local MangoHud clock gaps.** Removing whole records
 could leave a long capture's clock totals close enough to pass, while pacing
 and episode grouping joined frames across the omitted interval. The source now
 interrupts those connections at large local clock disagreements, retaining
 source-line witnesses and the recorded frame durations. In the controlled
 case, two separated slow-frame episodes no longer become one.
 [Reproduction, intact public control and limits](studies/mangohud-local-clock/README.md).
-The public demo includes this correction; the npm release predates it.
 
 **Missing telemetry is not a measured outcome (source and live demo).** A blank
 `DisplayedTime` cell no longer counts as a dropped frame; a missing `Dropped`
@@ -155,36 +152,33 @@ interval. A four-frame control with one displayed, one explicitly not displayed
 and two unknown outcomes now reports **1 drop / 2 observed**, with two unknowns.
 Six unmodified upstream capture files also stop reporting an invented zero.
 [Rules, pinned-capture replay and actual exports](studies/telemetry-evidence/README.md).
-These source changes have not been released to npm.
 
-- **Native clock continuity (source and demo):** filtered presents can leave valid CSV
+- **Native clock continuity:** filtered presents can leave valid CSV
   rows that are no longer adjacent observations. Compare their native clocks,
   split pacing/rolling context and keep unknown durations unknown. The built-in
   **[Inspect filtered presents](https://antonsoo.github.io/stutterscope/?example=filtered-presents)** example uses attributed Intel test data; a separate
   untouched public FrameView capture exposes the same issue.
   [Concrete counterexamples and limits](studies/present-clock/README.md).
-- **PresentMon 2.x CPU-start continuity (source and demo):** use millisecond
+- **PresentMon 2.x CPU-start continuity:** use millisecond
   CPU-start clocks with the earlier row's forward-looking `FrameTime`. A native
   filtered stream previously reported 173 adjacent pairs; the original records
   establish 90 pairs and 83 interruptions. CPU-only captures are also recognized
   when GPU tracking is disabled, preserving process/swap-chain selection instead
   of combining unrelated processes. [Native executable replay and limits](studies/presentmon2-clock/README.md).
-  These changes are in the public demo; they have not been released to npm.
-- **Shifted CSV records (source and demo):** a row with more cells than its header
+- **Shifted CSV records:** a row with more cells than its header
   cannot establish column alignment. It is now skipped with a source-line warning
   and a continuity gap, including clock-anchor reset for cumulative timestamps.
   In a retained public FrameView test asset, the old reader treated a process ID
   as a 7,820 ms frame. [Reproduction and compatibility limits](studies/csv-width/README.md)
-  include OCAT's valid shortened telemetry tails. This is included in the demo; npm 0.2.5 predates the correction.
-- **Correct grouping after removing process IDs (source and demo):** application
+  include OCAT's valid shortened telemetry tails.
+- **Correct grouping after removing process IDs:** application
   names and swap-chain addresses stay together. A controlled five-row export
   previously labeled two applications as one game at 45.5 FPS with two false
   stutters; the game alone now reports its actual 100 FPS and no stutter.
   Blank declared identity cells produce skipped-row warnings and continuity
   breaks. [Reproduction, public-capture controls and limits](studies/stream-identity/README.md).
-  This correction is included in the demo; the npm package predates it.
 
-**What "1% low" means in other tools, measured on public captures (source checkout).**
+**What "1% low" means in other tools, measured on public captures.**
 On 8 public captures of 907 to 117,569 frames, four implementations of the
 percentile "1% low" (MangoHud, mangoplot, CapFrameX, stutterscope) agree to a
 median 0.13% and at most 3.7%, while the mean-of-slowest and time-weighted
@@ -192,8 +186,8 @@ definitions sit a median 17% and 10% lower, and on a capture with a 5-second
 stall up to 85% and 99.7% lower. stutterscope matched MangoHud's own summary of a
 117,569-frame log to 0.03% (1% low) and 0.21% (0.1% low). Against two real
 FrameView summaries, release 0.2.5 was 1.9% to 28.6% low on the slowest-mean
-figure because it rounded the bucket size instead of rounding up; fixed in the
-checkout, which also adds the time-weighted figure. 34 files were found, with
+figure because it rounded the bucket size instead of rounding up; fixed in
+0.3.0, which also adds the time-weighted figure. 34 files were found, with
 no systematic search, and 18 of them are PresentMon test fixtures: this is not
 a census.
 [Study, sources and numbers](studies/real-captures/README.md).
@@ -205,14 +199,12 @@ a new session stops the previous import; errors offer a retry. Run A and run B
 keep independent captures and process selections. Native CapFrameX JSON shows a
 saved-recording picker for each slot. Its first recording is selected by default;
 changing it resets that slot's interval. JSON is limited to 64 MiB and recordings
-stay separate. From a source checkout, the built CLI supports:
+stay separate. The CLI supports the same selection (0.3.0 and later):
 
 ```bash
-node dist-cli/cli/index.js summary saved-capture.json --capture-run 2 --events
-node dist-cli/cli/index.js compare saved-capture.json saved-capture.json --a-capture-run 1 --b-capture-run 2 --json
+npx @anthonymercer/stutterscope summary saved-capture.json --capture-run 2 --events
+npx @anthonymercer/stutterscope compare saved-capture.json saved-capture.json --a-capture-run 1 --b-capture-run 2 --json
 ```
-
-`npm ci` builds that CLI. The npm registry release predates native JSON support.
 
 Edit the detection controls, then choose **Apply settings** (or press Enter).
 Both loaded reports update together after successful calculation. Invalid
@@ -225,7 +217,7 @@ sample" links to try it with no file of your own) and you get a tile grid
 plus four charts. Load a second run to compare:
 
 ```
-$ npx @antonsoloviev/stutterscope summary examples/samples/presentmon2-synthetic-demo.csv
+$ npx @anthonymercer/stutterscope summary examples/samples/presentmon2-synthetic-demo.csv
 
 presentmon2-synthetic-demo.csv  PresentMon 2.x
 7,969 frames, 119.9s
@@ -245,7 +237,7 @@ presentmon2-synthetic-demo.csv  PresentMon 2.x
 ```
 
 That output is real, from the synthetic PresentMon 2.x sample committed in
-`examples/samples/`. The source checkout's eight CSV sample files encode the
+`examples/samples/`. The repository's eight CSV sample files encode the
 *same* underlying scenario — a vsync-locked menu, a shader-compile hitch, a
 VRR-style traversal section with periodic streaming stutter, a bigger
 hitch, a CPU-bound section, a stutter cluster, and a GPU-bound vsync
@@ -334,7 +326,7 @@ Imports require valid UTF-8 or BOM-marked UTF-16. Invalid byte sequences are
 rejected, including damage beyond the browser's format preview. Replacing them
 with a placeholder could merge distinct application names and fabricate pacing
 metrics. [Byte-level counterexamples and unchanged public captures](studies/text-integrity/README.md)
-document this source/demo correction; it has not been released to npm.
+document this correction.
 
 CSV imports reject duplicate named headers and malformed quotes before reporting
 metrics. A retained two-frame counterexample previously reported 100 FPS by
@@ -343,16 +335,16 @@ silently choosing one of two `FrameTime` columns; it now identifies the ambiguit
 
 - **MangoHud requires `log_interval=0`.** Periodic logging records snapshots,
   which cannot reconstruct a per-frame stutter report. The CSV omits that setting.
-  This source checkout cross-checks its elapsed clock against frame durations,
+  stutterscope cross-checks its elapsed clock against frame durations,
   refuses large contradictions, and preserves the assumption in reports. A
   compatible clock does not prove complete coverage; short or incomplete clocks
   remain unverified. See the [upstream evidence and check limits](docs/formats.md#mangohud).
 - **Native clock checks cannot prove complete recording.** PresentMon 1.x,
   OCAT/CapFrameX CSV and FrameView clocks can expose discontinuities, allowing for
-  their written precision. The source checkout also checks PresentMon 2.x
+  their written precision. stutterscope also checks PresentMon 2.x
   `CPUStartTime` and `CPUStartQPCTime` (milliseconds), using the earlier row's
   duration. The current default's explicit millisecond clocks use their
-  matching present or CPU interval; see the [native format contract](docs/formats.md#presentmon-default-metrics-source-checkout).
+  matching present or CPU interval; see the [native format contract](docs/formats.md#presentmon-default-metrics).
   Raw `CPUStartQPC` ticks and `CPUStartDateTime` remain unsupported
   for this check. Coarse/missing clocks, tiny gaps and unsupported clock
   columns can conceal missing observations. Frame counts, FPS and distributions

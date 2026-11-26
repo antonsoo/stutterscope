@@ -81,7 +81,7 @@ while the mean-of-slowest-1% number can be dragged down substantially,
 because that one 500ms frame is now averaged in with the other ~79 frames
 in the slowest bucket.
 
-**Time-weighted method** (source checkout) — sort frames slowest first and
+**Time-weighted method** (0.3.0 and later) — sort frames slowest first and
 add up their durations until the sum reaches 1% (or 0.1%) of the capture's
 total time; the frame time reached is the figure:
 
@@ -170,7 +170,7 @@ column, so stutterscope treats a frame whose `DisplayedTime` is `NA` as the
 2.x equivalent (see `docs/formats.md`). These are not guaranteed to mean
 exactly the same thing across tools, and the UI doesn't claim they do.
 
-The source checkout keeps three channel values: `0` displayed, `1` not
+stutterscope keeps three channel values: `0` displayed, `1` not
 displayed, `2` unknown. A missing column means the channel is absent. The drop
 fraction is `droppedCount / observedFrames`, counting only `0` and `1`, and
 `null` when no outcome is observed. The latter is different from observing
@@ -213,7 +213,7 @@ Only finite, non-negative samples contribute. `observedFrames` records the
 sample count; no observations means no percentile estimate, rather than zero
 latency. A one-sample percentile still exists but carries its one-frame coverage.
 
-### Coverage in evidence reports (source checkout)
+### Coverage in evidence reports
 
 Browser and comparison reports use schema version 5. `metrics.telemetryCoverage`
 has `dropped`, `cpuGpuBusy` and `displayLatency` entries. An entry is `null` when
@@ -250,7 +250,7 @@ of the plot, with an upward-arrow marker and their real value labeled — and
 a "Full range" toggle switches to the true `[0, max(frame_time_ms)]` range
 on demand.
 
-## Metrics over a selected interval (source checkout)
+## Metrics over a selected interval
 
 An interval keeps whole frames whose ending accumulated time is after start and
 at or before end. Average FPS uses the selected count divided by the sum of

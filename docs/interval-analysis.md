@@ -1,8 +1,7 @@
 # Compare the part of the capture you meant to measure
 
 Interval analysis, slow-frame inspection, and the `compare` CLI command are
-**unreleased source-checkout features**. The existing hosted site and published
-npm package do not acquire these changes until a release.
+available since 0.3.0, in the CLI and the hosted site.
 
 A loading screen can dominate a frame-time percentile even when the scene being
 measured is smooth. Zooming a chart helps find that boundary, but does not by
@@ -116,7 +115,8 @@ common workload, remove run-to-run variation, or create a confidence interval.
 
 ## Terminal workflow
 
-`npm ci` builds the local executable. These commands use that source build:
+From a clone, `npm ci` builds the local executable used below. The published
+CLI (`npx @anthonymercer/stutterscope`) takes the same arguments.
 
 ```sh
 node dist-cli/cli/index.js summary examples/controlled-browser/controlled-a.csv \

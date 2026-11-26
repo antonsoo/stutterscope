@@ -6,9 +6,16 @@ this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-Changes below are in source and have not been released as an npm package.
+## [0.3.0] - 2026-11-26
 
-### PresentMon 2.6.0 default CSV (source and demo)
+### Distribution
+
+- Published as `@anthonymercer/stutterscope`. The earlier
+  `@antonsoloviev/stutterscope` package is deprecated and points here; its
+  versions stay installable.
+- Package metadata names Anthony Mercer as the author.
+
+### PresentMon 2.6.0 default CSV
 
 - Open an attributed native producer replay directly with `?example=presentmon-default`
   or the landing-page action. Keep its exact CSV and licence beside a provenance
@@ -26,7 +33,7 @@ Changes below are in source and have not been released as an npm package.
   [Verified public source and demo workflows](studies/presentmon-default/publication.md)
   include cached-entry compatibility; the npm registry release is separate.
 
-### PresentMon 2.x CPU-start clocks and CPU-only captures (source and demo)
+### PresentMon 2.x CPU-start clocks and CPU-only captures
 
 - Split pacing, rolling context, chart connections and episodes at supported
   millisecond CPU-start clock contradictions. Use the earlier row's `FrameTime`,
@@ -38,7 +45,7 @@ Changes below are in source and have not been released as an npm package.
   [the native replay](studies/presentmon2-clock/README.md). The public demo includes
   the correction; the npm registry release does not.
 
-### Local MangoHud clock continuity (source and demo)
+### Local MangoHud clock continuity
 
 - Interrupt pacing, rolling stutter context, traces and slow-frame episodes at
   large local elapsed/frame-duration disagreements. Whole-capture sums could
@@ -78,7 +85,7 @@ Changes below are in source and have not been released as an npm package.
   untouched public FrameView excerpt, ordinal-based oracle on six Intel traces,
   and replay of 34 pinned capture files are in `studies/present-clock/`.
 
-### CSV column alignment correction (source only)
+### CSV column alignment correction
 
 - Skip records with more cells than the header before assigning measurements
   or stream identity. An inserted cell could become a false long frame; retain
@@ -87,7 +94,7 @@ Changes below are in source and have not been released as an npm package.
   these records. Preserve quoted commas and native OCAT's shorter hardware tails.
   See the [controlled and pinned-public replay](studies/csv-width/README.md).
 
-### Text decoding correction (source only)
+### Text decoding correction
 
 - Reject malformed UTF-8 and BOM-marked UTF-16 in both CLI and browser imports.
   Replacement characters from permissive decoding could collapse distinct
@@ -97,7 +104,7 @@ Changes below are in source and have not been released as an npm package.
   Failed replacement or comparison imports preserve the previous valid report.
   See the [byte-level replay and public-capture controls](studies/text-integrity/README.md).
 
-### Stream identity correction (source only)
+### Stream identity correction
 
 - Preserve application identity alongside the swap chain when `ProcessID` is
   absent. Selecting a compositor or overlay no longer merges it into another
